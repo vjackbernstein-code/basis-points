@@ -1,0 +1,818 @@
+{
+ "generated_at": "2026-08-31T21:25:15.369463+00:00",
+ "market": [
+  {
+   "label": "S&P 500",
+   "symbol": "SP500",
+   "kind": "index",
+   "value": 7711.76,
+   "prev": 7730.99,
+   "value_txt": "7,711.76",
+   "delta": -0.24873916535915275,
+   "delta_txt": "-0.25%",
+   "spark": [
+    7316.15,
+    7437.63,
+    7489.72,
+    7600.5,
+    7736.52,
+    7723.55,
+    7709.96,
+    7757.64,
+    7753.11,
+    7728.2,
+    7748.5,
+    7798.99,
+    7785.76,
+    7745.06,
+    7691.76,
+    7707.98,
+    7641.16,
+    7674.37,
+    7652.86,
+    7677.28,
+    7675.7,
+    7730.99,
+    7711.76
+   ],
+   "asof": "Aug 28"
+  },
+  {
+   "label": "Nasdaq",
+   "symbol": "NASDAQCOM",
+   "kind": "index",
+   "value": 26402.42,
+   "prev": 26541.35,
+   "value_txt": "26,402.42",
+   "delta": -0.5234473755102897,
+   "delta_txt": "-0.52%",
+   "spark": [
+    24442.94,
+    25122.18,
+    25373.85,
+    25913.9,
+    26584.99,
+    26363.44,
+    26348.35,
+    26690.62,
+    26605.36,
+    26445.45,
+    26588.49,
+    26803.03,
+    26729.16,
+    26644.91,
+    26289.71,
+    26331.09,
+    26067.17,
+    26180.45,
+    25980.19,
+    26151.3,
+    26130.2,
+    26541.35,
+    26402.42
+   ],
+   "asof": "Aug 28"
+  },
+  {
+   "label": "Dow",
+   "symbol": "DJIA",
+   "kind": "index",
+   "value": 53559.99,
+   "prev": 53569.44,
+   "value_txt": "53,559.99",
+   "delta": -0.01764065482111511,
+   "delta_txt": "-0.02%",
+   "spark": [
+    51594.14,
+    52208.06,
+    52485.03,
+    53178.41,
+    54085.88,
+    54349.12,
+    53885.1,
+    54036.93,
+    53975.98,
+    53791.85,
+    53770.27,
+    53839.99,
+    53732.41,
+    53459.78,
+    53343.4,
+    53463.05,
+    52759.21,
+    53277.01,
+    53417.16,
+    53577.4,
+    53463.88,
+    53569.44,
+    53559.99
+   ],
+   "asof": "Aug 28"
+  },
+  {
+   "label": "VIX",
+   "symbol": "VIXCLS",
+   "kind": "level",
+   "value": 14.43,
+   "prev": 14.51,
+   "value_txt": "14.43",
+   "delta": -0.5513439007580984,
+   "delta_txt": "-0.55%",
+   "spark": [
+    20.66,
+    17.09,
+    15.99,
+    15.86,
+    16.5,
+    15.81,
+    15.15,
+    14.9,
+    15.46,
+    15.28,
+    14.55,
+    14.63,
+    14.25,
+    15.19,
+    15.84,
+    14.89,
+    16.01,
+    15.13,
+    15.85,
+    15.45,
+    15.21,
+    14.51,
+    14.43
+   ],
+   "asof": "Aug 28"
+  },
+  {
+   "label": "10-yr Treasury",
+   "symbol": "DGS10",
+   "kind": "yield",
+   "value": 47.300000000000004,
+   "prev": 46.7,
+   "value_txt": "4.73%",
+   "delta": 1.284796573875806,
+   "delta_txt": "+6 bp",
+   "spark": [
+    46.7,
+    46.8,
+    47.5,
+    47.0,
+    46.3,
+    46.3,
+    46.900000000000006,
+    46.5,
+    47.199999999999996,
+    47.0,
+    46.8,
+    46.3,
+    46.8,
+    47.199999999999996,
+    47.1,
+    46.5,
+    46.900000000000006,
+    47.400000000000006,
+    47.0,
+    46.4,
+    46.6,
+    46.7,
+    47.300000000000004
+   ],
+   "asof": "Aug 28"
+  },
+  {
+   "label": "Dollar (broad)",
+   "symbol": "DTWEXBGS",
+   "kind": "level",
+   "value": 118.7479,
+   "prev": 118.3583,
+   "value_txt": "118.75",
+   "delta": 0.3291699863887885,
+   "delta_txt": "+0.33%",
+   "spark": [
+    120.7892,
+    119.6753,
+    119.7034,
+    119.6951,
+    119.5977,
+    119.3881,
+    119.5113,
+    119.0649,
+    119.1187,
+    119.179,
+    119.1179,
+    119.1848,
+    118.9028,
+    118.814,
+    118.9831,
+    118.3328,
+    118.2548,
+    118.0628,
+    118.3195,
+    118.2283,
+    118.4461,
+    118.3583,
+    118.7479
+   ],
+   "asof": "Aug 28"
+  },
+  {
+   "label": "WTI crude",
+   "symbol": "DCOILWTICO",
+   "kind": "dollar",
+   "value": 83.9,
+   "prev": 86.34,
+   "value_txt": "$83.90",
+   "delta": -2.826036599490384,
+   "delta_txt": "-2.83%",
+   "spark": [
+    91.74,
+    84.25,
+    80.91,
+    86.08,
+    85.15,
+    86.16,
+    81.96,
+    77.33,
+    76.78,
+    78.88,
+    79.77,
+    83.76,
+    84.77,
+    84.97,
+    82.77,
+    83.99,
+    86.04,
+    86.48,
+    87.28,
+    89.75,
+    87.21,
+    86.34,
+    83.9
+   ],
+   "asof": "Aug 25"
+  },
+  {
+   "label": "EUR/USD",
+   "symbol": "EURUSD",
+   "kind": "fx",
+   "value": 1.1596,
+   "prev": 1.1643,
+   "value_txt": "1.1596",
+   "delta": -0.4036760285149813,
+   "delta_txt": "-0.40%",
+   "spark": [
+    1.1476,
+    1.1485,
+    1.1535,
+    1.1515,
+    1.1554,
+    1.1542,
+    1.1535,
+    1.1555,
+    1.154,
+    1.1545,
+    1.1534,
+    1.1567,
+    1.1593,
+    1.1576,
+    1.1605,
+    1.1681,
+    1.1699,
+    1.1664,
+    1.1662,
+    1.1669,
+    1.1645,
+    1.1643,
+    1.1596
+   ]
+  },
+  {
+   "label": "Bitcoin",
+   "symbol": "bitcoin",
+   "kind": "crypto",
+   "value": 78830.6349674438,
+   "prev": 77658.23133225394,
+   "value_txt": "$78,831",
+   "delta": 1.5096965448180601,
+   "delta_txt": "+1.51%",
+   "spark": [
+    64856.097825382276,
+    63915.71213556821,
+    63537.55988964766,
+    63408.625697113624,
+    63429.17906286841,
+    62984.28959582886,
+    63031.04825975698,
+    62843.70368466329,
+    64491.345282946255,
+    64686.25782561655,
+    69291.0104297816,
+    73020.94563440893,
+    78317.77716345884,
+    77081.02299000922,
+    77712.3200924702,
+    78973.88693602335,
+    78511.2331116067,
+    79018.03405750773,
+    80268.37474707834,
+    77820.76428719184,
+    78225.13950818499,
+    77658.23133225394,
+    78830.6349674438
+   ]
+  },
+  {
+   "label": "Ethereum",
+   "symbol": "ethereum",
+   "kind": "crypto",
+   "value": 2472.3712781845115,
+   "prev": 2416.2418165172735,
+   "value_txt": "$2,472",
+   "delta": 2.3230067985555363,
+   "delta_txt": "+2.32%",
+   "spark": [
+    1908.940734099038,
+    1871.3976551883159,
+    1880.4862005694617,
+    1877.743530062547,
+    1884.3941576877892,
+    1880.3285280890423,
+    1880.9591561894488,
+    1874.401898191962,
+    1912.2734691708965,
+    1916.3998901478055,
+    2251.7346140069594,
+    2326.5282334236576,
+    2514.967577695514,
+    2423.4127407436827,
+    2462.403924751607,
+    2481.879430655568,
+    2442.0111121033965,
+    2506.3431057180687,
+    2511.461241063819,
+    2442.407614756763,
+    2457.089335222437,
+    2416.2418165172735,
+    2472.3712781845115
+   ]
+  }
+ ],
+ "tape_line": "S&P 500 -0.25%, Nasdaq -0.52%, Dow -0.02%; the 10-year Treasury at 4.73% (+6 bp); WTI crude $83.90 (-2.83%); bitcoin $78,831 (+1.51%).",
+ "themes": [
+  {
+   "theme": "Crypto",
+   "count": 34
+  },
+  {
+   "theme": "Energy & commodities",
+   "count": 31
+  },
+  {
+   "theme": "Rates & the Fed",
+   "count": 29
+  },
+  {
+   "theme": "AI & tech",
+   "count": 26
+  },
+  {
+   "theme": "Inflation & prices",
+   "count": 18
+  },
+  {
+   "theme": "Trade & geopolitics",
+   "count": 16
+  },
+  {
+   "theme": "Earnings & companies",
+   "count": 15
+  },
+  {
+   "theme": "Jobs & growth",
+   "count": 4
+  },
+  {
+   "theme": "Deals & IPOs",
+   "count": 3
+  },
+  {
+   "theme": "Housing",
+   "count": 3
+  }
+ ],
+ "top": [
+  {
+   "title": "U.S. Stocks Fall as Iran War Inflation Heats Up",
+   "link": "https://www.wsj.com/finance/stocks/u-s-stocks-fall-as-iran-war-inflation-heats-up-6f44ff44?mod=rss_markets_main",
+   "source": "WSJ Markets",
+   "published": "2026-08-31T21:16:00+00:00",
+   "summary": "U.S. stocks fell after renewed hostilities between the U.S. and Iran near the Strait of Hormuz."
+  },
+  {
+   "title": "Wall Street dips as spiking crude prices revive fears of inflation, rate hike",
+   "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxNSjdMVkl6Zld1cG16aFA3UUtRd2ozVHRERm1Sb1p0WGtVN2xsUEJVbnlaUWt6M2NiWERmaUo1d080c0hWeHFwVGY4UlpZMGJENG91NXJ4bzhMbXNjRVJRQlo1d0ppNlNPcjUtd2F1d2xheXhBaW5OYU43SDdkYk13R0Y0SGNzblZOOTFJcTM2SmJJV3VRbVNyWGZ1bVdzaGJSQ2lBMXZPOWdWb01VNmR1UGYxZGE?oc=5",
+   "source": "Reuters",
+   "published": "2026-08-31T18:29:35+00:00",
+   "summary": "Wall Street dips as spiking crude prices revive fears of inflation, rate hike Reuters See more headlines & perspectives on Google News"
+  },
+  {
+   "title": "Markets see Warsh endorsing a rate hike in September. Not everyone is convinced",
+   "link": "https://www.cnbc.com/2026/08/31/markets-see-warsh-endorsing-a-rate-hike-in-september-not-everyone-is-convinced.html",
+   "source": "CNBC",
+   "published": "2026-08-31T19:38:38+00:00",
+   "summary": "The path toward the move still looks cluttered."
+  },
+  {
+   "title": "The 10-year Treasury yield just crossed a key threshold that should make people ‘sit up and take notice’",
+   "link": "https://www.marketwatch.com/story/the-10-year-treasury-yield-just-crossed-a-key-threshold-that-should-make-people-sit-up-and-take-notice-ffc0b5b5?mod=mw_rss_topstories",
+   "source": "MarketWatch",
+   "published": "2026-08-31T20:26:00+00:00",
+   "summary": "Yield on 10-year Treasury touches its highest level of Trump 2.0 as oil climbs back about $90 a barrel"
+  },
+  {
+   "title": "The 'choose your own adventure' earnings: Why retailers are handling tariff refunds so differently",
+   "link": "https://www.cnbc.com/2026/08/30/trump-tariff-refunds-walmart-home-depot-target.html",
+   "source": "CNBC Earnings",
+   "published": "2026-08-31T14:12:05+00:00",
+   "summary": "Retailers have diverged on how they've reported tariff refunds in their earnings this quarter, with some choosing to lower prices and others boosting margins."
+  },
+  {
+   "title": "Westinghouse Electric Wants to Ride a Nuclear Power Revival to an IPO",
+   "link": "https://www.wsj.com/business/energy-oil/westinghouse-electric-wants-to-ride-a-nuclear-power-revival-to-an-ipo-9ad2b196?mod=rss_markets_main",
+   "source": "WSJ Markets",
+   "published": "2026-08-31T18:35:00+00:00",
+   "summary": "The company has a powerful ally with an incentive to see it grow: the U.S. government."
+  },
+  {
+   "title": "Flaring Middle East Tensions Push Oil Prices Up",
+   "link": "https://www.wsj.com/finance/investing/flaring-middle-east-tensions-push-oil-prices-up-a1dc32bb?mod=rss_markets_main",
+   "source": "WSJ Markets",
+   "published": "2026-08-31T20:39:00+00:00",
+   "summary": "Plus, stocks fall and long-dated bond yields rise, while Amazon faces a new legal challenge."
+  }
+ ],
+ "columns": {
+  "markets": [
+   {
+    "title": "Oil Futures Eke Out Monthly Gains as U.S. Resumes Strikes",
+    "link": "https://www.wsj.com/finance/commodities-futures/oil-rises-amid-renewed-fighting-in-middle-east-add7b187?mod=rss_markets_main",
+    "source": "WSJ Markets",
+    "published": "2026-08-31T19:32:00+00:00",
+    "summary": "Oil futures rose after the U.S. struck Iranian rocket launchers which it said were preparing to mine the Strait of Hormuz, and Iran responded firing missiles at U.S. targets in Jordan."
+   },
+   {
+    "title": "Tesla’s stock among S&P 500’s top gainers as investors prepare for a Cybercab launch",
+    "link": "https://www.marketwatch.com/story/teslas-stock-is-leading-s-p-500-gainers-as-investors-prepare-for-a-cybercab-launch-f23a0d52?mod=mw_rss_topstories",
+    "source": "MarketWatch",
+    "published": "2026-08-31T21:01:00+00:00",
+    "summary": "The company is seemingly getting closer to rolling out a vehicle that comes without a steering wheel or pedals."
+   },
+   {
+    "title": "The S&P 500 usually falls in September. Why this year should be different.",
+    "link": "https://www.marketwatch.com/story/the-s-p-500-usually-falls-in-september-why-this-year-should-be-different-77ebb626?mod=mw_rss_topstories",
+    "source": "MarketWatch",
+    "published": "2026-08-31T20:55:00+00:00",
+    "summary": "As U.S. stocks head into September, a key trading level suggests the S&P 500 could dodge a big loss in what is historically a turbulent month."
+   },
+   {
+    "title": "The WSJ Dollar Index Falls 0.39% This Month to 95.72",
+    "link": "https://www.wsj.com/finance/currencies/asian-currencies-consolidate-may-weaken-on-growing-fed-rate-hike-prospects-14e4f9a1?mod=rss_markets_main",
+    "source": "WSJ Markets",
+    "published": "2026-08-31T21:23:00+00:00",
+    "summary": "The WSJ Dollar Index fell 0.2% — down two of the past three trading days."
+   },
+   {
+    "title": "Trump announced a massive oil deal with Venezuela. Why it won't lower gas prices anytime soon",
+    "link": "https://www.cnbc.com/2026/08/31/trump-venezuela-oil-gas-price.html",
+    "source": "CNBC",
+    "published": "2026-08-31T21:22:08+00:00",
+    "summary": "President Donald Trump announced Friday that the U.S. secured majority control over 65 billion barrels of Venezuela's proven oil reserves."
+   },
+   {
+    "title": "House Intelligence Committee warns of 'Black Swan' AI risks",
+    "link": "https://www.cnbc.com/2026/08/31/ai-warning-house-intelligence-committee.html",
+    "source": "CNBC",
+    "published": "2026-08-31T21:18:37+00:00",
+    "summary": "Bipartisan lawmakers cautioned that existing safeguards may not be enough to keep up with AI's advances."
+   },
+   {
+    "title": "Stocks Decline to End August as War Fears Persist",
+    "link": "https://www.wsj.com/opinion/stocks-decline-to-end-august-as-war-fears-persist-4388a594?mod=rss_markets_main",
+    "source": "WSJ Markets",
+    "published": "2026-08-31T21:02:00+00:00",
+    "summary": "Oil prices rise with new fighting reported in the Strait of Hormuz,"
+   },
+   {
+    "title": "Oil prices rise and stocks fall after US hits Iranian sites in the Strait of Hormuz",
+    "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxQTkxlME9kNGFRUWlyc1k0NW93dnBPbHRkWWtveTVWc19ybnNSV2J2SHZ1MUhZa2VrQWVRaWNWWUQ0ZnE5UmRHcjYtYXl1ZVp4OF9DU0VRdmFEVXJ4MUFnUWkzQkRsNThWbVVXcUVvUDBRYXpoeXpBcnZaX0tXTjd3V3QxNzRBMTAwY3dRSmticTlFQUtITmdqQmpRS1JyUDVS?oc=5",
+    "source": "AP News",
+    "published": "2026-08-31T20:41:00+00:00",
+    "summary": "Oil prices rise and stocks fall after US hits Iranian sites in the Strait of Hormuz AP News Stocks fall after U.S. strikes Iran, but Wall Street heads for winning month: Live updates CNBC Flaring Middle East Tensions Push Oil…"
+   }
+  ],
+  "economy": [
+   {
+    "title": "Fed Chairman Kevin Warsh triggered a new problem for stocks",
+    "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxPTGVwbHF4YldTaVludmxPeGxBM0tQMXcyR1JLcVBhcTRUSVpVNXJaeFNSVzZNazFOaExHNUdWbjlDa3FpaUhadjZ2eldfOVA2YnZvU21GLXdOTXJ3eHdvQ1E2dF8ycjBsQ0V0YWttNHFOM3d0bjhqc1B2RFZPLU81ZHVKMXcyT3gtWmZXc3lXOW16cFJ4Sm11UkxSMkR5RVV0clcwN21fVS1lN2ViZkhCc2ZGbHFrMHM?oc=5",
+    "source": "Yahoo Finance",
+    "published": "2026-08-31T12:06:25+00:00",
+    "summary": "Fed Chairman Kevin Warsh triggered a new problem for stocks Yahoo Finance JPMorgan Traders Drop Bullish View on Stocks After Warsh Speech Bloomberg.com Warsh, After Talking Tough on Inflation, Faces a ‘No-Win Situation’ on Rates…"
+   },
+   {
+    "title": "At Jackson Hole, global central bankers glimpse dystopian AI future",
+    "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxPMFh5NUhXWG5NZW1lVzkySlBKWnZTRFVMLXh1R3N5VFJ4TkNmN2dXQnd0NmgwOXFyZENWS3dGbW84VnJ4YnFGQUtwcEJkNDRaT05aeUtFMmlfQllOY0luZnd6UzgwWVBRTlJLZ3hZMkJObzlHTnNENDZCNTJ3NVZ1MTBHQ3Z6QUE3VUp6WGw5WmRCWGtySV9GelhKNmhlV2RyaktqZ0VORzhURmxxME9LdllRSmVSdE0?oc=5",
+    "source": "Reuters",
+    "published": "2026-08-31T19:46:33+00:00",
+    "summary": "At Jackson Hole, global central bankers glimpse dystopian AI future Reuters The Fed confronts a powerful new economic force The Washington Post Warsh says AI could turbocharge the economy. The Fed is keeping close watch. Yahoo…"
+   },
+   {
+    "title": "Bank of England chief warns new AI models threaten global financial stability",
+    "link": "https://www.cnbc.com/2026/08/31/bailey-frontier-ai-financial-stability-risk.html",
+    "source": "CNBC Economy",
+    "published": "2026-08-31T13:35:11+00:00",
+    "summary": "Bank of England Governor Andrew Bailey has warned that frontier AI could materially increase cyber risks to the global financial system."
+   },
+   {
+    "title": "Nevada casino on brink of closure reopens to lure tourists fed up with Las Vegas prices",
+    "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxOd2x6MS10WHNLODloNDNLTU9VUnUxYnRrMHFyNndLZk41am85ZkxNU3Fjc0x1RjlTMjl0b29XNGlEdUpDcmR3YUlyMHBBMHJYejdzdmQxNnRpZGJlRlRWcXFJbjdpc1RXZFlWTElkWW1pUUIzLWtSVi1WSUdTR1pMVzFXdUNQV3hWakZJUTlUQ0VKRXRwWDFXWV9zeHpqbDJoUXpkc1FXUdIBrAFBVV95cUxOR1ZiS3VzZjVaY0lMTWtJaUJKSzlJUHo1d3JYcUYzbDBzZ0xtQTQ2ZVVyM3NKZEUzLVV0a2xZVkVUUVFKa0tZTTJha2ZDN2NKR3AzUDNqeVplcUl2ZXhsTks4UUstZ2JjbjlUVDItd25CQlZNeW9uVWhsNzNiUlJnNGVVX1M3cnVmYks1aHV6MnBFUFk3NjlvdS14Y0FZZ0NSQk1zbTdLRVFES255?oc=5",
+    "source": "Fox News",
+    "published": "2026-08-31T12:00:16+00:00",
+    "summary": "Nevada casino on brink of closure reopens to lure tourists fed up with Las Vegas prices Fox News See more headlines & perspectives on Google News"
+   },
+   {
+    "title": "Rodent droppings on food prep table: What Lehigh County restaurant inspectors found",
+    "link": "https://news.google.com/rss/articles/CBMizgFBVV95cUxOZDJPWG1LMkxUcDRBMmE4bG15UjhFUXBfT0FCak85cElKQU5xNHVpUy1JanNZYVI1d0FHNHFtTFlFdGRkUW4yNTZQVmdMR1hZRmJQeHJlNkMzZUtmLW56Q0xtdk4tR29pNVh1U2JqbFQ5RU1kRVVtM25SYy1oc1RxbzBvbjRobG5pZmJjcldiNzdrWlN2bmRSaktZNlJ6b1dXQ2tRdVdnNXMyamZtRzZqMXV5UThXQllzUTFtSi1XUVhHMnB6RTBIQ3lrdlA5UQ?oc=5",
+    "source": "LehighValleyLive.com",
+    "published": "2026-08-31T10:30:00+00:00",
+    "summary": "Rodent droppings on food prep table: What Lehigh County restaurant inspectors found LehighValleyLive.com Lehigh Valley food safety report: Turkey thawing in the sink, dusty kitchen area, ‘black, mold-like substance’ on ice…"
+   },
+   {
+    "title": "China's factory activity shrinks for second straight month, contracting less than expected",
+    "link": "https://www.cnbc.com/2026/08/31/china-pmi-august-economy-slowdown.html",
+    "source": "CNBC Economy",
+    "published": "2026-08-31T03:15:01+00:00",
+    "summary": "China's manufacturing activity shrank for a second straight month, keeping pressure on Beijing to support the economy as growth loses momentum."
+   },
+   {
+    "title": "The extraordinary rise of Miami’s economy",
+    "link": "https://www.economist.com/finance-and-economics/2026/08/31/the-extraordinary-rise-of-miamis-economy",
+    "source": "The Economist",
+    "published": "2026-08-31T17:01:41+00:00",
+    "summary": "Thanks to a combination of capital and politics, the city is booming. Can its success be sustained?"
+   },
+   {
+    "title": "Stock Futures Drift Lower, Oil Rises Ahead of Jobs Data, Tech Earnings",
+    "link": "https://news.google.com/rss/articles/CBMiekFVX3lxTE9Fdm9vNHR6QWdTM1ZhUk5JRUgtUDlGcWh6NDM0TTNYTTIxNW82TE0xSFN1NmYwZ3MzdFFMQkhXM2ZmREdxcXBsYnh2UkxsQXoybHlDSlBSVzBwc0ZSdG1sYk1QSjFveWlDVHVmc3g4ckhCcjFoeXlEUTln?oc=5",
+    "source": "Barron's",
+    "published": "2026-08-30T22:13:00+00:00",
+    "summary": "Stock Futures Drift Lower, Oil Rises Ahead of Jobs Data, Tech Earnings Barron's Wall Street closes lower as oil prices jump, indexes notch gains The Detroit News Moomoo U.S. Markets Look Ahead for Monday Moomoo S&P 500 Opens…"
+   }
+  ],
+  "companies": [
+   {
+    "title": "Trump’s Venezuelan Oil Company Plans Massive Drilling Push",
+    "link": "https://www.wsj.com/business/energy-oil/trumps-venezuelan-oil-company-plans-massive-drilling-push-db439e19?mod=pls_whats_news_us_business_f",
+    "source": "WSJ Business",
+    "published": "2026-08-31T20:32:00+00:00",
+    "summary": "The company led by Alejandro Betancourt plans to dispatch more than 50 drilling rigs to turbocharge the country’s anemic crude production."
+   },
+   {
+    "title": "Companies Plow Tariff Refunds Into Price Cuts, Appealing to Stretched Consumers",
+    "link": "https://www.wsj.com/cfo-journal/companies-plow-tariff-refunds-into-price-cuts-appealing-to-stretched-consumers-c5f683b1?mod=pls_whats_news_us_business_f",
+    "source": "WSJ Business",
+    "published": "2026-08-31T10:00:00+00:00",
+    "summary": "E.l.f. Beauty, Walmart and Tractor Supply are among the companies dropping prices to boost sales."
+   },
+   {
+    "title": "FTC Files Lawsuit Alleging Amazon Deceived Advertisers",
+    "link": "https://www.wsj.com/tech/ftc-to-file-lawsuit-alleging-amazon-deceived-advertisers-d71039ee?mod=pls_whats_news_us_business_f",
+    "source": "WSJ Business",
+    "published": "2026-08-31T20:07:00+00:00",
+    "summary": "The commission, along with more than 20 states, alleged the e-commerce giant reaped billions by manipulating ad prices on its retail platform."
+   },
+   {
+    "title": "Global Oil Price Rises to $90 a Barrel After U.S. and Iran Trade Attacks",
+    "link": "https://www.nytimes.com/2026/08/31/business/oil-prices-iran-war.html",
+    "source": "NYT Business",
+    "published": "2026-08-31T20:04:53+00:00",
+    "summary": "The first attacks in a month jolted energy markets. The average U.S. gasoline price remained 37 percent higher since the war began."
+   },
+   {
+    "title": "Broadcom reports earnings this week. Mike Khouw says this trade could be a winner",
+    "link": "https://www.cnbc.com/2026/08/31/broadcom-reports-earnings-this-week-mike-khouw-says-this-trade-could-be-a-winner.html",
+    "source": "CNBC",
+    "published": "2026-08-31T17:18:15+00:00",
+    "summary": "\"The stakes are high\" heading into Broadcom earnings, says Mike Khouw."
+   },
+   {
+    "title": "Companies Are Paying for Price Cuts With Their Tariff Refunds",
+    "link": "https://www.wsj.com/cfo-journal/companies-are-paying-for-price-cuts-with-their-tariff-refunds-1d10e91c?mod=pls_whats_news_us_business_f",
+    "source": "WSJ Business",
+    "published": "2026-08-31T10:58:00+00:00",
+    "summary": "Plus, Canadian honey producers are feeling the sting; this week’s earnings lineup."
+   },
+   {
+    "title": "Trump’s Venezuelan Oil Deal Relies on a Powerful and Divisive Partner",
+    "link": "https://www.nytimes.com/2026/08/29/business/energy-environment/venezuela-alejandro-betancourt-oil-trump.html",
+    "source": "NYT Business",
+    "published": "2026-08-31T14:59:33+00:00",
+    "summary": "The administration will work with a private Venezuelan oil company that has close ties to the country’s government."
+   },
+   {
+    "title": "Shein prices Hong Kong IPO below top end of range, raises $1.74 billion",
+    "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxQalUwUzZ5X25wVFgyN2dnX2tJd0MyM1YxbFoxdXZfbXpEUmdEVWpRNWhxOUNhM1BSTjljb0M4VWhJb3c3MTlaNzMxb2tldzdpM3VaQ3RIMkVFckhTcVExM0lWNDZBemY3dDlwWURmMFlyZC1sdGljTTdJbjUycncxTUJPb3dWZEV1NnN3NlV2ZnBRRTI2ZW4zdnYtVGVlRTJUNGtRTU14ZVF0eEp0cldOaTNMcXY0d0FRaFY1eU13?oc=5",
+    "source": "Reuters",
+    "published": "2026-08-31T15:46:52+00:00",
+    "summary": "Shein prices Hong Kong IPO below top end of range, raises $1.74 billion Reuters Don’t Count Shein Out Just Yet WSJ Why Fast Fashion Giant Shein Faces an Uphill Battle to Regain Its Mojo Bloomberg.com Shein’s dressed for its…"
+   }
+  ],
+  "global": [
+   {
+    "title": "Mortgage rates surge to the highest since June 2025 as new Middle East attacks push oil prices up",
+    "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxNWm5Nb2d4V2c1d19xNHFiVjExRFhqMjZxM3FJa3hnblpmdjNwRHBaMHFiSlNUUnkxM3VxcmtOeUxYTThKRTBDa0VlNklQVFVESVhKbmoyd2R5OVZxS2R0VWF0cGQ2TzY2RzhqbnNPdnNnQlpGeTZBUjBGMWpYUzFzNUxsOVJkYzNr0gGOAUFVX3lxTE1RdzlMZzJyR2VUeV9kc2ozRXppdF92a3gtWGJ2ZkZ0QjNwdmgwQzNoYnZsVGx4c1E0cWs2OHg4WHhwLVNMdURfLVE4OFpHVGJFLWUwd1MzU1hpNV9xX2w5ZlQ2aXp5UXBwTC00WTRkQ3RWYzRpOFViZFVDSDF4WmVueTYwY29TeGNmZUNiUGc?oc=5",
+    "source": "CNBC",
+    "published": "2026-08-31T17:56:01+00:00",
+    "summary": "Mortgage rates surge to the highest since June 2025 as new Middle East attacks push oil prices up CNBC Mortgage and refinance interest rates today, Monday, August 31, 2026: Purchase rates currently higher than refinance rates…"
+   },
+   {
+    "title": "AI could cause global economic downturn, Andrew Bailey warns G20",
+    "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE93UkFFTExla3dMSVo2YWwxUXl0ZllhV0dIbW0wWTdSMXktMHV1X2l4SnlZMmRFMXdSY2hqbm0tVGNNTmsxME5ncHp2aVdHRmhvd3Y0cUo2cnkwQQ?oc=5",
+    "source": "bbc.com",
+    "published": "2026-08-31T16:49:11+00:00",
+    "summary": "AI could cause global economic downturn, Andrew Bailey warns G20 bbc.com Advanced AI threatens the world’s financial system, watchdog says CNN G20 Warned Of Growing Threat to Financial Stability Posed By New AI Models WSJ Bank of…"
+   },
+   {
+    "title": "German Inflation Rises But Few Signs of Energy-Shock Spillover",
+    "link": "https://www.wsj.com/economy/global/german-inflation-rises-but-few-signs-of-energy-shock-spillover-e22ff3b0?mod=rss_worldnews",
+    "source": "WSJ World",
+    "published": "2026-08-31T13:00:00+00:00",
+    "summary": "Inflation picked up in Germany this month, though less than expected, with few signs of broader price pressures in the economy despite conflict in the Middle East keeping upward pressure on energy costs."
+   },
+   {
+    "title": "Russia Turns to New-Generation Drones and All-Day Attacks to Wear Down Ukrainians",
+    "link": "https://www.wsj.com/world/russia-turns-to-new-generation-drones-and-all-day-attacks-to-wear-down-ukrainians-b492ec1b?mod=rss_worldnews",
+    "source": "WSJ World",
+    "published": "2026-08-31T15:04:00+00:00",
+    "summary": "Kyiv is struggling to adapt to continuous attacks using faster drones that are harder to intercept."
+   },
+   {
+    "title": "Japan Targets Record Defense Spend as China Pressure Grows",
+    "link": "https://www.wsj.com/world/asia/japan-targets-record-defense-spend-as-china-pressure-grows-c30a382e?mod=rss_worldnews",
+    "source": "WSJ World",
+    "published": "2026-08-31T09:33:00+00:00",
+    "summary": "The Defense Ministry wants more drones and missiles, but the pace of spending increases might look slow to Washington."
+   },
+   {
+    "title": "Opinion | A Realistic Look at the Iran War",
+    "link": "https://www.wsj.com/opinion/a-realistic-look-at-the-iran-war-d6af0908?mod=rss_worldnews",
+    "source": "WSJ World",
+    "published": "2026-08-31T21:21:00+00:00",
+    "summary": "It isn’t as easy as Trump expected, but don’t assume the U.S. has already lost."
+   },
+   {
+    "title": "Bessent Criticizes Canada as Global Summit Shows Divisions",
+    "link": "https://www.wsj.com/world/americas/bessent-criticizes-canada-as-global-summit-shows-divisions-483a0b70?mod=rss_worldnews",
+    "source": "WSJ World",
+    "published": "2026-08-31T21:02:00+00:00",
+    "summary": "Finance officials from rich and developing countries gathered in the Blue Ridge Mountains amid economic tensions."
+   },
+   {
+    "title": "China’s Official Activity Gauges Hint at Impending Turnaround",
+    "link": "https://www.wsj.com/economy/chinas-official-gauges-point-to-continued-contraction-in-economic-activity-207d350d?mod=rss_worldnews",
+    "source": "WSJ World",
+    "published": "2026-08-31T03:44:00+00:00",
+    "summary": "Output and market demand recovered in August, suggesting that the slowdown in manufacturing may have hit bottom in July."
+   }
+  ],
+  "crypto": [
+   {
+    "title": "Markets pivot to September Fed rate hike: Five things to know in Bitcoin this week",
+    "link": "https://cointelegraph.com/markets/markets-pivot-to-september-fed-rate-hike-five-things-to-know-in-bitcoin-this-week?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+    "source": "Cointelegraph",
+    "published": "2026-08-31T10:51:49+00:00",
+    "summary": "Bitcoin approached the August monthly close below key resistance with markets once again pricing in a Federal Reserve interest-rate hike in September."
+   },
+   {
+    "title": "Bitcoin begins volatile monthly close as US bond yields eye new 20-year high",
+    "link": "https://cointelegraph.com/markets/bitcoin-begins-volatile-monthly-close-as-us-bond-yields-eye-new-20-year-high?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+    "source": "Cointelegraph",
+    "published": "2026-08-31T16:38:51+00:00",
+    "summary": "Bitcoin price action saw sharp moves within its local range as US Treasury Secretary Scott Bessent addressed US bond yields."
+   },
+   {
+    "title": "September Fed rate hike fears look overblown as the probability stands at just 58%, not 90%",
+    "link": "https://www.coindesk.com/markets/2026/08/31/september-fed-rate-hike-fears-appear-overblown-as-the-probability-is-just-58-not-90",
+    "source": "CoinDesk",
+    "published": "2026-08-31T06:42:45+00:00",
+    "summary": "Odds of a rate hike in September remain below 60% despite Warsh's hawkish speech on Friday. Observers downplay fears of tightening."
+   },
+   {
+    "title": "U.S. jobs report, Russia’s digital ruble rollout: Crypto Week Ahead",
+    "link": "https://www.coindesk.com/markets/2026/08/31/u-s-jobs-report-russia-s-digital-ruble-rollout-crypto-week-ahead",
+    "source": "CoinDesk",
+    "published": "2026-08-31T08:22:28+00:00",
+    "summary": "Your look at what's coming in the week starting Aug. 31."
+   },
+   {
+    "title": "North Korean hackers are moving tens of millions on Hyperliquid as Trump pushes to onshore the crypto platform",
+    "link": "https://www.coindesk.com/business/2026/08/31/north-korean-hackers-are-moving-tens-of-millions-on-hyperliquid-as-trump-pushes-to-onshore-the-crypto-platform",
+    "source": "CoinDesk",
+    "published": "2026-08-31T20:48:40+00:00",
+    "summary": "Blockchain data reviewed by CoinDesk shows wallets tied to North Korea’s Lazarus Group sold more than $30 million in bitcoin on the platform in the last three weeks alone."
+   },
+   {
+    "title": "Kalshi lays down first lifetime ban for ex-member of Congress George Santos",
+    "link": "https://www.coindesk.com/policy/2026/08/31/kalshi-lays-down-first-lifetime-ban-for-ex-member-of-congress-george-santos",
+    "source": "CoinDesk",
+    "published": "2026-08-31T15:33:14+00:00",
+    "summary": "The prediction market platform banned Santos for manipulation as part of the industry's ongoing efforts to show it's dealing with bad behavior."
+   },
+   {
+    "title": "Here’s what happened in crypto today",
+    "link": "https://cointelegraph.com/news/what-happened-in-crypto-today?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+    "source": "Cointelegraph",
+    "published": "2026-08-31T20:32:00+00:00",
+    "summary": "Need to know what happened in crypto today? Here is the latest news on daily trends and events impacting Bitcoin price, blockchain, DeFi, Web3 and crypto regulation."
+   },
+   {
+    "title": "Ireland excludes crypto from new tax-advantaged investment accounts",
+    "link": "https://cointelegraph.com/news/ireland-crypto-tax-advantaged-investment-accounts?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+    "source": "Cointelegraph",
+    "published": "2026-08-31T20:25:25+00:00",
+    "summary": "Ireland’s planned investment accounts will offer tax benefits for stocks, bonds and ETFs, while excluding crypto and derivatives as higher-risk products."
+   }
+  ]
+ },
+ "filings": [
+  {
+   "title": "8-K - TIDEWATER INC (Filer)",
+   "link": "https://www.sec.gov/Archives/edgar/data/98222/000110465926103962/0001104659-26-103962-index.htm",
+   "source": "SEC EDGAR",
+   "published": "2026-08-31T21:23:55+00:00",
+   "summary": "Filed: 2026-08-31 AccNo: 0001104659-26-103962 Size: 2 MB Item 1.01: Entry into a Material Definitive Agreement Item 2.01: Completion of Acquisition or Disposition of Assets Item 2.03: Creation of a Direct Financial Obligation or…"
+  },
+  {
+   "title": "8-K - TECOGEN INC. (Filer)",
+   "link": "https://www.sec.gov/Archives/edgar/data/1537435/000153743526000072/0001537435-26-000072-index.htm",
+   "source": "SEC EDGAR",
+   "published": "2026-08-31T21:23:20+00:00",
+   "summary": "Filed: 2026-08-31 AccNo: 0001537435-26-000072 Size: 168 KB Item 8.01: Other Events Item 9.01: Financial Statements and Exhibits"
+  },
+  {
+   "title": "8-K - Iron Horse Acquisition II Corp. (Filer)",
+   "link": "https://www.sec.gov/Archives/edgar/data/2051985/000121390026095802/0001213900-26-095802-index.htm",
+   "source": "SEC EDGAR",
+   "published": "2026-08-31T21:23:17+00:00",
+   "summary": "Filed: 2026-08-31 AccNo: 0001213900-26-095802 Size: 2 MB Item 7.01: Regulation FD Disclosure Item 9.01: Financial Statements and Exhibits"
+  },
+  {
+   "title": "8-K - iSpecimen Inc. (Filer)",
+   "link": "https://www.sec.gov/Archives/edgar/data/1558569/000121390026095801/0001213900-26-095801-index.htm",
+   "source": "SEC EDGAR",
+   "published": "2026-08-31T21:22:33+00:00",
+   "summary": "Filed: 2026-08-31 AccNo: 0001213900-26-095801 Size: 221 KB Item 5.02: Departure of Directors or Certain Officers; Election of Directors; Appointment of Certain Officers: Compensatory Arrangements of Certain Officers Item 9.01…"
+  },
+  {
+   "title": "8-K - MOBIX LABS, INC (Filer)",
+   "link": "https://www.sec.gov/Archives/edgar/data/1855467/000149315226040870/0001493152-26-040870-index.htm",
+   "source": "SEC EDGAR",
+   "published": "2026-08-31T21:22:05+00:00",
+   "summary": "Filed: 2026-08-31 AccNo: 0001493152-26-040870 Size: 329 KB Item 7.01: Regulation FD Disclosure Item 9.01: Financial Statements and Exhibits"
+  },
+  {
+   "title": "8-K - Sono Group N.V. (Filer)",
+   "link": "https://www.sec.gov/Archives/edgar/data/1840416/000117184326005808/0001171843-26-005808-index.htm",
+   "source": "SEC EDGAR",
+   "published": "2026-08-31T21:22:03+00:00",
+   "summary": "Filed: 2026-08-31 AccNo: 0001171843-26-005808 Size: 541 KB Item 1.01: Entry into a Material Definitive Agreement Item 8.01: Other Events Item 9.01: Financial Statements and Exhibits"
+  },
+  {
+   "title": "8-K - Jazz Pharmaceuticals plc (Filer)",
+   "link": "https://www.sec.gov/Archives/edgar/data/1232524/000119312526377073/0001193125-26-377073-index.htm",
+   "source": "SEC EDGAR",
+   "published": "2026-08-31T21:21:41+00:00",
+   "summary": "Filed: 2026-08-31 AccNo: 0001193125-26-377073 Size: 1 MB Item 1.01: Entry into a Material Definitive Agreement Item 2.03: Creation of a Direct Financial Obligation or an Obligation under an Off-Balance Sheet Arrangement of a…"
+  },
+  {
+   "title": "8-K - KOHLS Corp (Filer)",
+   "link": "https://www.sec.gov/Archives/edgar/data/885639/000119312526377068/0001193125-26-377068-index.htm",
+   "source": "SEC EDGAR",
+   "published": "2026-08-31T21:20:14+00:00",
+   "summary": "Filed: 2026-08-31 AccNo: 0001193125-26-377068 Size: 196 KB Item 5.02: Departure of Directors or Certain Officers; Election of Directors; Appointment of Certain Officers: Compensatory Arrangements of Certain Officers Item 7.01…"
+  }
+ ],
+ "stats": {
+  "feeds_total": 19,
+  "feeds_failed": 1,
+  "items": 318,
+  "feed_errors": [],
+  "market_errors": [
+   [
+    "Yahoo",
+    "rate-limited; using fallback sources"
+   ]
+  ]
+ }
+}

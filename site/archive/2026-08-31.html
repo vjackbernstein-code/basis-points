@@ -1,0 +1,97 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Basis Points — investor brief</title><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Besley:ital,wght@0,700;0,800;1,700&family=Libre+Franklin:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap"><style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  color-scheme: light;
+  --page: #f9f9f7; --surface: #fcfcfb;
+  --ink: #0b0b0b; --ink2: #52514e; --muted: #898781;
+  --hair: #e1e0d9; --border: rgba(11,11,11,.10);
+  --accent: #2a78d6; --spark: #9ec5f4;
+  --up: #006300; --down: #d03b3b;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --page: #0d0d0d; --surface: #1a1a19;
+    --ink: #ffffff; --ink2: #c3c2b7; --muted: #898781;
+    --hair: #2c2c2a; --border: rgba(255,255,255,.10);
+    --accent: #3987e5; --spark: #1c5cab;
+    --up: #0ca30c; --down: #e66767;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --page: #0d0d0d; --surface: #1a1a19;
+  --ink: #ffffff; --ink2: #c3c2b7; --muted: #898781;
+  --hair: #2c2c2a; --border: rgba(255,255,255,.10);
+  --accent: #3987e5; --spark: #1c5cab;
+  --up: #0ca30c; --down: #e66767;
+}
+body {
+  background: var(--page); color: var(--ink);
+  font-family: "Libre Franklin", -apple-system, "Segoe UI", sans-serif;
+  font-size: 15px; line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+.wrap { max-width: 1180px; margin: 0 auto; padding: 28px 24px 48px; }
+a { color: inherit; text-decoration: none; }
+a:hover { text-decoration: underline; text-decoration-color: var(--accent); }
+
+.masthead { display: flex; align-items: baseline; justify-content: space-between;
+  flex-wrap: wrap; gap: 8px 20px; padding-bottom: 14px; border-bottom: 2px solid var(--ink); }
+.brand { font-family: "Besley", Georgia, serif; font-weight: 800;
+  font-size: clamp(28px, 4vw, 40px); letter-spacing: -0.01em; }
+.brand .tick { color: var(--accent); }
+.kicker { color: var(--ink2); font-size: 13.5px; }
+.updated { font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 12px; color: var(--muted); }
+
+.tape { display: grid; grid-template-columns: repeat(auto-fill, minmax(168px, 1fr));
+  gap: 10px; margin: 22px 0 8px; }
+.tile { background: var(--surface); border: 1px solid var(--border);
+  border-radius: 8px; padding: 12px 12px 8px; }
+.tlabel { font-size: 11px; font-weight: 600; letter-spacing: 0.06em;
+  text-transform: uppercase; color: var(--muted); }
+.tvalue { font-size: 21px; font-weight: 600; margin-top: 2px; }
+.tdelta { font-size: 12.5px; font-weight: 600; margin-top: 1px;
+  font-family: "IBM Plex Mono", ui-monospace, monospace; }
+.up { color: var(--up); } .down { color: var(--down); } .flat { color: var(--muted); }
+.tasof { font-size: 10.5px; color: var(--muted); margin-top: 1px; }
+.spark { display: block; width: 100%; height: 34px; margin-top: 6px; }
+
+.section-head { font-size: 12px; font-weight: 700; letter-spacing: 0.09em;
+  text-transform: uppercase; color: var(--ink2);
+  border-top: 1px solid var(--hair); padding-top: 10px; margin-bottom: 6px; }
+
+.brief { margin: 30px 0 6px; max-width: 74ch; }
+.brief-title { font-family: "Besley", Georgia, serif; font-weight: 700;
+  font-size: 24px; margin-bottom: 2px; }
+.brief-date { font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 12px; color: var(--muted); margin-bottom: 14px; }
+.tape-line { font-size: 15px; color: var(--ink2); margin-bottom: 14px; }
+.take { background: var(--surface); border: 1px solid var(--border);
+  border-left: 3px solid var(--accent); border-radius: 8px;
+  padding: 14px 16px; margin-bottom: 22px; }
+.take-label { font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }
+.take p { margin-bottom: 8px; color: var(--ink); }
+.take p:last-child { margin-bottom: 0; }
+.take .attribution { font-size: 12px; color: var(--muted); margin-top: 6px; }
+
+.story { padding: 12px 0; border-bottom: 1px solid var(--hair); }
+.story h3 { font-family: "Besley", Georgia, serif; font-weight: 700;
+  font-size: 17.5px; line-height: 1.35; }
+.story p { color: var(--ink2); font-size: 14px; margin-top: 3px; }
+.meta { font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 11.5px; color: var(--muted); margin-top: 4px; }
+
+.columns { display: grid; grid-template-columns: repeat(auto-fill, minmax(262px, 1fr));
+  gap: 8px 30px; margin-top: 34px; }
+.item { padding: 9px 0; border-bottom: 1px solid var(--hair); }
+.item a { font-weight: 600; font-size: 14px; line-height: 1.4; display: block; }
+.filing-list .item a { font-weight: 400;
+  font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 12.5px; }
+
+footer { margin-top: 44px; border-top: 2px solid var(--ink); padding-top: 14px;
+  font-size: 12.5px; color: var(--muted); max-width: 90ch; }
+footer p { margin-bottom: 8px; }
+</style></head><body><div class="wrap"><header class="masthead"><div><div class="brand">Basis<span class="tick">/</span>Points</div><div class="kicker">Markets, distilled. An automated investor brief.</div></div><div class="updated">updated Monday, August 31, 2026 · 5:25 PM EDT</div></header><div class="tape"><div class="tile"><div class="tlabel">S&amp;P 500</div><div class="tvalue">7,711.76</div><div class="tdelta down">▼ -0.25%</div><div class="tasof">as of Aug 28</div><svg class="spark" viewBox="0 0 120 34" preserveAspectRatio="none" role="img" aria-label="one-month trend"><polyline points="4.0,30.0 9.1,23.5 14.2,20.7 19.3,14.7 24.4,7.4 29.5,8.1 34.5,8.8 39.6,6.2 44.7,6.5 49.8,7.8 54.9,6.7 60.0,4.0 65.1,4.7 70.2,6.9 75.3,9.8 80.4,8.9 85.5,12.5 90.5,10.7 95.6,11.9 100.7,10.6 105.8,10.6 110.9,7.7 116.0,8.7" fill="none" stroke="var(--spark)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="116.0" cy="8.7" r="3.5" fill="var(--accent)" stroke="var(--surface)" stroke-width="2"/></svg></div><div class="tile"><div class="tlabel">Nasdaq</div><div class="tvalue">26,402.42</div><div class="tdelta down">▼ -0.52%</div><div class="tasof">as of Aug 28</div><svg class="spark" viewBox="0 0 120 34" preserveAspectRatio="none" role="img" aria-label="one-month trend"><polyline points="4.0,30.0 9.1,22.5 14.2,19.7 19.3,13.8 24.4,6.4 29.5,8.8 34.5,9.0 39.6,5.2 44.7,6.2 49.8,7.9 54.9,6.4 60.0,4.0 65.1,4.8 70.2,5.7 75.3,9.7 80.4,9.2 85.5,12.1 90.5,10.9 95.6,13.1 100.7,11.2 105.8,11.4 110.9,6.9 116.0,8.4" fill="none" stroke="var(--spark)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="116.0" cy="8.4" r="3.5" fill="var(--accent)" stroke="var(--surface)" stroke-width="2"/></svg></div><div class="tile"><div class="tlabel">Dow</div><div class="tvalue">53,559.99</div><div class="tdelta down">▼ -0.02%</div><div class="tasof">as of Aug 28</div><svg class="spark" viewBox="0 0 120 34" preserveAspectRatio="none" role="img" aria-label="one-month trend"><polyline points="4.0,30.0 9.1,24.2 14.2,21.6 19.3,15.0 24.4,6.5 29.5,4.0 34.5,8.4 39.6,6.9 44.7,7.5 49.8,9.3 54.9,9.5 60.0,8.8 65.1,9.8 70.2,12.4 75.3,13.5 80.4,12.4 85.5,19.0 90.5,14.1 95.6,12.8 100.7,11.3 105.8,12.4 110.9,11.4 116.0,11.4" fill="none" stroke="var(--spark)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="116.0" cy="11.4" r="3.5" fill="var(--accent)" stroke="var(--surface)" stroke-width="2"/></svg></div><div class="tile"><div class="tlabel">VIX</div><div class="tvalue">14.43</div><div class="tdelta down">▼ -0.55%</div><div class="tasof">as of Aug 28</div><svg class="spark" viewBox="0 0 120 34" preserveAspectRatio="none" role="img" aria-label="one-month trend"><polyline points="4.0,4.0 9.1,18.5 14.2,22.9 19.3,23.5 24.4,20.9 29.5,23.7 34.5,26.3 39.6,27.4 44.7,25.1 49.8,25.8 54.9,28.8 60.0,28.5 65.1,30.0 70.2,26.2 75.3,23.6 80.4,27.4 85.5,22.9 90.5,26.4 95.6,23.5 100.7,25.1 105.8,26.1 110.9,28.9 116.0,29.3" fill="none" stroke="var(--spark)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="116.0" cy="29.3" r="3.5" fill="var(--accent)" stroke="var(--surface)" stroke-width="2"/></svg></div><div class="tile"><div class="tlabel">10-yr Treasury</div><div class="tvalue">4.73%</div><div class="tdelta up">▲ +6 bp</div><div class="tasof">as of Aug 28</div><svg class="spark" viewBox="0 0 120 34" preserveAspectRatio="none" role="img" aria-label="one-month trend"><polyline points="4.0,21.3 9.1,19.2 14.2,4.0 19.3,14.8 24.4,30.0 29.5,30.0 34.5,17.0 39.6,25.7 44.7,10.5 49.8,14.8 54.9,19.2 60.0,30.0 65.1,19.2 70.2,10.5 75.3,12.7 80.4,25.7 85.5,17.0 90.5,6.2 95.6,14.8 100.7,27.8 105.8,23.5 110.9,21.3 116.0,8.3" fill="none" stroke="var(--spark)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="116.0" cy="8.3" r="3.5" fill="var(--accent)" stroke="var(--surface)" stroke-width="2"/></svg></div><div class="tile"><div class="tlabel">Dollar (broad)</div><div class="tvalue">118.75</div><div class="tdelta up">▲ +0.33%</div><div class="tasof">as of Aug 28</div><svg class="spark" viewBox="0 0 120 34" preserveAspectRatio="none" role="img" aria-label="one-month trend"><polyline points="4.0,4.0 9.1,14.6 14.2,14.4 19.3,14.4 24.4,15.4 29.5,17.4 34.5,16.2 39.6,20.4 44.7,19.9 49.8,19.4 54.9,19.9 60.0,19.3 65.1,22.0 70.2,22.8 75.3,21.2 80.4,27.4 85.5,28.2 90.5,30.0 95.6,27.6 100.7,28.4 105.8,26.3 110.9,27.2 116.0,23.5" fill="none" stroke="var(--spark)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="116.0" cy="23.5" r="3.5" fill="var(--accent)" stroke="var(--surface)" stroke-width="2"/></svg></div><div class="tile"><div class="tlabel">WTI crude</div><div class="tvalue">$83.90</div><div class="tdelta down">▼ -2.83%</div><div class="tasof">as of Aug 25</div><svg class="spark" viewBox="0 0 120 34" preserveAspectRatio="none" role="img" aria-label="one-month trend"><polyline points="4.0,4.0 9.1,17.0 14.2,22.8 19.3,13.8 24.4,15.5 29.5,13.7 34.5,21.0 39.6,29.0 44.7,30.0 49.8,26.4 54.9,24.8 60.0,17.9 65.1,16.1 70.2,15.8 75.3,19.6 80.4,17.5 85.5,13.9 90.5,13.1 95.6,11.8 100.7,7.5 105.8,11.9 110.9,13.4 116.0,17.6" fill="none" stroke="var(--spark)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="116.0" cy="17.6" r="3.5" fill="var(--accent)" stroke="var(--surface)" stroke-width="2"/></svg></div><div class="tile"><div class="tlabel">EUR/USD</div><div class="tvalue">1.1596</div><div class="tdelta down">▼ -0.40%</div><svg class="spark" viewBox="0 0 120 34" preserveAspectRatio="none" role="img" aria-label="one-month trend"><polyline points="4.0,30.0 9.1,29.0 14.2,23.1 19.3,25.5 24.4,20.9 29.5,22.3 34.5,23.1 39.6,20.8 44.7,22.5 49.8,22.0 54.9,23.2 60.0,19.4 65.1,16.4 70.2,18.3 75.3,15.0 80.4,6.1 85.5,4.0 90.5,8.1 95.6,8.3 100.7,7.5 105.8,10.3 110.9,10.5 116.0,16.0" fill="none" stroke="var(--spark)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="116.0" cy="16.0" r="3.5" fill="var(--accent)" stroke="var(--surface)" stroke-width="2"/></svg></div><div class="tile"><div class="tlabel">Bitcoin</div><div class="tvalue">$78,831</div><div class="tdelta up">▲ +1.51%</div><svg class="spark" viewBox="0 0 120 34" preserveAspectRatio="none" role="img" aria-label="one-month trend"><polyline points="4.0,27.0 9.1,28.4 14.2,29.0 19.3,29.2 24.4,29.1 29.5,29.8 34.5,29.7 39.6,30.0 44.7,27.5 49.8,27.3 54.9,20.4 60.0,14.8 65.1,6.9 70.2,8.8 75.3,7.8 80.4,5.9 85.5,6.6 90.5,5.9 95.6,4.0 100.7,7.7 105.8,7.0 110.9,7.9 116.0,6.1" fill="none" stroke="var(--spark)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="116.0" cy="6.1" r="3.5" fill="var(--accent)" stroke="var(--surface)" stroke-width="2"/></svg></div><div class="tile"><div class="tlabel">Ethereum</div><div class="tvalue">$2,472</div><div class="tdelta up">▲ +2.32%</div><svg class="spark" viewBox="0 0 120 34" preserveAspectRatio="none" role="img" aria-label="one-month trend"><polyline points="4.0,28.5 9.1,30.0 14.2,29.6 19.3,29.7 24.4,29.5 29.5,29.6 34.5,29.6 39.6,29.9 44.7,28.3 49.8,28.2 54.9,14.6 60.0,11.6 65.1,4.0 70.2,7.7 75.3,6.1 80.4,5.3 85.5,6.9 90.5,4.3 95.6,4.1 100.7,6.9 105.8,6.3 110.9,8.0 116.0,5.7" fill="none" stroke="var(--spark)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="116.0" cy="5.7" r="3.5" fill="var(--accent)" stroke="var(--surface)" stroke-width="2"/></svg></div></div><section class="brief"><h2 class="brief-title">The Brief</h2><div class="brief-date">Monday, August 31, 2026 · 5:25 PM EDT</div><p class="tape-line"><strong>The tape:</strong> S&amp;P 500 -0.25%, Nasdaq -0.52%, Dow -0.02%; the 10-year Treasury at 4.73% (+6 bp); WTI crude $83.90 (-2.83%); bitcoin $78,831 (+1.51%).</p><div class="take"><div class="take-label">The take</div><p>Geopolitics is setting the tape. Renewed U.S.–Iran hostilities near the Strait of Hormuz pushed crude back toward $90 intraday (our tile shows the last official end-of-day print), and that oil spike is doing the real damage — not to stock prices, which slipped only modestly, but to the inflation math. The 10-year Treasury yield rose 6 basis points to 4.73%, its highest of the cycle, as markets started to price the once-unthinkable: that the Fed&#x27;s next move could be a hike rather than a cut. Fed chair Warsh has not pushed back on that read, and a September meeting that was supposed to be quiet suddenly is not.</p><p>The quieter thread worth filing: financial officialdom spent the week warning about AI as a systemic risk — the Bank of England&#x27;s chief, the House Intelligence Committee, and the Jackson Hole crowd all struck the same note. Nothing tradeable today, but this is how regulatory themes start, and AI-exposed names have been the market&#x27;s main engine.</p><p>What to watch from here: whether the 10-year holds above 4.7%; how quickly the oil move shows up in September inflation expectations; retailers&#x27; diverging tariff-refund accounting, which is muddying earnings comparisons across the sector; and crypto, today&#x27;s single most-covered theme, with bitcoin holding near $79,000.</p><div class="attribution">Written by the editor’s desk (Claude), from today’s data.</div></div><article class="story"><h3><a href="https://www.wsj.com/finance/stocks/u-s-stocks-fall-as-iran-war-inflation-heats-up-6f44ff44?mod=rss_markets_main" target="_blank" rel="noopener">U.S. Stocks Fall as Iran War Inflation Heats Up</a></h3><p>U.S. stocks fell after renewed hostilities between the U.S. and Iran near the Strait of Hormuz.</p><div class="meta">WSJ Markets · 9m ago</div></article><article class="story"><h3><a href="https://news.google.com/rss/articles/CBMitAFBVV95cUxNSjdMVkl6Zld1cG16aFA3UUtRd2ozVHRERm1Sb1p0WGtVN2xsUEJVbnlaUWt6M2NiWERmaUo1d080c0hWeHFwVGY4UlpZMGJENG91NXJ4bzhMbXNjRVJRQlo1d0ppNlNPcjUtd2F1d2xheXhBaW5OYU43SDdkYk13R0Y0SGNzblZOOTFJcTM2SmJJV3VRbVNyWGZ1bVdzaGJSQ2lBMXZPOWdWb01VNmR1UGYxZGE?oc=5" target="_blank" rel="noopener">Wall Street dips as spiking crude prices revive fears of inflation, rate hike</a></h3><p>Wall Street dips as spiking crude prices revive fears of inflation, rate hike Reuters See more headlines &amp; perspectives on Google News</p><div class="meta">Reuters · 2h ago</div></article><article class="story"><h3><a href="https://www.cnbc.com/2026/08/31/markets-see-warsh-endorsing-a-rate-hike-in-september-not-everyone-is-convinced.html" target="_blank" rel="noopener">Markets see Warsh endorsing a rate hike in September. Not everyone is convinced</a></h3><p>The path toward the move still looks cluttered.</p><div class="meta">CNBC · 1h ago</div></article><article class="story"><h3><a href="https://www.marketwatch.com/story/the-10-year-treasury-yield-just-crossed-a-key-threshold-that-should-make-people-sit-up-and-take-notice-ffc0b5b5?mod=mw_rss_topstories" target="_blank" rel="noopener">The 10-year Treasury yield just crossed a key threshold that should make people ‘sit up and take notice’</a></h3><p>Yield on 10-year Treasury touches its highest level of Trump 2.0 as oil climbs back about $90 a barrel</p><div class="meta">MarketWatch · 59m ago</div></article><article class="story"><h3><a href="https://www.cnbc.com/2026/08/30/trump-tariff-refunds-walmart-home-depot-target.html" target="_blank" rel="noopener">The &#x27;choose your own adventure&#x27; earnings: Why retailers are handling tariff refunds so differently</a></h3><p>Retailers have diverged on how they&#x27;ve reported tariff refunds in their earnings this quarter, with some choosing to lower prices and others boosting margins.</p><div class="meta">CNBC Earnings · 7h ago</div></article><article class="story"><h3><a href="https://www.wsj.com/business/energy-oil/westinghouse-electric-wants-to-ride-a-nuclear-power-revival-to-an-ipo-9ad2b196?mod=rss_markets_main" target="_blank" rel="noopener">Westinghouse Electric Wants to Ride a Nuclear Power Revival to an IPO</a></h3><p>The company has a powerful ally with an incentive to see it grow: the U.S. government.</p><div class="meta">WSJ Markets · 2h ago</div></article><article class="story"><h3><a href="https://www.wsj.com/finance/investing/flaring-middle-east-tensions-push-oil-prices-up-a1dc32bb?mod=rss_markets_main" target="_blank" rel="noopener">Flaring Middle East Tensions Push Oil Prices Up</a></h3><p>Plus, stocks fall and long-dated bond yields rise, while Amazon faces a new legal challenge.</p><div class="meta">WSJ Markets · 46m ago</div></article></section><footer><p><strong>Not investment advice.</strong> Basis Points is an automated news and data aggregator for general information only. Headlines and excerpts belong to their publishers and link to the original articles. Market data is delayed and provided as-is by public endpoints (Yahoo Finance, Stooq, CoinGecko); verify before acting on it.</p><p>Sources: CNBC, CNBC Earnings, CNBC Economy, CoinDesk, Cointelegraph, Federal Reserve, Financial Times, Google News Business, MarketWatch, NYT Business, NYT DealBook, SEC EDGAR, Seeking Alpha, The Economist, WSJ Business, WSJ Markets, WSJ World, Yahoo Finance.</p><p>Generated Monday, August 31, 2026 · 5:25 PM EDT · refreshes on a schedule.</p></footer></div></body></html>
