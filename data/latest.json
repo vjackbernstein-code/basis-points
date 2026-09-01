@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-01T19:46:34.356304+00:00",
+ "generated_at": "2026-09-01T22:27:52.957902+00:00",
  "market": [
   {
    "label": "S&P 500",
@@ -77,13 +77,12 @@
    "label": "Dow",
    "symbol": "DJIA",
    "kind": "index",
-   "value": 53185.9,
-   "prev": 53559.99,
-   "value_txt": "53,185.90",
-   "delta": -0.698450466476929,
-   "delta_txt": "-0.70%",
+   "value": 52766.88,
+   "prev": 53185.9,
+   "value_txt": "52,766.88",
+   "delta": -0.7878403862677966,
+   "delta_txt": "-0.79%",
    "spark": [
-    52208.06,
     52485.03,
     53178.41,
     54085.88,
@@ -105,9 +104,9 @@
     53463.88,
     53569.44,
     53559.99,
-    53185.9
-   ],
-   "asof": "Aug 31"
+    53185.9,
+    52766.88
+   ]
   },
   {
    "label": "VIX",
@@ -149,13 +148,12 @@
    "label": "10-yr Treasury",
    "symbol": "DGS10",
    "kind": "yield",
-   "value": 47.300000000000004,
-   "prev": 46.7,
-   "value_txt": "4.73%",
-   "delta": 1.284796573875806,
-   "delta_txt": "+6 bp",
+   "value": 47.5,
+   "prev": 47.300000000000004,
+   "value_txt": "4.75%",
+   "delta": 0.42283298097250677,
+   "delta_txt": "+2 bp",
    "spark": [
-    46.7,
     46.8,
     47.5,
     47.0,
@@ -177,9 +175,10 @@
     46.4,
     46.6,
     46.7,
-    47.300000000000004
+    47.300000000000004,
+    47.5
    ],
-   "asof": "Aug 28"
+   "asof": "Aug 31"
   },
   {
    "label": "Dollar (broad)",
@@ -292,11 +291,11 @@
    "label": "Bitcoin",
    "symbol": "bitcoin",
    "kind": "crypto",
-   "value": 77281.52511051825,
+   "value": 77136.26199306369,
    "prev": 78552.77932895812,
-   "value_txt": "$77,282",
-   "delta": -1.6183440348000782,
-   "delta_txt": "-1.62%",
+   "value_txt": "$77,136",
+   "delta": -1.8032682586091995,
+   "delta_txt": "-1.80%",
    "spark": [
     63915.71213556821,
     63537.55988964766,
@@ -320,18 +319,18 @@
     78225.13950818499,
     77658.23133225394,
     78552.77932895812,
-    77281.52511051825
+    77136.26199306369
    ]
   },
   {
    "label": "Ethereum",
    "symbol": "ethereum",
    "kind": "crypto",
-   "value": 2416.261403828101,
+   "value": 2409.9596322902676,
    "prev": 2466.565659094493,
-   "value_txt": "$2,416",
-   "delta": -2.039445213263031,
-   "delta_txt": "-2.04%",
+   "value_txt": "$2,410",
+   "delta": -2.2949328997390808,
+   "delta_txt": "-2.29%",
    "spark": [
     1871.3976551883159,
     1880.4862005694617,
@@ -355,11 +354,11 @@
     2457.089335222437,
     2416.2418165172735,
     2466.565659094493,
-    2416.261403828101
+    2409.9596322902676
    ]
   }
  ],
- "tape_line": "S&P 500 -0.33%, Nasdaq -0.12%, Dow -0.70%; the 10-year Treasury at 4.73% (+6 bp); WTI crude $83.90 (-2.83%); bitcoin $77,282 (-1.62%).",
+ "tape_line": "S&P 500 -0.33%, Nasdaq -0.12%, Dow -0.79%; the 10-year Treasury at 4.75% (+2 bp); WTI crude $83.90 (-2.83%); bitcoin $77,136 (-1.80%).",
  "themes": [
   {
    "theme": "Crypto",
@@ -370,39 +369,42 @@
    "count": 41
   },
   {
+   "theme": "AI & tech",
+   "count": 40
+  },
+  {
    "theme": "Rates & the Fed",
-   "count": 37
+   "count": 35
   },
   {
    "theme": "Inflation & prices",
-   "count": 33
-  },
-  {
-   "theme": "AI & tech",
    "count": 29
   },
   {
-   "theme": "Trade & geopolitics",
-   "count": 14
+   "theme": "Earnings & companies",
+   "count": 17
   },
   {
-   "theme": "Earnings & companies",
-   "count": 11
+   "theme": "Trade & geopolitics",
+   "count": 13
   },
   {
    "theme": "Deals & IPOs",
-   "count": 9
+   "count": 8
   },
   {
    "theme": "Housing",
-   "count": 4
-  },
-  {
-   "theme": "Jobs & growth",
-   "count": 1
+   "count": 3
   }
  ],
  "top": [
+  {
+   "title": "U.S. Stocks Fall as Oil, Bond Yields Spike, U.S.-Iran War Heats Up",
+   "link": "https://www.wsj.com/finance/investing/u-s-stocks-fall-as-oil-bond-yields-spike-u-s-iran-war-heats-up-f87d48da?mod=rss_markets_main",
+   "source": "WSJ Markets",
+   "published": "2026-09-01T21:04:00+00:00",
+   "summary": "U.S. stocks fell for the third straight session as military strikes around the Strait of Hormuz caused a spike in oil futures and bond yields."
+  },
   {
    "title": "Gold Extends Decline on Higher Bond Yields, Oil Prices",
    "link": "https://www.wsj.com/finance/commodities-futures/gold-rises-jackson-hole-speech-may-limit-near-term-upside-381724a6?mod=rss_markets_main",
@@ -411,18 +413,18 @@
    "summary": "Gold futures fell for a third straight session as a global bond selloff pushed yields up and the flare-up in the Middle East sent crude prices higher."
   },
   {
-   "title": "Stock Market Today: Dow off 450 points, S&P 500 and Nasdaq lower; 10-year Treasury yield at 20-month high, while oil jumps on new U.S. strikes against Iran",
-   "link": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxNd2lnVGExcHFfSGVqWTlTTlF1T0dWTTBoaTlSV203cmJMbHpraF9VZGxvSDg1d1E1WWlsSlRabmtlZEZfVlNtMGtEZEV3bU9NejBXdjhaQWVva0I0bFNudWdxSGlQUmswRF9SV2tqLWZMM3U5eWFQdjhYQlAyQWFNZE8zWlB3QjVfQk5kN1g1RG5NUUhVLTB2MzNZNGlxTW8zUGdoTUJKTVFyNUllQXFBbTFFSzBPVkhvMWxQU3d3aHNDLVNsRi1HUzFFX1NsM2pXdmp3VXlDaw?oc=5",
-   "source": "MarketWatch",
-   "published": "2026-09-01T19:38:00+00:00",
-   "summary": "Stock Market Today: Dow off 450 points, S&P 500 and Nasdaq lower; 10-year Treasury yield at 20-month high, while oil jumps on new U.S. strikes against Iran MarketWatch Stocks slip on Wall Street under pressure from rising oil…"
-  },
-  {
    "title": "10-year yield hits highest since January 2025 as higher oil prices stoke inflation worries",
    "link": "https://www.cnbc.com/2026/09/01/bonds-treasury-yields-middle-east-tensions.html",
    "source": "CNBC",
-   "published": "2026-09-01T19:03:41+00:00",
+   "published": "2026-09-01T20:40:30+00:00",
    "summary": "Treasury yields increased on Tuesday as investors monitored a reignition of tensions in the Middle East."
+  },
+  {
+   "title": "Middle East Conflict Sends Oil Up, Bonds Down",
+   "link": "https://www.wsj.com/finance/investing/middle-east-conflict-sends-oil-up-bonds-down-a4923bec?mod=rss_markets_main",
+   "source": "WSJ Markets",
+   "published": "2026-09-01T20:05:00+00:00",
+   "summary": "Plus, stocks fall and new job-market numbers are mixed."
   },
   {
    "title": "Fed Governor Barr says he'll support rate hike if inflation doesn't ease",
@@ -432,35 +434,63 @@
    "summary": "The policymaker said he's concerned about \"broader price pressures taking hold\" as inflation has prevailed above the Fed's 2% target."
   },
   {
-   "title": "Bessent touts bond market as 10-year Treasury yield spikes",
-   "link": "https://www.cnbc.com/2026/09/01/bessent-trump-bond-yields-g20.html",
-   "source": "CNBC",
-   "published": "2026-09-01T18:53:45+00:00",
-   "summary": "Treasury Secretary Scott Bessent downplayed short-term bond moves even as he touted the U.S. market, saying, \"what happens over a month doesn't matter.\""
+   "title": "Palo Alto Networks beats quarterly estimates on AI demand, continues acquisition spree",
+   "link": "https://www.cnbc.com/2026/09/01/palo-alto-networks-panw-q4-2026-earnings.html",
+   "source": "CNBC Earnings",
+   "published": "2026-09-01T21:41:15+00:00",
+   "summary": "Palo Alto Networks' stock has nearly doubled this year as AI boosts demand for security detection and response tools"
   },
   {
-   "title": "Global bond sell-off deepens amid inflation fears",
-   "link": "https://www.ft.com/content/e6f5f97a-b199-444e-aaec-b8199359b08e?syn-25a6b1a6=1",
-   "source": "Financial Times",
-   "published": "2026-09-01T16:49:09+00:00",
-   "summary": "UK borrowing costs rise to highest level since 2008 and Japanese yields hit peaks not seen since 1990s"
-  },
-  {
-   "title": "Global bond yields soar to multi-decade highs as Middle East turmoil reignites inflation fears",
-   "link": "https://www.cnbc.com/2026/09/01/bond-yields-iran-inflation-treasurys-japan-uk.html",
-   "source": "CNBC",
-   "published": "2026-09-01T12:39:23+00:00",
-   "summary": "Bond yields surged across major markets Tuesday as U.S.-Iran hostilities revived energy and inflation risks, with Japan and U.K. yields at multi-decade highs."
+   "title": "Dell’s AI servers drive a stellar earnings performance, and a raised outlook",
+   "link": "https://www.marketwatch.com/story/dells-ai-servers-drive-a-stellar-earnings-performance-and-a-raised-outlook-86476ace?mod=mw_rss_topstories",
+   "source": "MarketWatch",
+   "published": "2026-09-01T21:52:00+00:00",
+   "summary": "The company’s backlog has reached $95 billion as demand accelerates for its AI servers"
   }
  ],
  "columns": {
   "markets": [
    {
+    "title": "Gold gives up nearly entire YTD gain, pressured by rising bond yields and oil prices",
+    "link": "https://seekingalpha.com/news/4639247-gold-gives-up-nearly-entire-ytd-gain-pressured-by-rising-bond-yields-and-oil-prices?utm_source=feed_news_all&utm_medium=referral&feed_item_type=news",
+    "source": "Seeking Alpha",
+    "published": "2026-09-01T21:55:15+00:00",
+    "summary": ""
+   },
+   {
+    "title": "Bond Yields Around the World Soar in Challenge to Government Borrowing",
+    "link": "https://www.wsj.com/finance/investing/bond-yields-around-the-world-soar-in-challenge-to-government-borrowing-c519c53f?mod=rss_markets_main",
+    "source": "WSJ Markets",
+    "published": "2026-09-01T20:39:00+00:00",
+    "summary": "The runup in interest rates has profound consequences for the global economy, heaping pressure on everyone from home buyers to credit-card holders and especially governments."
+   },
+   {
     "title": "U.S. House votes to avoid government shutdown amid GOP hard-liner resistance",
     "link": "https://www.cnbc.com/2026/09/01/congress-government-shutdown-vote.html",
     "source": "CNBC",
-    "published": "2026-09-01T18:54:51+00:00",
+    "published": "2026-09-01T20:34:47+00:00",
     "summary": "The U.S. House on Tuesday voted in favor of a short-term spending measure that would avoid a government shutdown until after November's midterm election."
+   },
+   {
+    "title": "Global bond sell-off deepens amid inflation fears",
+    "link": "https://www.ft.com/content/e6f5f97a-b199-444e-aaec-b8199359b08e?syn-25a6b1a6=1",
+    "source": "Financial Times",
+    "published": "2026-09-01T16:49:09+00:00",
+    "summary": "UK borrowing costs rise to highest level since 2008 and Japanese yields hit peaks not seen since 1990s"
+   },
+   {
+    "title": "Oil Prices Push Global Bond Market Closer to the Edge",
+    "link": "https://www.wsj.com/finance/investing/oil-prices-push-global-bond-market-closer-to-the-edge-13135ed4?mod=rss_markets_main",
+    "source": "WSJ Markets",
+    "published": "2026-09-01T19:51:00+00:00",
+    "summary": "Many factors are sending yields higher, but rising energy costs are the inflationary trigger"
+   },
+   {
+    "title": "This could be the 10-year Treasury’s tipping point into the danger zone",
+    "link": "https://www.marketwatch.com/story/this-could-be-the-10-year-treasurys-tipping-point-into-the-danger-zone-891cd45d?mod=mw_rss_topstories",
+    "source": "MarketWatch",
+    "published": "2026-09-01T20:36:00+00:00",
+    "summary": "An unrelenting rout has global bond yields touching their highest levels since 2008, driving up borrowing costs for households, businesses and world governments."
    },
    {
     "title": "U.S. Stocks Fall as Oil Surges After New Middle East Strikes",
@@ -470,55 +500,20 @@
     "summary": "U.S. stocks slipped, with the Nasdaq leading losses."
    },
    {
-    "title": "This could be the 10-year Treasury’s tipping point into the danger zone",
-    "link": "https://www.marketwatch.com/story/this-could-be-the-10-year-treasurys-tipping-point-into-the-danger-zone-891cd45d?mod=mw_rss_topstories",
-    "source": "MarketWatch",
-    "published": "2026-09-01T18:36:00+00:00",
-    "summary": "An unrelenting rout has global bond yields touching their highest levels since 2008, driving up borrowing costs for households, businesses and world governments."
-   },
-   {
     "title": "Politics keeps European stocks in America’s shadow",
     "link": "https://www.ft.com/content/066b0d08-421b-46a1-8bf1-7698aec161d2?syn-25a6b1a6=1",
     "source": "Financial Times",
     "published": "2026-09-01T16:32:24+00:00",
     "summary": "The bloc’s policymakers typically lean towards protecting consumers and taxpayers at the expense of investors"
-   },
-   {
-    "title": "Oil Prices Push Global Bond Market Closer to the Edge",
-    "link": "https://www.wsj.com/finance/investing/oil-prices-push-global-bond-market-closer-to-the-edge-13135ed4?mod=rss_markets_main",
-    "source": "WSJ Markets",
-    "published": "2026-09-01T16:28:00+00:00",
-    "summary": "Many factors are sending yields higher, but rising energy costs are the inflationary trigger"
-   },
-   {
-    "title": "Stock Market Today: Nasdaq, Dow Fall as Bond Selloff Intensifies — Live Updates",
-    "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxPcl9Ibkp4OTFIVzB6WGMzSUlxRi11RXUtSHY5X2l4WFRPRHVNVGZ3WFNSWDgwY3MxY1NnUDN6aUxmMW5wcURwdnNlYXVrbXlFOFZRWFZPdzlhb0NTZWloWlNvQ0FDZjJlN3BKcXhZSDJUYTQ4OFB1THRQZDk2UnlxUnlWQ05zRjQ?oc=5",
-    "source": "WSJ",
-    "published": "2026-09-01T19:13:00+00:00",
-    "summary": "Stock Market Today: Nasdaq, Dow Fall as Bond Selloff Intensifies — Live Updates WSJ Oil prices surge after U.S. renews Iran strikes, heightening inflation fears NBC News US strikes on Iran push Brent oil toward $95 per barrel…"
-   },
-   {
-    "title": "Bond Yields Around the World Soar in Challenge to Government Borrowing",
-    "link": "https://www.wsj.com/finance/investing/bond-yields-around-the-world-soar-in-challenge-to-government-borrowing-c519c53f?mod=rss_markets_main",
-    "source": "WSJ Markets",
-    "published": "2026-09-01T15:44:00+00:00",
-    "summary": "The runup in interest rates has profound consequences for the global economy, heaping pressure on everyone from home buyers to credit-card holders and especially governments."
-   },
-   {
-    "title": "Bitcoin and ethereum prices today, Tuesday, September 1, 2026: Crypto prices falling as inflation concerns persist",
-    "link": "https://finance.yahoo.com/personal-finance/investing/article/bitcoin-and-ethereum-prices-today-tuesday-september-1-2026-crypto-prices-falling-as-inflation-concerns-persist-123554224.html",
-    "source": "Yahoo Personal Finance",
-    "published": "2026-09-01T12:35:54+00:00",
-    "summary": ""
    }
   ],
   "economy": [
    {
-    "title": "Indian Prime Minister Modi asks Putin to end Ukraine war amid U.S. tariff threat on Russian oil",
-    "link": "https://www.cnbc.com/2026/09/01/russia-india-ukraine-war-oil-modi-putin.html",
+    "title": "Global bond yields soar to multi-decade highs as Middle East turmoil reignites inflation fears",
+    "link": "https://www.cnbc.com/2026/09/01/bond-yields-iran-inflation-treasurys-japan-uk.html",
     "source": "CNBC",
-    "published": "2026-09-01T14:23:00+00:00",
-    "summary": "Indian PM Narendra Modi has urged Russia to end the Ukraine war and to cease hostilities."
+    "published": "2026-09-01T12:39:23+00:00",
+    "summary": "Bond yields surged across major markets Tuesday as U.S.-Iran hostilities revived energy and inflation risks, with Japan and U.K. yields at multi-decade highs."
    },
    {
     "title": "IPO booms can spell trouble for the markets",
@@ -535,13 +530,6 @@
     "summary": "The European Central Bank is seen hiking rates in September as the Iran war raises energy costs in the region."
    },
    {
-    "title": "U.S. strikes Iran after new Hormuz Strait shipping attacks: Centcom",
-    "link": "https://www.cnbc.com/2026/09/01/us-strikes-iran-after-new-hormuz-strait-shipping-attacks-centcom.html",
-    "source": "CNBC",
-    "published": "2026-09-01T18:45:02+00:00",
-    "summary": "U.S. Central Command announced new strikes around the Strait of Hormuz following Iranian attacks on ships and U.S. military personnel."
-   },
-   {
     "title": "Livestream shopping is gaining steam in the U.S., thanks to apps like TikTok and Whatnot",
     "link": "https://www.cnbc.com/2026/09/01/tiktok-whatnot-livestream-shopping.html",
     "source": "CNBC",
@@ -549,34 +537,62 @@
     "summary": "Whatnot and TikTok are tapping into its potential livestream shopping in the U.S. after a decade of massive success in China."
    },
    {
-    "title": "US borrowing costs hit fresh highs over inflation fears",
-    "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE5yRnc3NXVUUlI3NGJFTDJRbmg3MFJJWFlqT1NpYUlZRnZSNGF3MGFFVDBWbVVDWlNmMUx2bm5TcWFCbGRmOGlOcnhkUFhFLVJnNXZkUUxMZnVEUQ?oc=5",
-    "source": "BBC",
-    "published": "2026-09-01T15:51:51+00:00",
-    "summary": "US borrowing costs hit fresh highs over inflation fears BBC 10-year yield hits highest since January 2025 as higher oil prices stoke inflation worries CNBC The 10-year Treasury yield just crossed a key threshold that should make…"
-   },
-   {
-    "title": "Gold slips to near two-week low on Fed rate hike bets",
-    "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxOZ0RWUzI1UllwOTY2MWljS0syQ3hHRHQtZlVTV2g0WlNzalQ1eVdqSlVZb285NEZhck1VS1czbU1KUlF2azBfMkZ4X1JUdlNaZkNZdkF4bnczbS1jR0hVX01iaW1RZzRINkhjZDNuelJIa1JUY2pVWkFnMzlGRzh5Y1p1MUhEdlJ5N2lseVZ3X2RzV1Y3eUQ4YUtJN2NFQnNJVS1R?oc=5",
-    "source": "Reuters",
-    "published": "2026-08-31T18:05:17+00:00",
-    "summary": "Gold slips to near two-week low on Fed rate hike bets Reuters Gold falls to two-week low as rising Treasury yields, dollar weigh CNBC Gold's price is down by over 21%. Where will it head this September? CBS News Gold prices…"
-   },
-   {
     "title": "Veteran analyst predicts Fed rate hike after Warsh’s hawkish shift",
     "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTFBieTNwUDJWMF9Demw0eWhjUFdDUmQzYU9Lb2trSTVtemZGeU0zT3hDY1VhTjhQNlBRSVl5cVVXQ0lqNUkyU0JpMUFsUnJlRFJXcmpUUHpaWjd5OEJaTThYdzJPSFhmQ0lEaHRVQXpjWQ?oc=5",
     "source": "thestreet.com",
     "published": "2026-08-31T09:06:00+00:00",
-    "summary": "Veteran analyst predicts Fed rate hike after Warsh’s hawkish shift thestreet.com Warsh, After Talking Tough on Inflation, Faces a ‘No-Win Situation’ on Rates The New York Times Jackson Hole Economic Policy Symposium: Financial…"
+    "summary": "Veteran analyst predicts Fed rate hike after Warsh’s hawkish shift thestreet.com Markets see Warsh endorsing a rate hike in September. Not everyone is convinced CNBC Warsh Makes the Case for Higher Rates and Raises the Bar for…"
+   },
+   {
+    "title": "Is It Safe To Eat Beef? What To Know About Major Recall, Imports And Trump’s Tariff-Free Meat",
+    "link": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxPQTlQTTl4RmRleWNpUS1qemRjU0gyMXZpSlVnZVNTbUhreXNETndPaXBRVEJhb0ZKOEdTbEpQbEJhcUVfTUJTMUdDZDk1WTNYeDBpSGRvVllrdXN1NVc1Q2VoUTdqaDE5Wk1MVFNMSUVfcy1mQ1dKQ1dtY3lCak92VnFLMGtTcFdac3FnZWxSZlNnU2JSbUpPbkFQNkVkUHA0ZW1yVjJmQ1hmUmZMQTdrS2dxVzNOM0VjRUx5bkVteTdZV1FuVVVTVnM2YldkN0NUS3Rwckp0RzlUaVpj?oc=5",
+    "source": "Forbes",
+    "published": "2026-08-31T14:59:18+00:00",
+    "summary": "Is It Safe To Eat Beef? What To Know About Major Recall, Imports And Trump’s Tariff-Free Meat Forbes Is recalled Argentine beef connected to Trump’s beef import plan? The Hill USDA Recalls 30K Pounds of Argentine Beef in Texas…"
+   },
+   {
+    "title": "Bank of England chief warns new AI models threaten global financial stability",
+    "link": "https://www.cnbc.com/2026/08/31/bailey-frontier-ai-financial-stability-risk.html",
+    "source": "CNBC Economy",
+    "published": "2026-08-31T13:35:11+00:00",
+    "summary": "Bank of England Governor Andrew Bailey has warned that frontier AI could materially increase cyber risks to the global financial system."
+   },
+   {
+    "title": "China's factory activity shrinks for second straight month, contracting less than expected",
+    "link": "https://www.cnbc.com/2026/08/31/china-pmi-august-economy-slowdown.html",
+    "source": "CNBC Economy",
+    "published": "2026-08-31T03:15:01+00:00",
+    "summary": "China's manufacturing activity shrank for a second straight month, keeping pressure on Beijing to support the economy as growth loses momentum."
    }
   ],
   "companies": [
+   {
+    "title": "Dell surges 9% after lifting fiscal 2027 forecast on AI server strength",
+    "link": "https://www.cnbc.com/2026/09/01/dell-q2-earnings-report-2027.html",
+    "source": "CNBC Earnings",
+    "published": "2026-09-01T21:40:18+00:00",
+    "summary": "Dell sees AI server revenue tripling in fiscal 2027. Six months ago, it was looking for the number to double."
+   },
    {
     "title": "Softbank's SB Energy files for IPO, says it's 'substantially dependent' on OpenAI",
     "link": "https://www.cnbc.com/2026/09/01/sb-energy-ipo-softbank-open-ai-nvidia.html",
     "source": "CNBC",
     "published": "2026-09-01T16:40:27+00:00",
     "summary": "SB Energy hasn't generated any revenue from its data center business, and none of its data centers are operational yet."
+   },
+   {
+    "title": "Palo Alto Projects Double-Digit Growth as AI Drives Cybersecurity Spending",
+    "link": "https://www.wsj.com/business/earnings/palo-alto-projects-double-digit-growth-as-ai-drives-cybersecurity-spending-5993c397?mod=pls_whats_news_us_business_f",
+    "source": "WSJ Business",
+    "published": "2026-09-01T21:08:00+00:00",
+    "summary": "The cybersecurity company said it is expecting revenue to rise between 23% and 24% to a range of $14.1 billion to $14.2 billion in fiscal 2027."
+   },
+   {
+    "title": "Music Artists Sue AI Song Generator Suno Over Alleged Copycats",
+    "link": "https://www.wsj.com/business/media/music-artists-sue-ai-song-generator-suno-over-alleged-copycats-75d3544d?mod=pls_whats_news_us_business_f",
+    "source": "WSJ Business",
+    "published": "2026-09-01T20:42:00+00:00",
+    "summary": "A group of musicians led by Jason Isbell claim that the company allows users to generate songs based on artists’ names."
    },
    {
     "title": "SB Energy Files for IPO With Nvidia Backing",
@@ -586,18 +602,18 @@
     "summary": "The company, which is majority-owned by Masayoshi Son’s SoftBank, said it plans to trade on Nasdaq under the symbol SBE, and hasn’t yet determined the number or pricing of shares in the proposed offering."
    },
    {
-    "title": "AI data center firm SB Energy, which is backed by Softbank, Nvidia and OpenAI, files for IPO",
-    "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTE02WjktbGRkY3BXT2x4TmhXWGRvcnVyZHcyaFl0X2pTOEp5ZjFoa1F5cGNGSEJUME13bDBPT3ZBdWhxR2dQNTJsTjdoNUFIa3dua241V2RIXzh6OWhET0ZOUGRMVWF4cDVvRThOZTNudVhKWHRkSFYxR2g2Sll0bzA?oc=5",
-    "source": "CNBC",
-    "published": "2026-09-01T15:32:36+00:00",
-    "summary": "AI data center firm SB Energy, which is backed by Softbank, Nvidia and OpenAI, files for IPO CNBC SoftBank-backed SB Energy files for US IPO as AI turbocharges infrastructure demand Reuters SB Energy Files for IPO With Nvidia…"
-   },
-   {
     "title": "Two More Oil Tankers Are Attacked in the Strait of Hormuz",
     "link": "https://www.nytimes.com/2026/09/01/business/ships-oil-hormuz-iran-war.html",
     "source": "NYT Business",
-    "published": "2026-09-01T19:10:37+00:00",
+    "published": "2026-09-01T20:19:03+00:00",
     "summary": "The ships were hit near Oman on Monday, the latest attacks on vessels in the Persian Gulf. Oil prices rose more than 2 percent."
+   },
+   {
+    "title": "GoPro Says It's Moving Into AI Data Centers As Part Of A $285 Million Merger",
+    "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxOUnFYT0FINnN2d2k3aUZOVWJPblE1eURQSTRWMzUwQmdxaVQ0a0h1eWdTczdyVHc3TEdMS0pNNFhNelpUZEo5aklhSWFfdi1lOV9RLUhtZEZIN2FQa3NrS2h2Zll1YzV4Z2poXzBmdFcxWnBGWjBWZ1JYYXA4dEhzTjFLY1pQX1NBejF0NHpaYTF2V1pOeGozeDh3M0hHRnFSZVdHR3VPZDZqVmdFOUM4TEtVQzI?oc=5",
+    "source": "Engadget",
+    "published": "2026-09-01T15:42:14+00:00",
+    "summary": "GoPro Says It's Moving Into AI Data Centers As Part Of A $285 Million Merger Engadget GoPro joins AI bonanza with pivot into data centers as shares skyrocket 40% CNBC Action camera maker GoPro to be acquired after decade-long…"
    },
    {
     "title": "What to Know About Venezuelan Energy Following Trump’s Oil Deal",
@@ -605,27 +621,6 @@
     "source": "NYT Business",
     "published": "2026-09-01T17:54:05+00:00",
     "summary": "The Trump administration’s deal with a private oil company to increase oil production in the South American country could take many years to come to fruition."
-   },
-   {
-    "title": "Retailers Ditch Variety to Beat Supply-Chain Costs and Tariffs",
-    "link": "https://www.wsj.com/logistics-report/retailers-ditch-variety-to-beat-supply-chain-costs-and-tariffs-c96f9d42?mod=pls_whats_news_us_business_f",
-    "source": "WSJ Business",
-    "published": "2026-09-01T09:30:00+00:00",
-    "summary": "Companies including Under Armour and Helen of Troy are trimming product lineups to focus on bestsellers."
-   },
-   {
-    "title": "How the Pentagon Is Getting Into the Venezuelan Oil Business Under Trump",
-    "link": "https://www.nytimes.com/2026/08/31/us/politics/pentagon-venezuela-oil.html",
-    "source": "NYT Business",
-    "published": "2026-09-01T16:12:47+00:00",
-    "summary": "The Defense Department’s Office of Strategic Capital, founded by the Biden administration to give loans to bolster the U.S. defense industry, is helping lead President Trump’s oil deal."
-   },
-   {
-    "title": "China’s NIO Narrows Loss on EV Sales Growth, Expects Volume Pickup",
-    "link": "https://www.wsj.com/business/earnings/nios-loss-narrows-on-ev-sales-growth-ceef7f5b?mod=pls_whats_news_us_business_f",
-    "source": "WSJ Business",
-    "published": "2026-09-01T12:21:00+00:00",
-    "summary": "Chinese electric-vehicle maker NIO reported a narrower loss in the second quarter, thanks to robust deliveries and its premium positioning."
    }
   ],
   "global": [
@@ -641,21 +636,35 @@
     "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE93UkFFTExla3dMSVo2YWwxUXl0ZllhV0dIbW0wWTdSMXktMHV1X2l4SnlZMmRFMXdSY2hqbm0tVGNNTmsxME5ncHp2aVdHRmhvd3Y0cUo2cnkwQQ?oc=5",
     "source": "BBC",
     "published": "2026-09-01T10:18:47+00:00",
-    "summary": "AI could cause global economic downturn, Andrew Bailey warns G20 BBC Bank of England chief warns new AI models threaten global financial stability CNBC Advanced AI threatens the world’s financial system, watchdog says | CNN…"
+    "summary": "AI could cause global economic downturn, Andrew Bailey warns G20 BBC Advanced AI threatens the world’s financial system, watchdog says | CNN Business cnn.com AI-driven cyber risk is top concern for global financial stability…"
    },
    {
-    "title": "Fast-fashion giant Shein's shares fall after Hong Kong trading debut that spotlights its China roots",
-    "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxNa0N4dmZJbzMxeGhCLWkxRnFtR0tVV08tUFVUbzNoaUF4NFQwR1BoQ1pqeUZFTV9HTTNkaHZLN0tDTUYtRnc5RTlnalJMcXhtYzJNQXJHVDUzVkVyS08wNm9XZkFDSDJqbDlma1RVRE1fYW5rR25KUFdGN1Zqdy1GN2NLaGRNbDJrbFBLUWozVG1iSDA5azEwNHRBOW4?oc=5",
-    "source": "AP News",
-    "published": "2026-09-01T10:58:00+00:00",
-    "summary": "Fast-fashion giant Shein's shares fall after Hong Kong trading debut that spotlights its China roots AP News Shein’s Lackluster Debut Shows a Fast-Fashion Model Left Behind The New York Times Shein Makes Ho-Hum Market Debut After…"
+    "title": "Apple Updates Maps to Show Lake America to U.S. Users",
+    "link": "https://www.wsj.com/tech/apple-updates-maps-to-show-lake-america-to-u-s-users-053d23ee?mod=rss_worldnews",
+    "source": "WSJ World",
+    "published": "2026-09-01T21:40:00+00:00",
+    "summary": "The iPhone-maker has followed Google on its maps app after President Trump’s order to rename Lake Ontario."
    },
    {
     "title": "U.S. Targets Iran in Fresh Wave of Strikes",
     "link": "https://www.wsj.com/world/middle-east/iran-strikes-us-1d263f3f?mod=rss_worldnews",
     "source": "WSJ World",
-    "published": "2026-09-01T19:41:00+00:00",
+    "published": "2026-09-01T21:36:00+00:00",
     "summary": "President Trump said the operation was a response to Iran’s attempts to mine the Strait of Hormuz and its targeting of American servicemembers in the Middle East."
+   },
+   {
+    "title": "Opinion | Germany Calls Out Putin’s ‘Hybrid’ War",
+    "link": "https://www.wsj.com/opinion/germany-leipzig-airport-drone-russia-nato-iran-1df66c1e?mod=rss_worldnews",
+    "source": "WSJ World",
+    "published": "2026-09-01T21:33:00+00:00",
+    "summary": "The Interior Minister says Russia was behind a drone airport attack."
+   },
+   {
+    "title": "Opinion | The ‘Segal Issue’ and U.S.-Canada Trade",
+    "link": "https://www.wsj.com/opinion/the-segal-issue-and-u-s-canada-trade-fb28bc6f?mod=rss_worldnews",
+    "source": "WSJ World",
+    "published": "2026-09-01T21:07:00+00:00",
+    "summary": "My cousin’s men’s-suit factory and the Nafta negotiations."
    },
    {
     "title": "Germany Blames Russia for Explosive Drones Sent to Leipzig Airport",
@@ -670,23 +679,16 @@
     "source": "WSJ World",
     "published": "2026-09-01T16:08:00+00:00",
     "summary": "Russia can’t afford a full-scale second front, but sabotage, threats to undersea cables and border incursions may all be on the table."
-   },
-   {
-    "title": "Opinion | Don’t Rename Lake Ontario",
-    "link": "https://www.wsj.com/opinion/dont-rename-lake-ontario-4c545c50?mod=rss_worldnews",
-    "source": "WSJ World",
-    "published": "2026-09-01T16:06:00+00:00",
-    "summary": "Changing it to ‘Lake America’ ruins a longstanding Midwest mnemonic for the Great Lakes."
-   },
-   {
-    "title": "The Wartime ‘Coffin Money’ Transforming Russia’s Poorest Regions",
-    "link": "https://www.wsj.com/world/russia/the-wartime-coffin-money-transforming-russias-poorest-regions-960c743c?mod=rss_worldnews",
-    "source": "WSJ World",
-    "published": "2026-09-01T16:01:00+00:00",
-    "summary": "Watch how Putin’s war pay is changing everyday life in remote Russian cities."
    }
   ],
   "crypto": [
+   {
+    "title": "Binance expands TradFi push with options on 1,000 US stocks, ETFs",
+    "link": "https://cointelegraph.com/news/binance-adds-options-on-1000-us-stocks-and-etfs-in-tradfi-expansion?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+    "source": "Cointelegraph",
+    "published": "2026-09-01T20:42:29+00:00",
+    "summary": "The launch gives eligible non-US users access to physically settled options on more than 1,000 US stocks and ETFs through a single Binance account."
+   },
    {
     "title": "Bitcoin stays flat as global bond bear market rages on, pushing JGB to high",
     "link": "https://cointelegraph.com/markets/bitcoin-remains-flat-as-global-bond-bear-market-rages-on?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
@@ -700,6 +702,13 @@
     "source": "Cointelegraph",
     "published": "2026-09-01T13:30:00+00:00",
     "summary": "Crypto is showing signs of life again, but its biggest wins look different from what early believers imagined. After a decade of building, has it all been worth it?"
+   },
+   {
+    "title": "Crypto-backed PAC scales back ad spending in Massachusetts primary",
+    "link": "https://cointelegraph.com/news/crypto-pac-protect-progress-spending-massachusetts-primary?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+    "source": "Cointelegraph",
+    "published": "2026-09-01T21:25:27+00:00",
+    "summary": "The $189,000 in media spending to support Representative Jake Auchincloss marked Fairshake’s latest attempt to influence the 2026 elections with funds from the crypto industry."
    },
    {
     "title": "Crypto enters September with legislative policy gamble hanging by a thread",
@@ -716,97 +725,83 @@
     "summary": "Bitcoin ETFs took in $217 million on Monday, one session after an outflow ended their nine-day run. Ether ETFs have not had net outflows since mid-August."
    },
    {
-    "title": "Bitcoin enters ‘Rektember’ as rate-hike risk combines with seasonality to threaten rally",
-    "link": "https://www.coindesk.com/markets/2026/09/01/bitcoin-enters-rektember-as-rate-hike-risks-threaten-its-august-rally",
-    "source": "CoinDesk",
-    "published": "2026-09-01T13:55:26+00:00",
-    "summary": "September has historically been a poor month for risk assets in general, and bitcoin, in particular."
+    "title": "UK crime agency froze $13.5M amid probe into Premier League crypto sponsor",
+    "link": "https://cointelegraph.com/news/uk-crime-agency-froze-premier-league-crypto-partner-sorare?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+    "source": "Cointelegraph",
+    "published": "2026-09-01T20:14:12+00:00",
+    "summary": "UK authorities froze $13.5 million in cash following a January 2025 order from the Westminster Magistrates’ Court as part of an investigation into Sorare."
    },
    {
-    "title": "Bitcoin steady above $78,000, HYPE leads as majors slip on hawkish Fed bets",
-    "link": "https://www.coindesk.com/markets/2026/09/01/bitcoin-steady-above-usd78-000-hype-leads-as-majors-slip-on-hawkish-fed-bets",
-    "source": "CoinDesk",
-    "published": "2026-09-01T04:30:28+00:00",
-    "summary": "Ether, solana, tron and dogecoin all shed ground over 24 hours while HYPE added about 4%, leaving bitcoin flat on the week after August's 24% run."
-   },
-   {
-    "title": "Ethena pushes stablecoins into everyday banking with high-yield savings, cards and payments",
-    "link": "https://www.coindesk.com/business/2026/09/01/ethena-pushes-stablecoins-into-everyday-banking-with-high-yield-savings-cards-and-payments",
-    "source": "CoinDesk",
-    "published": "2026-09-01T13:15:35+00:00",
-    "summary": "Ethena Pay offers a 6% dollar savings rate and 5% card cashback, using Avalanche for settlement."
-   },
-   {
-    "title": "Citi, Goldman, other global banks and asset managers team up on stablecoin venture",
-    "link": "https://www.coindesk.com/business/2026/09/01/citi-goldman-other-global-banks-and-asset-managers-team-up-on-stablecoin-venture",
-    "source": "CoinDesk",
-    "published": "2026-09-01T15:36:27+00:00",
-    "summary": "The group will focus first on a U.S. dollar stablecoin for payments and digital asset settlement, with a euro token a priority for expansion."
+    "title": "Here’s what happened in crypto today",
+    "link": "https://cointelegraph.com/news/what-happened-in-crypto-today?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+    "source": "Cointelegraph",
+    "published": "2026-09-01T20:00:17+00:00",
+    "summary": "Need to know what happened in crypto today? Here is the latest news on daily trends and events impacting Bitcoin price, blockchain, DeFi, Web3 and crypto regulation."
    }
   ]
  },
  "filings": [
   {
-   "title": "8-K - Citigroup Commercial Mortgage Trust 2022-GC48 (Filer)",
-   "link": "https://www.sec.gov/Archives/edgar/data/1924870/000188852426016458/0001888524-26-016458-index.htm",
+   "title": "8-K - BARFRESH FOOD GROUP INC. (Filer)",
+   "link": "https://www.sec.gov/Archives/edgar/data/1487197/000149315226041065/0001493152-26-041065-index.htm",
    "source": "SEC EDGAR",
-   "published": "2026-09-01T19:42:32+00:00",
-   "summary": "Filed: 2026-09-01 AccNo: 0001888524-26-016458 Size: 117 KB Item 6.02: Change of Servicer or Trustee Item 9.01: Financial Statements and Exhibits"
+   "published": "2026-09-01T21:30:41+00:00",
+   "summary": "Filed: 2026-09-01 AccNo: 0001493152-26-041065 Size: 204 KB Item 5.02: Departure of Directors or Certain Officers; Election of Directors; Appointment of Certain Officers: Compensatory Arrangements of Certain Officers Item 9.01…"
   },
   {
-   "title": "8-K - Citigroup Commercial Mortgage Trust 2016-GC37 (Filer)",
-   "link": "https://www.sec.gov/Archives/edgar/data/1670601/000119312526378292/0001193125-26-378292-index.htm",
+   "title": "8-K - HWH International Inc. (Filer)",
+   "link": "https://www.sec.gov/Archives/edgar/data/1897245/000149315226041064/0001493152-26-041064-index.htm",
    "source": "SEC EDGAR",
-   "published": "2026-09-01T19:40:50+00:00",
-   "summary": "Filed: 2026-09-01 AccNo: 0001193125-26-378292 Size: 168 KB Item 8.01: Other Events Item 9.01: Financial Statements and Exhibits"
+   "published": "2026-09-01T21:28:05+00:00",
+   "summary": "Filed: 2026-09-01 AccNo: 0001493152-26-041064 Size: 257 KB Item 5.02: Departure of Directors or Certain Officers; Election of Directors; Appointment of Certain Officers: Compensatory Arrangements of Certain Officers Item 8.01…"
   },
   {
-   "title": "8-K - Benchmark 2025-V16 Mortgage Trust (Filer)",
-   "link": "https://www.sec.gov/Archives/edgar/data/2060845/000119312526378291/0001193125-26-378291-index.htm",
+   "title": "8-K - BMO 2026-5C15 Mortgage Trust (Filer)",
+   "link": "https://www.sec.gov/Archives/edgar/data/2128774/000153949726002437/0001539497-26-002437-index.htm",
    "source": "SEC EDGAR",
-   "published": "2026-09-01T19:40:47+00:00",
-   "summary": "Filed: 2026-09-01 AccNo: 0001193125-26-378291 Size: 164 KB Item 8.01: Other Events Item 9.01: Financial Statements and Exhibits"
+   "published": "2026-09-01T21:26:05+00:00",
+   "summary": "Filed: 2026-09-01 AccNo: 0001539497-26-002437 Size: 7 MB Item 1.01: Entry into a Material Definitive Agreement Item 9.01: Financial Statements and Exhibits"
   },
   {
-   "title": "8-K - CITIGROUP COMMERCIAL MORTGAGE TRUST 2016-P4 (Filer)",
-   "link": "https://www.sec.gov/Archives/edgar/data/1677913/000119312526378290/0001193125-26-378290-index.htm",
+   "title": "8-K - IP STRATEGY HOLDINGS, INC. (Filer)",
+   "link": "https://www.sec.gov/Archives/edgar/data/1788230/000178823026000079/0001788230-26-000079-index.htm",
    "source": "SEC EDGAR",
-   "published": "2026-09-01T19:40:45+00:00",
-   "summary": "Filed: 2026-09-01 AccNo: 0001193125-26-378290 Size: 167 KB Item 8.01: Other Events Item 9.01: Financial Statements and Exhibits"
+   "published": "2026-09-01T21:20:10+00:00",
+   "summary": "Filed: 2026-09-01 AccNo: 0001788230-26-000079 Size: 160 KB Item 3.01: Notice of Delisting or Failure to Satisfy a Continued Listing Rule or Standard; Transfer of Listing Item 9.01: Financial Statements and Exhibits"
   },
   {
-   "title": "8-K - Citigroup Commercial Mortgage Trust 2015-GC35 (Filer)",
-   "link": "https://www.sec.gov/Archives/edgar/data/1657325/000119312526378286/0001193125-26-378286-index.htm",
+   "title": "8-K - MSWF Commercial Mortgage Trust 2023-1 (Filer)",
+   "link": "https://www.sec.gov/Archives/edgar/data/1974587/000153949726002435/0001539497-26-002435-index.htm",
    "source": "SEC EDGAR",
-   "published": "2026-09-01T19:39:35+00:00",
-   "summary": "Filed: 2026-09-01 AccNo: 0001193125-26-378286 Size: 193 KB Item 6.02: Change of Servicer or Trustee Item 9.01: Financial Statements and Exhibits"
+   "published": "2026-09-01T21:19:20+00:00",
+   "summary": "Filed: 2026-09-01 AccNo: 0001539497-26-002435 Size: 17 KB Item 8.01: Other Events"
   },
   {
-   "title": "8-K - CITIGROUP COMMERCIAL MORTGAGE TRUST 2016-C2 (Filer)",
-   "link": "https://www.sec.gov/Archives/edgar/data/1681031/000119312526378280/0001193125-26-378280-index.htm",
+   "title": "8-K - Morgan Stanley Capital I Trust 2021-L6 (Filer)",
+   "link": "https://www.sec.gov/Archives/edgar/data/1866493/000153949726002434/0001539497-26-002434-index.htm",
    "source": "SEC EDGAR",
-   "published": "2026-09-01T19:36:54+00:00",
-   "summary": "Filed: 2026-09-01 AccNo: 0001193125-26-378280 Size: 191 KB Item 6.02: Change of Servicer or Trustee Item 9.01: Financial Statements and Exhibits"
+   "published": "2026-09-01T21:18:50+00:00",
+   "summary": "Filed: 2026-09-01 AccNo: 0001539497-26-002434 Size: 16 KB Item 8.01: Other Events"
   },
   {
-   "title": "8-K - Citigroup Commercial Mortgage Trust 2016-P3 (Filer)",
-   "link": "https://www.sec.gov/Archives/edgar/data/1669393/000119312526378279/0001193125-26-378279-index.htm",
+   "title": "8-K - Morgan Stanley Capital I Trust 2017-H1 (Filer)",
+   "link": "https://www.sec.gov/Archives/edgar/data/1705163/000153949726002433/0001539497-26-002433-index.htm",
    "source": "SEC EDGAR",
-   "published": "2026-09-01T19:35:43+00:00",
-   "summary": "Filed: 2026-09-01 AccNo: 0001193125-26-378279 Size: 194 KB Item 6.02: Change of Servicer or Trustee Item 9.01: Financial Statements and Exhibits"
+   "published": "2026-09-01T21:18:17+00:00",
+   "summary": "Filed: 2026-09-01 AccNo: 0001539497-26-002433 Size: 18 KB Item 8.01: Other Events"
   },
   {
-   "title": "8-K/A - Deep Isolation Nuclear, Inc. (Filer)",
-   "link": "https://www.sec.gov/Archives/edgar/data/1918080/000121390026096185/0001213900-26-096185-index.htm",
+   "title": "8-K - Morgan Stanley Capital I Trust 2016-UBS12 (Filer)",
+   "link": "https://www.sec.gov/Archives/edgar/data/1689417/000153949726002432/0001539497-26-002432-index.htm",
    "source": "SEC EDGAR",
-   "published": "2026-09-01T19:19:45+00:00",
-   "summary": "Filed: 2026-09-01 AccNo: 0001213900-26-096185 Size: 226 KB Item 5.02: Departure of Directors or Certain Officers; Election of Directors; Appointment of Certain Officers: Compensatory Arrangements of Certain Officers"
+   "published": "2026-09-01T21:17:40+00:00",
+   "summary": "Filed: 2026-09-01 AccNo: 0001539497-26-002432 Size: 17 KB Item 8.01: Other Events"
   }
  ],
  "stats": {
   "feeds_total": 19,
   "feeds_failed": 1,
-  "items": 378,
+  "items": 389,
   "feed_errors": [],
   "market_errors": [
    [
