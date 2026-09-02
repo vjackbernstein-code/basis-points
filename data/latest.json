@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-02T20:45:00.710556+00:00",
+ "generated_at": "2026-09-02T23:07:00.373882+00:00",
  "market": [
   {
    "label": "S&P 500",
@@ -77,13 +77,12 @@
    "label": "Dow",
    "symbol": "DJIA",
    "kind": "index",
-   "value": 52766.88,
-   "prev": 53185.9,
-   "value_txt": "52,766.88",
-   "delta": -0.7878403862677966,
-   "delta_txt": "-0.79%",
+   "value": 53061.95,
+   "prev": 52766.88,
+   "value_txt": "53,061.95",
+   "delta": 0.5591954650341269,
+   "delta_txt": "+0.56%",
    "spark": [
-    52485.03,
     53178.41,
     54085.88,
     54349.12,
@@ -105,9 +104,9 @@
     53569.44,
     53559.99,
     53185.9,
-    52766.88
-   ],
-   "asof": "Sep 1"
+    52766.88,
+    53061.95
+   ]
   },
   {
    "label": "VIX",
@@ -292,11 +291,11 @@
    "label": "Bitcoin",
    "symbol": "bitcoin",
    "kind": "crypto",
-   "value": 77349.87856392706,
+   "value": 77100.39238692191,
    "prev": 77416.44110979848,
-   "value_txt": "$77,350",
-   "delta": -0.08597985765971303,
-   "delta_txt": "-0.09%",
+   "value_txt": "$77,100",
+   "delta": -0.4082449649530179,
+   "delta_txt": "-0.41%",
    "spark": [
     63537.55988964766,
     63408.625697113624,
@@ -320,18 +319,18 @@
     77658.23133225394,
     78552.77932895812,
     77416.44110979848,
-    77349.87856392706
+    77100.39238692191
    ]
   },
   {
    "label": "Ethereum",
    "symbol": "ethereum",
    "kind": "crypto",
-   "value": 2391.274220163982,
+   "value": 2382.732817487004,
    "prev": 2417.6758884733536,
-   "value_txt": "$2,391",
-   "delta": -1.092026786354841,
-   "delta_txt": "-1.09%",
+   "value_txt": "$2,383",
+   "delta": -1.445316601490964,
+   "delta_txt": "-1.45%",
    "spark": [
     1880.4862005694617,
     1877.743530062547,
@@ -355,67 +354,67 @@
     2416.2418165172735,
     2466.565659094493,
     2417.6758884733536,
-    2391.274220163982
+    2382.732817487004
    ]
   }
  ],
- "tape_line": "S&P 500 -0.71%, Nasdaq -1.03%, Dow -0.79%; the 10-year Treasury at 4.79% (+4 bp); WTI crude $91.48 (+5.11%); bitcoin $77,350 (-0.09%).",
+ "tape_line": "S&P 500 -0.71%, Nasdaq -1.03%, Dow +0.56%; the 10-year Treasury at 4.79% (+4 bp); WTI crude $91.48 (+5.11%); bitcoin $77,100 (-0.41%).",
  "themes": [
   {
-   "theme": "Rates & the Fed",
-   "count": 41
-  },
-  {
    "theme": "AI & tech",
-   "count": 38
+   "count": 40
   },
   {
    "theme": "Energy & commodities",
-   "count": 34
+   "count": 40
+  },
+  {
+   "theme": "Rates & the Fed",
+   "count": 33
   },
   {
    "theme": "Crypto",
-   "count": 30
+   "count": 32
   },
   {
    "theme": "Earnings & companies",
-   "count": 17
+   "count": 21
   },
   {
    "theme": "Inflation & prices",
-   "count": 12
+   "count": 16
   },
   {
    "theme": "Trade & geopolitics",
-   "count": 12
+   "count": 14
   },
   {
    "theme": "Deals & IPOs",
-   "count": 7
+   "count": 12
   },
   {
    "theme": "Jobs & growth",
-   "count": 1
+   "count": 3
   },
   {
    "theme": "Housing",
-   "count": 1
+   "count": 2
   }
  ],
  "top": [
-  {
-   "title": "Broadcom's stock drops 5% as weak guidance overshadows earnings beat",
-   "link": "https://www.cnbc.com/2026/09/02/broadcom-avgo-q3-earnings-report-2026.html",
-   "source": "CNBC",
-   "published": "2026-09-02T20:29:53+00:00",
-   "summary": "Broadcom gave a disappointing revenue forecast for the current quarter."
-  },
   {
    "title": "Gold Futures Edge Up as Treasury Yields Ease",
    "link": "https://www.wsj.com/finance/commodities-futures/gold-falls-weighed-by-mideast-conflict-stronger-dollar-5affb636?mod=rss_markets_main",
    "source": "WSJ Markets",
    "published": "2026-09-02T18:06:00+00:00",
    "summary": "Gold futures snapped a three-session losing streak as Treasury yields eased. The market is closely watching for Friday’s employment report."
+  },
+  {
+   "title": "Broadcom delivers strong earnings view as CEO touts growth with AI labs",
+   "link": "https://www.cnbc.com/2026/09/02/broadcom-avgo-q3-earnings-report-2026.html",
+   "source": "CNBC Earnings",
+   "published": "2026-09-02T22:21:45+00:00",
+   "summary": "Broadcom gave a disappointing revenue forecast for the current quarter but provided robust earnings guidance for fiscal 2028."
   },
   {
    "title": "U.S. Stocks Climb as Bond Yields Stay in Spotlight",
@@ -425,18 +424,25 @@
    "summary": "U.S. stocks rose while bond-market turmoil and war were top of mind for investors."
   },
   {
-   "title": "Wall Street is nervous about a Fed rate hike, which looks more likely after a top official’s remarks",
-   "link": "https://www.marketwatch.com/story/feds-williams-is-opening-options-to-interest-rate-hikes-why-that-could-be-a-bad-trade-4ba6b32f?mod=mw_rss_topstories",
-   "source": "MarketWatch",
-   "published": "2026-09-02T17:44:00+00:00",
-   "summary": "Fed watchers say the upcoming jobs report and inflation data are key after seeing signs that Fed Chairman Kevin Warsh would be willing to see interest rates rise."
-  },
-  {
    "title": "U.S. Stocks Rise as Oil Gains on Iran Escalation",
    "link": "https://www.wsj.com/finance/stocks/u-s-stocks-rise-as-oil-gains-on-iran-escalation-aaf0672e?mod=rss_markets_main",
    "source": "WSJ Markets",
-   "published": "2026-09-02T20:21:00+00:00",
+   "published": "2026-09-02T20:50:00+00:00",
    "summary": "Stocks rose as a rally in Treasury yields stalled but equity and bond moves were muted as oil prices continued climbing due to clashes between Iran and the U.S."
+  },
+  {
+   "title": "Mac-and-Cheese Disruptor Goodles to Be Acquired by Barilla",
+   "link": "https://www.wsj.com/cmo-today/mac-and-cheese-disruptor-goodles-to-be-acquired-by-barilla-1804a40e?mod=pls_whats_news_us_business_f",
+   "source": "WSJ Business",
+   "published": "2026-09-02T22:19:00+00:00",
+   "summary": "The maker of flavors like Here Comes Truffle will remain as a stand-alone brand within Barilla Group."
+  },
+  {
+   "title": "Dow rises nearly 300 points to snap three-day slide as Treasury yields cool",
+   "link": "https://news.google.com/rss/articles/CBMid0FVX3lxTE9fYmc5aklBNDFsTzFfLUh5WkxJa2NmVFJ3ZFVhWkg0ZEVGazgzMDMxVWEyd3ZXSXo4QVB1UEl2TEtGenE1d3lGRW1NbTd0aklnOUhFN3VjSzY3a1lySUM1R1dXSzY1UkFCR3lQRkFOVllMSkhDc0U00gF8QVVfeXFMTXdGR0lqMFJJMXFuWWVRR0lqbDU0aTMwYzltbTlpWVpVeHRmV1ItZUtiT0lQeDRhNzNaSy0zRVQzQmtEa094X3lkS3hBMHloOXpXNERIdkNFclJCZWotNUEtUjBBZGwyYndVb2U3Y0c1UTJrMC16VHRJYklIMQ?oc=5",
+   "source": "CNBC",
+   "published": "2026-09-02T22:16:23+00:00",
+   "summary": "Dow rises nearly 300 points to snap three-day slide as Treasury yields cool CNBC Stock futures are little changed after major averages snap three-day losing streaks: Live updates CNBC Stocks climb and US yields ease; yen jumps…"
   },
   {
    "title": "HPE follows in Dell’s footsteps as it rides the AI server boom to a big earnings beat",
@@ -444,44 +450,44 @@
    "source": "MarketWatch",
    "published": "2026-09-02T20:42:00+00:00",
    "summary": "Unlike Dell, HPE focuses on enterprise and sovereign customers, which one analyst noted have a better profit profile."
-  },
-  {
-   "title": "10-year U.S. Treasury yield hits highest level since November 2023",
-   "link": "https://www.cnbc.com/2026/09/02/bond-yields-treasurys-inflation.html",
-   "source": "CNBC",
-   "published": "2026-09-02T20:05:39+00:00",
-   "summary": "The 10-year Treasury note yield reached a fresh multiyear high on Wednesday as inflation and debt concerns pressured global government borrowing costs."
   }
  ],
  "columns": {
   "markets": [
    {
-    "title": "U.S. Crude Oil Stockpiles See Larger-Than-Expected Drop",
-    "link": "https://www.wsj.com/business/energy-oil/u-s-crude-oil-stockpiles-see-larger-than-expected-drop-ed60334e?mod=rss_markets_main",
-    "source": "WSJ Markets",
-    "published": "2026-09-02T15:47:00+00:00",
-    "summary": "Commercial crude oil stocks were down by 4.5 million barrels last week. Analysts had expected crude stocks to fall by 300,000 barrels."
+    "title": "Nvidia’s stock is climbing as investors get more confidence in an expanding base of AI customers",
+    "link": "https://www.marketwatch.com/story/nvidias-stock-is-climbing-as-investors-get-more-confidence-in-an-expanding-base-of-ai-customers-a6e297f1?mod=mw_rss_topstories",
+    "source": "MarketWatch",
+    "published": "2026-09-02T21:38:00+00:00",
+    "summary": "Dell’s earnings showed that demand for AI hardware extends beyond major cloud providers."
    },
    {
-    "title": "Earnings Snapshot: Snowflake's AI bet pays off with a big EPS beat; higher FY outlook",
-    "link": "https://seekingalpha.com/news/4639746-earnings-snapshot-snowflakes-ai-bet-pays-off-with-a-big-eps-beat-higher-fy-outlook?utm_source=feed_news_all&utm_medium=referral&feed_item_type=news",
+    "title": "Palantir’s stock is slumping. Why bond yields and Google may be to blame.",
+    "link": "https://www.marketwatch.com/story/why-palantirs-stock-is-suffering-its-worst-slump-since-february-7fb3b289?mod=mw_rss_topstories",
+    "source": "MarketWatch",
+    "published": "2026-09-02T21:12:00+00:00",
+    "summary": "After a strong postearnings rally in August, Palantir’s rich valuation multiple is under pressure once again."
+   },
+   {
+    "title": "Chevron to double Venezuela oil production with $7bn pledge",
+    "link": "https://www.ft.com/content/a76721db-36e1-4198-aad8-8c90137aace9?syn-25a6b1a6=1",
+    "source": "Financial Times",
+    "published": "2026-09-02T20:56:14+00:00",
+    "summary": "US major commits to expanding its joint ventures as White House pushes for huge increase in production in the country"
+   },
+   {
+    "title": "Broadcom’s stock falls despite upbeat earnings, extending a frustrating stretch for investors",
+    "link": "https://www.marketwatch.com/story/broadcoms-stock-falls-despite-upbeat-earnings-extending-a-frustrating-stretch-for-investors-81de3f53?mod=mw_rss_topstories",
+    "source": "MarketWatch",
+    "published": "2026-09-02T22:28:00+00:00",
+    "summary": "Broadcom topped expectations with its latest quarterly financial results, but that wasn’t enough to send its stock higher."
+   },
+   {
+    "title": "Barrick weighs delaying North America gold IPO to 2027 - Bloomberg",
+    "link": "https://seekingalpha.com/news/4639786-barrick-weighs-delaying-north-america-gold-ipo-to-2027-bloomberg?utm_source=feed_news_all&utm_medium=referral&feed_item_type=news",
     "source": "Seeking Alpha",
-    "published": "2026-09-02T20:41:00+00:00",
+    "published": "2026-09-02T22:21:48+00:00",
     "summary": ""
-   },
-   {
-    "title": "Rising yields aren’t scaring off investors. Why money is still pouring into bond funds.",
-    "link": "https://www.marketwatch.com/story/rising-yields-arent-scaring-off-investors-why-money-is-still-pouring-into-bond-funds-a23e9e7c?mod=mw_rss_topstories",
-    "source": "MarketWatch",
-    "published": "2026-09-02T19:22:00+00:00",
-    "summary": "The U.S. bond market has been under pressure amid a rise in Treasury yields, but money is still flowing into bond funds."
-   },
-   {
-    "title": "Here’s another way rising bond yields could take a bite out of Americans’ wallets",
-    "link": "https://www.marketwatch.com/story/heres-another-way-rising-bond-yields-could-take-a-bite-out-of-americans-wallets-b15a720c?mod=mw_rss_topstories",
-    "source": "MarketWatch",
-    "published": "2026-09-02T19:15:00+00:00",
-    "summary": "Rising yields are a threat to the “Magnificent Seven.” Here’s why that could hurt U.S. consumers."
    },
    {
     "title": "Oil Futures Extend Gains on Renewed U.S.-Iran Strikes",
@@ -491,28 +497,28 @@
     "summary": "Oil futures rose for a third straight session as strikes between the U.S. and Iran raised concerns about further escalation and oil flows out of the Persian Gulf."
    },
    {
-    "title": "We're starting positions in 2 more defensive stocks to balance our AI exposure",
-    "link": "https://www.cnbc.com/2026/09/02/were-starting-positions-in-2-more-defensive-stocks-to-balance-our-ai-exposure.html",
-    "source": "CNBC",
-    "published": "2026-09-02T17:59:24+00:00",
-    "summary": "We're adding a couple of new positions to the portfolio following Tuesday's exit of a data center name."
+    "title": "The WSJ Dollar Index Falls 0.21% to 95.70",
+    "link": "https://www.wsj.com/finance/currencies/yen-consolidates-traders-digest-remarks-from-katayama-ueda-70108fc2?mod=rss_markets_main",
+    "source": "WSJ Markets",
+    "published": "2026-09-02T21:21:00+00:00",
+    "summary": "The WSJ Dollar Index fell 0.2% — down two of the past three trading days."
    },
    {
-    "title": "YieldMax SMCI Option Income Strategy ETF declares $0.095 dividend",
-    "link": "https://seekingalpha.com/news/4639750-yieldmax-smci-option-income-strategy-etf-declares-0_095-dividend?utm_source=feed_news_all&utm_medium=referral&feed_item_type=news",
-    "source": "Seeking Alpha",
-    "published": "2026-09-02T20:43:13+00:00",
-    "summary": ""
-   },
-   {
-    "title": "YieldMax RDDT Option Income Strategy ETF declares $0.2009 dividend",
-    "link": "https://seekingalpha.com/news/4639749-yieldmax-rddt-option-income-strategy-etf-declares-0_2009-dividend?utm_source=feed_news_all&utm_medium=referral&feed_item_type=news",
-    "source": "Seeking Alpha",
-    "published": "2026-09-02T20:42:18+00:00",
-    "summary": ""
+    "title": "JPMorgan curbed lending to Jane Street as trading firm muscled into bonds",
+    "link": "https://www.ft.com/content/07e849ac-ea87-4227-81d4-7f18b0d7d473?syn-25a6b1a6=1",
+    "source": "Financial Times",
+    "published": "2026-09-02T20:44:30+00:00",
+    "summary": "Wall Street bank’s move last year came after trading specialist began making markets in US Treasuries"
    }
   ],
   "economy": [
+   {
+    "title": "10-year U.S. Treasury yield hits highest level since November 2023",
+    "link": "https://www.cnbc.com/2026/09/02/bond-yields-treasurys-inflation.html",
+    "source": "CNBC",
+    "published": "2026-09-02T20:05:39+00:00",
+    "summary": "The 10-year Treasury note yield reached a fresh multiyear high on Wednesday as inflation and debt concerns pressured global government borrowing costs."
+   },
    {
     "title": "Bank of Canada mulls Trump tariff shock as it holds interest rates",
     "link": "https://www.cnbc.com/2026/09/02/bank-canada-rate-decision-trump-tariffs.html",
@@ -523,16 +529,16 @@
    {
     "title": "Private payrolls rose by 38,000 in August, less than expected, ADP reports",
     "link": "https://www.cnbc.com/2026/09/02/private-payrolls-rose-by-38000-in-august-fewer-than-expected-adp-reports.html",
-    "source": "CNBC Economy",
+    "source": "CNBC",
     "published": "2026-09-02T14:30:10+00:00",
     "summary": "Though job creation held positive, August was the smallest gain since January and reflective of a broader slowdown in the labor market."
    },
    {
-    "title": "Will the Fed raise rates in September?",
-    "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTE1LOWNwVWF3VjdzLWJGaC15Uzh6emM5NjNDNlZHNk5ha3FHSHFaTmFSc25qQUNveUEwLUwxNWJBTUlNNFRmeWU1dldjNUhZcDhCRlozWm9SRmE3ZTY5THRabms4REZxWFN6UXF3VS1DVmJGQWs2aktHZzR4TmdFTTA?oc=5",
-    "source": "investingLive",
-    "published": "2026-09-02T12:21:45+00:00",
-    "summary": "Will the Fed raise rates in September? investingLive Impax Says Fed’s September Rate Decision Is Too Close to Call, Sees Treasury Volatility Around Data bloomingbit"
+    "title": "Warsh's Jackson Hole encore may put Trump's inflation record under a microscope",
+    "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxQV05VMTJPOWRaTHlGbWIwX0R6eGVKM1l1ZXdoRzh6dnJ2UzBZVjJNNkppLS1MTEZhOEJZY3BNeWt2N2cyXzRSeTJJTUM1RkdQUG1faExLNlBZVDg1eDJNUjFJSXBsdHZVcEQ1YzhIZUdRRTF3YW5RYzQ3QlQ0N1FLQ3A4b1hzb2R5RzBIZEVEUi1VTklFc0FoTHJJdw?oc=5",
+    "source": "Yahoo Finance",
+    "published": "2026-09-02T10:31:11+00:00",
+    "summary": "Warsh's Jackson Hole encore may put Trump's inflation record under a microscope Yahoo Finance Fed Chairman Warsh Lays Out His Own Data Dashboard for Reading the US Economy bloomberg.com Jackson Hole analyst roundup: Warsh's…"
    },
    {
     "title": "Central banking has a forbidding future",
@@ -556,20 +562,34 @@
     "summary": "The European Central Bank is seen hiking rates in September as the Iran war raises energy costs in the region."
    },
    {
-    "title": "Europe’s bond markets are suffering a post-holiday shock",
-    "link": "https://www.economist.com/finance-and-economics/2026/09/01/europes-bond-markets-are-suffering-a-post-holiday-shock",
-    "source": "The Economist",
-    "published": "2026-09-01T21:58:14+00:00",
-    "summary": "Reasons for rising yields differ somewhat from those in America, but are no less problematic"
+    "title": "Uber to cut thousands of jobs in sweeping restructuring effort",
+    "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxOalNNa2hVTlFTYnREZGJsNnFFdm1aQ2ktQVlELVlXeW1wMHREZllOWW82RFk5MlFXeTBVRU1iZVoxcnUtMGdjcGdCRVRTRmIyb0JJeVppLUNsVDQzeFA4cUREd1Q0V05LRTA3ZVdtRjQwQ3JDVWhzd04ta2VET1R6aE1HWmVZVGRZWjRwNHBPWGluQ1nSAZgBQVVfeXFMTW1MRThTVWFWRXkzWU1xRjJjN3JadWlRSlhhWXdPWlhOMGpsbkxETkJKYnZHVVBlY2VIcTB2VWpzdFg3blVySG5jQVJlR0FpWnIyWVBnQVpyeTZQRG83MF9IQTdBUWlyNW1ZcDhkRXdJdWpNNEJUODRSZTR1OVNfTDJuNUJ4QXdNQ0syM08zS2pnZDlwRklwUHo?oc=5",
+    "source": "Fox Business",
+    "published": "2026-09-02T17:56:00+00:00",
+    "summary": "Uber to cut thousands of jobs in sweeping restructuring effort Fox Business Uber to Cut 10% of Jobs, or 3,300 Roles, to Slash Bureaucracy bloomberg.com Uber to shed 10% of workers as it moves to cut costs and simplify its…"
    }
   ],
   "companies": [
+   {
+    "title": "Broadcom's stock drops 5% as weak guidance overshadows earnings beat",
+    "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTE02MnFmSEVidVJwbDBTVjFsaFdzYTFSUnlPVmdnSXVEZ0I2dkhjNnQ0MUZFb2xHU0RpaU1jNzRxNGxUS3U5NlJyVWxiQXRsV1RPdlZLR2tIakNDSEI2ZkZUeFIwekhIQ1RkQVNPeWlaekVKTzh3bm81cDVFWmlRbEXSAYQBQVVfeXFMTWRuaWdHVEM0cXZrNXYwRHVOVmNIVTBnQm5Cejk3ZENUUURlMVZRN3ZPTmtXaVFFbTI3OGR6LXZnWUdOWVhpNWpLNnAxTF93cmVzclJyLXJQTk1MalQ3c25rbkZvNnNMYThxcGoxQ1ozYnVTOVhkRXB0VjhxaGJxYkF0RjY2?oc=5",
+    "source": "CNBC",
+    "published": "2026-09-02T20:22:09+00:00",
+    "summary": "Broadcom's stock drops 5% as weak guidance overshadows earnings beat CNBC Broadcom’s AI Success Story Gets Complicated WSJ Broadcom stock sinks as chipmaker results 'not enough to keep investors happy' Yahoo Finance Broadcom…"
+   },
    {
     "title": "AI trade faces test with next week's Oracle earnings",
     "link": "https://www.cnbc.com/2026/09/02/ai-trade-faces-test-with-next-weeks-oracle-earnings.html",
     "source": "CNBC",
     "published": "2026-09-02T17:57:04+00:00",
     "summary": "How Michael Khouw is playing ORCL ahead of earnings."
+   },
+   {
+    "title": "U.S. Crude Oil Stockpiles See Larger-Than-Expected Drop",
+    "link": "https://www.wsj.com/business/energy-oil/u-s-crude-oil-stockpiles-see-larger-than-expected-drop-ed60334e?mod=pls_whats_news_us_business_f",
+    "source": "WSJ Business",
+    "published": "2026-09-02T15:47:00+00:00",
+    "summary": "Commercial crude oil stocks were down by 4.5 million barrels last week. Analysts had expected crude stocks to fall by 300,000 barrels."
    },
    {
     "title": "Investors Still on Edge Over War, Debt and Inflation",
@@ -600,28 +620,21 @@
     "summary": "Peter Zaffino, who earlier this year retired as AIG’s chief executive, will join Palantir as global head of financial services."
    },
    {
-    "title": "Opinion | Aluminum Tariffs Harm U.S. Manufacturers",
-    "link": "https://www.wsj.com/opinion/aluminum-tariffs-harm-u-s-manufacturers-04803203?mod=pls_whats_news_us_business_f",
+    "title": "Broadcom Third-Quarter Profit Soars on Growing Custom Chip Demand",
+    "link": "https://www.wsj.com/business/earnings/broadcom-third-quarter-profit-soars-on-ai-driven-revenue-growth-c5add826?mod=pls_whats_news_us_business_f",
     "source": "WSJ Business",
-    "published": "2026-09-02T14:34:00+00:00",
-    "summary": "Current tariffs punish recyclers and U.S. companies that make aluminum-based products while failing to revive domestic smelting."
-   },
-   {
-    "title": "U.S. Government Backs OpenAI in Copyright Fight With Publishers",
-    "link": "https://www.wsj.com/tech/ai/u-s-government-backs-openai-in-copyright-fight-with-publishers-64a0735b?mod=pls_whats_news_us_business_f",
-    "source": "WSJ Business",
-    "published": "2026-09-02T19:01:00+00:00",
-    "summary": "Trump administration officials said in a court filing that limiting AI companies’ ability to train on content creates national security concerns."
-   },
-   {
-    "title": "Dell Stock Soars on Blowout Q2 Earnings and Raised Guidance",
-    "link": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxPWWZURGpJQlVGREdtWkYwR2ZoZEctSVBMMHo0bjQtUi1LeklwNVFWb3BvWUlpN0IyTnVRS0JDVjRPa2kwSkhpY3A4RGdWa2pmOTNtZ1JLcmpaRDl0aEdpeUw1WlNmLWN0V0FPOEJTVzhldTBLNmRBTk5DSU9DUG1zOEZOa0w0VEF4dGNB?oc=5",
-    "source": "Barron's",
-    "published": "2026-09-02T18:50:00+00:00",
-    "summary": "Dell Stock Soars on Blowout Q2 Earnings and Raised Guidance Barron's DELL Q2 Earnings Beat Estimates, Strong AI Demand Aids Revenue Growth Yahoo Finance CEO Michael Dell Just Delivered Fantastic News for Dell Shareholders The…"
+    "published": "2026-09-02T22:43:00+00:00",
+    "summary": "Broadcom more than tripled its profit and nearly doubled its revenue in the third quarter, as the company said demand for its custom semiconductors should continue growing for the next two years."
    }
   ],
   "global": [
+   {
+    "title": "OpenAI Hit With 30 Lawsuits Over Canadian School Shooting",
+    "link": "https://www.wsj.com/us-news/law/openai-lawsuits-mount-over-canadian-school-shooting-ca24c762?mod=rss_worldnews",
+    "source": "WSJ World",
+    "published": "2026-09-02T22:23:00+00:00",
+    "summary": "New lawsuits add to list of cases in which the chatbot maker faces questions about the safety of its products."
+   },
    {
     "title": "U.S. Says It’s Fed Up With China’s Overcapacity—and More Countries Agree",
     "link": "https://www.wsj.com/world/china/u-s-says-its-fed-up-with-chinas-overcapacityand-more-countries-agree-ec6cc8e5?mod=rss_worldnews",
@@ -630,18 +643,18 @@
     "summary": "A G-20 statement implicitly criticizing Beijing for its overreliance on exports for growth marks a new stage in international pressure."
    },
    {
+    "title": "Trump and Xi are set to meet in DC. Why some China watchers have low expectations",
+    "link": "https://www.cnbc.com/2026/09/02/trump-xi-summit-iran-china-trade-elections.html",
+    "source": "CNBC",
+    "published": "2026-09-02T22:10:15+00:00",
+    "summary": "Trump's summit with Xi is expected to take place less than six weeks before the U.S. election, with polls showing Democrats favored to make gains in Congress."
+   },
+   {
     "title": "China’s Xi Bolsters Mideast Ties With Egypt Visit Ahead of Planned U.S. Trip",
     "link": "https://www.wsj.com/world/chinas-xi-bolsters-mideast-ties-with-egypt-visit-ahead-of-planned-u-s-trip-1a756323?mod=rss_worldnews",
     "source": "WSJ World",
     "published": "2026-09-02T17:07:00+00:00",
     "summary": "Khaled Desouki/Pool/Reuters"
-   },
-   {
-    "title": "OpenAI Lawsuits Mount Over Canadian School Shooting",
-    "link": "https://www.wsj.com/us-news/law/openai-lawsuits-mount-over-canadian-school-shooting-ca24c762?mod=rss_worldnews",
-    "source": "WSJ World",
-    "published": "2026-09-02T12:10:00+00:00",
-    "summary": "New lawsuits add to list of cases in which the chatbot maker faces questions about the safety of its products."
    },
    {
     "title": "Himalayan Disaster Tests China’s Clout as Regional Leader",
@@ -658,25 +671,18 @@
     "summary": "Beat average interest rates with one of the top high-yield savings accounts."
    },
    {
-    "title": "G-20 Squabbling Overshadows Summit as Global Bond Markets Strain",
-    "link": "https://www.wsj.com/world/g-20-squabbling-overshadows-summit-as-global-bond-markets-strain-dd61e2ef?mod=rss_worldnews",
+    "title": "Why Washington’s ‘Economic D-Day’ Against Iran Faces Steep Odds",
+    "link": "https://www.wsj.com/world/why-washingtons-economic-d-day-against-iran-faces-steep-odds-19a21279?mod=rss_worldnews",
     "source": "WSJ World",
-    "published": "2026-09-02T01:00:00+00:00",
-    "summary": "The finance ministers’ gathering comes to a close amid a global bond-market selloff, spats over tariffs and public insults."
+    "published": "2026-09-02T22:01:00+00:00",
+    "summary": "Russia, North Korea, Cuba and Venezuela have all deployed repression and myriad sanctions-busting tools to resist even heavy Western pressure."
    },
    {
-    "title": "After 286 Days at Sea, 5,000 Sailors on the USS Abraham Lincoln Get a Break in Thailand",
-    "link": "https://www.wsj.com/world/after-286-days-at-sea-5-000-sailors-on-the-uss-abraham-lincoln-dock-in-thailand-0a955b3d?mod=rss_worldnews",
+    "title": "Saudi Nuclear Agreement Could Open a Path to 20% Enrichment",
+    "link": "https://www.wsj.com/world/middle-east/saudi-nuclear-agreement-could-open-a-path-to-20-enrichment-21806868?mod=rss_worldnews",
     "source": "WSJ World",
-    "published": "2026-09-02T18:15:00+00:00",
-    "summary": "A beach resort town in eastern Thailand welcomed crew members who are enjoying their first R&R after months deployed in a war zone."
-   },
-   {
-    "title": "Russia Is Testing NATO’s Ability to Hold Back From a Hot War",
-    "link": "https://www.wsj.com/world/europe/russia-is-testing-natos-ability-to-hold-back-from-a-hot-war-6ef687db?mod=rss_worldnews",
-    "source": "WSJ World",
-    "published": "2026-09-02T18:03:00+00:00",
-    "summary": "A string of gray-zone attacks orchestrated by Moscow is tempting the alliance’s European members to escalate."
+    "published": "2026-09-02T21:50:00+00:00",
+    "summary": "Allowing Saudi Arabia to enrich uranium to such levels risks bolstering congressional opposition to the deal."
    }
   ],
   "crypto": [
@@ -709,6 +715,13 @@
     "summary": "The Euronext Growth Paris-listed firm issued 13,181,030 shares with four warrants each at 58 euro cents per share, according to a filing on Wednesday."
    },
    {
+    "title": "DOJ says Hamas crypto seizures reached $560,000 as FBI took over fundraising sites",
+    "link": "https://www.coindesk.com/business/2026/09/02/doj-says-hamas-crypto-seizures-reached-usd560-000-as-fbi-took-over-fundraising-sites",
+    "source": "CoinDesk",
+    "published": "2026-09-02T21:24:26+00:00",
+    "summary": "FBI agents took control of domains and servers, specifically Alqassam.ps, to intercept donations and prevent further fundraising for the Al-Qassam Brigades."
+   },
+   {
     "title": "Bitcoin slips below $76,500 as U.S. strikes on Iran send oil above $93",
     "link": "https://www.coindesk.com/markets/2026/09/02/bitcoin-slips-below-usd77-000-as-u-s-strikes-on-iran-send-oil-above-usd93",
     "source": "CoinDesk",
@@ -723,83 +736,76 @@
     "summary": "China's \"credit impulse\" is flashing red for risk assets. So far, bitcoin has mostly shrugged it off."
    },
    {
-    "title": "Bitcoin’s apparent demand turns negative as price struggles with $77K",
-    "link": "https://cointelegraph.com/markets/bitcoins-apparent-demand-turns-negative-price-struggles-with-77k?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+    "title": "US officials work with CrowdStrike to fight malware behind crypto theft",
+    "link": "https://cointelegraph.com/news/us-officials-crowdstrike-malware-stealing-crypto?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
     "source": "Cointelegraph",
-    "published": "2026-09-02T16:35:56+00:00",
-    "summary": "One of Bitcoin’s onchain demand indicators turns negative again after a brief August rebound, as BTC price slipped below $77,000 amid a broader bond and equities sell-off."
-   },
-   {
-    "title": "Crypto made new friends in U.S. primaries, but focus now shifts to general election",
-    "link": "https://www.coindesk.com/news-analysis/2026/09/02/crypto-made-new-friends-in-u-s-primaries-but-focus-now-shifts-to-general-election",
-    "source": "CoinDesk",
-    "published": "2026-09-02T17:39:00+00:00",
-    "summary": "Adding Massachusetts incumbent Auchincloss to the list of winning primary candidates Fairshake supported, the industry's influence moves on to November."
+    "published": "2026-09-02T21:27:15+00:00",
+    "summary": "Federal authorities and private-sector partners were part of an operation to disrupt malware that redirected about $150,000 in crypto over the last eight years."
    }
   ]
  },
  "filings": [
   {
-   "title": "8-K - HORNBECK OFFSHORE SERVICES, INC. (Filer)",
-   "link": "https://www.sec.gov/Archives/edgar/data/866829/000119312526380348/0001193125-26-380348-index.htm",
+   "title": "8-K - RELIABILITY INC (Filer)",
+   "link": "https://www.sec.gov/Archives/edgar/data/34285/000149315226041269/0001493152-26-041269-index.htm",
    "source": "SEC EDGAR",
-   "published": "2026-09-02T20:43:03+00:00",
-   "summary": "Filed: 2026-09-02 AccNo: 0001193125-26-380348 Size: 150 KB Item 4.01: Changes in Registrant's Certifying Accountant Item 9.01: Financial Statements and Exhibits"
+   "published": "2026-09-02T21:30:10+00:00",
+   "summary": "Filed: 2026-09-02 AccNo: 0001493152-26-041269 Size: 8 MB Item 5.02: Departure of Directors or Certain Officers; Election of Directors; Appointment of Certain Officers: Compensatory Arrangements of Certain Officers Item 9.01…"
   },
   {
-   "title": "8-K - Jefferies Credit Partners BDC Inc. (Filer)",
-   "link": "https://www.sec.gov/Archives/edgar/data/1959604/000119312526380336/0001193125-26-380336-index.htm",
+   "title": "8-K - SENSIENT TECHNOLOGIES CORP (Filer)",
+   "link": "https://www.sec.gov/Archives/edgar/data/310142/000114036126035504/0001140361-26-035504-index.htm",
    "source": "SEC EDGAR",
-   "published": "2026-09-02T20:40:31+00:00",
-   "summary": "Filed: 2026-09-02 AccNo: 0001193125-26-380336 Size: 170 KB Item 8.01: Other Events"
+   "published": "2026-09-02T21:29:31+00:00",
+   "summary": "Filed: 2026-09-02 AccNo: 0001140361-26-035504 Size: 1 MB Item 1.01: Entry into a Material Definitive Agreement Item 2.03: Creation of a Direct Financial Obligation or an Obligation under an Off-Balance Sheet Arrangement of a…"
   },
   {
-   "title": "8-K - CAL-MAINE FOODS INC (Filer)",
-   "link": "https://www.sec.gov/Archives/edgar/data/16160/000156276226000102/0001562762-26-000102-index.htm",
+   "title": "8-K - BioRestorative Therapies, Inc. (Filer)",
+   "link": "https://www.sec.gov/Archives/edgar/data/1505497/000121390026096810/0001213900-26-096810-index.htm",
    "source": "SEC EDGAR",
-   "published": "2026-09-02T20:40:00+00:00",
-   "summary": "Filed: 2026-09-02 AccNo: 0001562762-26-000102 Size: 3 MB Item 1.01: Entry into a Material Definitive Agreement Item 2.03: Creation of a Direct Financial Obligation or an Obligation under an Off-Balance Sheet Arrangement of a…"
+   "published": "2026-09-02T21:29:10+00:00",
+   "summary": "Filed: 2026-09-02 AccNo: 0001213900-26-096810 Size: 235 KB Item 3.03: Material Modifications to Rights of Security Holders Item 5.03: Amendments to Articles of Incorporation or Bylaws; Change in Fiscal Year Item 7.01: Regulation…"
   },
   {
-   "title": "8-K - Senior Credit Investments, LLC (Filer)",
-   "link": "https://www.sec.gov/Archives/edgar/data/1959568/000119312526380323/0001193125-26-380323-index.htm",
+   "title": "8-K - KKR Enhanced US Direct Lending Fund-L Inc. (Filer)",
+   "link": "https://www.sec.gov/Archives/edgar/data/2012839/000162828026060190/0001628280-26-060190-index.htm",
    "source": "SEC EDGAR",
-   "published": "2026-09-02T20:38:08+00:00",
-   "summary": "Filed: 2026-09-02 AccNo: 0001193125-26-380323 Size: 153 KB Item 8.01: Other Events"
+   "published": "2026-09-02T21:29:05+00:00",
+   "summary": "Filed: 2026-09-02 AccNo: 0001628280-26-060190 Size: 139 KB Item 8.01: Other Events"
   },
   {
-   "title": "8-K - PENNANTPARK INVESTMENT CORP (Filer)",
-   "link": "https://www.sec.gov/Archives/edgar/data/1383414/000117184326005855/0001171843-26-005855-index.htm",
+   "title": "8-K - JATT III Acquisition Corp (Filer)",
+   "link": "https://www.sec.gov/Archives/edgar/data/2145659/000121390026096806/0001213900-26-096806-index.htm",
    "source": "SEC EDGAR",
-   "published": "2026-09-02T20:35:48+00:00",
-   "summary": "Filed: 2026-09-02 AccNo: 0001171843-26-005855 Size: 225 KB Item 7.01: Regulation FD Disclosure Item 9.01: Financial Statements and Exhibits"
+   "published": "2026-09-02T21:25:20+00:00",
+   "summary": "Filed: 2026-09-02 AccNo: 0001213900-26-096806 Size: 304 KB Item 8.01: Other Events Item 9.01: Financial Statements and Exhibits"
   },
   {
-   "title": "8-K - TXNM ENERGY INC (Filer)",
-   "link": "https://www.sec.gov/Archives/edgar/data/1108426/000110842626000058/0001108426-26-000058-index.htm",
+   "title": "8-K - American Healthcare REIT, Inc. (Filer)",
+   "link": "https://www.sec.gov/Archives/edgar/data/1632970/000119312526380473/0001193125-26-380473-index.htm",
    "source": "SEC EDGAR",
-   "published": "2026-09-02T20:35:01+00:00",
-   "summary": "Filed: 2026-09-02 AccNo: 0001108426-26-000058 Size: 606 KB Item 7.01: Regulation FD Disclosure Item 8.01: Other Events Item 9.01: Financial Statements and Exhibits"
+   "published": "2026-09-02T21:22:39+00:00",
+   "summary": "Filed: 2026-09-02 AccNo: 0001193125-26-380473 Size: 1 MB Item 5.02: Departure of Directors or Certain Officers; Election of Directors; Appointment of Certain Officers: Compensatory Arrangements of Certain Officers Item 7.01…"
   },
   {
-   "title": "8-K - Jefferies Credit Partners BDC Inc. (Filer)",
-   "link": "https://www.sec.gov/Archives/edgar/data/1959604/000119312526380302/0001193125-26-380302-index.htm",
+   "title": "8-K - PennantPark Private Income Fund (Filer)",
+   "link": "https://www.sec.gov/Archives/edgar/data/2089126/000119312526380472/0001193125-26-380472-index.htm",
    "source": "SEC EDGAR",
-   "published": "2026-09-02T20:33:52+00:00",
-   "summary": "Filed: 2026-09-02 AccNo: 0001193125-26-380302 Size: 174 KB Item 3.02: Unregistered Sales of Equity Securities"
+   "published": "2026-09-02T21:22:37+00:00",
+   "summary": "Filed: 2026-09-02 AccNo: 0001193125-26-380472 Size: 4 MB Item 1.01: Entry into a Material Definitive Agreement Item 9.01: Financial Statements and Exhibits"
   },
   {
-   "title": "8-K - Venture Global, Inc. (Filer)",
-   "link": "https://www.sec.gov/Archives/edgar/data/2007855/000200785526000066/0002007855-26-000066-index.htm",
+   "title": "8-K - CAPITAL SOUTHWEST CORP (Filer)",
+   "link": "https://www.sec.gov/Archives/edgar/data/17313/000001731326000136/0000017313-26-000136-index.htm",
    "source": "SEC EDGAR",
-   "published": "2026-09-02T20:33:24+00:00",
-   "summary": "Filed: 2026-09-02 AccNo: 0002007855-26-000066 Size: 203 KB Item 1.01: Entry into a Material Definitive Agreement Item 2.03: Creation of a Direct Financial Obligation or an Obligation under an Off-Balance Sheet Arrangement of a…"
+   "published": "2026-09-02T21:21:44+00:00",
+   "summary": "Filed: 2026-09-02 AccNo: 0000017313-26-000136 Size: 1 MB Item 1.01: Entry into a Material Definitive Agreement Item 2.03: Creation of a Direct Financial Obligation or an Obligation under an Off-Balance Sheet Arrangement of a…"
   }
  ],
  "stats": {
   "feeds_total": 19,
   "feeds_failed": 1,
-  "items": 372,
+  "items": 383,
   "feed_errors": [],
   "market_errors": [
    [
