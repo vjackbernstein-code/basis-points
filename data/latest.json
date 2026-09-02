@@ -1,17 +1,16 @@
 {
- "generated_at": "2026-09-01T22:27:52.957902+00:00",
+ "generated_at": "2026-09-02T00:27:28.668774+00:00",
  "market": [
   {
    "label": "S&P 500",
    "symbol": "SP500",
    "kind": "index",
-   "value": 7686.14,
-   "prev": 7711.76,
-   "value_txt": "7,686.14",
-   "delta": -0.33221988236148287,
-   "delta_txt": "-0.33%",
+   "value": 7631.47,
+   "prev": 7686.14,
+   "value_txt": "7,631.47",
+   "delta": -0.7112803045481877,
+   "delta_txt": "-0.71%",
    "spark": [
-    7437.63,
     7489.72,
     7600.5,
     7736.52,
@@ -33,9 +32,10 @@
     7675.7,
     7730.99,
     7711.76,
-    7686.14
+    7686.14,
+    7631.47
    ],
-   "asof": "Aug 31"
+   "asof": "Sep 1"
   },
   {
    "label": "Nasdaq",
@@ -106,7 +106,8 @@
     53559.99,
     53185.9,
     52766.88
-   ]
+   ],
+   "asof": "Sep 1"
   },
   {
    "label": "VIX",
@@ -285,19 +286,19 @@
     1.1643,
     1.1596,
     1.159
-   ]
+   ],
+   "asof": "Sep 1"
   },
   {
    "label": "Bitcoin",
    "symbol": "bitcoin",
    "kind": "crypto",
-   "value": 77136.26199306369,
-   "prev": 78552.77932895812,
-   "value_txt": "$77,136",
-   "delta": -1.8032682586091995,
-   "delta_txt": "-1.80%",
+   "value": 77347.5256847261,
+   "prev": 77416.44110979848,
+   "value_txt": "$77,348",
+   "delta": -0.08901910767848244,
+   "delta_txt": "-0.09%",
    "spark": [
-    63915.71213556821,
     63537.55988964766,
     63408.625697113624,
     63429.17906286841,
@@ -319,20 +320,20 @@
     78225.13950818499,
     77658.23133225394,
     78552.77932895812,
-    77136.26199306369
+    77416.44110979848,
+    77347.5256847261
    ]
   },
   {
    "label": "Ethereum",
    "symbol": "ethereum",
    "kind": "crypto",
-   "value": 2409.9596322902676,
-   "prev": 2466.565659094493,
-   "value_txt": "$2,410",
-   "delta": -2.2949328997390808,
-   "delta_txt": "-2.29%",
+   "value": 2417.03384635709,
+   "prev": 2417.6758884733536,
+   "value_txt": "$2,417",
+   "delta": -0.026556169887139082,
+   "delta_txt": "-0.03%",
    "spark": [
-    1871.3976551883159,
     1880.4862005694617,
     1877.743530062547,
     1884.3941576877892,
@@ -354,47 +355,52 @@
     2457.089335222437,
     2416.2418165172735,
     2466.565659094493,
-    2409.9596322902676
+    2417.6758884733536,
+    2417.03384635709
    ]
   }
  ],
- "tape_line": "S&P 500 -0.33%, Nasdaq -0.12%, Dow -0.79%; the 10-year Treasury at 4.75% (+2 bp); WTI crude $83.90 (-2.83%); bitcoin $77,136 (-1.80%).",
+ "tape_line": "S&P 500 -0.71%, Nasdaq -0.12%, Dow -0.79%; the 10-year Treasury at 4.75% (+2 bp); WTI crude $83.90 (-2.83%); bitcoin $77,348 (-0.09%).",
  "themes": [
   {
    "theme": "Crypto",
-   "count": 43
-  },
-  {
-   "theme": "Energy & commodities",
-   "count": 41
-  },
-  {
-   "theme": "AI & tech",
-   "count": 40
+   "count": 44
   },
   {
    "theme": "Rates & the Fed",
-   "count": 35
+   "count": 39
+  },
+  {
+   "theme": "Energy & commodities",
+   "count": 38
+  },
+  {
+   "theme": "AI & tech",
+   "count": 37
   },
   {
    "theme": "Inflation & prices",
-   "count": 29
-  },
-  {
-   "theme": "Earnings & companies",
-   "count": 17
+   "count": 31
   },
   {
    "theme": "Trade & geopolitics",
-   "count": 13
+   "count": 16
+  },
+  {
+   "theme": "Earnings & companies",
+   "count": 14
   },
   {
    "theme": "Deals & IPOs",
-   "count": 8
+   "count": 10
   },
   {
    "theme": "Housing",
    "count": 3
+  },
+  {
+   "theme": "Jobs & growth",
+   "count": 2
   }
  ],
  "top": [
@@ -427,6 +433,13 @@
    "summary": "Plus, stocks fall and new job-market numbers are mixed."
   },
   {
+   "title": "Dell’s AI servers drive a stellar earnings performance, and a raised outlook",
+   "link": "https://www.marketwatch.com/story/dells-ai-servers-drive-a-stellar-earnings-performance-and-a-raised-outlook-86476ace?mod=mw_rss_topstories",
+   "source": "MarketWatch",
+   "published": "2026-09-02T00:19:00+00:00",
+   "summary": "The company’s backlog has reached $95 billion as demand accelerates for its AI servers"
+  },
+  {
    "title": "Fed Governor Barr says he'll support rate hike if inflation doesn't ease",
    "link": "https://www.cnbc.com/2026/09/01/fed-governor-barr-says-hell-support-rate-hike-if-inflation-doesnt-ease.html",
    "source": "CNBC",
@@ -436,16 +449,9 @@
   {
    "title": "Palo Alto Networks beats quarterly estimates on AI demand, continues acquisition spree",
    "link": "https://www.cnbc.com/2026/09/01/palo-alto-networks-panw-q4-2026-earnings.html",
-   "source": "CNBC Earnings",
+   "source": "CNBC",
    "published": "2026-09-01T21:41:15+00:00",
    "summary": "Palo Alto Networks' stock has nearly doubled this year as AI boosts demand for security detection and response tools"
-  },
-  {
-   "title": "Dell’s AI servers drive a stellar earnings performance, and a raised outlook",
-   "link": "https://www.marketwatch.com/story/dells-ai-servers-drive-a-stellar-earnings-performance-and-a-raised-outlook-86476ace?mod=mw_rss_topstories",
-   "source": "MarketWatch",
-   "published": "2026-09-01T21:52:00+00:00",
-   "summary": "The company’s backlog has reached $95 billion as demand accelerates for its AI servers"
   }
  ],
  "columns": {
@@ -493,18 +499,18 @@
     "summary": "An unrelenting rout has global bond yields touching their highest levels since 2008, driving up borrowing costs for households, businesses and world governments."
    },
    {
+    "title": "Oil Rises Amid Growing U.S.-Iran Hostilities",
+    "link": "https://www.wsj.com/finance/commodities-futures/oil-rises-amid-growing-u-s-iran-hostilities-e12fa4f2?mod=rss_markets_main",
+    "source": "WSJ Markets",
+    "published": "2026-09-01T23:50:00+00:00",
+    "summary": "Oil rose in early Asian trade amid growing U.S.-Iran hostilities. The U.S. and Iran exchanged fire Tuesday as they continued to battle for control of the Strait of Hormuz."
+   },
+   {
     "title": "U.S. Stocks Fall as Oil Surges After New Middle East Strikes",
     "link": "https://www.wsj.com/finance/investing/u-s-stock-futures-slip-amid-bond-selloff-410a147c?mod=rss_markets_main",
     "source": "WSJ Markets",
     "published": "2026-09-01T18:51:00+00:00",
     "summary": "U.S. stocks slipped, with the Nasdaq leading losses."
-   },
-   {
-    "title": "Politics keeps European stocks in America’s shadow",
-    "link": "https://www.ft.com/content/066b0d08-421b-46a1-8bf1-7698aec161d2?syn-25a6b1a6=1",
-    "source": "Financial Times",
-    "published": "2026-09-01T16:32:24+00:00",
-    "summary": "The bloc’s policymakers typically lean towards protecting consumers and taxpayers at the expense of investors"
    }
   ],
   "economy": [
@@ -530,6 +536,20 @@
     "summary": "The European Central Bank is seen hiking rates in September as the Iran war raises energy costs in the region."
    },
    {
+    "title": "Bessent touts bond market as 10-year Treasury yield spikes",
+    "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE5WNmdQcExPdm14dTY5TkQtd0IxRG1FXzRLZGlwYU1KeHNTMUJPMUZCdjZWTk1mZ2VNRDVnMk1HWlMzNkF6T0FHVEZGMnMzMmNKZW1kTzBZdkU5LWZMMkxDOUZ1cTRuRWx6bmkzdDVKT2ZSNGlD0gF6QVVfeXFMTnFhSFhDVEtpSUtoWXk5VkdIV2tTam04c3BhMzF1dTJGd0hsR0xPbkI0LUpmY0lGWm5KbXJnRUtidm95MW9FdlFILUE0MjRZM19jVHo3SXpwa2s1amJsNkFwbWhUMm9hNE9aeWF6czFZQ2hsOGJPTW5FNmc?oc=5",
+    "source": "CNBC",
+    "published": "2026-09-01T17:20:12+00:00",
+    "summary": "Bessent touts bond market as 10-year Treasury yield spikes CNBC See more headlines & perspectives on Google News"
+   },
+   {
+    "title": "Europe’s bond markets are suffering a post-holiday shock",
+    "link": "https://www.economist.com/finance-and-economics/2026/09/01/europes-bond-markets-are-suffering-a-post-holiday-shock",
+    "source": "The Economist",
+    "published": "2026-09-01T21:58:14+00:00",
+    "summary": "Reasons for rising yields differ somewhat from those in America, but are no less problematic"
+   },
+   {
     "title": "Livestream shopping is gaining steam in the U.S., thanks to apps like TikTok and Whatnot",
     "link": "https://www.cnbc.com/2026/09/01/tiktok-whatnot-livestream-shopping.html",
     "source": "CNBC",
@@ -537,42 +557,21 @@
     "summary": "Whatnot and TikTok are tapping into its potential livestream shopping in the U.S. after a decade of massive success in China."
    },
    {
+    "title": "US borrowing costs hit fresh highs over inflation fears",
+    "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE5yRnc3NXVUUlI3NGJFTDJRbmg3MFJJWFlqT1NpYUlZRnZSNGF3MGFFVDBWbVVDWlNmMUx2bm5TcWFCbGRmOGlOcnhkUFhFLVJnNXZkUUxMZnVEUQ?oc=5",
+    "source": "BBC",
+    "published": "2026-09-01T15:51:51+00:00",
+    "summary": "US borrowing costs hit fresh highs over inflation fears BBC 10-year yield hits highest since January 2025 as higher oil prices stoke inflation worries CNBC The 10-year Treasury yield just crossed a key threshold that should make…"
+   },
+   {
     "title": "Veteran analyst predicts Fed rate hike after Warsh’s hawkish shift",
     "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTFBieTNwUDJWMF9Demw0eWhjUFdDUmQzYU9Lb2trSTVtemZGeU0zT3hDY1VhTjhQNlBRSVl5cVVXQ0lqNUkyU0JpMUFsUnJlRFJXcmpUUHpaWjd5OEJaTThYdzJPSFhmQ0lEaHRVQXpjWQ?oc=5",
     "source": "thestreet.com",
     "published": "2026-08-31T09:06:00+00:00",
-    "summary": "Veteran analyst predicts Fed rate hike after Warsh’s hawkish shift thestreet.com Markets see Warsh endorsing a rate hike in September. Not everyone is convinced CNBC Warsh Makes the Case for Higher Rates and Raises the Bar for…"
-   },
-   {
-    "title": "Is It Safe To Eat Beef? What To Know About Major Recall, Imports And Trump’s Tariff-Free Meat",
-    "link": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxPQTlQTTl4RmRleWNpUS1qemRjU0gyMXZpSlVnZVNTbUhreXNETndPaXBRVEJhb0ZKOEdTbEpQbEJhcUVfTUJTMUdDZDk1WTNYeDBpSGRvVllrdXN1NVc1Q2VoUTdqaDE5Wk1MVFNMSUVfcy1mQ1dKQ1dtY3lCak92VnFLMGtTcFdac3FnZWxSZlNnU2JSbUpPbkFQNkVkUHA0ZW1yVjJmQ1hmUmZMQTdrS2dxVzNOM0VjRUx5bkVteTdZV1FuVVVTVnM2YldkN0NUS3Rwckp0RzlUaVpj?oc=5",
-    "source": "Forbes",
-    "published": "2026-08-31T14:59:18+00:00",
-    "summary": "Is It Safe To Eat Beef? What To Know About Major Recall, Imports And Trump’s Tariff-Free Meat Forbes Is recalled Argentine beef connected to Trump’s beef import plan? The Hill USDA Recalls 30K Pounds of Argentine Beef in Texas…"
-   },
-   {
-    "title": "Bank of England chief warns new AI models threaten global financial stability",
-    "link": "https://www.cnbc.com/2026/08/31/bailey-frontier-ai-financial-stability-risk.html",
-    "source": "CNBC Economy",
-    "published": "2026-08-31T13:35:11+00:00",
-    "summary": "Bank of England Governor Andrew Bailey has warned that frontier AI could materially increase cyber risks to the global financial system."
-   },
-   {
-    "title": "China's factory activity shrinks for second straight month, contracting less than expected",
-    "link": "https://www.cnbc.com/2026/08/31/china-pmi-august-economy-slowdown.html",
-    "source": "CNBC Economy",
-    "published": "2026-08-31T03:15:01+00:00",
-    "summary": "China's manufacturing activity shrank for a second straight month, keeping pressure on Beijing to support the economy as growth loses momentum."
+    "summary": "Veteran analyst predicts Fed rate hike after Warsh’s hawkish shift thestreet.com Warsh, After Talking Tough on Inflation, Faces a ‘No-Win Situation’ on Rates The New York Times Jackson Hole Economic Policy Symposium: Financial…"
    }
   ],
   "companies": [
-   {
-    "title": "Dell surges 9% after lifting fiscal 2027 forecast on AI server strength",
-    "link": "https://www.cnbc.com/2026/09/01/dell-q2-earnings-report-2027.html",
-    "source": "CNBC Earnings",
-    "published": "2026-09-01T21:40:18+00:00",
-    "summary": "Dell sees AI server revenue tripling in fiscal 2027. Six months ago, it was looking for the number to double."
-   },
    {
     "title": "Softbank's SB Energy files for IPO, says it's 'substantially dependent' on OpenAI",
     "link": "https://www.cnbc.com/2026/09/01/sb-energy-ipo-softbank-open-ai-nvidia.html",
@@ -595,11 +594,25 @@
     "summary": "A group of musicians led by Jason Isbell claim that the company allows users to generate songs based on artists’ names."
    },
    {
+    "title": "At G20 Meeting, Scott Bessent Accuses China of Flooding the World With Cheap Exports",
+    "link": "https://www.nytimes.com/2026/09/01/business/economy/bessent-china-iran-g20.html",
+    "source": "NYT Business",
+    "published": "2026-09-01T23:29:23+00:00",
+    "summary": "Treasury Secretary Scott Bessent accused China for flooding the world with its cheap exports."
+   },
+   {
     "title": "SB Energy Files for IPO With Nvidia Backing",
     "link": "https://www.wsj.com/finance/investing/sb-energy-files-for-ipo-with-nvidia-backing-b17bd1fc?mod=pls_whats_news_us_business_f",
     "source": "WSJ Business",
     "published": "2026-09-01T11:49:00+00:00",
     "summary": "The company, which is majority-owned by Masayoshi Son’s SoftBank, said it plans to trade on Nasdaq under the symbol SBE, and hasn’t yet determined the number or pricing of shares in the proposed offering."
+   },
+   {
+    "title": "Bond Sell-Off Threatens to Squeeze Borrowers Around the World",
+    "link": "https://www.nytimes.com/2026/09/01/business/bond-yields-debt.html",
+    "source": "NYT Business",
+    "published": "2026-09-02T00:25:48+00:00",
+    "summary": "Government bond yields are hitting multi-decade highs, reflecting anxiety about debt levels, deficits and inflation. The effects will extend to mortgages, business loans and other types of credit."
    },
    {
     "title": "Two More Oil Tankers Are Attacked in the Strait of Hormuz",
@@ -613,17 +626,17 @@
     "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxOUnFYT0FINnN2d2k3aUZOVWJPblE1eURQSTRWMzUwQmdxaVQ0a0h1eWdTczdyVHc3TEdMS0pNNFhNelpUZEo5aklhSWFfdi1lOV9RLUhtZEZIN2FQa3NrS2h2Zll1YzV4Z2poXzBmdFcxWnBGWjBWZ1JYYXA4dEhzTjFLY1pQX1NBejF0NHpaYTF2V1pOeGozeDh3M0hHRnFSZVdHR3VPZDZqVmdFOUM4TEtVQzI?oc=5",
     "source": "Engadget",
     "published": "2026-09-01T15:42:14+00:00",
-    "summary": "GoPro Says It's Moving Into AI Data Centers As Part Of A $285 Million Merger Engadget GoPro joins AI bonanza with pivot into data centers as shares skyrocket 40% CNBC Action camera maker GoPro to be acquired after decade-long…"
-   },
-   {
-    "title": "What to Know About Venezuelan Energy Following Trump’s Oil Deal",
-    "link": "https://www.nytimes.com/2026/09/01/business/energy-environment/venezuela-oil-trump-deal.html",
-    "source": "NYT Business",
-    "published": "2026-09-01T17:54:05+00:00",
-    "summary": "The Trump administration’s deal with a private oil company to increase oil production in the South American country could take many years to come to fruition."
+    "summary": "GoPro Says It's Moving Into AI Data Centers As Part Of A $285 Million Merger Engadget GoPro has been acquired and is getting into ‘defense, government, robotics and aerospace’ The Verge YouTube Star Markiplier Is Now GoPro’s…"
    }
   ],
   "global": [
+   {
+    "title": "China dissented from G20 statement opposing 'cheap exports' flooding market, Bessent says",
+    "link": "https://www.cnbc.com/2026/09/01/bessent-china-g20-trade-exports-trump-xi.html",
+    "source": "CNBC",
+    "published": "2026-09-01T23:52:21+00:00",
+    "summary": "Bessent is leading the Trump administration's plan to choke off Iran's economy by threatening its business partners with secondary sanctions."
+   },
    {
     "title": "The Thai Town Hosting the USS Abraham Lincoln After a Grueling Deployment",
     "link": "https://www.wsj.com/world/the-thai-town-hosting-the-uss-abraham-lincoln-after-a-grueling-deployment-f66e1962?mod=rss_worldnews",
@@ -636,7 +649,21 @@
     "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE93UkFFTExla3dMSVo2YWwxUXl0ZllhV0dIbW0wWTdSMXktMHV1X2l4SnlZMmRFMXdSY2hqbm0tVGNNTmsxME5ncHp2aVdHRmhvd3Y0cUo2cnkwQQ?oc=5",
     "source": "BBC",
     "published": "2026-09-01T10:18:47+00:00",
-    "summary": "AI could cause global economic downturn, Andrew Bailey warns G20 BBC Advanced AI threatens the world’s financial system, watchdog says | CNN Business cnn.com AI-driven cyber risk is top concern for global financial stability…"
+    "summary": "AI could cause global economic downturn, Andrew Bailey warns G20 BBC Advanced AI threatens the world’s financial system, watchdog says | CNN Business CNN G20 Warned Of Growing Threat to Financial Stability Posed By New AI Models…"
+   },
+   {
+    "title": "U.S. and Iran Trade Strikes in Latest Fight for Control of Hormuz",
+    "link": "https://www.wsj.com/world/middle-east/iran-strikes-us-1d263f3f?mod=rss_worldnews",
+    "source": "WSJ World",
+    "published": "2026-09-02T00:20:00+00:00",
+    "summary": "President Trump said the operation was a response to Iran’s attempts to mine the strait and target American servicemembers in the Middle East."
+   },
+   {
+    "title": "Japan's benchmark bond yield rises to 3% for first time in 30 years",
+    "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxQTkpJbXp0djFzYkFEeHBOTDlQZ0pJZzZlakNKb3pQNlFhTEFLSGQwbTUyRTVRVWlNSlBpbUdDbkpRU0dIU0ZQZlVmci10eXRCMzZFN0xLMVZnSGpGTzFfSlpOWk8zUXJ2eTZWWno5YnNDTkducUkwWDlMQWZKVFVRdEVjM3U3N0hEMFV0YnN3blA0MWVDNDFkSFRMV3BJMk5qTVR4aks0R1ZncEtGdHBJ?oc=5",
+    "source": "Reuters",
+    "published": "2026-09-01T06:33:00+00:00",
+    "summary": "Japan's benchmark bond yield rises to 3% for first time in 30 years Reuters Japanese borrowing costs hit 30-year high as Bessent says Tokyo may intervene to boost yen CNBC Japan’s 10-year government bond hits 3% for first time in…"
    },
    {
     "title": "Apple Updates Maps to Show Lake America to U.S. Users",
@@ -646,13 +673,6 @@
     "summary": "The iPhone-maker has followed Google on its maps app after President Trump’s order to rename Lake Ontario."
    },
    {
-    "title": "U.S. Targets Iran in Fresh Wave of Strikes",
-    "link": "https://www.wsj.com/world/middle-east/iran-strikes-us-1d263f3f?mod=rss_worldnews",
-    "source": "WSJ World",
-    "published": "2026-09-01T21:36:00+00:00",
-    "summary": "President Trump said the operation was a response to Iran’s attempts to mine the Strait of Hormuz and its targeting of American servicemembers in the Middle East."
-   },
-   {
     "title": "Opinion | Germany Calls Out Putin’s ‘Hybrid’ War",
     "link": "https://www.wsj.com/opinion/germany-leipzig-airport-drone-russia-nato-iran-1df66c1e?mod=rss_worldnews",
     "source": "WSJ World",
@@ -660,25 +680,11 @@
     "summary": "The Interior Minister says Russia was behind a drone airport attack."
    },
    {
-    "title": "Opinion | The ‘Segal Issue’ and U.S.-Canada Trade",
-    "link": "https://www.wsj.com/opinion/the-segal-issue-and-u-s-canada-trade-fb28bc6f?mod=rss_worldnews",
-    "source": "WSJ World",
-    "published": "2026-09-01T21:07:00+00:00",
-    "summary": "My cousin’s men’s-suit factory and the Nafta negotiations."
-   },
-   {
-    "title": "Germany Blames Russia for Explosive Drones Sent to Leipzig Airport",
-    "link": "https://www.wsj.com/world/europe/germany-blames-russia-for-explosive-drones-sent-to-leipzig-airport-03599b93?mod=rss_worldnews",
-    "source": "WSJ World",
-    "published": "2026-09-01T18:05:00+00:00",
-    "summary": "In a rare move, Berlin said it would retaliate for the incident last month."
-   },
-   {
-    "title": "Opinion | Putin Is Testing NATO in a Roundabout Way",
-    "link": "https://www.wsj.com/opinion/putin-is-testing-nato-in-a-roundabout-way-a0b29353?mod=rss_worldnews",
-    "source": "WSJ World",
-    "published": "2026-09-01T16:08:00+00:00",
-    "summary": "Russia can’t afford a full-scale second front, but sabotage, threats to undersea cables and border incursions may all be on the table."
+    "title": "Fast-fashion giant Shein's shares fall after Hong Kong trading debut that spotlights its China roots",
+    "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxNa0N4dmZJbzMxeGhCLWkxRnFtR0tVV08tUFVUbzNoaUF4NFQwR1BoQ1pqeUZFTV9HTTNkaHZLN0tDTUYtRnc5RTlnalJMcXhtYzJNQXJHVDUzVkVyS08wNm9XZkFDSDJqbDlma1RVRE1fYW5rR25KUFdGN1Zqdy1GN2NLaGRNbDJrbFBLUWozVG1iSDA5azEwNHRBOW4?oc=5",
+    "source": "AP News",
+    "published": "2026-09-01T10:58:00+00:00",
+    "summary": "Fast-fashion giant Shein's shares fall after Hong Kong trading debut that spotlights its China roots AP News Shein Makes Ho-Hum Market Debut After Years of Geopolitical Drama WSJ Shein’s Lackluster Debut Shows a Fast-Fashion…"
    }
   ],
   "crypto": [
@@ -801,7 +807,7 @@
  "stats": {
   "feeds_total": 19,
   "feeds_failed": 1,
-  "items": 389,
+  "items": 381,
   "feed_errors": [],
   "market_errors": [
    [
