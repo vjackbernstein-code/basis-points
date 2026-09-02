@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-02T17:43:13.211441+00:00",
+ "generated_at": "2026-09-02T20:45:00.710556+00:00",
  "market": [
   {
    "label": "S&P 500",
@@ -149,13 +149,12 @@
    "label": "10-yr Treasury",
    "symbol": "DGS10",
    "kind": "yield",
-   "value": 47.5,
-   "prev": 47.300000000000004,
-   "value_txt": "4.75%",
-   "delta": 0.42283298097250677,
-   "delta_txt": "+2 bp",
+   "value": 47.9,
+   "prev": 47.5,
+   "value_txt": "4.79%",
+   "delta": 0.8421052631578918,
+   "delta_txt": "+4 bp",
    "spark": [
-    46.8,
     47.5,
     47.0,
     46.3,
@@ -177,9 +176,10 @@
     46.6,
     46.7,
     47.300000000000004,
-    47.5
+    47.5,
+    47.9
    ],
-   "asof": "Aug 31"
+   "asof": "Sep 1"
   },
   {
    "label": "Dollar (broad)",
@@ -292,11 +292,11 @@
    "label": "Bitcoin",
    "symbol": "bitcoin",
    "kind": "crypto",
-   "value": 77145.2584844655,
+   "value": 77349.87856392706,
    "prev": 77416.44110979848,
-   "value_txt": "$77,145",
-   "delta": -0.350290741146786,
-   "delta_txt": "-0.35%",
+   "value_txt": "$77,350",
+   "delta": -0.08597985765971303,
+   "delta_txt": "-0.09%",
    "spark": [
     63537.55988964766,
     63408.625697113624,
@@ -320,18 +320,18 @@
     77658.23133225394,
     78552.77932895812,
     77416.44110979848,
-    77145.2584844655
+    77349.87856392706
    ]
   },
   {
    "label": "Ethereum",
    "symbol": "ethereum",
    "kind": "crypto",
-   "value": 2384.2009854659896,
+   "value": 2391.274220163982,
    "prev": 2417.6758884733536,
-   "value_txt": "$2,384",
-   "delta": -1.3845901829505272,
-   "delta_txt": "-1.38%",
+   "value_txt": "$2,391",
+   "delta": -1.092026786354841,
+   "delta_txt": "-1.09%",
    "spark": [
     1880.4862005694617,
     1877.743530062547,
@@ -355,212 +355,191 @@
     2416.2418165172735,
     2466.565659094493,
     2417.6758884733536,
-    2384.2009854659896
+    2391.274220163982
    ]
   }
  ],
- "tape_line": "S&P 500 -0.71%, Nasdaq -1.03%, Dow -0.79%; the 10-year Treasury at 4.75% (+2 bp); WTI crude $91.48 (+5.11%); bitcoin $77,145 (-0.35%).",
+ "tape_line": "S&P 500 -0.71%, Nasdaq -1.03%, Dow -0.79%; the 10-year Treasury at 4.79% (+4 bp); WTI crude $91.48 (+5.11%); bitcoin $77,350 (-0.09%).",
  "themes": [
   {
+   "theme": "Rates & the Fed",
+   "count": 41
+  },
+  {
    "theme": "AI & tech",
-   "count": 37
+   "count": 38
   },
   {
    "theme": "Energy & commodities",
-   "count": 36
-  },
-  {
-   "theme": "Rates & the Fed",
-   "count": 35
+   "count": 34
   },
   {
    "theme": "Crypto",
-   "count": 35
-  },
-  {
-   "theme": "Inflation & prices",
-   "count": 18
+   "count": 30
   },
   {
    "theme": "Earnings & companies",
-   "count": 16
+   "count": 17
+  },
+  {
+   "theme": "Inflation & prices",
+   "count": 12
   },
   {
    "theme": "Trade & geopolitics",
-   "count": 15
+   "count": 12
   },
   {
    "theme": "Deals & IPOs",
-   "count": 9
+   "count": 7
   },
   {
    "theme": "Jobs & growth",
-   "count": 3
+   "count": 1
   },
   {
    "theme": "Housing",
-   "count": 3
+   "count": 1
   }
  ],
  "top": [
   {
-   "title": "Nvidia Leads Chip Stocks Higher Amid Renewed Confidence In AI Spending",
-   "link": "https://www.investors.com/news/technology/nvidia-stock-buy-point-chip-stocks-rally/?src=A00220&yptr=yahoo",
-   "source": "Investor's Business Daily",
-   "published": "2026-09-02T17:00:36+00:00",
-   "summary": ""
-  },
-  {
-   "title": "Bank of Canada mulls Trump tariff shock as it holds interest rates",
-   "link": "https://www.cnbc.com/2026/09/02/bank-canada-rate-decision-trump-tariffs.html",
+   "title": "Broadcom's stock drops 5% as weak guidance overshadows earnings beat",
+   "link": "https://www.cnbc.com/2026/09/02/broadcom-avgo-q3-earnings-report-2026.html",
    "source": "CNBC",
-   "published": "2026-09-02T14:15:58+00:00",
-   "summary": "The U.S.-Canada trade dispute and the descent into a retaliatory tariff blitz complicated the job for the Bank of Canada in its Wednesday decision."
+   "published": "2026-09-02T20:29:53+00:00",
+   "summary": "Broadcom gave a disappointing revenue forecast for the current quarter."
   },
   {
-   "title": "U.S. Crude Oil Stockpiles See Larger-Than-Expected Drop",
-   "link": "https://www.wsj.com/business/energy-oil/u-s-crude-oil-stockpiles-see-larger-than-expected-drop-ed60334e?mod=rss_markets_main",
+   "title": "Gold Futures Edge Up as Treasury Yields Ease",
+   "link": "https://www.wsj.com/finance/commodities-futures/gold-falls-weighed-by-mideast-conflict-stronger-dollar-5affb636?mod=rss_markets_main",
    "source": "WSJ Markets",
-   "published": "2026-09-02T15:47:00+00:00",
-   "summary": "Commercial crude oil stocks were down by 4.5 million barrels last week. Analysts had expected crude stocks to fall by 300,000 barrels."
+   "published": "2026-09-02T18:06:00+00:00",
+   "summary": "Gold futures snapped a three-session losing streak as Treasury yields eased. The market is closely watching for Friday’s employment report."
   },
   {
-   "title": "Palo Alto Networks beats quarterly estimates on AI demand, continues acquisition spree",
-   "link": "https://www.cnbc.com/2026/09/01/palo-alto-networks-panw-q4-2026-earnings.html",
-   "source": "CNBC",
-   "published": "2026-09-02T16:41:48+00:00",
-   "summary": "Palo Alto Networks' stock has nearly doubled this year as AI boosts demand for security detection and response tools"
-  },
-  {
-   "title": "U.S. Stocks Rise as Treasury Selloff Pauses",
+   "title": "U.S. Stocks Climb as Bond Yields Stay in Spotlight",
    "link": "https://www.wsj.com/finance/investing/oil-hovers-close-to-95-as-middle-east-conflict-further-pressures-bonds-877d8321?mod=rss_markets_main",
    "source": "WSJ Markets",
-   "published": "2026-09-02T16:20:00+00:00",
+   "published": "2026-09-02T18:46:00+00:00",
    "summary": "U.S. stocks rose while bond-market turmoil and war were top of mind for investors."
   },
   {
-   "title": "AIG’s Zaffino Stepping Down as Chairman, Joining Palantir",
-   "link": "https://www.wsj.com/business/c-suite/aigs-zaffino-stepping-down-as-chairman-joining-palantir-4ee5b7f6?mod=pls_whats_news_us_business_f",
-   "source": "WSJ Business",
-   "published": "2026-09-02T11:41:00+00:00",
-   "summary": "Peter Zaffino, who earlier this year retired as AIG’s chief executive, will join Palantir as global head of financial services."
+   "title": "Wall Street is nervous about a Fed rate hike, which looks more likely after a top official’s remarks",
+   "link": "https://www.marketwatch.com/story/feds-williams-is-opening-options-to-interest-rate-hikes-why-that-could-be-a-bad-trade-4ba6b32f?mod=mw_rss_topstories",
+   "source": "MarketWatch",
+   "published": "2026-09-02T17:44:00+00:00",
+   "summary": "Fed watchers say the upcoming jobs report and inflation data are key after seeing signs that Fed Chairman Kevin Warsh would be willing to see interest rates rise."
   },
   {
-   "title": "U.S. Says It’s Fed Up With China’s Overcapacity—and More Countries Agree",
-   "link": "https://www.wsj.com/world/china/u-s-says-its-fed-up-with-chinas-overcapacityand-more-countries-agree-ec6cc8e5?mod=rss_worldnews",
-   "source": "WSJ World",
-   "published": "2026-09-02T12:53:00+00:00",
-   "summary": "A G-20 statement implicitly criticizing Beijing for its overreliance on exports for growth marks a new stage in international pressure."
+   "title": "U.S. Stocks Rise as Oil Gains on Iran Escalation",
+   "link": "https://www.wsj.com/finance/stocks/u-s-stocks-rise-as-oil-gains-on-iran-escalation-aaf0672e?mod=rss_markets_main",
+   "source": "WSJ Markets",
+   "published": "2026-09-02T20:21:00+00:00",
+   "summary": "Stocks rose as a rally in Treasury yields stalled but equity and bond moves were muted as oil prices continued climbing due to clashes between Iran and the U.S."
+  },
+  {
+   "title": "HPE follows in Dell’s footsteps as it rides the AI server boom to a big earnings beat",
+   "link": "https://www.marketwatch.com/story/hpe-follows-in-dells-footsteps-as-it-rides-the-ai-server-boom-to-a-big-earnings-beat-ec46eaea?mod=mw_rss_topstories",
+   "source": "MarketWatch",
+   "published": "2026-09-02T20:42:00+00:00",
+   "summary": "Unlike Dell, HPE focuses on enterprise and sovereign customers, which one analyst noted have a better profit profile."
+  },
+  {
+   "title": "10-year U.S. Treasury yield hits highest level since November 2023",
+   "link": "https://www.cnbc.com/2026/09/02/bond-yields-treasurys-inflation.html",
+   "source": "CNBC",
+   "published": "2026-09-02T20:05:39+00:00",
+   "summary": "The 10-year Treasury note yield reached a fresh multiyear high on Wednesday as inflation and debt concerns pressured global government borrowing costs."
   }
  ],
  "columns": {
   "markets": [
    {
-    "title": "Demand for riskier mortgages rises along with interest rates",
-    "link": "https://www.cnbc.com/2026/09/02/demand-for-riskier-mortgages-rises-along-with-interest-rates.html",
-    "source": "CNBC",
-    "published": "2026-09-02T12:10:43+00:00",
-    "summary": "Mortgage rates continue to rise, pushing some buyers to riskier, adjustable-rate loans in order to find savings. Rates are at the highest level since June 2025."
+    "title": "U.S. Crude Oil Stockpiles See Larger-Than-Expected Drop",
+    "link": "https://www.wsj.com/business/energy-oil/u-s-crude-oil-stockpiles-see-larger-than-expected-drop-ed60334e?mod=rss_markets_main",
+    "source": "WSJ Markets",
+    "published": "2026-09-02T15:47:00+00:00",
+    "summary": "Commercial crude oil stocks were down by 4.5 million barrels last week. Analysts had expected crude stocks to fall by 300,000 barrels."
    },
    {
-    "title": "Fed’s Williams ‘is opening options’ to interest-rate hikes. Why that could be ‘a bad trade.’",
-    "link": "https://www.marketwatch.com/story/feds-williams-is-opening-options-to-interest-rate-hikes-why-that-could-be-a-bad-trade-4ba6b32f?mod=mw_rss_topstories",
+    "title": "Earnings Snapshot: Snowflake's AI bet pays off with a big EPS beat; higher FY outlook",
+    "link": "https://seekingalpha.com/news/4639746-earnings-snapshot-snowflakes-ai-bet-pays-off-with-a-big-eps-beat-higher-fy-outlook?utm_source=feed_news_all&utm_medium=referral&feed_item_type=news",
+    "source": "Seeking Alpha",
+    "published": "2026-09-02T20:41:00+00:00",
+    "summary": ""
+   },
+   {
+    "title": "Rising yields aren’t scaring off investors. Why money is still pouring into bond funds.",
+    "link": "https://www.marketwatch.com/story/rising-yields-arent-scaring-off-investors-why-money-is-still-pouring-into-bond-funds-a23e9e7c?mod=mw_rss_topstories",
     "source": "MarketWatch",
-    "published": "2026-09-02T15:38:00+00:00",
-    "summary": "Fed watchers say the upcoming jobs report and inflation data are key after seeing signs that Fed Chairman Kevin Warsh would be willing to see interest rates rise."
+    "published": "2026-09-02T19:22:00+00:00",
+    "summary": "The U.S. bond market has been under pressure amid a rise in Treasury yields, but money is still flowing into bond funds."
+   },
+   {
+    "title": "Here’s another way rising bond yields could take a bite out of Americans’ wallets",
+    "link": "https://www.marketwatch.com/story/heres-another-way-rising-bond-yields-could-take-a-bite-out-of-americans-wallets-b15a720c?mod=mw_rss_topstories",
+    "source": "MarketWatch",
+    "published": "2026-09-02T19:15:00+00:00",
+    "summary": "Rising yields are a threat to the “Magnificent Seven.” Here’s why that could hurt U.S. consumers."
+   },
+   {
+    "title": "Oil Futures Extend Gains on Renewed U.S.-Iran Strikes",
+    "link": "https://www.wsj.com/finance/commodities-futures/oil-rises-amid-growing-u-s-iran-hostilities-e12fa4f2?mod=rss_markets_main",
+    "source": "WSJ Markets",
+    "published": "2026-09-02T19:28:00+00:00",
+    "summary": "Oil futures rose for a third straight session as strikes between the U.S. and Iran raised concerns about further escalation and oil flows out of the Persian Gulf."
    },
    {
     "title": "We're starting positions in 2 more defensive stocks to balance our AI exposure",
     "link": "https://www.cnbc.com/2026/09/02/were-starting-positions-in-2-more-defensive-stocks-to-balance-our-ai-exposure.html",
     "source": "CNBC",
-    "published": "2026-09-02T16:19:02+00:00",
+    "published": "2026-09-02T17:59:24+00:00",
     "summary": "We're adding a couple of new positions to the portfolio following Tuesday's exit of a data center name."
    },
    {
-    "title": "Chevron to double Venezuela oil production with $7bn pledge",
-    "link": "https://www.ft.com/content/a76721db-36e1-4198-aad8-8c90137aace9?syn-25a6b1a6=1",
-    "source": "Financial Times",
-    "published": "2026-09-02T17:17:20+00:00",
-    "summary": "US major commits to expand its joint ventures as White House pushes for huge increase in production in the country"
-   },
-   {
-    "title": "AI spots cyber gaps faster than financial firms can fix them",
-    "link": "https://www.ft.com/content/c4f84da3-bfc6-49a0-90bd-9a1611864ac4?syn-25a6b1a6=1",
-    "source": "Financial Times",
-    "published": "2026-09-02T16:25:45+00:00",
-    "summary": "UK regulator says companies risk being overwhelmed by frontier models’ findings"
-   },
-   {
-    "title": "Nexperia, Aurobay in EV chip talks; China freezes assets",
-    "link": "https://finance.yahoo.com/technology/articles/nexperia-aurobay-ev-chip-talks-172855572.html",
-    "source": "Just Auto",
-    "published": "2026-09-02T17:28:55+00:00",
+    "title": "YieldMax SMCI Option Income Strategy ETF declares $0.095 dividend",
+    "link": "https://seekingalpha.com/news/4639750-yieldmax-smci-option-income-strategy-etf-declares-0_095-dividend?utm_source=feed_news_all&utm_medium=referral&feed_item_type=news",
+    "source": "Seeking Alpha",
+    "published": "2026-09-02T20:43:13+00:00",
     "summary": ""
    },
    {
-    "title": "In Surprise Twist, California Lawmakers Fail to Pass Watered-Down Wildfire Bill",
-    "link": "https://www.wsj.com/politics/policy/in-surprise-twist-california-lawmakers-fail-to-pass-watered-down-wildfire-bill-f54df9bc?mod=rss_markets_main",
-    "source": "WSJ Markets",
-    "published": "2026-09-02T15:48:00+00:00",
-    "summary": "The debate over who pays for damage from fires, including utilities linked to major blazes, remains unresolved."
-   },
-   {
-    "title": "New York Fed's Williams says yield surge due to strong economic prospects",
-    "link": "https://www.cnbc.com/2026/09/02/new-york-feds-williams-says-yield-surge-due-to-strong-economic-prospects.html",
-    "source": "CNBC",
-    "published": "2026-09-02T17:21:59+00:00",
-    "summary": "New York Fed President John Williams said higher Treasury yields reflect a strong economy as he weighs whether another interest rate hike is needed."
+    "title": "YieldMax RDDT Option Income Strategy ETF declares $0.2009 dividend",
+    "link": "https://seekingalpha.com/news/4639749-yieldmax-rddt-option-income-strategy-etf-declares-0_2009-dividend?utm_source=feed_news_all&utm_medium=referral&feed_item_type=news",
+    "source": "Seeking Alpha",
+    "published": "2026-09-02T20:42:18+00:00",
+    "summary": ""
    }
   ],
   "economy": [
    {
-    "title": "10-year U.S. Treasury yield hits highest level since November 2023",
-    "link": "https://www.cnbc.com/2026/09/02/bond-yields-treasurys-inflation.html",
+    "title": "Bank of Canada mulls Trump tariff shock as it holds interest rates",
+    "link": "https://www.cnbc.com/2026/09/02/bank-canada-rate-decision-trump-tariffs.html",
     "source": "CNBC",
-    "published": "2026-09-02T15:42:43+00:00",
-    "summary": "Treasury yields continued to climb on Wednesday as inflation fears stoked a global rise in borrowing costs."
+    "published": "2026-09-02T14:15:58+00:00",
+    "summary": "The U.S.-Canada trade dispute and the descent into a retaliatory tariff blitz complicated the job for the Bank of Canada in its Wednesday decision."
    },
    {
     "title": "Private payrolls rose by 38,000 in August, less than expected, ADP reports",
     "link": "https://www.cnbc.com/2026/09/02/private-payrolls-rose-by-38000-in-august-fewer-than-expected-adp-reports.html",
-    "source": "CNBC",
+    "source": "CNBC Economy",
     "published": "2026-09-02T14:30:10+00:00",
     "summary": "Though job creation held positive, August was the smallest gain since January and reflective of a broader slowdown in the labor market."
    },
    {
-    "title": "Breman Speech: RBNZ Governor sheds light on policy outlook after interest rate hike",
-    "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxOcTVhMGl2anZaakJTaVY2cUZSUk9wcTA5UERZN1VkVnN4cmJ3VjV3TjdPX3dfd1JsNnBWWlVYbm10TGJ3WU1tUUtjbTIxSnUyZlZtM0EyRF9mNFQ2MHh3VUlNXy1IdkFNejZ6LW0zS25oRjdqcWp6TkhNdUd1TUtmcTlQbFF6NVNG?oc=5",
-    "source": "FXStreet",
-    "published": "2026-09-02T03:41:35+00:00",
-    "summary": "Breman Speech: RBNZ Governor sheds light on policy outlook after interest rate hike FXStreet Chance of a ‘Halloween Hike’ just before election lower, but not gone thepost.co.nz Kiwi Dollar Selloff Outran the Rate Repricing That…"
+    "title": "Will the Fed raise rates in September?",
+    "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTE1LOWNwVWF3VjdzLWJGaC15Uzh6emM5NjNDNlZHNk5ha3FHSHFaTmFSc25qQUNveUEwLUwxNWJBTUlNNFRmeWU1dldjNUhZcDhCRlozWm9SRmE3ZTY5THRabms4REZxWFN6UXF3VS1DVmJGQWs2aktHZzR4TmdFTTA?oc=5",
+    "source": "investingLive",
+    "published": "2026-09-02T12:21:45+00:00",
+    "summary": "Will the Fed raise rates in September? investingLive Impax Says Fed’s September Rate Decision Is Too Close to Call, Sees Treasury Volatility Around Data bloomingbit"
    },
    {
-    "title": "Chicago Fed’s Austan Goolsbee wants to get back to ‘old-school’ economics: Focused on ordinary Americans, mindful of AI hype, and sharp on inflation",
-    "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxOSF9jTzFkYVE2QUtJdlF0ZnE0elYyZlBYc21mekV5R2xXUHhzRThXb3NYVWVIZXNLNi1TQmNQMm1aR0c1dGVIZTc3N3YzcVdqblMwTms5RjFmY0dSWUkzNWV2bEZSU2lqTjNGUFkzWWk0QVFkWlZ6cEtWaVpScXIxeXA4X0xHNVRQNXR2OG93?oc=5",
-    "source": "Fortune",
-    "published": "2026-09-02T07:00:00+00:00",
-    "summary": "Chicago Fed’s Austan Goolsbee wants to get back to ‘old-school’ economics: Focused on ordinary Americans, mindful of AI hype, and sharp on inflation Fortune Goolsbee echoes Warsh, flags persistent demand-led inflation as Fed…"
-   },
-   {
-    "title": "Warsh's Jackson Hole encore may put Trump's inflation record under a microscope",
-    "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxQV05VMTJPOWRaTHlGbWIwX0R6eGVKM1l1ZXdoRzh6dnJ2UzBZVjJNNkppLS1MTEZhOEJZY3BNeWt2N2cyXzRSeTJJTUM1RkdQUG1faExLNlBZVDg1eDJNUjFJSXBsdHZVcEQ1YzhIZUdRRTF3YW5RYzQ3QlQ0N1FLQ3A4b1hzb2R5RzBIZEVEUi1VTklFc0FoTHJJdw?oc=5",
-    "source": "Yahoo Finance",
-    "published": "2026-09-02T10:31:11+00:00",
-    "summary": "Warsh's Jackson Hole encore may put Trump's inflation record under a microscope Yahoo Finance See more headlines & perspectives on Google News"
-   },
-   {
-    "title": "Dutch central bank shifts billions in gold to London in ‘crisis preparedness’ move",
-    "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQVlY5Z2ZjMl9EeUlFeHBPSy0zWVZoTHlVTHBXVTZTRjRoalp4U0tzRUo5RUpyNG9CemRuX256NE5odjBxeWtKVWExTGQ5RllYNW9hNkIycGx1ZHY3bkRrd1J6SUZjTk96bGtJVnZnOXN0dno5REhDVjlIQVBVSzJ1NVdNVnJrNkN1dXVfWnBn?oc=5",
-    "source": "AP News",
-    "published": "2026-09-02T14:43:00+00:00",
-    "summary": "Dutch central bank shifts billions in gold to London in ‘crisis preparedness’ move AP News Dutch central bank moves €10 billion in gold out of U.S., Canada, citing \"instability\" NL Times Netherlands moves 86 tonnes of gold from…"
-   },
-   {
-    "title": "Gold Price Continues Fall As Expectations Of An Interest Rate Hike Grow",
-    "link": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxPc1hRWnFRT0hkdjJSUzBfNDF5YzNiMW9FM2gyYlJNV0M3am5ZUUVFZVN6N19aRWJVYS12Y1d3VlVrWVpOckQzYXdEcTlsM2d2WkhpclhQazg2ZkZyRlpBbTU5Tk1CelhsMTRQc004ZGoycFAteHBQY1dmX3BFOHhoMDlmWTh3TF9tQ0xqV18tb0VpMHpqelM2dWFPZEJvSEgteFdDbE1UT3Y3Y1VuTDZGVmdNVWdSWG96ai1sV1FEUm5MQQ?oc=5",
-    "source": "Forbes",
-    "published": "2026-09-01T15:16:57+00:00",
-    "summary": "Gold Price Continues Fall As Expectations Of An Interest Rate Hike Grow Forbes Gold falls to two-week low as rising Treasury yields, dollar weigh reuters.com Gold Stabilizes as Markets Reassess Fed Rate Outlook TradingView Gold…"
+    "title": "Central banking has a forbidding future",
+    "link": "https://www.economist.com/finance-and-economics/2026/09/02/central-banking-has-a-forbidding-future",
+    "source": "The Economist",
+    "published": "2026-09-02T19:47:06+00:00",
+    "summary": "But Kevin Warsh has bought himself time"
    },
    {
     "title": "IPO booms can spell trouble for the markets",
@@ -568,9 +547,58 @@
     "source": "The Economist",
     "published": "2026-09-01T19:03:06+00:00",
     "summary": "Companies go public in good times that may not last"
+   },
+   {
+    "title": "Euro zone inflation is back above 3%. Higher interest rates are likely to follow",
+    "link": "https://www.cnbc.com/2026/09/01/euro-zone-inflation-rate-hike.html",
+    "source": "CNBC Economy",
+    "published": "2026-09-01T10:50:27+00:00",
+    "summary": "The European Central Bank is seen hiking rates in September as the Iran war raises energy costs in the region."
+   },
+   {
+    "title": "Europe’s bond markets are suffering a post-holiday shock",
+    "link": "https://www.economist.com/finance-and-economics/2026/09/01/europes-bond-markets-are-suffering-a-post-holiday-shock",
+    "source": "The Economist",
+    "published": "2026-09-01T21:58:14+00:00",
+    "summary": "Reasons for rising yields differ somewhat from those in America, but are no less problematic"
    }
   ],
   "companies": [
+   {
+    "title": "AI trade faces test with next week's Oracle earnings",
+    "link": "https://www.cnbc.com/2026/09/02/ai-trade-faces-test-with-next-weeks-oracle-earnings.html",
+    "source": "CNBC",
+    "published": "2026-09-02T17:57:04+00:00",
+    "summary": "How Michael Khouw is playing ORCL ahead of earnings."
+   },
+   {
+    "title": "Investors Still on Edge Over War, Debt and Inflation",
+    "link": "https://www.nytimes.com/2026/09/02/business/oil-bond-yields-iran.html",
+    "source": "NYT Business",
+    "published": "2026-09-02T20:17:54+00:00",
+    "summary": "U.S. and Iranian forces traded attacks again, pushing oil prices higher, stocks lower and making bond investors nervous."
+   },
+   {
+    "title": "Palo Alto Networks beats quarterly estimates on AI demand, continues acquisition spree",
+    "link": "https://www.cnbc.com/2026/09/01/palo-alto-networks-panw-q4-2026-earnings.html",
+    "source": "CNBC Earnings",
+    "published": "2026-09-02T16:41:48+00:00",
+    "summary": "Palo Alto Networks' stock has nearly doubled this year as AI boosts demand for security detection and response tools"
+   },
+   {
+    "title": "HPE Boosts Outlook as AI Demand Drives Surge in Third-Quarter Profit",
+    "link": "https://www.wsj.com/business/earnings/hpe-boosts-outlook-as-ai-demand-drives-surge-in-third-quarter-profit-2ba3b90a?mod=pls_whats_news_us_business_f",
+    "source": "WSJ Business",
+    "published": "2026-09-02T20:19:00+00:00",
+    "summary": "HPE lifted its long-term growth targets after revenue gains across both of its segments drove a more than fivefold increase in its profit during the third quarter."
+   },
+   {
+    "title": "AIG’s Zaffino Stepping Down as Chairman, Joining Palantir",
+    "link": "https://www.wsj.com/business/c-suite/aigs-zaffino-stepping-down-as-chairman-joining-palantir-4ee5b7f6?mod=pls_whats_news_us_business_f",
+    "source": "WSJ Business",
+    "published": "2026-09-02T11:41:00+00:00",
+    "summary": "Peter Zaffino, who earlier this year retired as AIG’s chief executive, will join Palantir as global head of financial services."
+   },
    {
     "title": "Opinion | Aluminum Tariffs Harm U.S. Manufacturers",
     "link": "https://www.wsj.com/opinion/aluminum-tariffs-harm-u-s-manufacturers-04803203?mod=pls_whats_news_us_business_f",
@@ -579,56 +607,28 @@
     "summary": "Current tariffs punish recyclers and U.S. companies that make aluminum-based products while failing to revive domestic smelting."
    },
    {
-    "title": "Investors Still on Edge Over War, Debt and Inflation",
-    "link": "https://www.nytimes.com/2026/09/02/business/oil-bond-yields-iran.html",
-    "source": "NYT Business",
-    "published": "2026-09-02T15:59:04+00:00",
-    "summary": "U.S. and Iranian forces traded attacks again, pushing oil prices higher, stocks lower and making bond investors nervous."
-   },
-   {
-    "title": "Treasury Yields Hit New Highs as World Leaders Squabble at Fractured G-20",
-    "link": "https://www.wsj.com/world/treasury-yields-hit-new-highs-as-world-leaders-squabble-at-fractured-g-20-bfad9027?mod=pls_whats_news_us_business_f",
+    "title": "U.S. Government Backs OpenAI in Copyright Fight With Publishers",
+    "link": "https://www.wsj.com/tech/ai/u-s-government-backs-openai-in-copyright-fight-with-publishers-64a0735b?mod=pls_whats_news_us_business_f",
     "source": "WSJ Business",
-    "published": "2026-09-02T09:56:00+00:00",
-    "summary": "Plus, Volkswagen fights its own board in a battle to survive, and wartime “coffin money” transforms Russia’s poorest regions."
+    "published": "2026-09-02T19:01:00+00:00",
+    "summary": "Trump administration officials said in a court filing that limiting AI companies’ ability to train on content creates national security concerns."
    },
    {
-    "title": "Two More Oil Tankers Are Attacked in the Strait of Hormuz",
-    "link": "https://www.nytimes.com/2026/09/01/business/ships-oil-hormuz-iran-war.html",
-    "source": "NYT Business",
-    "published": "2026-09-02T16:48:43+00:00",
-    "summary": "The ships were hit near Oman on Monday, the latest attacks on vessels in the Persian Gulf. Oil prices rose more than 2 percent."
-   },
-   {
-    "title": "Brown-Forman Quarterly Sales Slip on Tequila Slowdown",
-    "link": "https://www.wsj.com/business/earnings/brown-forman-quarterly-sales-slip-on-tequila-slowdown-423add0b?mod=pls_whats_news_us_business_f",
-    "source": "WSJ Business",
-    "published": "2026-09-02T13:20:00+00:00",
-    "summary": "The whiskey giant’s earnings per share outpace analysts’ expectations; the company has contended with sluggish spirits market."
-   },
-   {
-    "title": "Chevron Expansion in Venezuela Extends U.S. Influence Over Oil Riches",
-    "link": "https://www.nytimes.com/2026/09/02/business/energy-environment/chevron-venezuela-oil-trump.html",
-    "source": "NYT Business",
-    "published": "2026-09-02T16:20:36+00:00",
-    "summary": "The U.S. energy giant, which stayed in the country after other Western companies left, will invest $7 billion in the country to more than double its production there."
-   },
-   {
-    "title": "Trucking Crackdown Accelerates in U.S.",
-    "link": "https://www.wsj.com/logistics-report/trucking-crackdown-accelerates-in-u-s-5cb8b9d7?mod=pls_whats_news_us_business_f",
-    "source": "WSJ Business",
-    "published": "2026-09-02T11:10:00+00:00",
-    "summary": "Plus: Retailers report higher sales heading into fall; Shein goes public"
-   },
-   {
-    "title": "How Brunswick Is Using AI and Marine Cruise Control to Raise Prices on Boats",
-    "link": "https://www.wsj.com/cfo-journal/how-brunswick-is-using-ai-and-marine-cruise-control-to-raise-prices-on-boats-3dd936c0?mod=pls_whats_news_us_business_f",
-    "source": "WSJ Business",
-    "published": "2026-09-02T11:00:00+00:00",
-    "summary": "Plus, borrowing costs soar to their highest levels in decades."
+    "title": "Dell Stock Soars on Blowout Q2 Earnings and Raised Guidance",
+    "link": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxPWWZURGpJQlVGREdtWkYwR2ZoZEctSVBMMHo0bjQtUi1LeklwNVFWb3BvWUlpN0IyTnVRS0JDVjRPa2kwSkhpY3A4RGdWa2pmOTNtZ1JLcmpaRDl0aEdpeUw1WlNmLWN0V0FPOEJTVzhldTBLNmRBTk5DSU9DUG1zOEZOa0w0VEF4dGNB?oc=5",
+    "source": "Barron's",
+    "published": "2026-09-02T18:50:00+00:00",
+    "summary": "Dell Stock Soars on Blowout Q2 Earnings and Raised Guidance Barron's DELL Q2 Earnings Beat Estimates, Strong AI Demand Aids Revenue Growth Yahoo Finance CEO Michael Dell Just Delivered Fantastic News for Dell Shareholders The…"
    }
   ],
   "global": [
+   {
+    "title": "U.S. Says It’s Fed Up With China’s Overcapacity—and More Countries Agree",
+    "link": "https://www.wsj.com/world/china/u-s-says-its-fed-up-with-chinas-overcapacityand-more-countries-agree-ec6cc8e5?mod=rss_worldnews",
+    "source": "WSJ World",
+    "published": "2026-09-02T12:53:00+00:00",
+    "summary": "A G-20 statement implicitly criticizing Beijing for its overreliance on exports for growth marks a new stage in international pressure."
+   },
    {
     "title": "China’s Xi Bolsters Mideast Ties With Egypt Visit Ahead of Planned U.S. Trip",
     "link": "https://www.wsj.com/world/chinas-xi-bolsters-mideast-ties-with-egypt-visit-ahead-of-planned-u-s-trip-1a756323?mod=rss_worldnews",
@@ -651,25 +651,11 @@
     "summary": "China has spent years building a relationship with Nepal. Now Beijing is under pressure to show its embrace can help its neighbor, too."
    },
    {
-    "title": "Berkshire CEO Greg Abel says Japanese bond yields not a challenge for trading houses right now",
-    "link": "https://www.cnbc.com/2026/09/02/berkshire-ceo-says-japanese-bond-yields-not-a-challenge-for-trading-houses.html",
-    "source": "CNBC",
-    "published": "2026-09-02T11:09:15+00:00",
-    "summary": "In an appearance on CNBC's \"Squawk Box,\" Greg Abel said that yields in the country are still relatively low."
-   },
-   {
     "title": "Best High-Yield Savings Accounts for September 2026: Up to 4.50%",
     "link": "https://www.wsj.com/buyside/personal-finance/banking/best-high-yield-savings-account?mod=rss_worldnews",
     "source": "WSJ World",
     "published": "2026-09-02T13:46:00+00:00",
     "summary": "Beat average interest rates with one of the top high-yield savings accounts."
-   },
-   {
-    "title": "China's Xi keeps Iranian president at arm's length weeks ahead of Trump summit",
-    "link": "https://www.cnbc.com/2026/09/02/china-trump-iran-summit-nuclear-trade-tariffs-sanctions-.html",
-    "source": "CNBC",
-    "published": "2026-09-02T07:26:51+00:00",
-    "summary": "China's Xi gave Iran's Pezeshkian a brief, low-profile audience at the SCO summit, as Beijing seeks to avoid appearing close to Tehran ahead of a high-stakes summit with Trump."
    },
    {
     "title": "G-20 Squabbling Overshadows Summit as Global Bond Markets Strain",
@@ -679,11 +665,18 @@
     "summary": "The finance ministers’ gathering comes to a close amid a global bond-market selloff, spats over tariffs and public insults."
    },
    {
-    "title": "Opinion | The Navy’s Overstretched Carrier Fleet",
-    "link": "https://www.wsj.com/opinion/the-navys-overstretched-carrier-fleet-0e05fe12?mod=rss_worldnews",
+    "title": "After 286 Days at Sea, 5,000 Sailors on the USS Abraham Lincoln Get a Break in Thailand",
+    "link": "https://www.wsj.com/world/after-286-days-at-sea-5-000-sailors-on-the-uss-abraham-lincoln-dock-in-thailand-0a955b3d?mod=rss_worldnews",
     "source": "WSJ World",
-    "published": "2026-09-02T16:40:00+00:00",
-    "summary": "Underinvestment has led to long deployments, a pilot shortage and strains on ship maintenance."
+    "published": "2026-09-02T18:15:00+00:00",
+    "summary": "A beach resort town in eastern Thailand welcomed crew members who are enjoying their first R&R after months deployed in a war zone."
+   },
+   {
+    "title": "Russia Is Testing NATO’s Ability to Hold Back From a Hot War",
+    "link": "https://www.wsj.com/world/europe/russia-is-testing-natos-ability-to-hold-back-from-a-hot-war-6ef687db?mod=rss_worldnews",
+    "source": "WSJ World",
+    "published": "2026-09-02T18:03:00+00:00",
+    "summary": "A string of gray-zone attacks orchestrated by Moscow is tempting the alliance’s European members to escalate."
    }
   ],
   "crypto": [
@@ -693,6 +686,13 @@
     "source": "CoinDesk",
     "published": "2026-09-02T11:14:58+00:00",
     "summary": "Your day-ahead look for Sept. 2, 2026"
+   },
+   {
+    "title": "Kraken parent Payward delays IPO to second quarter of 2027 at earliest",
+    "link": "https://www.coindesk.com/business/2026/09/02/kraken-parent-payward-pushes-ipo-back-to-mid-2027-at-earliest",
+    "source": "CoinDesk",
+    "published": "2026-09-02T20:08:34+00:00",
+    "summary": "The crypto exchange operator, which confidentially filed for a U.S. listing last November, had already put its IPO plans on hold amid difficult market conditions."
    },
    {
     "title": "Bitcoin withstands $90 oil and rising yields while gold slides. A firm dollar is the catch",
@@ -735,21 +735,71 @@
     "source": "CoinDesk",
     "published": "2026-09-02T17:39:00+00:00",
     "summary": "Adding Massachusetts incumbent Auchincloss to the list of winning primary candidates Fairshake supported, the industry's influence moves on to November."
-   },
-   {
-    "title": "Crypto industry urges SEC to avoid blanket novel ETF restrictions",
-    "link": "https://cointelegraph.com/news/crypto-industry-sec-novel-etf-restrictions?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
-    "source": "Cointelegraph",
-    "published": "2026-09-02T09:48:49+00:00",
-    "summary": "Grayscale, a16z, and the CCI asked the SEC to preserve existing classification rules and avoid treating novel exchange-traded products as a single category, while proposing different routes to clearer and faster reviews."
    }
   ]
  },
- "filings": [],
+ "filings": [
+  {
+   "title": "8-K - HORNBECK OFFSHORE SERVICES, INC. (Filer)",
+   "link": "https://www.sec.gov/Archives/edgar/data/866829/000119312526380348/0001193125-26-380348-index.htm",
+   "source": "SEC EDGAR",
+   "published": "2026-09-02T20:43:03+00:00",
+   "summary": "Filed: 2026-09-02 AccNo: 0001193125-26-380348 Size: 150 KB Item 4.01: Changes in Registrant's Certifying Accountant Item 9.01: Financial Statements and Exhibits"
+  },
+  {
+   "title": "8-K - Jefferies Credit Partners BDC Inc. (Filer)",
+   "link": "https://www.sec.gov/Archives/edgar/data/1959604/000119312526380336/0001193125-26-380336-index.htm",
+   "source": "SEC EDGAR",
+   "published": "2026-09-02T20:40:31+00:00",
+   "summary": "Filed: 2026-09-02 AccNo: 0001193125-26-380336 Size: 170 KB Item 8.01: Other Events"
+  },
+  {
+   "title": "8-K - CAL-MAINE FOODS INC (Filer)",
+   "link": "https://www.sec.gov/Archives/edgar/data/16160/000156276226000102/0001562762-26-000102-index.htm",
+   "source": "SEC EDGAR",
+   "published": "2026-09-02T20:40:00+00:00",
+   "summary": "Filed: 2026-09-02 AccNo: 0001562762-26-000102 Size: 3 MB Item 1.01: Entry into a Material Definitive Agreement Item 2.03: Creation of a Direct Financial Obligation or an Obligation under an Off-Balance Sheet Arrangement of a…"
+  },
+  {
+   "title": "8-K - Senior Credit Investments, LLC (Filer)",
+   "link": "https://www.sec.gov/Archives/edgar/data/1959568/000119312526380323/0001193125-26-380323-index.htm",
+   "source": "SEC EDGAR",
+   "published": "2026-09-02T20:38:08+00:00",
+   "summary": "Filed: 2026-09-02 AccNo: 0001193125-26-380323 Size: 153 KB Item 8.01: Other Events"
+  },
+  {
+   "title": "8-K - PENNANTPARK INVESTMENT CORP (Filer)",
+   "link": "https://www.sec.gov/Archives/edgar/data/1383414/000117184326005855/0001171843-26-005855-index.htm",
+   "source": "SEC EDGAR",
+   "published": "2026-09-02T20:35:48+00:00",
+   "summary": "Filed: 2026-09-02 AccNo: 0001171843-26-005855 Size: 225 KB Item 7.01: Regulation FD Disclosure Item 9.01: Financial Statements and Exhibits"
+  },
+  {
+   "title": "8-K - TXNM ENERGY INC (Filer)",
+   "link": "https://www.sec.gov/Archives/edgar/data/1108426/000110842626000058/0001108426-26-000058-index.htm",
+   "source": "SEC EDGAR",
+   "published": "2026-09-02T20:35:01+00:00",
+   "summary": "Filed: 2026-09-02 AccNo: 0001108426-26-000058 Size: 606 KB Item 7.01: Regulation FD Disclosure Item 8.01: Other Events Item 9.01: Financial Statements and Exhibits"
+  },
+  {
+   "title": "8-K - Jefferies Credit Partners BDC Inc. (Filer)",
+   "link": "https://www.sec.gov/Archives/edgar/data/1959604/000119312526380302/0001193125-26-380302-index.htm",
+   "source": "SEC EDGAR",
+   "published": "2026-09-02T20:33:52+00:00",
+   "summary": "Filed: 2026-09-02 AccNo: 0001193125-26-380302 Size: 174 KB Item 3.02: Unregistered Sales of Equity Securities"
+  },
+  {
+   "title": "8-K - Venture Global, Inc. (Filer)",
+   "link": "https://www.sec.gov/Archives/edgar/data/2007855/000200785526000066/0002007855-26-000066-index.htm",
+   "source": "SEC EDGAR",
+   "published": "2026-09-02T20:33:24+00:00",
+   "summary": "Filed: 2026-09-02 AccNo: 0002007855-26-000066 Size: 203 KB Item 1.01: Entry into a Material Definitive Agreement Item 2.03: Creation of a Direct Financial Obligation or an Obligation under an Off-Balance Sheet Arrangement of a…"
+  }
+ ],
  "stats": {
   "feeds_total": 19,
   "feeds_failed": 1,
-  "items": 374,
+  "items": 372,
   "feed_errors": [],
   "market_errors": [
    [
