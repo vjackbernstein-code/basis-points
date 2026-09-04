@@ -10,6 +10,7 @@ website — no accounts, no API keys, no installed packages required.
 | File | What it is |
 |---|---|
 | `site/index.html` | The live dashboard: market tiles with 1-month trends, "The Brief" (top stories + commentary), and topic columns |
+| `site/smallcap.html` | The small-cap growth screen: ranked top-25 (transparent composite score), movers, earnings this week, news mentions |
 | `site/archive/YYYY-MM-DD.html` | A daily snapshot of the brief |
 | `site/archive/index.html` | Archive listing |
 | `site/artifact.html` | Same page formatted for claude.ai Artifact publishing |
@@ -73,13 +74,33 @@ launchctl unload ~/Library/LaunchAgents/com.basispoints.update.plist && rm ~/Lib
 
 Logs go to `data/launchd.log`.
 
+## Small-cap growth screen (`smallcap.py`)
+
+Universe from the SEC's public company list (keyless); size, revenue growth,
+momentum, and liquidity measures from Finnhub. Eligibility: market cap
+$300M–$2B, listed exchange (no OTC), price ≥ $2, 10-day average volume ≥ 50k
+shares. Composite score: 40% trailing-12-month revenue growth + 40% 13-week
+momentum + 20% proximity to 52-week high, each percentile-ranked within the
+eligible set. The free tier allows 60 calls/minute, so each run spends a
+~110-call budget and the scorecard (`data/smallcap.json`, committed between
+cloud runs) fills over the first day or two, then stays fresh on rolling
+updates.
+
+## API keys (both optional; features light up when present)
+
+| Key | Enables | Cloud (GitHub secret name) | Local file |
+|---|---|---|---|
+| Finnhub | small-cap scorecard, earnings calendar | `FINNHUB_API_KEY` | `data/finnhub.key` |
+| FRED | economic calendar | `FRED_API_KEY` | `data/fred.key` |
+
+Local key files are git-ignored and contain only the raw key text.
+
 ## Roadmap ideas
 
-- Economic calendar (needs a free FRED API key)
-- Earnings calendar & notable movers (needs a free Finnhub/Alpha Vantage key)
 - Email delivery of the daily brief (needs a Buttondown/Mailchimp account)
 - Sector heatmap, yield-curve panel, fear/greed gauge
 - Claude-written "The take" on a schedule (scheduled Claude Code task)
+- Junk-filter for Google News local-news strays
 
 ## Disclaimer
 
