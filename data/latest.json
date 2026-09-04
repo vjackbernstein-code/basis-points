@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-04T13:16:58.931664+00:00",
+ "generated_at": "2026-09-04T16:58:08.127722+00:00",
  "market": [
   {
    "label": "S&P 500",
@@ -113,13 +113,12 @@
    "label": "VIX",
    "symbol": "VIXCLS",
    "kind": "level",
-   "value": 15.2,
-   "prev": 16.34,
-   "value_txt": "15.20",
-   "delta": -6.976744186046516,
-   "delta_txt": "-6.98%",
+   "value": 14.32,
+   "prev": 15.2,
+   "value_txt": "14.32",
+   "delta": -5.78947368421052,
+   "delta_txt": "-5.79%",
    "spark": [
-    15.86,
     16.5,
     15.81,
     15.15,
@@ -141,9 +140,10 @@
     14.43,
     14.92,
     16.34,
-    15.2
+    15.2,
+    14.32
    ],
-   "asof": "Sep 2"
+   "asof": "Sep 3"
   },
   {
    "label": "10-yr Treasury",
@@ -257,13 +257,12 @@
    "label": "EUR/USD",
    "symbol": "EURUSD",
    "kind": "fx",
-   "value": 1.1615,
-   "prev": 1.1578,
-   "value_txt": "1.1615",
-   "delta": 0.31957160131283785,
-   "delta_txt": "+0.32%",
+   "value": 1.1622,
+   "prev": 1.1615,
+   "value_txt": "1.1622",
+   "delta": 0.06026689625483624,
+   "delta_txt": "+0.06%",
    "spark": [
-    1.1515,
     1.1554,
     1.1542,
     1.1535,
@@ -285,19 +284,19 @@
     1.1596,
     1.159,
     1.1578,
-    1.1615
-   ],
-   "asof": "Sep 3"
+    1.1615,
+    1.1622
+   ]
   },
   {
    "label": "Bitcoin",
    "symbol": "bitcoin",
    "kind": "crypto",
-   "value": 79220.93809443784,
+   "value": 79800.36129383295,
    "prev": 81264.70153038795,
-   "value_txt": "$79,221",
-   "delta": -2.514946092782817,
-   "delta_txt": "-2.51%",
+   "value_txt": "$79,800",
+   "delta": -1.8019388602657047,
+   "delta_txt": "-1.80%",
    "spark": [
     63429.17906286841,
     62984.28959582886,
@@ -321,18 +320,18 @@
     77416.44110979848,
     77297.13347191992,
     81264.70153038795,
-    79220.93809443784
+    79800.36129383295
    ]
   },
   {
    "label": "Ethereum",
    "symbol": "ethereum",
    "kind": "crypto",
-   "value": 2445.4327752194754,
+   "value": 2462.279195316781,
    "prev": 2507.6482840896088,
-   "value_txt": "$2,445",
-   "delta": -2.4810301055724184,
-   "delta_txt": "-2.48%",
+   "value_txt": "$2,462",
+   "delta": -1.809228553329545,
+   "delta_txt": "-1.81%",
    "spark": [
     1884.3941576877892,
     1880.3285280890423,
@@ -356,170 +355,184 @@
     2417.6758884733536,
     2390.783044679688,
     2507.6482840896088,
-    2445.4327752194754
+    2462.279195316781
    ]
   }
  ],
- "tape_line": "S&P 500 +1.06%, Nasdaq +1.40%, Dow +1.18%; the 10-year Treasury at 4.79% (+0 bp); WTI crude $91.48 (+5.11%); bitcoin $79,221 (-2.51%).",
+ "tape_line": "S&P 500 +1.06%, Nasdaq +1.40%, Dow +1.18%; the 10-year Treasury at 4.79% (+0 bp); WTI crude $91.48 (+5.11%); bitcoin $79,800 (-1.80%).",
  "themes": [
   {
-   "theme": "AI & tech",
-   "count": 39
+   "theme": "Rates & the Fed",
+   "count": 47
   },
   {
    "theme": "Crypto",
-   "count": 39
+   "count": 42
   },
   {
-   "theme": "Rates & the Fed",
-   "count": 37
+   "theme": "AI & tech",
+   "count": 32
   },
   {
    "theme": "Energy & commodities",
    "count": 30
   },
   {
-   "theme": "Jobs & growth",
-   "count": 17
+   "theme": "Inflation & prices",
+   "count": 22
   },
   {
-   "theme": "Inflation & prices",
+   "theme": "Jobs & growth",
+   "count": 21
+  },
+  {
+   "theme": "Earnings & companies",
    "count": 14
   },
   {
    "theme": "Trade & geopolitics",
-   "count": 14
-  },
-  {
-   "theme": "Earnings & companies",
-   "count": 12
+   "count": 11
   },
   {
    "theme": "Deals & IPOs",
-   "count": 7
+   "count": 10
   },
   {
    "theme": "Housing",
-   "count": 3
+   "count": 4
   }
  ],
  "top": [
   {
-   "title": "U.S. payrolls rose 162,000 in August, much more than expected; unemployment rate at 4.1%",
-   "link": "https://www.cnbc.com/2026/09/04/jobs-report-august-2026.html",
-   "source": "CNBC Economy",
-   "published": "2026-09-04T12:54:27+00:00",
-   "summary": "Nonfarm payrolls were expected to increase by 53,000 in August while the unemployment rate held at 4.1%, according to the Dow Jones consensus."
-  },
-  {
-   "title": "Jobs Report Today: Bond Yields Climb After U.S. Added 162,000 Jobs in August",
-   "link": "https://www.wsj.com/livecoverage/august-jobs-report-stock-market-09-04-2026?mod=rss_markets_main",
+   "title": "U.S. Stocks Fall, Treasury Yields Climb After Strong Jobs Report",
+   "link": "https://www.wsj.com/finance/stocks/u-s-stock-futures-treasurys-little-moved-ahead-of-jobs-data-36dab277?mod=rss_markets_main",
    "source": "WSJ Markets",
-   "published": "2026-09-04T08:18:35+00:00",
-   "summary": "Report was expected to show economy added 53,000 jobs; bond yields climb"
+   "published": "2026-09-04T14:20:00+00:00",
+   "summary": "A hotter-than-expected jobs report is sending U.S. stocks and bond prices lower, as traders boost bets on a rate increase from the Federal Reserve this month."
   },
   {
-   "title": "Why Nvidia's 'defensive move' to acquire Hugging Face is about much more than chips",
-   "link": "https://www.cnbc.com/2026/09/04/nvidia-hugging-face-deal-chips.html",
+   "title": "Federal Reserve Board announces termination of enforcement actions with United Texas Bank, Quontic Bank Acquisition Corp., and Quontic Bank Holdings Corp.",
+   "link": "https://www.federalreserve.gov/newsevents/pressreleases/enforcement20260904a.htm",
+   "source": "Federal Reserve",
+   "published": "2026-09-04T15:00:00+00:00",
+   "summary": "Federal Reserve Board announces termination of enforcement actions with United Texas Bank, Quontic Bank Acquisition Corp., and Quontic Bank Holdings Corp."
+  },
+  {
+   "title": "2-year yield rises to highest since January 2025 after hot jobs report boosts expectations that the Fed could raise rates",
+   "link": "https://www.cnbc.com/2026/09/04/treasurys-bonds-nonfarm-payrolls-unemployment-data.html",
    "source": "CNBC",
-   "published": "2026-09-04T11:31:30+00:00",
-   "summary": "Nvidia’s $12.9 billion Hugging Face deal could protect its open AI ecosystem, deepen ties with developers and keep the platform from rivals."
+   "published": "2026-09-04T15:02:28+00:00",
+   "summary": "Treasury yields rose as the hot jobs report along with sticky inflation may give the Fed more cover to hike interest rates in September."
   },
   {
-   "title": "Gold Slips Ahead of U.S. Payrolls Data",
-   "link": "https://www.wsj.com/finance/commodities-futures/gold-rises-on-weaker-u-s-dollar-821f948d?mod=rss_markets_main",
-   "source": "WSJ Markets",
-   "published": "2026-09-04T07:20:00+00:00",
-   "summary": "Gold futures fell as U.S. payrolls rose more than expected."
-  },
-  {
-   "title": "The jobs report could influence a shaky bond market.",
-   "link": "https://www.nytimes.com/live/2026/09/04/business/jobs-report-economy/the-jobs-report-could-influence-a-shaky-bond-market",
-   "source": "NYT Business",
-   "published": "2026-09-04T09:57:10+00:00",
+   "title": "Stock Market Today: Dow Sinks As Inflation Report Looms; Oracle Up On OpenAI Buzz (Live Coverage)",
+   "link": "https://www.investors.com/market-trend/stock-market-today/dow-jones-sp500-nasdaq-august-jobs-report-lululemon-lulu/?src=A00220&yptr=yahoo",
+   "source": "Investor's Business Daily",
+   "published": "2026-09-04T16:31:12+00:00",
    "summary": ""
   },
   {
-   "title": "Nvidia's investments grow to $99 billion as chip giant becomes major backer of AI companies",
-   "link": "https://www.cnbc.com/2026/09/04/nvidia-ai-investments-99-billion.html",
-   "source": "CNBC",
-   "published": "2026-09-04T09:32:09+00:00",
-   "summary": "Nvidia reported $99 billion in equity holdings as it backs AI labs, cloud providers and infrastructure companies across the sector."
+   "title": "Stock Market Today: Bond Yields Climb, Dow Slips After Jobs Report — Live Updates",
+   "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxQV2FSU0ctdGtjRG9DOWVDNVJKNDRjR216S080eW5hN1dlZHV5OEl4UzlKT1VVT3k2Z1hqSERTSEJpWHNrZG9QbWg4RlpxbXFoM2VCNEtDT0JFdnJQWGwtbTVQeUNpMXN4OG5yQURYcUtBN2pjS1p5TnkxOWN4MjFBaw?oc=5",
+   "source": "WSJ",
+   "published": "2026-09-04T15:31:00+00:00",
+   "summary": "Stock Market Today: Bond Yields Climb, Dow Slips After Jobs Report — Live Updates WSJ The US economy added 162,000 jobs in August, more than double expectations cnn.com US adds jobs in August, beating economic forecasts Al…"
   },
   {
-   "title": "Higher Bond Yields Have a Silver Lining",
-   "link": "https://www.wsj.com/finance/investing/higher-bond-yields-have-a-silver-lining-044afb97?mod=rss_markets_main",
+   "title": "U.S. payrolls rose 162,000 in August, much more than expected; unemployment rate at 4.1%",
+   "link": "https://www.cnbc.com/2026/09/04/jobs-report-august-2026.html",
+   "source": "CNBC",
+   "published": "2026-09-04T14:19:02+00:00",
+   "summary": "Nonfarm payrolls were expected to increase by 53,000 in August while the unemployment rate held at 4.1%, according to the Dow Jones consensus."
+  },
+  {
+   "title": "Gold Retreats On Big U.S. Payroll Increase",
+   "link": "https://www.wsj.com/finance/commodities-futures/gold-rises-on-weaker-u-s-dollar-821f948d?mod=rss_markets_main",
    "source": "WSJ Markets",
-   "published": "2026-09-04T10:16:00+00:00",
-   "summary": "Plus, diesel hits a new high and cancer vaccine picks and shovels."
+   "published": "2026-09-04T13:17:00+00:00",
+   "summary": "Gold futures fell following a U.S. employment report showing a much bigger-than-expected increase in August payrolls and upward revisions to the previous two months."
   }
  ],
  "columns": {
   "markets": [
    {
-    "title": "U.S. Stock Futures, Treasurys Little Moved Ahead of Jobs Data",
-    "link": "https://www.wsj.com/finance/stocks/u-s-stock-futures-treasurys-little-moved-ahead-of-jobs-data-36dab277?mod=rss_markets_main",
-    "source": "WSJ Markets",
-    "published": "2026-09-04T11:47:00+00:00",
-    "summary": "U.S. stock futures nudged higher in midday European trade on Friday, as investors held positions steady ahead of crucial U.S. jobs data."
+    "title": "New Fed Chair Kevin Warsh Promised a Policy \"Regime Change\" to Defeat Inflation When He Took Over in January 2026. Has He Delivered?",
+    "link": "https://finance.yahoo.com/economy/policy/articles/fed-chair-kevin-warsh-promised-163500450.html",
+    "source": "Motley Fool",
+    "published": "2026-09-04T16:35:00+00:00",
+    "summary": ""
    },
    {
-    "title": "Manager of Norway’s $2tn oil fund proposes slashing US Treasury holdings",
-    "link": "https://www.ft.com/content/ecc15aa6-6e7b-409d-8753-2fb6aadd0592?syn-25a6b1a6=1",
+    "title": "Stock market today: Dow, S&P 500, Nasdaq edge lower after hot jobs report fuels Fed rate-hike bets",
+    "link": "https://finance.yahoo.com/markets/live/stock-market-today-friday-september-3-dow-sp-500-nasdaq-august-jobs-report-081005475.html",
+    "source": "Yahoo Finance",
+    "published": "2026-09-04T08:10:05+00:00",
+    "summary": ""
+   },
+   {
+    "title": "Stock Market Today: Short-Term Treasury Yields Climb After Strong Jobs Report",
+    "link": "https://www.wsj.com/livecoverage/august-jobs-report-stock-market-09-04-2026?mod=rss_markets_main",
+    "source": "WSJ Markets",
+    "published": "2026-09-04T08:18:35+00:00",
+    "summary": "U.S. added 162,000 jobs in August, boosting the chances of a rate hike; stocks slip"
+   },
+   {
+    "title": "Stock Market Midday, Sept. 4: Stocks Edge Lower on Strong Jobs Report as Lululemon Plummets",
+    "link": "https://finance.yahoo.com/markets/stocks/articles/stock-market-midday-sept-4-163537251.html",
+    "source": "Motley Fool",
+    "published": "2026-09-04T16:35:37+00:00",
+    "summary": ""
+   },
+   {
+    "title": "Are credit rating agencies getting fed up with hyperscalers?",
+    "link": "https://www.ft.com/content/623c286b-c973-4488-83f3-97e9016e85f6",
     "source": "Financial Times",
-    "published": "2026-09-04T04:00:19+00:00",
-    "summary": "Overhaul of bond positions suggested to Ministry of Finance aims to boost returns"
+    "published": "2026-09-04T15:06:15+00:00",
+    "summary": "A change in tone"
    },
    {
-    "title": "Dollar Climbs After U.S. Jobs Data",
-    "link": "https://www.wsj.com/finance/currencies/yen-consolidates-likely-buoyed-by-prospects-of-hawkish-boj-rate-hike-b1eb9c38?mod=rss_markets_main",
-    "source": "WSJ Markets",
-    "published": "2026-09-04T13:10:00+00:00",
-    "summary": "The dollar rose sharply after much-awaited U.S. jobs data showed the economy created many more jobs than expected in August."
+    "title": "Stocks Fall, Rebound Bullishly; Snowflake, Dell, Tesla, Jobs Report In Focus: Weekly Review",
+    "link": "https://www.investors.com/news/stock-market-falls-rebounds-snowflake-dell-tesla-jobs-report/?src=A00220&yptr=yahoo",
+    "source": "Investor's Business Daily",
+    "published": "2026-09-04T16:09:17+00:00",
+    "summary": ""
    },
    {
-    "title": "Potential midterm-election chaos could roil markets. Here’s one trader’s play.",
-    "link": "https://www.marketwatch.com/story/potential-midterm-election-chaos-can-roil-markets-heres-one-traders-play-73a02966?mod=mw_rss_topstories",
+    "title": "Adobe Names New CEO As Earnings Approach And AI Fears Persist; Navan, SailPoint Also Due",
+    "link": "https://www.investors.com/research/earnings-preview/adobe-stock-earnings-ai-fears-sailpoint-earnings/?src=A00220&yptr=yahoo",
+    "source": "Investor's Business Daily",
+    "published": "2026-09-04T16:24:30+00:00",
+    "summary": ""
+   },
+   {
+    "title": "S&P 500 changes are coming soon. These stocks could be named to the index today.",
+    "link": "https://www.marketwatch.com/story/s-p-500-changes-are-coming-soon-these-stocks-could-be-named-to-the-index-today-2d0d7c14?mod=mw_rss_topstories",
     "source": "MarketWatch",
-    "published": "2026-09-04T12:40:00+00:00",
-    "summary": "Buying portfolio insurance to protect against falls in the market — if the outcome of the midterm elections is disputed — is so obvious to Kevin Muir, he regards it as a “chip shot.”"
-   },
-   {
-    "title": "Fear not the bond market skinny dippers",
-    "link": "https://www.ft.com/content/3a232341-a470-4270-84a7-5c0e5782db3b?syn-25a6b1a6=1",
-    "source": "Financial Times",
-    "published": "2026-09-04T11:00:11+00:00",
-    "summary": "Rising yields reflect higher AI-led growth, which means swimming costumes for all"
-   },
-   {
-    "title": "Stocks, Bonds Rally After Dovish Fed Comments",
-    "link": "https://www.wsj.com/finance/stocks/stocks-bonds-rally-after-dovish-fed-comments-b95763ae?mod=rss_markets_main",
-    "source": "WSJ Markets",
-    "published": "2026-09-03T21:03:00+00:00",
-    "summary": "The Dow added more than 600 points after Federal Reserve governor Christopher Waller said he could support holding rates steady."
-   },
-   {
-    "title": "Oil Headed for Largest Weekly Gain Since July",
-    "link": "https://www.wsj.com/finance/commodities-futures/oil-rises-amid-elevated-supply-disruption-concerns-fa01461e?mod=rss_markets_main",
-    "source": "WSJ Markets",
-    "published": "2026-09-04T07:19:00+00:00",
-    "summary": "Oil prices were on track for their largest weekly gain since mid-July after a flare-up in hostilities between the U.S. and Iran this week."
-   },
-   {
-    "title": "The Cancer Vaccine Gold Rush Has Begun. So Has the Race for Picks and Shovels.",
-    "link": "https://www.wsj.com/health/pharma/the-cancer-vaccine-gold-rush-has-begun-so-has-the-race-for-picks-and-shovels-4b0b6d50?mod=rss_markets_main",
-    "source": "WSJ Markets",
-    "published": "2026-09-04T09:30:00+00:00",
-    "summary": "Tempus AI could capture a lucrative slice of Moderna and Merck’s personalized cancer therapy business, with Personalis at the center of the bet."
+    "published": "2026-09-04T15:39:00+00:00",
+    "summary": "Twilio, Bloom Energy and Cheniere Energy are among the top contenders to join the S&P 500 in the upcoming quarterly rebalancing."
    }
   ],
   "economy": [
    {
-    "title": "Diesel hits record high as Ukraine and Iran wars knock out refineries, fueling inflation worries",
-    "link": "https://www.cnbc.com/2026/09/04/diesel-price-record-high-ukraine-iran-inflation.html",
+    "title": "Back-to-school shopping brought to you by AI — how Amazon, Google are positioned to win",
+    "link": "https://www.cnbc.com/2026/09/04/back-to-school-shopping-brought-to-you-by-ai-how-amazon-google-are-positioned-to-win.html",
     "source": "CNBC",
-    "published": "2026-09-04T12:40:43+00:00",
-    "summary": "Higher prices come as Ukraine pounds Russian refineries, forcing Moscow to ban diesel exports."
+    "published": "2026-09-04T14:47:15+00:00",
+    "summary": "The rise of AI-assisted shopping during this year's back-to-school season may be an early window into evolving consumer buying habits."
+   },
+   {
+    "title": "Trump tells Fed to slash rates or he'll end trade with countries with U.S. surpluses",
+    "link": "https://www.cnbc.com/2026/09/04/trump-fed-rates-jobs-trade.html",
+    "source": "CNBC",
+    "published": "2026-09-04T16:08:11+00:00",
+    "summary": "President Donald Trump demanded that the Fed slash interest rates or else he will cut off trade with countries with which the U.S. maintains trade deficits."
+   },
+   {
+    "title": "Analysis: Lower Treasury yields could require a weaker economy. Trump won't fix them",
+    "link": "https://www.cnbc.com/2026/09/04/treasury-bonds-yield-trump-ai-mortgage-rates-analysis.html",
+    "source": "CNBC",
+    "published": "2026-09-04T14:07:24+00:00",
+    "summary": "Long-term Treasury yields are being held up by Trump-era policy risk, heavy government borrowing and AI-driven corporate debt."
    },
    {
     "title": "The inflation genie could be out of the bottle — and bond markets are sounding the alarm",
@@ -529,25 +542,11 @@
     "summary": "Global bond yields have surged as investors assess whether rising debt, tariffs, defense spending and energy shocks could keep inflation higher for longer."
    },
    {
-    "title": "Stock Market on Sept. 3, 2026: Dow, S&P 500, Nasdaq end sharply higher as software stocks and Big Tech rally; Treasury yields ease after Fed governor Waller's remarks",
-    "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxOMUdabU83WGZ0SlI5MFIyLXpfd094QWVxdktrYWJJa3lsX2RJY2ZIYVp2bHhZMkMxVjdzMFM5emxUbDNHaVhCdHZOMmNiVmtTRndQam5mbXdfaVhWaDBjYzB2anNhZ3dPT2RQOXR1TklIY1lYc2lJQXMxY0lMMGxLb29CaHIzMEJIT1dLMzA5SXZTVUU0N3ltbUxLVGFkbzhmalRoZHlNMjNXUGZUOXF1Z0F4V3R2R3NLQjVnVWMzZ3E?oc=5",
-    "source": "MarketWatch",
-    "published": "2026-09-03T22:00:00+00:00",
-    "summary": "Stock Market on Sept. 3, 2026: Dow, S&P 500, Nasdaq end sharply higher as software stocks and Big Tech rally; Treasury yields ease after Fed governor Waller's remarks MarketWatch Tech stocks lead a rally on Wall Street as bond…"
-   },
-   {
-    "title": "US job growth expected to rebound in August; unemployment rate forecast steady at 4.1%",
-    "link": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxQbnNDVk8wamxUYWJTemR3ZERNWkQzOU85Z0tqY212MkJiQ3FMX0s0b1ktWUo4M3JVVUs0NzhyZXByVFUxOUFRNXB1ZW81WmZxTVlzcXBaMjNVVGV5aTRqQjlRby1BaHJMb2FHbmFlUl9tTnowUC1NdllUZjk1elhpZ3lWSDJ3eGZIWFRYeURpVHJsS0szREFBenltdDY2a2g1R0pXVkxpY1NSSVJsNy0xaWFpRm5PR0RhSzNn?oc=5",
-    "source": "Reuters",
-    "published": "2026-09-04T12:06:14+00:00",
-    "summary": "US job growth expected to rebound in August; unemployment rate forecast steady at 4.1% Reuters U.S. payrolls rose 162,000 in August, much more than expected; unemployment rate at 4.1% CNBC The US economy added a…"
-   },
-   {
-    "title": "Volkswagen jumps 8% on plans to cut 50,000 jobs amid tariffs, China competition",
-    "link": "https://news.google.com/rss/articles/CBMiekFVX3lxTFBtQUp0SndwU1NmRFVKZDU4RlRBeld5RFE4elRRMF9OQlg3VERRN0NuMjIyWGdaUHpZbGZSdUhHMHpETVFWX1VRbGZrbHo5NUtQaHNFSDZydGZQdks1MlNIY2cweFF1VjV3M21uWVQxVVJMOG8yU1doSW5R0gF_QVVfeXFMUG5JR0Y3Q2VOMWVJaUZyemM4Sm9iN3Q3bUZmYjdxTzZ2WjF3Y3lyb01zdU50elc3Zl96bG56Nzl2cDVUaW9hLUx1dTdOWC1UUXlLQWJSNTB6VHFUaXRZSTdfa3JCeE1oeG9mU1lNaFNoNlpEb1NYQ0JuM0tXOXFZdw?oc=5",
-    "source": "CNBC",
-    "published": "2026-09-04T08:49:09+00:00",
-    "summary": "Volkswagen jumps 8% on plans to cut 50,000 jobs amid tariffs, China competition CNBC Volkswagen Board Approves Doubling Job Cuts to 100,000 in Surprise Move WSJ VW CEO Still Needs to Fix Thorniest Problems After Job-Cuts Deal…"
+    "title": "Trump says he will cease trading with top partners unless Fed lowers rates",
+    "link": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE5DR2V2VXJ0VlhJWnhaN1VmZTFPZWYyZGVfY3JuaTNaaDJuX3pWQ3Y3QXRlM0JiY1pjZmtfaGZlNHhCaDhkV3MwWlYxNkNfM3pjMWtja0c3QjJLRWNuV1RpMjd4VVg?oc=5",
+    "source": "cnn.com",
+    "published": "2026-09-04T14:22:44+00:00",
+    "summary": "Trump says he will cease trading with top partners unless Fed lowers rates cnn.com Trump Threatens to Halt Some Trade Unless the Fed Cuts Rates The New York Times Trump threatens trade war if rates aren’t cut after strong jobs…"
    },
    {
     "title": "World's biggest sovereign wealth fund plans to cut U.S. Treasury holdings",
@@ -557,21 +556,49 @@
     "summary": "Norway's $2.3 trillion investment fund says it can diversify into new areas with greater risk and returns."
    },
    {
-    "title": "Norway’s Massive Oil Fund Proposes Selling Roughly $80 Billion in U.S. Treasurys",
-    "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxOSmNpU0JlUXNVTGRwV3RTY1ZLVHdYMDhxSVNkbTRwZFl3ak9HM2pGODJGNy0yenR4SWJ2dTJfS2ZEVU9kaDBsLXdTQ3dFT1U4V2psTWxUaXZQUGw4YWtPc0Z1bVlXM1F2TDA4RmVsaERCbU1uc3k3Um51cllMRDVGczhHb0tWQjh3R0N3WmNGY1F6eVBldnFFTU5sNTFWRzFycWp6NkFKaw?oc=5",
-    "source": "WSJ",
-    "published": "2026-09-04T09:40:00+00:00",
-    "summary": "Norway’s Massive Oil Fund Proposes Selling Roughly $80 Billion in U.S. Treasurys WSJ World's biggest sovereign wealth fund plans to cut U.S. Treasury holdings CNBC Manager of Norway’s $2tn oil fund proposes slashing US Treasury…"
+    "title": "Norway's $2 trillion sovereign fund proposes deep cuts to US Treasury holdings",
+    "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxPcmxGOEpiUDZLcDdndTZmQVVRblBRSzBzTmV4V0lQbGFOQUNJRGt6NW11MTNSZHdzdGtfZ3Fzc2FlVEN0akRuREtUYkNqMUcxME1aRVhYYmtOWjRnekxlaW52M2ZvZmhJSHN4ZE9qUy1xcTdNNDBKd2Z5OTlpYjJ1SHh0V2dUVUNQU2RKV3kzSWFKZjRHWnRmZ1ZCUXpia19iNVNWRl9CM0FTcTFCWWRaVXJuOHB4UFZlWnc?oc=5",
+    "source": "Reuters",
+    "published": "2026-09-04T13:17:07+00:00",
+    "summary": "Norway's $2 trillion sovereign fund proposes deep cuts to US Treasury holdings Reuters World's biggest sovereign wealth fund plans to cut U.S. Treasury holdings CNBC Norway’s Massive Oil Fund Proposes Selling Roughly $80 Billion…"
    },
    {
-    "title": "Asia stocks rise as reduced Fed hike bets lift tech; U.S. jobs data awaited",
-    "link": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxOdlJfVjM3eGVfZDJiYUJ1MEV2T1E0VTVySjZRN1ZrOWdmcGJDWndlZnkyYXBmbXpNRld2WDVHdFhZNzg5d0p3dUdQajNCRW5VcGdxcmZma0FxSURTZ3hfY082OWhuLVZNVzBHblNuQWVNaVo2a3VZRlEteEhRYXlySHRhYWhxR3hoa04zMzNnRklvM2k1NWZ1eXAyVWJMVlJWbG9GeVRGa1VIQUo4bFlQU3MxNXFVWjBZT0daeXZpNFdONjg3YUNLNA?oc=5",
-    "source": "Investing.com",
-    "published": "2026-09-04T06:46:08+00:00",
-    "summary": "Asia stocks rise as reduced Fed hike bets lift tech; U.S. jobs data awaited Investing.com Traders brace for US jobs data after Fed's Waller soothes bond markets Reuters Global Bond Markets Take a Breather WSJ Asian benchmarks…"
+    "title": "India’s June quarter GDP print is courting controversy. Here’s why",
+    "link": "https://www.cnbc.com/2026/09/04/india-gdp-controversy-imf-modi.html",
+    "source": "CNBC",
+    "published": "2026-09-04T05:52:15+00:00",
+    "summary": "India's forecast-beating economic growth has come under scrutiny after a former government official claimed that the GDP print is overstated."
    }
   ],
   "companies": [
+   {
+    "title": "Why Nvidia's 'defensive move' to acquire Hugging Face is about much more than chips",
+    "link": "https://www.cnbc.com/2026/09/04/nvidia-hugging-face-deal-chips.html",
+    "source": "CNBC",
+    "published": "2026-09-04T11:31:30+00:00",
+    "summary": "Nvidia’s $12.9 billion Hugging Face deal could protect its open AI ecosystem, deepen ties with developers and keep the platform from rivals."
+   },
+   {
+    "title": "Zscaler beats earnings expectations, issues upbeat guidance but stock falls",
+    "link": "https://www.cnbc.com/2026/09/03/zscaler-zs-q4-earnings-2026.html",
+    "source": "CNBC Earnings",
+    "published": "2026-09-04T13:37:16+00:00",
+    "summary": "CEO Jay Chaudhry said he's \"very bullish\" on Zscaler's agentic Zero Trust offering, which is gaining early momentum"
+   },
+   {
+    "title": "Trump Threatens to Halt Some Trade Unless the Fed Cuts Rates",
+    "link": "https://www.nytimes.com/2026/09/04/business/economy/trump-trade-threats-fed-rate-cuts.html",
+    "source": "NYT Business",
+    "published": "2026-09-04T15:58:29+00:00",
+    "summary": "The president said he could halt trade between the United States and countries with which it has a trade deficit if the central bank doesn’t do his bidding."
+   },
+   {
+    "title": "The jobs report could influence a shaky bond market.",
+    "link": "https://www.nytimes.com/live/2026/09/04/business/jobs-report-economy/the-jobs-report-could-influence-a-shaky-bond-market",
+    "source": "NYT Business",
+    "published": "2026-09-04T09:57:10+00:00",
+    "summary": ""
+   },
    {
     "title": "Lululemon stock plunges 20% on disappointing earnings and outlook",
     "link": "https://www.cnbc.com/2026/09/03/lululemon-lulu-q2-2026-earnings.html",
@@ -580,8 +607,15 @@
     "summary": "Lululemon posted another quarter of disappointing results and a sales slowdown as the company struggles to turn its business around."
    },
    {
+    "title": "The U.S. Wants the Oil From These 17 Venezuelan Fields",
+    "link": "https://www.nytimes.com/2026/09/04/business/energy-environment/venezuela-oil-fields-betancourt-trump.html",
+    "source": "NYT Business",
+    "published": "2026-09-04T15:07:23+00:00",
+    "summary": "A private oil company has struck a deal with the Trump administration to develop 17 areas in Venezuela, an effort that experts say will take years and billions of dollars."
+   },
+   {
     "title": "The Pros and Cons of Paying Off Your Mortgage Early",
-    "link": "https://www.nytimes.com/2026/09/04/your-money/the-pros-and-cons-of-paying-off-your-mortgage-early.html",
+    "link": "https://www.nytimes.com/2026/09/04/your-money/paying-off-mortgage-early-pros-cons.html",
     "source": "NYT Business",
     "published": "2026-09-04T13:00:05+00:00",
     "summary": "Homeowners who make extra payments can save thousands of dollars in interest. But, financial experts say, paying down other debt, with higher interest rates, may be a better option."
@@ -592,50 +626,29 @@
     "source": "WSJ Business",
     "published": "2026-09-04T09:30:00+00:00",
     "summary": "The coffee chain’s loyal tea drinkers are calling headquarters, emailing executives and signing petitions to try to get back their beloved chai formula."
-   },
-   {
-    "title": "Rate Rise in Play as Fed Officials Await Inflation Data",
-    "link": "https://www.nytimes.com/2026/09/03/business/interest-rates-inflation-federal-reserve.html",
-    "source": "NYT Business",
-    "published": "2026-09-03T18:19:19+00:00",
-    "summary": "Christopher J. Waller, a Federal Reserve governor, sounded optimistic about inflation’s trajectory but indicated he would support higher rates if progress does not continue."
-   },
-   {
-    "title": "The Bond Markets Are Pushing Up Rates. Will Central Banks Follow?",
-    "link": "https://www.nytimes.com/2026/09/04/business/bond-yields-rates-central-banks.html",
-    "source": "NYT Business",
-    "published": "2026-09-04T09:03:39+00:00",
-    "summary": "Around the world, rising bond yields reflect shifting expectations on how fast policymakers will raise interest rates."
-   },
-   {
-    "title": "Zscaler stock rises on earnings beat, upbeat guidance",
-    "link": "https://www.cnbc.com/2026/09/03/zscaler-zs-q4-earnings-2026.html",
-    "source": "CNBC Earnings",
-    "published": "2026-09-03T20:41:47+00:00",
-    "summary": "CEO Jay Chaudhry said he's \"very bullish\" on Zscaler's agentic Zero Trust offering, which is gaining early momentum"
-   },
-   {
-    "title": "Why Big Oil Is Wary of Trump’s Foray Into Venezuela’s Oil Patch",
-    "link": "https://www.wsj.com/business/energy-oil/why-big-oil-is-wary-of-trumps-foray-into-venezuelas-oil-patch-4ec1e72b?mod=pls_whats_news_us_business_f",
-    "source": "WSJ Business",
-    "published": "2026-09-04T01:00:00+00:00",
-    "summary": "Some executives are worried the U.S. is creating a giant with the ability to push them around."
-   },
-   {
-    "title": "Oura’s IPO Reveals High Growth for Smart-Ring Maker",
-    "link": "https://www.wsj.com/finance/stocks/ouras-ipo-reveals-high-growth-for-smart-ring-maker-9ce3e4c9?mod=pls_whats_news_us_business_f",
-    "source": "WSJ Business",
-    "published": "2026-09-03T22:09:00+00:00",
-    "summary": "The fitness tracker recently turned profitable and posted 74% revenue growth in the nine months ended in June."
    }
   ],
   "global": [
+   {
+    "title": "Opinion | Don’t Blame China for the Fertilizer Shortage",
+    "link": "https://www.wsj.com/opinion/dont-blame-china-for-the-fertilizer-shortage-3d6aae9a?mod=rss_worldnews",
+    "source": "WSJ World",
+    "published": "2026-09-04T14:12:00+00:00",
+    "summary": "The disruption was caused mainly by the war with Iran and the closure of the Strait of Hormuz."
+   },
    {
     "title": "Soft Retail Sales Reveal Cracks in Eurozone Resilience to Energy Shock",
     "link": "https://www.wsj.com/economy/german-factory-orders-climb-for-third-straight-month-dd9bc5de?mod=rss_worldnews",
     "source": "WSJ World",
     "published": "2026-09-04T10:31:00+00:00",
     "summary": "Eurozone retail sales fell unexpectedly in July, a sign that the currency area’s resilience in the face of high energy prices might be faltering even as separate figures pointed to a continued recovery in German industry."
+   },
+   {
+    "title": "China rare earth firms halt some US shipments over geopolitical worries, sources say",
+    "link": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxNWDN1dWNKT01aNWd3OWc5WGpVc2FRYk5TTEpfUXdHRkFxeEwyYmxlRGxtQUtXRlVkbHZzbkFOd1VndGxSMWh4anJ3RDc0eFRVNjlEM3ZJZGRKUEsxQ1V5bWtPNUdjNG9ocGhmRXVMcnhNZ1pkSnBmbDRBcjlfdXJGWGJ3ZngzaTVzNFIwem1FQ0tPUUdkc3F6WEdNS3dGSDkxOVFHRVAtR2wzajR5bndEbjNWRlhTU2JhcDAwUzFBbjBVdTZNQmZyZHQ4c3hnWEhpV3hpTm1lNnVWdw?oc=5",
+    "source": "Reuters",
+    "published": "2026-09-04T15:15:39+00:00",
+    "summary": "China rare earth firms halt some US shipments over geopolitical worries, sources say Reuters MP, CRML, USAR Stocks In Focus: China Reportedly Blocks Some Rare Earth Shipments To US Yahoo Finance China Rare Earth Firms Freeze U.S…"
    },
    {
     "title": "Global bond sell-off likely not over yet, Mohamed El-Erian tells CNBC",
@@ -645,13 +658,6 @@
     "summary": "In a wide-ranging interview, the renowned economist also said the U.S. Treasury had taken \"a step too far\" with its market intervention."
    },
    {
-    "title": "China rare earth firms halt some US shipments over geopolitical worries, sources say",
-    "link": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxNWDN1dWNKT01aNWd3OWc5WGpVc2FRYk5TTEpfUXdHRkFxeEwyYmxlRGxtQUtXRlVkbHZzbkFOd1VndGxSMWh4anJ3RDc0eFRVNjlEM3ZJZGRKUEsxQ1V5bWtPNUdjNG9ocGhmRXVMcnhNZ1pkSnBmbDRBcjlfdXJGWGJ3ZngzaTVzNFIwem1FQ0tPUUdkc3F6WEdNS3dGSDkxOVFHRVAtR2wzajR5bndEbjNWRlhTU2JhcDAwUzFBbjBVdTZNQmZyZHQ4c3hnWEhpV3hpTm1lNnVWdw?oc=5",
-    "source": "Reuters",
-    "published": "2026-09-04T08:52:55+00:00",
-    "summary": "China rare earth firms halt some US shipments over geopolitical worries, sources say Reuters US, Japan race to secure chip-grade minerals as China curbs exports Asia Times China's Rare Earths Duopoly ChinaTalk | Jordan Schneider…"
-   },
-   {
     "title": "Ukraine’s Next Goal Is to Shut Down Russia’s Commercial Airspace",
     "link": "https://www.wsj.com/world/ukraines-next-goal-is-to-shut-down-russias-commercial-airspace-6f9369d9?mod=rss_worldnews",
     "source": "WSJ World",
@@ -659,32 +665,25 @@
     "summary": "Pressure is mounting on airlines to re-evaluate the safety of flying to Russian airports as the drone war escalates."
    },
    {
-    "title": "U.S. Failed to Give Assurances on Tariff Levels, Canada’s Carney Says",
-    "link": "https://www.wsj.com/world/americas/u-s-failed-to-give-assurances-on-tariff-levels-canadas-carney-says-9c0b4506?mod=rss_worldnews",
+    "title": "U.K.’s Reform Party Hit With Fresh Funding Allegations",
+    "link": "https://www.wsj.com/world/europe/u-k-s-reform-party-hit-with-fresh-funding-allegations-fc4cd7d2?mod=rss_worldnews",
     "source": "WSJ World",
-    "published": "2026-09-03T16:04:00+00:00",
-    "summary": "Any trade pact Canada strikes with the U.S. must ensure that agreed-upon tariff levels on certain goods would not be subject to change, Prime Minister Mark Carney said."
+    "published": "2026-09-04T14:53:00+00:00",
+    "summary": "Two senior aides to party leader Nigel Farage stepped down as police assessed allegations the party violated political-donation laws."
    },
    {
     "title": "Two Men Pulled Alive From Tunnel Nine Days After Nepal Flood",
     "link": "https://www.wsj.com/world/asia/two-men-pulled-alive-from-tunnel-nine-days-after-nepal-flood-cf325a7b?mod=rss_worldnews",
     "source": "WSJ World",
-    "published": "2026-09-04T09:27:00+00:00",
+    "published": "2026-09-04T14:32:00+00:00",
     "summary": "The rescue sparked hopes in country where more than 1,250 are dead and some 5,000 are missing."
    },
    {
-    "title": "Best High-Yield Savings Accounts for September 2026: Up to 4.50%",
-    "link": "https://www.wsj.com/buyside/personal-finance/banking/best-high-yield-savings-account?mod=rss_worldnews",
+    "title": "U.S. Failed to Give Assurances on Tariff Levels, Canada’s Carney Says",
+    "link": "https://www.wsj.com/world/americas/u-s-failed-to-give-assurances-on-tariff-levels-canadas-carney-says-9c0b4506?mod=rss_worldnews",
     "source": "WSJ World",
-    "published": "2026-09-03T17:21:00+00:00",
-    "summary": "Beat average interest rates with one of the top high-yield savings accounts."
-   },
-   {
-    "title": "BOE Survey Points to Cooling Price Pressures",
-    "link": "https://www.wsj.com/economy/global/boe-survey-points-to-cooling-price-pressures-5fab77b9?mod=rss_worldnews",
-    "source": "WSJ World",
-    "published": "2026-09-04T09:09:00+00:00",
-    "summary": "Businesses expect the prices they charge to rise by 3.8% over the coming 12 months, a decrease from the 3.9% expected in July."
+    "published": "2026-09-03T16:04:00+00:00",
+    "summary": "Any trade pact Canada strikes with the U.S. must ensure that agreed-upon tariff levels on certain goods would not be subject to change, Prime Minister Mark Carney said."
    }
   ],
   "crypto": [
@@ -692,7 +691,7 @@
     "title": "Bitcoin heads for third winning week in a row as macro pressures mount",
     "link": "https://www.cnbc.com/2026/09/04/bitcoin-heads-for-third-winning-week-in-a-row-as-macro-pressures-mount.html",
     "source": "CNBC",
-    "published": "2026-09-04T12:17:20+00:00",
+    "published": "2026-09-04T14:36:48+00:00",
     "summary": "Bitcoin headed for its third straight winning week, as traders searched for refuge amid volatile moves in equities, currencies and bond markets."
    },
    {
@@ -717,6 +716,13 @@
     "summary": "Your day-ahead look for Sept. 4, 2026"
    },
    {
+    "title": "From warning to listing: UK’s largest retail investment platform opens access to crypto ETNs",
+    "link": "https://www.coindesk.com/business/2026/09/04/from-warning-to-listing-uk-s-largest-wealth-platform-opens-access-to-crypto-etns",
+    "source": "CoinDesk",
+    "published": "2026-09-04T14:23:11+00:00",
+    "summary": "The U.K.'s largest retail investment platform, Hargreaves Lansdown, has reversed course following the FCA's decision to lift its retail ban on crypto ETPs in October."
+   },
+   {
     "title": "One full bitcoin now buys a little more than 18 ounces of gold, the most since January",
     "link": "https://www.coindesk.com/markets/2026/09/04/one-full-bitcoin-now-buys-a-little-more-than-18-ounces-of-gold-the-most-since-january",
     "source": "CoinDesk",
@@ -731,26 +737,76 @@
     "summary": "The IMF confirmed that all bitcoin added to official holdings since June 2025 was sourced from private donations, with no public funds used for accumulation."
    },
    {
-    "title": "Fed Rate Comments Spark Powerful Bitcoin, Crypto Rally. Bitcoin ETFs Near Entries.",
-    "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxPdGpKRHZUT3Vtc083UnIwVzRiRk9mbEJ5TndjenlINlhDYjR5R3FydWlMN19TWkRqdno2UXRicGZiY0tUY0QxeGZ6cE1OZFZTWW5IYXZILWpHaXlRa0E5TGVhdDdnVzZFaXN3RjJMN1Qyb3JXRXFXam9kdU91SEtob19vZnczenV3bHZrcFg1UHNfcFdmWmpWaTlaUWhKeWlPNmtaUFF2dTNoY2Y5WWc?oc=5",
-    "source": "Investor's Business Daily",
-    "published": "2026-09-03T20:12:00+00:00",
-    "summary": "Fed Rate Comments Spark Powerful Bitcoin, Crypto Rally. Bitcoin ETFs Near Entries. Investor's Business Daily Bitcoin heads for third winning week in a row as macro pressures mount CNBC Bitcoin nears third straight winning week on…"
-   },
-   {
-    "title": "Live updates: Bitcoin tumbles after blowout August jobs print",
-    "link": "https://www.coindesk.com/business/2026/09/04/live-updates-bitcoin-etfs-take-usd731-million-their-biggest-day-since-january",
-    "source": "CoinDesk",
-    "published": "2026-09-04T07:34:07+00:00",
-    "summary": "Net assets in spot bitcoin ETFs crossed $103 billion for the first time, with BlackRock's IBIT accounting for well over half the money."
+    "title": "Revolut, OpenReserve get preliminary US bank approval with crypto plans",
+    "link": "https://cointelegraph.com/news/revolut-openreserve-occ-approval-national-bank-crypto-plan?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+    "source": "Cointelegraph",
+    "published": "2026-09-04T13:34:30+00:00",
+    "summary": "Revolut and OpenReserve received preliminary OCC approval to form US national banks, with both planning cryptocurrency and stablecoin-related services."
    }
   ]
  },
- "filings": [],
+ "filings": [
+  {
+   "title": "8-K - BIOFORCE NANOSCIENCES HOLDINGS, INC. (Filer)",
+   "link": "https://www.sec.gov/Archives/edgar/data/1310488/000109181826000140/0001091818-26-000140-index.htm",
+   "source": "SEC EDGAR",
+   "published": "2026-09-04T16:51:02+00:00",
+   "summary": "Filed: 2026-09-04 AccNo: 0001091818-26-000140 Size: 179 KB Item 3.02: Unregistered Sales of Equity Securities"
+  },
+  {
+   "title": "8-K - Rithm Perpetual Life Residential Trust (Filer)",
+   "link": "https://www.sec.gov/Archives/edgar/data/2081628/000162828026060653/0001628280-26-060653-index.htm",
+   "source": "SEC EDGAR",
+   "published": "2026-09-04T16:44:33+00:00",
+   "summary": "Filed: 2026-09-04 AccNo: 0001628280-26-060653 Size: 143 KB Item 3.02: Unregistered Sales of Equity Securities Item 7.01: Regulation FD Disclosure"
+  },
+  {
+   "title": "8-K - Global Asset Management Group, Inc. (Filer)",
+   "link": "https://www.sec.gov/Archives/edgar/data/55234/000147793226005420/0001477932-26-005420-index.htm",
+   "source": "SEC EDGAR",
+   "published": "2026-09-04T16:44:22+00:00",
+   "summary": "Filed: 2026-09-04 AccNo: 0001477932-26-005420 Size: 2 MB Item 1.01: Entry into a Material Definitive Agreement Item 2.01: Completion of Acquisition or Disposition of Assets Item 2.03: Creation of a Direct Financial Obligation or…"
+  },
+  {
+   "title": "8-K - JLL Income Property Trust, Inc. (Filer)",
+   "link": "https://www.sec.gov/Archives/edgar/data/1314152/000131415226000179/0001314152-26-000179-index.htm",
+   "source": "SEC EDGAR",
+   "published": "2026-09-04T16:18:07+00:00",
+   "summary": "Filed: 2026-09-04 AccNo: 0001314152-26-000179 Size: 264 KB Item 7.01: Regulation FD Disclosure Item 9.01: Financial Statements and Exhibits"
+  },
+  {
+   "title": "8-K - DYNARESOURCE, INC. (Filer)",
+   "link": "https://www.sec.gov/Archives/edgar/data/1111741/000119312526383234/0001193125-26-383234-index.htm",
+   "source": "SEC EDGAR",
+   "published": "2026-09-04T16:17:41+00:00",
+   "summary": "Filed: 2026-09-04 AccNo: 0001193125-26-383234 Size: 240 KB Item 8.01: Other Events Item 9.01: Financial Statements and Exhibits"
+  },
+  {
+   "title": "8-K - ASA Gold & Precious Metals Ltd (Filer)",
+   "link": "https://www.sec.gov/Archives/edgar/data/1230869/000139834426016643/0001398344-26-016643-index.htm",
+   "source": "SEC EDGAR",
+   "published": "2026-09-04T16:07:39+00:00",
+   "summary": "Filed: 2026-09-04 AccNo: 0001398344-26-016643 Size: 204 KB Item 8.01: Other Events Item 9.01: Financial Statements and Exhibits"
+  },
+  {
+   "title": "8-K - SABINE ROYALTY TRUST (Filer)",
+   "link": "https://www.sec.gov/Archives/edgar/data/710752/000119312526383179/0001193125-26-383179-index.htm",
+   "source": "SEC EDGAR",
+   "published": "2026-09-04T15:54:40+00:00",
+   "summary": "Filed: 2026-09-04 AccNo: 0001193125-26-383179 Size: 80 KB Item 2.02: Results of Operations and Financial Condition Item 9.01: Financial Statements and Exhibits"
+  },
+  {
+   "title": "8-K - FORTRESS CREDIT REALTY INCOME TRUST (Filer)",
+   "link": "https://www.sec.gov/Archives/edgar/data/2026738/000119312526383170/0001193125-26-383170-index.htm",
+   "source": "SEC EDGAR",
+   "published": "2026-09-04T15:48:49+00:00",
+   "summary": "Filed: 2026-09-04 AccNo: 0001193125-26-383170 Size: 274 KB Item 3.02: Unregistered Sales of Equity Securities Item 8.01: Other Events"
+  }
+ ],
  "stats": {
   "feeds_total": 19,
   "feeds_failed": 1,
-  "items": 377,
+  "items": 373,
   "feed_errors": [],
   "market_errors": [
    [
