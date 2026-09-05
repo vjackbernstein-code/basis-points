@@ -82,9 +82,9 @@ $300M–$2B, listed exchange (no OTC), price ≥ $2, 10-day average volume ≥ 5
 shares. Composite score: 40% trailing-12-month revenue growth + 40% 13-week
 momentum + 20% proximity to 52-week high, each percentile-ranked within the
 eligible set. The free tier allows 60 calls/minute, so each run spends a
-~110-call budget and the scorecard (`data/smallcap.json`, committed between
-cloud runs) fills over the first day or two, then stays fresh on rolling
-updates.
+~550-call budget over ~10 minutes and the scorecard (`data/smallcap.json`,
+committed between cloud runs) bootstraps within the first day, then stays
+fresh on rolling updates.
 
 ## API keys (both optional; features light up when present)
 

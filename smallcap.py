@@ -45,7 +45,9 @@ MCAP_MIN, MCAP_MAX = 300.0, 2000.0      # $ millions
 PX_MIN = 2.0                            # dollars
 ADV_MIN = 0.05                          # 10-day avg volume, millions of shares
 SCREEN_SIZE = 25
-CALL_BUDGET = 110                       # per run; ~2 min at the polite rate
+CALL_BUDGET = 550                       # per run; ~10 min at the polite rate
+                                        # (public-repo Actions minutes are free;
+                                        # Finnhub's cap is per-minute, not daily)
 CALL_INTERVAL = 1.1                     # seconds between Finnhub calls (55/min)
 
 
@@ -294,9 +296,14 @@ def _spend_budget(fh, cache, budget):
     # 5. slow refresh of in-band metrics (3 days) and profiles (7 days)
     spend((t for t in band
            if _age_h(cache["metrics"].get(t, {}).get("t")) > 72), _fetch_metrics)
+    def profile_stale_h(p):
+        if p.get("mcap") is None:
+            return 48       # a blank/failed lookup retries soon, not in 30 days
+        return 168 if in_band(p) else 720
+
     spend((t for t in universe
            if t in cache["profiles"]
-           and _age_h(cache["profiles"][t].get("t")) > (168 if in_band(cache["profiles"][t]) else 720)),
+           and _age_h(cache["profiles"][t].get("t")) > profile_stale_h(cache["profiles"][t])),
           _fetch_profile)
 
 
