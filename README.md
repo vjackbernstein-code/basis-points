@@ -76,15 +76,20 @@ Logs go to `data/launchd.log`.
 
 ## Small-cap growth screen (`smallcap.py`)
 
-Universe from the SEC's public company list (keyless); size, revenue growth,
-momentum, and liquidity measures from Finnhub. Eligibility: market cap
-$300M–$2B, listed exchange (no OTC), price ≥ $2, 10-day average volume ≥ 50k
-shares. Composite score: 40% trailing-12-month revenue growth + 40% 13-week
-momentum + 20% proximity to 52-week high, each percentile-ranked within the
-eligible set. The free tier allows 60 calls/minute, so each run spends a
-~550-call budget over ~10 minutes and the scorecard (`data/smallcap.json`,
-committed between cloud runs) bootstraps within the first day, then stays
-fresh on rolling updates.
+Universe from the SEC's public company list (keyless); measures from Finnhub.
+Model v2 — eligibility: market cap $300M–$2B, listed exchange (no OTC), price
+≥ $2, 10-day average volume ≥ 50k shares, TTM revenue ≥ $50M (sub-floor names
+listed separately, unranked). Composite: 40% growth (TTM revenue growth +
+acceleration) + 40% volatility-scaled blended momentum + 20% quality (funding/
+runway, margin direction, low dilution), percentile-ranked. Publication: ≤5
+names per industry, one-day churn penalty for newcomers; flags for earnings
+proximity, newcomers, and net insider buying. Every run logs the published
+screen plus an IWM benchmark price to `data/screen_log.json`; forward 1-week
+and 4-week cohort-vs-benchmark returns accumulate on the page (a live track
+record, never backfilled). The free tier allows 60 calls/minute, so each run
+spends a ~550-call budget over ~10 minutes; the scorecard
+(`data/smallcap.json`, committed between cloud runs) bootstraps within the
+first day, then stays fresh on rolling updates.
 
 ## API keys (both optional; features light up when present)
 

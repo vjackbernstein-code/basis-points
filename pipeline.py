@@ -702,6 +702,11 @@ table.screen td.tick { font-family: "IBM Plex Mono", ui-monospace, monospace;
   font-weight: 500; }
 .duo { display: grid; grid-template-columns: repeat(auto-fill, minmax(262px, 1fr));
   gap: 8px 30px; margin-top: 10px; }
+.flag { display: inline-block; font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 10px; border: 1px solid var(--border); border-radius: 4px;
+  padding: 0 4px; margin-left: 4px; color: var(--ink2); }
+.flag.new { color: var(--accent); border-color: var(--accent); }
+.flag.ins { color: var(--up); border-color: var(--up); }
 .method { font-size: 12.5px; color: var(--muted); max-width: 90ch;
   border-top: 1px solid var(--hair); padding-top: 12px; margin-top: 30px; }
 
@@ -938,25 +943,53 @@ def render_smallcap_page(data):
             f'<div class="coverage">universe {cov.get("universe", 0):,} companies · '
             f'profiled {cov.get("profiled", 0):,} · in size band {cov.get("in_band", 0):,} · '
             f'fully measured {cov.get("measured", 0):,} · '
-            f'passing filters {cov.get("scored", 0):,}</div>')
+            f'passing filters {cov.get("scored", 0):,} · '
+            f'below revenue floor {cov.get("below_floor", 0):,}</div>')
 
     screen = sc.get("screen") or []
+    ev = sc.get("evaluation") or {}
+    if ev:
+        bits = []
+        for h, lab in (("1w", "1 week out"), ("4w", "4 weeks out")):
+            if h in ev:
+                e = ev[h]
+                bits.append(f'{lab}: {e["excess"]:+.2f}% vs the Russell 2000 ETF '
+                            f'(over {e["days"]} screening day'
+                            f'{"s" if e["days"] != 1 else ""})')
+        parts.append('<div class="note-box"><strong>Live track record.</strong> '
+                     'Average forward return of published screens minus the benchmark — '
+                     + "; ".join(bits) +
+                     '. Accumulated from real daily screens, not a backtest.</div>')
+    elif screen:
+        parts.append('<div class="note-box"><strong>Live track record:</strong> '
+                     'collecting. Each day’s screen is logged; the first 1-week '
+                     'reading appears once a logged screen is a week old. '
+                     'A real forward record, not a backtest.</div>')
     if screen:
         head = ('<tr><th class="l">#</th><th class="l">Ticker</th>'
                 '<th class="l">Company</th><th class="l">Industry</th><th>Mkt cap</th>'
                 '<th>Rev growth</th><th>13-wk</th><th>vs 52w high</th>'
-                '<th>Today</th><th>Score</th></tr>')
+                '<th>Today</th><th>Score</th><th class="l">Flags</th></tr>')
         trs = []
         for i, r in enumerate(screen, 1):
             dp = r.get("dp")
             dp_td = (f'<td class="{delta_class(dp)}">{dp:+.1f}%</td>'
                      if dp is not None else "<td>—</td>")
+            fh52 = (f'{r["from_high"]:+.1f}%' if r.get("from_high") is not None else "—")
+            sub = r.get("sub") or {}
+            sub_t = (f'growth {sub.get("g", "?")} · momentum {sub.get("m", "?")} · '
+                     f'quality {sub.get("q", "?")}')
+            flags = "".join(
+                f'<span class="flag {"new" if f == "new" else "ins" if f == "ins+" else ""}">'
+                f'{esc(f)}</span>' for f in (r.get("flags") or []))
             trs.append(
-                f'<tr><td class="l">{i}</td><td class="l tick">{esc(r["ticker"])}</td>'
+                f'<tr title="{esc(sub_t)}"><td class="l">{i}</td>'
+                f'<td class="l tick">{esc(r["ticker"])}</td>'
                 f'<td class="l">{esc(r["name"])}</td><td class="l">{esc(r["ind"])}</td>'
                 f'<td>{_fmt_mcap(r["mcap"])}</td><td>{r["rev_g"]:+.1f}%</td>'
-                f'<td>{r["r13"]:+.1f}%</td><td>{r["from_high"]:+.1f}%</td>'
-                f'{dp_td}<td><strong>{r["score"]:.1f}</strong></td></tr>')
+                f'<td>{r["r13"]:+.1f}%</td><td>{fh52}</td>'
+                f'{dp_td}<td><strong>{r["score"]:.1f}</strong></td>'
+                f'<td class="l">{flags}</td></tr>')
         parts.append('<h2 class="brief-title">Growth screen — top 25</h2>'
                      f'<div class="tblwrap"><table class="screen">{head}{"".join(trs)}'
                      '</table></div>')
@@ -994,18 +1027,38 @@ def render_smallcap_page(data):
             f'{esc(n["title"])}</a><div class="meta">{esc(n["ticker"])} · '
             f'{esc(n["source"])}</div></div>' for n in sc["news"])
         cols.append(f'<section class="col"><h2 class="section-head">In the news</h2>{lis}</section>')
+    if sc.get("below_floor"):
+        lis = []
+        for r in sc["below_floor"]:
+            rg = f'{r["rev_g"]:+.0f}%' if r.get("rev_g") is not None else "—"
+            r13 = f'{r["r13"]:+.0f}%' if r.get("r13") is not None else "—"
+            lis.append(f'<div class="item"><strong>{esc(r["ticker"])}</strong> · '
+                       f'{esc(r["name"])}<div class="meta">rev ${r["rev_ttm"]:.0f}M · '
+                       f'growth {rg} · 13-wk {r13}</div></div>')
+        cols.append('<section class="col"><h2 class="section-head">Below the revenue '
+                    f'floor (unranked)</h2>{"".join(lis)}'
+                    '<div class="meta" style="padding-top:8px">Under $50M trailing '
+                    'revenue — growth percentages on tiny bases are unreliable, so '
+                    'these are listed, never scored.</div></section>')
     if cols:
         parts.append(f'<div class="duo">{"".join(cols)}</div>')
 
     parts.append(
-        '<div class="method"><strong>Methodology.</strong> Eligibility: U.S. listed '
-        'common stocks, market value $300M–$2B, price ≥ $2, 10-day average volume '
-        '≥ 50k shares, no over-the-counter listings. Composite score: 40% trailing-12-month '
-        'revenue growth, 40% 13-week price momentum, 20% proximity to the 52-week high — '
-        'each factor percentile-ranked within the eligible set. Data: SEC (company '
-        'universe), Finnhub (measures); the scorecard refreshes on a rolling budget, so '
-        'coverage grows between runs and quotes may be a few hours old. Facts by fixed '
-        'rules — <strong>not investment advice</strong>.</div>')
+        '<div class="method"><strong>Methodology (model v2).</strong> Eligibility: U.S. '
+        'listed common stocks, market value $300M–$2B, price ≥ $2, 10-day average volume '
+        '≥ 50k shares, trailing-12-month revenue ≥ $50M, no over-the-counter listings. '
+        'Composite score = 40% growth (0.7 × trailing revenue growth + 0.3 × acceleration, '
+        'the latest quarter’s growth vs the trailing year) + 40% momentum (blended 13/26-week '
+        'return divided by 3-month volatility, so calm advances outrank violent spikes) + '
+        '20% quality (cash-flow funding or months of runway, margin direction, and low '
+        'shareholder dilution) — each factor percentile-ranked within the eligible set; '
+        'missing sub-measures rank neutral. Publication: at most 5 names per industry; '
+        'names new to the candidate list carry a one-day 3% score penalty to reduce churn. '
+        'Hover a row for its factor breakdown. Flags: <em>new</em> = entered the list today; '
+        '<em>E-Nd</em> = reports earnings in N days; <em>ins+</em> = net insider open-market '
+        'buying in the last 30 days. The track record above accumulates forward — never '
+        'backfilled. Data: SEC (universe), Finnhub (measures); quotes may be a few hours '
+        'old. Facts by fixed rules — <strong>not investment advice</strong>.</div>')
     parts.append(f'<footer><p>Generated {esc(date_line)}.</p></footer>')
 
     body = f'<div class="wrap">{"".join(parts)}</div>'

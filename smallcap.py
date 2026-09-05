@@ -1,27 +1,45 @@
 #!/usr/bin/env python3
 """
-Small-cap growth scorecard for Basis Points.
+Small-cap growth scorecard for Basis Points — model v2.
 
-Maintains a rolling scorecard of U.S. small-cap growth candidates:
+Universe: the SEC's public list of all listed U.S. companies (keyless).
+Measures: Finnhub free tier (politely rate-limited). State: data/smallcap.json
+and data/screen_log.json, committed between cloud runs by the workflow.
 
-  universe   the SEC's public list of all listed U.S. companies (keyless)
-  measures   size, revenue growth, momentum, liquidity via Finnhub (free key)
-  output     a transparent composite score and ranked screen
+Model v2 (fixed rules, disclosed on the page; not investment advice):
 
-The Finnhub free tier allows 60 calls/minute, so the scorecard fills over the
-first day or two of scheduled runs (a fixed per-run call budget) and stays
-fresh with rolling updates afterward. All state lives in data/smallcap.json,
-which the cloud workflow commits back to the repository between runs.
+  Eligibility   market cap $300M-$2B; listed exchange (no OTC); price >= $2;
+                10-day average volume >= 50k shares; trailing-12-month revenue
+                >= $50M (revenue-per-share x shares outstanding). Names failing
+                only the revenue floor are shown separately, unranked.
 
-Methodology (fixed, disclosed on the page):
-  eligibility  market cap $300M-$2B; listed exchange (no OTC); price >= $2;
-               10-day average volume >= 50k shares
-  score        40% revenue growth (trailing 12mo, year-over-year)
-               40% 13-week price momentum
-               20% proximity to 52-week high
-               each factor percentile-ranked within the eligible set
+  Growth (40%)  0.7 x trailing-12-month revenue growth
+                + 0.3 x acceleration (latest quarter's yoy growth minus TTM)
 
-This reports facts by fixed rules. It is not investment advice.
+  Momentum (40%)  blended price return (0.6 x 13-week + 0.4 x 26-week),
+                divided by 3-month volatility (annualized daily std, floor 15)
+                so one violent spike doesn't dominate
+
+  Quality (20%) 0.5 x funding (self-funded if operating cash flow positive,
+                else cash runway in months, capped at 36)
+                + 0.3 x margin direction (gross margin TTM minus last FY;
+                operating margin as fallback)
+                + 0.2 x low dilution (5-year gap between total revenue growth
+                and per-share revenue growth)
+
+  Each factor is percentile-ranked within the eligible set; missing
+  sub-measures fall to a neutral 0.5 rank. Composite = 100 x weighted rank.
+
+  Publication   at most 5 names per industry in the top 25; a name absent
+                from the previous run's top-40 candidates carries a 3% score
+                penalty for one day (reduces churn). Flags: "new" (entered
+                the published list today), "E-Nd" (reports earnings in N
+                days), "ins+" (net insider open-market purchases, last 30d).
+
+  Evaluation    every run logs the published screen and an IWM (Russell 2000
+                ETF) benchmark price; forward 1-week and 4-week cohort
+                returns vs the benchmark accumulate on the page as the log
+                ages. A live track record, not a backtest.
 """
 
 import json
@@ -36,6 +54,7 @@ from pathlib import Path
 
 BASE = Path(__file__).resolve().parent
 CACHE_PATH = BASE / "data" / "smallcap.json"
+LOG_PATH = BASE / "data" / "screen_log.json"
 
 SEC_URL = "https://www.sec.gov/files/company_tickers.json"
 UA = "BasisPointsAggregator/1.0 (personal research project)"
@@ -44,11 +63,15 @@ FINNHUB = "https://finnhub.io/api/v1"
 MCAP_MIN, MCAP_MAX = 300.0, 2000.0      # $ millions
 PX_MIN = 2.0                            # dollars
 ADV_MIN = 0.05                          # 10-day avg volume, millions of shares
+REV_FLOOR = 50.0                        # $ millions, trailing 12 months
+VOL_FLOOR = 15.0                        # volatility floor for momentum scaling
 SCREEN_SIZE = 25
-CALL_BUDGET = 550                       # per run; ~10 min at the polite rate
-                                        # (public-repo Actions minutes are free;
-                                        # Finnhub's cap is per-minute, not daily)
+CANDIDATES = 40
+SECTOR_CAP = 5
+NEWCOMER_PENALTY = 0.97
+CALL_BUDGET = int(os.environ.get("SMALLCAP_BUDGET", "550"))
 CALL_INTERVAL = 1.1                     # seconds between Finnhub calls (55/min)
+BENCH = "IWM"                           # Russell 2000 ETF, the evaluation benchmark
 
 
 def read_key(env_name, file_name):
@@ -104,18 +127,39 @@ class Finnhub:
                 raise
 
 
+# ------------------------------------------------------------- state ---------
+
+
 def load_cache():
     if CACHE_PATH.exists():
-        return json.loads(CACHE_PATH.read_text(encoding="utf-8"))
-    return {"universe": {}, "universe_fetched": None,
-            "profiles": {}, "metrics": {}, "quotes": {},
-            "earnings": [], "earnings_fetched": None, "last_screen": []}
+        cache = json.loads(CACHE_PATH.read_text(encoding="utf-8"))
+    else:
+        cache = {}
+    cache.setdefault("universe", {})
+    cache.setdefault("universe_fetched", None)
+    for k in ("profiles", "metrics", "quotes", "insider", "earn_map"):
+        cache.setdefault(k, {})
+    cache.setdefault("earnings", [])
+    cache.setdefault("earnings_fetched", None)
+    cache.setdefault("last_screen", [])
+    cache.setdefault("bench", {})
+    return cache
 
 
 def save_cache(cache):
     CACHE_PATH.parent.mkdir(exist_ok=True)
     CACHE_PATH.write_text(json.dumps(cache, separators=(",", ":")),
                           encoding="utf-8")
+
+
+def load_log():
+    if LOG_PATH.exists():
+        return json.loads(LOG_PATH.read_text(encoding="utf-8"))
+    return {}
+
+
+def save_log(log):
+    LOG_PATH.write_text(json.dumps(log, separators=(",", ":")), encoding="utf-8")
 
 
 def refresh_universe(cache):
@@ -135,6 +179,9 @@ def refresh_universe(cache):
     cache["universe_fetched"] = _iso()
 
 
+# ------------------------------------------------------------- fetch ---------
+
+
 def in_band(profile):
     if not profile or not profile.get("mcap"):
         return False
@@ -147,13 +194,24 @@ def _fetch_profile(fh, cache, ticker):
         p = fh.get("stock/profile2", symbol=ticker)
     except Exception:  # noqa: BLE001 — record the attempt; retry on schedule
         p = {}
-    cache["profiles"][ticker] = {
+    prev = cache["profiles"].get(ticker) or {}
+    entry = {
         "mcap": p.get("marketCapitalization") or None,
+        "shares": p.get("shareOutstanding") or None,
         "exch": (p.get("exchange") or "")[:40],
         "ind": (p.get("finnhubIndustry") or "")[:28],
         "name": (p.get("name") or cache["universe"].get(ticker, ""))[:60],
         "t": _iso(),
     }
+    # own share-count history (dilution measurement improves as this grows)
+    hist = list(prev.get("shist") or [])
+    if entry["shares"]:
+        day = _now().strftime("%Y-%m-%d")
+        if not hist or hist[-1][0] != day:
+            hist.append([day, round(entry["shares"], 3)])
+        hist = hist[-8:]
+    entry["shist"] = hist
+    cache["profiles"][ticker] = entry
 
 
 def _fetch_metrics(fh, cache, ticker):
@@ -163,10 +221,21 @@ def _fetch_metrics(fh, cache, ticker):
         m = {}
     cache["metrics"][ticker] = {
         "rev_g": m.get("revenueGrowthTTMYoy"),
+        "rev_gq": m.get("revenueGrowthQuarterlyYoy"),
         "r13": m.get("13WeekPriceReturnDaily"),
         "r26": m.get("26WeekPriceReturnDaily"),
+        "vol": m.get("3MonthADReturnStd"),
         "hi52": m.get("52WeekHigh"),
         "adv": m.get("10DayAverageTradingVolume"),
+        "rps": m.get("revenuePerShareTTM"),
+        "cfps": m.get("cashFlowPerShareTTM"),
+        "cashps": m.get("cashPerSharePerShareQuarterly"),
+        "gm_t": m.get("grossMarginTTM"),
+        "gm_a": m.get("grossMarginAnnual"),
+        "om_t": m.get("operatingMarginTTM"),
+        "om_a": m.get("operatingMarginAnnual"),
+        "rg5": m.get("revenueGrowth5Y"),
+        "rsg5": m.get("revenueShareGrowth5Y"),
         "t": _iso(),
     }
 
@@ -183,53 +252,212 @@ def _fetch_quote(fh, cache, ticker):
     }
 
 
-def _eligible(cache, ticker):
+def _fetch_insider(fh, cache, ticker):
+    """Net open-market insider purchases (code P), last 30 days."""
+    try:
+        rows = fh.get("stock/insider-transactions", symbol=ticker).get("data", [])
+    except Exception:  # noqa: BLE001
+        rows = []
+    floor = (_now() - timedelta(days=30)).strftime("%Y-%m-%d")
+    net_p = 0
+    for r in rows:
+        if (r.get("transactionCode") == "P"
+                and (r.get("transactionDate") or "") >= floor):
+            net_p += r.get("change") or 0
+    cache["insider"][ticker] = {"net30": net_p, "t": _iso()}
+
+
+def refresh_earnings(fh, cache):
+    if cache.get("earn_map") and _age_h(cache.get("earnings_fetched")) < 12:
+        return
+    start = _now().strftime("%Y-%m-%d")
+    end = (_now() + timedelta(days=7)).strftime("%Y-%m-%d")
+    try:
+        cal = fh.get("calendar/earnings", **{"from": start, "to": end})
+        rows = cal.get("earningsCalendar", [])
+    except Exception:  # noqa: BLE001
+        return
+    earn_map, keep = {}, []
+    for r in rows:
+        sym = r.get("symbol", "")
+        if sym and in_band(cache["profiles"].get(sym)) and r.get("date"):
+            earn_map[sym] = r["date"]
+            keep.append({"date": r["date"], "ticker": sym,
+                         "name": cache["profiles"][sym].get("name") or sym,
+                         "hour": r.get("hour") or ""})
+    keep.sort(key=lambda r: (r["date"], r["ticker"]))
+    cache["earn_map"] = earn_map
+    cache["earnings"] = keep[:12]
+    cache["earnings_fetched"] = _iso()
+
+
+def refresh_bench(fh, cache):
+    try:
+        q = fh.get("quote", symbol=BENCH)
+        if q.get("c"):
+            cache["bench"] = {"px": q["c"], "t": _iso()}
+    except Exception:  # noqa: BLE001
+        pass
+
+
+# ------------------------------------------------------------- model ---------
+
+
+def rev_ttm(cache, ticker):
+    """Trailing-12-month revenue in $ millions, or None if not computable."""
+    m = cache["metrics"].get(ticker) or {}
+    p = cache["profiles"].get(ticker) or {}
+    if m.get("rps") and p.get("shares"):
+        return m["rps"] * p["shares"]
+    return None
+
+
+def _base_eligible(cache, ticker):
+    """Everything except the revenue floor."""
     p = cache["profiles"].get(ticker)
     m = cache["metrics"].get(ticker)
     q = cache["quotes"].get(ticker)
     if not (in_band(p) and m and q and q.get("px")):
         return False
+    if (p.get("ind") or "").strip() in ("", "N/A"):
+        return False    # closed-end funds and shells carry no industry tag
     return (q["px"] >= PX_MIN
             and (m.get("adv") or 0) >= ADV_MIN
             and m.get("rev_g") is not None
-            and m.get("r13") is not None
-            and m.get("hi52"))
+            and m.get("r13") is not None)
+
+
+def _eligible(cache, ticker):
+    rt = rev_ttm(cache, ticker)
+    return _base_eligible(cache, ticker) and rt is not None and rt >= REV_FLOOR
+
+
+def below_floor(cache):
+    """Names passing every filter except the $50M revenue floor."""
+    out = []
+    for t in cache["metrics"]:
+        if not _base_eligible(cache, t):
+            continue
+        rt = rev_ttm(cache, t)
+        if rt is not None and rt < REV_FLOOR:
+            m, p = cache["metrics"][t], cache["profiles"][t]
+            out.append({"ticker": t, "name": p.get("name") or t,
+                        "rev_ttm": rt, "rev_g": m.get("rev_g"),
+                        "r13": m.get("r13")})
+    out.sort(key=lambda r: -(r["r13"] or -999))
+    return out[:8]
 
 
 def _percentile_ranks(values):
-    order = sorted(range(len(values)), key=lambda i: values[i])
-    ranks = [0.0] * len(values)
-    n = len(values)
-    for pos, i in enumerate(order):
+    """Ranks in [0,1]; None values sit at a neutral 0.5."""
+    known = [(v, i) for i, v in enumerate(values) if v is not None]
+    ranks = [0.5] * len(values)
+    n = len(known)
+    for pos, (_, i) in enumerate(sorted(known, key=lambda x: x[0])):
         ranks[i] = pos / (n - 1) if n > 1 else 0.5
     return ranks
 
 
-def compute_screen(cache):
+def _factors(cache, ticker):
+    m = cache["metrics"][ticker]
+    q = cache["quotes"][ticker]
+    # growth
+    g_ttm = max(-20.0, min(150.0, m["rev_g"]))
+    accel = None
+    if m.get("rev_gq") is not None:
+        accel = max(-50.0, min(50.0, m["rev_gq"] - m["rev_g"]))
+    # momentum, volatility-scaled
+    r13 = max(-50.0, min(150.0, m["r13"]))
+    r26 = m.get("r26")
+    blended = 0.6 * r13 + 0.4 * max(-50.0, min(150.0, r26)) if r26 is not None else r13
+    vol = max(VOL_FLOOR, m.get("vol") or VOL_FLOOR)
+    momo = blended / vol
+    # quality: funding
+    funding = None
+    if m.get("cfps") is not None:
+        if m["cfps"] > 0:
+            funding = 999.0                      # self-funded tops the rank
+        elif m.get("cashps"):
+            burn_ps = -m["cfps"]
+            funding = min(36.0, (m["cashps"] / burn_ps) * 12)  # months of runway
+    # quality: margin direction (gross preferred, operating fallback)
+    margin_dir = None
+    if m.get("gm_t") is not None and m.get("gm_a") is not None:
+        margin_dir = m["gm_t"] - m["gm_a"]
+    elif m.get("om_t") is not None and m.get("om_a") is not None:
+        margin_dir = m["om_t"] - m["om_a"]
+    # quality: dilution (5y total vs per-share revenue growth gap; lower better)
+    dilution = None
+    if m.get("rg5") is not None and m.get("rsg5") is not None:
+        dilution = m["rg5"] - m["rsg5"]
+    return {
+        "g_ttm": g_ttm, "accel": accel, "momo": momo, "blended": blended,
+        "funding": funding, "margin_dir": margin_dir, "dilution": dilution,
+        "hi52": m.get("hi52"), "px": q["px"], "dp": q.get("dp"),
+    }
+
+
+def compute_screen(cache, prev_candidates=None, prev_published=None):
+    """Returns (published top-25, candidate top-40)."""
     tickers = [t for t in cache["metrics"] if _eligible(cache, t)]
     if not tickers:
-        return []
-    growth, momo, near = [], [], []
-    for t in tickers:
-        m, q = cache["metrics"][t], cache["quotes"][t]
-        growth.append(max(-20.0, min(150.0, m["rev_g"])))
-        momo.append(max(-50.0, min(150.0, m["r13"])))
-        near.append(min(1.1, q["px"] / m["hi52"]))
-    g_r, m_r, n_r = (_percentile_ranks(growth), _percentile_ranks(momo),
-                     _percentile_ranks(near))
+        return [], []
+    f = {t: _factors(cache, t) for t in tickers}
+    g1 = _percentile_ranks([f[t]["g_ttm"] for t in tickers])
+    g2 = _percentile_ranks([f[t]["accel"] for t in tickers])
+    mo = _percentile_ranks([f[t]["momo"] for t in tickers])
+    q1 = _percentile_ranks([f[t]["funding"] for t in tickers])
+    q2 = _percentile_ranks([f[t]["margin_dir"] for t in tickers])
+    q3 = _percentile_ranks([-f[t]["dilution"] if f[t]["dilution"] is not None
+                            else None for t in tickers])
+    prev_candidates = set(prev_candidates or [])
+    today = _now().strftime("%Y-%m-%d")
+
     rows = []
     for i, t in enumerate(tickers):
-        p, m, q = cache["profiles"][t], cache["metrics"][t], cache["quotes"][t]
-        score = 100 * (0.4 * g_r[i] + 0.4 * m_r[i] + 0.2 * n_r[i])
+        growth = 0.7 * g1[i] + 0.3 * g2[i]
+        quality = 0.5 * q1[i] + 0.3 * q2[i] + 0.2 * q3[i]
+        score = 100 * (0.4 * growth + 0.4 * mo[i] + 0.2 * quality)
+        if prev_candidates and t not in prev_candidates:
+            score *= NEWCOMER_PENALTY
+        p, ft = cache["profiles"][t], f[t]
+        m = cache["metrics"][t]
+        flags = []
+        edate = cache.get("earn_map", {}).get(t)
+        if edate:
+            days = (datetime.fromisoformat(edate).date()
+                    - datetime.fromisoformat(today).date()).days
+            if 0 <= days <= 7:
+                flags.append(f"E-{days}d")
+        ins = cache.get("insider", {}).get(t) or {}
+        if (ins.get("net30") or 0) > 0 and _age_h(ins.get("t")) < 48:
+            flags.append("ins+")
         rows.append({
             "ticker": t, "name": p.get("name") or t, "ind": p.get("ind") or "—",
-            "mcap": p["mcap"], "rev_g": m["rev_g"], "r13": m["r13"],
-            "from_high": (q["px"] / m["hi52"] - 1) * 100,
-            "px": q["px"], "dp": q.get("dp"),
+            "mcap": p["mcap"], "rev_g": m["rev_g"], "accel": ft["accel"],
+            "r13": m["r13"], "momo": round(ft["momo"], 2),
+            "from_high": (ft["px"] / ft["hi52"] - 1) * 100 if ft.get("hi52") else None,
+            "px": ft["px"], "dp": ft["dp"],
             "score": round(score, 1),
+            "sub": {"g": round(100 * growth), "m": round(100 * mo[i]),
+                    "q": round(100 * quality)},
+            "flags": flags,
         })
     rows.sort(key=lambda r: -r["score"])
-    return rows[:SCREEN_SIZE]
+    candidates = rows[:CANDIDATES]
+
+    published, per_ind = [], {}
+    for r in rows:
+        ind = r["ind"]
+        if per_ind.get(ind, 0) >= SECTOR_CAP:
+            continue
+        per_ind[ind] = per_ind.get(ind, 0) + 1
+        if prev_published is not None and r["ticker"] not in prev_published:
+            r["flags"] = ["new"] + r["flags"]
+        published.append(r)
+        if len(published) >= SCREEN_SIZE:
+            break
+    return published, candidates
 
 
 def movers(cache):
@@ -245,87 +473,88 @@ def movers(cache):
     return rows[:5], rows[-5:][::-1] if len(rows) > 5 else []
 
 
-def refresh_earnings(fh, cache):
-    if cache.get("earnings") and _age_h(cache.get("earnings_fetched")) < 12:
-        return
-    start = _now().strftime("%Y-%m-%d")
-    end = (_now() + timedelta(days=7)).strftime("%Y-%m-%d")
-    try:
-        cal = fh.get("calendar/earnings", **{"from": start, "to": end})
-        rows = cal.get("earningsCalendar", [])
-    except Exception:  # noqa: BLE001
-        return
-    keep = []
-    for r in rows:
-        sym = r.get("symbol", "")
-        if in_band(cache["profiles"].get(sym)):
-            keep.append({"date": r.get("date"), "ticker": sym,
-                         "name": cache["profiles"][sym].get("name") or sym,
-                         "hour": r.get("hour") or ""})
-    keep.sort(key=lambda r: (r["date"], r["ticker"]))
-    cache["earnings"] = keep[:12]
-    cache["earnings_fetched"] = _iso()
+# --------------------------------------------------------- evaluation --------
 
 
-def _spend_budget(fh, cache, budget):
-    """Priority-ordered data refresh within the per-run call budget."""
-    universe = sorted(cache["universe"])
-
-    def spend(task_iter, fetch):
-        nonlocal budget
-        for t in task_iter:
-            if budget <= 0:
-                return
-            fetch(fh, cache, t)
-            budget -= 1
-
-    # 1. keep the current screen's quotes fresh
-    spend((t for t in cache.get("last_screen", [])
-           if _age_h(cache["quotes"].get(t, {}).get("t")) > 3), _fetch_quote)
-    # 2. bootstrap: profiles we've never checked
-    spend((t for t in universe if t not in cache["profiles"]), _fetch_profile)
-    # 3. metrics missing for in-band names
-    spend((t for t in universe
-           if in_band(cache["profiles"].get(t)) and t not in cache["metrics"]),
-          _fetch_metrics)
-    # 4. quotes missing or stale for in-band names, oldest first
-    band = [t for t in universe if in_band(cache["profiles"].get(t))]
-    band.sort(key=lambda t: cache["quotes"].get(t, {}).get("t") or "")
-    spend((t for t in band
-           if _age_h(cache["quotes"].get(t, {}).get("t")) > 4), _fetch_quote)
-    # 5. slow refresh of in-band metrics (3 days) and profiles (7 days)
-    spend((t for t in band
-           if _age_h(cache["metrics"].get(t, {}).get("t")) > 72), _fetch_metrics)
-    def profile_stale_h(p):
-        if p.get("mcap") is None:
-            return 48       # a blank/failed lookup retries soon, not in 30 days
-        return 168 if in_band(p) else 720
-
-    spend((t for t in universe
-           if t in cache["profiles"]
-           and _age_h(cache["profiles"][t].get("t")) > profile_stale_h(cache["profiles"][t])),
-          _fetch_profile)
+def update_log(cache, published, candidates):
+    log = load_log()
+    today = _now().strftime("%Y-%m-%d")
+    log[today] = {
+        "pub": [[r["ticker"], r["score"], r["px"]] for r in published],
+        "cand": [r["ticker"] for r in candidates],
+        "bench": (cache.get("bench") or {}).get("px"),
+    }
+    # keep a year of history
+    for day in sorted(log)[:-370]:
+        del log[day]
+    save_log(log)
+    return log
 
 
-def summarize(cache, note=None):
-    profiled = len(cache["profiles"])
+def evaluate(cache, log):
+    """Forward cohort returns vs benchmark from aged log entries."""
+    bench_now = (cache.get("bench") or {}).get("px")
+    today = _now().date()
+    out = {}
+    for horizon, lo, hi in (("1w", 6, 9), ("4w", 25, 31)):
+        diffs, n_days = [], 0
+        for day, entry in log.items():
+            age = (today - datetime.fromisoformat(day).date()).days
+            if not (lo <= age <= hi) or not entry.get("bench") or not bench_now:
+                continue
+            rets = []
+            for tick, _score, px0 in entry.get("pub", []):
+                q = cache["quotes"].get(tick) or {}
+                if px0 and q.get("px") and _age_h(q.get("t")) < 30:
+                    rets.append((q["px"] / px0 - 1) * 100)
+            if len(rets) >= 15:
+                cohort = sum(rets) / len(rets)
+                bench = (bench_now / entry["bench"] - 1) * 100
+                diffs.append(cohort - bench)
+                n_days += 1
+        if n_days:
+            out[horizon] = {"excess": round(sum(diffs) / n_days, 2), "days": n_days}
+    return out
+
+
+def _prev_log_entry(log):
+    today = _now().strftime("%Y-%m-%d")
+    prior = [d for d in sorted(log) if d < today]
+    return log[prior[-1]] if prior else None
+
+
+# ------------------------------------------------------------- output --------
+
+
+def summarize(cache, note=None, published=None, candidates=None, log=None):
+    if published is None or candidates is None:
+        log = log or load_log()
+        prev = _prev_log_entry(log)
+        published, candidates = compute_screen(
+            cache,
+            prev_candidates=(prev or {}).get("cand"),
+            prev_published={p[0] for p in (prev or {}).get("pub", [])} or None)
     band = [t for t in cache["profiles"] if in_band(cache["profiles"][t])]
-    screen = compute_screen(cache)
     up, down = movers(cache)
     return {
         "note": note,
         "asof": _iso(),
         "coverage": {
             "universe": len(cache["universe"]),
-            "profiled": profiled,
+            "profiled": len(cache["profiles"]),
             "in_band": len(band),
             "measured": sum(1 for t in band if t in cache["metrics"]),
             "scored": sum(1 for t in cache["metrics"] if _eligible(cache, t)),
+            "below_floor": sum(1 for t in cache["metrics"]
+                               if _base_eligible(cache, t)
+                               and (rev_ttm(cache, t) or REV_FLOOR) < REV_FLOOR),
         },
-        "screen": screen,
+        "screen": published,
+        "below_floor": below_floor(cache),
         "movers_up": up,
         "movers_down": down,
         "earnings": cache.get("earnings", []),
+        "evaluation": evaluate(cache, log or load_log()),
     }
 
 
@@ -359,6 +588,55 @@ def match_news(items, cache=None):
     return hits
 
 
+# ------------------------------------------------------------- driver --------
+
+
+def _spend_budget(fh, cache, budget):
+    """Priority-ordered data refresh within the per-run call budget."""
+    universe = sorted(cache["universe"])
+
+    def spend(task_iter, fetch):
+        nonlocal budget
+        for t in task_iter:
+            if budget <= 0:
+                return
+            fetch(fh, cache, t)
+            budget -= 1
+
+    band = [t for t in universe if in_band(cache["profiles"].get(t))]
+    # 1. keep the current screen's quotes fresh
+    spend((t for t in cache.get("last_screen", [])
+           if _age_h(cache["quotes"].get(t, {}).get("t")) > 3), _fetch_quote)
+    # 2. metrics missing for known in-band names (screen grows early)
+    spend((t for t in band if t not in cache["metrics"]), _fetch_metrics)
+    # 3. quotes for measured band names — before bootstrap, since eligibility
+    #    needs a price; otherwise nothing scores until the universe is mapped
+    band_by_quote_age = sorted(band, key=lambda t: cache["quotes"].get(t, {}).get("t") or "")
+    spend((t for t in band_by_quote_age
+           if t in cache["metrics"]
+           and _age_h(cache["quotes"].get(t, {}).get("t")) > 4), _fetch_quote)
+    # 4. bootstrap: profiles we've never checked
+    spend((t for t in universe if t not in cache["profiles"]), _fetch_profile)
+    # 5. insider transactions for current candidates (daily)
+    spend((t for t in cache.get("last_screen", [])
+           if _age_h(cache["insider"].get(t, {}).get("t")) > 24), _fetch_insider)
+    # 6. slow refresh: in-band metrics every 3 days
+    spend((t for t in band
+           if _age_h(cache["metrics"].get(t, {}).get("t")) > 72), _fetch_metrics)
+
+    # 7. slow refresh of profiles: blank lookups retry in 48h, in-band weekly,
+    #    out-of-band monthly
+    def profile_stale_h(p):
+        if p.get("mcap") is None:
+            return 48
+        return 168 if in_band(p) else 720
+
+    spend((t for t in universe
+           if t in cache["profiles"]
+           and _age_h(cache["profiles"][t].get("t")) > profile_stale_h(cache["profiles"][t])),
+          _fetch_profile)
+
+
 def update(budget=CALL_BUDGET):
     """Full update cycle. Safe without a key (returns cached state + note)."""
     cache = load_cache()
@@ -374,9 +652,18 @@ def update(budget=CALL_BUDGET):
     try:
         _spend_budget(fh, cache, budget)
         refresh_earnings(fh, cache)
+        refresh_bench(fh, cache)
     finally:
-        summary = summarize(cache)
-        cache["last_screen"] = [r["ticker"] for r in summary["screen"]]
+        log = load_log()
+        prev = _prev_log_entry(log)
+        published, candidates = compute_screen(
+            cache,
+            prev_candidates=(prev or {}).get("cand"),
+            prev_published={p[0] for p in (prev or {}).get("pub", [])} or None)
+        if published:
+            log = update_log(cache, published, candidates)
+        cache["last_screen"] = [r["ticker"] for r in candidates] or cache["last_screen"]
+        summary = summarize(cache, published=published, candidates=candidates, log=log)
         save_cache(cache)
     return summary, fh.calls
 
