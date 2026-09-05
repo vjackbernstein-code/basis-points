@@ -446,11 +446,16 @@ def compute_screen(cache, prev_candidates=None, prev_published=None):
     rows.sort(key=lambda r: -r["score"])
     candidates = rows[:CANDIDATES]
 
-    published, per_ind = [], {}
+    published, per_ind, seen_names = [], {}, set()
     for r in rows:
+        # one slot per company: preferred/secondary share classes share the name
+        name_key = re.sub(r"[^a-z0-9]", "", r["name"].lower())[:24]
+        if name_key in seen_names:
+            continue
         ind = r["ind"]
         if per_ind.get(ind, 0) >= SECTOR_CAP:
             continue
+        seen_names.add(name_key)
         per_ind[ind] = per_ind.get(ind, 0) + 1
         if prev_published is not None and r["ticker"] not in prev_published:
             r["flags"] = ["new"] + r["flags"]
