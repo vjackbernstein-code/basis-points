@@ -609,6 +609,10 @@ def _spend_budget(fh, cache, budget):
            if _age_h(cache["quotes"].get(t, {}).get("t")) > 3), _fetch_quote)
     # 2. metrics missing for known in-band names (screen grows early)
     spend((t for t in band if t not in cache["metrics"]), _fetch_metrics)
+    # 2b. band profiles from before the v2 format lack the share count the
+    #     revenue floor needs — re-profile them now, not at the weekly refresh
+    spend((t for t in band if "shares" not in (cache["profiles"].get(t) or {})),
+          _fetch_profile)
     # 3. quotes for measured band names — before bootstrap, since eligibility
     #    needs a price; otherwise nothing scores until the universe is mapped
     band_by_quote_age = sorted(band, key=lambda t: cache["quotes"].get(t, {}).get("t") or "")
