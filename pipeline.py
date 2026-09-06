@@ -1,26 +1,21 @@
 #!/usr/bin/env python3
 """
-Basis Points — investor news & market data pipeline.
+Basis Points — an automated small-cap growth rating system.
 
-Fetches headlines from major financial news RSS feeds and live market data
-(Yahoo Finance chart API, with Stooq and CoinGecko fallbacks), then renders:
+The published product is the ranked growth screen (see smallcap.py for the
+model). This pipeline supplies it: news feeds and press-release wires are
+collected purely as analysis inputs matched against the small-cap universe
+(there is no client-facing news product), market data provides a slim macro
+context strip, and everything renders to one page:
 
-  site/index.html            the live dashboard + morning brief
-  site/artifact.html         same page, formatted for claude.ai Artifact publishing
-  site/archive/YYYY-MM-DD.html   daily archive of the brief
-  site/archive/index.html    archive listing
-  data/latest.json           structured data (for commentary tooling)
+  site/index.html            the screen (also served as site/smallcap.html)
+  data/latest.json           structured data from the run
 
 Standard library only — no packages to install. Safe to run on a schedule.
 
 Usage:
   python3 pipeline.py               # full run: fetch + render
-  python3 pipeline.py --render-only # re-render from data/latest.json (e.g. after
-                                    # editing data/take.md commentary)
-
-Editorial commentary: if data/take.md exists and was modified in the last 24h,
-its paragraphs are rendered as "The take". Otherwise an auto-generated theme
-scan is shown.
+  python3 pipeline.py --render-only # re-render from data/latest.json
 """
 
 import argparse
@@ -78,10 +73,14 @@ FEEDS = [
     ("Seeking Alpha",   "https://seekingalpha.com/market_currents.xml",          "markets",   1.0),
     ("CoinDesk",        "https://www.coindesk.com/arc/outboundfeeds/rss/",       "crypto",    1.2),
     ("Cointelegraph",   "https://cointelegraph.com/rss",                         "crypto",    1.0),
+    # press-release wires: small companies announce directly here, no journalist
+    # required — matched against the band as signals, never shown as headlines
+    ("GlobeNewswire",   "https://www.globenewswire.com/RssFeed/orgclass/1/feedTitle/GlobeNewswire%20-%20News%20about%20Public%20Companies", "wire", 0.8),
+    ("PR Newswire",     "https://www.prnewswire.com/rss/news-releases-list.rss", "wire",      0.8),
 ]
 
 SEC_FEED = ("SEC 8-K filings",
-            "https://www.sec.gov/cgi-bin/browse-edgar?action=getcurrent&type=8-K&company=&dateb=&owner=include&count=24&output=atom")
+            "https://www.sec.gov/cgi-bin/browse-edgar?action=getcurrent&type=8-K&company=&dateb=&owner=include&count=100&output=atom")
 
 CATEGORIES = [
     ("markets",   "Markets"),
@@ -773,24 +772,12 @@ def time_ago(iso, now):
     return f"{mins // (60 * 24)}d ago"
 
 
-def masthead_html(date_line, nav=None):
-    nav_html = ""
-    if nav:
-        sep = ' <span class="navsep">·</span> '
-        links = []
-        for key, label, href in (("dashboard", "Dashboard", "index.html"),
-                                 ("smallcap", "Small caps", "smallcap.html"),
-                                 ("archive", "Archive", "archive/")):
-            if key == nav:
-                links.append(f'<span class="navcur">{label}</span>')
-            else:
-                links.append(f'<a href="{href}">{label}</a>')
-        nav_html = f'<nav class="nav">{sep.join(links)}</nav>'
+def masthead_html(date_line):
     return ('<header class="masthead"><div>'
             '<div class="brand">Basis<span class="tick">/</span>Points</div>'
-            '<div class="kicker">Markets, distilled. An automated investor brief.</div></div>'
+            '<div class="kicker">An automated small-cap growth rating system.</div></div>'
             f'<div class="mastright"><div class="updated">updated {esc(date_line)}</div>'
-            f'{nav_html}</div></header>')
+            '</div></header>')
 
 
 def render_tiles(tiles):
@@ -805,111 +792,6 @@ def render_tiles(tiles):
             f'<div class="tdelta {cls}">{delta_arrow(t["delta"])} {esc(t["delta_txt"])}</div>'
             f'{asof}{spark_svg(t.get("spark", []))}</div>')
     return f'<div class="tape">{"".join(out)}</div>' if out else ""
-
-
-def render_take(take_paragraphs, themes, auto):
-    if take_paragraphs:
-        body = "".join(f"<p>{esc(p)}</p>" for p in take_paragraphs)
-        label = "The take"
-        note = '<div class="attribution">Written by the editor’s desk (Claude), from today’s data.</div>'
-    else:
-        if not themes:
-            return ""
-        tops = ", ".join(f'{t["theme"].lower()} ({t["count"]} stories)' for t in themes[:4])
-        body = (f"<p>Automated scan of today’s coverage — the most-covered themes "
-                f"across all sources right now: {esc(tops)}.</p>")
-        label = "Signal scan"
-        note = '<div class="attribution">Auto-generated from headline frequency; an edited take appears when the desk is in session.</div>'
-    return (f'<div class="take"><div class="take-label">{label}</div>{body}{note}</div>')
-
-
-def render_stories(stories, now):
-    out = []
-    for it in stories:
-        blurb = f'<p>{esc(it["summary"])}</p>' if it.get("summary") else ""
-        meta = " · ".join(x for x in [esc(it["source"]), time_ago(it.get("published"), now)] if x)
-        out.append(
-            f'<article class="story"><h3><a href="{esc(it["link"])}" target="_blank" '
-            f'rel="noopener">{esc(it["title"])}</a></h3>{blurb}'
-            f'<div class="meta">{meta}</div></article>')
-    return "".join(out)
-
-
-def render_column(title, items, now, filing=False):
-    lis = []
-    for it in items:
-        meta = " · ".join(x for x in [esc(it["source"]), time_ago(it.get("published"), now)] if x)
-        lis.append(f'<div class="item"><a href="{esc(it["link"])}" target="_blank" '
-                   f'rel="noopener">{esc(it["title"])}</a><div class="meta">{meta}</div></div>')
-    cls = "col filing-list" if filing else "col"
-    return (f'<section class="{cls}"><h2 class="section-head">{esc(title)}</h2>'
-            f'{"".join(lis)}</section>')
-
-
-def render_page(data, mode="site"):
-    """mode: 'site' (full html doc), 'artifact' (body-only + title), 'archive'."""
-    now = datetime.fromisoformat(data["generated_at"])
-    local = now.astimezone()
-    date_line = local.strftime("%A, %B %-d, %Y · %-I:%M %p %Z")
-
-    tiles_html = render_tiles(data["market"])
-    tape = (f'<p class="tape-line"><strong>The tape:</strong> {esc(data["tape_line"])}</p>'
-            if data.get("tape_line") else "")
-    take_html = render_take(data.get("take_paragraphs"), data.get("themes"), True)
-    stories_html = render_stories(data["top"], now)
-
-    columns = []
-    for key, title in CATEGORIES:
-        items = data["columns"].get(key, [])
-        if items:
-            columns.append(render_column(title, items, now))
-    if data.get("econ_calendar"):
-        columns.append(render_econ_column(data["econ_calendar"]))
-    if data.get("filings"):
-        columns.append(render_column("Fresh SEC 8-K filings", data["filings"], now, filing=True))
-
-    src_names = sorted({f[0] for f in FEEDS} | {"SEC EDGAR"})
-    footer = (
-        '<footer>'
-        '<p><strong>Not investment advice.</strong> Basis Points is an automated news '
-        'and data aggregator for general information only. Headlines and excerpts belong to '
-        'their publishers and link to the original articles. Market data is delayed and '
-        'provided as-is by public endpoints (Yahoo Finance, Stooq, CoinGecko); verify before '
-        'acting on it.</p>'
-        f'<p>Sources: {esc(", ".join(src_names))}.</p>'
-        f'<p>Generated {esc(date_line)} · refreshes on a schedule.</p>'
-        '</footer>')
-
-    masthead = masthead_html(date_line, nav="dashboard" if mode == "site" else None)
-
-    sc = data.get("smallcap") or {}
-    sc_leaders = ""
-    if sc.get("screen"):
-        tops = ", ".join(f'{r["ticker"]} {r["score"]:.0f}' for r in sc["screen"][:3])
-        link = ' · <a href="smallcap.html">full screen →</a>' if mode == "site" else ""
-        sc_leaders = (f'<p class="tape-line"><strong>Small-cap screen leaders:</strong> '
-                      f'{esc(tops)} (composite score){link}</p>')
-
-    brief = (
-        '<section class="brief"><h2 class="brief-title">The Brief</h2>'
-        f'<div class="brief-date">{esc(date_line)}</div>'
-        f'{tape}{sc_leaders}{take_html}{stories_html}</section>')
-
-    if mode == "archive":
-        body = f'<div class="wrap">{masthead}{tiles_html}{brief}{footer}</div>'
-    else:
-        body = (f'<div class="wrap">{masthead}{tiles_html}{brief}'
-                f'<div class="columns">{"".join(columns)}</div>{footer}</div>')
-
-    if mode == "artifact":
-        return (f'<title>Basis Points</title>\n{FONTS_LINK}\n'
-                f'<style>{CSS}</style>\n{body}\n')
-
-    refresh = '<meta http-equiv="refresh" content="900">' if mode == "site" else ""
-    return (f'<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">'
-            f'<meta name="viewport" content="width=device-width, initial-scale=1">'
-            f'{refresh}<title>Basis Points — investor brief</title>{FONTS_LINK}'
-            f'<style>{CSS}</style></head><body>{body}</body></html>')
 
 
 def render_econ_column(rows):
@@ -931,7 +813,13 @@ def render_smallcap_page(data):
     date_line = now.astimezone().strftime("%A, %B %-d, %Y · %-I:%M %p %Z")
     sc = data.get("smallcap") or {}
     cov = sc.get("coverage") or {}
-    parts = [masthead_html(date_line, nav="smallcap")]
+    parts = [masthead_html(date_line)]
+
+    # slim macro-context strip: the dials that matter to small-cap analysis
+    ctx_labels = {"Russell 2000", "VIX", "10-yr Treasury", "WTI crude"}
+    ctx = [t for t in (data.get("market") or []) if t["label"] in ctx_labels]
+    if ctx:
+        parts.append(render_tiles(ctx))
 
     if sc.get("note") == "waiting-for-key":
         parts.append(
@@ -1048,6 +936,16 @@ def render_smallcap_page(data):
             f'{esc(n["title"])}</a><div class="meta">{esc(n["ticker"])} · '
             f'{esc(n["source"])}</div></div>' for n in sc["news"])
         cols.append(f'<section class="col"><h2 class="section-head">In the news</h2>{lis}</section>')
+    if sc.get("filings8k"):
+        lis = "".join(
+            f'<div class="item"><a href="{esc(f["link"])}" target="_blank" rel="noopener">'
+            f'<strong>{esc(f["ticker"])}</strong> · {esc(f["name"])}</a>'
+            f'<div class="meta">8-K filed {esc(f["date"])}</div></div>'
+            for f in sc["filings8k"])
+        cols.append('<section class="col"><h2 class="section-head">Material events '
+                    f'(8-K filings)</h2>{lis}</section>')
+    if data.get("econ_calendar"):
+        cols.append(render_econ_column(data["econ_calendar"]))
     if sc.get("below_floor"):
         lis = []
         for r in sc["below_floor"]:
@@ -1083,7 +981,8 @@ def render_smallcap_page(data):
         'for context and deliberately <em>not scored</em> — this is a growth screen, not '
         'a value screen. Hover a row for its factor breakdown. Flags: <em>new</em> = '
         'entered the list today; <em>E-Nd</em> = reports earnings in N days; '
-        '<em>ins+</em> = net insider open-market buying in the last 30 days. '
+        '<em>ins+</em> = net insider open-market buying in the last 30 days; '
+        '<em>8-K</em> = filed a material-event report with the SEC in the last 3 days. '
         '<strong>Freeze:</strong> scoring rules do not change until the live record '
         'holds 12 independent 1-week and 3 independent 4-week readings; the record is '
         'kept per model version and never backfilled. Known limitations: static factor '
@@ -1091,7 +990,12 @@ def render_smallcap_page(data):
         'caps; all measures come from one free data vendor and quotes may be a few '
         'hours old. Data: SEC (universe), Finnhub (measures). Facts by fixed rules — '
         '<strong>not investment advice</strong>.</div>')
-    parts.append(f'<footer><p>Generated {esc(date_line)}.</p></footer>')
+    parts.append(
+        '<footer><p><strong>Not investment advice.</strong> Facts by fixed, published '
+        'rules from public data. Inputs: SEC EDGAR (company universe and filings), '
+        f'Finnhub (measures), and {len(FEEDS)} news and press-release feeds matched '
+        'against the small-cap band as signals — headlines link to and belong to their '
+        f'publishers. Generated {esc(date_line)} · refreshes on a schedule.</p></footer>')
 
     body = f'<div class="wrap">{"".join(parts)}</div>'
     return (f'<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">'
@@ -1101,35 +1005,7 @@ def render_smallcap_page(data):
             f'<style>{CSS}</style></head><body>{body}</body></html>')
 
 
-def render_archive_index(archive_dir):
-    pages = sorted(archive_dir.glob("2*.html"), reverse=True)
-    lis = "".join(
-        f'<div class="item"><a href="{p.name}">{p.stem}</a></div>' for p in pages)
-    return (f'<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">'
-            f'<meta name="viewport" content="width=device-width, initial-scale=1">'
-            f'<title>Basis Points — archive</title>{FONTS_LINK}<style>{CSS}</style>'
-            f'</head><body><div class="wrap"><header class="masthead">'
-            f'<div class="brand">Basis<span class="tick">/</span>Points</div>'
-            f'<div class="updated">archive</div></header>'
-            f'<section class="col" style="max-width:40ch">{lis}</section>'
-            f'</div></body></html>')
-
-
 # --------------------------------------------------------------- main --------
-
-
-def load_take():
-    take = DATA / "take.md"
-    if not take.exists():
-        return None
-    age = time.time() - take.stat().st_mtime
-    if age > 24 * 3600:
-        return None
-    text = take.read_text(encoding="utf-8").strip()
-    if not text:
-        return None
-    paras = [re.sub(r"\s+", " ", p).strip() for p in re.split(r"\n\s*\n", text)]
-    return [p for p in paras if p]
 
 
 def build_data():
@@ -1138,13 +1014,8 @@ def build_data():
     tiles, market_errors = fetch_markets()
     fresh = prepare_items(items, now)
 
-    top = fresh[:TOP_COUNT]
-    top_links = {it["link"] for it in top}
-    columns = {}
-    for key, _title in CATEGORIES:
-        cat_items = [it for it in fresh
-                     if it["display_category"] == key and it["link"] not in top_links]
-        columns[key] = cat_items[:PER_COLUMN]
+    # wires are analysis inputs matched against the band, never headline material
+    top = [it for it in fresh if it["category"] != "wire"][:TOP_COUNT]
 
     filings_fresh = []
     for f in filings:
@@ -1161,9 +1032,10 @@ def build_data():
         }
 
     try:
+        smallcap.record_filings([slim(f) for f in filings_fresh])
         sc_summary, sc_calls = smallcap.update()
-        sc_summary["news"] = smallcap.match_news([slim(i) for i in fresh[:150]])
-    except Exception as e:  # noqa: BLE001 — the brief must render even if this fails
+        sc_summary["news"] = smallcap.match_news([slim(i) for i in fresh[:400]])
+    except Exception as e:  # noqa: BLE001 — the page must render even if this fails
         sc_summary, sc_calls = None, 0
         market_errors.append(("Small-cap engine", str(e)[:120]))
 
@@ -1177,10 +1049,7 @@ def build_data():
         "generated_at": now.isoformat(),
         "market": tiles,
         "tape_line": tape_line(tiles),
-        "themes": theme_scan(fresh),
         "top": [slim(i) for i in top],
-        "columns": {k: [slim(i) for i in v] for k, v in columns.items()},
-        "filings": [slim(f) for f in filings_fresh[:8]],
         "smallcap": sc_summary,
         "econ_calendar": econ,
         "stats": {
@@ -1203,7 +1072,6 @@ def main():
 
     DATA.mkdir(exist_ok=True)
     SITE.mkdir(exist_ok=True)
-    (SITE / "archive").mkdir(exist_ok=True)
 
     if args.render_only:
         data = json.loads((DATA / "latest.json").read_text(encoding="utf-8"))
@@ -1212,22 +1080,15 @@ def main():
         (DATA / "latest.json").write_text(
             json.dumps(data, indent=1, ensure_ascii=False), encoding="utf-8")
 
-    data["take_paragraphs"] = load_take()
-
-    (SITE / "index.html").write_text(render_page(data, "site"), encoding="utf-8")
-    (SITE / "artifact.html").write_text(render_page(data, "artifact"), encoding="utf-8")
-    (SITE / "smallcap.html").write_text(render_smallcap_page(data), encoding="utf-8")
-
-    day = datetime.fromisoformat(data["generated_at"]).astimezone().strftime("%Y-%m-%d")
-    (SITE / "archive" / f"{day}.html").write_text(
-        render_page(data, "archive"), encoding="utf-8")
-    (SITE / "archive" / "index.html").write_text(
-        render_archive_index(SITE / "archive"), encoding="utf-8")
+    # the rating system IS the site: one page, served at both addresses
+    page = render_smallcap_page(data)
+    (SITE / "index.html").write_text(page, encoding="utf-8")
+    (SITE / "smallcap.html").write_text(page, encoding="utf-8")
 
     s = data.get("stats", {})
     cov = (data.get("smallcap") or {}).get("coverage") or {}
-    print(f"ok: {s.get('items', '?')} headlines, {len(data['market'])}/{len(INSTRUMENTS)} "
-          f"instruments, {len(data.get('filings', []))} filings; smallcap: "
+    print(f"ok: {s.get('items', '?')} items, {len(data['market'])}/{len(INSTRUMENTS)} "
+          f"instruments; smallcap: "
           f"{cov.get('profiled', 0):,}/{cov.get('universe', 0):,} profiled, "
           f"{cov.get('in_band', 0):,} in band, {cov.get('scored', 0):,} scored "
           f"({s.get('smallcap_calls', 0)} calls, "

@@ -559,6 +559,10 @@ def compute_screen(cache, prev_candidates=None, prev_published=None):
         ins = cache.get("insider", {}).get(t) or {}
         if (ins.get("net30") or 0) > 0 and _age_h(ins.get("t")) < 48:
             flags.append("ins+")
+        f8k = (cache.get("filings8k") or {}).get(t)
+        if f8k and f8k.get("date", "") >= (
+                _now() - timedelta(days=3)).strftime("%Y-%m-%d"):
+            flags.append("8-K")
         rows.append({
             "ticker": t, "name": p.get("name") or t, "ind": p.get("ind") or "—",
             "group": ft["group"], "mcap": p["mcap"],
@@ -715,7 +719,44 @@ def summarize(cache, note=None, published=None, candidates=None, log=None):
         "earnings": cache.get("earnings", []),
         "evaluation": evaluate(cache, log or load_log()),
         "regime": cache.get("regime") or None,
+        "filings8k": sorted(
+            ({"ticker": t, "name": (cache["profiles"].get(t) or {}).get("name") or t,
+              "date": f.get("date", ""), "link": f.get("link", "")}
+             for t, f in (cache.get("filings8k") or {}).items()),
+            key=lambda r: r["date"], reverse=True)[:10],
     }
+
+
+def record_filings(filing_items):
+    """Match fresh SEC 8-K filings (material corporate events) to band
+    companies and remember them for ~7 days. Titles look like
+    '8-K - ACME CORP (0001234567) (Filer)'."""
+    cache = load_cache()
+    name_to_ticker = {}
+    for t, p in cache["profiles"].items():
+        if in_band(p):
+            name_to_ticker[_name_key(p.get("name") or "")] = t
+            name_to_ticker.setdefault(_name_key(cache["universe"].get(t) or ""), t)
+    filings = cache.get("filings8k") or {}
+    matched = 0
+    for it in filing_items:
+        title = it.get("title", "")
+        m = re.match(r"8-K[^-]*-\s*(.+?)\s*\(", title)
+        if not m:
+            continue
+        tick = name_to_ticker.get(_name_key(m.group(1)))
+        if not tick:
+            continue
+        day = (it.get("published") or _iso())[:10]
+        prev = filings.get(tick)
+        if not prev or day >= prev.get("date", ""):
+            filings[tick] = {"date": day, "link": it.get("link", "")}
+            matched += 1
+    floor = (_now() - timedelta(days=7)).strftime("%Y-%m-%d")
+    cache["filings8k"] = {t: f for t, f in filings.items()
+                          if f.get("date", "") >= floor}
+    save_cache(cache)
+    return matched
 
 
 def match_news(items, cache=None):
@@ -727,10 +768,12 @@ def match_news(items, cache=None):
         return []
     tickers = set(band_names)
     hits, seen = [], set()
+    tick_pat = re.compile(
+        r"\((?:(?:NYSE|NASDAQ|Nasdaq|AMEX|NYSE American|CBOE)[:\s]+)?([A-Z]{1,5})\)")
     for it in items:
         title = it.get("title", "")
         matched = None
-        for tick in re.findall(r"\(([A-Z]{1,5})\)", title):
+        for tick in tick_pat.findall(title):
             if tick in tickers:
                 matched = tick
                 break

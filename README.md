@@ -1,20 +1,19 @@
 # Basis Points
 
-An automated, investor-facing news brief and market dashboard. A single
-Python program (`pipeline.py`) pulls headlines from ~18 major financial news
-sources and live market data from public endpoints, then generates a static
-website — no accounts, no API keys, no installed packages required.
+An automated small-cap growth rating system. Two Python programs
+(`pipeline.py` collects inputs; `smallcap.py` is the model) maintain a scored
+screen of U.S. small-cap growth companies and publish it as a static site.
+News feeds and press-release wires are collected **purely as analysis
+inputs** matched against the small-cap universe — there is no client-facing
+news product; the rating system is the product.
 
 ## What it produces
 
 | File | What it is |
 |---|---|
-| `site/index.html` | The live dashboard: market tiles with 1-month trends, "The Brief" (top stories + commentary), and topic columns |
-| `site/smallcap.html` | The small-cap growth screen: ranked top-25 (transparent composite score), movers, earnings this week, news mentions |
-| `site/archive/YYYY-MM-DD.html` | A daily snapshot of the brief |
-| `site/archive/index.html` | Archive listing |
-| `site/artifact.html` | Same page formatted for claude.ai Artifact publishing |
-| `data/latest.json` | All structured data from the run (for tooling/commentary) |
+| `site/index.html` (also served as `smallcap.html`) | The product: ranked top-25 growth screen with factor breakdowns and flags, macro context strip, movers, earnings week, matched news & 8-K filings, economic calendar, live track record |
+| `data/latest.json` | Structured data from the run |
+| `data/smallcap.json`, `data/screen_log.json` | The rolling scorecard and the forward evaluation log |
 
 ## Running it
 
@@ -30,21 +29,17 @@ To re-render without re-fetching (e.g. after editing commentary):
 python3 pipeline.py --render-only
 ```
 
-## Editorial commentary ("The take")
-
-If `data/take.md` exists and was modified within the last 24 hours, its
-paragraphs render in the brief as **The take**. Otherwise an auto-generated
-"Signal scan" (theme frequency analysis) appears instead. This is how a human
-or Claude session adds real analysis on top of the automated aggregation.
-
 ## Data sources
 
-- **Headlines** (RSS/Atom feeds — published by the outlets for exactly this
-  purpose): CNBC, MarketWatch, WSJ, FT, The Economist, NYT Business/DealBook,
-  Yahoo Finance, Seeking Alpha, Google News Business, CoinDesk, Cointelegraph,
-  Federal Reserve press releases, SEC EDGAR 8-K filings.
-  Only headlines, links, and short feed-provided excerpts are used; everything
-  links to the original publisher.
+- **News & wires as signals** (RSS/Atom feeds — published for exactly this
+  purpose): ~18 outlets (WSJ, FT, CNBC, MarketWatch, The Economist, NYT,
+  Yahoo Finance, Seeking Alpha, Google News Business, crypto press, Fed press
+  releases) plus corporate press-release wires (GlobeNewswire, PR Newswire)
+  and the SEC's live 8-K filing stream. All of it is matched against the
+  small-cap band: matched headlines appear in "In the news", matched material
+  filings in "Material events" and as an `8-K` row flag. Only headlines,
+  links, and short feed-provided excerpts are used; everything links to the
+  original publisher. Nothing here is scored — news is context, not a factor.
 - **Market data**: Yahoo Finance chart API (primary), with automatic fallbacks
   to FRED (Federal Reserve official data), Frankfurter/ECB (foreign exchange),
   and CoinGecko (crypto). Fallback numbers carry an "as of" date when they are
@@ -138,10 +133,9 @@ market-context banner (the benchmark's own 13/26-week trend).
 
 ## Roadmap ideas
 
-- Email delivery of the daily brief (needs a Buttondown/Mailchimp account)
-- Sector heatmap, yield-curve panel, fear/greed gauge
-- Claude-written "The take" on a schedule (scheduled Claude Code task)
-- Junk-filter for Google News local-news strays
+- Email delivery of the daily screen (needs a Buttondown/Mailchimp account)
+- Sector distribution panel for the screen
+- Scheduled Claude-written commentary in the private research notes
 
 ## Disclaimer
 
