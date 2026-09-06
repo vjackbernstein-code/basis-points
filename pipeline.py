@@ -79,8 +79,16 @@ FEEDS = [
     ("PR Newswire",     "https://www.prnewswire.com/rss/news-releases-list.rss", "wire",      0.8),
 ]
 
-SEC_FEED = ("SEC 8-K filings",
-            "https://www.sec.gov/cgi-bin/browse-edgar?action=getcurrent&type=8-K&company=&dateb=&owner=include&count=100&output=atom")
+# SEC EDGAR "current filings" atom feeds, all matched against the small-cap band
+# as signals (never scored). The type filter is unreliable for schedule forms,
+# so activist stakes use the low-volume type=SC prefix and are sorted out by
+# form in smallcap.record_filings.
+SEC_FILING_FEEDS = [
+    "https://www.sec.gov/cgi-bin/browse-edgar?action=getcurrent&type=8-K&company=&dateb=&owner=include&count=100&output=atom",
+    "https://www.sec.gov/cgi-bin/browse-edgar?action=getcurrent&type=SC&company=&dateb=&owner=include&count=100&output=atom",
+    "https://www.sec.gov/cgi-bin/browse-edgar?action=getcurrent&type=S-1&company=&dateb=&owner=include&count=100&output=atom",
+    "https://www.sec.gov/cgi-bin/browse-edgar?action=getcurrent&type=424B&company=&dateb=&owner=include&count=100&output=atom",
+]
 
 CATEGORIES = [
     ("markets",   "Markets"),
@@ -269,12 +277,16 @@ def fetch_all_feeds():
             except Exception as e:  # noqa: BLE001
                 errors.append((name, str(e)[:120]))
 
-    filings = []
-    try:
-        raw = fetch(SEC_FEED[1], ua=SEC_UA)
-        filings = parse_feed(raw, "SEC EDGAR", "filings", 1.0)
-    except Exception as e:  # noqa: BLE001
-        errors.append(("SEC EDGAR", str(e)[:120]))
+    filings, seen_links = [], set()
+    for url in SEC_FILING_FEEDS:
+        try:
+            raw = fetch(url, ua=SEC_UA)
+            for f in parse_feed(raw, "SEC EDGAR", "filings", 1.0):
+                if f["link"] not in seen_links:
+                    seen_links.add(f["link"])
+                    filings.append(f)
+        except Exception as e:  # noqa: BLE001
+            errors.append(("SEC EDGAR", str(e)[:120]))
     return results, filings, errors
 
 
@@ -706,6 +718,8 @@ table.screen td.tick { font-family: "IBM Plex Mono", ui-monospace, monospace;
   padding: 0 4px; margin-left: 4px; color: var(--ink2); }
 .flag.new { color: var(--accent); border-color: var(--accent); }
 .flag.ins { color: var(--up); border-color: var(--up); }
+.flag.act { color: var(--up); border-color: var(--up); }
+.flag.offer { color: var(--down); border-color: var(--down); }
 .method { font-size: 12.5px; color: var(--muted); max-width: 90ch;
   border-top: 1px solid var(--hair); padding-top: 12px; margin-top: 30px; }
 
@@ -886,9 +900,10 @@ def render_smallcap_page(data):
             sub = r.get("sub") or {}
             sub_t = (f'growth {sub.get("g", "?")} · momentum {sub.get("m", "?")} · '
                      f'quality {sub.get("q", "?")}')
+            flag_cls = {"new": "new", "ins+": "ins", "act+": "act", "offer": "offer"}
             flags = "".join(
-                f'<span class="flag {"new" if f == "new" else "ins" if f == "ins+" else ""}">'
-                f'{esc(f)}</span>' for f in (r.get("flags") or []))
+                f'<span class="flag {flag_cls.get(f, "")}">{esc(f)}</span>'
+                for f in (r.get("flags") or []))
             ev_rev = (f'{r["ev_rev"]:.1f}×' if r.get("ev_rev") is not None else "—")
             trs.append(
                 f'<tr title="{esc(sub_t)}"><td class="l">{i}</td>'
@@ -936,14 +951,20 @@ def render_smallcap_page(data):
             f'{esc(n["title"])}</a><div class="meta">{esc(n["ticker"])} · '
             f'{esc(n["source"])}</div></div>' for n in sc["news"])
         cols.append(f'<section class="col"><h2 class="section-head">In the news</h2>{lis}</section>')
-    if sc.get("filings8k"):
+    def filing_col(key, heading, tail):
+        rows = sc.get(key) or []
+        if not rows:
+            return
         lis = "".join(
             f'<div class="item"><a href="{esc(f["link"])}" target="_blank" rel="noopener">'
             f'<strong>{esc(f["ticker"])}</strong> · {esc(f["name"])}</a>'
-            f'<div class="meta">8-K filed {esc(f["date"])}</div></div>'
-            for f in sc["filings8k"])
-        cols.append('<section class="col"><h2 class="section-head">Material events '
-                    f'(8-K filings)</h2>{lis}</section>')
+            f'<div class="meta">{esc(f.get("form") or "")} {tail} {esc(f["date"])}</div></div>'
+            for f in rows)
+        cols.append(f'<section class="col"><h2 class="section-head">{heading}</h2>{lis}</section>')
+
+    filing_col("filings_material", "Material events (8-K)", "filed")
+    filing_col("filings_activist", "Activist stakes (13D/13G)", "filed")
+    filing_col("filings_offering", "Offering filings (dilution)", "filed")
     if data.get("econ_calendar"):
         cols.append(render_econ_column(data["econ_calendar"]))
     if sc.get("below_floor"):
@@ -982,7 +1003,12 @@ def render_smallcap_page(data):
         'a value screen. Hover a row for its factor breakdown. Flags: <em>new</em> = '
         'entered the list today; <em>E-Nd</em> = reports earnings in N days; '
         '<em>ins+</em> = net insider open-market buying in the last 30 days; '
-        '<em>8-K</em> = filed a material-event report with the SEC in the last 3 days. '
+        '<em>8-K</em> = filed a material-event report with the SEC in the last 3 days; '
+        '<em>act+</em> = an investor disclosed a 5%+ stake (13D/13G) in the last 7 days; '
+        '<em>offer</em> = filed a securities registration/prospectus (S-1/424B, a '
+        'potential dilution event) in the last 7 days. These filing flags are matched '
+        'from SEC EDGAR and, like all news signals, inform context only — they are '
+        'never scored. '
         '<strong>Freeze:</strong> scoring rules do not change until the live record '
         'holds 12 independent 1-week and 3 independent 4-week readings; the record is '
         'kept per model version and never backfilled. Known limitations: static factor '
@@ -1017,12 +1043,11 @@ def build_data():
     # wires are analysis inputs matched against the band, never headline material
     top = [it for it in fresh if it["category"] != "wire"][:TOP_COUNT]
 
-    filings_fresh = []
-    for f in filings:
-        if f["published"] and (now - f["published"]) > timedelta(hours=24):
-            continue
-        f["title"] = re.sub(r"\s*\(\d{10}\)\s*", " ", f["title"]).strip()
-        filings_fresh.append(f)
+    # pass raw filing titles through (CIK + party intact) so record_filings can
+    # parse form type and the filed-by/subject party itself
+    filings_fresh = [f for f in filings
+                     if not (f["published"]
+                             and (now - f["published"]) > timedelta(hours=48))]
 
     def slim(it):
         return {

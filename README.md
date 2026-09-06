@@ -35,11 +35,18 @@ python3 pipeline.py --render-only
   purpose): ~18 outlets (WSJ, FT, CNBC, MarketWatch, The Economist, NYT,
   Yahoo Finance, Seeking Alpha, Google News Business, crypto press, Fed press
   releases) plus corporate press-release wires (GlobeNewswire, PR Newswire)
-  and the SEC's live 8-K filing stream. All of it is matched against the
-  small-cap band: matched headlines appear in "In the news", matched material
-  filings in "Material events" and as an `8-K` row flag. Only headlines,
-  links, and short feed-provided excerpts are used; everything links to the
-  original publisher. Nothing here is scored — news is context, not a factor.
+  and the SEC's live filing streams. All of it is matched against the
+  small-cap band: matched headlines appear in "In the news", and matched SEC
+  filings drive three columns and row flags — **8-K** material events
+  (`8-K` flag, 3d), **13D/13G** activist/5%+ stakes matched on the *subject*
+  company (`act+` flag, 7d), and **S-1/424B** offerings as a dilution warning
+  (`offer` flag, 7d). Activist filings use the `type=SC` prefix feed (the
+  per-form filter is unreliable for schedules) and are sorted by form in
+  `smallcap.record_filings`. Only headlines, links, and short feed-provided
+  excerpts are used; everything links to the original publisher. Nothing here
+  is scored — news and filings are context, not factors.
+  (Business Wire was evaluated but its public RSS returns no usable headlines,
+  so it is deferred; GlobeNewswire and PR Newswire cover the wire category.)
 - **Market data**: Yahoo Finance chart API (primary), with automatic fallbacks
   to FRED (Federal Reserve official data), Frankfurter/ECB (foreign exchange),
   and CoinGecko (crypto). Fallback numbers carry an "as of" date when they are

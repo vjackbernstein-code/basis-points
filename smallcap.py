@@ -559,10 +559,14 @@ def compute_screen(cache, prev_candidates=None, prev_published=None):
         ins = cache.get("insider", {}).get(t) or {}
         if (ins.get("net30") or 0) > 0 and _age_h(ins.get("t")) < 48:
             flags.append("ins+")
-        f8k = (cache.get("filings8k") or {}).get(t)
-        if f8k and f8k.get("date", "") >= (
-                _now() - timedelta(days=3)).strftime("%Y-%m-%d"):
-            flags.append("8-K")
+        secf = cache.get("sec_filings") or {}
+        for cat, flag in (("material", "8-K"), ("activist", "act+"),
+                          ("offering", "offer")):
+            fil = (secf.get(cat) or {}).get(t)  # not `f` — that's the factors dict
+            days = FILING_CATS[cat]["days"]
+            if fil and fil.get("date", "") >= (
+                    _now() - timedelta(days=days)).strftime("%Y-%m-%d"):
+                flags.append(flag)
         rows.append({
             "ticker": t, "name": p.get("name") or t, "ind": p.get("ind") or "—",
             "group": ft["group"], "mcap": p["mcap"],
@@ -719,42 +723,86 @@ def summarize(cache, note=None, published=None, candidates=None, log=None):
         "earnings": cache.get("earnings", []),
         "evaluation": evaluate(cache, log or load_log()),
         "regime": cache.get("regime") or None,
-        "filings8k": sorted(
+        **{f"filings_{cat}": sorted(
             ({"ticker": t, "name": (cache["profiles"].get(t) or {}).get("name") or t,
-              "date": f.get("date", ""), "link": f.get("link", "")}
-             for t, f in (cache.get("filings8k") or {}).items()),
-            key=lambda r: r["date"], reverse=True)[:10],
+              "date": f.get("date", ""), "link": f.get("link", ""),
+              "form": f.get("form", "")}
+             for t, f in ((cache.get("sec_filings") or {}).get(cat) or {}).items()),
+            key=lambda r: r["date"], reverse=True)[:10]
+           for cat in FILING_CATS},
     }
 
 
+# SEC filing categories matched against the band, all display/flag only (never
+# scored). Each: which form-title prefixes belong to it, which party names the
+# band company, and how many days it stays flagged.
+#   material  8-K       — a material corporate event; filer IS the company
+#   activist  SCHEDULE 13D/13G — a 5%+ stake; the SUBJECT is the target company
+#   offering  S-1/424B  — a securities registration/prospectus (dilution); filer
+FILING_CATS = {
+    "material": {"prefixes": ("8-K",),                    "party": "filer",   "days": 3},
+    "activist": {"prefixes": ("SCHEDULE 13D", "SCHEDULE 13G"), "party": "subject", "days": 7},
+    "offering": {"prefixes": ("S-1", "424B"),             "party": "filer",   "days": 7},
+}
+
+# form and company are separated by a spaced " - "; requiring spaces avoids
+# splitting hyphenated form codes like "8-K" and "S-1" at their internal hyphen
+_FILING_RE = re.compile(r"^(.+?)\s+-\s+(.+?)\s*\(\d{10}\)\s*\((.*?)\)\s*$")
+
+
+def _categorize_form(form):
+    up = form.upper()
+    for cat, spec in FILING_CATS.items():
+        if any(up.startswith(p) for p in spec["prefixes"]):
+            return cat
+    return None
+
+
 def record_filings(filing_items):
-    """Match fresh SEC 8-K filings (material corporate events) to band
-    companies and remember them for ~7 days. Titles look like
-    '8-K - ACME CORP (0001234567) (Filer)'."""
+    """Match fresh SEC filings to band companies by category and remember them.
+    Titles look like 'FORM - COMPANY NAME (0001234567) (Filer|Subject)'."""
     cache = load_cache()
     name_to_ticker = {}
     for t, p in cache["profiles"].items():
         if in_band(p):
             name_to_ticker[_name_key(p.get("name") or "")] = t
             name_to_ticker.setdefault(_name_key(cache["universe"].get(t) or ""), t)
-    filings = cache.get("filings8k") or {}
-    matched = 0
+
+    store = cache.get("sec_filings") or {c: {} for c in FILING_CATS}
+    for c in FILING_CATS:
+        store.setdefault(c, {})
+    matched = {c: 0 for c in FILING_CATS}
+
     for it in filing_items:
-        title = it.get("title", "")
-        m = re.match(r"8-K[^-]*-\s*(.+?)\s*\(", title)
+        m = _FILING_RE.match(it.get("title", ""))
         if not m:
             continue
-        tick = name_to_ticker.get(_name_key(m.group(1)))
+        form, name, party = m.group(1), m.group(2), m.group(3).lower()
+        cat = _categorize_form(form)
+        if not cat:
+            continue
+        want = FILING_CATS[cat]["party"]
+        # 13D/13G list two parties; only the "subject" is the target company
+        if want == "subject" and "subject" not in party:
+            continue
+        if want == "filer" and "subject" in party:
+            continue
+        tick = name_to_ticker.get(_name_key(name))
         if not tick:
             continue
         day = (it.get("published") or _iso())[:10]
-        prev = filings.get(tick)
+        prev = store[cat].get(tick)
         if not prev or day >= prev.get("date", ""):
-            filings[tick] = {"date": day, "link": it.get("link", "")}
-            matched += 1
-    floor = (_now() - timedelta(days=7)).strftime("%Y-%m-%d")
-    cache["filings8k"] = {t: f for t, f in filings.items()
-                          if f.get("date", "") >= floor}
+            store[cat][tick] = {"date": day, "link": it.get("link", ""),
+                                "form": form.strip()}
+            matched[cat] += 1
+
+    for cat, spec in FILING_CATS.items():
+        floor = (_now() - timedelta(days=spec["days"])).strftime("%Y-%m-%d")
+        store[cat] = {t: f for t, f in store[cat].items()
+                      if f.get("date", "") >= floor}
+    cache["sec_filings"] = store
+    cache.pop("filings8k", None)  # migrated into sec_filings["material"]
     save_cache(cache)
     return matched
 
