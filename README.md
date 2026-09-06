@@ -106,6 +106,31 @@ runs) bootstraps within the first day, then stays fresh on rolling updates.
 
 Local key files are git-ignored and contain only the raw key text.
 
+## Model v4 candidates (specified now, built only after the v3 freeze lifts)
+
+The v3 scoring rules are frozen until the live record holds 12 independent
+1-week and 3 independent 4-week readings. These candidates — each borrowed
+from an established, documented approach — will be evaluated against that
+record then, in this priority order:
+
+1. **Earnings beat-streak** (Zacks-style estimate-revision proxy): did the
+   company beat expectations the last 1–2 quarters? Free via Finnhub's
+   earnings-surprises endpoint.
+2. **Skip-week momentum + relative strength** (Jegadeesh–Titman / CAN SLIM):
+   exclude the most recent week from the momentum window (short-term reversal),
+   and measure returns relative to IWO rather than absolute.
+3. **Accruals red-flag** (Sloan): earnings far above operating cash flow is a
+   documented underperformance signal; we already hold both per-share figures.
+4. **Gross-profitability level** (Novy-Marx): score margin *level*, not just
+   direction, in the quality factor.
+5. **Piotroski-style binary battery**: replace percentile quality ranks with
+   summed pass/fail accounting checks (robust to outliers).
+6. **Institutional sponsorship** (13F filings, free from SEC but heavy to
+   parse): rising holder counts as a CAN SLIM-style "I" factor.
+
+Shipped early because it is display-only and score-neutral: the CAN SLIM-style
+market-context banner (the benchmark's own 13/26-week trend).
+
 ## Roadmap ideas
 
 - Email delivery of the daily brief (needs a Buttondown/Mailchimp account)

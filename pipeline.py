@@ -938,6 +938,13 @@ def render_smallcap_page(data):
             '<div class="note-box"><strong>Scorecard pending.</strong> The small-cap '
             'engine is installed and the company universe is loaded; measurement begins '
             'automatically once the Finnhub key is added.</div>')
+    reg = sc.get("regime") or {}
+    if reg.get("label"):
+        r26 = (f', {reg["r26"]:+.1f}% over 26 weeks' if reg.get("r26") is not None else "")
+        parts.append(
+            f'<div class="coverage">market context: small-cap growth tape '
+            f'<strong>{esc(reg["label"])}</strong> — Russell 2000 Growth ETF '
+            f'{reg["r13"]:+.1f}% over 13 weeks{r26} · context only, never affects scores</div>')
     if cov:
         parts.append(
             f'<div class="coverage">universe {cov.get("universe", 0):,} companies · '

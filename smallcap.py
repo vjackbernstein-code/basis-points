@@ -330,6 +330,31 @@ def refresh_earnings(fh, cache):
     cache["earnings_fetched"] = _iso()
 
 
+def _regime_label(r13, r26):
+    if r13 <= -8:
+        return "correction"
+    if r13 < 2:
+        return "flat/choppy"
+    return "uptrend" if (r26 or 0) > 0 else "early rebound"
+
+
+def refresh_regime(fh, cache):
+    """Market-context banner data: the benchmark's own trend. Display-only —
+    never touches scores (a CAN SLIM-style 'M' as context, not a gate)."""
+    if cache.get("regime") and _age_h(cache["regime"].get("t")) < 12:
+        return
+    try:
+        m = fh.get("stock/metric", symbol=BENCHES[0], metric="all").get("metric", {})
+    except Exception:  # noqa: BLE001
+        return
+    r13 = m.get("13WeekPriceReturnDaily")
+    if r13 is None:
+        return
+    r26 = m.get("26WeekPriceReturnDaily")
+    cache["regime"] = {"r13": r13, "r26": r26,
+                       "label": _regime_label(r13, r26), "t": _iso()}
+
+
 def refresh_bench(fh, cache):
     out = {}
     for sym in BENCHES:
@@ -680,6 +705,7 @@ def summarize(cache, note=None, published=None, candidates=None, log=None):
         "movers_down": down,
         "earnings": cache.get("earnings", []),
         "evaluation": evaluate(cache, log or load_log()),
+        "regime": cache.get("regime") or None,
     }
 
 
@@ -785,6 +811,7 @@ def update(budget=CALL_BUDGET):
         _spend_budget(fh, cache, budget)
         refresh_earnings(fh, cache)
         refresh_bench(fh, cache)
+        refresh_regime(fh, cache)
     finally:
         log = load_log()
         prev = _prev_log_entry(log)
