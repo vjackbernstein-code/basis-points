@@ -944,7 +944,15 @@ def render_smallcap_page(data):
             f'profiled {cov.get("profiled", 0):,} · in size band {cov.get("in_band", 0):,} · '
             f'fully measured {cov.get("measured", 0):,} · '
             f'passing filters {cov.get("scored", 0):,} · '
-            f'below revenue floor {cov.get("below_floor", 0):,}</div>')
+            f'below revenue floor {cov.get("below_floor", 0):,} · '
+            f'scores are relative to today’s eligible set</div>')
+        if (cov.get("universe") and not sc.get("note")
+                and cov.get("profiled", 0) < 0.9 * cov["universe"]):
+            parts.append(
+                '<div class="note-box"><strong>Bootstrap in progress.</strong> '
+                'Company coverage is still building, so today’s screen is drawn from '
+                'a partial, alphabetically skewed slice of the universe and is not '
+                'yet representative.</div>')
 
     screen = sc.get("screen") or []
     ev = sc.get("evaluation") or {}
@@ -953,13 +961,17 @@ def render_smallcap_page(data):
         for h, lab in (("1w", "1 week out"), ("4w", "4 weeks out")):
             if h in ev:
                 e = ev[h]
-                bits.append(f'{lab}: {e["excess"]:+.2f}% vs the Russell 2000 ETF '
-                            f'(over {e["days"]} screening day'
-                            f'{"s" if e["days"] != 1 else ""})')
+                dropped = (f'; {e["dropped"]} name-readings dropped'
+                           if e.get("dropped") else "")
+                bits.append(f'{lab}: {e["excess"]:+.2f}% vs the Russell 2000 Growth '
+                            f'ETF ({e["days"]} daily / {e.get("indep", "?")} independent '
+                            f'reading{"s" if e["days"] != 1 else ""}{dropped})')
         parts.append('<div class="note-box"><strong>Live track record.</strong> '
                      'Average forward return of published screens minus the benchmark — '
                      + "; ".join(bits) +
-                     '. Accumulated from real daily screens, not a backtest.</div>')
+                     '. Accumulated from real daily screens under this model version; '
+                     'never backfilled. Overlapping cohorts mean the independent count '
+                     'is the honest sample size.</div>')
     elif screen:
         parts.append('<div class="note-box"><strong>Live track record:</strong> '
                      'collecting. Each day’s screen is logged; the first 1-week '
@@ -968,7 +980,7 @@ def render_smallcap_page(data):
     if screen:
         head = ('<tr><th class="l">#</th><th class="l">Ticker</th>'
                 '<th class="l">Company</th><th class="l">Industry</th><th>Mkt cap</th>'
-                '<th>Rev growth</th><th>13-wk</th><th>vs 52w high</th>'
+                '<th>EV/Rev</th><th>Rev growth</th><th>13-wk</th><th>vs 52w high</th>'
                 '<th>Today</th><th>Score</th><th class="l">Flags</th></tr>')
         trs = []
         for i, r in enumerate(screen, 1):
@@ -982,11 +994,13 @@ def render_smallcap_page(data):
             flags = "".join(
                 f'<span class="flag {"new" if f == "new" else "ins" if f == "ins+" else ""}">'
                 f'{esc(f)}</span>' for f in (r.get("flags") or []))
+            ev_rev = (f'{r["ev_rev"]:.1f}×' if r.get("ev_rev") is not None else "—")
             trs.append(
                 f'<tr title="{esc(sub_t)}"><td class="l">{i}</td>'
                 f'<td class="l tick">{esc(r["ticker"])}</td>'
                 f'<td class="l">{esc(r["name"])}</td><td class="l">{esc(r["ind"])}</td>'
-                f'<td>{_fmt_mcap(r["mcap"])}</td><td>{r["rev_g"]:+.1f}%</td>'
+                f'<td>{_fmt_mcap(r["mcap"])}</td><td>{ev_rev}</td>'
+                f'<td>{r["rev_g"]:+.1f}%</td>'
                 f'<td>{r["r13"]:+.1f}%</td><td>{fh52}</td>'
                 f'{dp_td}<td><strong>{r["score"]:.1f}</strong></td>'
                 f'<td class="l">{flags}</td></tr>')
@@ -1044,21 +1058,32 @@ def render_smallcap_page(data):
         parts.append(f'<div class="duo">{"".join(cols)}</div>')
 
     parts.append(
-        '<div class="method"><strong>Methodology (model v2).</strong> Eligibility: U.S. '
-        'listed common stocks, market value $300M–$2B, price ≥ $2, 10-day average volume '
-        '≥ 50k shares, trailing-12-month revenue ≥ $50M, no over-the-counter listings. '
-        'Composite score = 40% growth (0.7 × trailing revenue growth + 0.3 × acceleration, '
-        'the latest quarter’s growth vs the trailing year) + 40% momentum (blended 13/26-week '
-        'return divided by 3-month volatility, so calm advances outrank violent spikes) + '
-        '20% quality (cash-flow funding or months of runway, margin direction, and low '
-        'shareholder dilution) — each factor percentile-ranked within the eligible set; '
-        'missing sub-measures rank neutral. Publication: at most 5 names per industry; '
-        'names new to the candidate list carry a one-day 3% score penalty to reduce churn. '
-        'Hover a row for its factor breakdown. Flags: <em>new</em> = entered the list today; '
-        '<em>E-Nd</em> = reports earnings in N days; <em>ins+</em> = net insider open-market '
-        'buying in the last 30 days. The track record above accumulates forward — never '
-        'backfilled. Data: SEC (universe), Finnhub (measures); quotes may be a few hours '
-        'old. Facts by fixed rules — <strong>not investment advice</strong>.</div>')
+        '<div class="method"><strong>Methodology (model v3, frozen Sep 5, 2026).</strong> '
+        'Eligibility: U.S. listed common stocks (one security per company — the common '
+        'ticker), market value $300M–$2B, price ≥ $2, 10-day average volume ≥ 50k shares, '
+        'trailing-12-month revenue ≥ $50M, no over-the-counter listings, no closed-end '
+        'funds. Composite score = 40% growth (0.5 × trailing revenue growth + 0.3 × '
+        '3-year growth + 0.2 × acceleration, each ranked <em>within industry group</em> so '
+        'cyclical windfalls compete with their own kind) + 40% momentum (blended '
+        '13/26-week return divided by 3-month volatility, so calm advances outrank violent '
+        'spikes) + 20% quality (graded cash-flow funding or months of runway; leverage, '
+        'ranked within industry; margin direction; low shareholder dilution — measured '
+        'from our own share-count history once it is old enough, a 5-year proxy until '
+        'then). Percentile ranks; missing sub-measures rank neutral; scores are relative '
+        'to the day’s eligible set. Publication requires positive trailing revenue '
+        'growth; at most 5 names per industry group; newcomers to the candidate list '
+        'carry a one-day 3% score penalty. EV/Rev (enterprise value ÷ revenue) is shown '
+        'for context and deliberately <em>not scored</em> — this is a growth screen, not '
+        'a value screen. Hover a row for its factor breakdown. Flags: <em>new</em> = '
+        'entered the list today; <em>E-Nd</em> = reports earnings in N days; '
+        '<em>ins+</em> = net insider open-market buying in the last 30 days. '
+        '<strong>Freeze:</strong> scoring rules do not change until the live record '
+        'holds 12 independent 1-week and 3 independent 4-week readings; the record is '
+        'kept per model version and never backfilled. Known limitations: static factor '
+        'weights; momentum strategies historically suffer sudden reversals in small '
+        'caps; all measures come from one free data vendor and quotes may be a few '
+        'hours old. Data: SEC (universe), Finnhub (measures). Facts by fixed rules — '
+        '<strong>not investment advice</strong>.</div>')
     parts.append(f'<footer><p>Generated {esc(date_line)}.</p></footer>')
 
     body = f'<div class="wrap">{"".join(parts)}</div>'

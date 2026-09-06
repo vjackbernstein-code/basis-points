@@ -77,19 +77,25 @@ Logs go to `data/launchd.log`.
 ## Small-cap growth screen (`smallcap.py`)
 
 Universe from the SEC's public company list (keyless); measures from Finnhub.
-Model v2 — eligibility: market cap $300M–$2B, listed exchange (no OTC), price
-≥ $2, 10-day average volume ≥ 50k shares, TTM revenue ≥ $50M (sub-floor names
-listed separately, unranked). Composite: 40% growth (TTM revenue growth +
-acceleration) + 40% volatility-scaled blended momentum + 20% quality (funding/
-runway, margin direction, low dilution), percentile-ranked. Publication: ≤5
-names per industry, one-day churn penalty for newcomers; flags for earnings
-proximity, newcomers, and net insider buying. Every run logs the published
-screen plus an IWM benchmark price to `data/screen_log.json`; forward 1-week
-and 4-week cohort-vs-benchmark returns accumulate on the page (a live track
-record, never backfilled). The free tier allows 60 calls/minute, so each run
-spends a ~550-call budget over ~10 minutes; the scorecard
-(`data/smallcap.json`, committed between cloud runs) bootstraps within the
-first day, then stays fresh on rolling updates.
+**Model v3 (frozen Sep 5, 2026)** — eligibility: market cap $300M–$2B, listed
+exchange (no OTC, no closed-end funds), one security per company (shortest
+ticker = common stock), price ≥ $2, 10-day average volume ≥ 50k shares, TTM
+revenue ≥ $50M (sub-floor names listed separately, unranked). Composite: 40%
+growth (0.5 TTM revenue growth + 0.3 three-year growth + 0.2 acceleration,
+ranked within industry group) + 40% volatility-scaled blended momentum + 20%
+quality (graded cash-flow funding/runway, industry-relative leverage, margin
+direction, dilution — self-measured from share-count history once old enough).
+Publication requires positive TTM revenue growth; ≤5 names per industry group;
+one-day churn penalty for newcomers; EV/Rev displayed but never scored; flags
+for earnings proximity, newcomers, and net insider buying. Every trading day
+the published screen plus IWO/IWM benchmark prices are logged to
+`data/screen_log.json`; forward 1-week and 4-week cohort-vs-IWO returns
+accumulate per model version (a live record, never backfilled), reporting both
+daily and independent (non-overlapping) readings. Scoring is frozen until the
+record holds 12 independent 1-week and 3 independent 4-week readings. The
+free tier allows 60 calls/minute, so each run spends a ~550-call budget over
+~10 minutes; the scorecard (`data/smallcap.json`, committed between cloud
+runs) bootstraps within the first day, then stays fresh on rolling updates.
 
 ## API keys (both optional; features light up when present)
 

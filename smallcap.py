@@ -71,7 +71,43 @@ SECTOR_CAP = 5
 NEWCOMER_PENALTY = 0.97
 CALL_BUDGET = int(os.environ.get("SMALLCAP_BUDGET", "550"))
 CALL_INTERVAL = 1.1                     # seconds between Finnhub calls (55/min)
-BENCH = "IWM"                           # Russell 2000 ETF, the evaluation benchmark
+BENCHES = ("IWO", "IWM")                # Russell 2000 Growth (primary) + Russell 2000
+MODEL_VERSION = "v3"                    # stamped on log entries; the track record is
+                                        # reported per version, never blended
+MIN_GROUP = 8                           # industry-relative ranks need this many peers
+
+# Coarse industry groups: vendor tags are fragmented ("Banking" vs "Financial
+# Services"), so the sector cap and industry-relative ranks use these instead.
+INDUSTRY_GROUPS = [
+    ("Financials",  ("bank", "financial", "insurance", "capital market", "credit", "thrift")),
+    ("Health",      ("biotech", "pharma", "health", "life science", "medical")),
+    ("Telecom",     ("telecom",)),
+    ("Technology",  ("software", "technology", "semiconductor", "internet",
+                     "electronic", "computer")),
+    ("Energy",      ("energy", "oil", "gas", "coal", "pipeline")),
+    ("Materials",   ("chemical", "metal", "mining", "paper", "packaging")),
+    ("Industrials", ("machin", "aerospace", "defense", "industrial", "construction",
+                     "engineer", "transport", "airline", "marine", "road", "rail",
+                     "commercial service", "professional service", "electrical",
+                     "building", "trading companies")),
+    ("Consumer",    ("retail", "consumer", "hotel", "restaurant", "leisure", "textile",
+                     "apparel", "auto", "household", "food", "beverage", "tobacco",
+                     "media", "entertainment", "distributor")),
+    ("Real Estate", ("real estate", "reit")),
+    ("Utilities",   ("utilit",)),
+]
+
+
+def industry_group(ind):
+    low = (ind or "").lower()
+    for group, words in INDUSTRY_GROUPS:
+        if any(w in low for w in words):
+            return group
+    return "Other"
+
+
+def _name_key(name):
+    return re.sub(r"[^a-z0-9]", "", (name or "").lower())[:24]
 
 
 def read_key(env_name, file_name):
@@ -236,6 +272,9 @@ def _fetch_metrics(fh, cache, ticker):
         "om_a": m.get("operatingMarginAnnual"),
         "rg5": m.get("revenueGrowth5Y"),
         "rsg5": m.get("revenueShareGrowth5Y"),
+        "rg3": m.get("revenueGrowth3Y"),
+        "dte": m.get("totalDebt/totalEquityQuarterly"),
+        "ev_rev": m.get("evRevenueTTM"),
         "t": _iso(),
     }
 
@@ -292,12 +331,17 @@ def refresh_earnings(fh, cache):
 
 
 def refresh_bench(fh, cache):
-    try:
-        q = fh.get("quote", symbol=BENCH)
-        if q.get("c"):
-            cache["bench"] = {"px": q["c"], "t": _iso()}
-    except Exception:  # noqa: BLE001
-        pass
+    out = {}
+    for sym in BENCHES:
+        try:
+            q = fh.get("quote", symbol=sym)
+            if q.get("c"):
+                out[sym.lower()] = q["c"]
+        except Exception:  # noqa: BLE001
+            pass
+    if out:
+        out["t"] = _iso()
+        cache["bench"] = out
 
 
 # ------------------------------------------------------------- model ---------
@@ -361,8 +405,10 @@ def _percentile_ranks(values):
 def _factors(cache, ticker):
     m = cache["metrics"][ticker]
     q = cache["quotes"][ticker]
-    # growth
+    p = cache["profiles"][ticker]
+    # growth trio: trailing year, three-year persistence, acceleration
     g_ttm = max(-20.0, min(150.0, m["rev_g"]))
+    g_3y = max(-20.0, min(100.0, m["rg3"])) if m.get("rg3") is not None else None
     accel = None
     if m.get("rev_gq") is not None:
         accel = max(-50.0, min(50.0, m["rev_gq"] - m["rev_g"]))
@@ -372,56 +418,103 @@ def _factors(cache, ticker):
     blended = 0.6 * r13 + 0.4 * max(-50.0, min(150.0, r26)) if r26 is not None else r13
     vol = max(VOL_FLOOR, m.get("vol") or VOL_FLOOR)
     momo = blended / vol
-    # quality: funding
+    # quality: graded funding — profitable names rank by cash-flow margin;
+    # money-losers sit below them all, ordered by months of runway
     funding = None
     if m.get("cfps") is not None:
-        if m["cfps"] > 0:
-            funding = 999.0                      # self-funded tops the rank
+        if m["cfps"] >= 0:
+            margin = m["cfps"] / m["rps"] if m.get("rps") else 0.0
+            funding = max(0.0, min(0.6, margin))
         elif m.get("cashps"):
-            burn_ps = -m["cfps"]
-            funding = min(36.0, (m["cashps"] / burn_ps) * 12)  # months of runway
+            runway = min(36.0, (m["cashps"] / -m["cfps"]) * 12)
+            funding = runway / 36.0 - 1.05       # in [-1.05, -0.05]
+        else:
+            funding = -1.1
     # quality: margin direction (gross preferred, operating fallback)
     margin_dir = None
     if m.get("gm_t") is not None and m.get("gm_a") is not None:
         margin_dir = m["gm_t"] - m["gm_a"]
     elif m.get("om_t") is not None and m.get("om_a") is not None:
         margin_dir = m["om_t"] - m["om_a"]
-    # quality: dilution (5y total vs per-share revenue growth gap; lower better)
+    # quality: dilution — measured from our own share-count history once two
+    # readings sit >= 60 days apart; the 5-year proxy until then
     dilution = None
-    if m.get("rg5") is not None and m.get("rsg5") is not None:
+    hist = p.get("shist") or []
+    if len(hist) >= 2:
+        (d0, s0), (d1, s1) = hist[0], hist[-1]
+        days = (datetime.fromisoformat(d1) - datetime.fromisoformat(d0)).days
+        if days >= 60 and s0:
+            dilution = ((s1 / s0) ** (365.0 / days) - 1) * 100
+    if dilution is None and m.get("rg5") is not None and m.get("rsg5") is not None:
         dilution = m["rg5"] - m["rsg5"]
+    # display-only extras; a price above the recorded 52-week high is a stale
+    # record (new listing), shown as unknown rather than an impossible number
+    from_high = None
+    if m.get("hi52") and q["px"] <= m["hi52"]:
+        from_high = (q["px"] / m["hi52"] - 1) * 100
     return {
-        "g_ttm": g_ttm, "accel": accel, "momo": momo, "blended": blended,
-        "funding": funding, "margin_dir": margin_dir, "dilution": dilution,
-        "hi52": m.get("hi52"), "px": q["px"], "dp": q.get("dp"),
+        "g_ttm": g_ttm, "g_3y": g_3y, "accel": accel, "momo": momo,
+        "funding": funding, "dte": m.get("dte"), "margin_dir": margin_dir,
+        "dilution": dilution, "from_high": from_high, "ev_rev": m.get("ev_rev"),
+        "px": q["px"], "dp": q.get("dp"),
+        "group": industry_group(p.get("ind")),
     }
+
+
+def _grouped_ranks(values, groups):
+    """Percentile ranks within industry group (>= MIN_GROUP members), else global."""
+    out = _percentile_ranks(values)
+    by_group = {}
+    for i, g in enumerate(groups):
+        by_group.setdefault(g, []).append(i)
+    for idxs in by_group.values():
+        if len(idxs) >= MIN_GROUP:
+            sub = _percentile_ranks([values[i] for i in idxs])
+            for j, i in enumerate(idxs):
+                out[i] = sub[j]
+    return out
+
+
+def _dedupe_by_company(cache, tickers):
+    """One security per company: the shortest ticker (the common stock)."""
+    by_name = {}
+    for t in tickers:
+        key = _name_key(cache["profiles"][t].get("name") or t)
+        best = by_name.get(key)
+        if best is None or (len(t), t) < (len(best), best):
+            by_name[key] = t
+    return sorted(by_name.values())
 
 
 def compute_screen(cache, prev_candidates=None, prev_published=None):
     """Returns (published top-25, candidate top-40)."""
-    tickers = [t for t in cache["metrics"] if _eligible(cache, t)]
+    tickers = _dedupe_by_company(
+        cache, [t for t in cache["metrics"] if _eligible(cache, t)])
     if not tickers:
         return [], []
     f = {t: _factors(cache, t) for t in tickers}
-    g1 = _percentile_ranks([f[t]["g_ttm"] for t in tickers])
-    g2 = _percentile_ranks([f[t]["accel"] for t in tickers])
+    groups = [f[t]["group"] for t in tickers]
+    g1 = _grouped_ranks([f[t]["g_ttm"] for t in tickers], groups)
+    g3 = _grouped_ranks([f[t]["g_3y"] for t in tickers], groups)
+    ga = _grouped_ranks([f[t]["accel"] for t in tickers], groups)
     mo = _percentile_ranks([f[t]["momo"] for t in tickers])
     q1 = _percentile_ranks([f[t]["funding"] for t in tickers])
-    q2 = _percentile_ranks([f[t]["margin_dir"] for t in tickers])
-    q3 = _percentile_ranks([-f[t]["dilution"] if f[t]["dilution"] is not None
+    q2 = _grouped_ranks([-f[t]["dte"] if f[t]["dte"] is not None else None
+                         for t in tickers], groups)
+    q3 = _percentile_ranks([f[t]["margin_dir"] for t in tickers])
+    q4 = _percentile_ranks([-f[t]["dilution"] if f[t]["dilution"] is not None
                             else None for t in tickers])
     prev_candidates = set(prev_candidates or [])
     today = _now().strftime("%Y-%m-%d")
 
     rows = []
     for i, t in enumerate(tickers):
-        growth = 0.7 * g1[i] + 0.3 * g2[i]
-        quality = 0.5 * q1[i] + 0.3 * q2[i] + 0.2 * q3[i]
+        growth = 0.5 * g1[i] + 0.3 * g3[i] + 0.2 * ga[i]
+        quality = 0.35 * q1[i] + 0.25 * q2[i] + 0.2 * q3[i] + 0.2 * q4[i]
         score = 100 * (0.4 * growth + 0.4 * mo[i] + 0.2 * quality)
         if prev_candidates and t not in prev_candidates:
             score *= NEWCOMER_PENALTY
-        p, ft = cache["profiles"][t], f[t]
-        m = cache["metrics"][t]
+        p, ft, m = cache["profiles"][t], f[t], cache["metrics"][t]
         flags = []
         edate = cache.get("earn_map", {}).get(t)
         if edate:
@@ -434,9 +527,10 @@ def compute_screen(cache, prev_candidates=None, prev_published=None):
             flags.append("ins+")
         rows.append({
             "ticker": t, "name": p.get("name") or t, "ind": p.get("ind") or "—",
-            "mcap": p["mcap"], "rev_g": m["rev_g"], "accel": ft["accel"],
+            "group": ft["group"], "mcap": p["mcap"],
+            "rev_g": m["rev_g"], "accel": ft["accel"],
             "r13": m["r13"], "momo": round(ft["momo"], 2),
-            "from_high": (ft["px"] / ft["hi52"] - 1) * 100 if ft.get("hi52") else None,
+            "from_high": ft["from_high"], "ev_rev": ft["ev_rev"],
             "px": ft["px"], "dp": ft["dp"],
             "score": round(score, 1),
             "sub": {"g": round(100 * growth), "m": round(100 * mo[i]),
@@ -446,17 +540,14 @@ def compute_screen(cache, prev_candidates=None, prev_published=None):
     rows.sort(key=lambda r: -r["score"])
     candidates = rows[:CANDIDATES]
 
-    published, per_ind, seen_names = [], {}, set()
+    published, per_grp = [], {}
     for r in rows:
-        # one slot per company: preferred/secondary share classes share the name
-        name_key = re.sub(r"[^a-z0-9]", "", r["name"].lower())[:24]
-        if name_key in seen_names:
+        if r["rev_g"] <= 0:
+            continue        # a growth screen publishes growers only
+        grp = r["group"]
+        if per_grp.get(grp, 0) >= SECTOR_CAP:
             continue
-        ind = r["ind"]
-        if per_ind.get(ind, 0) >= SECTOR_CAP:
-            continue
-        seen_names.add(name_key)
-        per_ind[ind] = per_ind.get(ind, 0) + 1
+        per_grp[grp] = per_grp.get(grp, 0) + 1
         if prev_published is not None and r["ticker"] not in prev_published:
             r["flags"] = ["new"] + r["flags"]
         published.append(r)
@@ -466,14 +557,16 @@ def compute_screen(cache, prev_candidates=None, prev_published=None):
 
 
 def movers(cache):
+    fresh = [t for t, q in cache["quotes"].items()
+             if q.get("dp") is not None and q.get("px")
+             and in_band(cache["profiles"].get(t))
+             and _age_h(q.get("t")) < 26]
     rows = []
-    for t, q in cache["quotes"].items():
-        if (q.get("dp") is not None and q.get("px")
-                and in_band(cache["profiles"].get(t))
-                and _age_h(q.get("t")) < 26):
-            rows.append({"ticker": t,
-                         "name": cache["profiles"][t].get("name") or t,
-                         "px": q["px"], "dp": q["dp"]})
+    for t in _dedupe_by_company(cache, fresh):
+        q = cache["quotes"][t]
+        rows.append({"ticker": t,
+                     "name": cache["profiles"][t].get("name") or t,
+                     "px": q["px"], "dp": q["dp"]})
     rows.sort(key=lambda r: -r["dp"])
     return rows[:5], rows[-5:][::-1] if len(rows) > 5 else []
 
@@ -484,10 +577,21 @@ def movers(cache):
 def update_log(cache, published, candidates):
     log = load_log()
     today = _now().strftime("%Y-%m-%d")
+    bench = cache.get("bench") or {}
+    prior = [d for d in sorted(log) if d < today]
+    prev_bench = None
+    if prior:
+        b = log[prior[-1]].get("bench")
+        prev_bench = b.get("iwo") if isinstance(b, dict) else None  # v2 logged a bare float
+    # market closed (weekend/holiday) => benchmark unchanged: no phantom entry
+    if (today not in log and prev_bench is not None
+            and prev_bench == bench.get("iwo")):
+        return log
     log[today] = {
+        "v": MODEL_VERSION,
         "pub": [[r["ticker"], r["score"], r["px"]] for r in published],
         "cand": [r["ticker"] for r in candidates],
-        "bench": (cache.get("bench") or {}).get("px"),
+        "bench": {"iwo": bench.get("iwo"), "iwm": bench.get("iwm")},
     }
     # keep a year of history
     for day in sorted(log)[:-370]:
@@ -497,28 +601,44 @@ def update_log(cache, published, candidates):
 
 
 def evaluate(cache, log):
-    """Forward cohort returns vs benchmark from aged log entries."""
-    bench_now = (cache.get("bench") or {}).get("px")
+    """Forward cohort returns vs the IWO benchmark, current model version only."""
+    bench_now = (cache.get("bench") or {}).get("iwo")
     today = _now().date()
     out = {}
-    for horizon, lo, hi in (("1w", 6, 9), ("4w", 25, 31)):
-        diffs, n_days = [], 0
-        for day, entry in log.items():
-            age = (today - datetime.fromisoformat(day).date()).days
-            if not (lo <= age <= hi) or not entry.get("bench") or not bench_now:
+    for horizon, lo, hi, gap in (("1w", 6, 9, 7), ("4w", 25, 31, 28)):
+        readings = []
+        for day in sorted(log):
+            entry = log[day]
+            if entry.get("v") != MODEL_VERSION:
                 continue
-            rets = []
+            b0 = (entry.get("bench") or {}).get("iwo")
+            age = (today - datetime.fromisoformat(day).date()).days
+            if not (lo <= age <= hi) or not b0 or not bench_now:
+                continue
+            rets, dropped = [], 0
             for tick, _score, px0 in entry.get("pub", []):
                 q = cache["quotes"].get(tick) or {}
                 if px0 and q.get("px") and _age_h(q.get("t")) < 30:
                     rets.append((q["px"] / px0 - 1) * 100)
-            if len(rets) >= 15:
-                cohort = sum(rets) / len(rets)
-                bench = (bench_now / entry["bench"] - 1) * 100
-                diffs.append(cohort - bench)
-                n_days += 1
-        if n_days:
-            out[horizon] = {"excess": round(sum(diffs) / n_days, 2), "days": n_days}
+                else:
+                    dropped += 1
+            if len(rets) < 20:
+                continue    # too many missing names to trust the reading
+            cohort = sum(rets) / len(rets)
+            readings.append((day, cohort - (bench_now / b0 - 1) * 100, dropped))
+        if readings:
+            indep, last = 0, None
+            for day, _x, _d in readings:
+                d = datetime.fromisoformat(day).date()
+                if last is None or (d - last).days >= gap:
+                    indep += 1
+                    last = d
+            out[horizon] = {
+                "excess": round(sum(x for _, x, _d in readings) / len(readings), 2),
+                "days": len(readings),
+                "indep": indep,
+                "dropped": sum(d for _, _x, d in readings),
+            }
     return out
 
 
@@ -612,8 +732,11 @@ def _spend_budget(fh, cache, budget):
     # 1. keep the current screen's quotes fresh
     spend((t for t in cache.get("last_screen", [])
            if _age_h(cache["quotes"].get(t, {}).get("t")) > 3), _fetch_quote)
-    # 2. metrics missing for known in-band names (screen grows early)
-    spend((t for t in band if t not in cache["metrics"]), _fetch_metrics)
+    # 2. metrics missing for known in-band names (screen grows early); entries
+    #    from before v3 lack the leverage/valuation fields — refetch those too
+    spend((t for t in band
+           if t not in cache["metrics"] or "ev_rev" not in cache["metrics"][t]),
+          _fetch_metrics)
     # 2b. band profiles from before the v2 format lack the share count the
     #     revenue floor needs — re-profile them now, not at the weekly refresh
     spend((t for t in band if "shares" not in (cache["profiles"].get(t) or {})),
