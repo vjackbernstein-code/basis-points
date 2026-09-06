@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-06T06:52:54.931241+00:00",
+ "generated_at": "2026-09-06T08:28:33.843444+00:00",
  "market": [
   {
    "label": "S&P 500",
@@ -293,11 +293,11 @@
    "label": "Bitcoin",
    "symbol": "bitcoin",
    "kind": "crypto",
-   "value": 79758.00581046473,
+   "value": 79812.34794672788,
    "prev": 79821.69873179746,
-   "value_txt": "$79,758",
-   "delta": -0.07979399379451126,
-   "delta_txt": "-0.08%",
+   "value_txt": "$79,812",
+   "delta": -0.011714590416064555,
+   "delta_txt": "-0.01%",
    "spark": [
     63031.04825975698,
     62843.70368466329,
@@ -321,18 +321,18 @@
     81264.70153038795,
     79671.25767420157,
     79821.69873179746,
-    79758.00581046473
+    79812.34794672788
    ]
   },
   {
    "label": "Ethereum",
    "symbol": "ethereum",
    "kind": "crypto",
-   "value": 2505.345783713449,
+   "value": 2495.5044997172395,
    "prev": 2480.0031686031184,
-   "value_txt": "$2,505",
-   "delta": 1.0218783359299013,
-   "delta_txt": "+1.02%",
+   "value_txt": "$2,496",
+   "delta": 0.6250528753498451,
+   "delta_txt": "+0.63%",
    "spark": [
     1880.9591561894488,
     1874.401898191962,
@@ -356,11 +356,11 @@
     2507.6482840896088,
     2456.085066364875,
     2480.0031686031184,
-    2505.345783713449
+    2495.5044997172395
    ]
   }
  ],
- "tape_line": "S&P 500 -0.38%, Nasdaq -0.29%, Dow -0.51%; the 10-year Treasury at 4.77% (-2 bp); WTI crude $91.48 (+5.11%); bitcoin $79,758 (-0.08%).",
+ "tape_line": "S&P 500 -0.38%, Nasdaq -0.29%, Dow -0.51%; the 10-year Treasury at 4.77% (-2 bp); WTI crude $91.48 (+5.11%); bitcoin $79,812 (-0.01%).",
  "top": [
   {
    "title": "Trump turns up the heat on Warsh as Fed rate hike looms",
@@ -414,16 +414,40 @@
  ],
  "smallcap": {
   "note": null,
-  "asof": "2026-09-06T07:03:39+00:00",
+  "asof": "2026-09-06T08:39:18+00:00",
   "coverage": {
    "universe": 9869,
-   "profiled": 4648,
-   "in_band": 887,
-   "measured": 797,
-   "scored": 401,
-   "below_floor": 33
+   "profiled": 4950,
+   "in_band": 939,
+   "measured": 887,
+   "scored": 451,
+   "below_floor": 36
   },
   "screen": [
+   {
+    "ticker": "PAYS",
+    "name": "Paysign Inc",
+    "ind": "Financial Services",
+    "group": "Financials",
+    "mcap": 759.4159787307096,
+    "rev_g": 46.84,
+    "accel": 1.2399999999999949,
+    "r13": 92.9699,
+    "momo": 1.64,
+    "from_high": -6.7914067914067955,
+    "ev_rev": 7.2737,
+    "px": 13.45,
+    "dp": 3.7809,
+    "score": 82.0,
+    "sub": {
+     "g": 79,
+     "m": 100,
+     "q": 64
+    },
+    "flags": [
+     "new"
+    ]
+   },
    {
     "ticker": "BWFG",
     "name": "Bankwell Financial Group Inc",
@@ -438,11 +462,11 @@
     "ev_rev": null,
     "px": 67.39,
     "dp": 1.8745,
-    "score": 80.6,
+    "score": 80.4,
     "sub": {
-     "g": 72,
+     "g": 71,
      "m": 100,
-     "q": 60
+     "q": 61
     },
     "flags": []
    },
@@ -460,7 +484,7 @@
     "ev_rev": 15.8316,
     "px": 58.45,
     "dp": -2.4207,
-    "score": 79.9,
+    "score": 79.8,
     "sub": {
      "g": 85,
      "m": 98,
@@ -484,10 +508,10 @@
     "ev_rev": 1.033,
     "px": 51.75,
     "dp": 1.7299,
-    "score": 79.1,
+    "score": 79.7,
     "sub": {
-     "g": 87,
-     "m": 84,
+     "g": 88,
+     "m": 86,
      "q": 64
     },
     "flags": [
@@ -508,13 +532,37 @@
     "ev_rev": null,
     "px": 38.85,
     "dp": 0.3357,
-    "score": 77.9,
+    "score": 78.3,
     "sub": {
-     "g": 72,
+     "g": 73,
      "m": 95,
      "q": 56
     },
     "flags": []
+   },
+   {
+    "ticker": "FRD",
+    "name": "Friedman Industries Inc",
+    "ind": "Metals & Mining",
+    "group": "Materials",
+    "mcap": 328.90327285714284,
+    "rev_g": 61.8,
+    "accel": 16.25,
+    "r13": 87.1153,
+    "momo": 1.3,
+    "from_high": -6.499705761135455,
+    "ev_rev": 0.5569,
+    "px": 45.6,
+    "dp": 0.5291,
+    "score": 78.0,
+    "sub": {
+     "g": 77,
+     "m": 99,
+     "q": 49
+    },
+    "flags": [
+     "new"
+    ]
    },
    {
     "ticker": "ATLC",
@@ -530,10 +578,10 @@
     "ev_rev": 6.0246,
     "px": 93.13,
     "dp": -3.7018,
-    "score": 77.6,
+    "score": 77.8,
     "sub": {
      "g": 92,
-     "m": 82,
+     "m": 83,
      "q": 39
     },
     "flags": [
@@ -554,61 +602,13 @@
     "ev_rev": 0.6171,
     "px": 71.16,
     "dp": 2.9216,
-    "score": 76.5,
+    "score": 76.4,
     "sub": {
      "g": 64,
      "m": 93,
-     "q": 69
+     "q": 68
     },
     "flags": []
-   },
-   {
-    "ticker": "FRD",
-    "name": "Friedman Industries Inc",
-    "ind": "Metals & Mining",
-    "group": "Materials",
-    "mcap": 328.90327285714284,
-    "rev_g": 61.8,
-    "accel": 16.25,
-    "r13": 87.1153,
-    "momo": 1.3,
-    "from_high": -6.499705761135455,
-    "ev_rev": 0.5569,
-    "px": 45.6,
-    "dp": 0.5291,
-    "score": 76.0,
-    "sub": {
-     "g": 73,
-     "m": 99,
-     "q": 48
-    },
-    "flags": [
-     "new"
-    ]
-   },
-   {
-    "ticker": "FBIZ",
-    "name": "First Business Financial Services Inc",
-    "ind": "Banking",
-    "group": "Financials",
-    "mcap": 609.4647872518046,
-    "rev_g": 67.39037,
-    "accel": -7.127990000000004,
-    "r13": 26.2218,
-    "momo": 1.29,
-    "from_high": -0.8845944474687117,
-    "ev_rev": null,
-    "px": 72.83,
-    "dp": 1.0966,
-    "score": 75.9,
-    "sub": {
-     "g": 66,
-     "m": 99,
-     "q": 62
-    },
-    "flags": [
-     "new"
-    ]
    },
    {
     "ticker": "AMAL",
@@ -624,9 +624,9 @@
     "ev_rev": null,
     "px": 49.17,
     "dp": 0.2651,
-    "score": 75.5,
+    "score": 76.1,
     "sub": {
-     "g": 60,
+     "g": 61,
      "m": 91,
      "q": 76
     },
@@ -648,11 +648,33 @@
     "ev_rev": 7.1578,
     "px": 19.42,
     "dp": -2.51,
-    "score": 75.2,
+    "score": 75.4,
     "sub": {
-     "g": 73,
-     "m": 82,
-     "q": 67
+     "g": 72,
+     "m": 83,
+     "q": 66
+    },
+    "flags": []
+   },
+   {
+    "ticker": "CBLL",
+    "name": "Ceribell Inc",
+    "ind": "Health Care",
+    "group": "Health",
+    "mcap": 948.7066531282051,
+    "rev_g": 31.7,
+    "accel": 0.8399999999999999,
+    "r13": 31.84,
+    "momo": 0.74,
+    "from_high": -2.408211606790367,
+    "ev_rev": 9.1235,
+    "px": 24.72,
+    "dp": 0.6105,
+    "score": 75.4,
+    "sub": {
+     "g": 75,
+     "m": 85,
+     "q": 58
     },
     "flags": []
    },
@@ -670,37 +692,15 @@
     "ev_rev": 6.6401,
     "px": 12.39,
     "dp": -1.2749,
-    "score": 75.2,
+    "score": 75.4,
     "sub": {
      "g": 87,
-     "m": 82,
-     "q": 50
+     "m": 83,
+     "q": 49
     },
     "flags": [
      "new"
     ]
-   },
-   {
-    "ticker": "CBLL",
-    "name": "Ceribell Inc",
-    "ind": "Health Care",
-    "group": "Health",
-    "mcap": 948.7066531282051,
-    "rev_g": 31.7,
-    "accel": 0.8399999999999999,
-    "r13": 31.84,
-    "momo": 0.74,
-    "from_high": -2.408211606790367,
-    "ev_rev": 9.1235,
-    "px": 24.72,
-    "dp": 0.6105,
-    "score": 74.6,
-    "sub": {
-     "g": 74,
-     "m": 83,
-     "q": 58
-    },
-    "flags": []
    },
    {
     "ticker": "ADAM",
@@ -716,10 +716,10 @@
     "ev_rev": 12.3006,
     "px": 9.75,
     "dp": 0.5155,
-    "score": 74.4,
+    "score": 74.3,
     "sub": {
-     "g": 93,
-     "m": 68,
+     "g": 92,
+     "m": 69,
      "q": 51
     },
     "flags": [
@@ -740,57 +740,11 @@
     "ev_rev": 5.4949,
     "px": 16.48,
     "dp": 0,
-    "score": 73.2,
+    "score": 73.0,
     "sub": {
-     "g": 73,
-     "m": 95,
-     "q": 41
-    },
-    "flags": [
-     "new"
-    ]
-   },
-   {
-    "ticker": "AMPL",
-    "name": "Amplitude Inc",
-    "ind": "Technology",
-    "group": "Technology",
-    "mcap": 1626.4014886671587,
-    "rev_g": 18.26,
-    "accel": 2.8999999999999986,
-    "r13": 68,
-    "momo": 1.06,
-    "from_high": -11.788617886178866,
-    "ev_rev": 4.1473,
-    "px": 13.02,
-    "dp": -3.9114,
-    "score": 72.7,
-    "sub": {
-     "g": 70,
-     "m": 94,
-     "q": 35
-    },
-    "flags": []
-   },
-   {
-    "ticker": "FLXS",
-    "name": "Flexsteel Industries Inc",
-    "ind": "Consumer products",
-    "group": "Consumer",
-    "mcap": 336.17745878710963,
-    "rev_g": 4.1,
-    "accel": -3.4399999999999995,
-    "r13": 40.8055,
-    "momo": 1.3,
-    "from_high": -7.15335066109165,
-    "ev_rev": 0.6958,
-    "px": 82.16,
-    "dp": 2.2272,
-    "score": 72.6,
-    "sub": {
-     "g": 53,
-     "m": 99,
-     "q": 69
+     "g": 72,
+     "m": 96,
+     "q": 40
     },
     "flags": [
      "new"
@@ -810,11 +764,81 @@
     "ev_rev": 0.9077,
     "px": 24.91,
     "dp": -1.5804,
-    "score": 72.4,
+    "score": 72.5,
     "sub": {
      "g": 75,
-     "m": 86,
-     "q": 52
+     "m": 87,
+     "q": 50
+    },
+    "flags": [
+     "new"
+    ]
+   },
+   {
+    "ticker": "FLXS",
+    "name": "Flexsteel Industries Inc",
+    "ind": "Consumer products",
+    "group": "Consumer",
+    "mcap": 336.17745878710963,
+    "rev_g": 4.1,
+    "accel": -3.4399999999999995,
+    "r13": 40.8055,
+    "momo": 1.3,
+    "from_high": -7.15335066109165,
+    "ev_rev": 0.6958,
+    "px": 82.16,
+    "dp": 2.2272,
+    "score": 72.4,
+    "sub": {
+     "g": 54,
+     "m": 99,
+     "q": 68
+    },
+    "flags": [
+     "new"
+    ]
+   },
+   {
+    "ticker": "AMPL",
+    "name": "Amplitude Inc",
+    "ind": "Technology",
+    "group": "Technology",
+    "mcap": 1626.4014886671587,
+    "rev_g": 18.26,
+    "accel": 2.8999999999999986,
+    "r13": 68,
+    "momo": 1.06,
+    "from_high": -11.788617886178866,
+    "ev_rev": 4.1473,
+    "px": 13.02,
+    "dp": -3.9114,
+    "score": 72.0,
+    "sub": {
+     "g": 68,
+     "m": 95,
+     "q": 35
+    },
+    "flags": []
+   },
+   {
+    "ticker": "ELE",
+    "name": "Elemental Royalty Corp",
+    "ind": "Metals & Mining",
+    "group": "Materials",
+    "mcap": 1923.0571006489024,
+    "rev_g": 136.91,
+    "accel": 24.670000000000016,
+    "r13": 24.4717,
+    "momo": 0.23,
+    "from_high": -38.20355788859725,
+    "ev_rev": null,
+    "px": 21.19,
+    "dp": -2.1699,
+    "score": 71.9,
+    "sub": {
+     "g": 97,
+     "m": 54,
+     "q": 69
     },
     "flags": [
      "new"
@@ -834,10 +858,10 @@
     "ev_rev": 9.0392,
     "px": 21.49,
     "dp": 0.3268,
-    "score": 72.3,
+    "score": 71.8,
     "sub": {
-     "g": 87,
-     "m": 67,
+     "g": 85,
+     "m": 68,
      "q": 64
     },
     "flags": [
@@ -845,24 +869,24 @@
     ]
    },
    {
-    "ticker": "ELE",
-    "name": "Elemental Royalty Corp",
-    "ind": "Metals & Mining",
-    "group": "Materials",
-    "mcap": 1923.0571006489024,
-    "rev_g": 136.91,
-    "accel": 24.670000000000016,
-    "r13": 24.4717,
-    "momo": 0.23,
-    "from_high": -38.20355788859725,
-    "ev_rev": null,
-    "px": 21.19,
-    "dp": -2.1699,
-    "score": 71.6,
+    "ticker": "SFL",
+    "name": "SFL Corporation Ltd",
+    "ind": "Energy",
+    "group": "Energy",
+    "mcap": 1861.586825316957,
+    "rev_g": 28.31,
+    "accel": -24.06,
+    "r13": 17.3358,
+    "momo": 0.61,
+    "from_high": -0.6182380216383287,
+    "ev_rev": 3.7291,
+    "px": 12.86,
+    "dp": 1.9017,
+    "score": 70.3,
     "sub": {
-     "g": 96,
-     "m": 54,
-     "q": 69
+     "g": 70,
+     "m": 80,
+     "q": 62
     },
     "flags": [
      "new"
@@ -882,9 +906,9 @@
     "ev_rev": 0.3496,
     "px": 12.38,
     "dp": 0.6504,
-    "score": 70.3,
+    "score": 70.1,
     "sub": {
-     "g": 60,
+     "g": 59,
      "m": 96,
      "q": 51
     },
@@ -906,7 +930,7 @@
     "ev_rev": 0.996,
     "px": 39.81,
     "dp": 1.6339,
-    "score": 70.2,
+    "score": 70.0,
     "sub": {
      "g": 51,
      "m": 96,
@@ -930,11 +954,11 @@
     "ev_rev": 6.1787,
     "px": 54.98,
     "dp": 0.1092,
-    "score": 68.1,
+    "score": 69.0,
     "sub": {
-     "g": 46,
-     "m": 90,
-     "q": 67
+     "g": 48,
+     "m": 91,
+     "q": 68
     },
     "flags": []
    },
@@ -952,10 +976,10 @@
     "ev_rev": 0.6853,
     "px": 29.17,
     "dp": 3.5131,
-    "score": 67.7,
+    "score": 68.1,
     "sub": {
      "g": 68,
-     "m": 81,
+     "m": 83,
      "q": 51
     },
     "flags": [
@@ -963,48 +987,24 @@
     ]
    },
    {
-    "ticker": "BLZE",
-    "name": "Backblaze Inc",
+    "ticker": "DJCO",
+    "name": "Daily Journal Corp",
     "ind": "Technology",
     "group": "Technology",
-    "mcap": 832.864546501127,
-    "rev_g": 13.85,
-    "accel": 3.820000000000002,
-    "r13": 60.5609,
-    "momo": 0.74,
-    "from_high": -43.91413088786994,
-    "ev_rev": 5.4199,
-    "px": 13.455,
-    "dp": 1.0894,
+    "mcap": 865.1747469248451,
+    "rev_g": 23.35,
+    "accel": -8.100000000000001,
+    "r13": 18.8472,
+    "momo": 0.58,
+    "from_high": -6.94775842904779,
+    "ev_rev": 8.7549,
+    "px": 627.87,
+    "dp": 1.5002,
     "score": 66.4,
     "sub": {
-     "g": 74,
-     "m": 83,
-     "q": 27
-    },
-    "flags": [
-     "new"
-    ]
-   },
-   {
-    "ticker": "DCBO",
-    "name": "Docebo Inc",
-    "ind": "Technology",
-    "group": "Technology",
-    "mcap": 873.970601,
-    "rev_g": 12.33,
-    "accel": 0.7099999999999991,
-    "r13": 39.3595,
-    "momo": 0.78,
-    "from_high": -43.666136001819424,
-    "ev_rev": 2.6253,
-    "px": 24.77,
-    "dp": -2.7865,
-    "score": 66.3,
-    "sub": {
-     "g": 63,
-     "m": 85,
-     "q": 45
+     "g": 70,
+     "m": 78,
+     "q": 48
     },
     "flags": [
      "new"
@@ -1048,6 +1048,13 @@
     "r13": 41.2932
    },
    {
+    "ticker": "SENS",
+    "name": "Senseonics Holdings Inc",
+    "rev_ttm": 35.08274,
+    "rev_g": 90.63,
+    "r13": 37.3752
+   },
+   {
     "ticker": "AKTS",
     "name": "Aktis Oncology Inc",
     "rev_ttm": 12.6558,
@@ -1060,13 +1067,6 @@
     "rev_ttm": 8.044416,
     "rev_g": -51.05,
     "r13": 34.6154
-   },
-   {
-    "ticker": "ATEX",
-    "name": "Anterix Inc",
-    "rev_ttm": 6.99465,
-    "rev_g": 18.86,
-    "r13": 26.961
    }
   ],
   "movers_up": [
@@ -1075,6 +1075,12 @@
     "name": "GoPro Inc",
     "px": 1.7,
     "dp": 22.3022
+   },
+   {
+    "ticker": "OYSER",
+    "name": "Oyster Enterprises II Acquisition Corp",
+    "px": 0.135,
+    "dp": 21.9512
    },
    {
     "ticker": "HCTPF",
@@ -1093,15 +1099,15 @@
     "name": "Eupraxia Pharmaceuticals Inc",
     "px": 8.4,
     "dp": 12
-   },
-   {
-    "ticker": "CD",
-    "name": "Chaince Digital Holdings Inc",
-    "px": 4.07,
-    "dp": 11.8132
    }
   ],
   "movers_down": [
+   {
+    "ticker": "TRBG",
+    "name": "Turbogen Ltd",
+    "px": 7.34,
+    "dp": -38.0068
+   },
    {
     "ticker": "ALTI",
     "name": "AlTi Global, Inc",
@@ -1125,12 +1131,6 @@
     "name": "Bally's Corp",
     "px": 9.14,
     "dp": -10.7422
-   },
-   {
-    "ticker": "CMGMF",
-    "name": "Chemring Group PLC",
-    "px": 7.2,
-    "dp": -8.6294
    }
   ],
   "earnings": [
@@ -1225,6 +1225,13 @@
     "date": "2026-09-04",
     "link": "https://www.sec.gov/Archives/edgar/data/1321741/000119312526383646/0001193125-26-383646-index.htm",
     "form": "8-K"
+   },
+   {
+    "ticker": "IPFX",
+    "name": "Inflection Point Acquisition Corp VI",
+    "date": "2026-09-04",
+    "link": "https://www.sec.gov/Archives/edgar/data/2146310/000121390026097736/0001213900-26-097736-index.htm",
+    "form": "8-K"
    }
   ],
   "filings_activist": [
@@ -1269,6 +1276,13 @@
     "date": "2026-09-04",
     "link": "https://www.sec.gov/Archives/edgar/data/1377757/000205211326000838/0002052113-26-000838-index.htm",
     "form": "SCHEDULE 13G/A"
+   },
+   {
+    "ticker": "IPFX",
+    "name": "Inflection Point Acquisition Corp VI",
+    "date": "2026-09-04",
+    "link": "https://www.sec.gov/Archives/edgar/data/2028355/000107261326000748/0001072613-26-000748-index.htm",
+    "form": "SCHEDULE 13G/A"
    }
   ],
   "filings_offering": [
@@ -1303,7 +1317,7 @@
  "stats": {
   "feeds_total": 21,
   "feeds_failed": 3,
-  "items": 320,
+  "items": 316,
   "smallcap_calls": 552,
   "feed_errors": [
    [
