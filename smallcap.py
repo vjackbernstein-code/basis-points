@@ -42,6 +42,7 @@ Model v2 (fixed rules, disclosed on the page; not investment advice):
                 ages. A live track record, not a backtest.
 """
 
+import hashlib
 import json
 import os
 import re
@@ -842,9 +843,17 @@ def match_news(items, cache=None):
 # ------------------------------------------------------------- driver --------
 
 
+def _distributed(tickers):
+    """Stable, evenly-spread ordering (hash of ticker) instead of alphabetical,
+    so partial bootstrap coverage is a representative cross-section of the whole
+    market rather than front-loaded on A–G. Deterministic across runs, so the
+    discovery sweep advances instead of re-profiling the same names."""
+    return sorted(tickers, key=lambda t: hashlib.md5(t.encode()).hexdigest())
+
+
 def _spend_budget(fh, cache, budget):
     """Priority-ordered data refresh within the per-run call budget."""
-    universe = sorted(cache["universe"])
+    universe = _distributed(cache["universe"])
 
     def spend(task_iter, fetch):
         nonlocal budget
