@@ -1230,7 +1230,8 @@ def main():
           f"instruments, {len(data.get('filings', []))} filings; smallcap: "
           f"{cov.get('profiled', 0):,}/{cov.get('universe', 0):,} profiled, "
           f"{cov.get('in_band', 0):,} in band, {cov.get('scored', 0):,} scored "
-          f"({s.get('smallcap_calls', 0)} calls)")
+          f"({s.get('smallcap_calls', 0)} calls, "
+          f"{(data.get('smallcap') or {}).get('budget_mode', 'n/a')} mode)")
     for name, err in s.get("feed_errors", []) + s.get("market_errors", []):
         print(f"  warn: {name}: {err}", file=sys.stderr)
 

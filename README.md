@@ -93,9 +93,14 @@ the published screen plus IWO/IWM benchmark prices are logged to
 accumulate per model version (a live record, never backfilled), reporting both
 daily and independent (non-overlapping) readings. Scoring is frozen until the
 record holds 12 independent 1-week and 3 independent 4-week readings. The
-free tier allows 60 calls/minute, so each run spends a ~550-call budget over
-~10 minutes; the scorecard (`data/smallcap.json`, committed between cloud
-runs) bootstraps within the first day, then stays fresh on rolling updates.
+free tier allows 60 calls/minute. **Cadence split (operational change,
+Sep 6, 2026 — scoring untouched):** the news desk refreshes every 30 minutes,
+but the scorecard takes its full ~550-call budget only ~3×/day (near 12:00,
+17:00, 21:00 UTC ≈ pre-market/midday/post-close US time); every other run is
+a ~40-call trickle that keeps the published screen's quotes fresh. Bootstrap
+or catch-up (unprofiled companies, unmeasured band members) overrides to full
+budget automatically. The scorecard (`data/smallcap.json`, committed between
+cloud runs) bootstraps within the first day, then stays fresh on this rhythm.
 
 ## API keys (both optional; features light up when present)
 

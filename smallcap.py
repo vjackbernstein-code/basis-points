@@ -69,8 +69,17 @@ SCREEN_SIZE = 25
 CANDIDATES = 40
 SECTOR_CAP = 5
 NEWCOMER_PENALTY = 0.97
-CALL_BUDGET = int(os.environ.get("SMALLCAP_BUDGET", "550"))
+DEFAULT_BUDGET = 550
+CALL_BUDGET = int(os.environ.get("SMALLCAP_BUDGET", str(DEFAULT_BUDGET)))
 CALL_INTERVAL = 1.1                     # seconds between Finnhub calls (55/min)
+
+# Cadence split (operational only — never touches scoring): the news desk runs
+# every 30 minutes, but the scorecard only needs a few deep refreshes a day.
+# Full-budget runs happen near these UTC hours (~pre-market / midday / after
+# the close, US time); every other run takes a small "trickle" that keeps the
+# published screen's quotes fresh. Bootstrap/catch-up overrides to full.
+FULL_HOURS_UTC = (12, 17, 21)
+TRICKLE_BUDGET = 40
 BENCHES = ("IWO", "IWM")                # Russell 2000 Growth (primary) + Russell 2000
 MODEL_VERSION = "v3"                    # stamped on log entries; the track record is
                                         # reported per version, never blended
@@ -795,7 +804,27 @@ def _spend_budget(fh, cache, budget):
           _fetch_profile)
 
 
-def update(budget=CALL_BUDGET):
+def _choose_budget(cache):
+    """Pick this run's spending mode. Bootstrap and catch-up always go full;
+    otherwise full only near the scheduled hours, trickle the rest of the day."""
+    universe = cache.get("universe") or {}
+    if universe:
+        if any(t not in cache["profiles"] for t in universe):
+            return CALL_BUDGET, "bootstrap"
+        band = [t for t in universe if in_band(cache["profiles"].get(t))]
+        if any(t not in cache["metrics"] or "ev_rev" not in cache["metrics"][t]
+               for t in band):
+            return CALL_BUDGET, "catch-up"
+    now = _now()
+    last_full = cache.get("last_full")
+    if now.hour in FULL_HOURS_UTC and (
+            not last_full
+            or (now - datetime.fromisoformat(last_full)).total_seconds() > 2 * 3600):
+        return CALL_BUDGET, "full"
+    return TRICKLE_BUDGET, "trickle"
+
+
+def update(budget=None):
     """Full update cycle. Safe without a key (returns cached state + note)."""
     cache = load_cache()
     try:
@@ -806,9 +835,18 @@ def update(budget=CALL_BUDGET):
     if not key:
         save_cache(cache)
         return summarize(cache, note="waiting-for-key"), 0
+    if budget is None:
+        if "SMALLCAP_BUDGET" in os.environ:
+            budget, mode = CALL_BUDGET, "env-override"
+        else:
+            budget, mode = _choose_budget(cache)
+    else:
+        mode = "explicit"
     fh = Finnhub(key)
     try:
         _spend_budget(fh, cache, budget)
+        if mode in ("bootstrap", "catch-up", "full"):
+            cache["last_full"] = _iso()
         refresh_earnings(fh, cache)
         refresh_bench(fh, cache)
         refresh_regime(fh, cache)
@@ -823,6 +861,7 @@ def update(budget=CALL_BUDGET):
             log = update_log(cache, published, candidates)
         cache["last_screen"] = [r["ticker"] for r in candidates] or cache["last_screen"]
         summary = summarize(cache, published=published, candidates=candidates, log=log)
+        summary["budget_mode"] = mode
         save_cache(cache)
     return summary, fh.calls
 
