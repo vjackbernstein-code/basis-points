@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-08T20:07:51.926971+00:00",
+ "generated_at": "2026-09-08T22:54:51.973462+00:00",
  "market": [
   {
    "label": "S&P 500",
@@ -77,13 +77,12 @@
    "label": "Dow",
    "symbol": "DJIA",
    "kind": "index",
-   "value": 53414.25,
-   "prev": 53686.11,
-   "value_txt": "53,414.25",
-   "delta": -0.5063879651552339,
-   "delta_txt": "-0.51%",
+   "value": 52786.07,
+   "prev": 53414.25,
+   "value_txt": "52,786.07",
+   "delta": -1.1760532067753462,
+   "delta_txt": "-1.18%",
    "spark": [
-    54349.12,
     53885.1,
     54036.93,
     53975.98,
@@ -105,9 +104,9 @@
     52766.88,
     53061.95,
     53686.11,
-    53414.25
-   ],
-   "asof": "Sep 4"
+    53414.25,
+    52786.07
+   ]
   },
   {
    "label": "VIX",
@@ -149,13 +148,12 @@
    "label": "10-yr Treasury",
    "symbol": "DGS10",
    "kind": "yield",
-   "value": 47.699999999999996,
-   "prev": 47.9,
-   "value_txt": "4.77%",
-   "delta": -0.41753653444677,
-   "delta_txt": "-2 bp",
+   "value": 47.800000000000004,
+   "prev": 47.699999999999996,
+   "value_txt": "4.78%",
+   "delta": 0.20964360587003883,
+   "delta_txt": "+1 bp",
    "spark": [
-    46.3,
     46.3,
     46.900000000000006,
     46.5,
@@ -177,25 +175,21 @@
     47.5,
     47.9,
     47.9,
-    47.699999999999996
+    47.699999999999996,
+    47.800000000000004
    ],
-   "asof": "Sep 3"
+   "asof": "Sep 4"
   },
   {
    "label": "Dollar (broad)",
    "symbol": "DTWEXBGS",
    "kind": "level",
-   "value": 118.7479,
-   "prev": 118.3583,
-   "value_txt": "118.75",
-   "delta": 0.3291699863887885,
-   "delta_txt": "+0.33%",
+   "value": 118.0732,
+   "prev": 118.127,
+   "value_txt": "118.07",
+   "delta": -0.04554420242619842,
+   "delta_txt": "-0.05%",
    "spark": [
-    120.7892,
-    119.6753,
-    119.7034,
-    119.6951,
-    119.5977,
     119.3881,
     119.5113,
     119.0649,
@@ -213,9 +207,14 @@
     118.2283,
     118.4461,
     118.3583,
-    118.7479
+    118.7479,
+    118.5679,
+    118.6568,
+    118.5296,
+    118.127,
+    118.0732
    ],
-   "asof": "Aug 28"
+   "asof": "Sep 4"
   },
   {
    "label": "WTI crude",
@@ -292,11 +291,11 @@
    "label": "Bitcoin",
    "symbol": "bitcoin",
    "kind": "crypto",
-   "value": 78499.35973650844,
+   "value": 78536.22092920319,
    "prev": 79093.4641898418,
-   "value_txt": "$78,499",
-   "delta": -0.751142283902726,
-   "delta_txt": "-0.75%",
+   "value_txt": "$78,536",
+   "delta": -0.7045376837978757,
+   "delta_txt": "-0.70%",
    "spark": [
     64491.345282946255,
     64686.25782561655,
@@ -320,18 +319,18 @@
     79821.69873179746,
     80329.3478460037,
     79093.4641898418,
-    78499.35973650844
+    78536.22092920319
    ]
   },
   {
    "label": "Ethereum",
    "symbol": "ethereum",
    "kind": "crypto",
-   "value": 2483.8800502618365,
+   "value": 2486.8605029339465,
    "prev": 2489.3967543757462,
-   "value_txt": "$2,484",
-   "delta": -0.2216080704778286,
-   "delta_txt": "-0.22%",
+   "value_txt": "$2,487",
+   "delta": -0.10188217034274155,
+   "delta_txt": "-0.10%",
    "spark": [
     1912.2734691708965,
     1916.3998901478055,
@@ -355,12 +354,26 @@
     2480.0031686031184,
     2514.0092688310365,
     2489.3967543757462,
-    2483.8800502618365
+    2486.8605029339465
    ]
   }
  ],
- "tape_line": "S&P 500 -0.38%, Nasdaq -0.29%, Dow -0.51%; the 10-year Treasury at 4.77% (-2 bp); WTI crude $91.48 (+5.11%); bitcoin $78,499 (-0.75%).",
+ "tape_line": "S&P 500 -0.38%, Nasdaq -0.29%, Dow -1.18%; the 10-year Treasury at 4.78% (+1 bp); WTI crude $91.48 (+5.11%); bitcoin $78,536 (-0.70%).",
  "top": [
+  {
+   "title": "Anthropic and OpenAI bankers push for top-tier credit ratings post-IPO",
+   "link": "https://www.ft.com/content/aa304856-cade-4ad8-a2bf-2dd34fa75b1b?syn-25a6b1a6=1",
+   "source": "Financial Times",
+   "published": "2026-09-08T21:04:53+00:00",
+   "summary": "Investment-grade designation would unlock cheaper financing for AI labs and their infrastructure partners"
+  },
+  {
+   "title": "Qualcomm issues warrants to Amazon to acquire $4 billion worth of chipmaker's stock as part of AI infrastructure deal",
+   "link": "https://www.cnbc.com/2026/09/08/qualcomm-amazon-data-center-infrastructure-deal.html",
+   "source": "CNBC",
+   "published": "2026-09-08T20:12:25+00:00",
+   "summary": "Qualcomm is trying to move into the data center business, where Nvidia has been the dominant player in the AI boom."
+  },
   {
    "title": "Gold Settles Lower Awaiting This Week’s Inflation Data",
    "link": "https://www.wsj.com/finance/commodities-futures/in-gold-the-bulls-are-everywhere-8ee642ee?mod=rss_markets_main",
@@ -369,57 +382,43 @@
    "summary": "Gold futures settled lower as the market watches an escalation in the Middle East conflict while looking to this week’s U.S. inflation data for clues on the Fed’s possible interest-rate moves."
   },
   {
-   "title": "Qualcomm issues warrants to Amazon to acquire $4 billion worth of chipmaker's stock as part of AI infrastructure deal",
-   "link": "https://www.cnbc.com/2026/09/08/qualcomm-amazon-data-center-infrastructure-deal.html",
-   "source": "CNBC",
-   "published": "2026-09-08T17:54:07+00:00",
-   "summary": "Qualcomm is trying to move into the data center business, where Nvidia has been the dominant player in the AI boom."
+   "title": "U.S. Stocks Fall After Saudi Oil Facilities Hit",
+   "link": "https://www.wsj.com/finance/investing/u-s-stocks-fall-after-saudi-oil-facilities-hit-d86a6c27?mod=rss_markets_main",
+   "source": "WSJ Markets",
+   "published": "2026-09-08T21:13:00+00:00",
+   "summary": "U.S. stocks fell and Treasury yields hit multiyear highs after Yemeni rebels attacked Saudi Arabian energy facilities, pushing oil prices to their highest levels of the summer."
   },
   {
-   "title": "Shipping Powers Say Wars, Shadow Fleets Threaten Free Seas",
-   "link": "https://www.wsj.com/business/logistics/shipping-powers-say-wars-shadow-fleets-threaten-free-seas-64546e12?mod=pls_whats_news_us_business_f",
+   "title": "Oil Near $100 Threatens U.S. Stocks’ Stellar Run",
+   "link": "https://www.wsj.com/finance/stocks/oil-near-100-threatens-u-s-stocks-stellar-run-cabbaf0c?mod=pls_whats_news_us_business_f",
    "source": "WSJ Business",
-   "published": "2026-09-08T15:24:00+00:00",
-   "summary": "A group of 18 countries that dominate global shipping warned of a structural shift raising costs."
+   "published": "2026-09-08T21:09:00+00:00",
+   "summary": "Brent crude spiked above $99 a barrel before paring gains."
   },
   {
-   "title": "Stocks Slip as Oil Pares Gains",
-   "link": "https://www.wsj.com/finance/commodities-futures/u-s-stock-futures-treasurys-weaken-as-brent-nears-100-c29efc2f?mod=rss_markets_main",
+   "title": "Canada’s Tariffs Take Effect",
+   "link": "https://www.wsj.com/finance/stocks/canadas-tariffs-take-effect-c3d61304?mod=rss_markets_main",
    "source": "WSJ Markets",
-   "published": "2026-09-08T18:09:00+00:00",
-   "summary": "U.S. stock indexes fell to start the week as rising oil prices added to investor anxiety."
+   "published": "2026-09-08T20:31:00+00:00",
+   "summary": "Plus, oil rises after Houthis strike energy infrastructure, and stocks fall."
   },
   {
-   "title": "Brent crude oil hits $98 after Iran's Houthi allies attack multiple Saudi energy facilities",
-   "link": "https://www.cnbc.com/2026/09/08/oil-prices-today-brent-wti-hormuz-iran-war.html",
-   "source": "CNBC",
-   "published": "2026-09-08T18:52:20+00:00",
-   "summary": "Oil prices rose Tuesday on worries over escalating Mideast tensions after the U.S. and Iran traded strikes over the weekend."
-  },
-  {
-   "title": "What to Know About Anthropic’s Planned IPO",
-   "link": "https://www.wsj.com/finance/stocks/what-to-know-about-anthropics-planned-ipo-c2f58908?mod=rss_markets_main",
+   "title": "Copper Scales New Heights on U.S. Tariff Fears, Supply Challenges",
+   "link": "https://www.wsj.com/finance/commodities-futures/copper-reaches-new-highs-on-u-s-tariff-fears-supply-challenges-93a99fb0?mod=rss_markets_main",
    "source": "WSJ Markets",
-   "published": "2026-09-08T19:13:00+00:00",
-   "summary": "The artificial-intelligence giant has yet to officially launch its listing."
-  },
-  {
-   "title": "Investors Brace for a Choppier Fall as the Fed, Inflation Return to Center Stage",
-   "link": "https://www.wsj.com/finance/investing/investors-brace-for-a-choppier-fall-as-the-fed-inflation-return-to-center-stage-81f6f11f?mod=rss_markets_main",
-   "source": "WSJ Markets",
-   "published": "2026-09-08T09:54:00+00:00",
-   "summary": "Plus, see how drones are infiltrating NATO territory in Europe and test whether you have what it takes to be a clue writer for “Jeopardy!”"
+   "published": "2026-09-08T20:17:00+00:00",
+   "summary": "Copper prices climbed to fresh records on U.S. and UK exchanges as distortions to trade flows due to concerns over potential U.S. tariffs collided with supply challenges at key mines worldwide."
   }
  ],
  "smallcap": {
   "note": null,
-  "asof": "2026-09-08T20:18:38+00:00",
+  "asof": "2026-09-08T23:06:12+00:00",
   "coverage": {
    "universe": 9869,
    "profiled": 5426,
    "in_band": 1023,
-   "measured": 1000,
-   "scored": 520,
+   "measured": 1023,
+   "scored": 531,
    "below_floor": 36
   },
   "screen": [
@@ -433,13 +432,13 @@
     "accel": 1.2399999999999949,
     "r13": 92.9699,
     "momo": 1.64,
-    "from_high": -10.949410949410954,
+    "from_high": -10.74151074151073,
     "ev_rev": 7.2737,
-    "px": 12.85,
-    "dp": -4.461,
-    "score": 84.3,
+    "px": 12.88,
+    "dp": -4.2379,
+    "score": 84.5,
     "sub": {
-     "g": 79,
+     "g": 80,
      "m": 100,
      "q": 64
     },
@@ -455,10 +454,10 @@
     "accel": 17.10000000000001,
     "r13": 102.2491,
     "momo": 1.21,
-    "from_high": -10.712671387675165,
+    "from_high": -10.584601476570743,
     "ev_rev": 15.8316,
-    "px": 59.26,
-    "dp": 1.3858,
+    "px": 59.345,
+    "dp": 1.5312,
     "score": 82.6,
     "sub": {
      "g": 86,
@@ -477,11 +476,11 @@
     "accel": 4.740000000000002,
     "r13": 55.3588,
     "momo": 0.76,
-    "from_high": -7.837213435223034,
+    "from_high": -7.232983827972273,
     "ev_rev": 1.033,
-    "px": 51.86,
-    "dp": 0.2126,
-    "score": 82.2,
+    "px": 52.2,
+    "dp": 0.8696,
+    "score": 82.0,
     "sub": {
      "g": 88,
      "m": 86,
@@ -499,10 +498,10 @@
     "accel": 16.25,
     "r13": 87.1153,
     "momo": 1.3,
-    "from_high": -6.86878586997307,
+    "from_high": -7.319883780774616,
     "ev_rev": 0.5569,
-    "px": 45.42,
-    "dp": -0.3947,
+    "px": 45.2,
+    "dp": -0.8772,
     "score": 81.5,
     "sub": {
      "g": 80,
@@ -521,11 +520,11 @@
     "accel": -15.63805,
     "r13": 26.5778,
     "momo": 1.37,
-    "from_high": -3.9948268429372047,
+    "from_high": -4.928869090386556,
     "ev_rev": null,
-    "px": 66.81,
-    "dp": -0.8607,
-    "score": 80.1,
+    "px": 66.16,
+    "dp": -1.8252,
+    "score": 80.2,
     "sub": {
      "g": 71,
      "m": 99,
@@ -543,13 +542,13 @@
     "accel": 10.785620000000009,
     "r13": 15.9701,
     "momo": 1.07,
-    "from_high": -3.7721708718461144,
+    "from_high": -4.396702473145131,
     "ev_rev": null,
-    "px": 38.52,
-    "dp": -0.8494,
-    "score": 78.2,
+    "px": 38.27,
+    "dp": -1.4929,
+    "score": 78.5,
     "sub": {
-     "g": 72,
+     "g": 73,
      "m": 95,
      "q": 57
     },
@@ -565,11 +564,11 @@
     "accel": -7.127990000000004,
     "r13": 26.2218,
     "momo": 1.29,
-    "from_high": -1.8916712030484506,
+    "from_high": -1.6875340228633795,
     "ev_rev": null,
-    "px": 72.09,
-    "dp": -1.0161,
-    "score": 78.1,
+    "px": 72.24,
+    "dp": -0.8101,
+    "score": 78.4,
     "sub": {
      "g": 66,
      "m": 98,
@@ -587,10 +586,10 @@
     "accel": 38.88,
     "r13": 35.262,
     "momo": 0.72,
-    "from_high": -6.339622641509434,
+    "from_high": -6.037735849056613,
     "ev_rev": 6.6401,
-    "px": 12.41,
-    "dp": 0.1614,
+    "px": 12.45,
+    "dp": 0.4843,
     "score": 77.9,
     "sub": {
      "g": 87,
@@ -609,11 +608,11 @@
     "accel": 17.169999999999987,
     "r13": 13.2693,
     "momo": 0.72,
-    "from_high": -17.867690981013627,
+    "from_high": -17.955149514736323,
     "ev_rev": 6.0246,
-    "px": 93.91,
-    "dp": 0.8375,
-    "score": 77.7,
+    "px": 93.81,
+    "dp": 0.7302,
+    "score": 77.8,
     "sub": {
      "g": 91,
      "m": 84,
@@ -631,37 +630,15 @@
     "accel": 0.8399999999999999,
     "r13": 31.84,
     "momo": 0.74,
-    "from_high": -3.434662455586246,
+    "from_high": -4.026845637583887,
     "ev_rev": 9.1235,
-    "px": 24.46,
-    "dp": -1.0518,
-    "score": 76.3,
+    "px": 24.31,
+    "dp": -1.6586,
+    "score": 76.2,
     "sub": {
      "g": 77,
      "m": 85,
      "q": 58
-    },
-    "flags": []
-   },
-   {
-    "ticker": "CTRN",
-    "name": "Citi Trends Inc",
-    "ind": "Retail",
-    "group": "Consumer",
-    "mcap": 592.7519314781603,
-    "rev_g": 11.15,
-    "accel": -0.20000000000000107,
-    "r13": 53.8927,
-    "momo": 0.98,
-    "from_high": -10.460788088820427,
-    "ev_rev": 0.6171,
-    "px": 69.76,
-    "dp": -1.9674,
-    "score": 75.6,
-    "sub": {
-     "g": 62,
-     "m": 93,
-     "q": 67
     },
     "flags": []
    },
@@ -675,15 +652,37 @@
     "accel": -50.0,
     "r13": 39.8128,
     "momo": 0.71,
-    "from_high": -40.59920513604403,
+    "from_high": -40.90492204218894,
     "ev_rev": 7.1578,
-    "px": 19.43,
-    "dp": 0.0515,
+    "px": 19.33,
+    "dp": -0.4634,
     "score": 75.5,
     "sub": {
      "g": 73,
      "m": 83,
      "q": 66
+    },
+    "flags": []
+   },
+   {
+    "ticker": "CTRN",
+    "name": "Citi Trends Inc",
+    "ind": "Retail",
+    "group": "Consumer",
+    "mcap": 592.7519314781603,
+    "rev_g": 11.15,
+    "accel": -0.20000000000000107,
+    "r13": 53.8927,
+    "momo": 0.98,
+    "from_high": -9.510974201001154,
+    "ev_rev": 0.6171,
+    "px": 70.5,
+    "dp": -0.9275,
+    "score": 75.4,
+    "sub": {
+     "g": 62,
+     "m": 93,
+     "q": 67
     },
     "flags": []
    },
@@ -697,14 +696,14 @@
     "accel": -15.25,
     "r13": 52.734,
     "momo": 1.07,
-    "from_high": -7.290470723306564,
+    "from_high": -7.692307692307709,
     "ev_rev": 5.4949,
-    "px": 16.15,
-    "dp": -2.0024,
+    "px": 16.08,
+    "dp": -2.4272,
     "score": 75.2,
     "sub": {
      "g": 73,
-     "m": 96,
+     "m": 95,
      "q": 39
     },
     "flags": []
@@ -719,11 +718,11 @@
     "accel": 24.670000000000016,
     "r13": 24.4717,
     "momo": 0.23,
-    "from_high": -38.524351122776324,
+    "from_high": -38.67016622922135,
     "ev_rev": null,
-    "px": 21.08,
-    "dp": -0.5191,
-    "score": 74.9,
+    "px": 21.03,
+    "dp": -0.7551,
+    "score": 75.0,
     "sub": {
      "g": 97,
      "m": 55,
@@ -745,9 +744,9 @@
     "ev_rev": 0.9077,
     "px": 24.94,
     "dp": 0.1204,
-    "score": 74.6,
+    "score": 74.3,
     "sub": {
-     "g": 75,
+     "g": 74,
      "m": 87,
      "q": 49
     },
@@ -763,14 +762,14 @@
     "accel": 1.6099999999999994,
     "r13": 7.1429,
     "momo": 0.45,
-    "from_high": -5.7915057915057915,
+    "from_high": -6.274131274131256,
     "ev_rev": 12.3006,
-    "px": 9.76,
-    "dp": 0.1026,
+    "px": 9.71,
+    "dp": -0.4103,
     "score": 74.1,
     "sub": {
      "g": 90,
-     "m": 69,
+     "m": 70,
      "q": 51
     },
     "flags": []
@@ -785,10 +784,10 @@
     "accel": -3.4399999999999995,
     "r13": 40.8055,
     "momo": 1.3,
-    "from_high": -5.401740309639513,
+    "from_high": -4.8480054243417285,
     "ev_rev": 0.6958,
-    "px": 83.71,
-    "dp": 1.8866,
+    "px": 84.2,
+    "dp": 2.483,
     "score": 73.4,
     "sub": {
      "g": 51,
@@ -807,37 +806,15 @@
     "accel": 2.1899999999999995,
     "r13": 7.0752,
     "momo": 0.45,
-    "from_high": -5.416116248348746,
+    "from_high": -5.372082782915022,
     "ev_rev": 9.0392,
-    "px": 21.48,
-    "dp": -0.0465,
-    "score": 72.4,
+    "px": 21.49,
+    "dp": 0,
+    "score": 72.5,
     "sub": {
      "g": 80,
      "m": 69,
      "q": 64
-    },
-    "flags": []
-   },
-   {
-    "ticker": "AMPL",
-    "name": "Amplitude Inc",
-    "ind": "Technology",
-    "group": "Technology",
-    "mcap": 1626.4014886671587,
-    "rev_g": 18.26,
-    "accel": 2.8999999999999986,
-    "r13": 68,
-    "momo": 1.06,
-    "from_high": -14.227642276422758,
-    "ev_rev": 4.1473,
-    "px": 12.66,
-    "dp": -2.765,
-    "score": 72.0,
-    "sub": {
-     "g": 68,
-     "m": 95,
-     "q": 35
     },
     "flags": []
    },
@@ -851,15 +828,83 @@
     "accel": -4.02,
     "r13": 46.3357,
     "momo": 1.09,
-    "from_high": -34.27792915531336,
+    "from_high": -35.96730245231608,
     "ev_rev": 0.3496,
-    "px": 12.06,
-    "dp": -2.5848,
+    "px": 11.75,
+    "dp": -5.0889,
     "score": 72.0,
     "sub": {
      "g": 59,
      "m": 96,
-     "q": 51
+     "q": 50
+    },
+    "flags": []
+   },
+   {
+    "ticker": "AMPL",
+    "name": "Amplitude Inc",
+    "ind": "Technology",
+    "group": "Technology",
+    "mcap": 1626.4014886671587,
+    "rev_g": 18.26,
+    "accel": 2.8999999999999986,
+    "r13": 68,
+    "momo": 1.06,
+    "from_high": -15.17615176151762,
+    "ev_rev": 4.1473,
+    "px": 12.52,
+    "dp": -3.8402,
+    "score": 71.5,
+    "sub": {
+     "g": 67,
+     "m": 95,
+     "q": 35
+    },
+    "flags": []
+   },
+   {
+    "ticker": "IBEX",
+    "name": "Ibex Ltd",
+    "ind": "Professional Services",
+    "group": "Industrials",
+    "mcap": 524.45166,
+    "rev_g": 17.04,
+    "accel": -0.21999999999999886,
+    "r13": 31.3548,
+    "momo": 1.07,
+    "from_high": -14.166085136078166,
+    "ev_rev": 0.8142,
+    "px": 36.9,
+    "dp": -5.7953,
+    "score": 71.5,
+    "sub": {
+     "g": 59,
+     "m": 96,
+     "q": 60
+    },
+    "flags": [
+     "new"
+    ]
+   },
+   {
+    "ticker": "SFL",
+    "name": "SFL Corporation Ltd",
+    "ind": "Energy",
+    "group": "Energy",
+    "mcap": 1861.586825316957,
+    "rev_g": 28.31,
+    "accel": -24.06,
+    "r13": 17.3358,
+    "momo": 0.61,
+    "from_high": -2.7047913446676897,
+    "ev_rev": 3.7291,
+    "px": 12.59,
+    "dp": -2.0995,
+    "score": 71.5,
+    "sub": {
+     "g": 68,
+     "m": 80,
+     "q": 61
     },
     "flags": []
    },
@@ -873,37 +918,15 @@
     "accel": -0.71,
     "r13": 30.2257,
     "momo": 1.14,
-    "from_high": -1.844469171646912,
+    "from_high": -2.335738094711748,
     "ev_rev": 0.996,
-    "px": 39.96,
-    "dp": 0.3768,
-    "score": 71.6,
-    "sub": {
-     "g": 50,
-     "m": 97,
-     "q": 66
-    },
-    "flags": []
-   },
-   {
-    "ticker": "SFL",
-    "name": "SFL Corporation Ltd",
-    "ind": "Energy",
-    "group": "Energy",
-    "mcap": 1861.586825316957,
-    "rev_g": 28.31,
-    "accel": -24.06,
-    "r13": 17.3358,
-    "momo": 0.61,
-    "from_high": -2.5502318392581103,
-    "ev_rev": 3.7291,
-    "px": 12.61,
-    "dp": -1.944,
+    "px": 39.76,
+    "dp": -0.1256,
     "score": 71.3,
     "sub": {
-     "g": 67,
-     "m": 80,
-     "q": 61
+     "g": 49,
+     "m": 97,
+     "q": 66
     },
     "flags": []
    },
@@ -921,7 +944,7 @@
     "ev_rev": 0.6853,
     "px": 27.84,
     "dp": -4.5595,
-    "score": 68.3,
+    "score": 68.0,
     "sub": {
      "g": 68,
      "m": 83,
@@ -943,33 +966,11 @@
     "ev_rev": 2.6253,
     "px": 23.57,
     "dp": -4.8446,
-    "score": 66.7,
+    "score": 66.3,
     "sub": {
-     "g": 62,
+     "g": 61,
      "m": 87,
      "q": 46
-    },
-    "flags": []
-   },
-   {
-    "ticker": "DJCO",
-    "name": "Daily Journal Corp",
-    "ind": "Technology",
-    "group": "Technology",
-    "mcap": 865.1747469248451,
-    "rev_g": 23.35,
-    "accel": -8.100000000000001,
-    "r13": 18.8472,
-    "momo": 0.58,
-    "from_high": -5.4434975917006305,
-    "ev_rev": 8.7549,
-    "px": 638.02,
-    "dp": 1.6166,
-    "score": 66.4,
-    "sub": {
-     "g": 69,
-     "m": 78,
-     "q": 48
     },
     "flags": []
    }
@@ -1058,10 +1059,10 @@
     "dp": 18.796
    },
    {
-    "ticker": "GMTL",
-    "name": "Guardian Metal Resources PLC",
-    "px": 12.33,
-    "dp": 13.9556
+    "ticker": "ALTI",
+    "name": "AlTi Global, Inc",
+    "px": 3.41,
+    "dp": 13.6667
    }
   ],
   "movers_down": [
@@ -1078,22 +1079,22 @@
     "dp": -18.359
    },
    {
+    "ticker": "CNDT",
+    "name": "Conduent Inc",
+    "px": 1.65,
+    "dp": -14.9485
+   },
+   {
     "ticker": "GPRO",
     "name": "GoPro Inc",
-    "px": 1.44,
-    "dp": -15.2941
+    "px": 1.455,
+    "dp": -14.4118
    },
    {
     "ticker": "CD",
     "name": "Chaince Digital Holdings Inc",
-    "px": 3.48,
-    "dp": -14.4963
-   },
-   {
-    "ticker": "XFOR",
-    "name": "X4 Pharmaceuticals Inc",
-    "px": 3.505,
-    "dp": -13.2426
+    "px": 3.51,
+    "dp": -13.7592
    }
   ],
   "earnings": [
@@ -1281,32 +1282,32 @@
     "form": "SCHEDULE 13G/A"
    },
    {
-    "ticker": "GPRK",
-    "name": "GeoPark Ltd",
-    "date": "2026-09-04",
-    "link": "https://www.sec.gov/Archives/edgar/data/1464591/000119312526383916/0001193125-26-383916-index.htm",
+    "ticker": "EVH",
+    "name": "Evolent Health Inc",
+    "date": "2026-09-08",
+    "link": "https://www.sec.gov/Archives/edgar/data/1628908/000089542126000280/0000895421-26-000280-index.htm",
+    "form": "SCHEDULE 13G/A"
+   },
+   {
+    "ticker": "AGNT",
+    "name": "eXp World Holdings Inc",
+    "date": "2026-09-08",
+    "link": "https://www.sec.gov/Archives/edgar/data/1495932/000110465926105945/0001104659-26-105945-index.htm",
     "form": "SCHEDULE 13D/A"
    },
    {
-    "ticker": "ABUS",
-    "name": "Arbutus Biopharma Corp",
-    "date": "2026-09-04",
-    "link": "https://www.sec.gov/Archives/edgar/data/1447028/000092189526002494/0000921895-26-002494-index.htm",
+    "ticker": "CHW",
+    "name": "Calamos Global Dynamic Income Fund",
+    "date": "2026-09-08",
+    "link": "https://www.sec.gov/Archives/edgar/data/1396277/000090514826004109/0000905148-26-004109-index.htm",
     "form": "SCHEDULE 13G"
    },
    {
-    "ticker": "GRNT",
-    "name": "Granite Ridge Resources Inc",
-    "date": "2026-09-04",
-    "link": "https://www.sec.gov/Archives/edgar/data/1928446/000110465926105567/0001104659-26-105567-index.htm",
-    "form": "SCHEDULE 13D/A"
-   },
-   {
-    "ticker": "CATX",
-    "name": "Perspective Therapeutics Inc",
-    "date": "2026-09-04",
-    "link": "https://www.sec.gov/Archives/edgar/data/728387/000119312526383775/0001193125-26-383775-index.htm",
-    "form": "SCHEDULE 13D/A"
+    "ticker": "CHY",
+    "name": "Calamos Convertible and High Income Fund",
+    "date": "2026-09-08",
+    "link": "https://www.sec.gov/Archives/edgar/data/1222719/000090514826004105/0000905148-26-004105-index.htm",
+    "form": "SCHEDULE 13G/A"
    }
   ],
   "filings_offering": [
@@ -1340,24 +1341,19 @@
    }
   ],
   "budget_mode": "bootstrap",
-  "news": [
-   {
-    "title": "BBNX Stockholder Notice: Shareholder Rights Law Firm Robbins LLP Reminds Investors of the Class Action Lawsuit Against Beta Bionics Inc.",
-    "link": "https://www.prnewswire.com/news-releases/bbnx-stockholder-notice-shareholder-rights-law-firm-robbins-llp-reminds-investors-of-the-class-action-lawsuit-against-beta-bionics-inc-302872733.html",
-    "source": "PR Newswire",
-    "published": "2026-09-08T19:59:00+00:00",
-    "summary": "SAN DIEGO, Sept. 8, 2026 /PRNewswire/ -- Shareholder rights law firm Robbins LLP reminds investors that a class action was filed on behalf of all persons and entities who purchased or otherwise acquired Beta Bionics, Inc…",
-    "ticker": "BBNX"
-   }
-  ]
+  "news": []
  },
  "econ_calendar": [],
  "stats": {
   "feeds_total": 21,
-  "feeds_failed": 3,
-  "items": 374,
+  "feeds_failed": 4,
+  "items": 377,
   "smallcap_calls": 552,
   "feed_errors": [
+   [
+    "PR Newswire",
+    "HTTP Error 404: Not Found"
+   ],
    [
     "GlobeNewswire",
     "The read operation timed out"
