@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-08T13:24:03.926959+00:00",
+ "generated_at": "2026-09-08T17:21:34.150412+00:00",
  "market": [
   {
    "label": "S&P 500",
@@ -113,14 +113,12 @@
    "label": "VIX",
    "symbol": "VIXCLS",
    "kind": "level",
-   "value": 14.32,
-   "prev": 15.2,
-   "value_txt": "14.32",
-   "delta": -5.78947368421052,
-   "delta_txt": "-5.79%",
+   "value": 15.3,
+   "prev": 14.53,
+   "value_txt": "15.30",
+   "delta": 5.29938059187888,
+   "delta_txt": "+5.30%",
    "spark": [
-    16.5,
-    15.81,
     15.15,
     14.9,
     15.46,
@@ -141,9 +139,11 @@
     14.92,
     16.34,
     15.2,
-    14.32
+    14.32,
+    14.53,
+    15.3
    ],
-   "asof": "Sep 3"
+   "asof": "Sep 7"
   },
   {
    "label": "10-yr Treasury",
@@ -257,13 +257,12 @@
    "label": "EUR/USD",
    "symbol": "EURUSD",
    "kind": "fx",
-   "value": 1.1622,
+   "value": 1.1614,
    "prev": 1.1622,
-   "value_txt": "1.1622",
-   "delta": 0.0,
-   "delta_txt": "+0.00%",
+   "value_txt": "1.1614",
+   "delta": -0.06883496816381965,
+   "delta_txt": "-0.07%",
    "spark": [
-    1.1542,
     1.1535,
     1.1555,
     1.154,
@@ -285,19 +284,19 @@
     1.1578,
     1.1615,
     1.1622,
-    1.1622
-   ],
-   "asof": "Sep 7"
+    1.1622,
+    1.1614
+   ]
   },
   {
    "label": "Bitcoin",
    "symbol": "bitcoin",
    "kind": "crypto",
-   "value": 78338.7458454241,
+   "value": 78623.01088586383,
    "prev": 79093.4641898418,
-   "value_txt": "$78,339",
-   "delta": -0.9542107583076843,
-   "delta_txt": "-0.95%",
+   "value_txt": "$78,623",
+   "delta": -0.594806800785443,
+   "delta_txt": "-0.59%",
    "spark": [
     64491.345282946255,
     64686.25782561655,
@@ -321,18 +320,18 @@
     79821.69873179746,
     80329.3478460037,
     79093.4641898418,
-    78338.7458454241
+    78623.01088586383
    ]
   },
   {
    "label": "Ethereum",
    "symbol": "ethereum",
    "kind": "crypto",
-   "value": 2468.4197030457285,
+   "value": 2493.058803892876,
    "prev": 2489.3967543757462,
-   "value_txt": "$2,468",
-   "delta": -0.8426560086553194,
-   "delta_txt": "-0.84%",
+   "value_txt": "$2,493",
+   "delta": 0.14710590068427765,
+   "delta_txt": "+0.15%",
    "spark": [
     1912.2734691708965,
     1916.3998901478055,
@@ -356,12 +355,40 @@
     2480.0031686031184,
     2514.0092688310365,
     2489.3967543757462,
-    2468.4197030457285
+    2493.058803892876
    ]
   }
  ],
- "tape_line": "S&P 500 -0.38%, Nasdaq -0.29%, Dow -0.51%; the 10-year Treasury at 4.77% (-2 bp); WTI crude $91.48 (+5.11%); bitcoin $78,339 (-0.95%).",
+ "tape_line": "S&P 500 -0.38%, Nasdaq -0.29%, Dow -0.51%; the 10-year Treasury at 4.77% (-2 bp); WTI crude $91.48 (+5.11%); bitcoin $78,623 (-0.59%).",
  "top": [
+  {
+   "title": "Stock Market Today: Dow tumbles 1%, S&P 500 and Nasdaq drop as Brent crude edges toward $100 a barrel and pharma stocks stumble",
+   "link": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxNcjJnTmRnVFdEa1ZLRHBsdDVpZlBxU2NLaDROOU1sVkROQUR5X2JKSVcxTTJ2dE1DUzNTOTYxWDRDNVlOeXg3SGRBU0tJLXRTckJ0dzR0cEhIVS01LWNqeUlPN040Zno4UVI3Mnc0Yjh2QjBWQXJCbkxJYTlfcEk2MGE4WndsUDNCM2JiY3MyTDFlQVhYdV9vOTlnd3ZYTEoyRjE1bDdpRGxzTjVnQzJySEtnUGpkaWlEckZfNXlpZm1zdw?oc=5",
+   "source": "MarketWatch",
+   "published": "2026-09-08T16:41:00+00:00",
+   "summary": "Stock Market Today: Dow tumbles 1%, S&P 500 and Nasdaq drop as Brent crude edges toward $100 a barrel and pharma stocks stumble MarketWatch Stock Market Today, Sept. 1: Stocks Slide and Oil Surges Amid U.S.-Iran Tension The…"
+  },
+  {
+   "title": "Shipping Powers Say Wars, Shadow Fleets Threaten Free Seas",
+   "link": "https://www.wsj.com/business/logistics/shipping-powers-say-wars-shadow-fleets-threaten-free-seas-64546e12?mod=pls_whats_news_us_business_f",
+   "source": "WSJ Business",
+   "published": "2026-09-08T15:24:00+00:00",
+   "summary": "A group of 18 countries that dominate global shipping warned of a structural shift raising costs."
+  },
+  {
+   "title": "Qualcomm issues Amazon warrants to acquire $4 billion worth of chipmaker's stock as part of AI infrastructure deal",
+   "link": "https://www.cnbc.com/2026/09/08/qualcomm-amazon-data-center-infrastructure-deal.html",
+   "source": "CNBC",
+   "published": "2026-09-08T15:56:46+00:00",
+   "summary": "Qualcomm is trying to move into the data center business, where Nvidia has been the dominant player in the AI boom."
+  },
+  {
+   "title": "Dow Drops, Oil Nears $100",
+   "link": "https://www.wsj.com/finance/commodities-futures/u-s-stock-futures-treasurys-weaken-as-brent-nears-100-c29efc2f?mod=rss_markets_main",
+   "source": "WSJ Markets",
+   "published": "2026-09-08T16:34:00+00:00",
+   "summary": "U.S. stock indexes fell to start the week as rising oil prices added to investor anxiety."
+  },
   {
    "title": "Investors Brace for a Choppier Fall as the Fed, Inflation Return to Center Stage",
    "link": "https://www.wsj.com/finance/investing/investors-brace-for-a-choppier-fall-as-the-fed-inflation-return-to-center-stage-81f6f11f?mod=rss_markets_main",
@@ -377,50 +404,22 @@
    "summary": "The dollar eased against a basket of currencies due to further gains in the Japanese yen."
   },
   {
-   "title": "4 Stocks Whup The S&P 500 — And Yield More Than 30-Year Treasurys",
-   "link": "https://www.investors.com/etfs-and-funds/sectors/sp500-stocks-whup-the-market-and-yield-more-than-30-year-treasurys/?src=A00220&yptr=yahoo",
-   "source": "Investor's Business Daily",
-   "published": "2026-09-08T11:36:38+00:00",
-   "summary": ""
-  },
-  {
-   "title": "AI Stocks: OpenAI Declares The 'AGI Era' Is Here Amid IPO Fervor",
-   "link": "https://www.investors.com/news/technology/ai-stocks-artificial-intelligence-stocks-sept82026/?src=A00220&yptr=yahoo",
-   "source": "Investor's Business Daily",
-   "published": "2026-09-08T12:31:15+00:00",
-   "summary": ""
-  },
-  {
-   "title": "Trump says he's made 'Hundreds of Billions of Dollars on Stocks' for the U.S., in stream of AI posts",
-   "link": "https://www.cnbc.com/2026/09/07/trump-truth-social-ai-images-posting-spree.html",
-   "source": "CNBC",
-   "published": "2026-09-08T12:27:29+00:00",
-   "summary": "U.S. President Donald Trump posted a stream of AI-generated images and a series of sweeping and unverified claims on Truth Social on Sunday"
-  },
-  {
-   "title": "Mortgage and refinance interest rates today, Tuesday, September 8, 2026: Rates down to start holiday-shortened week",
-   "link": "https://finance.yahoo.com/personal-finance/mortgages/article/mortgage-and-refinance-interest-rates-today-tuesday-september-8-2026-rates-down-to-start-holiday-shortened-week-100000204.html",
-   "source": "Yahoo Personal Finance",
-   "published": "2026-09-08T10:00:00+00:00",
-   "summary": ""
-  },
-  {
-   "title": "Gold Falls as Investors Await U.S. Inflation Data",
-   "link": "https://www.wsj.com/finance/commodities-futures/in-gold-the-bulls-are-everywhere-8ee642ee?mod=rss_markets_main",
+   "title": "Copper Scales New Heights on U.S. Tariff Fears, Supply Challenges",
+   "link": "https://www.wsj.com/finance/commodities-futures/copper-reaches-new-highs-on-u-s-tariff-fears-supply-challenges-93a99fb0?mod=rss_markets_main",
    "source": "WSJ Markets",
-   "published": "2026-09-08T08:41:00+00:00",
-   "summary": "Gold prices fell despite a weaker dollar as investors waited for U.S. inflation data for more cues on the Federal Reserve’s decision on interest rates."
+   "published": "2026-09-08T14:38:00+00:00",
+   "summary": "Copper prices climbed to a fresh record on the London Metal Exchange as distortions to trade flows due to concerns over potential U.S. tariffs collided with supply challenges at key mines worldwide."
   }
  ],
  "smallcap": {
   "note": null,
-  "asof": "2026-09-08T13:35:01+00:00",
+  "asof": "2026-09-08T17:32:52+00:00",
   "coverage": {
    "universe": 9869,
    "profiled": 5326,
    "in_band": 1000,
    "measured": 1000,
-   "scored": 521,
+   "scored": 520,
    "below_floor": 36
   },
   "screen": [
@@ -434,10 +433,10 @@
     "accel": 1.2399999999999949,
     "r13": 92.9699,
     "momo": 1.64,
-    "from_high": -6.7914067914067955,
+    "from_high": -10.949410949410954,
     "ev_rev": 7.2737,
-    "px": 13.45,
-    "dp": 3.7809,
+    "px": 12.85,
+    "dp": -4.461,
     "score": 84.3,
     "sub": {
      "g": 79,
@@ -456,10 +455,10 @@
     "accel": 17.10000000000001,
     "r13": 102.2491,
     "momo": 1.21,
-    "from_high": -11.933102305258403,
+    "from_high": -10.712671387675165,
     "ev_rev": 15.8316,
-    "px": 58.45,
-    "dp": -2.4207,
+    "px": 59.26,
+    "dp": 1.3858,
     "score": 82.6,
     "sub": {
      "g": 86,
@@ -478,10 +477,10 @@
     "accel": 4.740000000000002,
     "r13": 55.3588,
     "momo": 0.76,
-    "from_high": -8.032699484627692,
+    "from_high": -7.837213435223034,
     "ev_rev": 1.033,
-    "px": 51.75,
-    "dp": 1.7299,
+    "px": 51.86,
+    "dp": 0.2126,
     "score": 82.2,
     "sub": {
      "g": 88,
@@ -500,10 +499,10 @@
     "accel": 16.25,
     "r13": 87.1153,
     "momo": 1.3,
-    "from_high": -6.499705761135455,
+    "from_high": -6.86878586997307,
     "ev_rev": 0.5569,
-    "px": 45.6,
-    "dp": 0.5291,
+    "px": 45.42,
+    "dp": -0.3947,
     "score": 81.5,
     "sub": {
      "g": 80,
@@ -522,10 +521,10 @@
     "accel": -15.63805,
     "r13": 26.5778,
     "momo": 1.37,
-    "from_high": -3.1613737605977965,
+    "from_high": -3.9948268429372047,
     "ev_rev": null,
-    "px": 67.39,
-    "dp": 1.8745,
+    "px": 66.81,
+    "dp": -0.8607,
     "score": 80.1,
     "sub": {
      "g": 71,
@@ -544,10 +543,10 @@
     "accel": 10.785620000000009,
     "r13": 15.9701,
     "momo": 1.07,
-    "from_high": -2.9477891581313975,
+    "from_high": -3.7721708718461144,
     "ev_rev": null,
-    "px": 38.85,
-    "dp": 0.3357,
+    "px": 38.52,
+    "dp": -0.8494,
     "score": 78.2,
     "sub": {
      "g": 72,
@@ -566,10 +565,10 @@
     "accel": -7.127990000000004,
     "r13": 26.2218,
     "momo": 1.29,
-    "from_high": -0.8845944474687117,
+    "from_high": -1.8916712030484506,
     "ev_rev": null,
-    "px": 72.83,
-    "dp": 1.0966,
+    "px": 72.09,
+    "dp": -1.0161,
     "score": 78.1,
     "sub": {
      "g": 66,
@@ -588,14 +587,14 @@
     "accel": 38.88,
     "r13": 35.262,
     "momo": 0.72,
-    "from_high": -6.490566037735846,
+    "from_high": -6.339622641509434,
     "ev_rev": 6.6401,
-    "px": 12.39,
-    "dp": -1.2749,
+    "px": 12.41,
+    "dp": 0.1614,
     "score": 77.9,
     "sub": {
      "g": 87,
-     "m": 84,
+     "m": 83,
      "q": 48
     },
     "flags": []
@@ -610,10 +609,10 @@
     "accel": 17.169999999999987,
     "r13": 13.2693,
     "momo": 0.72,
-    "from_high": -18.54986754405068,
+    "from_high": -17.867690981013627,
     "ev_rev": 6.0246,
-    "px": 93.13,
-    "dp": -3.7018,
+    "px": 93.91,
+    "dp": 0.8375,
     "score": 77.7,
     "sub": {
      "g": 91,
@@ -632,10 +631,10 @@
     "accel": 0.8399999999999999,
     "r13": 31.84,
     "momo": 0.74,
-    "from_high": -2.408211606790367,
+    "from_high": -3.434662455586246,
     "ev_rev": 9.1235,
-    "px": 24.72,
-    "dp": 0.6105,
+    "px": 24.46,
+    "dp": -1.0518,
     "score": 76.3,
     "sub": {
      "g": 77,
@@ -654,10 +653,10 @@
     "accel": -0.20000000000000107,
     "r13": 53.8927,
     "momo": 0.98,
-    "from_high": -8.663842895648822,
+    "from_high": -10.460788088820427,
     "ev_rev": 0.6171,
-    "px": 71.16,
-    "dp": 2.9216,
+    "px": 69.76,
+    "dp": -1.9674,
     "score": 75.6,
     "sub": {
      "g": 62,
@@ -676,10 +675,10 @@
     "accel": -50.0,
     "r13": 39.8128,
     "momo": 0.71,
-    "from_high": -40.629776826658514,
+    "from_high": -40.59920513604403,
     "ev_rev": 7.1578,
-    "px": 19.42,
-    "dp": -2.51,
+    "px": 19.43,
+    "dp": 0.0515,
     "score": 75.5,
     "sub": {
      "g": 73,
@@ -698,15 +697,15 @@
     "accel": -15.25,
     "r13": 52.734,
     "momo": 1.07,
-    "from_high": -5.396096440872567,
+    "from_high": -7.290470723306564,
     "ev_rev": 5.4949,
-    "px": 16.48,
-    "dp": 0,
+    "px": 16.15,
+    "dp": -2.0024,
     "score": 75.2,
     "sub": {
      "g": 73,
      "m": 96,
-     "q": 40
+     "q": 39
     },
     "flags": []
    },
@@ -720,10 +719,10 @@
     "accel": 24.670000000000016,
     "r13": 24.4717,
     "momo": 0.23,
-    "from_high": -38.20355788859725,
+    "from_high": -38.524351122776324,
     "ev_rev": null,
-    "px": 21.19,
-    "dp": -2.1699,
+    "px": 21.08,
+    "dp": -0.5191,
     "score": 74.9,
     "sub": {
      "g": 97,
@@ -742,10 +741,10 @@
     "accel": -43.790000000000006,
     "r13": 29.6046,
     "momo": 0.79,
-    "from_high": -13.29620605638705,
+    "from_high": -13.191785589975636,
     "ev_rev": 0.9077,
-    "px": 24.91,
-    "dp": -1.5804,
+    "px": 24.94,
+    "dp": 0.1204,
     "score": 74.6,
     "sub": {
      "g": 75,
@@ -764,10 +763,10 @@
     "accel": 1.6099999999999994,
     "r13": 7.1429,
     "momo": 0.45,
-    "from_high": -5.888030888030881,
+    "from_high": -5.7915057915057915,
     "ev_rev": 12.3006,
-    "px": 9.75,
-    "dp": 0.5155,
+    "px": 9.76,
+    "dp": 0.1026,
     "score": 74.1,
     "sub": {
      "g": 90,
@@ -786,10 +785,10 @@
     "accel": -3.4399999999999995,
     "r13": 40.8055,
     "momo": 1.3,
-    "from_high": -7.15335066109165,
+    "from_high": -5.401740309639513,
     "ev_rev": 0.6958,
-    "px": 82.16,
-    "dp": 2.2272,
+    "px": 83.71,
+    "dp": 1.8866,
     "score": 73.4,
     "sub": {
      "g": 51,
@@ -808,10 +807,10 @@
     "accel": 2.1899999999999995,
     "r13": 7.0752,
     "momo": 0.45,
-    "from_high": -5.372082782915022,
+    "from_high": -5.416116248348746,
     "ev_rev": 9.0392,
-    "px": 21.49,
-    "dp": 0.3268,
+    "px": 21.48,
+    "dp": -0.0465,
     "score": 72.4,
     "sub": {
      "g": 80,
@@ -830,10 +829,10 @@
     "accel": 2.8999999999999986,
     "r13": 68,
     "momo": 1.06,
-    "from_high": -11.788617886178866,
+    "from_high": -14.227642276422758,
     "ev_rev": 4.1473,
-    "px": 13.02,
-    "dp": -3.9114,
+    "px": 12.66,
+    "dp": -2.765,
     "score": 72.0,
     "sub": {
      "g": 68,
@@ -852,10 +851,10 @@
     "accel": -4.02,
     "r13": 46.3357,
     "momo": 1.09,
-    "from_high": -32.53405994550409,
+    "from_high": -34.27792915531336,
     "ev_rev": 0.3496,
-    "px": 12.38,
-    "dp": 0.6504,
+    "px": 12.06,
+    "dp": -2.5848,
     "score": 72.0,
     "sub": {
      "g": 59,
@@ -874,11 +873,11 @@
     "accel": -0.71,
     "r13": 30.2257,
     "momo": 1.14,
-    "from_high": -2.2129208639455333,
+    "from_high": -1.844469171646912,
     "ev_rev": 0.996,
-    "px": 39.81,
-    "dp": 1.6339,
-    "score": 71.9,
+    "px": 39.96,
+    "dp": 0.3768,
+    "score": 71.6,
     "sub": {
      "g": 50,
      "m": 97,
@@ -896,10 +895,10 @@
     "accel": -24.06,
     "r13": 17.3358,
     "momo": 0.61,
-    "from_high": -0.6182380216383287,
+    "from_high": -2.5502318392581103,
     "ev_rev": 3.7291,
-    "px": 12.86,
-    "dp": 1.9017,
+    "px": 12.61,
+    "dp": -1.944,
     "score": 71.3,
     "sub": {
      "g": 67,
@@ -1041,12 +1040,6 @@
     "dp": 22.8546
    },
    {
-    "ticker": "GPRO",
-    "name": "GoPro Inc",
-    "px": 1.7,
-    "dp": 22.3022
-   },
-   {
     "ticker": "HCTPF",
     "name": "Hutchison Port Holdings Trust",
     "px": 0.21885,
@@ -1059,10 +1052,16 @@
     "dp": 16.0221
    },
    {
-    "ticker": "CD",
-    "name": "Chaince Digital Holdings Inc",
-    "px": 4.07,
-    "dp": 11.8132
+    "ticker": "GMTL",
+    "name": "Guardian Metal Resources PLC",
+    "px": 12.33,
+    "dp": 13.9556
+   },
+   {
+    "ticker": "ALTI",
+    "name": "AlTi Global, Inc",
+    "px": 3.41,
+    "dp": 13.6667
    }
   ],
   "movers_down": [
@@ -1073,28 +1072,28 @@
     "dp": -38.0068
    },
    {
-    "ticker": "ALTI",
-    "name": "AlTi Global, Inc",
-    "px": 3,
-    "dp": -21.875
-   },
-   {
     "ticker": "BBCQ",
     "name": "Bleichroeder Acquisition Corp II",
     "px": 7.96,
     "dp": -18.359
    },
    {
-    "ticker": "ABTC",
-    "name": "American Bitcoin Corp",
-    "px": 7.99,
-    "dp": -14.454
+    "ticker": "GPRO",
+    "name": "GoPro Inc",
+    "px": 1.44,
+    "dp": -15.2941
    },
    {
-    "ticker": "BALY",
-    "name": "Bally's Corp",
-    "px": 9.14,
-    "dp": -10.7422
+    "ticker": "CD",
+    "name": "Chaince Digital Holdings Inc",
+    "px": 3.48,
+    "dp": -14.4963
+   },
+   {
+    "ticker": "CNDT",
+    "name": "Conduent Inc",
+    "px": 1.71,
+    "dp": -11.8557
    }
   ],
   "earnings": [
@@ -1222,6 +1221,13 @@
     "date": "2026-09-08",
     "link": "https://www.sec.gov/Archives/edgar/data/917520/000091752026000061/0000917520-26-000061-index.htm",
     "form": "8-K"
+   },
+   {
+    "ticker": "MESHU",
+    "name": "Meshflow Acquisition Corp",
+    "date": "2026-09-08",
+    "link": "https://www.sec.gov/Archives/edgar/data/2081468/000121390026097901/0001213900-26-097901-index.htm",
+    "form": "8-K"
    }
   ],
   "filings_activist": [
@@ -1238,6 +1244,34 @@
     "date": "2026-09-08",
     "link": "https://www.sec.gov/Archives/edgar/data/1884082/000110465926105649/0001104659-26-105649-index.htm",
     "form": "SCHEDULE 13D/A"
+   },
+   {
+    "ticker": "EYPT",
+    "name": "EyePoint Inc",
+    "date": "2026-09-08",
+    "link": "https://www.sec.gov/Archives/edgar/data/1314102/000127417326000222/0001274173-26-000222-index.htm",
+    "form": "SCHEDULE 13G"
+   },
+   {
+    "ticker": "FBRX",
+    "name": "Forte Biosciences Inc",
+    "date": "2026-09-08",
+    "link": "https://www.sec.gov/Archives/edgar/data/1419041/000162363226001385/0001623632-26-001385-index.htm",
+    "form": "SCHEDULE 13G/A"
+   },
+   {
+    "ticker": "BWMN",
+    "name": "Bowman Consulting Group Ltd",
+    "date": "2026-09-08",
+    "link": "https://www.sec.gov/Archives/edgar/data/1847590/000031506626002291/0000315066-26-002291-index.htm",
+    "form": "SCHEDULE 13G/A"
+   },
+   {
+    "ticker": "BLFS",
+    "name": "BioLife Solutions Inc",
+    "date": "2026-09-08",
+    "link": "https://www.sec.gov/Archives/edgar/data/834365/000189761226000627/0001897612-26-000627-index.htm",
+    "form": "SCHEDULE 13G/A"
    },
    {
     "ticker": "GPRK",
@@ -1266,34 +1300,6 @@
     "date": "2026-09-04",
     "link": "https://www.sec.gov/Archives/edgar/data/728387/000119312526383775/0001193125-26-383775-index.htm",
     "form": "SCHEDULE 13D/A"
-   },
-   {
-    "ticker": "CMIIU",
-    "name": "Columbus Circle Capital Corp II",
-    "date": "2026-09-04",
-    "link": "https://www.sec.gov/Archives/edgar/data/2028355/000107261326000748/0001072613-26-000748-index.htm",
-    "form": "SCHEDULE 13G/A"
-   },
-   {
-    "ticker": "GAU",
-    "name": "Galiano Gold Inc",
-    "date": "2026-09-04",
-    "link": "https://www.sec.gov/Archives/edgar/data/1377757/000205211326000838/0002052113-26-000838-index.htm",
-    "form": "SCHEDULE 13G/A"
-   },
-   {
-    "ticker": "IPFX",
-    "name": "Inflection Point Acquisition Corp VI",
-    "date": "2026-09-04",
-    "link": "https://www.sec.gov/Archives/edgar/data/2028355/000107261326000748/0001072613-26-000748-index.htm",
-    "form": "SCHEDULE 13G/A"
-   },
-   {
-    "ticker": "PAX",
-    "name": "Patria Investments Ltd",
-    "date": "2026-09-04",
-    "link": "https://www.sec.gov/Archives/edgar/data/1825570/000142284826000123/0001422848-26-000123-index.htm",
-    "form": "SCHEDULE 13G/A"
    }
   ],
   "filings_offering": [
@@ -1330,10 +1336,10 @@
   "news": [
    {
     "title": "Billionaire David Tepper Just Bought These 2 Artificial Intelligence (AI) Stocks That Wall Street Thinks Could Soar by 50% or More",
-    "link": "https://finance.yahoo.com/markets/stocks/articles/billionaire-david-tepper-just-bought-125001570.html",
-    "source": "Motley Fool",
+    "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxQa1BtTWR6RUZ2U3FwQV9yc09fd2l4c0lIVG5aV1JhbUJIZW11cmJPSUI2Snh6U3JSYmptQk1UcUdqYXQzbzZMcWt5djFFbVFMcm5qSTdja1luc0VLVEVZSFdabjVPTVFpNlV2TjZQRkZGYVNlRWpIdkhpeG1QMHl2WHplNWJhT0oxU19iVWpCNnNHc21tOUFzaTFwN0ZMd3lRYnhN?oc=5",
+    "source": "finance.yahoo.com",
     "published": "2026-09-08T12:50:01+00:00",
-    "summary": "",
+    "summary": "Billionaire David Tepper Just Bought These 2 Artificial Intelligence (AI) Stocks That Wall Street Thinks Could Soar by 50% or More finance.yahoo.com One Huge Fund Just Bought Taiwan Semiconductor Manufacturing and Dumped Micron…",
     "ticker": "AI"
    }
   ]
@@ -1342,7 +1348,7 @@
  "stats": {
   "feeds_total": 21,
   "feeds_failed": 3,
-  "items": 360,
+  "items": 372,
   "smallcap_calls": 553,
   "feed_errors": [
    [
