@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-09T19:23:04.984371+00:00",
+ "generated_at": "2026-09-09T21:51:45.148252+00:00",
  "market": [
   {
    "label": "S&P 500",
@@ -149,13 +149,12 @@
    "label": "10-yr Treasury",
    "symbol": "DGS10",
    "kind": "yield",
-   "value": 47.800000000000004,
-   "prev": 47.699999999999996,
-   "value_txt": "4.78%",
-   "delta": 0.20964360587003883,
-   "delta_txt": "+1 bp",
+   "value": 48.0,
+   "prev": 47.800000000000004,
+   "value_txt": "4.80%",
+   "delta": 0.41841004184099523,
+   "delta_txt": "+2 bp",
    "spark": [
-    46.3,
     46.900000000000006,
     46.5,
     47.199999999999996,
@@ -177,9 +176,10 @@
     47.9,
     47.9,
     47.699999999999996,
-    47.800000000000004
+    47.800000000000004,
+    48.0
    ],
-   "asof": "Sep 4"
+   "asof": "Sep 8"
   },
   {
    "label": "Dollar (broad)",
@@ -292,11 +292,11 @@
    "label": "Bitcoin",
    "symbol": "bitcoin",
    "kind": "crypto",
-   "value": 78487.31816454639,
+   "value": 78045.31373769972,
    "prev": 78450.75303870205,
-   "value_txt": "$78,487",
-   "delta": 0.046609018305153606,
-   "delta_txt": "+0.05%",
+   "value_txt": "$78,045",
+   "delta": -0.5168074050255693,
+   "delta_txt": "-0.52%",
    "spark": [
     64686.25782561655,
     69291.0104297816,
@@ -320,18 +320,18 @@
     80329.3478460037,
     79093.4641898418,
     78450.75303870205,
-    78487.31816454639
+    78045.31373769972
    ]
   },
   {
    "label": "Ethereum",
    "symbol": "ethereum",
    "kind": "crypto",
-   "value": 2482.7597880871845,
+   "value": 2457.548899494192,
    "prev": 2485.0697039871584,
-   "value_txt": "$2,483",
-   "delta": -0.09295175488509624,
-   "delta_txt": "-0.09%",
+   "value_txt": "$2,458",
+   "delta": -1.107445978227924,
+   "delta_txt": "-1.11%",
    "spark": [
     1916.3998901478055,
     2251.7346140069594,
@@ -355,12 +355,19 @@
     2514.0092688310365,
     2489.3967543757462,
     2485.0697039871584,
-    2482.7597880871845
+    2457.548899494192
    ]
   }
  ],
- "tape_line": "S&P 500 -0.58%, Nasdaq -0.32%, Dow -1.18%; the 10-year Treasury at 4.78% (+1 bp); WTI crude $91.48 (+5.11%); bitcoin $78,487 (+0.05%).",
+ "tape_line": "S&P 500 -0.58%, Nasdaq -0.32%, Dow -1.18%; the 10-year Treasury at 4.80% (+2 bp); WTI crude $91.48 (+5.11%); bitcoin $78,045 (-0.52%).",
  "top": [
+  {
+   "title": "Oil’s surge back above $100 fuels fresh inflation fears at a crucial time for interest rates",
+   "link": "https://www.marketwatch.com/story/brent-crude-reaches-100-as-war-in-iran-intensifies-b73832e2?mod=mw_rss_topstories",
+   "source": "MarketWatch",
+   "published": "2026-09-09T20:36:00+00:00",
+   "summary": "A prolonged oil shock could keep consumer prices elevated and complicate the path for central banks already navigating a difficult policy environment."
+  },
   {
    "title": "Fed rate hike hinges on two key inflation reports in the next two days",
    "link": "https://www.marketwatch.com/story/fed-rate-hike-hinges-on-two-key-inflation-reports-in-the-next-two-days-09d63bd9?mod=mw_rss_topstories",
@@ -369,11 +376,18 @@
    "summary": "Consumer and wholesale prices are rising again. Just how bad does it have to get for the Fed to act?"
   },
   {
-   "title": "Oil’s surge back above $100 fuels fresh inflation fears at a crucial time for interest rates",
-   "link": "https://www.marketwatch.com/story/brent-crude-reaches-100-as-war-in-iran-intensifies-b73832e2?mod=mw_rss_topstories",
-   "source": "MarketWatch",
-   "published": "2026-09-09T15:14:00+00:00",
-   "summary": "Oil prices rose above $100 a barrel on Wednesday for the first time in seven weeks, reviving concerns about global energy supply disruptions and a fresh inflationary shock just as major central banks prepare to make key…"
+   "title": "U.S. Treasury Plans $6 Billion Buyback, Yields Rise",
+   "link": "https://www.wsj.com/finance/investing/u-s-treasury-plans-6-billion-10-to-20-year-bond-buyback-d12d3647?mod=rss_markets_main",
+   "source": "WSJ Markets",
+   "published": "2026-09-09T20:28:00+00:00",
+   "summary": "The U.S. Treasury raised the size of its planned buyback operation for Treasurys maturing in 10 to 20 years to $6 billion, triple the typical amount, but not enough to send yields lower."
+  },
+  {
+   "title": "U.S. Stocks Fall as War Escalation, Oil Spike Continue",
+   "link": "https://www.wsj.com/finance/stocks/u-s-stocks-fall-as-war-escalation-oil-spike-continues-8e83817c?mod=rss_markets_main",
+   "source": "WSJ Markets",
+   "published": "2026-09-09T21:10:00+00:00",
+   "summary": "U.S. stocks extended their recent decline as the war in the Middle East continued to escalate and drive up oil prices."
   },
   {
    "title": "Treasury yields jump as Bessent’s $6bn buyback plan disappoints investors",
@@ -395,31 +409,17 @@
    "source": "CNBC",
    "published": "2026-09-09T18:29:51+00:00",
    "summary": "As the Trump administration ramps up pressure on the Federal Reserve, consumers may be better served if senior officials back off, experts say."
-  },
-  {
-   "title": "Saudi Oil Exports Plunge as Spread of War Shuts Off Shipping Routes",
-   "link": "https://www.nytimes.com/2026/09/09/business/saudi-arabia-houthis-red-sea-oil-shipping.html",
-   "source": "NYT Business",
-   "published": "2026-09-09T18:04:07+00:00",
-   "summary": "With few good options for safely shipping oil, Saudi Arabia’s exports have fallen to a 13-year low."
-  },
-  {
-   "title": "ECB, Fed Policy Differentials to Be Key for Euro, Dollar in Coming Months",
-   "link": "https://www.wsj.com/finance/currencies/yen-strengthens-on-prospects-of-two-boj-rate-hikes-by-year-end-c56a9483?mod=rss_markets_main",
-   "source": "WSJ Markets",
-   "published": "2026-09-09T13:43:00+00:00",
-   "summary": "The dollar weakened and difference between ECB and Fed policy will be a key determinant for the euro and dollar in the coming months, Marex FX said."
   }
  ],
  "smallcap": {
   "note": null,
-  "asof": "2026-09-09T19:33:57+00:00",
+  "asof": "2026-09-09T22:02:45+00:00",
   "coverage": {
    "universe": 9869,
-   "profiled": 5508,
-   "in_band": 1036,
-   "measured": 1032,
-   "scored": 533,
+   "profiled": 5540,
+   "in_band": 1043,
+   "measured": 1036,
+   "scored": 535,
    "below_floor": 37
   },
   "screen": [
@@ -461,7 +461,7 @@
     "dp": -0.3454,
     "score": 82.6,
     "sub": {
-     "g": 86,
+     "g": 87,
      "m": 98,
      "q": 45
     },
@@ -481,7 +481,7 @@
     "ev_rev": 1.033,
     "px": 52.27,
     "dp": 0.1341,
-    "score": 82.0,
+    "score": 82.1,
     "sub": {
      "g": 88,
      "m": 86,
@@ -507,7 +507,7 @@
     "sub": {
      "g": 80,
      "m": 99,
-     "q": 49
+     "q": 50
     },
     "flags": []
    },
@@ -547,11 +547,11 @@
     "ev_rev": null,
     "px": 37.96,
     "dp": -0.81,
-    "score": 78.4,
+    "score": 78.5,
     "sub": {
      "g": 73,
      "m": 95,
-     "q": 56
+     "q": 57
     },
     "flags": []
    },
@@ -578,28 +578,6 @@
     "flags": []
    },
    {
-    "ticker": "FENC",
-    "name": "Fennec Pharmaceuticals Inc",
-    "ind": "Biotechnology",
-    "group": "Health",
-    "mcap": 434.48213806852596,
-    "rev_g": 33.76,
-    "accel": 38.88,
-    "r13": 35.262,
-    "momo": 0.72,
-    "from_high": -12.226415094339615,
-    "ev_rev": 6.6401,
-    "px": 11.63,
-    "dp": -6.5863,
-    "score": 77.9,
-    "sub": {
-     "g": 87,
-     "m": 83,
-     "q": 48
-    },
-    "flags": []
-   },
-   {
     "ticker": "ATLC",
     "name": "Atlanticus Holdings Corp",
     "ind": "Financial Services",
@@ -622,6 +600,28 @@
     "flags": []
    },
    {
+    "ticker": "FENC",
+    "name": "Fennec Pharmaceuticals Inc",
+    "ind": "Biotechnology",
+    "group": "Health",
+    "mcap": 434.48213806852596,
+    "rev_g": 33.76,
+    "accel": 38.88,
+    "r13": 35.262,
+    "momo": 0.72,
+    "from_high": -12.226415094339615,
+    "ev_rev": 6.6401,
+    "px": 11.63,
+    "dp": -6.5863,
+    "score": 77.8,
+    "sub": {
+     "g": 87,
+     "m": 84,
+     "q": 48
+    },
+    "flags": []
+   },
+   {
     "ticker": "CBLL",
     "name": "Ceribell Inc",
     "ind": "Health Care",
@@ -635,9 +635,9 @@
     "ev_rev": 9.1235,
     "px": 24.38,
     "dp": 0.2879,
-    "score": 76.2,
+    "score": 76.1,
     "sub": {
-     "g": 77,
+     "g": 76,
      "m": 85,
      "q": 58
     },
@@ -701,9 +701,9 @@
     "ev_rev": 5.4949,
     "px": 16.07,
     "dp": -0.0622,
-    "score": 75.2,
+    "score": 75.0,
     "sub": {
-     "g": 73,
+     "g": 72,
      "m": 95,
      "q": 39
     },
@@ -745,7 +745,7 @@
     "ev_rev": 0.9077,
     "px": 23.16,
     "dp": -7.1371,
-    "score": 74.3,
+    "score": 74.4,
     "sub": {
      "g": 74,
      "m": 87,
@@ -770,7 +770,7 @@
     "score": 74.2,
     "sub": {
      "g": 91,
-     "m": 70,
+     "m": 69,
      "q": 51
     },
     "flags": []
@@ -901,7 +901,7 @@
     "ev_rev": 3.7291,
     "px": 12.55,
     "dp": -0.3177,
-    "score": 71.5,
+    "score": 71.4,
     "sub": {
      "g": 68,
      "m": 80,
@@ -967,10 +967,10 @@
     "ev_rev": 11.6154,
     "px": 23.53,
     "dp": -0.6754,
-    "score": 67.3,
+    "score": 67.2,
     "sub": {
      "g": 78,
-     "m": 66,
+     "m": 65,
      "q": 61
     },
     "flags": [
@@ -1045,6 +1045,12 @@
     "dp": 21.5833
    },
    {
+    "ticker": "FTK",
+    "name": "Flotek Industries Inc",
+    "px": 27.88,
+    "dp": 14.403
+   },
+   {
     "ticker": "AMBQ",
     "name": "Ambiq Micro Inc",
     "px": 65.32,
@@ -1061,12 +1067,6 @@
     "name": "Centerspace",
     "px": 57.62,
     "dp": 9.3151
-   },
-   {
-    "ticker": "GFUZ",
-    "name": "Spring Valley Acquisition Corp III",
-    "px": 8.69,
-    "dp": 9.0339
    }
   ],
   "movers_down": [
@@ -1228,17 +1228,17 @@
     "form": "8-K"
    },
    {
-    "ticker": "ASPI",
-    "name": "ASP Isotopes Inc",
-    "date": "2026-09-08",
-    "link": "https://www.sec.gov/Archives/edgar/data/1921865/000119312526384527/0001193125-26-384527-index.htm",
+    "ticker": "BBW",
+    "name": "Build-A-Bear Workshop Inc",
+    "date": "2026-09-09",
+    "link": "https://www.sec.gov/Archives/edgar/data/1113809/000143774926029998/0001437749-26-029998-index.htm",
     "form": "8-K"
    },
    {
-    "ticker": "BSRR",
-    "name": "Sierra Bancorp",
-    "date": "2026-09-08",
-    "link": "https://www.sec.gov/Archives/edgar/data/1130144/000110465926105719/0001104659-26-105719-index.htm",
+    "ticker": "BLFS",
+    "name": "BioLife Solutions Inc",
+    "date": "2026-09-09",
+    "link": "https://www.sec.gov/Archives/edgar/data/834365/000162828026061174/0001628280-26-061174-index.htm",
     "form": "8-K"
    }
   ],
@@ -1363,17 +1363,34 @@
    }
   ]
  },
- "econ_calendar": [],
+ "econ_calendar": [
+  {
+   "date": "2026-09-10",
+   "label": "Existing home sales"
+  },
+  {
+   "date": "2026-09-10",
+   "label": "PPI (producer prices)"
+  },
+  {
+   "date": "2026-09-11",
+   "label": "CPI (inflation)"
+  },
+  {
+   "date": "2026-09-16",
+   "label": "Retail sales"
+  },
+  {
+   "date": "2026-09-17",
+   "label": "Housing starts"
+  }
+ ],
  "stats": {
   "feeds_total": 21,
-  "feeds_failed": 4,
-  "items": 370,
-  "smallcap_calls": 554,
+  "feeds_failed": 2,
+  "items": 398,
+  "smallcap_calls": 552,
   "feed_errors": [
-   [
-    "PR Newswire",
-    "HTTP Error 404: Not Found"
-   ],
    [
     "GlobeNewswire",
     "The read operation timed out"
@@ -1383,10 +1400,6 @@
    [
     "Yahoo",
     "rate-limited; using fallback sources"
-   ],
-   [
-    "FRED calendar",
-    "The read operation timed out"
    ]
   ]
  }
