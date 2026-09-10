@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-10T13:24:23.733171+00:00",
+ "generated_at": "2026-09-10T17:05:35.828425+00:00",
  "market": [
   {
    "label": "S&P 500",
@@ -113,13 +113,12 @@
    "label": "VIX",
    "symbol": "VIXCLS",
    "kind": "level",
-   "value": 15.72,
-   "prev": 15.3,
-   "value_txt": "15.72",
-   "delta": 2.7450980392156854,
-   "delta_txt": "+2.75%",
+   "value": 16.46,
+   "prev": 15.72,
+   "value_txt": "16.46",
+   "delta": 4.707379134860052,
+   "delta_txt": "+4.71%",
    "spark": [
-    14.9,
     15.46,
     15.28,
     14.55,
@@ -141,9 +140,10 @@
     14.32,
     14.53,
     15.3,
-    15.72
+    15.72,
+    16.46
    ],
-   "asof": "Sep 8"
+   "asof": "Sep 9"
   },
   {
    "label": "10-yr Treasury",
@@ -257,13 +257,12 @@
    "label": "EUR/USD",
    "symbol": "EURUSD",
    "kind": "fx",
-   "value": 1.1652,
-   "prev": 1.1614,
-   "value_txt": "1.1652",
-   "delta": 0.32719132081970254,
-   "delta_txt": "+0.33%",
+   "value": 1.1616,
+   "prev": 1.1652,
+   "value_txt": "1.1616",
+   "delta": -0.3089598352214253,
+   "delta_txt": "-0.31%",
    "spark": [
-    1.1555,
     1.154,
     1.1545,
     1.1534,
@@ -285,19 +284,19 @@
     1.1622,
     1.1622,
     1.1614,
-    1.1652
-   ],
-   "asof": "Sep 9"
+    1.1652,
+    1.1616
+   ]
   },
   {
    "label": "Bitcoin",
    "symbol": "bitcoin",
    "kind": "crypto",
-   "value": 76886.12649491384,
+   "value": 77120.29144627003,
    "prev": 78283.06047169256,
-   "value_txt": "$76,886",
-   "delta": -1.7844652065996491,
-   "delta_txt": "-1.78%",
+   "value_txt": "$77,120",
+   "delta": -1.4853392527275966,
+   "delta_txt": "-1.49%",
    "spark": [
     69291.0104297816,
     73020.94563440893,
@@ -321,18 +320,18 @@
     79093.4641898418,
     78450.75303870205,
     78283.06047169256,
-    76886.12649491384
+    77120.29144627003
    ]
   },
   {
    "label": "Ethereum",
    "symbol": "ethereum",
    "kind": "crypto",
-   "value": 2417.0059237693476,
+   "value": 2447.5108922154777,
    "prev": 2467.529167979314,
-   "value_txt": "$2,417",
-   "delta": -2.0475236874845293,
-   "delta_txt": "-2.05%",
+   "value_txt": "$2,448",
+   "delta": -0.8112680499833556,
+   "delta_txt": "-0.81%",
    "spark": [
     2251.7346140069594,
     2326.5282334236576,
@@ -356,69 +355,69 @@
     2489.3967543757462,
     2485.0697039871584,
     2467.529167979314,
-    2417.0059237693476
+    2447.5108922154777
    ]
   }
  ],
- "tape_line": "S&P 500 -0.48%, Nasdaq -0.64%, Dow -0.77%; the 10-year Treasury at 4.80% (+2 bp); WTI crude $91.48 (+5.11%); bitcoin $76,886 (-1.78%).",
+ "tape_line": "S&P 500 -0.48%, Nasdaq -0.64%, Dow -0.77%; the 10-year Treasury at 4.80% (+2 bp); WTI crude $91.48 (+5.11%); bitcoin $77,120 (-1.49%).",
  "top": [
   {
-   "title": "Nasdaq Futures Fall, Treasury Yields Extend Multiyear Highs as Oil Tops $102",
-   "link": "https://www.wsj.com/finance/investing/stock-futures-rise-treasury-yields-hold-near-highs-as-oil-tops-101-74944fa2?mod=rss_markets_main",
+   "title": "Global Bond Yields Hit Multiyear Highs, Oil Fuels Inflation Fears",
+   "link": "https://www.wsj.com/finance/investing/bond-yields-edge-up-as-investors-await-ecb-rate-hike-u-s-treasury-buybacks-4cd2e9f3?mod=rss_markets_main",
    "source": "WSJ Markets",
-   "published": "2026-09-10T12:26:00+00:00",
-   "summary": "Nasdaq futures slid and Treasury yields rose to a spate of new multiyear highs as investors took positions ahead of crucial U.S. inflation prints Thursday and Friday."
+   "published": "2026-09-10T16:19:00+00:00",
+   "summary": "The selloff in global government bonds accelerated in European midday trade, pushing yields on 10-year German Bunds and Treasurys to fresh multiyear highs."
+  },
+  {
+   "title": "The likelihood of a Fed interest rate hike next week just got a lot higher",
+   "link": "https://www.cnbc.com/2026/09/10/the-likelihood-of-a-fed-interest-rate-hike-next-week-just-got-a-lot-higher.html",
+   "source": "CNBC",
+   "published": "2026-09-10T16:55:17+00:00",
+   "summary": "Traders pushed chances for a rate increase to 70% in morning action."
+  },
+  {
+   "title": "Stock Market Today: Dow, S&P 500 and Nasdaq fall as U.S. oil prices surge to $100 a barrel and Treasury yields jump; stocks on track for weekly losses; Oracle earnings on tap",
+   "link": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxPSEZWR3JqTnVsc2VsSVlvSXlScWYyeUVkMlZXVmJlMGNHUzJvVG1LaEUySWoxX1FZWE00Y2NkQ284ZW11R0U1cHE4QXJWQm53UnBQR2RIXzBaeHJLNG1lZGlkdlpzV1ZOdzBpcG5oNXJrOVJCWi0zOUJxNFpGNV96MzhJVzlMdUxBU2x3ZUdDaEp2d3VJbTB2aVI4ekdTQWJfa1cxelRZSWd3ejkyQWpDb1A2Qy1QbVdCRWhlMGR0Yk8wUE9BQ0s5ZXVrUDA2SjJUa2diX1RwOVM?oc=5",
+   "source": "marketwatch.com",
+   "published": "2026-09-10T16:38:00+00:00",
+   "summary": "Stock Market Today: Dow, S&P 500 and Nasdaq fall as U.S. oil prices surge to $100 a barrel and Treasury yields jump; stocks on track for weekly losses; Oracle earnings on tap marketwatch.com Stocks retreat as U.S. oil prices top…"
   },
   {
    "title": "10-year Treasury yield tops 4.9%, highest since 2023, as oil surge raises inflation fears",
    "link": "https://www.cnbc.com/2026/09/10/us-treasurys-bonds-yield.html",
    "source": "CNBC",
-   "published": "2026-09-10T12:53:39+00:00",
+   "published": "2026-09-10T16:40:06+00:00",
    "summary": "Treasury yields moved higher on Thursday as U.S. oil prices hit $100 per barrel."
   },
   {
-   "title": "OPEC Further Cuts Demand Growth Forecast as Oil Surpasses $100 a Barrel",
-   "link": "https://www.wsj.com/business/energy-oil/opec-further-cuts-this-years-oil-demand-growth-forecast-79ed23ad?mod=pls_whats_news_us_business_f",
-   "source": "WSJ Business",
-   "published": "2026-09-10T13:18:00+00:00",
-   "summary": "The group of oil-rich countries said it expects global oil demand to grow by 380,000 barrels a day, down from 580,000 barrels a day previously."
-  },
-  {
-   "title": "European Central Bank hikes interest rates to 2.5% as policymakers see risk of higher inflation, weaker growth",
-   "link": "https://www.cnbc.com/2026/09/10/ecb-interest-rate-hike-lagarde-iran.html",
-   "source": "CNBC",
-   "published": "2026-09-10T13:19:57+00:00",
-   "summary": "The central bank is contending with rising prices, the consequences of the U.S.-Iran war and surging government borrowing costs."
-  },
-  {
-   "title": "Dow Jones Futures Rise, Techs Fall As Oil Prices, Yields Keep Climbing. Inflation Data Due.",
-   "link": "https://www.investors.com/market-trend/stock-market-today/dow-jones-futures-oil-prices-yields-meta-spacex-apple-iphone-inflation-data/?src=A00220&yptr=yahoo",
-   "source": "Investor's Business Daily",
-   "published": "2026-09-10T12:07:13+00:00",
-   "summary": ""
-  },
-  {
-   "title": "Stock Market Today: Dow Falls After Surprise Inflation Data; Nvidia Chipmaker Slides On Sales (Live Coverage)",
-   "link": "https://www.investors.com/market-trend/stock-market-today/dow-jones-sp500-nasdaq-inflation-data-nvidia-chipmaker-tsmc/?src=A00220&yptr=yahoo",
-   "source": "Investor's Business Daily",
-   "published": "2026-09-10T12:43:49+00:00",
-   "summary": ""
-  },
-  {
-   "title": "Global Bond Yields Hit Multiyear Highs Ahead of ECB Decision, U.S. Treasury Buybacks",
-   "link": "https://www.wsj.com/finance/investing/bond-yields-edge-up-as-investors-await-ecb-rate-hike-u-s-treasury-buybacks-4cd2e9f3?mod=rss_markets_main",
+   "title": "U.S. Stocks Fall as Bond Yields Jump, Oil Climbs",
+   "link": "https://www.wsj.com/finance/investing/stock-futures-rise-treasury-yields-hold-near-highs-as-oil-tops-101-74944fa2?mod=rss_markets_main",
    "source": "WSJ Markets",
-   "published": "2026-09-10T10:28:00+00:00",
-   "summary": "The selloff in global government bonds accelerated in European midday trade, pushing yields on 10-year German Bunds and Treasurys to fresh multiyear highs."
+   "published": "2026-09-10T16:24:00+00:00",
+   "summary": "Stocks fell as U.S. government bond yields jumped to multiyear highs and oil prices climbed further amid growing investor concerns about the war in Iran."
+  },
+  {
+   "title": "Treasury yields surge toward the danger zone for stocks, as inflation pressures heat up",
+   "link": "https://www.marketwatch.com/story/treasury-yields-surge-toward-the-danger-zone-for-stocks-as-inflation-pressures-heat-up-fe0f9aa6?mod=mw_rss_topstories",
+   "source": "MarketWatch",
+   "published": "2026-09-10T16:20:00+00:00",
+   "summary": "Oil prices were at their highest levels since late May, while rising wholesale inflation data sent benchmark 10-year yields closer to the key 5% level."
+  },
+  {
+   "title": "U.S. Crude Oil Stockpiles Fall, Production Hits Record",
+   "link": "https://www.wsj.com/business/energy-oil/u-s-crude-oil-stockpiles-fall-production-hits-record-86b655c4?mod=rss_markets_main",
+   "source": "WSJ Markets",
+   "published": "2026-09-10T16:54:00+00:00",
+   "summary": "Commercial crude oil stocks fell by 391,000 barrels last week. Analysts had expected crude stocks to fall by 1.4 million barrels."
   }
  ],
  "smallcap": {
   "note": null,
-  "asof": "2026-09-10T13:35:23+00:00",
+  "asof": "2026-09-10T17:17:03+00:00",
   "coverage": {
    "universe": 9869,
-   "profiled": 5554,
-   "in_band": 1046,
+   "profiled": 5568,
+   "in_band": 1048,
    "measured": 1046,
    "scored": 537,
    "below_floor": 39
@@ -434,10 +433,10 @@
     "accel": 1.2399999999999949,
     "r13": 92.9699,
     "momo": 1.64,
-    "from_high": -9.702009702009706,
+    "from_high": -7.969507969507972,
     "ev_rev": 7.2737,
-    "px": 13.03,
-    "dp": 1.1646,
+    "px": 13.28,
+    "dp": 1.9186,
     "score": 84.5,
     "sub": {
      "g": 80,
@@ -456,10 +455,10 @@
     "accel": 17.10000000000001,
     "r13": 102.2491,
     "momo": 1.21,
-    "from_high": -11.360554467379846,
+    "from_high": -12.370046707849946,
     "ev_rev": 15.8316,
-    "px": 58.83,
-    "dp": -0.8678,
+    "px": 58.16,
+    "dp": -1.1389,
     "score": 82.6,
     "sub": {
      "g": 86,
@@ -478,10 +477,10 @@
     "accel": 4.740000000000002,
     "r13": 55.3588,
     "momo": 0.76,
-    "from_high": -7.801670517149462,
+    "from_high": -7.321841123156214,
     "ev_rev": 1.033,
-    "px": 51.88,
-    "dp": -0.613,
+    "px": 52.15,
+    "dp": 0.5204,
     "score": 82.0,
     "sub": {
      "g": 88,
@@ -500,10 +499,10 @@
     "accel": 16.25,
     "r13": 87.1153,
     "momo": 1.3,
-    "from_high": -8.632168612197278,
+    "from_high": -9.677895587237217,
     "ev_rev": 0.5569,
-    "px": 44.56,
-    "dp": -1.4159,
+    "px": 44.05,
+    "dp": -1.1445,
     "score": 81.5,
     "sub": {
      "g": 80,
@@ -525,7 +524,7 @@
     "from_high": -4.138525650237113,
     "ev_rev": null,
     "px": 66.71,
-    "dp": 0.8313,
+    "dp": 0,
     "score": 80.3,
     "sub": {
      "g": 71,
@@ -544,10 +543,10 @@
     "accel": 10.785620000000009,
     "r13": 15.9701,
     "momo": 1.07,
-    "from_high": -5.2210841868598585,
+    "from_high": -5.121159130652019,
     "ev_rev": null,
-    "px": 37.94,
-    "dp": -0.8623,
+    "px": 37.98,
+    "dp": 0.1054,
     "score": 78.4,
     "sub": {
      "g": 73,
@@ -566,10 +565,10 @@
     "accel": -7.127990000000004,
     "r13": 26.2218,
     "momo": 1.29,
-    "from_high": -2.6265650517147576,
+    "from_high": -2.7082199237888016,
     "ev_rev": null,
-    "px": 71.55,
-    "dp": -0.9551,
+    "px": 71.49,
+    "dp": -0.0839,
     "score": 78.4,
     "sub": {
      "g": 66,
@@ -588,10 +587,10 @@
     "accel": 38.88,
     "r13": 35.262,
     "momo": 0.72,
-    "from_high": -12.075471698113205,
+    "from_high": -13.886792452830187,
     "ev_rev": 6.6401,
-    "px": 11.65,
-    "dp": -6.4257,
+    "px": 11.41,
+    "dp": -2.0601,
     "score": 77.8,
     "sub": {
      "g": 87,
@@ -610,10 +609,10 @@
     "accel": 17.169999999999987,
     "r13": 13.2693,
     "momo": 0.72,
-    "from_high": -19.013397772780984,
+    "from_high": -19.468182148139014,
     "ev_rev": 6.0246,
-    "px": 92.6,
-    "dp": -1.2898,
+    "px": 92.08,
+    "dp": -0.5616,
     "score": 77.7,
     "sub": {
      "g": 91,
@@ -632,10 +631,10 @@
     "accel": 0.8399999999999999,
     "r13": 31.84,
     "momo": 0.74,
-    "from_high": -3.6320568495854633,
+    "from_high": -7.81681800236872,
     "ev_rev": 9.1235,
-    "px": 24.41,
-    "dp": 0.4114,
+    "px": 23.35,
+    "dp": -4.3425,
     "score": 76.1,
     "sub": {
      "g": 76,
@@ -654,10 +653,10 @@
     "accel": -50.0,
     "r13": 39.8128,
     "momo": 0.71,
-    "from_high": -46.7441149495567,
+    "from_high": -48.24212778966677,
     "ev_rev": 7.1578,
-    "px": 17.42,
-    "dp": -9.881,
+    "px": 16.93,
+    "dp": -2.8129,
     "score": 75.5,
     "sub": {
      "g": 73,
@@ -676,10 +675,10 @@
     "accel": -0.20000000000000107,
     "r13": 53.8927,
     "momo": 0.98,
-    "from_high": -15.017327685791305,
+    "from_high": -15.941470927993839,
     "ev_rev": 0.6171,
-    "px": 66.21,
-    "dp": -6.0851,
+    "px": 65.49,
+    "dp": -1.0874,
     "score": 75.3,
     "sub": {
      "g": 62,
@@ -698,10 +697,10 @@
     "accel": -15.25,
     "r13": 52.734,
     "momo": 1.07,
-    "from_high": -8.266360505166482,
+    "from_high": -9.644087256027568,
     "ev_rev": 5.4949,
-    "px": 15.98,
-    "dp": -0.6219,
+    "px": 15.74,
+    "dp": -1.5019,
     "score": 75.0,
     "sub": {
      "g": 72,
@@ -720,10 +719,10 @@
     "accel": 24.670000000000016,
     "r13": 24.4717,
     "momo": 0.23,
-    "from_high": -38.320209973753286,
+    "from_high": -39.51589384660251,
     "ev_rev": null,
-    "px": 21.15,
-    "dp": 0.5706,
+    "px": 20.74,
+    "dp": -1.9385,
     "score": 74.9,
     "sub": {
      "g": 97,
@@ -742,10 +741,10 @@
     "accel": -43.790000000000006,
     "r13": 29.6046,
     "momo": 0.79,
-    "from_high": -18.69126348764358,
+    "from_high": -17.438217890706586,
     "ev_rev": 0.9077,
-    "px": 23.36,
-    "dp": -6.3352,
+    "px": 23.72,
+    "dp": 1.5411,
     "score": 74.4,
     "sub": {
      "g": 74,
@@ -764,10 +763,10 @@
     "accel": 1.6099999999999994,
     "r13": 7.1429,
     "momo": 0.45,
-    "from_high": -7.722007722007717,
+    "from_high": -10.328185328185334,
     "ev_rev": 12.3006,
-    "px": 9.56,
-    "dp": -1.5448,
+    "px": 9.29,
+    "dp": -2.8243,
     "score": 74.2,
     "sub": {
      "g": 91,
@@ -786,10 +785,10 @@
     "accel": -0.21999999999999886,
     "r13": 31.3548,
     "momo": 1.07,
-    "from_high": -13.84042800651315,
+    "from_high": -12.421493370551296,
     "ev_rev": 0.8142,
-    "px": 37.04,
-    "dp": 0.3794,
+    "px": 37.65,
+    "dp": 1.6469,
     "score": 73.6,
     "sub": {
      "g": 59,
@@ -810,10 +809,10 @@
     "accel": -3.4399999999999995,
     "r13": 40.8055,
     "momo": 1.3,
-    "from_high": -6.057181602440953,
+    "from_high": -5.1418239349078965,
     "ev_rev": 0.6958,
-    "px": 83.13,
-    "dp": -1.2708,
+    "px": 83.94,
+    "dp": 0.9744,
     "score": 73.4,
     "sub": {
      "g": 51,
@@ -832,10 +831,10 @@
     "accel": 2.1899999999999995,
     "r13": 7.0752,
     "momo": 0.45,
-    "from_high": -5.768383971818592,
+    "from_high": -7.970057243505069,
     "ev_rev": 9.0392,
-    "px": 21.4,
-    "dp": -0.4188,
+    "px": 20.9,
+    "dp": -2.3364,
     "score": 72.1,
     "sub": {
      "g": 79,
@@ -856,10 +855,10 @@
     "accel": -4.02,
     "r13": 46.3357,
     "momo": 1.09,
-    "from_high": -38.47411444141691,
+    "from_high": -38.36512261580381,
     "ev_rev": 0.3496,
-    "px": 11.29,
-    "dp": -3.9149,
+    "px": 11.31,
+    "dp": 0.1771,
     "score": 72.0,
     "sub": {
      "g": 59,
@@ -878,10 +877,10 @@
     "accel": 2.8999999999999986,
     "r13": 68,
     "momo": 1.06,
-    "from_high": -16.056910569105685,
+    "from_high": -16.124661246612458,
     "ev_rev": 4.1473,
-    "px": 12.39,
-    "dp": -1.0383,
+    "px": 12.38,
+    "dp": -0.0807,
     "score": 71.5,
     "sub": {
      "g": 67,
@@ -900,10 +899,10 @@
     "accel": -24.06,
     "r13": 17.3358,
     "momo": 0.61,
-    "from_high": -3.16846986089645,
+    "from_high": -2.7047913446676897,
     "ev_rev": 3.7291,
-    "px": 12.53,
-    "dp": -0.4766,
+    "px": 12.59,
+    "dp": 0.4789,
     "score": 71.4,
     "sub": {
      "g": 68,
@@ -922,10 +921,10 @@
     "accel": -0.71,
     "r13": 30.2257,
     "momo": 1.14,
-    "from_high": -2.9498242485427872,
+    "from_high": -4.693828925422938,
     "ev_rev": 0.996,
-    "px": 39.51,
-    "dp": -0.6288,
+    "px": 38.8,
+    "dp": -1.797,
     "score": 71.2,
     "sub": {
      "g": 49,
@@ -944,10 +943,10 @@
     "accel": -13.680000000000001,
     "r13": 27.4913,
     "momo": 0.69,
-    "from_high": -24.682846111417543,
+    "from_high": -24.379481522338654,
     "ev_rev": 0.6853,
-    "px": 27.31,
-    "dp": -1.9037,
+    "px": 27.42,
+    "dp": 0.4028,
     "score": 67.9,
     "sub": {
      "g": 68,
@@ -966,10 +965,10 @@
     "accel": 0.4299999999999997,
     "r13": 4.684,
     "momo": 0.37,
-    "from_high": -6.304520222045995,
+    "from_high": -7.573354480570982,
     "ev_rev": 11.6154,
-    "px": 23.63,
-    "dp": -0.2533,
+    "px": 23.31,
+    "dp": -1.3542,
     "score": 67.2,
     "sub": {
      "g": 78,
@@ -1060,48 +1059,48 @@
     "dp": 14.403
    },
    {
-    "ticker": "BAND",
-    "name": "Bandwidth Inc",
-    "px": 48.83,
-    "dp": 11.9441
+    "ticker": "HBNB",
+    "name": "Hotel101 Global Holdings Corp",
+    "px": 5.21,
+    "dp": 9.6819
    },
    {
-    "ticker": "CSR",
-    "name": "Centerspace",
-    "px": 57.36,
-    "dp": 8.8219
+    "ticker": "TALMF",
+    "name": "Fuerte Metals Corp",
+    "px": 7.32,
+    "dp": 7.9646
    }
   ],
   "movers_down": [
    {
+    "ticker": "SLBT",
+    "name": "SL Science Holding Ltd",
+    "px": 2.12,
+    "dp": -18.7739
+   },
+   {
     "ticker": "BBOT",
     "name": "BridgeBio Oncology Therapeutics Inc",
-    "px": 6.755,
-    "dp": -23.7585
+    "px": 5.72,
+    "dp": -15.322
    },
    {
-    "ticker": "OCGN",
-    "name": "Ocugen Inc",
-    "px": 1.065,
-    "dp": -19.9248
+    "ticker": "BNED",
+    "name": "Barnes & Noble Education Inc",
+    "px": 10.83,
+    "dp": -11.5918
    },
    {
-    "ticker": "EVMN",
-    "name": "Evommune Inc",
-    "px": 10.84,
-    "dp": -17.1254
+    "ticker": "CD",
+    "name": "Chaince Digital Holdings Inc",
+    "px": 3.11,
+    "dp": -11.396
    },
    {
-    "ticker": "TRBG",
-    "name": "Turbogen Ltd",
-    "px": 4.45,
-    "dp": -16.1169
-   },
-   {
-    "ticker": "XPOF",
-    "name": "Xponential Fitness Inc",
-    "px": 4.03,
-    "dp": -16.0417
+    "ticker": "ELLO",
+    "name": "Ellomay Capital Ltd",
+    "px": 20.62,
+    "dp": -11.1207
    }
   ],
   "earnings": [
@@ -1262,6 +1261,20 @@
     "form": "SCHEDULE 13G"
    },
    {
+    "ticker": "ARQQ",
+    "name": "Arqit Quantum Inc",
+    "date": "2026-09-10",
+    "link": "https://www.sec.gov/Archives/edgar/data/1859690/000170302626000007/0001703026-26-000007-index.htm",
+    "form": "SCHEDULE 13G/A"
+   },
+   {
+    "ticker": "HEPS",
+    "name": "D Market Elektronik Hizmetler ve Ticaret AS",
+    "date": "2026-09-10",
+    "link": "https://www.sec.gov/Archives/edgar/data/1850235/000119312526387494/0001193125-26-387494-index.htm",
+    "form": "SCHEDULE 13D/A"
+   },
+   {
     "ticker": "AGNT",
     "name": "eXp World Holdings Inc",
     "date": "2026-09-09",
@@ -1295,20 +1308,6 @@
     "date": "2026-09-08",
     "link": "https://www.sec.gov/Archives/edgar/data/1884082/000110465926105649/0001104659-26-105649-index.htm",
     "form": "SCHEDULE 13D/A"
-   },
-   {
-    "ticker": "EYPT",
-    "name": "EyePoint Inc",
-    "date": "2026-09-08",
-    "link": "https://www.sec.gov/Archives/edgar/data/1314102/000127417326000222/0001274173-26-000222-index.htm",
-    "form": "SCHEDULE 13G"
-   },
-   {
-    "ticker": "FBRX",
-    "name": "Forte Biosciences Inc",
-    "date": "2026-09-08",
-    "link": "https://www.sec.gov/Archives/edgar/data/1419041/000162363226001385/0001623632-26-001385-index.htm",
-    "form": "SCHEDULE 13G/A"
    }
   ],
   "filings_offering": [
@@ -1358,28 +1357,28 @@
   "budget_mode": "bootstrap",
   "news": [
    {
+    "title": "Lesaka (LSAK) Q4 2026 Earnings Call Transcript",
+    "link": "https://finance.yahoo.com/markets/stocks/articles/lesaka-lsak-q4-2026-earnings-162808214.html",
+    "source": "Motley Fool",
+    "published": "2026-09-10T16:28:08+00:00",
+    "summary": "",
+    "ticker": "LSAK"
+   },
+   {
+    "title": "Hagens Berman Alerts Capricor Therapeutics, Inc. (NASDAQ: CAPR) Investors to FDA Review Extension for Deramiocel Amid Ongoing Securities Class Action and September 28 Lead Plaintiff Deadline",
+    "link": "https://www.prnewswire.com/news-releases/hagens-berman-alerts-capricor-therapeutics-inc-nasdaq-capr-investors-to-fda-review-extension-for-deramiocel-amid-ongoing-securities-class-action-and-september-28-lead-plaintiff-deadline-302875606.html",
+    "source": "PR Newswire",
+    "published": "2026-09-10T17:04:00+00:00",
+    "summary": "SAN FRANCISCO, Sept. 10, 2026 /PRNewswire/ -- Hagens Berman Sobol Shapiro LLP—a national plaintiffs' rights law firm with a premier securities practice group—notifies investors in Capricor Therapeutics, Inc. (NASDAQ: CAPR) of the…",
+    "ticker": "CAPR"
+   },
+   {
     "title": "Independence Realty Trust and Centerspace Agree to $8.1 Billion Merger",
     "link": "https://www.wsj.com/business/deals/independence-realty-trust-and-centerspace-agree-to-8-1-billion-merger-f495671b?mod=pls_whats_news_us_business_f",
     "source": "WSJ Business",
     "published": "2026-09-09T11:03:00+00:00",
     "summary": "Independence Realty Trust and Centerspace agreed to a merger, creating a middle-market apartment real-estate investment trust valued at $8.1 billion, including debt.",
     "ticker": "CSR"
-   },
-   {
-    "title": "Arvinas (ARVN) Just Made Protein Degrader History With FDA Nod",
-    "link": "https://finance.yahoo.com/healthcare/articles/arvinas-arvn-just-made-protein-062217023.html",
-    "source": "Insider Monkey",
-    "published": "2026-09-09T06:22:17+00:00",
-    "summary": "",
-    "ticker": "ARVN"
-   },
-   {
-    "title": "Evolus (EOLS) Notches A Profit Milestone While Betting Big On The Future",
-    "link": "https://finance.yahoo.com/healthcare/articles/evolus-eols-notches-profit-milestone-061025603.html",
-    "source": "Insider Monkey",
-    "published": "2026-09-09T06:10:25+00:00",
-    "summary": "",
-    "ticker": "EOLS"
    }
   ]
  },
@@ -1387,7 +1386,7 @@
  "stats": {
   "feeds_total": 21,
   "feeds_failed": 3,
-  "items": 411,
+  "items": 401,
   "smallcap_calls": 552,
   "feed_errors": [
    [
