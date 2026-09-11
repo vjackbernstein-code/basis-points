@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T17:50:00.225614+00:00",
+ "generated_at": "2026-09-11T20:40:50.382142+00:00",
  "market": [
   {
    "label": "S&P 500",
@@ -149,13 +149,12 @@
    "label": "10-yr Treasury",
    "symbol": "DGS10",
    "kind": "yield",
-   "value": 48.3,
-   "prev": 48.0,
-   "value_txt": "4.83%",
-   "delta": 0.624999999999994,
-   "delta_txt": "+3 bp",
+   "value": 49.5,
+   "prev": 48.3,
+   "value_txt": "4.95%",
+   "delta": 2.484472049689447,
+   "delta_txt": "+12 bp",
    "spark": [
-    46.5,
     47.199999999999996,
     47.0,
     46.8,
@@ -177,9 +176,10 @@
     47.699999999999996,
     47.800000000000004,
     48.0,
-    48.3
+    48.3,
+    49.5
    ],
-   "asof": "Sep 9"
+   "asof": "Sep 10"
   },
   {
    "label": "Dollar (broad)",
@@ -292,11 +292,11 @@
    "label": "Bitcoin",
    "symbol": "bitcoin",
    "kind": "crypto",
-   "value": 77598.66269395442,
+   "value": 77413.62449807301,
    "prev": 76554.98664973286,
-   "value_txt": "$77,599",
-   "delta": 1.363302496539854,
-   "delta_txt": "+1.36%",
+   "value_txt": "$77,414",
+   "delta": 1.1215962354859161,
+   "delta_txt": "+1.12%",
    "spark": [
     73020.94563440893,
     78317.77716345884,
@@ -320,18 +320,18 @@
     78450.75303870205,
     78283.06047169256,
     76554.98664973286,
-    77598.66269395442
+    77413.62449807301
    ]
   },
   {
    "label": "Ethereum",
    "symbol": "ethereum",
    "kind": "crypto",
-   "value": 2571.1854339898955,
+   "value": 2537.14693720284,
    "prev": 2437.514812545618,
-   "value_txt": "$2,571",
-   "delta": 5.4838896057693525,
-   "delta_txt": "+5.48%",
+   "value_txt": "$2,537",
+   "delta": 4.087446941631965,
+   "delta_txt": "+4.09%",
    "spark": [
     2326.5282334236576,
     2514.967577695514,
@@ -355,18 +355,25 @@
     2485.0697039871584,
     2467.529167979314,
     2437.514812545618,
-    2571.1854339898955
+    2537.14693720284
    ]
   }
  ],
- "tape_line": "S&P 500 -0.58%, Nasdaq -0.65%, Dow -0.60%; the 10-year Treasury at 4.83% (+3 bp); WTI crude $97.26 (+3.24%); bitcoin $77,599 (+1.36%).",
+ "tape_line": "S&P 500 -0.58%, Nasdaq -0.65%, Dow -0.60%; the 10-year Treasury at 4.95% (+12 bp); WTI crude $97.26 (+3.24%); bitcoin $77,414 (+1.12%).",
  "top": [
   {
-   "title": "U.S. Stocks Rise as Inflation Figure Boosts Odds of Rate Hike",
+   "title": "Treasury yields remain near multiyear highs as August CPI shows sticky inflation",
+   "link": "https://www.cnbc.com/2026/09/11/us-treasurys-bonds-yields.html",
+   "source": "CNBC",
+   "published": "2026-09-11T20:37:09+00:00",
+   "summary": "Treasury yields remained near multiyear highs as investors weighed the impact of the latest consumer price report for August."
+  },
+  {
+   "title": "U.S. Stocks Gain as Inflation Figure Boosts Odds of Rate Hike",
    "link": "https://www.wsj.com/finance/stocks/stock-futures-nudge-up-yields-slip-but-markets-remain-on-edge-035097c4?mod=rss_markets_main",
    "source": "WSJ Markets",
-   "published": "2026-09-11T17:28:00+00:00",
-   "summary": "U.S. stocks rose, a signal that investors like the idea of a Federal Reserve rate hike tamping down inflation."
+   "published": "2026-09-11T18:54:00+00:00",
+   "summary": "U.S. stocks climbed, a signal that investors like the idea of a Federal Reserve rate hike tamping down inflation."
   },
   {
    "title": "Inflation persisted in August, potentially locking in a Fed interest rate hike",
@@ -376,13 +383,6 @@
    "summary": "The all-items consumer price index was expected to rise 0.4% in August, with core, excluding food and energy, showing a 0.2% gain, according to the Dow Jones consensus."
   },
   {
-   "title": "Analysis: Hot inflation data sets up a Fed rate hike. What happens if Warsh wavers",
-   "link": "https://www.cnbc.com/2026/09/11/kevin-warsh-fed-cpi-inflation-rate-hike-analysis.html",
-   "source": "CNBC",
-   "published": "2026-09-11T16:21:53+00:00",
-   "summary": "August CPI data leaves Kevin Warsh to choose between acting on his inflation warnings or risking new doubts about his control of the central bank."
-  },
-  {
    "title": "Yields on U.S., European Government Bonds Slip, Still Near Multiyear Highs After Firm Inflation Print",
    "link": "https://www.wsj.com/finance/investing/yields-on-u-s-european-government-bonds-edge-lower-but-still-hover-near-multiyear-highs-90ceba80?mod=rss_markets_main",
    "source": "WSJ Markets",
@@ -390,34 +390,34 @@
    "summary": "Long-run Treasury yields cooled slightly but are still hovering near their multiyear highs as investors raised their bets the Federal Reserve will hike interest rates at its meeting next week."
   },
   {
-   "title": "Treasury yields remain near multi-year highs as August CPI shows sticky inflation",
-   "link": "https://www.cnbc.com/2026/09/11/us-treasurys-bonds-yields.html",
+   "title": "Gold Little Changed As August CPI Raises Interest-Rate Expectations",
+   "link": "https://www.wsj.com/finance/commodities-futures/gold-rises-ahead-of-u-s-cpi-data-c995e7d0?mod=rss_markets_main",
+   "source": "WSJ Markets",
+   "published": "2026-09-11T18:42:00+00:00",
+   "summary": "Gold futures held steady as a pullback in oil prices helped offset the impact of an inflation report that increased expectations for a Fed interest-rate rise next week."
+  },
+  {
+   "title": "Saudi Arabia shut down East-West crude oil pipeline after multiple attacks",
+   "link": "https://www.cnbc.com/2026/09/11/saudi-arabia-shut-down-east-west-crude-oil-pipeline.html",
    "source": "CNBC",
-   "published": "2026-09-11T13:08:53+00:00",
-   "summary": "Treasury yields remained near multiyear highs as investors weighed the impact of the latest consumer price report for August."
+   "published": "2026-09-11T20:01:45+00:00",
+   "summary": "Iran-allied Houthi militants in Yemen have escalated strikes on Saudi Arabia this week."
   },
   {
-   "title": "Core CPI rose a faster-than-forecast 0.3% in August, setting up possible Fed rate hike",
-   "link": "https://www.coindesk.com/markets/2026/09/11/core-cpi-rose-a-faster-than-forecast-0-3-in-august-setting-up-fed-rate-hike",
-   "source": "CoinDesk",
-   "published": "2026-09-11T12:32:25+00:00",
-   "summary": "The August CPI report had taken on outsized importance after Fed Chair Kevin Warsh two weeks ago suggested the central bank may have to act if inflation doesn't soon slow."
-  },
-  {
-   "title": "U.S. 10-year Treasury yield pulls back after August CPI data",
-   "link": "https://finance.yahoo.com/economy/policy/articles/u-10-treasury-yield-pulls-172206453.html",
-   "source": "Quartz",
-   "published": "2026-09-11T17:22:06+00:00",
-   "summary": ""
+   "title": "The Fed could raise interest rates three times. Here’s where the market could face the stiffest test.",
+   "link": "https://www.marketwatch.com/story/the-fed-could-raise-interest-rates-three-times-heres-where-the-market-could-face-the-stiffest-test-757872a1?mod=mw_rss_topstories",
+   "source": "MarketWatch",
+   "published": "2026-09-11T18:09:00+00:00",
+   "summary": "Economists note that the Fed historically has not been content to raise rates only once."
   }
  ],
  "smallcap": {
   "note": null,
-  "asof": "2026-09-11T18:01:10+00:00",
+  "asof": "2026-09-11T20:52:14+00:00",
   "coverage": {
    "universe": 9862,
-   "profiled": 5642,
-   "in_band": 1062,
+   "profiled": 5686,
+   "in_band": 1072,
    "measured": 1062,
    "scored": 546,
    "below_floor": 39
@@ -947,10 +947,10 @@
     "accel": -13.680000000000001,
     "r13": 27.4913,
     "momo": 0.69,
-    "from_high": -24.65526751241036,
+    "from_high": -24.1588527302813,
     "ev_rev": 0.6853,
-    "px": 27.32,
-    "dp": 1.6747,
+    "px": 27.5,
+    "dp": 2.3446,
     "score": 67.8,
     "sub": {
      "g": 68,
@@ -969,10 +969,10 @@
     "accel": 0.4299999999999997,
     "r13": 4.684,
     "momo": 0.37,
-    "from_high": -8.961141950832662,
+    "from_high": -8.00951625693893,
     "ev_rev": 11.6154,
-    "px": 22.96,
-    "dp": -0.563,
+    "px": 23.2,
+    "dp": 0.4764,
     "score": 67.2,
     "sub": {
      "g": 78,
@@ -1053,8 +1053,8 @@
    {
     "ticker": "FEIM",
     "name": "Frequency Electronics Inc",
-    "px": 83.41,
-    "dp": 34.4022
+    "px": 88.375,
+    "dp": 42.4025
    },
    {
     "ticker": "HCTPF",
@@ -1065,14 +1065,14 @@
    {
     "ticker": "ATEC",
     "name": "Alphatec Holdings Inc",
-    "px": 10.09,
-    "dp": 14.1403
+    "px": 10.58,
+    "dp": 19.6833
    },
    {
-    "ticker": "BW",
-    "name": "Babcock & Wilcox Enterprises Inc",
-    "px": 7.85,
-    "dp": 9.484
+    "ticker": "BAND",
+    "name": "Bandwidth Inc",
+    "px": 56.87,
+    "dp": 10.1705
    }
   ],
   "movers_down": [
@@ -1085,8 +1085,14 @@
    {
     "ticker": "TLS",
     "name": "Telos Corp",
-    "px": 4.23,
-    "dp": -9.6154
+    "px": 3.95,
+    "dp": -15.5983
+   },
+   {
+    "ticker": "BBOT",
+    "name": "BridgeBio Oncology Therapeutics Inc",
+    "px": 4.95,
+    "dp": -10.3261
    },
    {
     "ticker": "RMAX",
@@ -1095,16 +1101,10 @@
     "dp": -9.2511
    },
    {
-    "ticker": "TALMF",
-    "name": "Fuerte Metals Corp",
-    "px": 6.68409,
-    "dp": -8.6873
-   },
-   {
-    "ticker": "CMGMF",
-    "name": "Chemring Group PLC",
-    "px": 7.2,
-    "dp": -8.6294
+    "ticker": "ASM",
+    "name": "Avino Silver & Gold Mines Ltd",
+    "px": 6.49,
+    "dp": -8.8483
    }
   ],
   "earnings": [
@@ -1163,6 +1163,41 @@
     "form": "8-K"
    },
    {
+    "ticker": "BFST",
+    "name": "Business First Bancshares Inc",
+    "date": "2026-09-11",
+    "link": "https://www.sec.gov/Archives/edgar/data/1624322/000143774926030179/0001437749-26-030179-index.htm",
+    "form": "8-K"
+   },
+   {
+    "ticker": "ARTV",
+    "name": "Artiva Biotherapeutics Inc",
+    "date": "2026-09-11",
+    "link": "https://www.sec.gov/Archives/edgar/data/1817241/000119312526389308/0001193125-26-389308-index.htm",
+    "form": "8-K"
+   },
+   {
+    "ticker": "CRON",
+    "name": "Cronos Group Inc",
+    "date": "2026-09-11",
+    "link": "https://www.sec.gov/Archives/edgar/data/1656472/000165647226000058/0001656472-26-000058-index.htm",
+    "form": "8-K"
+   },
+   {
+    "ticker": "EVAC",
+    "name": "EQV Ventures Acquisition Corp II",
+    "date": "2026-09-11",
+    "link": "https://www.sec.gov/Archives/edgar/data/2042902/000121390026099260/0001213900-26-099260-index.htm",
+    "form": "8-K"
+   },
+   {
+    "ticker": "DAKT",
+    "name": "Daktronics Inc",
+    "date": "2026-09-11",
+    "link": "https://www.sec.gov/Archives/edgar/data/915779/000162828026061533/0001628280-26-061533-index.htm",
+    "form": "8-K"
+   },
+   {
     "ticker": "CADL",
     "name": "Candel Therapeutics Inc",
     "date": "2026-09-10",
@@ -1174,41 +1209,6 @@
     "name": "Evolution Metals & Technologies Corp",
     "date": "2026-09-10",
     "link": "https://www.sec.gov/Archives/edgar/data/1866226/000121390026098601/0001213900-26-098601-index.htm",
-    "form": "8-K"
-   },
-   {
-    "ticker": "AROW",
-    "name": "Arrow Financial Corp",
-    "date": "2026-09-10",
-    "link": "https://www.sec.gov/Archives/edgar/data/717538/000071753826000123/0000717538-26-000123-index.htm",
-    "form": "8-K"
-   },
-   {
-    "ticker": "EYPT",
-    "name": "EyePoint Inc",
-    "date": "2026-09-10",
-    "link": "https://www.sec.gov/Archives/edgar/data/1314102/000119312526387197/0001193125-26-387197-index.htm",
-    "form": "8-K"
-   },
-   {
-    "ticker": "FTRE",
-    "name": "Fortrea Holdings Inc",
-    "date": "2026-09-10",
-    "link": "https://www.sec.gov/Archives/edgar/data/1965040/000162828026061218/0001628280-26-061218-index.htm",
-    "form": "8-K"
-   },
-   {
-    "ticker": "DSGR",
-    "name": "Distribution Solutions Group Inc",
-    "date": "2026-09-10",
-    "link": "https://www.sec.gov/Archives/edgar/data/703604/000119312526387187/0001193125-26-387187-index.htm",
-    "form": "8-K"
-   },
-   {
-    "ticker": "CNOBP",
-    "name": "ConnectOne Bancorp Inc",
-    "date": "2026-09-10",
-    "link": "https://www.sec.gov/Archives/edgar/data/712771/000143774926030018/0001437749-26-030018-index.htm",
     "form": "8-K"
    }
   ],
@@ -1295,8 +1295,8 @@
    {
     "ticker": "CSWC",
     "name": "Capital Southwest Corp",
-    "date": "2026-09-10",
-    "link": "https://www.sec.gov/Archives/edgar/data/17313/000001731326000140/0000017313-26-000140-index.htm",
+    "date": "2026-09-11",
+    "link": "https://www.sec.gov/Archives/edgar/data/17313/000001731326000152/0000017313-26-000152-index.htm",
     "form": "424B2"
    },
    {
@@ -1336,26 +1336,21 @@
    }
   ],
   "budget_mode": "bootstrap",
-  "news": [
-   {
-    "title": "$HAREHOLDER ALERT: The M&A Class Action Firm Announces An Investigation of ACV Auctions Inc. (NYSE: ACVA)",
-    "link": "https://www.prnewswire.com/news-releases/hareholder-alert-the-ma-class-action-firm-announces-an-investigation-of-acv-auctions-inc-nyse-acva-302876513.html",
-    "source": "PR Newswire",
-    "published": "2026-09-11T17:00:00+00:00",
-    "summary": "NEW YORK, Sept. 11, 2026 /PRNewswire/ -- Class Action Attorney Juan Monteverde with Monteverde & Associates PC (the \"M&A Class Action Firm\"), has recovered millions of dollars for shareholders and is recognized as a Top 50 Firm…",
-    "ticker": "ACVA"
-   }
-  ]
+  "news": []
  },
  "econ_calendar": [],
  "stats": {
   "feeds_total": 21,
-  "feeds_failed": 3,
-  "items": 374,
+  "feeds_failed": 4,
+  "items": 378,
   "smallcap_calls": 552,
   "feed_errors": [
    [
     "GlobeNewswire",
+    "The read operation timed out"
+   ],
+   [
+    "SEC EDGAR",
     "The read operation timed out"
    ]
   ],
