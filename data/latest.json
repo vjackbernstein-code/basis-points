@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-12T17:22:08.427892+00:00",
+ "generated_at": "2026-09-12T19:34:26.598981+00:00",
  "market": [
   {
    "label": "S&P 500",
@@ -293,11 +293,11 @@
    "label": "Bitcoin",
    "symbol": "bitcoin",
    "kind": "crypto",
-   "value": 77302.89806334993,
+   "value": 77123.03899310224,
    "prev": 77203.53444805603,
-   "value_txt": "$77,303",
-   "delta": 0.12870345380463566,
-   "delta_txt": "+0.13%",
+   "value_txt": "$77,123",
+   "delta": -0.10426395051634985,
+   "delta_txt": "-0.10%",
    "spark": [
     78317.77716345884,
     77081.02299000922,
@@ -321,18 +321,18 @@
     78283.06047169256,
     76554.98664973286,
     77203.53444805603,
-    77302.89806334993
+    77123.03899310224
    ]
   },
   {
    "label": "Ethereum",
    "symbol": "ethereum",
    "kind": "crypto",
-   "value": 2529.504009543545,
+   "value": 2518.8587579254904,
    "prev": 2514.846819245876,
-   "value_txt": "$2,530",
-   "delta": 0.5828263648306248,
-   "delta_txt": "+0.58%",
+   "value_txt": "$2,519",
+   "delta": 0.15953014111681024,
+   "delta_txt": "+0.16%",
    "spark": [
     2514.967577695514,
     2423.4127407436827,
@@ -356,11 +356,11 @@
     2467.529167979314,
     2437.514812545618,
     2514.846819245876,
-    2529.504009543545
+    2518.8587579254904
    ]
   }
  ],
- "tape_line": "S&P 500 +0.86%, Nasdaq +0.96%, Dow +0.98%; the 10-year Treasury at 4.95% (+12 bp); WTI crude $97.26 (+3.24%); bitcoin $77,303 (+0.13%).",
+ "tape_line": "S&P 500 +0.86%, Nasdaq +0.96%, Dow +0.98%; the 10-year Treasury at 4.95% (+12 bp); WTI crude $97.26 (+3.24%); bitcoin $77,123 (-0.10%).",
  "top": [
   {
    "title": "Dow Jones Futures: Fed Rate Hike Seen As Oil, Yields Pressure Stocks; Apple, Moderna Are New Buys",
@@ -384,6 +384,13 @@
    "summary": "Stocks came under pressure last week as surging oil prices and bond yields stoked renewed concerns about inflation and the Fed's next move."
   },
   {
+   "title": "Anthropic CEO calls for AI race to slow down. Musk and OpenAI's Altman agrees",
+   "link": "https://www.coindesk.com/tech/2026/09/12/anthropic-ceo-calls-for-ai-race-to-slow-down-musk-and-openai-s-altman-agrees",
+   "source": "CoinDesk",
+   "published": "2026-09-12T18:43:33+00:00",
+   "summary": "Anthropic’s Dario Amodei, OpenAI’s Sam Altman and Elon Musk have agreed on an unusual position: frontier AI development may need to slow as systems become capable of helping build their own successors."
+  },
+  {
    "title": "Ditching bonds for bitcoin: How crypto can tackle the AI-heavy portfolio dilemma",
    "link": "https://www.coindesk.com/business/2026/09/12/ditching-bonds-for-bitcoin-how-crypto-can-tackle-the-ai-heavy-portfolio-dilemma",
    "source": "CoinDesk",
@@ -403,22 +410,15 @@
    "source": "CNBC",
    "published": "2026-09-12T12:40:05+00:00",
    "summary": "The U.S. crude oil price on Thursday topped $102 per barrel for its highest close since May."
-  },
-  {
-   "title": "6 Money Missteps Amid Inflation That Erode Boomers' Retirement Income",
-   "link": "https://finance.yahoo.com/healthcare/articles/6-money-missteps-amid-inflation-170027674.html",
-   "source": "MoneyLion",
-   "published": "2026-09-12T17:00:27+00:00",
-   "summary": ""
   }
  ],
  "smallcap": {
   "note": null,
-  "asof": "2026-09-12T17:33:16+00:00",
+  "asof": "2026-09-12T19:46:14+00:00",
   "coverage": {
    "universe": 9862,
-   "profiled": 5710,
-   "in_band": 1078,
+   "profiled": 5738,
+   "in_band": 1087,
    "measured": 1078,
    "scored": 557,
    "below_floor": 40
@@ -1141,7 +1141,7 @@
    "r13": -1.3329,
    "r26": 14.1435,
    "label": "flat/choppy",
-   "t": "2026-09-12T06:27:21+00:00"
+   "t": "2026-09-12T19:46:14+00:00"
   },
   "filings_material": [
    {
@@ -1340,35 +1340,22 @@
     "published": "2026-09-12T15:05:21+00:00",
     "summary": "",
     "ticker": "GCO"
-   },
-   {
-    "title": "Frequency Electronics (FEIM) Soars After Record Revenue",
-    "link": "https://finance.yahoo.com/markets/stocks/articles/frequency-electronics-feim-soars-record-133402974.html",
-    "source": "Insider Monkey",
-    "published": "2026-09-12T13:34:02+00:00",
-    "summary": "",
-    "ticker": "FEIM"
    }
   ]
  },
- "econ_calendar": [
-  {
-   "date": "2026-09-16",
-   "label": "Retail sales"
-  },
-  {
-   "date": "2026-09-17",
-   "label": "Housing starts"
-  }
- ],
+ "econ_calendar": [],
  "stats": {
   "feeds_total": 21,
-  "feeds_failed": 2,
-  "items": 362,
-  "smallcap_calls": 552,
+  "feeds_failed": 4,
+  "items": 349,
+  "smallcap_calls": 554,
   "feed_errors": [
    [
     "GlobeNewswire",
+    "The read operation timed out"
+   ],
+   [
+    "SEC EDGAR",
     "The read operation timed out"
    ]
   ],
@@ -1376,6 +1363,10 @@
    [
     "Yahoo",
     "rate-limited; using fallback sources"
+   ],
+   [
+    "FRED calendar",
+    "The read operation timed out"
    ]
   ]
  }
