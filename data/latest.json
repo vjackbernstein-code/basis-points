@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-14T13:12:39.294320+00:00",
+ "generated_at": "2026-09-14T18:49:27.103344+00:00",
  "market": [
   {
    "label": "S&P 500",
@@ -113,13 +113,12 @@
    "label": "VIX",
    "symbol": "VIXCLS",
    "kind": "level",
-   "value": 17.84,
-   "prev": 16.46,
-   "value_txt": "17.84",
-   "delta": 8.383961117861476,
-   "delta_txt": "+8.38%",
+   "value": 15.84,
+   "prev": 17.84,
+   "value_txt": "15.84",
+   "delta": -11.210762331838566,
+   "delta_txt": "-11.21%",
    "spark": [
-    15.28,
     14.55,
     14.63,
     14.25,
@@ -141,9 +140,10 @@
     15.3,
     15.72,
     16.46,
-    17.84
+    17.84,
+    15.84
    ],
-   "asof": "Sep 10"
+   "asof": "Sep 11"
   },
   {
    "label": "10-yr Treasury",
@@ -257,13 +257,12 @@
    "label": "EUR/USD",
    "symbol": "EURUSD",
    "kind": "fx",
-   "value": 1.1592,
-   "prev": 1.1616,
-   "value_txt": "1.1592",
-   "delta": -0.20661157024793025,
-   "delta_txt": "-0.21%",
+   "value": 1.1551,
+   "prev": 1.1592,
+   "value_txt": "1.1551",
+   "delta": -0.35369220151828784,
+   "delta_txt": "-0.35%",
    "spark": [
-    1.1545,
     1.1534,
     1.1567,
     1.1593,
@@ -285,19 +284,19 @@
     1.1614,
     1.1652,
     1.1616,
-    1.1592
-   ],
-   "asof": "Sep 11"
+    1.1592,
+    1.1551
+   ]
   },
   {
    "label": "Bitcoin",
    "symbol": "bitcoin",
    "kind": "crypto",
-   "value": 77640.25673324785,
+   "value": 79258.23472850777,
    "prev": 76819.04496746542,
-   "value_txt": "$77,640",
-   "delta": 1.069021056080857,
-   "delta_txt": "+1.07%",
+   "value_txt": "$79,258",
+   "delta": 3.175240934165999,
+   "delta_txt": "+3.18%",
    "spark": [
     77712.3200924702,
     78973.88693602335,
@@ -321,18 +320,18 @@
     77203.53444805603,
     77261.62722069985,
     76819.04496746542,
-    77640.25673324785
+    79258.23472850777
    ]
   },
   {
    "label": "Ethereum",
    "symbol": "ethereum",
    "kind": "crypto",
-   "value": 2496.561382107543,
+   "value": 2543.474293113841,
    "prev": 2476.682526163658,
-   "value_txt": "$2,497",
-   "delta": 0.8026404568968689,
-   "delta_txt": "+0.80%",
+   "value_txt": "$2,543",
+   "delta": 2.696823926546711,
+   "delta_txt": "+2.70%",
    "spark": [
     2462.403924751607,
     2481.879430655568,
@@ -356,65 +355,65 @@
     2514.846819245876,
     2525.267261590238,
     2476.682526163658,
-    2496.561382107543
+    2543.474293113841
    ]
   }
  ],
- "tape_line": "S&P 500 +0.86%, Nasdaq +0.96%, Dow +0.98%; the 10-year Treasury at 4.95% (+12 bp); WTI crude $97.26 (+3.24%); bitcoin $77,640 (+1.07%).",
+ "tape_line": "S&P 500 +0.86%, Nasdaq +0.96%, Dow +0.98%; the 10-year Treasury at 4.95% (+12 bp); WTI crude $97.26 (+3.24%); bitcoin $79,258 (+3.18%).",
  "top": [
   {
-   "title": "Fed rate hikes won’t bring down gas prices. Why the bond market is pushing for them anyway.",
-   "link": "https://www.marketwatch.com/story/fed-rate-hikes-wont-bring-down-gas-prices-why-the-bond-market-is-pushing-for-them-anyway-98f2c7e3?mod=mw_rss_topstories",
-   "source": "MarketWatch",
-   "published": "2026-09-14T10:35:00+00:00",
-   "summary": "The 10-year Treasury yield is sitting on the doorstep of 5%, and that’s a warning sign for stocks."
+   "title": "The Fed is likely to raise interest rates as inflation persists. What that means for consumers",
+   "link": "https://www.cnbc.com/2026/09/14/fed-rate-hike-anticipated-what-it-means-for-your-money.html",
+   "source": "CNBC",
+   "published": "2026-09-14T17:42:05+00:00",
+   "summary": "The Federal Reserve is widely expected to raise its benchmark interest rate by a quarter percentage point at its September meeting."
   },
   {
-   "title": "10-year Treasury yield nears 5% ahead of Fed rate decision this week",
+   "title": "Dollar Strengthens as Treasury Yields Rise Amid Inflation Fears",
+   "link": "https://www.wsj.com/finance/currencies/singapore-dollar-weakens-amid-escalating-middle-east-conflict-a746d8cc?mod=rss_markets_main",
+   "source": "WSJ Markets",
+   "published": "2026-09-14T14:55:00+00:00",
+   "summary": "The dollar strengthened amid heightened expectations for the Federal Reserve to lift rates."
+  },
+  {
+   "title": "Stocks Decline, 10-Year Treasury Yield Touches 5% Amid Oil Surge",
+   "link": "https://www.wsj.com/finance/stocks/oil-jumps-nasdaq-futures-slide-as-ai-related-stocks-tumble-worldwide-eaaf198b?mod=rss_markets_main",
+   "source": "WSJ Markets",
+   "published": "2026-09-14T16:21:00+00:00",
+   "summary": "U.S. stock indexes declined, though the Nasdaq pared early losses amid concerns that demand for AI services and inputs like memory chips could come under pressure."
+  },
+  {
+   "title": "10-year Treasury yield hits 5% before reversing as traders await Fed meeting",
    "link": "https://www.cnbc.com/2026/09/14/10-year-us-treasury-is-closing-in-on-5percent.html",
    "source": "CNBC",
-   "published": "2026-09-14T13:11:41+00:00",
-   "summary": "The 10-year Treasury yield is closing in on 5%, a level last touched in October 2023. Strategists say look to the the drivers behind higher yields."
+   "published": "2026-09-14T18:30:53+00:00",
+   "summary": "The 10-year U.S. Treasury note yield moved lower after reaching a multiyear high on Monday ahead of this week's Federal Reserve interest rate decision."
   },
   {
-   "title": "Stock Market Today: Dow Falls On Surging Oil; Nvidia Sells Off On AI Warning (Live Coverage)",
-   "link": "https://www.investors.com/market-trend/stock-market-today/dow-jones-sp500-nasdaq-oil-prices-nvidia-nvda-stock-ai-warning/?src=A00220&yptr=yahoo",
-   "source": "Investor's Business Daily",
-   "published": "2026-09-14T12:59:14+00:00",
-   "summary": ""
-  },
-  {
-   "title": "AI stocks tumble on safety warnings. How to proceed — including 2 names on our shopping list",
-   "link": "https://www.cnbc.com/2026/09/14/ai-stocks-tumble-on-safety-warnings-how-to-proceed-including-2-names-on-our-shopping-list.html",
-   "source": "CNBC",
-   "published": "2026-09-14T12:59:41+00:00",
-   "summary": "Jim Cramer offers a roadmap to navigate Monday's sell-off in AI stocks."
-  },
-  {
-   "title": "Tech stocks fall after big AI groups call for slowdown",
+   "title": "US tech stocks fall after big AI groups call for slowdown",
    "link": "https://www.ft.com/content/aa8a1be7-abe0-44b7-bcd3-31fd0a44de08?syn-25a6b1a6=1",
    "source": "Financial Times",
-   "published": "2026-09-14T10:15:32+00:00",
-   "summary": "South Korea’s tech-heavy Kospi slides as Wall Street is set to open lower"
+   "published": "2026-09-14T18:22:34+00:00",
+   "summary": "Memory-chip makers and Nvidia slide on Wall Street as warnings combine with backdrop of rising oil prices and higher borrowing costs"
   },
   {
-   "title": "Stock market today: Dow, S&P 500, Nasdaq futures fall as Anthropic's AI warning spooks tech traders, oil prices jump",
-   "link": "https://finance.yahoo.com/markets/live/stock-market-today-monday-september-14-dow-sp-500-nasdaq-080559558.html",
-   "source": "Yahoo Finance",
-   "published": "2026-09-14T08:05:59+00:00",
-   "summary": ""
+   "title": "10-year Treasury yield eases back from crucial 5% level despite concerns about AI and the surge in oil prices",
+   "link": "https://www.marketwatch.com/story/10-year-treasury-yield-tops-5-for-the-first-time-since-2007-as-bond-market-selloff-deepens-14c81f75?mod=mw_rss_topstories",
+   "source": "MarketWatch",
+   "published": "2026-09-14T18:14:00+00:00",
+   "summary": "The benchmark 10-year Treasury yield briefly touched the crucial 5% threshold on Monday, but it then pulled back."
   },
   {
-   "title": "Live updates: Bitcoin manages small gains as stocks drop on AI concern, oil surges",
-   "link": "https://www.coindesk.com/tech/2026/09/14/live-updates-bitcoin-manages-small-gains-as-stocks-drop-on-ai-concern-oil-surges",
-   "source": "CoinDesk",
-   "published": "2026-09-14T11:44:21+00:00",
-   "summary": "The Federal Reserve's two-day policy meeting begins tomorrow, with nearly all now expecting the U.S. central bank to hike its benchmark policy rate by 25 basis points."
+   "title": "What Amodei's AI slowdown could mean for Anthropic's imminent IPO",
+   "link": "https://www.cnbc.com/2026/09/14/anthropic-walks-tightrope-to-nasdaq-pushing-slowdown-and-pursuing-ipo.html",
+   "source": "CNBC",
+   "published": "2026-09-14T18:48:23+00:00",
+   "summary": "As Anthropic meets with prospective investors ahead of its potentially historic market debut, CEO Dario Amodei is pushing for a slowdown in AI."
   }
  ],
  "smallcap": {
   "note": null,
-  "asof": "2026-09-14T13:23:36+00:00",
+  "asof": "2026-09-14T19:00:48+00:00",
   "coverage": {
    "universe": 9862,
    "profiled": 5772,
@@ -434,10 +433,10 @@
     "accel": 1.2399999999999949,
     "r13": 92.9699,
     "momo": 1.64,
-    "from_high": -9.840609840609837,
+    "from_high": -10.533610533610528,
     "ev_rev": 7.2737,
-    "px": 13.01,
-    "dp": -2.4738,
+    "px": 12.91,
+    "dp": -0.7686,
     "score": 84.4,
     "sub": {
      "g": 79,
@@ -456,10 +455,10 @@
     "accel": 17.10000000000001,
     "r13": 102.2491,
     "momo": 1.21,
-    "from_high": -13.997287931294267,
+    "from_high": -12.611119481693544,
     "ev_rev": 15.8316,
-    "px": 57.08,
-    "dp": -1.3822,
+    "px": 58,
+    "dp": 1.6118,
     "score": 82.8,
     "sub": {
      "g": 87,
@@ -478,10 +477,10 @@
     "accel": 4.740000000000002,
     "r13": 55.3588,
     "momo": 0.76,
-    "from_high": -7.819441976186258,
+    "from_high": -5.8290385640661135,
     "ev_rev": 1.033,
-    "px": 51.87,
-    "dp": 0.1351,
+    "px": 52.99,
+    "dp": 2.1592,
     "score": 81.9,
     "sub": {
      "g": 88,
@@ -500,10 +499,10 @@
     "accel": 16.25,
     "r13": 87.1153,
     "momo": 1.3,
-    "from_high": -11.256738275042599,
+    "from_high": -13.942821289360863,
     "ev_rev": 0.5569,
-    "px": 43.28,
-    "dp": -2.7416,
+    "px": 41.97,
+    "dp": -3.0268,
     "score": 80.7,
     "sub": {
      "g": 78,
@@ -522,10 +521,10 @@
     "accel": -32.77874,
     "r13": 11.8394,
     "momo": 1.01,
-    "from_high": -2.051466618679143,
+    "from_high": -1.889508727730782,
     "ev_rev": null,
-    "px": 54.43,
-    "dp": 0.3133,
+    "px": 54.52,
+    "dp": 0.1653,
     "score": 80.4,
     "sub": {
      "g": 71,
@@ -544,10 +543,10 @@
     "accel": -15.63805,
     "r13": 26.5778,
     "momo": 1.37,
-    "from_high": -1.4657278344589852,
+    "from_high": -2.0261531829285806,
     "ev_rev": null,
-    "px": 68.57,
-    "dp": 1.3599,
+    "px": 68.18,
+    "dp": -0.5688,
     "score": 79.8,
     "sub": {
      "g": 70,
@@ -569,7 +568,7 @@
     "from_high": -34.375,
     "ev_rev": 4.1275,
     "px": 10.08,
-    "dp": 2.6477,
+    "dp": 0,
     "score": 78.7,
     "sub": {
      "g": 92,
@@ -590,10 +589,10 @@
     "accel": 10.785620000000009,
     "r13": 15.9701,
     "momo": 1.07,
-    "from_high": -3.3974519110666956,
+    "from_high": -3.8471146640019938,
     "ev_rev": null,
-    "px": 38.67,
-    "dp": 0.7556,
+    "px": 38.49,
+    "dp": -0.4655,
     "score": 78.2,
     "sub": {
      "g": 73,
@@ -612,10 +611,10 @@
     "accel": -7.127990000000004,
     "r13": 26.2218,
     "momo": 1.29,
-    "from_high": -0.9798584648884057,
+    "from_high": -0.7076755579749738,
     "ev_rev": null,
-    "px": 72.76,
-    "dp": 0.678,
+    "px": 72.96,
+    "dp": 0.2749,
     "score": 78.1,
     "sub": {
      "g": 66,
@@ -634,10 +633,10 @@
     "accel": 38.88,
     "r13": 35.262,
     "momo": 0.72,
-    "from_high": -17.283018867924525,
+    "from_high": -17.73584905660377,
     "ev_rev": 6.6401,
-    "px": 10.96,
-    "dp": -3.0088,
+    "px": 10.9,
+    "dp": -0.5474,
     "score": 78.0,
     "sub": {
      "g": 87,
@@ -656,10 +655,10 @@
     "accel": 45.68,
     "r13": 14.7898,
     "momo": 0.62,
-    "from_high": -0.7712082262210873,
+    "from_high": -2.0565552699228773,
     "ev_rev": 2.5094,
-    "px": 15.44,
-    "dp": 0.981,
+    "px": 15.24,
+    "dp": -1.2953,
     "score": 77.7,
     "sub": {
      "g": 88,
@@ -680,10 +679,10 @@
     "accel": 0.8399999999999999,
     "r13": 31.84,
     "momo": 0.74,
-    "from_high": -6.711409395973156,
+    "from_high": -3.711014607185148,
     "ev_rev": 9.1235,
-    "px": 23.63,
-    "dp": 0.8536,
+    "px": 24.39,
+    "dp": 3.2163,
     "score": 76.3,
     "sub": {
      "g": 76,
@@ -702,10 +701,10 @@
     "accel": -50.0,
     "r13": 39.8128,
     "momo": 0.71,
-    "from_high": -49.34270865178845,
+    "from_high": -47.90583919290737,
     "ev_rev": 7.1578,
-    "px": 16.57,
-    "dp": -0.1206,
+    "px": 17.04,
+    "dp": 2.8365,
     "score": 75.6,
     "sub": {
      "g": 73,
@@ -724,10 +723,10 @@
     "accel": -0.20000000000000107,
     "r13": 53.8927,
     "momo": 0.98,
-    "from_high": -22.19227313566936,
+    "from_high": -23.090745732255158,
     "ev_rev": 0.6171,
-    "px": 60.62,
-    "dp": -5.222,
+    "px": 59.92,
+    "dp": -1.1547,
     "score": 75.6,
     "sub": {
      "g": 63,
@@ -748,10 +747,10 @@
     "accel": -15.25,
     "r13": 52.734,
     "momo": 1.07,
-    "from_high": -8.668197474167627,
+    "from_high": -6.486796785304261,
     "ev_rev": 5.4949,
-    "px": 15.91,
-    "dp": 0.6962,
+    "px": 16.29,
+    "dp": 2.3884,
     "score": 74.9,
     "sub": {
      "g": 72,
@@ -770,10 +769,10 @@
     "accel": 24.670000000000016,
     "r13": 24.4717,
     "momo": 0.23,
-    "from_high": -37.50364537766112,
+    "from_high": -38.05774278215224,
     "ev_rev": null,
-    "px": 21.43,
-    "dp": 2.3889,
+    "px": 21.24,
+    "dp": -0.8866,
     "score": 74.7,
     "sub": {
      "g": 97,
@@ -792,10 +791,10 @@
     "accel": -43.790000000000006,
     "r13": 29.6046,
     "momo": 0.79,
-    "from_high": -16.533240515140967,
+    "from_high": -16.18517229376959,
     "ev_rev": 0.9077,
-    "px": 23.98,
-    "dp": 2.086,
+    "px": 24.08,
+    "dp": 0.417,
     "score": 74.5,
     "sub": {
      "g": 75,
@@ -814,10 +813,10 @@
     "accel": 1.6099999999999994,
     "r13": 7.1429,
     "momo": 0.45,
-    "from_high": -12.258687258687251,
+    "from_high": -12.644787644787636,
     "ev_rev": 12.3006,
-    "px": 9.09,
-    "dp": -0.6557,
+    "px": 9.05,
+    "dp": -0.44,
     "score": 74.1,
     "sub": {
      "g": 90,
@@ -836,10 +835,10 @@
     "accel": -3.4399999999999995,
     "r13": 40.8055,
     "momo": 1.3,
-    "from_high": -8.012204768900432,
+    "from_high": -8.984065996157742,
     "ev_rev": 0.6958,
-    "px": 81.4,
-    "dp": -1.6195,
+    "px": 80.54,
+    "dp": -1.0565,
     "score": 73.7,
     "sub": {
      "g": 52,
@@ -860,10 +859,10 @@
     "accel": -0.21999999999999886,
     "r13": 31.3548,
     "momo": 1.07,
-    "from_high": -7.420330309374279,
+    "from_high": -4.396371249127706,
     "ev_rev": 0.8142,
-    "px": 39.8,
-    "dp": 6.817,
+    "px": 41.1,
+    "dp": 3.2663,
     "score": 73.5,
     "sub": {
      "g": 58,
@@ -882,10 +881,10 @@
     "accel": -4.02,
     "r13": 46.3357,
     "momo": 1.09,
-    "from_high": -38.69209809264306,
+    "from_high": -35.47683923705722,
     "ev_rev": 0.3496,
-    "px": 11.25,
-    "dp": 1.5343,
+    "px": 11.84,
+    "dp": 5.2444,
     "score": 72.1,
     "sub": {
      "g": 60,
@@ -904,10 +903,10 @@
     "accel": 2.8999999999999986,
     "r13": 68,
     "momo": 1.06,
-    "from_high": -14.70189701897019,
+    "from_high": -7.994579945799451,
     "ev_rev": 4.1473,
-    "px": 12.59,
-    "dp": 1.0433,
+    "px": 13.58,
+    "dp": 7.8634,
     "score": 71.6,
     "sub": {
      "g": 67,
@@ -928,8 +927,8 @@
     "momo": 0.61,
     "from_high": null,
     "ev_rev": 3.7291,
-    "px": 13.18,
-    "dp": 3.9432,
+    "px": 13.1,
+    "dp": -0.607,
     "score": 71.2,
     "sub": {
      "g": 67,
@@ -972,10 +971,10 @@
     "accel": -0.71,
     "r13": 30.2257,
     "momo": 1.14,
-    "from_high": -4.227123448511327,
+    "from_high": -3.4902200639140957,
     "ev_rev": 0.996,
-    "px": 38.99,
-    "dp": 0.8536,
+    "px": 39.29,
+    "dp": 0.7694,
     "score": 70.7,
     "sub": {
      "g": 47,
@@ -1051,12 +1050,6 @@
     "dp": 44.1828
    },
    {
-    "ticker": "FEIM",
-    "name": "Frequency Electronics Inc",
-    "px": 88.375,
-    "dp": 42.4025
-   },
-   {
     "ticker": "HCTPF",
     "name": "Hutchison Port Holdings Trust",
     "px": 0.2188,
@@ -1073,6 +1066,12 @@
     "name": "Akso Health Group",
     "px": 0.8392,
     "dp": 14.9274
+   },
+   {
+    "ticker": "TRX",
+    "name": "TRX Gold Corp",
+    "px": 1.28,
+    "dp": 13.2743
    }
   ],
   "movers_down": [
@@ -1089,22 +1088,22 @@
     "dp": -15.5983
    },
    {
+    "ticker": "BW",
+    "name": "Babcock & Wilcox Enterprises Inc",
+    "px": 7.02,
+    "dp": -11.5869
+   },
+   {
+    "ticker": "BRUN",
+    "name": "Boost Run Inc",
+    "px": 14.8,
+    "dp": -11.0042
+   },
+   {
     "ticker": "BBOT",
     "name": "BridgeBio Oncology Therapeutics Inc",
     "px": 4.95,
     "dp": -10.3261
-   },
-   {
-    "ticker": "ASM",
-    "name": "Avino Silver & Gold Mines Ltd",
-    "px": 6.49,
-    "dp": -8.8483
-   },
-   {
-    "ticker": "DBVT",
-    "name": "Dbv Technologies SA",
-    "px": 11.85,
-    "dp": -8.6353
    }
   ],
   "earnings": [
@@ -1147,7 +1146,7 @@
   ],
   "evaluation": {
    "1w": {
-    "excess": -0.49,
+    "excess": 0.44,
     "days": 3,
     "indep": 1,
     "dropped": 0
@@ -1357,22 +1356,82 @@
   "budget_mode": "bootstrap",
   "news": [
    {
-    "title": "Shareholders who lost money in shares of Flotek Industries, Inc. (NYSE: FTK) should contact Wolf Haldenstein Immediately",
-    "link": "https://www.prnewswire.com/news-releases/shareholders-who-lost-money-in-shares-of-flotek-industries-inc-nyse-ftk-should-contact-wolf-haldenstein-immediately-302875995.html",
-    "source": "PR Newswire",
-    "published": "2026-09-14T13:04:00+00:00",
-    "summary": "Lead Plaintiff Deadline October 26, 2026 NEW YORK, Sept. 14, 2026 /PRNewswire/ -- Wolf Haldenstein Adler Freeman & Herz LLP (\"Wolf Haldenstein\"), a nationally recognized securities litigation law firm, announces that a class…",
-    "ticker": "FTK"
+    "title": "C3.ai (AI) Just Posted Its Most Promising Quarter In Years",
+    "link": "https://finance.yahoo.com/technology/ai/articles/c3-ai-ai-just-posted-102417897.html",
+    "source": "Insider Monkey",
+    "published": "2026-09-13T10:24:17+00:00",
+    "summary": "",
+    "ticker": "AI"
+   },
+   {
+    "title": "Gold.com (GOLD): On A Gold Rush With Cracks Underneath",
+    "link": "https://finance.yahoo.com/markets/stocks/articles/gold-com-gold-gold-rush-101442314.html",
+    "source": "Insider Monkey",
+    "published": "2026-09-13T10:14:42+00:00",
+    "summary": "",
+    "ticker": "GOLD"
+   },
+   {
+    "title": "Shoe Station Group (SHOE) Bets On Localized Stores To Reverse A Slide",
+    "link": "https://finance.yahoo.com/markets/stocks/articles/shoe-station-group-shoe-bets-114759320.html",
+    "source": "Insider Monkey",
+    "published": "2026-09-13T11:47:59+00:00",
+    "summary": "",
+    "ticker": "SHOE"
+   },
+   {
+    "title": "Tsakos Energy Navigation (TEN) Just Posted Its Best Half Ever",
+    "link": "https://finance.yahoo.com/energy/articles/tsakos-energy-navigation-ten-just-114411263.html",
+    "source": "Insider Monkey",
+    "published": "2026-09-13T11:44:11+00:00",
+    "summary": "",
+    "ticker": "TEN"
+   },
+   {
+    "title": "REX American Resources (REX) Notches A Record Quarter, Then Doubts Creep In",
+    "link": "https://finance.yahoo.com/markets/stocks/articles/rex-american-resources-rex-notches-103748951.html",
+    "source": "Insider Monkey",
+    "published": "2026-09-13T10:37:48+00:00",
+    "summary": "",
+    "ticker": "REX"
+   },
+   {
+    "title": "Phreesia’s (PHR) Profit Turnaround Meets A Cash-Strapped Client Base",
+    "link": "https://finance.yahoo.com/healthcare/articles/phreesia-phr-profit-turnaround-meets-095338755.html",
+    "source": "Insider Monkey",
+    "published": "2026-09-13T09:53:38+00:00",
+    "summary": "",
+    "ticker": "PHR"
+   },
+   {
+    "title": "Diversified Energy’s (DEC) $1.8B Bet On Permian Scale",
+    "link": "https://finance.yahoo.com/energy/articles/diversified-energy-dec-1-8b-093840663.html",
+    "source": "Insider Monkey",
+    "published": "2026-09-13T09:38:40+00:00",
+    "summary": "",
+    "ticker": "DEC"
+   },
+   {
+    "title": "Novartis (NVS) Just Handed Monte Rosa (GLUE) A $50M Milestone",
+    "link": "https://finance.yahoo.com/healthcare/articles/novartis-nvs-just-handed-monte-092912734.html",
+    "source": "Insider Monkey",
+    "published": "2026-09-13T09:29:12+00:00",
+    "summary": "",
+    "ticker": "GLUE"
    }
   ]
  },
  "econ_calendar": [],
  "stats": {
   "feeds_total": 21,
-  "feeds_failed": 3,
-  "items": 311,
-  "smallcap_calls": 554,
+  "feeds_failed": 4,
+  "items": 321,
+  "smallcap_calls": 552,
   "feed_errors": [
+   [
+    "PR Newswire",
+    "HTTP Error 404: Not Found"
+   ],
    [
     "GlobeNewswire",
     "The read operation timed out"
