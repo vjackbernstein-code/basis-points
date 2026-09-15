@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-15T00:49:19.598214+00:00",
+ "generated_at": "2026-09-15T05:56:49.220446+00:00",
  "market": [
   {
    "label": "S&P 500",
@@ -41,13 +41,12 @@
    "label": "Nasdaq",
    "symbol": "NASDAQCOM",
    "kind": "index",
-   "value": 26333.04,
-   "prev": 26081.72,
-   "value_txt": "26,333.04",
-   "delta": 0.9635867573150838,
-   "delta_txt": "+0.96%",
+   "value": 26186.41,
+   "prev": 26333.04,
+   "value_txt": "26,186.41",
+   "delta": -0.5568289874621427,
+   "delta_txt": "-0.56%",
    "spark": [
-    26445.45,
     26588.49,
     26803.03,
     26729.16,
@@ -69,9 +68,10 @@
     26421.41,
     26253.34,
     26081.72,
-    26333.04
+    26333.04,
+    26186.41
    ],
-   "asof": "Sep 11"
+   "asof": "Sep 14"
   },
   {
    "label": "Dow",
@@ -293,11 +293,11 @@
    "label": "Bitcoin",
    "symbol": "bitcoin",
    "kind": "crypto",
-   "value": 77945.72084580378,
+   "value": 77575.23967228903,
    "prev": 78173.35158344489,
-   "value_txt": "$77,946",
-   "delta": -0.2911871283887994,
-   "delta_txt": "-0.29%",
+   "value_txt": "$77,575",
+   "delta": -0.765109719668883,
+   "delta_txt": "-0.77%",
    "spark": [
     78973.88693602335,
     78511.2331116067,
@@ -321,18 +321,18 @@
     77261.62722069985,
     76819.04496746542,
     78173.35158344489,
-    77945.72084580378
+    77575.23967228903
    ]
   },
   {
    "label": "Ethereum",
    "symbol": "ethereum",
    "kind": "crypto",
-   "value": 2512.883488592164,
+   "value": 2495.538264212951,
    "prev": 2514.759550467769,
-   "value_txt": "$2,513",
-   "delta": -0.07460203800620327,
-   "delta_txt": "-0.07%",
+   "value_txt": "$2,496",
+   "delta": -0.7643389305845285,
+   "delta_txt": "-0.76%",
    "spark": [
     2481.879430655568,
     2442.0111121033965,
@@ -356,12 +356,47 @@
     2525.267261590238,
     2476.682526163658,
     2514.759550467769,
-    2512.883488592164
+    2495.538264212951
    ]
   }
  ],
- "tape_line": "S&P 500 -0.48%, Nasdaq +0.96%, Dow -0.29%; the 10-year Treasury at 4.96% (+1 bp); WTI crude $97.26 (+3.24%); bitcoin $77,946 (-0.29%).",
+ "tape_line": "S&P 500 -0.48%, Nasdaq -0.56%, Dow -0.29%; the 10-year Treasury at 4.96% (+1 bp); WTI crude $97.26 (+3.24%); bitcoin $77,575 (-0.77%).",
  "top": [
+  {
+   "title": "10-year Treasury yield rises to highest since 2007 as Fed rate-hike expectations rise",
+   "link": "https://www.cnbc.com/2026/09/15/10-year-treasury-yield-rises-to-highest-since-2007.html",
+   "source": "CNBC",
+   "published": "2026-09-15T05:43:18+00:00",
+   "summary": "The benchmark 10-year Treasury yield climbed to its highest level since 2007 on Tuesday as a sell-off in U.S. government debt deepened ahead of the Federal Reserve's interest-rate decision."
+  },
+  {
+   "title": "Singapore Dollar Weakens as U.S. Treasury Yields Rise",
+   "link": "https://www.wsj.com/finance/currencies/asian-currencies-mostly-weaken-amid-higher-u-s-treasury-yields-6c31ec0f?mod=rss_markets_main",
+   "source": "WSJ Markets",
+   "published": "2026-09-15T03:44:00+00:00",
+   "summary": "The Singapore dollar weakened against its U.S. counterpart in the Asian session as gains in U.S. Treasury yields improve the appeal of U.S. dollar-denominated fixed-income assets."
+  },
+  {
+   "title": "China's August retail sales miss forecast while investment slump deepens, piling pressure on Beijing",
+   "link": "https://www.cnbc.com/2026/09/15/china-august-retail-sales-industrial-output-investment-exports-.html",
+   "source": "CNBC",
+   "published": "2026-09-15T05:41:14+00:00",
+   "summary": "China's investment slump deepened, retail sales growth slowed further in August while industrial output blew past estimates as Beijing warns of supply-demand imbalance."
+  },
+  {
+   "title": "Oil and Treasury yields haven’t moved this closely in seven years. That’s bad news for markets",
+   "link": "https://www.cnbc.com/2026/09/15/oil-us-treasurys-stocks-pressure.html",
+   "source": "CNBC",
+   "published": "2026-09-15T05:22:57+00:00",
+   "summary": "Oil and 10-year Treasury yields are moving in near lockstep, with their correlation at its strongest since 2019."
+  },
+  {
+   "title": "China’s AI listings glut drags Hong Kong stocks lower",
+   "link": "https://www.ft.com/content/6d169ac7-0d3a-4f21-91ee-b8119fc63e65?syn-25a6b1a6=1",
+   "source": "Financial Times",
+   "published": "2026-09-15T03:10:06+00:00",
+   "summary": "Disparity between equity issuance and overall performance highlights weak global demand for Chinese stocks"
+  },
   {
    "title": "Gold Stays Under Pressure as Oil Heightens Inflation Fears",
    "link": "https://www.wsj.com/finance/commodities-futures/gold-stays-under-pressure-as-oil-heightens-inflation-fears-c6c5e4f4?mod=rss_markets_main",
@@ -375,52 +410,17 @@
    "source": "CNBC Economy",
    "published": "2026-09-14T19:47:42+00:00",
    "summary": "Traders were pricing in a better than 92% probability of a rate increase, as well as a more than 75% chance for another one in December."
-  },
-  {
-   "title": "U.S. Stocks Fall on Fears AI Companies, Fed Will Slam the Brakes",
-   "link": "https://www.wsj.com/finance/investing/u-s-stocks-fall-on-fears-ai-companies-fed-will-slam-the-brakes-fbd0646b?mod=rss_markets_main",
-   "source": "WSJ Markets",
-   "published": "2026-09-14T21:12:00+00:00",
-   "summary": "U.S. stocks fell after Anthropic Chief Executive Dario Amodei called for a slowdown in artificial-intelligence development and as another increase in oil futures triggered interest-rate worries."
-  },
-  {
-   "title": "10-year Treasury yield hits 5% before reversing as traders await Fed meeting",
-   "link": "https://www.cnbc.com/2026/09/14/10-year-us-treasury-is-closing-in-on-5percent.html",
-   "source": "CNBC",
-   "published": "2026-09-14T23:08:41+00:00",
-   "summary": "The 10-year U.S. Treasury note yield moved lower after reaching a multiyear high on Monday ahead of this week's Federal Reserve interest rate decision."
-  },
-  {
-   "title": "10-year Treasury yield hits 5% as oil prices jump and Fed meeting looms",
-   "link": "https://www.marketwatch.com/story/10-year-treasury-yield-tops-5-for-the-first-time-since-2007-as-bond-market-selloff-deepens-14c81f75?mod=mw_rss_topstories",
-   "source": "MarketWatch",
-   "published": "2026-09-14T20:47:00+00:00",
-   "summary": "The key “affordability” rate briefly touched its highest level since 2007 on Monday."
-  },
-  {
-   "title": "The Fed is likely to raise interest rates as inflation persists. What that means for consumers",
-   "link": "https://www.cnbc.com/2026/09/14/fed-rate-hike-anticipated-what-it-means-for-your-money.html",
-   "source": "CNBC",
-   "published": "2026-09-14T17:42:05+00:00",
-   "summary": "The Federal Reserve is widely expected to raise its benchmark interest rate by a quarter percentage point at its September meeting."
-  },
-  {
-   "title": "Stocks Decline, 10-Year Treasury Yield Touches 5% Amid Oil Surge",
-   "link": "https://www.wsj.com/finance/stocks/oil-jumps-nasdaq-futures-slide-as-ai-related-stocks-tumble-worldwide-eaaf198b?mod=rss_markets_main",
-   "source": "WSJ Markets",
-   "published": "2026-09-14T18:50:00+00:00",
-   "summary": "U.S. stock indexes declined, though the Nasdaq pared early losses amid concerns that demand for AI services and inputs like memory chips could come under pressure."
   }
  ],
  "smallcap": {
   "note": null,
-  "asof": "2026-09-15T01:00:17+00:00",
+  "asof": "2026-09-15T06:07:42+00:00",
   "coverage": {
    "universe": 9862,
    "profiled": 5780,
    "in_band": 1099,
-   "measured": 1098,
-   "scored": 566,
+   "measured": 1099,
+   "scored": 567,
    "below_floor": 41
   },
   "screen": [
@@ -438,7 +438,7 @@
     "ev_rev": 7.2737,
     "px": 12.83,
     "dp": -1.3836,
-    "score": 84.4,
+    "score": 84.5,
     "sub": {
      "g": 79,
      "m": 100,
@@ -460,7 +460,7 @@
     "ev_rev": 15.8316,
     "px": 57.62,
     "dp": 0.946,
-    "score": 82.8,
+    "score": 82.7,
     "sub": {
      "g": 87,
      "m": 98,
@@ -504,10 +504,10 @@
     "ev_rev": 4.1275,
     "px": 10.06,
     "dp": -0.1984,
-    "score": 81.1,
+    "score": 81.0,
     "sub": {
      "g": 92,
-     "m": 78,
+     "m": 77,
      "q": 66
     },
     "flags": []
@@ -548,9 +548,9 @@
     "ev_rev": null,
     "px": 54.41,
     "dp": -0.0367,
-    "score": 80.4,
+    "score": 80.3,
     "sub": {
-     "g": 71,
+     "g": 70,
      "m": 93,
      "q": 74
     },
@@ -592,7 +592,7 @@
     "ev_rev": null,
     "px": 68.25,
     "dp": -0.4667,
-    "score": 79.8,
+    "score": 79.7,
     "sub": {
      "g": 70,
      "m": 99,
@@ -614,11 +614,11 @@
     "ev_rev": null,
     "px": 38.43,
     "dp": -0.6206,
-    "score": 78.2,
+    "score": 78.1,
     "sub": {
      "g": 73,
      "m": 95,
-     "q": 57
+     "q": 56
     },
     "flags": []
    },
@@ -658,11 +658,11 @@
     "ev_rev": 6.6401,
     "px": 10.72,
     "dp": -2.1898,
-    "score": 78.0,
+    "score": 77.9,
     "sub": {
      "g": 87,
-     "m": 84,
-     "q": 48
+     "m": 83,
+     "q": 49
     },
     "flags": []
    },
@@ -680,33 +680,11 @@
     "ev_rev": 9.1235,
     "px": 24.33,
     "dp": 2.9623,
-    "score": 76.3,
+    "score": 76.2,
     "sub": {
      "g": 76,
      "m": 85,
      "q": 58
-    },
-    "flags": []
-   },
-   {
-    "ticker": "BBNX",
-    "name": "Beta Bionics Inc",
-    "ind": "Health Care",
-    "group": "Health",
-    "mcap": 873.6997614718875,
-    "rev_g": 94.09,
-    "accel": -50.0,
-    "r13": 39.8128,
-    "momo": 0.71,
-    "from_high": -48.853561601956585,
-    "ev_rev": 7.1578,
-    "px": 16.73,
-    "dp": 0.9656,
-    "score": 75.6,
-    "sub": {
-     "g": 73,
-     "m": 83,
-     "q": 66
     },
     "flags": []
    },
@@ -729,6 +707,28 @@
      "g": 63,
      "m": 93,
      "q": 67
+    },
+    "flags": []
+   },
+   {
+    "ticker": "BBNX",
+    "name": "Beta Bionics Inc",
+    "ind": "Health Care",
+    "group": "Health",
+    "mcap": 873.6997614718875,
+    "rev_g": 94.09,
+    "accel": -50.0,
+    "r13": 39.8128,
+    "momo": 0.71,
+    "from_high": -48.853561601956585,
+    "ev_rev": 7.1578,
+    "px": 16.73,
+    "dp": 0.9656,
+    "score": 75.5,
+    "sub": {
+     "g": 73,
+     "m": 83,
+     "q": 66
     },
     "flags": []
    },
@@ -790,7 +790,7 @@
     "ev_rev": 0.9077,
     "px": 24.03,
     "dp": 0.2085,
-    "score": 74.5,
+    "score": 74.4,
     "sub": {
      "g": 75,
      "m": 87,
@@ -812,7 +812,7 @@
     "ev_rev": 12.3006,
     "px": 9.02,
     "dp": -0.7701,
-    "score": 74.1,
+    "score": 74.0,
     "sub": {
      "g": 90,
      "m": 69,
@@ -856,10 +856,10 @@
     "ev_rev": 0.8142,
     "px": 40.49,
     "dp": 1.7337,
-    "score": 73.5,
+    "score": 73.4,
     "sub": {
      "g": 58,
-     "m": 96,
+     "m": 95,
      "q": 60
     },
     "flags": []
@@ -900,10 +900,10 @@
     "ev_rev": 4.1473,
     "px": 13.65,
     "dp": 8.4194,
-    "score": 71.6,
+    "score": 71.5,
     "sub": {
      "g": 67,
-     "m": 95,
+     "m": 94,
      "q": 34
     },
     "flags": []
@@ -922,7 +922,7 @@
     "ev_rev": 3.7291,
     "px": 13.04,
     "dp": -1.0622,
-    "score": 71.2,
+    "score": 71.1,
     "sub": {
      "g": 67,
      "m": 80,
@@ -944,7 +944,7 @@
     "ev_rev": 9.0392,
     "px": 20.86,
     "dp": 0.7243,
-    "score": 68.8,
+    "score": 68.7,
     "sub": {
      "g": 77,
      "m": 69,
@@ -968,7 +968,7 @@
     "ev_rev": 3.2932,
     "px": 18.16,
     "dp": -1.358,
-    "score": 68.8,
+    "score": 68.7,
     "sub": {
      "g": 79,
      "m": 74,
@@ -1103,18 +1103,6 @@
   ],
   "earnings": [
    {
-    "date": "2026-09-14",
-    "ticker": "CBRL",
-    "name": "Cracker Barrel Old Country Store Inc",
-    "hour": "bmo"
-   },
-   {
-    "date": "2026-09-14",
-    "ticker": "VALU",
-    "name": "Value Line Inc",
-    "hour": ""
-   },
-   {
     "date": "2026-09-16",
     "ticker": "ABAT",
     "name": "American Battery Technology Co",
@@ -1137,6 +1125,18 @@
     "ticker": "EBF",
     "name": "Ennis Inc",
     "hour": ""
+   },
+   {
+    "date": "2026-09-22",
+    "ticker": "APOG",
+    "name": "Apogee Enterprises Inc",
+    "hour": ""
+   },
+   {
+    "date": "2026-09-22",
+    "ticker": "MLKN",
+    "name": "MillerKnoll Inc",
+    "hour": ""
    }
   ],
   "evaluation": {
@@ -1151,7 +1151,7 @@
    "r13": 0.6626,
    "r26": 12.9605,
    "label": "flat/choppy",
-   "t": "2026-09-14T13:23:36+00:00"
+   "t": "2026-09-15T06:07:42+00:00"
   },
   "filings_material": [
    {
@@ -1349,47 +1349,14 @@
    }
   ],
   "budget_mode": "bootstrap",
-  "news": [
-   {
-    "title": "Prediction: This Artificial Intelligence (AI) Chip Stock Will Soar After Sept. 30 (Hint: It's Not Micron)",
-    "link": "https://finance.yahoo.com/technology/ai/articles/prediction-artificial-intelligence-ai-chip-125500915.html",
-    "source": "Motley Fool",
-    "published": "2026-09-13T12:55:00+00:00",
-    "summary": "",
-    "ticker": "AI"
-   },
-   {
-    "title": "Willis Lease Finance (WLFC) Grows Fast While Its Bottom Line Shrinks",
-    "link": "https://finance.yahoo.com/markets/stocks/articles/willis-lease-finance-wlfc-grows-134921293.html",
-    "source": "Insider Monkey",
-    "published": "2026-09-13T13:49:21+00:00",
-    "summary": "",
-    "ticker": "WLFC"
-   },
-   {
-    "title": "Clear Channel Outdoor (CCO) Grows Fastest Right Before Going Private",
-    "link": "https://finance.yahoo.com/media-advertising/articles/clear-channel-outdoor-cco-grows-132626831.html",
-    "source": "Insider Monkey",
-    "published": "2026-09-13T13:26:26+00:00",
-    "summary": "",
-    "ticker": "CCO"
-   },
-   {
-    "title": "LightPath’s (LPTH) Defense Pivot Just Showed Up In The Numbers",
-    "link": "https://finance.yahoo.com/markets/stocks/articles/lightpath-lpth-defense-pivot-just-131404572.html",
-    "source": "Insider Monkey",
-    "published": "2026-09-13T13:14:04+00:00",
-    "summary": "",
-    "ticker": "LPTH"
-   }
-  ]
+  "news": []
  },
  "econ_calendar": [],
  "stats": {
   "feeds_total": 21,
   "feeds_failed": 3,
-  "items": 335,
-  "smallcap_calls": 552,
+  "items": 343,
+  "smallcap_calls": 554,
   "feed_errors": [
    [
     "GlobeNewswire",
