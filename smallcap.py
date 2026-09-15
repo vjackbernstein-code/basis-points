@@ -74,12 +74,23 @@ DEFAULT_BUDGET = 550
 CALL_BUDGET = int(os.environ.get("SMALLCAP_BUDGET", str(DEFAULT_BUDGET)))
 CALL_INTERVAL = 1.1                     # seconds between Finnhub calls (55/min)
 
-# Cadence split (operational only — never touches scoring): the news desk runs
-# every 30 minutes, but the scorecard only needs a few deep refreshes a day.
-# Full-budget runs happen near these UTC hours (~pre-market / midday / after
-# the close, US time); every other run takes a small "trickle" that keeps the
-# published screen's quotes fresh. Bootstrap/catch-up overrides to full.
-FULL_HOURS_UTC = (12, 17, 21)
+# Quote staleness thresholds. The screen is judged daily, not intraday, so a
+# half-day-old price is harmless for the wider band; only the published
+# candidates and the cohorts the track record must price are kept tighter.
+QUOTE_STALE_SCREEN_H = 4
+QUOTE_STALE_COHORT_H = 12
+QUOTE_STALE_BAND_H = 12
+COHORT_LOOKBACK_DAYS = 35               # covers the 4-week evaluation window
+DISCOVERY_RESERVE = 0.55                # share of a run held for new companies
+                                        # while the market map is incomplete
+
+# Cadence (operational only — never touches scoring). NOTE: the workflow asks
+# for a run every 30 minutes, but GitHub throttles frequent scheduled jobs and
+# in practice only ~6-7 fire per day (measured Sept 2026), so the real daily
+# budget is ~7 runs' worth. A full run is therefore allowed whenever enough
+# time has passed since the last one, rather than on fixed clock hours which
+# irregular firing would mostly miss. Bootstrap/catch-up always overrides full.
+HOURS_BETWEEN_FULL = 2.5
 TRICKLE_BUDGET = 40
 BENCHES = ("IWO", "IWM")                # Russell 2000 Growth (primary) + Russell 2000
 MODEL_VERSION = "v3"                    # stamped on log entries; the track record is
@@ -851,40 +862,74 @@ def _distributed(tickers):
     return sorted(tickers, key=lambda t: hashlib.md5(t.encode()).hexdigest())
 
 
-def _spend_budget(fh, cache, budget):
-    """Priority-ordered data refresh within the per-run call budget."""
-    universe = _distributed(cache["universe"])
+def _recent_cohort_tickers(days):
+    """Tickers from screens published in the last `days` — the names the live
+    track record has to price forward. If their quotes go stale the evaluation
+    drops them, so they are refreshed ahead of routine upkeep."""
+    floor = (_now() - timedelta(days=days)).strftime("%Y-%m-%d")
+    out = set()
+    for day, entry in load_log().items():
+        if day >= floor:
+            out.update(p[0] for p in entry.get("pub", []))
+    return out
 
-    def spend(task_iter, fetch):
+
+def _spend_budget(fh, cache, budget):
+    """Priority-ordered data refresh within the per-run call budget.
+
+    Two things are protected above all: the quotes the live track record needs
+    to price past published screens, and — while the market map is incomplete —
+    a reserved share for discovering companies never looked at. Before that
+    reserve existed, upkeep of the ~1,100 known small-caps consumed every call
+    and discovery starved to ~8 companies/day (measured Sept 2026).
+    """
+    universe = _distributed(cache["universe"])
+    start_budget = budget
+
+    def spend(task_iter, fetch, cap=None):
         nonlocal budget
+        allowed = budget if cap is None else min(budget, cap)
         for t in task_iter:
-            if budget <= 0:
+            if allowed <= 0 or budget <= 0:
                 return
             fetch(fh, cache, t)
             budget -= 1
+            allowed -= 1
 
     band = [t for t in universe if in_band(cache["profiles"].get(t))]
-    # 1. keep the current screen's quotes fresh
+    unprofiled = [t for t in universe if t not in cache["profiles"]]
+    # 1. keep the current candidates' quotes fresh
     spend((t for t in cache.get("last_screen", [])
-           if _age_h(cache["quotes"].get(t, {}).get("t")) > 3), _fetch_quote)
-    # 2. metrics missing for known in-band names (screen grows early); entries
+           if _age_h(cache["quotes"].get(t, {}).get("t")) > QUOTE_STALE_SCREEN_H),
+          _fetch_quote)
+    # 2. quotes for names in recently published screens, so the track record
+    #    can still price those cohorts forward
+    spend((t for t in _recent_cohort_tickers(COHORT_LOOKBACK_DAYS)
+           if _age_h(cache["quotes"].get(t, {}).get("t")) > QUOTE_STALE_COHORT_H),
+          _fetch_quote)
+    # 3. metrics missing for known in-band names (screen grows early); entries
     #    from before v3 lack the leverage/valuation fields — refetch those too
     spend((t for t in band
            if t not in cache["metrics"] or "ev_rev" not in cache["metrics"][t]),
           _fetch_metrics)
-    # 2b. band profiles from before the v2 format lack the share count the
+    # 3b. band profiles from before the v2 format lack the share count the
     #     revenue floor needs — re-profile them now, not at the weekly refresh
     spend((t for t in band if "shares" not in (cache["profiles"].get(t) or {})),
           _fetch_profile)
-    # 3. quotes for measured band names — before bootstrap, since eligibility
-    #    needs a price; otherwise nothing scores until the universe is mapped
+    # 4. RESERVED discovery slice, held ahead of routine upkeep so mapping the
+    #    market can never again be starved by maintaining what we already know
+    if unprofiled:
+        spend(iter(unprofiled), _fetch_profile,
+              cap=int(start_budget * DISCOVERY_RESERVE))
+    # 5. routine quote upkeep for the rest of the band, oldest first
     band_by_quote_age = sorted(band, key=lambda t: cache["quotes"].get(t, {}).get("t") or "")
     spend((t for t in band_by_quote_age
            if t in cache["metrics"]
-           and _age_h(cache["quotes"].get(t, {}).get("t")) > 4), _fetch_quote)
-    # 4. bootstrap: profiles we've never checked
-    spend((t for t in universe if t not in cache["profiles"]), _fetch_profile)
-    # 5. insider transactions for current candidates (daily)
+           and _age_h(cache["quotes"].get(t, {}).get("t")) > QUOTE_STALE_BAND_H),
+          _fetch_quote)
+    # 6. any budget still unspent goes back to discovery
+    spend((t for t in unprofiled if t not in cache["profiles"]), _fetch_profile)
+    # 7. insider transactions for current candidates (daily)
     spend((t for t in cache.get("last_screen", [])
            if _age_h(cache["insider"].get(t, {}).get("t")) > 24), _fetch_insider)
     # 6. slow refresh: in-band metrics every 3 days
@@ -906,7 +951,8 @@ def _spend_budget(fh, cache, budget):
 
 def _choose_budget(cache):
     """Pick this run's spending mode. Bootstrap and catch-up always go full;
-    otherwise full only near the scheduled hours, trickle the rest of the day."""
+    otherwise a full run whenever enough time has passed since the last one
+    (runs fire irregularly, so fixed clock hours were mostly missed)."""
     universe = cache.get("universe") or {}
     if universe:
         if any(t not in cache["profiles"] for t in universe):
@@ -915,11 +961,8 @@ def _choose_budget(cache):
         if any(t not in cache["metrics"] or "ev_rev" not in cache["metrics"][t]
                for t in band):
             return CALL_BUDGET, "catch-up"
-    now = _now()
     last_full = cache.get("last_full")
-    if now.hour in FULL_HOURS_UTC and (
-            not last_full
-            or (now - datetime.fromisoformat(last_full)).total_seconds() > 2 * 3600):
+    if not last_full or _age_h(last_full) >= HOURS_BETWEEN_FULL:
         return CALL_BUDGET, "full"
     return TRICKLE_BUDGET, "trickle"
 

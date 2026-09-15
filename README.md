@@ -59,8 +59,11 @@ Sources that fail simply drop out of that run — the site still renders.
 **Option A — GitHub Actions + Pages (recommended; free, runs even when your
 Mac is off):** push this folder to a GitHub repository, enable Pages
 (Settings → Pages → Source: "GitHub Actions"). The included workflow
-(`.github/workflows/update.yml`) refreshes the site every 30 minutes and
-publishes it at `https://<username>.github.io/<repo>/`.
+(`.github/workflows/update.yml`) asks for a refresh every 30 minutes and
+publishes it at `https://<username>.github.io/<repo>/`. **In practice GitHub
+throttles frequent scheduled jobs: only ~6–7 runs actually fire per day**
+(measured Sept 2026), i.e. a refresh every 3–4 hours, not every 30 minutes.
+Budget the data work accordingly.
 
 **Option B — local launchd job (Mac only, runs while the Mac is awake):**
 
@@ -95,14 +98,32 @@ the published screen plus IWO/IWM benchmark prices are logged to
 accumulate per model version (a live record, never backfilled), reporting both
 daily and independent (non-overlapping) readings. Scoring is frozen until the
 record holds 12 independent 1-week and 3 independent 4-week readings. The
-free tier allows 60 calls/minute. **Cadence split (operational change,
-Sep 6, 2026 — scoring untouched):** the news desk refreshes every 30 minutes,
-but the scorecard takes its full ~550-call budget only ~3×/day (near 12:00,
-17:00, 21:00 UTC ≈ pre-market/midday/post-close US time); every other run is
-a ~40-call trickle that keeps the published screen's quotes fresh. Bootstrap
-or catch-up (unprofiled companies, unmeasured band members) overrides to full
-budget automatically. The scorecard (`data/smallcap.json`, committed between
-cloud runs) bootstraps within the first day, then stays fresh on this rhythm.
+free tier allows 60 calls/minute.
+
+**Budget allocation (operational, Sep 15, 2026 — scoring untouched).** Only
+~6–7 runs fire per day (see the throttling note above), so the real budget is
+~7 × 550 ≈ 3,900 calls/day. Spending priority per run:
+
+1. quotes for current candidates (>4h stale);
+2. quotes for tickers in screens published in the last 35 days — the cohorts
+   the live track record must price forward, which the evaluation drops if
+   their quotes go stale;
+3. missing/outdated metrics and profiles for known band members;
+4. **a reserved 55% of the run for discovering companies never profiled**,
+   held *ahead* of routine upkeep;
+5. routine quote upkeep for the rest of the band (>12h stale, oldest first);
+6. leftover budget back to discovery; then insider data, slow metric refresh
+   (3d) and slow profile refresh (48h blank / 7d band / 30d out-of-band).
+
+A full-budget run is allowed whenever ≥2.5h have passed since the last one
+(fixed clock hours were mostly missed by irregular firing); otherwise a
+~40-call trickle. Bootstrap/catch-up always forces full.
+
+*Why the reserve exists:* by mid-Sept 2026 the band had grown to ~1,100 names
+and their 4-hourly quote upkeep consumed every call before discovery — which
+is last in line — ever ran. Cataloguing collapsed to ~8 companies/day
+(>1 year to finish). Relaxing band quotes to 12h and reserving a discovery
+slice restored it to ~1–2 days.
 
 ## API keys (both optional; features light up when present)
 
