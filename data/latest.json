@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-15T20:04:09.249875+00:00",
+ "generated_at": "2026-09-15T23:05:13.617727+00:00",
  "market": [
   {
    "label": "S&P 500",
@@ -77,13 +77,12 @@
    "label": "Dow",
    "symbol": "DJIA",
    "kind": "index",
-   "value": 52421.2,
-   "prev": 52573.29,
-   "value_txt": "52,421.20",
-   "delta": -0.28929138731854864,
-   "delta_txt": "-0.29%",
+   "value": 52093.11,
+   "prev": 52421.2,
+   "value_txt": "52,093.11",
+   "delta": -0.6258727385103671,
+   "delta_txt": "-0.63%",
    "spark": [
-    53770.27,
     53839.99,
     53732.41,
     53459.78,
@@ -105,9 +104,9 @@
     52380.66,
     52064.1,
     52573.29,
-    52421.2
-   ],
-   "asof": "Sep 14"
+    52421.2,
+    52093.11
+   ]
   },
   {
    "label": "VIX",
@@ -149,13 +148,12 @@
    "label": "10-yr Treasury",
    "symbol": "DGS10",
    "kind": "yield",
-   "value": 49.6,
-   "prev": 49.5,
-   "value_txt": "4.96%",
-   "delta": 0.20202020202020488,
+   "value": 49.699999999999996,
+   "prev": 49.6,
+   "value_txt": "4.97%",
+   "delta": 0.201612903225795,
    "delta_txt": "+1 bp",
    "spark": [
-    47.0,
     46.8,
     46.3,
     46.8,
@@ -177,9 +175,10 @@
     48.0,
     48.3,
     49.5,
-    49.6
+    49.6,
+    49.699999999999996
    ],
-   "asof": "Sep 11"
+   "asof": "Sep 14"
   },
   {
    "label": "Dollar (broad)",
@@ -292,11 +291,11 @@
    "label": "Bitcoin",
    "symbol": "bitcoin",
    "kind": "crypto",
-   "value": 76114.96404372356,
+   "value": 75699.5853728997,
    "prev": 78173.35158344489,
-   "value_txt": "$76,115",
-   "delta": -2.633106420573684,
-   "delta_txt": "-2.63%",
+   "value_txt": "$75,700",
+   "delta": -3.1644622629549235,
+   "delta_txt": "-3.16%",
    "spark": [
     78973.88693602335,
     78511.2331116067,
@@ -320,18 +319,18 @@
     77261.62722069985,
     76819.04496746542,
     78173.35158344489,
-    76114.96404372356
+    75699.5853728997
    ]
   },
   {
    "label": "Ethereum",
    "symbol": "ethereum",
    "kind": "crypto",
-   "value": 2412.64269148199,
+   "value": 2399.804434063114,
    "prev": 2514.759550467769,
-   "value_txt": "$2,413",
-   "delta": -4.0607007125903625,
-   "delta_txt": "-4.06%",
+   "value_txt": "$2,400",
+   "delta": -4.5712170129057474,
+   "delta_txt": "-4.57%",
    "spark": [
     2481.879430655568,
     2442.0111121033965,
@@ -355,12 +354,26 @@
     2525.267261590238,
     2476.682526163658,
     2514.759550467769,
-    2412.64269148199
+    2399.804434063114
    ]
   }
  ],
- "tape_line": "S&P 500 -0.48%, Nasdaq -0.56%, Dow -0.29%; the 10-year Treasury at 4.96% (+1 bp); WTI crude $97.26 (+3.24%); bitcoin $76,115 (-2.63%).",
+ "tape_line": "S&P 500 -0.48%, Nasdaq -0.56%, Dow -0.63%; the 10-year Treasury at 4.97% (+1 bp); WTI crude $97.26 (+3.24%); bitcoin $75,700 (-3.16%).",
  "top": [
+  {
+   "title": "U.S. Stocks Down as Oil, Yield Shock Continues",
+   "link": "https://www.wsj.com/finance/stocks/u-s-stocks-down-as-oil-yield-shock-continues-866478de?mod=rss_markets_main",
+   "source": "WSJ Markets",
+   "published": "2026-09-15T20:54:00+00:00",
+   "summary": "U.S. stocks fell ahead of the Federal Reserve’s rate decision as Treasury yields hit more multiyear highs amid signs of a prolonged oil shock."
+  },
+  {
+   "title": "Why a Federal Reserve rate hike could be a ‘rare win’ for your retirement money",
+   "link": "https://www.marketwatch.com/story/why-a-federal-reserve-rate-hike-could-be-a-rare-win-for-your-retirement-money-3ae337df?mod=mw_rss_topstories",
+   "source": "MarketWatch",
+   "published": "2026-09-15T20:47:00+00:00",
+   "summary": "There may be better savings yields, but beware rising credit-card rates"
+  },
   {
    "title": "Dollar Outlook Hinges on Fed Communication",
    "link": "https://www.wsj.com/finance/currencies/asian-currencies-mostly-weaken-amid-higher-u-s-treasury-yields-6c31ec0f?mod=rss_markets_main",
@@ -376,6 +389,13 @@
    "summary": "U.S. stocks declined, with the Dow industrials leading modest declines."
   },
   {
+   "title": "What Comes Next, Now that the 10-Year Treasury Yield Has Crossed 5%?",
+   "link": "https://www.wsj.com/finance/investing/what-comes-next-now-that-the-10-year-treasury-yield-has-crossed-5-c3bd8b05?mod=rss_markets_main",
+   "source": "WSJ Markets",
+   "published": "2026-09-15T21:01:00+00:00",
+   "summary": "The key borrowing benchmark is either bumping along a post-financial crisis high, or stepping into a new era of higher rates."
+  },
+  {
    "title": "Gold, Silver Futures Settle Lower Ahead of Fed",
    "link": "https://www.wsj.com/finance/commodities-futures/gold-stays-under-pressure-as-oil-heightens-inflation-fears-c6c5e4f4?mod=rss_markets_main",
    "source": "WSJ Markets",
@@ -383,44 +403,23 @@
    "summary": "Precious metals futures slipped in cautious trading ahead of the Fed’s interest-rate decision on Wednesday."
   },
   {
-   "title": "Stocks drop as 10-year Treasury yield hits 19-year high, crude oil tops $106 a barrel: Live updates",
-   "link": "https://news.google.com/rss/articles/CBMid0FVX3lxTE9yenZ5YXYzaWh0UWdSejh4VXhxdmVlOHNHSVdnR1lySU1QeVpGZnBWdmw0ZlNodXF0MGNjMDRJV2I3djJNQXoyTk5DTVlRclE5c0FjNmlkVW9wemxWT0RoRFRSU3pVRHN0and3ZkluZS14eE1lcGc00gF8QVVfeXFMT3JnVjBXOXp4Yk5YY2dTRXNqTHNhZnVwWXFnb3RXNUw5dDBIWHctdktybDNwR0tyZlBZRzNPaVFkOVk3bGhmeWhtVnZBSkJzMVBIcFpXV295ZG5MMXY5VG9UWTNQS2xzNWdaNEZhTlJkYnBISzJXaGo5S3V0NQ?oc=5",
-   "source": "CNBC",
-   "published": "2026-09-15T19:17:54+00:00",
-   "summary": "Stocks drop as 10-year Treasury yield hits 19-year high, crude oil tops $106 a barrel: Live updates CNBC Stock Market Today: Dow Falls 400 Points; 10-Year Treasury Yield at 5% — Live Updates WSJ US stocks slip after oil prices…"
-  },
-  {
-   "title": "What a Fed rate hike could mean for mortgage rates (and what borrowers need to do now)",
-   "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxORmpGSUhpMDlVRDJKSDFvLWcwc2JyV3pXbnZ3TUcwWVJ3WXlfbmJKX0pDTHg2RUhsczlQejNpUVFqTGtLdlB0MEJKNW5BRmFHREd2NDlWYVRuUGw0Qkx0YXB6bWdkMkkxMjkxbXNaQlU0eVNBVDZKTDl3cFMwUWpuRlBwUDFKTDdQSk5zRG5mUkdKY3VFamFkZDY1RmNiSlU?oc=5",
-   "source": "CBS News",
-   "published": "2026-09-15T17:33:18+00:00",
-   "summary": "What a Fed rate hike could mean for mortgage rates (and what borrowers need to do now) CBS News The Stagnant Housing Market Is About to Face a 7% Mortgage WSJ Mortgage Rates Start Higher, But Some Lenders Recovered Mortgage News…"
-  },
-  {
-   "title": "Is the two-decade era of low interest rates over? The Fed has to decide.",
-   "link": "https://www.marketwatch.com/story/is-the-two-decade-era-of-low-interest-rates-over-the-fed-has-to-decide-0520f458?mod=mw_rss_topstories",
+   "title": "AI stocks are rebounding. One analyst says there’s no spending slowdown in sight.",
+   "link": "https://www.marketwatch.com/story/ai-stocks-are-rebounding-one-analyst-says-theres-no-spending-slowdown-in-sight-8fd99c4b?mod=mw_rss_topstories",
    "source": "MarketWatch",
-   "published": "2026-09-15T17:08:00+00:00",
-   "summary": "High bond yields could be the result of temporary shocks — or something much longer-lasting."
-  },
-  {
-   "title": "Ten-year Treasury yield hits highest level since 2007",
-   "link": "https://www.ft.com/content/5e2327aa-dbd0-4a79-8c99-622a893876d7?syn-25a6b1a6=1",
-   "source": "Financial Times",
-   "published": "2026-09-15T18:13:53+00:00",
-   "summary": "Benchmark bond yield rises to 5.04% amid concerns over inflation and higher interest rates"
+   "published": "2026-09-15T21:15:00+00:00",
+   "summary": "Customers are signing multiyear deals for chips and more: “That’s not what the front end of a downturn looks like.”"
   }
  ],
  "smallcap": {
   "note": null,
-  "asof": "2026-09-15T20:15:15+00:00",
+  "asof": "2026-09-15T23:16:05+00:00",
   "coverage": {
    "universe": 9862,
-   "profiled": 6673,
-   "in_band": 1252,
-   "measured": 1186,
-   "scored": 610,
-   "below_floor": 42
+   "profiled": 7053,
+   "in_band": 1319,
+   "measured": 1252,
+   "scored": 653,
+   "below_floor": 46
   },
   "screen": [
    {
@@ -433,15 +432,15 @@
     "accel": 1.2399999999999949,
     "r13": 92.9699,
     "momo": 1.64,
-    "from_high": -14.899514899514898,
+    "from_high": -15.661815661815659,
     "ev_rev": 7.2737,
-    "px": 12.28,
-    "dp": -4.2868,
-    "score": 84.4,
+    "px": 12.17,
+    "dp": -5.1442,
+    "score": 83.9,
     "sub": {
-     "g": 79,
+     "g": 78,
      "m": 100,
-     "q": 64
+     "q": 63
     },
     "flags": []
    },
@@ -455,11 +454,11 @@
     "accel": 17.10000000000001,
     "r13": 102.2491,
     "momo": 1.21,
-    "from_high": -15.925870122043106,
+    "from_high": -17.236703329817693,
     "ev_rev": 15.8316,
-    "px": 55.8,
-    "dp": -3.1586,
-    "score": 82.6,
+    "px": 54.93,
+    "dp": -4.6685,
+    "score": 82.4,
     "sub": {
      "g": 87,
      "m": 97,
@@ -477,15 +476,15 @@
     "accel": 4.740000000000002,
     "r13": 55.3588,
     "momo": 0.76,
-    "from_high": -6.095610449617917,
+    "from_high": -6.371068064688112,
     "ev_rev": 1.033,
-    "px": 52.84,
-    "dp": 0.1896,
-    "score": 81.9,
+    "px": 52.685,
+    "dp": -0.1043,
+    "score": 82.0,
     "sub": {
      "g": 88,
-     "m": 85,
-     "q": 63
+     "m": 86,
+     "q": 62
     },
     "flags": []
    },
@@ -499,15 +498,15 @@
     "accel": 38.75,
     "r13": 35.1594,
     "momo": 0.57,
-    "from_high": -35.156249999999986,
+    "from_high": -33.723958333333336,
     "ev_rev": 4.1275,
-    "px": 9.96,
-    "dp": -0.994,
-    "score": 81.3,
+    "px": 10.18,
+    "dp": 1.1928,
+    "score": 81.6,
     "sub": {
      "g": 92,
-     "m": 78,
-     "q": 67
+     "m": 79,
+     "q": 66
     },
     "flags": []
    },
@@ -521,11 +520,11 @@
     "accel": 16.25,
     "r13": 87.1153,
     "momo": 1.3,
-    "from_high": -15.767717383057999,
+    "from_high": -16.341841996805417,
     "ev_rev": 0.5569,
-    "px": 41.08,
-    "dp": -0.725,
-    "score": 80.8,
+    "px": 40.8,
+    "dp": -1.4016,
+    "score": 80.6,
     "sub": {
      "g": 78,
      "m": 99,
@@ -543,13 +542,13 @@
     "accel": -32.77874,
     "r13": 11.8394,
     "momo": 1.01,
-    "from_high": -2.3393917581428725,
+    "from_high": -1.997480655029693,
     "ev_rev": null,
-    "px": 54.27,
-    "dp": -0.2573,
-    "score": 80.1,
+    "px": 54.46,
+    "dp": 0.0919,
+    "score": 79.8,
     "sub": {
-     "g": 70,
+     "g": 69,
      "m": 93,
      "q": 74
     },
@@ -567,13 +566,13 @@
     "accel": -15.63805,
     "r13": 26.5778,
     "momo": 1.37,
-    "from_high": -2.988935191837905,
+    "from_high": -3.003305072567908,
     "ev_rev": null,
-    "px": 67.51,
-    "dp": -1.0842,
-    "score": 79.6,
+    "px": 67.5,
+    "dp": -1.0989,
+    "score": 79.4,
     "sub": {
-     "g": 70,
+     "g": 69,
      "m": 99,
      "q": 61
     },
@@ -589,17 +588,41 @@
     "accel": 45.68,
     "r13": 14.7898,
     "momo": 0.62,
-    "from_high": -1.1568123393316143,
+    "from_high": -2.120822622107965,
     "ev_rev": 2.5094,
-    "px": 15.38,
-    "dp": 1.1177,
-    "score": 78.7,
+    "px": 15.23,
+    "dp": 0.1315,
+    "score": 78.9,
     "sub": {
-     "g": 85,
+     "g": 84,
      "m": 81,
      "q": 63
     },
     "flags": []
+   },
+   {
+    "ticker": "OSBC",
+    "name": "Old Second Bancorp Inc",
+    "ind": "Banking",
+    "group": "Financials",
+    "mcap": 1297.839444075059,
+    "rev_g": 59.28261,
+    "accel": -31.319229999999997,
+    "r13": 15.642,
+    "momo": 1.21,
+    "from_high": -2.014968336211853,
+    "ev_rev": null,
+    "px": 25.53,
+    "dp": 0.0784,
+    "score": 78.7,
+    "sub": {
+     "g": 69,
+     "m": 97,
+     "q": 73
+    },
+    "flags": [
+     "new"
+    ]
    },
    {
     "ticker": "PEBO",
@@ -615,37 +638,15 @@
     "ev_rev": null,
     "px": 40.17,
     "dp": 0.7019,
-    "score": 78.6,
+    "score": 78.2,
     "sub": {
-     "g": 85,
-     "m": 90,
-     "q": 55
+     "g": 84,
+     "m": 91,
+     "q": 54
     },
     "flags": [
      "new"
     ]
-   },
-   {
-    "ticker": "BY",
-    "name": "Byline Bancorp Inc",
-    "ind": "Banking",
-    "group": "Financials",
-    "mcap": 1755.49248984375,
-    "rev_g": 60.15915,
-    "accel": 10.785620000000009,
-    "r13": 15.9701,
-    "momo": 1.07,
-    "from_high": -4.74644016987259,
-    "ev_rev": null,
-    "px": 38.13,
-    "dp": -0.7806,
-    "score": 78.2,
-    "sub": {
-     "g": 73,
-     "m": 94,
-     "q": 57
-    },
-    "flags": []
    },
    {
     "ticker": "FENC",
@@ -657,15 +658,15 @@
     "accel": 38.88,
     "r13": 35.262,
     "momo": 0.72,
-    "from_high": -22.415094339622645,
+    "from_high": -19.698113207547163,
     "ev_rev": 6.6401,
-    "px": 10.28,
-    "dp": -4.1045,
-    "score": 77.8,
+    "px": 10.64,
+    "dp": -0.7463,
+    "score": 78.0,
     "sub": {
      "g": 87,
-     "m": 83,
-     "q": 49
+     "m": 84,
+     "q": 48
     },
     "flags": []
    },
@@ -679,17 +680,41 @@
     "accel": 0.8399999999999999,
     "r13": 31.84,
     "momo": 0.74,
-    "from_high": -4.263718910382941,
+    "from_high": -1.1448874851954116,
     "ev_rev": 9.1235,
-    "px": 24.25,
-    "dp": -0.3288,
-    "score": 76.2,
+    "px": 25.04,
+    "dp": 2.9182,
+    "score": 76.4,
     "sub": {
      "g": 77,
      "m": 85,
      "q": 58
     },
     "flags": []
+   },
+   {
+    "ticker": "BBNX",
+    "name": "Beta Bionics Inc",
+    "ind": "Health Care",
+    "group": "Health",
+    "mcap": 873.6997614718875,
+    "rev_g": 94.09,
+    "accel": -50.0,
+    "r13": 39.8128,
+    "momo": 0.71,
+    "from_high": -41.210638948333845,
+    "ev_rev": 7.1578,
+    "px": 19.23,
+    "dp": 14.9432,
+    "score": 75.8,
+    "sub": {
+     "g": 73,
+     "m": 83,
+     "q": 66
+    },
+    "flags": [
+     "8-K"
+    ]
    },
    {
     "ticker": "TH",
@@ -705,9 +730,9 @@
     "ev_rev": 5.6319,
     "px": 18.75,
     "dp": 1.0782,
-    "score": 76.2,
+    "score": 75.8,
     "sub": {
-     "g": 61,
+     "g": 60,
      "m": 97,
      "q": 78
     },
@@ -717,24 +742,24 @@
     ]
    },
    {
-    "ticker": "BBNX",
-    "name": "Beta Bionics Inc",
-    "ind": "Health Care",
-    "group": "Health",
-    "mcap": 873.6997614718875,
-    "rev_g": 94.09,
-    "accel": -50.0,
-    "r13": 39.8128,
-    "momo": 0.71,
-    "from_high": -43.19779883827576,
-    "ev_rev": 7.1578,
-    "px": 18.58,
-    "dp": 11.058,
-    "score": 75.5,
+    "ticker": "ELE",
+    "name": "Elemental Royalty Corp",
+    "ind": "Metals & Mining",
+    "group": "Materials",
+    "mcap": 1923.0571006489024,
+    "rev_g": 136.91,
+    "accel": 24.670000000000016,
+    "r13": 24.4717,
+    "momo": 0.23,
+    "from_high": -39.136774569845436,
+    "ev_rev": null,
+    "px": 20.87,
+    "dp": -1.09,
+    "score": 75.6,
     "sub": {
-     "g": 73,
-     "m": 83,
-     "q": 66
+     "g": 97,
+     "m": 57,
+     "q": 70
     },
     "flags": []
    },
@@ -748,37 +773,15 @@
     "accel": -0.20000000000000107,
     "r13": 53.8927,
     "momo": 0.98,
-    "from_high": -26.325247079964065,
+    "from_high": -26.71030676421512,
     "ev_rev": 0.6171,
-    "px": 57.4,
-    "dp": -4.6512,
-    "score": 75.5,
+    "px": 57.1,
+    "dp": -5.1495,
+    "score": 75.1,
     "sub": {
-     "g": 63,
-     "m": 92,
-     "q": 67
-    },
-    "flags": []
-   },
-   {
-    "ticker": "ELE",
-    "name": "Elemental Royalty Corp",
-    "ind": "Metals & Mining",
-    "group": "Materials",
-    "mcap": 1923.0571006489024,
-    "rev_g": 136.91,
-    "accel": 24.670000000000016,
-    "r13": 24.4717,
-    "momo": 0.23,
-    "from_high": -40.12831729367162,
-    "ev_rev": null,
-    "px": 20.53,
-    "dp": -2.7014,
-    "score": 74.9,
-    "sub": {
-     "g": 97,
-     "m": 55,
-     "q": 70
+     "g": 62,
+     "m": 93,
+     "q": 66
     },
     "flags": []
    },
@@ -792,37 +795,15 @@
     "accel": -15.25,
     "r13": 52.734,
     "momo": 1.07,
-    "from_high": -7.290470723306564,
+    "from_high": -7.175660160734787,
     "ev_rev": 5.4949,
-    "px": 16.15,
-    "dp": -1.764,
-    "score": 74.8,
+    "px": 16.17,
+    "dp": -1.6423,
+    "score": 74.7,
     "sub": {
      "g": 72,
      "m": 95,
-     "q": 40
-    },
-    "flags": []
-   },
-   {
-    "ticker": "ADAM",
-    "name": "Adamas Trust Inc",
-    "ind": "Real Estate",
-    "group": "Real Estate",
-    "mcap": 876.3279474742269,
-    "rev_g": 48.27,
-    "accel": 1.6099999999999994,
-    "r13": 7.1429,
-    "momo": 0.45,
-    "from_high": -13.223938223938214,
-    "ev_rev": 12.3006,
-    "px": 8.99,
-    "dp": -0.3326,
-    "score": 74.4,
-    "sub": {
-     "g": 90,
-     "m": 70,
-     "q": 52
+     "q": 39
     },
     "flags": []
    },
@@ -836,15 +817,37 @@
     "accel": -43.790000000000006,
     "r13": 29.6046,
     "momo": 0.79,
-    "from_high": -14.270797076226948,
+    "from_high": -14.827706230421168,
     "ev_rev": 0.9077,
-    "px": 24.63,
-    "dp": 2.4969,
-    "score": 74.4,
+    "px": 24.47,
+    "dp": 1.831,
+    "score": 74.7,
     "sub": {
      "g": 75,
      "m": 87,
-     "q": 49
+     "q": 48
+    },
+    "flags": []
+   },
+   {
+    "ticker": "ADAM",
+    "name": "Adamas Trust Inc",
+    "ind": "Real Estate",
+    "group": "Real Estate",
+    "mcap": 876.3279474742269,
+    "rev_g": 48.27,
+    "accel": 1.6099999999999994,
+    "r13": 7.1429,
+    "momo": 0.45,
+    "from_high": -13.561776061776055,
+    "ev_rev": 12.3006,
+    "px": 8.955,
+    "dp": -0.7206,
+    "score": 74.6,
+    "sub": {
+     "g": 89,
+     "m": 71,
+     "q": 52
     },
     "flags": []
    },
@@ -858,15 +861,15 @@
     "accel": -3.4399999999999995,
     "r13": 40.8055,
     "momo": 1.3,
-    "from_high": -9.006667420047465,
+    "from_high": -7.209854220815903,
     "ev_rev": 0.6958,
-    "px": 80.52,
-    "dp": -1.685,
-    "score": 73.9,
+    "px": 82.11,
+    "dp": 0.2564,
+    "score": 73.8,
     "sub": {
-     "g": 53,
+     "g": 54,
      "m": 98,
-     "q": 66
+     "q": 65
     },
     "flags": []
    },
@@ -880,17 +883,41 @@
     "accel": -0.21999999999999886,
     "r13": 31.3548,
     "momo": 1.07,
-    "from_high": -5.18725284949989,
+    "from_high": -5.094207955338459,
     "ev_rev": 0.8142,
-    "px": 40.76,
-    "dp": 0.6668,
-    "score": 73.3,
+    "px": 40.8,
+    "dp": 0.7656,
+    "score": 73.4,
     "sub": {
      "g": 59,
      "m": 95,
      "q": 59
     },
     "flags": []
+   },
+   {
+    "ticker": "YORW",
+    "name": "York Water Co",
+    "ind": "Utilities",
+    "group": "Utilities",
+    "mcap": 501.03,
+    "rev_g": 9.5,
+    "accel": 13.16,
+    "r13": 15.0338,
+    "momo": 0.5,
+    "from_high": -5.573111174949741,
+    "ev_rev": 8.931,
+    "px": 32.87,
+    "dp": -0.5747,
+    "score": 72.9,
+    "sub": {
+     "g": 78,
+     "m": 74,
+     "q": 73
+    },
+    "flags": [
+     "new"
+    ]
    },
    {
     "ticker": "AMPL",
@@ -902,11 +929,11 @@
     "accel": 2.8999999999999986,
     "r13": 68,
     "momo": 1.06,
-    "from_high": -8.130081300813007,
+    "from_high": -9.417344173441734,
     "ev_rev": 4.1473,
-    "px": 13.56,
-    "dp": -0.6593,
-    "score": 71.8,
+    "px": 13.37,
+    "dp": -2.0513,
+    "score": 71.7,
     "sub": {
      "g": 68,
      "m": 94,
@@ -928,60 +955,36 @@
     "ev_rev": 3.7291,
     "px": 13.2,
     "dp": 1.227,
-    "score": 70.4,
+    "score": 70.5,
     "sub": {
      "g": 65,
-     "m": 80,
+     "m": 81,
      "q": 61
     },
     "flags": []
    },
    {
-    "ticker": "PRCH",
-    "name": "Porch Group Inc",
-    "ind": "Technology",
-    "group": "Technology",
-    "mcap": 1875.347784919149,
-    "rev_g": 19.46,
-    "accel": -1.3599999999999994,
-    "r13": 74.814,
-    "momo": 1.32,
-    "from_high": -17.42128009878575,
-    "ev_rev": 4.2633,
-    "px": 16.05,
-    "dp": -2.845,
-    "score": 69.6,
+    "ticker": "SHIP",
+    "name": "Seanergy Maritime Holdings Corp",
+    "ind": "Marine",
+    "group": "Industrials",
+    "mcap": 398.9115135526316,
+    "rev_g": 31.98,
+    "accel": 16.599999999999998,
+    "r13": 18.3647,
+    "momo": 0.52,
+    "from_high": -5.515088449531735,
+    "ev_rev": 3.2932,
+    "px": 18.16,
+    "dp": -1.358,
+    "score": 69.7,
     "sub": {
-     "g": 71,
-     "m": 99,
-     "q": 19
+     "g": 80,
+     "m": 76,
+     "q": 47
     },
     "flags": [
      "new"
-    ]
-   },
-   {
-    "ticker": "CTO",
-    "name": "CTO Realty Growth Inc",
-    "ind": "Real Estate",
-    "group": "Real Estate",
-    "mcap": 805.5624218300651,
-    "rev_g": 14.26,
-    "accel": 2.1899999999999995,
-    "r13": 7.0752,
-    "momo": 0.45,
-    "from_high": -8.982826948480838,
-    "ev_rev": 9.0392,
-    "px": 20.67,
-    "dp": -0.9108,
-    "score": 69.2,
-    "sub": {
-     "g": 77,
-     "m": 69,
-     "q": 64
-    },
-    "flags": [
-     "act+"
     ]
    }
   ],
@@ -1015,6 +1018,13 @@
     "r13": 50.2813
    },
    {
+    "ticker": "STTK",
+    "name": "Shattuck Labs Inc",
+    "rev_ttm": 0.695849,
+    "rev_g": -66.63,
+    "r13": 50.1211
+   },
+   {
     "ticker": "JANX",
     "name": "Janux Therapeutics Inc",
     "rev_ttm": 23.251673999999998,
@@ -1034,13 +1044,6 @@
     "rev_ttm": 35.08274,
     "rev_g": 90.63,
     "r13": 37.3752
-   },
-   {
-    "ticker": "AKTS",
-    "name": "Aktis Oncology Inc",
-    "rev_ttm": 12.6558,
-    "rev_g": 49.90813,
-    "r13": 35.998
    }
   ],
   "movers_up": [
@@ -1063,16 +1066,16 @@
     "dp": 17.606
    },
    {
+    "ticker": "BBNX",
+    "name": "Beta Bionics Inc",
+    "px": 19.23,
+    "dp": 14.9432
+   },
+   {
     "ticker": "TRX",
     "name": "TRX Gold Corp",
     "px": 1.29,
     "dp": 14.1593
-   },
-   {
-    "ticker": "BBNX",
-    "name": "Beta Bionics Inc",
-    "px": 18.58,
-    "dp": 11.058
    }
   ],
   "movers_down": [
@@ -1147,7 +1150,7 @@
   ],
   "evaluation": {
    "1w": {
-    "excess": 1.34,
+    "excess": 1.72,
     "days": 4,
     "indep": 1,
     "dropped": 0
@@ -1240,6 +1243,20 @@
     "form": "SCHEDULE 13D/A"
    },
    {
+    "ticker": "BOC",
+    "name": "Boston Omaha Corp",
+    "date": "2026-09-15",
+    "link": "https://www.sec.gov/Archives/edgar/data/1494582/000139834426017012/0001398344-26-017012-index.htm",
+    "form": "SCHEDULE 13D/A"
+   },
+   {
+    "ticker": "AVEX",
+    "name": "AEVEX Corp",
+    "date": "2026-09-15",
+    "link": "https://www.sec.gov/Archives/edgar/data/2096300/000189422526000005/0001894225-26-000005-index.htm",
+    "form": "SCHEDULE 13G"
+   },
+   {
     "ticker": "GMTL",
     "name": "Guardian Metal Resources PLC",
     "date": "2026-09-14",
@@ -1287,20 +1304,6 @@
     "date": "2026-09-10",
     "link": "https://www.sec.gov/Archives/edgar/data/2006960/000095010326013740/0000950103-26-013740-index.htm",
     "form": "SCHEDULE 13G"
-   },
-   {
-    "ticker": "ARQQ",
-    "name": "Arqit Quantum Inc",
-    "date": "2026-09-10",
-    "link": "https://www.sec.gov/Archives/edgar/data/1859690/000170302626000007/0001703026-26-000007-index.htm",
-    "form": "SCHEDULE 13G/A"
-   },
-   {
-    "ticker": "SPH",
-    "name": "Suburban Propane Partners LP",
-    "date": "2026-09-10",
-    "link": "https://www.sec.gov/Archives/edgar/data/1005210/000139834426016863/0001398344-26-016863-index.htm",
-    "form": "SCHEDULE 13G/A"
    }
   ],
   "filings_offering": [
@@ -1355,23 +1358,14 @@
    }
   ],
   "budget_mode": "bootstrap",
-  "news": [
-   {
-    "title": "LINC Investors Have Opportunity to Lead Lincoln Educational Services Corporation Securities Fraud Lawsuit",
-    "link": "https://www.prnewswire.com/news-releases/linc-investors-have-opportunity-to-lead-lincoln-educational-services-corporation-securities-fraud-lawsuit-302879598.html",
-    "source": "PR Newswire",
-    "published": "2026-09-15T19:41:00+00:00",
-    "summary": "NEW YORK, Sept. 15, 2026 /PRNewswire/ -- Why: Rosen Law Firm, a global investor rights law firm, announces a class action lawsuit on behalf of purchasers of securities of Lincoln Educational Services Corporation (NASDAQ: LINC)…",
-    "ticker": "LINC"
-   }
-  ]
+  "news": []
  },
  "econ_calendar": [],
  "stats": {
   "feeds_total": 21,
   "feeds_failed": 3,
-  "items": 373,
-  "smallcap_calls": 554,
+  "items": 391,
+  "smallcap_calls": 552,
   "feed_errors": [
    [
     "GlobeNewswire",
