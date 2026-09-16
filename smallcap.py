@@ -244,11 +244,35 @@ def refresh_universe(cache):
 # ------------------------------------------------------------- fetch ---------
 
 
+def _num(v):
+    """Coerce an untrusted vendor field to a number, or None.
+
+    These values are written into the scorecard and committed, so a string
+    where a number belongs would persist across runs and raise on every later
+    one — silently wiping the entire screen behind a one-line warning.
+    """
+    if v is None or v == "":
+        return None
+    try:
+        return float(v)
+    except (TypeError, ValueError):
+        return None
+
+
+def _txt(v, limit):
+    """Same idea for text fields: never slice something that isn't a string."""
+    return (v if isinstance(v, str) else "" if v is None else str(v))[:limit]
+
+
 def in_band(profile):
-    if not profile or not profile.get("mcap"):
+    if not profile:
         return False
-    exch = profile.get("exch") or ""
-    return (MCAP_MIN <= profile["mcap"] <= MCAP_MAX) and "OTC" not in exch.upper()
+    mcap = profile.get("mcap")
+    if isinstance(mcap, bool) or not isinstance(mcap, (int, float)) or not mcap:
+        return False
+    exch = profile.get("exch")
+    exch = exch if isinstance(exch, str) else ""
+    return MCAP_MIN <= mcap <= MCAP_MAX and "OTC" not in exch.upper()
 
 
 def _fetch_profile(fh, cache, ticker):
@@ -258,11 +282,11 @@ def _fetch_profile(fh, cache, ticker):
         p = {}
     prev = cache["profiles"].get(ticker) or {}
     entry = {
-        "mcap": p.get("marketCapitalization") or None,
-        "shares": p.get("shareOutstanding") or None,
-        "exch": (p.get("exchange") or "")[:40],
-        "ind": (p.get("finnhubIndustry") or "")[:28],
-        "name": (p.get("name") or cache["universe"].get(ticker, ""))[:60],
+        "mcap": _num(p.get("marketCapitalization")),
+        "shares": _num(p.get("shareOutstanding")),
+        "exch": _txt(p.get("exchange"), 40),
+        "ind": _txt(p.get("finnhubIndustry"), 28),
+        "name": _txt(p.get("name"), 60) or _txt(cache["universe"].get(ticker), 60),
         "t": _iso(),
     }
     # own share-count history (dilution measurement improves as this grows)
@@ -345,11 +369,16 @@ def refresh_earnings(fh, cache):
     earn_map, keep = {}, []
     for r in rows:
         sym = r.get("symbol", "")
-        if sym and in_band(cache["profiles"].get(sym)) and r.get("date"):
-            earn_map[sym] = r["date"]
-            keep.append({"date": r["date"], "ticker": sym,
-                         "name": cache["profiles"][sym].get("name") or sym,
-                         "hour": r.get("hour") or ""})
+        if not sym or not in_band(cache["profiles"].get(sym)):
+            continue
+        try:                    # this date is cached AND committed, so a bad
+            datetime.fromisoformat(r.get("date") or "")   # one would persist
+        except (TypeError, ValueError):                   # and break rendering
+            continue
+        earn_map[sym] = r["date"]
+        keep.append({"date": r["date"], "ticker": sym,
+                     "name": cache["profiles"][sym].get("name") or sym,
+                     "hour": r.get("hour") or ""})
     keep.sort(key=lambda r: (r["date"], r["ticker"]))
     cache["earn_map"] = earn_map
     cache["earnings"] = keep[:12]

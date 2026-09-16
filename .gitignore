@@ -1,8 +1,14 @@
 __pycache__/
 .DS_Store
-data/launchd.log
-data/secrets.json
-data/*.key
+
+# data/ is an ALLOWLIST, not a denylist. The workflow commits with `git add -A`,
+# so a future credential file (data/creds.env, data/token.txt, ...) would be
+# swept into this PUBLIC repo automatically. Only these three state files ship;
+# anything else added under data/ is ignored by default and must be opted in.
+data/*
+!data/latest.json
+!data/smallcap.json
+!data/screen_log.json
 
 # private research workspace living inside this public repo — NEVER commit
 Small Cap Research/

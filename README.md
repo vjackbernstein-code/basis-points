@@ -166,6 +166,39 @@ record then, in this priority order:
 Shipped early because it is display-only and score-neutral: the CAN SLIM-style
 market-context banner (the benchmark's own 13/26-week trend).
 
+## Security posture (reviewed Sep 16, 2026)
+
+This system republishes text written by strangers, so every feed field is
+treated as hostile input.
+
+- **Escaping**: every external string reaching the page goes through `esc()`
+  (`html.escape(quote=True)`), attribute contexts included.
+- **Links**: `safe_link()` allowlists `http`/`https` at ingest. Escaping alone
+  is *not* sufficient here — `html.escape` turns the quotes in
+  `javascript:fetch('…')` into entities that the browser decodes back before
+  using the address, so the payload survives. The scheme must be checked.
+- **Content-Security-Policy**: the page emits `default-src 'none'` (plus the
+  Google-Fonts style/font origins). It runs no JavaScript at all, so this
+  costs nothing and neutralises any future escaping regression.
+- **Input ceilings**: responses capped at 8 MB, gzip expansion at 32 MB
+  (incremental, so a compression bomb is refused rather than OOM-ing the
+  runner), feed titles at 300 chars (which also bounds the filing-title regex).
+- **Vendor type confusion**: numeric/text fields are coerced at the cache
+  boundary (`_num`, `_txt`) and `in_band` type-checks, because bad values get
+  *committed* and would otherwise raise on every later run.
+- **Dates**: validated at ingest (FRED calendar, Finnhub earnings) and the
+  render is fenced, so one malformed vendor date degrades a column instead of
+  aborting the publish.
+- **Secrets**: `data/` is a git **allowlist** (only the three state files ship)
+  so a future credential file cannot be swept in by `git add -A`; error strings
+  are scrubbed of key material before being written to the public JSON.
+- **Agents**: the scheduled watchdog's prompt declares repository data as
+  untrusted third-party text and forbids treating it as instructions — the
+  ingested newswires are self-serve, so a headline is attacker-controlled.
+
+Not done deliberately: Actions are pinned to major tags rather than commit
+SHAs (tedious, low value for a personal project).
+
 ## Roadmap ideas
 
 - Email delivery of the daily screen (needs a Buttondown/Mailchimp account)

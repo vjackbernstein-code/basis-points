@@ -28,6 +28,7 @@ import time
 import urllib.error
 import urllib.parse
 import urllib.request
+import zlib
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timedelta, timezone
 from email.utils import parsedate_to_datetime
@@ -50,6 +51,19 @@ BOT_UA = SEC_UA
 MAX_AGE_HOURS = 48
 PER_COLUMN = 8
 TOP_COUNT = 7
+
+# Hard ceilings on untrusted input. A feed host can serve anything it likes;
+# without limits one hostile response can exhaust the unattended runner.
+MAX_FETCH_BYTES = 8 * 1024 * 1024        # far above any real feed
+MAX_UNZIPPED_BYTES = 32 * 1024 * 1024    # a small gzip can expand to gigabytes
+MAX_TITLE_CHARS = 300                    # also bounds the filing-title regex
+
+# The published page runs no JavaScript at all, so forbidding scripts outright
+# costs nothing and neutralises any escaping mistake, present or future.
+CSP = ("default-src 'none'; "
+       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; "
+       "font-src https://fonts.gstatic.com; "
+       "img-src 'self' data:; base-uri 'none'; form-action 'none'")
 
 # ---------------------------------------------------------------- feeds ------
 
@@ -146,6 +160,28 @@ INSTRUMENTS = [
 # ------------------------------------------------------------- fetching ------
 
 
+def _scrub(msg):
+    """Strip any API key out of text bound for a public file. Harmless today —
+    urllib's errors don't quote the URL — but the FRED and Finnhub request URLs
+    carry the key in their query string, so one refactor could leak it."""
+    out = str(msg)[:200]
+    for env, fname in (("FINNHUB_API_KEY", "finnhub.key"),
+                       ("FRED_API_KEY", "fred.key")):
+        k = smallcap.read_key(env, fname)
+        if k and len(k) >= 8:
+            out = out.replace(k, "***")
+    return out[:120]
+
+
+def _gunzip(raw, limit=MAX_UNZIPPED_BYTES):
+    """Decompress with a ceiling: a few kilobytes of hostile gzip can expand to
+    gigabytes and take the runner out of memory."""
+    out = zlib.decompressobj(16 + zlib.MAX_WBITS).decompress(raw, limit + 1)
+    if len(out) > limit:
+        raise ValueError("compressed response expands past the size limit")
+    return out
+
+
 def fetch(url, ua=BROWSER_UA, timeout=15, retries=1):
     last_err = None
     for attempt in range(retries + 1):
@@ -156,9 +192,11 @@ def fetch(url, ua=BROWSER_UA, timeout=15, retries=1):
                 "Accept-Encoding": "gzip",
             })
             with urllib.request.urlopen(req, timeout=timeout) as resp:
-                raw = resp.read()
+                raw = resp.read(MAX_FETCH_BYTES + 1)
+            if len(raw) > MAX_FETCH_BYTES:
+                raise ValueError("response exceeds the size limit")
             if raw[:2] == b"\x1f\x8b":
-                raw = gzip.decompress(raw)
+                raw = _gunzip(raw)
             return raw
         except Exception as e:  # noqa: BLE001 — any network failure is tolerated
             last_err = e
@@ -177,8 +215,10 @@ def _text(el):
 
 
 def _clean_summary(s, limit=230):
-    s = re.sub(r"<[^>]+>", " ", s or "")
-    s = html.unescape(s)
+    # unescape FIRST: stripping tags first would let "&lt;script&gt;" survive
+    # the regex and become live markup in the stored value
+    s = html.unescape(s or "")
+    s = re.sub(r"<[^>]+>", " ", s)
     s = re.sub(r"\s+", " ", s).strip()
     if len(s) > limit:
         s = s[:limit].rsplit(" ", 1)[0].rstrip(",.;:") + "…"
@@ -199,6 +239,24 @@ def _parse_date(s):
     if dt.tzinfo is None:
         dt = dt.replace(tzinfo=timezone.utc)
     return dt.astimezone(timezone.utc)
+
+
+def safe_link(url):
+    """Only ordinary web addresses may ever become an href.
+
+    Escaping is the wrong tool here: html.escape turns the quotes in
+    `javascript:fetch('...')` into entities, and the browser decodes them back
+    before using the address — so the payload survives intact. A feed can put
+    anything in <link>, so the scheme is checked against an allowlist instead.
+    """
+    url = (url or "").strip()
+    if not url:
+        return ""
+    try:
+        scheme = urllib.parse.urlsplit(url).scheme.lower()
+    except ValueError:
+        return ""
+    return url if scheme in ("http", "https") else ""
 
 
 def parse_feed(raw, source_name, category, weight):
@@ -249,8 +307,8 @@ def parse_feed(raw, source_name, category, weight):
                 if summary:
                     break
         items.append({
-            "title": re.sub(r"\s+", " ", title).strip(),
-            "link": link.strip(),
+            "title": re.sub(r"\s+", " ", title).strip()[:MAX_TITLE_CHARS],
+            "link": safe_link(link),
             "source": src,
             "category": category,
             "published": published,
@@ -275,7 +333,7 @@ def fetch_all_feeds():
             try:
                 results.extend(fut.result())
             except Exception as e:  # noqa: BLE001
-                errors.append((name, str(e)[:120]))
+                errors.append((name, _scrub(e)))
 
     filings, seen_links = [], set()
     for url in SEC_FILING_FEEDS:
@@ -286,7 +344,7 @@ def fetch_all_feeds():
                     seen_links.add(f["link"])
                     filings.append(f)
         except Exception as e:  # noqa: BLE001
-            errors.append(("SEC EDGAR", str(e)[:120]))
+            errors.append(("SEC EDGAR", _scrub(e)))
     return results, filings, errors
 
 
@@ -563,7 +621,13 @@ def fred_calendar():
     for r in rows:
         label = FRED_RELEASE_LABELS.get(r.get("release_name", ""))
         d = r.get("date", "")
-        if not label or not (today.isoformat() <= d <= end.isoformat()):
+        if not label:
+            continue
+        try:                    # a vendor date is untrusted; a string compare
+            day = datetime.fromisoformat(d).date()   # would pass "2026-09-17T"
+        except (TypeError, ValueError):              # and blow up at render
+            continue
+        if not (today <= day <= end):
             continue
         if (label, d) in seen:
             continue
@@ -1030,6 +1094,7 @@ def render_smallcap_page(data):
     body = f'<div class="wrap">{"".join(parts)}</div>'
     return (f'<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">'
             f'<meta name="viewport" content="width=device-width, initial-scale=1">'
+            f'<meta http-equiv="Content-Security-Policy" content="{CSP}">'
             f'<meta http-equiv="refresh" content="900">'
             f'<title>Basis Points — small-cap growth screen</title>{FONTS_LINK}'
             f'<style>{CSS}</style></head><body>{body}</body></html>')
@@ -1066,13 +1131,13 @@ def build_data():
         sc_summary["news"] = smallcap.match_news([slim(i) for i in fresh[:400]])
     except Exception as e:  # noqa: BLE001 — the page must render even if this fails
         sc_summary, sc_calls = None, 0
-        market_errors.append(("Small-cap engine", str(e)[:120]))
+        market_errors.append(("Small-cap engine", _scrub(e)))
 
     try:
         econ = fred_calendar()
     except Exception as e:  # noqa: BLE001
         econ = []
-        market_errors.append(("FRED calendar", str(e)[:120]))
+        market_errors.append(("FRED calendar", _scrub(e)))
 
     data = {
         "generated_at": now.isoformat(),
@@ -1109,10 +1174,17 @@ def main():
         (DATA / "latest.json").write_text(
             json.dumps(data, indent=1, ensure_ascii=False), encoding="utf-8")
 
-    # the rating system IS the site: one page, served at both addresses
-    page = render_smallcap_page(data)
-    (SITE / "index.html").write_text(page, encoding="utf-8")
-    (SITE / "smallcap.html").write_text(page, encoding="utf-8")
+    # the rating system IS the site: one page, served at both addresses.
+    # Rendering is fenced so one malformed vendor field degrades the page
+    # instead of aborting the job and freezing the site at its last state.
+    try:
+        page = render_smallcap_page(data)
+    except Exception as e:  # noqa: BLE001
+        print(f"  warn: page render failed, previous page kept: {_scrub(e)}",
+              file=sys.stderr)
+    else:
+        (SITE / "index.html").write_text(page, encoding="utf-8")
+        (SITE / "smallcap.html").write_text(page, encoding="utf-8")
 
     s = data.get("stats", {})
     cov = (data.get("smallcap") or {}).get("coverage") or {}
