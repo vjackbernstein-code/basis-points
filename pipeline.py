@@ -873,14 +873,18 @@ def render_smallcap_page(data):
                 dropped = (f'; {e["dropped"]} name-readings dropped'
                            if e.get("dropped") else "")
                 bits.append(f'{lab}: {e["excess"]:+.2f}% vs the Russell 2000 Growth '
-                            f'ETF ({e["days"]} daily / {e.get("indep", "?")} independent '
-                            f'reading{"s" if e["days"] != 1 else ""}{dropped})')
+                            f'ETF ({e["days"]} frozen cohort reading'
+                            f'{"s" if e["days"] != 1 else ""} / '
+                            f'{e.get("indep", "?")} independent{dropped})')
         parts.append('<div class="note-box"><strong>Live track record.</strong> '
                      'Average forward return of published screens minus the benchmark — '
                      + "; ".join(bits) +
-                     '. Accumulated from real daily screens under this model version; '
-                     'never backfilled. Overlapping cohorts mean the independent count '
-                     'is the honest sample size.</div>')
+                     '. Each published screen’s return is measured once, about a week '
+                     'after publication, then frozen — never recomputed and never '
+                     'backfilled — so readings accumulate as real forward evidence. '
+                     'Cohorts published within the same week overlap, so the '
+                     '<em>independent</em> count, not the total, is the honest '
+                     'sample size.</div>')
     elif screen:
         parts.append('<div class="note-box"><strong>Live track record:</strong> '
                      'collecting. Each day’s screen is logged; the first 1-week '

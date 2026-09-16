@@ -94,10 +94,17 @@ Publication requires positive TTM revenue growth; ≤5 names per industry group;
 one-day churn penalty for newcomers; EV/Rev displayed but never scored; flags
 for earnings proximity, newcomers, and net insider buying. Every trading day
 the published screen plus IWO/IWM benchmark prices are logged to
-`data/screen_log.json`; forward 1-week and 4-week cohort-vs-IWO returns
-accumulate per model version (a live record, never backfilled), reporting both
-daily and independent (non-overlapping) readings. Scoring is frozen until the
-record holds 12 independent 1-week and 3 independent 4-week readings. The
+`data/screen_log.json`. Each cohort's forward return vs IWO is **frozen once**
+when it reaches its horizon (`snapshot_readings`, stored as `read_1w` /
+`read_4w` on the log entry) and never recomputed; `evaluate` then aggregates
+every frozen reading for the current model version, reporting both the total
+and the *independent* (non-overlapping) count. Scoring is frozen until the
+record holds 12 independent 1-week and 3 independent 4-week readings.
+*(Sep 16, 2026 fix: readings used to be recomputed each run from whatever
+cohorts sat in the age window. That made the published number drift daily
+without new evidence, and — because a window spans fewer days than the
+independence gap — capped the independent count at 1 forever, making the
+freeze criterion unsatisfiable.)* The
 free tier allows 60 calls/minute.
 
 **Budget allocation (operational, Sep 15, 2026 — scoring untouched).** Only

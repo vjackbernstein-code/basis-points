@@ -340,17 +340,19 @@ class SpendBudgetTests(SmallcapTestCase):
         # OLD's screen is outside COHORT_LOOKBACK_DAYS, so it is not protected
         self.assertEqual(stubs.calls, [("quote", "CCC")])
 
-    def test_metrics_backfill_preempts_the_discovery_reserve(self):
-        # Recorded behaviour, not an endorsement: the reserve is a cap applied
-        # after the uncapped band-metrics backfill, so a catch-up run can still
-        # spend every call on upkeep. See the report accompanying these tests.
+    def test_metrics_backfill_cannot_spend_into_the_discovery_reserve(self):
+        # The reserve is fenced off from EVERY maintenance step, not just quote
+        # upkeep. A large metrics backfill used to run first and uncapped and
+        # could swallow a whole run, recreating the starvation the reserve
+        # exists to prevent.
         stubs = StubFetchers().install(self)
         cache = self._cache_with(band=30, unprofiled=30)
         for t in list(cache["metrics"]):
             del cache["metrics"][t]
         smallcap._spend_budget(None, cache, 10)
-        self.assertEqual(len(stubs.of("metrics")), 10)
-        self.assertEqual(stubs.of("profile"), [])
+        reserve = int(10 * smallcap.DISCOVERY_RESERVE)
+        self.assertEqual(len(stubs.of("metrics")), 10 - reserve)
+        self.assertEqual(len(stubs.of("profile")), reserve)
 
     def test_total_calls_never_exceed_the_budget(self):
         stubs = StubFetchers().install(self)
@@ -397,6 +399,7 @@ class TrackRecordTests(SmallcapTestCase):
         names = self._names(25)
         cache = self._priceable_cache(names, px=11.0, bench_iwo=105.0)
         log = {days_ago(7): log_entry(names, px0=10.0, bench_iwo=100.0)}
+        smallcap.snapshot_readings(cache, log)
         out = smallcap.evaluate(cache, log)
         # cohort +10%, benchmark +5% => +5 points of excess
         self.assertEqual(out["1w"]["excess"], 5.0)
@@ -418,6 +421,7 @@ class TrackRecordTests(SmallcapTestCase):
                days_ago(9): log_entry(names),
                days_ago(10): log_entry(names),   # too old for 1w
                days_ago(28): log_entry(names)}   # inside 4w (25-31)
+        smallcap.snapshot_readings(cache, log)
         out = smallcap.evaluate(cache, log)
         self.assertEqual(out["1w"]["days"], 2)
         self.assertEqual(out["4w"]["days"], 1)
@@ -428,32 +432,66 @@ class TrackRecordTests(SmallcapTestCase):
         for t in names[:6]:                       # 19 priceable names left
             cache["quotes"][t]["t"] = hours_ago(40)   # stale beyond 30h
         log = {days_ago(7): log_entry(names)}
+        smallcap.snapshot_readings(cache, log)
         self.assertEqual(smallcap.evaluate(cache, log), {})
 
         cache["quotes"][names[0]]["t"] = hours_ago(1)  # back to 20
+        smallcap.snapshot_readings(cache, log)
         out = smallcap.evaluate(cache, log)
         self.assertEqual(out["1w"]["days"], 1)
         self.assertEqual(out["1w"]["dropped"], 5)
 
-    def test_evaluate_counts_independent_readings_by_the_horizon_gap(self):
-        # Two readings 3 days apart are one independent observation for a
-        # 7-day gap. NOTE: because the 1w window is only ages 6-9, `indep`
-        # can never exceed 1 — recorded, not fixed.
+    def _frozen(self, names, age, excess):
+        return dict(log_entry(names),
+                    read_1w={"excess": excess, "age": 7, "dropped": 0})
+
+    def test_independent_readings_accumulate_across_the_whole_record(self):
+        # The point of the snapshot design: frozen readings pile up over time,
+        # so cohorts spread across weeks count as separate evidence. Before,
+        # evaluate only ever saw one 3-day window, so `indep` was stuck at 1
+        # forever and the freeze criterion built on it was unsatisfiable.
         names = self._names(25)
         cache = self._priceable_cache(names)
-        log = {days_ago(6): log_entry(names), days_ago(9): log_entry(names)}
+        log = {days_ago(age): self._frozen(names, age, 2.0)
+               for age in (7, 14, 21, 28)}
         out = smallcap.evaluate(cache, log)
-        self.assertEqual(out["1w"]["days"], 2)
+        self.assertEqual(out["1w"]["days"], 4)
+        self.assertEqual(out["1w"]["indep"], 4)
+        self.assertEqual(out["1w"]["excess"], 2.0)
+
+    def test_readings_closer_than_the_gap_count_as_one_observation(self):
+        names = self._names(25)
+        cache = self._priceable_cache(names)
+        log = {days_ago(age): self._frozen(names, age, 1.0)
+               for age in (6, 7, 9)}          # all within one week
+        out = smallcap.evaluate(cache, log)
+        self.assertEqual(out["1w"]["days"], 3)
         self.assertEqual(out["1w"]["indep"], 1)
+
+    def test_a_frozen_reading_is_never_recomputed(self):
+        # Once frozen, a reading must not move when prices move — that drift
+        # was what made the published number wander daily without new evidence.
+        names = self._names(25)
+        cache = self._priceable_cache(names, px=11.0, bench_iwo=105.0)
+        log = {days_ago(7): log_entry(names, px0=10.0, bench_iwo=100.0)}
+        smallcap.snapshot_readings(cache, log)
+        first = smallcap.evaluate(cache, log)["1w"]["excess"]
+        for t in names:                       # prices move a lot afterwards
+            cache["quotes"][t]["px"] = 20.0
+        smallcap.snapshot_readings(cache, log)
+        self.assertEqual(smallcap.evaluate(cache, log)["1w"]["excess"], first)
 
     def test_evaluate_needs_both_benchmark_readings(self):
         names = self._names(25)
         log = {days_ago(7): log_entry(names, bench_iwo=None)}
-        self.assertEqual(smallcap.evaluate(self._priceable_cache(names), log), {})
+        cache = self._priceable_cache(names)
+        smallcap.snapshot_readings(cache, log)
+        self.assertEqual(smallcap.evaluate(cache, log), {})
 
         log = {days_ago(7): log_entry(names)}
         no_bench = self._priceable_cache(names)
         no_bench["bench"] = {}
+        smallcap.snapshot_readings(no_bench, log)
         self.assertEqual(smallcap.evaluate(no_bench, log), {})
 
     def test_update_log_writes_no_duplicate_when_the_benchmark_has_not_moved(self):

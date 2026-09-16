@@ -95,6 +95,11 @@ TRICKLE_BUDGET = 40
 BENCHES = ("IWO", "IWM")                # Russell 2000 Growth (primary) + Russell 2000
 MODEL_VERSION = "v3"                    # stamped on log entries; the track record is
                                         # reported per version, never blended
+# label, min age, max age (days) at which a cohort's reading is frozen, and how
+# far apart two readings must be to count as independent evidence.
+HORIZONS = (("1w", 6, 9, 7), ("4w", 25, 31, 28))
+MIN_PRICEABLE = 20                      # names a cohort must still be able to
+                                        # price for its reading to be trusted
 MIN_GROUP = 8                           # industry-relative ranks need this many peers
 
 # Coarse industry groups: vendor tags are fragmented ("Banking" vs "Financial
@@ -654,45 +659,82 @@ def update_log(cache, published, candidates):
     return log
 
 
-def evaluate(cache, log):
-    """Forward cohort returns vs the IWO benchmark, current model version only."""
+def _cohort_excess(cache, entry, bench_now):
+    """One published cohort's return minus the benchmark's, at today's prices.
+    Returns (excess, dropped), or (None, dropped) when too few of its names can
+    still be priced for the reading to be trustworthy."""
+    b0 = (entry.get("bench") or {}).get("iwo")
+    if not b0 or not bench_now:
+        return None, 0
+    rets, dropped = [], 0
+    for tick, _score, px0 in entry.get("pub", []):
+        q = cache["quotes"].get(tick) or {}
+        if px0 and q.get("px") and _age_h(q.get("t")) < 30:
+            rets.append((q["px"] / px0 - 1) * 100)
+        else:
+            dropped += 1
+    if len(rets) < MIN_PRICEABLE:
+        return None, dropped
+    return sum(rets) / len(rets) - (bench_now / b0 - 1) * 100, dropped
+
+
+def snapshot_readings(cache, log):
+    """Freeze each cohort's forward reading the first time it reaches a horizon.
+
+    Readings must be SNAPSHOT once, never recomputed. Recomputing them daily
+    from whatever cohorts happened to sit in the age window meant (a) the
+    published number drifted every day while adding no new evidence — it was
+    re-measuring the same cohorts against newer prices — and (b) every reading
+    in a window was only a few days from every other, so the "independent
+    readings" count could never exceed 1 and the freeze criterion built on it
+    was unsatisfiable. Frozen readings accumulate instead, as a record should.
+    """
     bench_now = (cache.get("bench") or {}).get("iwo")
     today = _now().date()
+    changed = False
+    for day in sorted(log):
+        entry = log[day]
+        if entry.get("v") != MODEL_VERSION:
+            continue
+        age = (today - datetime.fromisoformat(day).date()).days
+        for horizon, lo, hi, _gap in HORIZONS:
+            key = f"read_{horizon}"
+            if key in entry or not (lo <= age <= hi):
+                continue
+            excess, dropped = _cohort_excess(cache, entry, bench_now)
+            if excess is None:
+                continue
+            entry[key] = {"excess": round(excess, 2), "age": age,
+                          "dropped": dropped}
+            changed = True
+    if changed:
+        save_log(log)
+    return log
+
+
+def evaluate(cache, log):
+    """The live track record: every cohort reading frozen so far for this model
+    version, aggregated. 'days' counts frozen cohort readings; 'indep' counts
+    only those far enough apart in time to be genuinely separate evidence."""
     out = {}
-    for horizon, lo, hi, gap in (("1w", 6, 9, 7), ("4w", 25, 31, 28)):
-        readings = []
-        for day in sorted(log):
-            entry = log[day]
-            if entry.get("v") != MODEL_VERSION:
-                continue
-            b0 = (entry.get("bench") or {}).get("iwo")
-            age = (today - datetime.fromisoformat(day).date()).days
-            if not (lo <= age <= hi) or not b0 or not bench_now:
-                continue
-            rets, dropped = [], 0
-            for tick, _score, px0 in entry.get("pub", []):
-                q = cache["quotes"].get(tick) or {}
-                if px0 and q.get("px") and _age_h(q.get("t")) < 30:
-                    rets.append((q["px"] / px0 - 1) * 100)
-                else:
-                    dropped += 1
-            if len(rets) < 20:
-                continue    # too many missing names to trust the reading
-            cohort = sum(rets) / len(rets)
-            readings.append((day, cohort - (bench_now / b0 - 1) * 100, dropped))
-        if readings:
-            indep, last = 0, None
-            for day, _x, _d in readings:
-                d = datetime.fromisoformat(day).date()
-                if last is None or (d - last).days >= gap:
-                    indep += 1
-                    last = d
-            out[horizon] = {
-                "excess": round(sum(x for _, x, _d in readings) / len(readings), 2),
-                "days": len(readings),
-                "indep": indep,
-                "dropped": sum(d for _, _x, d in readings),
-            }
+    for horizon, _lo, _hi, gap in HORIZONS:
+        key = f"read_{horizon}"
+        got = [(day, log[day][key]) for day in sorted(log)
+               if log[day].get("v") == MODEL_VERSION and key in log[day]]
+        if not got:
+            continue
+        indep, last = 0, None
+        for day, _r in got:
+            d = datetime.fromisoformat(day).date()
+            if last is None or (d - last).days >= gap:
+                indep += 1
+                last = d
+        out[horizon] = {
+            "excess": round(sum(r["excess"] for _d, r in got) / len(got), 2),
+            "days": len(got),
+            "indep": indep,
+            "dropped": sum(r.get("dropped", 0) for _d, r in got),
+        }
     return out
 
 
@@ -907,20 +949,30 @@ def _spend_budget(fh, cache, budget):
     spend((t for t in _recent_cohort_tickers(COHORT_LOOKBACK_DAYS)
            if _age_h(cache["quotes"].get(t, {}).get("t")) > QUOTE_STALE_COHORT_H),
           _fetch_quote)
+    # The discovery reserve is genuinely fenced off: EVERY maintenance step
+    # below is capped so it cannot spend into it. Capping only the quote upkeep
+    # was not enough — a large metrics backfill ran earlier and uncapped, and
+    # could still swallow a whole run, recreating the starvation it was meant
+    # to prevent. Steps 1-2 above stay uncapped: they are small (tens of names)
+    # and protect the published screen and the track record.
+    reserve = int(start_budget * DISCOVERY_RESERVE) if unprofiled else 0
+
+    def maint_cap():
+        """How much a maintenance step may spend without touching the reserve."""
+        return max(0, budget - reserve)
+
     # 3. metrics missing for known in-band names (screen grows early); entries
     #    from before v3 lack the leverage/valuation fields — refetch those too
     spend((t for t in band
            if t not in cache["metrics"] or "ev_rev" not in cache["metrics"][t]),
-          _fetch_metrics)
+          _fetch_metrics, cap=maint_cap())
     # 3b. band profiles from before the v2 format lack the share count the
     #     revenue floor needs — re-profile them now, not at the weekly refresh
     spend((t for t in band if "shares" not in (cache["profiles"].get(t) or {})),
-          _fetch_profile)
-    # 4. RESERVED discovery slice, held ahead of routine upkeep so mapping the
-    #    market can never again be starved by maintaining what we already know
+          _fetch_profile, cap=maint_cap())
+    # 4. RESERVED discovery slice
     if unprofiled:
-        spend(iter(unprofiled), _fetch_profile,
-              cap=int(start_budget * DISCOVERY_RESERVE))
+        spend(iter(unprofiled), _fetch_profile, cap=reserve)
     # 5. routine quote upkeep for the rest of the band, oldest first
     band_by_quote_age = sorted(band, key=lambda t: cache["quotes"].get(t, {}).get("t") or "")
     spend((t for t in band_by_quote_age
@@ -1002,6 +1054,9 @@ def update(budget=None):
             prev_published={p[0] for p in (prev or {}).get("pub", [])} or None)
         if published:
             log = update_log(cache, published, candidates)
+        # freeze any cohort that has just reached a horizon — must happen before
+        # summarize(), which reports the aggregated record
+        log = snapshot_readings(cache, log)
         cache["last_screen"] = [r["ticker"] for r in candidates] or cache["last_screen"]
         summary = summarize(cache, published=published, candidates=candidates, log=log)
         summary["budget_mode"] = mode
