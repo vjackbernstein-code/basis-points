@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-16T22:03:55.006383+00:00",
+ "generated_at": "2026-09-16T23:09:56.284282+00:00",
  "market": [
   {
    "label": "S&P 500",
@@ -77,13 +77,12 @@
    "label": "Dow",
    "symbol": "DJIA",
    "kind": "index",
-   "value": 52093.11,
-   "prev": 52421.2,
-   "value_txt": "52,093.11",
-   "delta": -0.6258727385103671,
-   "delta_txt": "-0.63%",
+   "value": 51461.9,
+   "prev": 52093.11,
+   "value_txt": "51,461.90",
+   "delta": -1.2116957501673429,
+   "delta_txt": "-1.21%",
    "spark": [
-    53839.99,
     53732.41,
     53459.78,
     53343.4,
@@ -105,9 +104,9 @@
     52064.1,
     52573.29,
     52421.2,
-    52093.11
-   ],
-   "asof": "Sep 15"
+    52093.11,
+    51461.9
+   ]
   },
   {
    "label": "VIX",
@@ -292,11 +291,11 @@
    "label": "Bitcoin",
    "symbol": "bitcoin",
    "kind": "crypto",
-   "value": 75816.62163368374,
+   "value": 75698.62856126601,
    "prev": 75590.24471973324,
-   "value_txt": "$75,817",
-   "delta": 0.2994790065700173,
-   "delta_txt": "+0.30%",
+   "value_txt": "$75,699",
+   "delta": 0.14338337167002596,
+   "delta_txt": "+0.14%",
    "spark": [
     78511.2331116067,
     79018.03405750773,
@@ -320,18 +319,18 @@
     76819.04496746542,
     78173.35158344489,
     75590.24471973324,
-    75816.62163368374
+    75698.62856126601
    ]
   },
   {
    "label": "Ethereum",
    "symbol": "ethereum",
    "kind": "crypto",
-   "value": 2398.733063914713,
+   "value": 2395.1996273776117,
    "prev": 2397.4972601650115,
-   "value_txt": "$2,399",
-   "delta": 0.05154557505590064,
-   "delta_txt": "+0.05%",
+   "value_txt": "$2,395",
+   "delta": -0.09583463662609967,
+   "delta_txt": "-0.10%",
    "spark": [
     2442.0111121033965,
     2506.3431057180687,
@@ -355,11 +354,11 @@
     2476.682526163658,
     2514.759550467769,
     2397.4972601650115,
-    2398.733063914713
+    2395.1996273776117
    ]
   }
  ],
- "tape_line": "S&P 500 -0.45%, Nasdaq -0.78%, Dow -0.63%; the 10-year Treasury at 5.00% (+3 bp); WTI crude $107.02 (+4.49%); bitcoin $75,817 (+0.30%).",
+ "tape_line": "S&P 500 -0.45%, Nasdaq -0.78%, Dow -1.21%; the 10-year Treasury at 5.00% (+3 bp); WTI crude $107.02 (+4.49%); bitcoin $75,699 (+0.14%).",
  "top": [
   {
    "title": "Fed rate hike fails to calm troubled markets as Dow falls 600 points. Expect more sharp swings in stocks and bonds.",
@@ -367,6 +366,13 @@
    "source": "MarketWatch",
    "published": "2026-09-16T21:40:00+00:00",
    "summary": "Fed Chair Kevin Warsh has sent investors a message: When it comes to tamping down inflation, he means business."
+  },
+  {
+   "title": "Federal Reserve decision as it happened: Trump calls for rates to be 1% or less after Fed tightens monetary policy",
+   "link": "https://www.ft.com/content/61b5fbae-9dd6-4980-bd1f-effe54b72d84",
+   "source": "Financial Times",
+   "published": "2026-09-16T22:49:33+00:00",
+   "summary": "President urges policymakers to act as rate-setters lift borrowing costs for first time since 2023"
   },
   {
    "title": "Dow Falls 500 Points as the Federal Reserve Raises Key Interest Rate",
@@ -402,25 +408,18 @@
    "source": "Federal Reserve",
    "published": "2026-09-16T18:00:00+00:00",
    "summary": "Federal Reserve issues FOMC statement"
-  },
-  {
-   "title": "Federal Reserve Board and Federal Open Market Committee release economic projections from the September 15-16 FOMC meeting",
-   "link": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916b.htm",
-   "source": "Federal Reserve",
-   "published": "2026-09-16T18:00:00+00:00",
-   "summary": "Federal Reserve Board and Federal Open Market Committee release economic projections from the September 15-16 FOMC meeting"
   }
  ],
  "smallcap": {
   "note": null,
-  "asof": "2026-09-16T22:15:00+00:00",
+  "asof": "2026-09-16T23:20:51+00:00",
   "coverage": {
    "universe": 9862,
-   "profiled": 8865,
-   "in_band": 1673,
-   "measured": 1601,
-   "scored": 820,
-   "below_floor": 65
+   "profiled": 9167,
+   "in_band": 1738,
+   "measured": 1673,
+   "scored": 861,
+   "below_floor": 70
   },
   "screen": [
    {
@@ -437,7 +436,7 @@
     "ev_rev": 7.2737,
     "px": 11.82,
     "dp": -2.8759,
-    "score": 84.1,
+    "score": 84.0,
     "sub": {
      "g": 79,
      "m": 100,
@@ -459,13 +458,37 @@
     "ev_rev": 15.8316,
     "px": 56.35,
     "dp": 2.5851,
-    "score": 82.3,
+    "score": 82.6,
     "sub": {
      "g": 87,
      "m": 97,
-     "q": 43
+     "q": 44
     },
     "flags": []
+   },
+   {
+    "ticker": "SBET",
+    "name": "Sharplink Inc",
+    "ind": "Hotels, Restaurants & Leisur",
+    "group": "Consumer",
+    "mcap": 1809.4725315562841,
+    "rev_g": 1496.68,
+    "accel": 50.0,
+    "r13": 68.5083,
+    "momo": 0.69,
+    "from_high": -59.15024315331456,
+    "ev_rev": 34.9461,
+    "px": 7.98,
+    "dp": -4.2017,
+    "score": 82.5,
+    "sub": {
+     "g": 100,
+     "m": 83,
+     "q": 60
+    },
+    "flags": [
+     "new"
+    ]
    },
    {
     "ticker": "GCT",
@@ -481,11 +504,11 @@
     "ev_rev": 1.033,
     "px": 51.64,
     "dp": -1.9835,
-    "score": 82.3,
+    "score": 82.1,
     "sub": {
      "g": 88,
      "m": 86,
-     "q": 62
+     "q": 61
     },
     "flags": []
    },
@@ -503,11 +526,11 @@
     "ev_rev": 0.5569,
     "px": 40.46,
     "dp": -0.8333,
-    "score": 81.6,
+    "score": 81.4,
     "sub": {
-     "g": 80,
+     "g": 79,
      "m": 98,
-     "q": 51
+     "q": 52
     },
     "flags": []
    },
@@ -525,9 +548,9 @@
     "ev_rev": 4.1275,
     "px": 10.02,
     "dp": -1.5717,
-    "score": 81.6,
+    "score": 81.4,
     "sub": {
-     "g": 93,
+     "g": 92,
      "m": 78,
      "q": 67
     },
@@ -550,7 +573,7 @@
     "score": 81.3,
     "sub": {
      "g": 70,
-     "m": 97,
+     "m": 98,
      "q": 72
     },
     "flags": []
@@ -569,7 +592,7 @@
     "ev_rev": null,
     "px": 39.61,
     "dp": -1.3941,
-    "score": 80.9,
+    "score": 80.8,
     "sub": {
      "g": 84,
      "m": 91,
@@ -591,14 +614,38 @@
     "ev_rev": null,
     "px": 53.56,
     "dp": -1.6526,
-    "score": 80.0,
+    "score": 80.2,
     "sub": {
      "g": 70,
-     "m": 93,
+     "m": 94,
      "q": 74
     },
     "flags": [
      "8-K"
+    ]
+   },
+   {
+    "ticker": "REPX",
+    "name": "Riley Exploration Permian Inc",
+    "ind": "Energy",
+    "group": "Energy",
+    "mcap": 994.7050060273023,
+    "rev_g": 23.16,
+    "accel": 50.0,
+    "r13": 25.1665,
+    "momo": 0.88,
+    "from_high": -4.096170970614432,
+    "ev_rev": 2.5688,
+    "px": 43.08,
+    "dp": -4.0535,
+    "score": 79.7,
+    "sub": {
+     "g": 83,
+     "m": 91,
+     "q": 64
+    },
+    "flags": [
+     "new"
     ]
    },
    {
@@ -622,30 +669,6 @@
      "q": 60
     },
     "flags": []
-   },
-   {
-    "ticker": "REPX",
-    "name": "Riley Exploration Permian Inc",
-    "ind": "Energy",
-    "group": "Energy",
-    "mcap": 994.7050060273023,
-    "rev_g": 23.16,
-    "accel": 50.0,
-    "r13": 25.1665,
-    "momo": 0.88,
-    "from_high": -4.096170970614432,
-    "ev_rev": 2.5688,
-    "px": 43.08,
-    "dp": -4.0535,
-    "score": 79.2,
-    "sub": {
-     "g": 81,
-     "m": 91,
-     "q": 64
-    },
-    "flags": [
-     "new"
-    ]
    },
    {
     "ticker": "MGTX",
@@ -685,11 +708,33 @@
     "ev_rev": 6.6401,
     "px": 10.55,
     "dp": -0.8459,
-    "score": 77.9,
+    "score": 78.2,
     "sub": {
      "g": 87,
      "m": 84,
      "q": 48
+    },
+    "flags": []
+   },
+   {
+    "ticker": "TXO",
+    "name": "TXO Partners LP",
+    "ind": "Energy",
+    "group": "Energy",
+    "mcap": 856.0925270791367,
+    "rev_g": 22.18,
+    "accel": 45.68,
+    "r13": 14.7898,
+    "momo": 0.62,
+    "from_high": -4.884318766066842,
+    "ev_rev": 2.5094,
+    "px": 14.8,
+    "dp": -2.8234,
+    "score": 77.9,
+    "sub": {
+     "g": 83,
+     "m": 80,
+     "q": 63
     },
     "flags": []
    },
@@ -707,37 +752,15 @@
     "ev_rev": 5.6319,
     "px": 18.76,
     "dp": 0.0533,
-    "score": 77.7,
+    "score": 77.6,
     "sub": {
-     "g": 59,
+     "g": 58,
      "m": 97,
      "q": 78
     },
     "flags": [
      "act+"
     ]
-   },
-   {
-    "ticker": "TXO",
-    "name": "TXO Partners LP",
-    "ind": "Energy",
-    "group": "Energy",
-    "mcap": 856.0925270791367,
-    "rev_g": 22.18,
-    "accel": 45.68,
-    "r13": 14.7898,
-    "momo": 0.62,
-    "from_high": -4.884318766066842,
-    "ev_rev": 2.5094,
-    "px": 14.8,
-    "dp": -2.8234,
-    "score": 77.3,
-    "sub": {
-     "g": 82,
-     "m": 80,
-     "q": 62
-    },
-    "flags": []
    },
    {
     "ticker": "KGEI",
@@ -753,11 +776,11 @@
     "ev_rev": 3.8759,
     "px": 6.85,
     "dp": -0.436,
-    "score": 77.1,
+    "score": 77.5,
     "sub": {
-     "g": 86,
+     "g": 87,
      "m": 79,
-     "q": 67
+     "q": 68
     },
     "flags": [
      "new"
@@ -777,9 +800,9 @@
     "ev_rev": 9.1235,
     "px": 24.5,
     "dp": -2.1565,
-    "score": 76.5,
+    "score": 76.9,
     "sub": {
-     "g": 76,
+     "g": 77,
      "m": 86,
      "q": 58
     },
@@ -824,55 +847,11 @@
     "ev_rev": null,
     "px": 20.02,
     "dp": -4.0728,
-    "score": 75.8,
+    "score": 75.3,
     "sub": {
-     "g": 97,
+     "g": 96,
      "m": 57,
      "q": 70
-    },
-    "flags": []
-   },
-   {
-    "ticker": "CTRN",
-    "name": "Citi Trends Inc",
-    "ind": "Retail",
-    "group": "Consumer",
-    "mcap": 592.7519314781603,
-    "rev_g": 11.15,
-    "accel": -0.20000000000000107,
-    "r13": 53.8927,
-    "momo": 0.98,
-    "from_high": -25.298421255294567,
-    "ev_rev": 0.6171,
-    "px": 58.2,
-    "dp": 1.9264,
-    "score": 74.6,
-    "sub": {
-     "g": 61,
-     "m": 93,
-     "q": 65
-    },
-    "flags": []
-   },
-   {
-    "ticker": "EVER",
-    "name": "EverQuote Inc",
-    "ind": "Media",
-    "group": "Consumer",
-    "mcap": 877.8222044863692,
-    "rev_g": 68.34,
-    "accel": -43.790000000000006,
-    "r13": 29.6046,
-    "momo": 0.79,
-    "from_high": -18.76087713191785,
-    "ev_rev": 0.9077,
-    "px": 23.34,
-    "dp": -4.6179,
-    "score": 74.6,
-    "sub": {
-     "g": 75,
-     "m": 88,
-     "q": 47
     },
     "flags": []
    },
@@ -921,6 +900,50 @@
     "flags": []
    },
    {
+    "ticker": "CTRN",
+    "name": "Citi Trends Inc",
+    "ind": "Retail",
+    "group": "Consumer",
+    "mcap": 592.7519314781603,
+    "rev_g": 11.15,
+    "accel": -0.20000000000000107,
+    "r13": 53.8927,
+    "momo": 0.98,
+    "from_high": -25.298421255294567,
+    "ev_rev": 0.6171,
+    "px": 58.2,
+    "dp": 1.9264,
+    "score": 74.5,
+    "sub": {
+     "g": 61,
+     "m": 93,
+     "q": 65
+    },
+    "flags": []
+   },
+   {
+    "ticker": "EVER",
+    "name": "EverQuote Inc",
+    "ind": "Media",
+    "group": "Consumer",
+    "mcap": 877.8222044863692,
+    "rev_g": 68.34,
+    "accel": -43.790000000000006,
+    "r13": 29.6046,
+    "momo": 0.79,
+    "from_high": -18.76087713191785,
+    "ev_rev": 0.9077,
+    "px": 23.34,
+    "dp": -4.6179,
+    "score": 74.4,
+    "sub": {
+     "g": 75,
+     "m": 88,
+     "q": 47
+    },
+    "flags": []
+   },
+   {
     "ticker": "IBEX",
     "name": "Ibex Ltd",
     "ind": "Professional Services",
@@ -934,37 +957,13 @@
     "ev_rev": 0.8142,
     "px": 40.28,
     "dp": -1.2745,
-    "score": 73.8,
+    "score": 74.0,
     "sub": {
      "g": 60,
      "m": 95,
      "q": 60
     },
     "flags": []
-   },
-   {
-    "ticker": "QNST",
-    "name": "QuinStreet Inc",
-    "ind": "Media",
-    "group": "Consumer",
-    "mcap": 1054.956817788901,
-    "rev_g": 18.29,
-    "accel": 24.380000000000003,
-    "r13": 51.5997,
-    "momo": 0.64,
-    "from_high": -17.45177209510992,
-    "ev_rev": 0.7699,
-    "px": 18.4,
-    "dp": 0.2179,
-    "score": 73.8,
-    "sub": {
-     "g": 88,
-     "m": 81,
-     "q": 43
-    },
-    "flags": [
-     "new"
-    ]
    },
    {
     "ticker": "AMPL",
@@ -980,9 +979,9 @@
     "ev_rev": 4.1473,
     "px": 13.37,
     "dp": -2.0513,
-    "score": 71.7,
+    "score": 72.2,
     "sub": {
-     "g": 68,
+     "g": 69,
      "m": 94,
      "q": 34
     },
@@ -1003,6 +1002,13 @@
     "rev_ttm": 29.363543999999997,
     "rev_g": -75.95,
     "r13": 96.7662
+   },
+   {
+    "ticker": "OABI",
+    "name": "OmniAb Inc",
+    "rev_ttm": 43.288042,
+    "rev_g": 67.01,
+    "r13": 91.453
    },
    {
     "ticker": "PINWF",
@@ -1038,13 +1044,6 @@
     "rev_ttm": 0.695849,
     "rev_g": -66.63,
     "r13": 50.1211
-   },
-   {
-    "ticker": "JANX",
-    "name": "Janux Therapeutics Inc",
-    "rev_ttm": 23.251673999999998,
-    "rev_g": 5366.97,
-    "r13": 47.093
    }
   ],
   "movers_up": [
@@ -1073,10 +1072,10 @@
     "dp": 15.3406
    },
    {
-    "ticker": "BUUU",
-    "name": "BUUU Group Ltd",
-    "px": 43.6,
-    "dp": 10.3797
+    "ticker": "IONR",
+    "name": "ioneer Ltd",
+    "px": 3.27,
+    "dp": 12.3711
    }
   ],
   "movers_down": [
@@ -1271,6 +1270,13 @@
     "form": "SCHEDULE 13G"
    },
    {
+    "ticker": "RWTN",
+    "name": "Redwood Trust Inc",
+    "date": "2026-09-16",
+    "link": "https://www.sec.gov/Archives/edgar/data/930236/000093687226000019/0000936872-26-000019-index.htm",
+    "form": "SCHEDULE 13G"
+   },
+   {
     "ticker": "HEPS",
     "name": "D Market Elektronik Hizmetler ve Ticaret AS",
     "date": "2026-09-15",
@@ -1304,13 +1310,6 @@
     "date": "2026-09-14",
     "link": "https://www.sec.gov/Archives/edgar/data/1133869/000110465926107591/0001104659-26-107591-index.htm",
     "form": "SCHEDULE 13G"
-   },
-   {
-    "ticker": "TH",
-    "name": "Target Hospitality Corp",
-    "date": "2026-09-14",
-    "link": "https://www.sec.gov/Archives/edgar/data/1712189/000095014226002544/0000950142-26-002544-index.htm",
-    "form": "SCHEDULE 13D/A"
    }
   ],
   "filings_offering": [
@@ -1334,6 +1333,13 @@
     "date": "2026-09-16",
     "link": "https://www.sec.gov/Archives/edgar/data/1828791/000162828026062297/0001628280-26-062297-index.htm",
     "form": "424B5"
+   },
+   {
+    "ticker": "HYAC",
+    "name": "Haymaker Acquisition Corp 4",
+    "date": "2026-09-15",
+    "link": "https://www.sec.gov/Archives/edgar/data/2111838/000119312526391060/0001193125-26-391060-index.htm",
+    "form": "S-1/A"
    },
    {
     "ticker": "AIIR",
@@ -1360,12 +1366,12 @@
   "budget_mode": "bootstrap",
   "news": [
    {
-    "title": "Radiant Logistics (RLGT) Q4 2026 Earnings Call Transcript",
-    "link": "https://finance.yahoo.com/markets/stocks/articles/radiant-logistics-rlgt-q4-2026-135808979.html",
-    "source": "Motley Fool",
-    "published": "2026-09-15T13:58:08+00:00",
-    "summary": "",
-    "ticker": "RLGT"
+    "title": "Investar Holding Corporation Declares Quarterly Common and Preferred Stock Cash Dividends",
+    "link": "https://www.prnewswire.com/news-releases/investar-holding-corporation-declares-quarterly-common-and-preferred-stock-cash-dividends-302881198.html",
+    "source": "PR Newswire",
+    "published": "2026-09-16T22:30:00+00:00",
+    "summary": "BATON ROUGE, La., Sept. 16, 2026 /PRNewswire/ -- Investar Holding Corporation (the \"Company\") (Nasdaq: ISTR), the holding company of Investar Bank, National Association (the \"Bank\"), declared a quarterly cash dividend of $0.12…",
+    "ticker": "ISTR"
    }
   ]
  },
@@ -1373,7 +1379,7 @@
  "stats": {
   "feeds_total": 21,
   "feeds_failed": 3,
-  "items": 393,
+  "items": 391,
   "smallcap_calls": 552,
   "feed_errors": [
    [
