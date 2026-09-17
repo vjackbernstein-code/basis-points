@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-17T09:35:44.508485+00:00",
+ "generated_at": "2026-09-17T14:45:55.764899+00:00",
  "market": [
   {
    "label": "S&P 500",
@@ -113,13 +113,12 @@
    "label": "VIX",
    "symbol": "VIXCLS",
    "kind": "level",
-   "value": 17.2,
-   "prev": 17.1,
-   "value_txt": "17.20",
-   "delta": 0.5847953216374144,
-   "delta_txt": "+0.58%",
+   "value": 17.71,
+   "prev": 17.2,
+   "value_txt": "17.71",
+   "delta": 2.9651162790697767,
+   "delta_txt": "+2.97%",
    "spark": [
-    14.25,
     15.19,
     15.84,
     14.89,
@@ -141,9 +140,10 @@
     17.84,
     15.84,
     17.1,
-    17.2
+    17.2,
+    17.71
    ],
-   "asof": "Sep 15"
+   "asof": "Sep 16"
   },
   {
    "label": "10-yr Treasury",
@@ -257,13 +257,12 @@
    "label": "EUR/USD",
    "symbol": "EURUSD",
    "kind": "fx",
-   "value": 1.1537,
-   "prev": 1.1539,
-   "value_txt": "1.1537",
-   "delta": -0.017332524482188923,
-   "delta_txt": "-0.02%",
+   "value": 1.1481,
+   "prev": 1.1537,
+   "value_txt": "1.1481",
+   "delta": -0.48539481667678336,
+   "delta_txt": "-0.49%",
    "spark": [
-    1.1593,
     1.1576,
     1.1605,
     1.1681,
@@ -285,19 +284,19 @@
     1.1592,
     1.1551,
     1.1539,
-    1.1537
-   ],
-   "asof": "Sep 16"
+    1.1537,
+    1.1481
+   ]
   },
   {
    "label": "Bitcoin",
    "symbol": "bitcoin",
    "kind": "crypto",
-   "value": 76620.74227997559,
+   "value": 76556.99292673822,
    "prev": 76146.81236783884,
-   "value_txt": "$76,621",
-   "delta": 0.6223896935401054,
-   "delta_txt": "+0.62%",
+   "value_txt": "$76,557",
+   "delta": 0.5386706890866927,
+   "delta_txt": "+0.54%",
    "spark": [
     79018.03405750773,
     80268.37474707834,
@@ -321,18 +320,18 @@
     78173.35158344489,
     75590.24471973324,
     76146.81236783884,
-    76620.74227997559
+    76556.99292673822
    ]
   },
   {
    "label": "Ethereum",
    "symbol": "ethereum",
    "kind": "crypto",
-   "value": 2444.982717705734,
+   "value": 2462.93936979152,
    "prev": 2415.9596535242995,
-   "value_txt": "$2,445",
-   "delta": 1.2013058305463424,
-   "delta_txt": "+1.20%",
+   "value_txt": "$2,463",
+   "delta": 1.9445571534561317,
+   "delta_txt": "+1.94%",
    "spark": [
     2506.3431057180687,
     2511.461241063819,
@@ -356,72 +355,72 @@
     2514.759550467769,
     2397.4972601650115,
     2415.9596535242995,
-    2444.982717705734
+    2462.93936979152
    ]
   }
  ],
- "tape_line": "S&P 500 -0.45%, Nasdaq -0.01%, Dow -1.21%; the 10-year Treasury at 5.00% (+3 bp); WTI crude $107.02 (+4.49%); bitcoin $76,621 (+0.62%).",
+ "tape_line": "S&P 500 -0.45%, Nasdaq -0.01%, Dow -1.21%; the 10-year Treasury at 5.00% (+3 bp); WTI crude $107.02 (+4.49%); bitcoin $76,557 (+0.54%).",
  "top": [
   {
-   "title": "U.S. Treasury Yields Fall as Market Regains Trust in Fed’s Inflation Resolve",
-   "link": "https://www.wsj.com/economy/central-banking/u-s-treasury-yields-fall-as-market-regains-trust-in-feds-inflation-resolve-62beaf8e?mod=rss_markets_main",
+   "title": "Treasury Yields Cool Down After Fed Hike",
+   "link": "https://www.wsj.com/finance/long-term-jgb-yields-largely-steady-as-boj-starts-two-day-meeting-0e67c4e8?mod=rss_markets_main",
    "source": "WSJ Markets",
-   "published": "2026-09-17T08:49:00+00:00",
-   "summary": "The Fed’s unanimous vote on Wednesday—and the prospect of another rate hike this year—improved its credibility among investors."
+   "published": "2026-09-17T13:06:00+00:00",
+   "summary": "Treasury yields decline as U.S. labor markets show resilience a day after the Fed’s first hike since 2023."
+  },
+  {
+   "title": "Stock market today: Dow, S&P 500, Nasdaq rise as Fed rate hike pacifies markets' inflation worries",
+   "link": "https://finance.yahoo.com/markets/live/stock-market-today-thursday-september-17-dow-sp-500-nasdaq-081248626.html",
+   "source": "Yahoo Finance",
+   "published": "2026-09-17T08:12:48+00:00",
+   "summary": ""
+  },
+  {
+   "title": "A Treasurer’s Playbook Following a Fed Rate Hike: Ask Banks to Pay Up for Deposits",
+   "link": "https://www.wsj.com/cfo-journal/a-treasurers-playbook-following-a-fed-rate-hike-ask-banks-to-pay-up-for-deposits-eafed93a?mod=pls_whats_news_us_business_f",
+   "source": "WSJ Business",
+   "published": "2026-09-17T11:15:00+00:00",
+   "summary": "Plus, what CEOs really think about the AI apocalypse threat."
+  },
+  {
+   "title": "Why the Bank of England Didn’t Follow the Fed in Raising Interest Rates",
+   "link": "https://www.wsj.com/economy/central-banking/why-the-bank-of-england-didnt-follow-the-fed-in-raising-interest-rates-007dc4a4?mod=rss_worldnews",
+   "source": "WSJ World",
+   "published": "2026-09-17T14:42:00+00:00",
+   "summary": "The U.K. central bank is monitoring for signs that higher energy costs are spilling over into everyday prices."
   },
   {
    "title": "Oil Prices Slip After Fed’s First Rate Hike in Three Years",
    "link": "https://www.wsj.com/business/energy-oil/oil-prices-slip-after-feds-first-rate-hike-in-three-years-4efe3854?mod=pls_whats_news_us_business_f",
    "source": "WSJ Business",
-   "published": "2026-09-17T08:34:00+00:00",
-   "summary": "Oil prices fell again in early European trading Thursday, helped by hopes Saudi Arabia could also restore some disrupted export capacity."
+   "published": "2026-09-17T13:06:00+00:00",
+   "summary": "Oil prices fell again Thursday, helped by hopes Saudi Arabia could also restore some disrupted export capacity."
   },
   {
-   "title": "Bitcoin faces 2022 parallels as federal reserve resumes rate hikes",
-   "link": "https://www.coindesk.com/markets/2026/09/17/bitcoin-faces-2022-parallels-as-federal-reserve-resumes-rate-hikes",
-   "source": "CoinDesk",
-   "published": "2026-09-17T08:41:48+00:00",
-   "summary": "Bitcoin’s drawdown mirrors its position before the Fed’s first hike in March 2022, raising questions over whether a relief rally could precede further losses."
+   "title": "Federal Reserve interest rate hike may trigger another brutal move for US Treasury yields",
+   "link": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxPeGpxdUhRODdYczk1WVRUZXZtSUhMRnlvQllUbGt1RW9iMXlTQWFwUWQ5LUtNNWRFLUl5YlhISmt0T053dUxjTXNaQmN3UzBrNXBFdlFUY2w1M1B2VnlrVnNoS2wxNm92SERCdkp4Q2lRQ0IzclJLay1jSTZPM0I0Vy1YUm1LcE5uekxFSnBkaEhEcTRkbjZhSHVZbTl4Z0g5ZjkxcmVVaFdJZzlHSDF1b3pzc1Mza1lPT21CZDFpcC1QaldjbDJMRkJHanRtVm1NUkkzT1BVbklreWQxRUNv?oc=5",
+   "source": "Yahoo Finance",
+   "published": "2026-09-17T10:31:35+00:00",
+   "summary": "Federal Reserve interest rate hike may trigger another brutal move for US Treasury yields Yahoo Finance Treasury yields move lower after Fed kicks off hiking cycle CNBC Global Bonds Recover as Warsh’s Inflation Fight Calms Market…"
   },
   {
-   "title": "Stocks Rally, Yields Fall as Lower Oil Boosts Market Mood",
+   "title": "Stocks Climb as Markets Retrace Post-Fed Moves",
    "link": "https://www.wsj.com/finance/commodities-futures/stocks-rally-yields-fall-as-lower-oil-boosts-market-mood-e5c10b6c?mod=rss_markets_main",
    "source": "WSJ Markets",
-   "published": "2026-09-17T08:52:00+00:00",
-   "summary": "U.S. futures were in the green and 10-year Treasury yields fell below 5% in early European trade, as the dollar weakened slightly but remained elevated."
-  },
-  {
-   "title": "Why the S&P 500 could still advance after a Fed hike, according to a Wall Street strategist",
-   "link": "https://www.marketwatch.com/story/why-the-s-p-500-could-still-advance-after-a-fed-hike-according-to-a-wall-street-strategist-d357b4f2?mod=mw_rss_topstories",
-   "source": "MarketWatch",
-   "published": "2026-09-17T09:16:00+00:00",
-   "summary": "The investment bank found that stocks in the energy and information technology sectors on average perform the best one year after an interest-rate hike by the Federal Reserve."
-  },
-  {
-   "title": "A stronger dollar and rising yields: How the Fed’s rate hike could hit global markets",
-   "link": "https://www.cnbc.com/2026/09/17/fed-rate-hike-impact-globally-currency-yields.html",
-   "source": "CNBC",
-   "published": "2026-09-17T05:03:07+00:00",
-   "summary": "Higher U.S. rates could also keep global bond yields elevated and weigh on equity valuations and economic growth."
-  },
-  {
-   "title": "Goldman pivots, now forecasts Fed rate hike in October",
-   "link": "https://www.coindesk.com/markets/2026/09/17/goldman-expects-another-fed-rate-hike-in-october",
-   "source": "CoinDesk",
-   "published": "2026-09-17T04:17:55+00:00",
-   "summary": "The Fed is likely to raise rates by 25 basis points in October, Goldman said, drawing attention to Fed's own hawkish near term rate projections."
+   "published": "2026-09-17T14:22:00+00:00",
+   "summary": "U.S. stocks jump as investors shake off the jitters that followed the Federal Reserve’s first rate increase in three years."
   }
  ],
  "smallcap": {
   "note": null,
-  "asof": "2026-09-17T09:46:54+00:00",
+  "asof": "2026-09-17T14:57:42+00:00",
   "coverage": {
    "universe": 9862,
    "profiled": 9885,
    "in_band": 1858,
-   "measured": 1842,
-   "scored": 950,
-   "below_floor": 76
+   "measured": 1858,
+   "scored": 958,
+   "below_floor": 75
   },
   "screen": [
    {
@@ -434,11 +433,11 @@
     "accel": 50.0,
     "r13": 68.5083,
     "momo": 0.69,
-    "from_high": -59.15024315331456,
+    "from_high": -57.30739697977989,
     "ev_rev": 34.9461,
-    "px": 7.98,
-    "dp": -4.2017,
-    "score": 85.1,
+    "px": 8.34,
+    "dp": 4.5113,
+    "score": 85.0,
     "sub": {
      "g": 100,
      "m": 83,
@@ -456,13 +455,13 @@
     "accel": 1.2399999999999949,
     "r13": 92.9699,
     "momo": 1.64,
-    "from_high": -18.08731808731808,
+    "from_high": -15.315315315315313,
     "ev_rev": 7.2737,
-    "px": 11.82,
-    "dp": -2.8759,
+    "px": 12.22,
+    "dp": 3.3841,
     "score": 84.0,
     "sub": {
-     "g": 78,
+     "g": 79,
      "m": 100,
      "q": 63
     },
@@ -478,10 +477,10 @@
     "accel": 17.10000000000001,
     "r13": 102.2491,
     "momo": 1.21,
-    "from_high": -15.097182461955704,
+    "from_high": -13.06313093265029,
     "ev_rev": 15.8316,
-    "px": 56.35,
-    "dp": 2.5851,
+    "px": 57.7,
+    "dp": 2.3957,
     "score": 82.4,
     "sub": {
      "g": 87,
@@ -500,11 +499,11 @@
     "accel": 4.740000000000002,
     "r13": 55.3588,
     "momo": 0.76,
-    "from_high": -8.22818553403235,
+    "from_high": -6.8597831881997635,
     "ev_rev": 1.033,
-    "px": 51.64,
-    "dp": -1.9835,
-    "score": 82.1,
+    "px": 52.41,
+    "dp": 1.4911,
+    "score": 81.9,
     "sub": {
      "g": 88,
      "m": 86,
@@ -522,11 +521,11 @@
     "accel": 16.25,
     "r13": 87.1153,
     "momo": 1.3,
-    "from_high": -17.038993313498697,
+    "from_high": -13.963325739851829,
     "ev_rev": 0.5569,
-    "px": 40.46,
-    "dp": -0.8333,
-    "score": 81.8,
+    "px": 41.96,
+    "dp": 3.7074,
+    "score": 81.7,
     "sub": {
      "g": 79,
      "m": 99,
@@ -544,11 +543,11 @@
     "accel": 50.0,
     "r13": 25.1665,
     "momo": 0.88,
-    "from_high": -4.096170970614432,
+    "from_high": -3.9626001780943887,
     "ev_rev": 2.5688,
-    "px": 43.08,
-    "dp": -4.0535,
-    "score": 81.8,
+    "px": 43.14,
+    "dp": 0.1393,
+    "score": 81.7,
     "sub": {
      "g": 82,
      "m": 91,
@@ -566,15 +565,15 @@
     "accel": -31.319229999999997,
     "r13": 15.642,
     "momo": 1.21,
-    "from_high": -4.125887545576667,
+    "from_high": -4.049126847054307,
     "ev_rev": null,
-    "px": 24.98,
-    "dp": -2.1543,
+    "px": 25,
+    "dp": 0.0801,
     "score": 81.3,
     "sub": {
      "g": 70,
      "m": 98,
-     "q": 72
+     "q": 71
     },
     "flags": []
    },
@@ -588,10 +587,10 @@
     "accel": 38.75,
     "r13": 35.1594,
     "momo": 0.57,
-    "from_high": -34.765625,
+    "from_high": -32.291666666666664,
     "ev_rev": 4.1275,
-    "px": 10.02,
-    "dp": -1.5717,
+    "px": 10.4,
+    "dp": 3.7924,
     "score": 81.0,
     "sub": {
      "g": 91,
@@ -610,11 +609,11 @@
     "accel": 18.81649999999999,
     "r13": 10.3993,
     "momo": 0.88,
-    "from_high": -6.337195554504616,
+    "from_high": -6.0770867817450895,
     "ev_rev": null,
-    "px": 39.61,
-    "dp": -1.3941,
-    "score": 80.8,
+    "px": 39.72,
+    "dp": 0.2777,
+    "score": 80.7,
     "sub": {
      "g": 84,
      "m": 91,
@@ -632,11 +631,11 @@
     "accel": 2.530000000000001,
     "r13": 38.5636,
     "momo": 1.15,
-    "from_high": -1.624365482233503,
+    "from_high": null,
     "ev_rev": 11.8454,
-    "px": 77.52,
-    "dp": 1.7189,
-    "score": 80.8,
+    "px": 79.05,
+    "dp": 1.9737,
+    "score": 80.7,
     "sub": {
      "g": 75,
      "m": 97,
@@ -656,10 +655,10 @@
     "accel": 50.0,
     "r13": 34.1667,
     "momo": 0.85,
-    "from_high": -16.87296416938111,
+    "from_high": -13.811074918566767,
     "ev_rev": 2.9748,
-    "px": 12.76,
-    "dp": 0,
+    "px": 13.23,
+    "dp": 3.6834,
     "score": 80.5,
     "sub": {
      "g": 94,
@@ -678,10 +677,10 @@
     "accel": -32.77874,
     "r13": 11.8394,
     "momo": 1.01,
-    "from_high": -3.6170595645132253,
+    "from_high": -3.167176534101135,
     "ev_rev": null,
-    "px": 53.56,
-    "dp": -1.6526,
+    "px": 53.81,
+    "dp": 0.4668,
     "score": 80.1,
     "sub": {
      "g": 70,
@@ -702,10 +701,10 @@
     "accel": 50.0,
     "r13": 22.7882,
     "momo": 0.6,
-    "from_high": -27.20510095642934,
+    "from_high": -28.905419766206165,
     "ev_rev": 3.8759,
-    "px": 6.85,
-    "dp": -0.436,
+    "px": 6.69,
+    "dp": -2.3358,
     "score": 79.5,
     "sub": {
      "g": 87,
@@ -724,37 +723,15 @@
     "accel": -15.63805,
     "r13": 26.5778,
     "momo": 1.37,
-    "from_high": -4.167265411697096,
+    "from_high": -3.9086075585572644,
     "ev_rev": null,
-    "px": 66.69,
-    "dp": -1.2,
+    "px": 66.87,
+    "dp": 0.2699,
     "score": 79.4,
     "sub": {
      "g": 70,
      "m": 99,
      "q": 60
-    },
-    "flags": []
-   },
-   {
-    "ticker": "FENC",
-    "name": "Fennec Pharmaceuticals Inc",
-    "ind": "Biotechnology",
-    "group": "Health",
-    "mcap": 434.48213806852596,
-    "rev_g": 33.76,
-    "accel": 38.88,
-    "r13": 35.262,
-    "momo": 0.72,
-    "from_high": -20.37735849056603,
-    "ev_rev": 6.6401,
-    "px": 10.55,
-    "dp": -0.8459,
-    "score": 77.7,
-    "sub": {
-     "g": 86,
-     "m": 84,
-     "q": 47
     },
     "flags": []
    },
@@ -768,19 +745,41 @@
     "accel": 26.79,
     "r13": 12.9695,
     "momo": 1.19,
-    "from_high": -10.023980815347722,
+    "from_high": -5.035971223021585,
     "ev_rev": 5.6319,
-    "px": 18.76,
-    "dp": 0.0533,
+    "px": 19.8,
+    "dp": 5.5437,
     "score": 77.7,
     "sub": {
-     "g": 59,
+     "g": 58,
      "m": 97,
      "q": 77
     },
     "flags": [
      "act+"
     ]
+   },
+   {
+    "ticker": "FENC",
+    "name": "Fennec Pharmaceuticals Inc",
+    "ind": "Biotechnology",
+    "group": "Health",
+    "mcap": 434.48213806852596,
+    "rev_g": 33.76,
+    "accel": 38.88,
+    "r13": 35.262,
+    "momo": 0.72,
+    "from_high": -17.43396226415095,
+    "ev_rev": 6.6401,
+    "px": 10.94,
+    "dp": 3.6967,
+    "score": 77.6,
+    "sub": {
+     "g": 86,
+     "m": 84,
+     "q": 47
+    },
+    "flags": []
    },
    {
     "ticker": "NAT",
@@ -794,8 +793,8 @@
     "momo": 1.04,
     "from_high": null,
     "ev_rev": 7.3964,
-    "px": 7.99,
-    "dp": 1.7834,
+    "px": 8.13,
+    "dp": 1.7522,
     "score": 77.5,
     "sub": {
      "g": 65,
@@ -814,10 +813,10 @@
     "accel": 45.68,
     "r13": 14.7898,
     "momo": 0.62,
-    "from_high": -4.884318766066842,
+    "from_high": -5.719794344473006,
     "ev_rev": 2.5094,
-    "px": 14.8,
-    "dp": -2.8234,
+    "px": 14.67,
+    "dp": -0.8784,
     "score": 77.4,
     "sub": {
      "g": 83,
@@ -836,11 +835,11 @@
     "accel": 0.8399999999999999,
     "r13": 31.84,
     "momo": 0.74,
-    "from_high": -3.2767469403868876,
+    "from_high": -2.408211606790367,
     "ev_rev": 9.1235,
-    "px": 24.5,
-    "dp": -2.1565,
-    "score": 76.6,
+    "px": 24.72,
+    "dp": 0.898,
+    "score": 76.5,
     "sub": {
      "g": 77,
      "m": 86,
@@ -858,11 +857,11 @@
     "accel": 24.380000000000003,
     "r13": 51.5997,
     "momo": 0.64,
-    "from_high": -17.45177209510992,
+    "from_high": -19.066846119336024,
     "ev_rev": 0.7699,
-    "px": 18.4,
-    "dp": 0.2179,
-    "score": 76.0,
+    "px": 18.04,
+    "dp": -1.9565,
+    "score": 75.9,
     "sub": {
      "g": 88,
      "m": 81,
@@ -882,10 +881,10 @@
     "accel": -50.0,
     "r13": 39.8128,
     "momo": 0.71,
-    "from_high": -32.19199021705901,
+    "from_high": -34.20972179761541,
     "ev_rev": 7.1578,
-    "px": 22.18,
-    "dp": 15.3406,
+    "px": 21.52,
+    "dp": -2.9757,
     "score": 75.5,
     "sub": {
      "g": 72,
@@ -907,10 +906,10 @@
     "accel": 24.670000000000016,
     "r13": 24.4717,
     "momo": 0.23,
-    "from_high": -41.615631379410914,
+    "from_high": -37.62029746281714,
     "ev_rev": null,
-    "px": 20.02,
-    "dp": -4.0728,
+    "px": 21.39,
+    "dp": 6.8432,
     "score": 74.9,
     "sub": {
      "g": 95,
@@ -929,13 +928,13 @@
     "accel": 1.6099999999999994,
     "r13": 7.1429,
     "momo": 0.45,
-    "from_high": -13.416988416988406,
+    "from_high": -11.679536679536673,
     "ev_rev": 12.3006,
-    "px": 8.97,
-    "dp": 0.1675,
-    "score": 74.7,
+    "px": 9.15,
+    "dp": 2.0067,
+    "score": 74.6,
     "sub": {
-     "g": 90,
+     "g": 89,
      "m": 71,
      "q": 52
     },
@@ -951,10 +950,10 @@
     "accel": 13.16,
     "r13": 15.0338,
     "momo": 0.5,
-    "from_high": -5.2283826486641765,
+    "from_high": -5.45820166618789,
     "ev_rev": 8.931,
-    "px": 32.99,
-    "dp": 0.3651,
+    "px": 32.91,
+    "dp": -0.2425,
     "score": 74.6,
     "sub": {
      "g": 78,
@@ -973,11 +972,11 @@
     "accel": -0.20000000000000107,
     "r13": 53.8927,
     "momo": 0.98,
-    "from_high": -25.298421255294567,
+    "from_high": -23.75818251829034,
     "ev_rev": 0.6171,
-    "px": 58.2,
-    "dp": 1.9264,
-    "score": 74.3,
+    "px": 59.4,
+    "dp": 2.0619,
+    "score": 74.2,
     "sub": {
      "g": 60,
      "m": 93,
@@ -1058,30 +1057,36 @@
     "dp": 21.5556
    },
    {
-    "ticker": "BBNX",
-    "name": "Beta Bionics Inc",
-    "px": 22.18,
-    "dp": 15.3406
-   },
-   {
     "ticker": "EMAT",
     "name": "Evolution Metals & Technologies Corp",
     "px": 3.8,
     "dp": 14.8036
    },
    {
-    "ticker": "IONR",
-    "name": "ioneer Ltd",
-    "px": 3.27,
-    "dp": 12.3711
+    "ticker": "EYPT",
+    "name": "EyePoint Inc",
+    "px": 3.93,
+    "dp": 13.913
+   },
+   {
+    "ticker": "CAPR",
+    "name": "Capricor Therapeutics Inc",
+    "px": 9.74,
+    "dp": 13.785
    }
   ],
   "movers_down": [
    {
-    "ticker": "BRCB",
-    "name": "Black Rock Coffee Bar Inc",
-    "px": 6.98,
-    "dp": -14.4608
+    "ticker": "FLNC",
+    "name": "Fluence Energy Inc",
+    "px": 7.53,
+    "dp": -16.7956
+   },
+   {
+    "ticker": "DSP",
+    "name": "Viant Technology Inc",
+    "px": 10.6,
+    "dp": -14.3088
    },
    {
     "ticker": "TRBG",
@@ -1096,16 +1101,10 @@
     "dp": -11.5385
    },
    {
-    "ticker": "CABA",
-    "name": "Cabaletta Bio Inc",
-    "px": 2.595,
-    "dp": -10.8247
-   },
-   {
-    "ticker": "CBRL",
-    "name": "Cracker Barrel Old Country Store Inc",
-    "px": 45.15,
-    "dp": -10.6471
+    "ticker": "EIKN",
+    "name": "Eikon Therapeutics Inc",
+    "px": 8.51,
+    "dp": -10.3267
    }
   ],
   "earnings": [
@@ -1168,73 +1167,73 @@
   },
   "filings_material": [
    {
-    "ticker": "EOSE",
-    "name": "Eos Energy Enterprises Inc",
-    "date": "2026-09-16",
-    "link": "https://www.sec.gov/Archives/edgar/data/1805077/000162828026062265/0001628280-26-062265-index.htm",
-    "form": "8-K/A"
-   },
-   {
-    "ticker": "AVBC",
-    "name": "Avidia Bancorp Inc",
-    "date": "2026-09-16",
-    "link": "https://www.sec.gov/Archives/edgar/data/2058758/000119312526393166/0001193125-26-393166-index.htm",
-    "form": "8-K/A"
-   },
-   {
     "ticker": "HIVE",
     "name": "HIVE Digital Technologies Ltd",
-    "date": "2026-09-16",
-    "link": "https://www.sec.gov/Archives/edgar/data/1720424/000106299326004970/0001062993-26-004970-index.htm",
+    "date": "2026-09-17",
+    "link": "https://www.sec.gov/Archives/edgar/data/1720424/000106299326004996/0001062993-26-004996-index.htm",
     "form": "8-K"
    },
    {
-    "ticker": "FCCO",
-    "name": "First Community Corp (South Carolina)",
-    "date": "2026-09-16",
-    "link": "https://www.sec.gov/Archives/edgar/data/932781/000155278126000489/0001552781-26-000489-index.htm",
+    "ticker": "THFF",
+    "name": "First Financial Corp",
+    "date": "2026-09-17",
+    "link": "https://www.sec.gov/Archives/edgar/data/714562/000071456226000065/0000714562-26-000065-index.htm",
     "form": "8-K"
    },
    {
-    "ticker": "MYGN",
-    "name": "Myriad Genetics Inc",
-    "date": "2026-09-16",
-    "link": "https://www.sec.gov/Archives/edgar/data/899923/000089992326000079/0000899923-26-000079-index.htm",
+    "ticker": "SGRY",
+    "name": "Surgery Partners Inc",
+    "date": "2026-09-17",
+    "link": "https://www.sec.gov/Archives/edgar/data/1638833/000163883326000085/0001638833-26-000085-index.htm",
     "form": "8-K"
    },
    {
-    "ticker": "NWFL",
-    "name": "Norwood Financial Corp",
-    "date": "2026-09-16",
-    "link": "https://www.sec.gov/Archives/edgar/data/1013272/000101327226000020/0001013272-26-000020-index.htm",
+    "ticker": "ORBS",
+    "name": "Eightco Holdings Inc",
+    "date": "2026-09-17",
+    "link": "https://www.sec.gov/Archives/edgar/data/1892492/000149315226043055/0001493152-26-043055-index.htm",
     "form": "8-K"
    },
    {
-    "ticker": "ACDC",
-    "name": "ProFrac Holding Corp",
-    "date": "2026-09-16",
-    "link": "https://www.sec.gov/Archives/edgar/data/1881487/000110465926108302/0001104659-26-108302-index.htm",
+    "ticker": "FBRT",
+    "name": "Franklin BSP Realty Trust Inc",
+    "date": "2026-09-17",
+    "link": "https://www.sec.gov/Archives/edgar/data/1562528/000110465926108440/0001104659-26-108440-index.htm",
     "form": "8-K"
    },
    {
-    "ticker": "RM",
-    "name": "Regional Management Corp",
-    "date": "2026-09-16",
-    "link": "https://www.sec.gov/Archives/edgar/data/1519401/000119312526393175/0001193125-26-393175-index.htm",
+    "ticker": "CBAN",
+    "name": "Colony Bankcorp Inc",
+    "date": "2026-09-17",
+    "link": "https://www.sec.gov/Archives/edgar/data/711669/000110465926108432/0001104659-26-108432-index.htm",
     "form": "8-K"
    },
    {
-    "ticker": "RNGT",
-    "name": "Range Capital Acquisition II Corp",
-    "date": "2026-09-16",
-    "link": "https://www.sec.gov/Archives/edgar/data/2035644/000119312526393168/0001193125-26-393168-index.htm",
+    "ticker": "CLVT",
+    "name": "Clarivate PLC",
+    "date": "2026-09-17",
+    "link": "https://www.sec.gov/Archives/edgar/data/1764046/000095010326014070/0000950103-26-014070-index.htm",
     "form": "8-K"
    },
    {
-    "ticker": "RGR",
-    "name": "Sturm Ruger & Company Inc",
-    "date": "2026-09-16",
-    "link": "https://www.sec.gov/Archives/edgar/data/95029/000117494726000877/0001174947-26-000877-index.htm",
+    "ticker": "HNRG",
+    "name": "Hallador Energy Co",
+    "date": "2026-09-17",
+    "link": "https://www.sec.gov/Archives/edgar/data/788965/000110465926108429/0001104659-26-108429-index.htm",
+    "form": "8-K"
+   },
+   {
+    "ticker": "ATLCZ",
+    "name": "Atlanticus Holdings Corp",
+    "date": "2026-09-17",
+    "link": "https://www.sec.gov/Archives/edgar/data/1464343/000143774926030605/0001437749-26-030605-index.htm",
+    "form": "8-K"
+   },
+   {
+    "ticker": "BSVN",
+    "name": "Bank7 Corp",
+    "date": "2026-09-17",
+    "link": "https://www.sec.gov/Archives/edgar/data/1746129/000114036126036855/0001140361-26-036855-index.htm",
     "form": "8-K"
    }
   ],
@@ -1282,6 +1281,13 @@
     "form": "SCHEDULE 13G"
    },
    {
+    "ticker": "RWT",
+    "name": "Redwood Trust Inc",
+    "date": "2026-09-16",
+    "link": "https://www.sec.gov/Archives/edgar/data/930236/000093687226000019/0000936872-26-000019-index.htm",
+    "form": "SCHEDULE 13G"
+   },
+   {
     "ticker": "HEPS",
     "name": "D Market Elektronik Hizmetler ve Ticaret AS",
     "date": "2026-09-15",
@@ -1301,13 +1307,6 @@
     "date": "2026-09-15",
     "link": "https://www.sec.gov/Archives/edgar/data/2096300/000189422526000005/0001894225-26-000005-index.htm",
     "form": "SCHEDULE 13G"
-   },
-   {
-    "ticker": "GMTL",
-    "name": "Guardian Metal Resources PLC",
-    "date": "2026-09-14",
-    "link": "https://www.sec.gov/Archives/edgar/data/2039972/000089914026001060/0000899140-26-001060-index.htm",
-    "form": "SCHEDULE 13G/A"
    }
   ],
   "filings_offering": [
@@ -1354,29 +1353,29 @@
     "form": "424B2"
    }
   ],
-  "budget_mode": "bootstrap",
-  "news": []
+  "budget_mode": "catch-up",
+  "news": [
+   {
+    "title": "ACV Auctions (ACVA) Jumps on Top-Line Growth and Large Buyback Authorization",
+    "link": "https://finance.yahoo.com/markets/stocks/articles/acv-auctions-acva-jumps-top-134007577.html",
+    "source": "Insider Monkey",
+    "published": "2026-09-17T13:40:07+00:00",
+    "summary": "",
+    "ticker": "ACVA"
+   }
+  ]
  },
- "econ_calendar": [
-  {
-   "date": "2026-09-17",
-   "label": "Housing starts"
-  },
-  {
-   "date": "2026-09-24",
-   "label": "Housing starts"
-  },
-  {
-   "date": "2026-09-24",
-   "label": "New home sales"
-  }
- ],
+ "econ_calendar": [],
  "stats": {
   "feeds_total": 21,
-  "feeds_failed": 2,
-  "items": 390,
+  "feeds_failed": 4,
+  "items": 389,
   "smallcap_calls": 552,
   "feed_errors": [
+   [
+    "PR Newswire",
+    "HTTP Error 404: Not Found"
+   ],
    [
     "GlobeNewswire",
     "The read operation timed out"
@@ -1386,6 +1385,10 @@
    [
     "Yahoo",
     "rate-limited; using fallback sources"
+   ],
+   [
+    "FRED calendar",
+    "The read operation timed out"
    ]
   ]
  }
