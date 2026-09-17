@@ -1052,7 +1052,11 @@ def render_smallcap_page(data):
         parts.append(f'<div class="duo">{"".join(cols)}</div>')
 
     parts.append(
-        '<div class="method"><strong>Methodology (model v3, frozen Sep 5, 2026).</strong> '
+        '<div class="method"><strong>Methodology (model v3.1, Sep 17, 2026).</strong> '
+        '<em>v3.1 corrected two scoring defects and restarted the record: '
+        'companies labelled “Communications” had been ranked against no peer '
+        'group, and tied factor values had been ordered by alphabetical '
+        'position. Corrected one week in, while a restart was still cheap.</em> '
         'Eligibility: U.S. listed common stocks (one security per company — the common '
         'ticker), market value $300M–$2B, price ≥ $2, 10-day average volume ≥ 50k shares, '
         'trailing-12-month revenue ≥ $50M, no over-the-counter listings, no closed-end '

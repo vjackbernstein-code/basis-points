@@ -143,7 +143,17 @@ Local key files are git-ignored and contain only the raw key text.
 
 ## Model v4 candidates (specified now, built only after the v3 freeze lifts)
 
-The v3 scoring rules are frozen until the live record holds 12 independent
+**v3.1 (Sep 17, 2026)** corrected two scoring *defects* and restarted the
+record: `industry_group` now maps the live "Communications" label (those
+companies were ranked against the catch-all bucket rather than real peers),
+and `_percentile_ranks` gives tied values the average of the ranks they span
+(equal companies previously got unequal sub-scores decided by alphabetical
+position). Both were done one week into the record on purpose — a scoring
+correction costs a restart, and a restart is cheapest while the record is
+young. Defects get fixed early; *opinion* changes (weights, new factors) still
+wait for evidence.
+
+The v3.1 scoring rules are frozen until the live record holds 12 independent
 1-week and 3 independent 4-week readings. These candidates — each borrowed
 from an established, documented approach — will be evaluated against that
 record then, in this priority order:

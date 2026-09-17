@@ -175,6 +175,10 @@ class FilingParserTests(SmallcapTestCase):
         self.assertEqual(smallcap._categorize_form("SCHEDULE 13D"), "activist")
         self.assertEqual(smallcap._categorize_form("SCHEDULE 13D/A"), "activist")
         self.assertEqual(smallcap._categorize_form("SCHEDULE 13G"), "activist")
+        # the short EDGAR form codes are accepted too, so a feed-format change
+        # cannot silently zero out the activist flag
+        self.assertEqual(smallcap._categorize_form("SC 13D"), "activist")
+        self.assertEqual(smallcap._categorize_form("SC 13G/A"), "activist")
         self.assertEqual(smallcap._categorize_form("S-1"), "offering")
         self.assertEqual(smallcap._categorize_form("424B4"), "offering")
         # insider Form 4 and Rule 144 notices are pure noise here
@@ -182,8 +186,6 @@ class FilingParserTests(SmallcapTestCase):
         self.assertIsNone(smallcap._categorize_form("4/A"))
         self.assertIsNone(smallcap._categorize_form("144"))
         self.assertIsNone(smallcap._categorize_form("10-Q"))
-        self.assertIsNone(smallcap._categorize_form("SC 13D"))  # see report: EDGAR's
-        # short spelling is not in FILING_CATS["activist"]["prefixes"]
 
     def _seed_band_cache(self):
         cache = make_cache()
@@ -737,10 +739,19 @@ class RankingTests(unittest.TestCase):
         self.assertEqual(smallcap._percentile_ranks([None, 7.0, None]),
                          [0.5, 0.5, 0.5])
 
-    def test_tied_values_are_broken_by_position_not_shared(self):
-        # recorded behaviour: equal inputs still get distinct ranks, in
-        # original order (no average-rank handling for ties)
+    def test_tied_values_share_the_average_of_the_ranks_they_span(self):
+        # identical inputs must score identically: rank used to be decided by
+        # alphabetical position, which gave equal companies unequal sub-scores
         self.assertEqual(smallcap._percentile_ranks([5.0, 5.0, 5.0]),
+                         [0.5, 0.5, 0.5])
+        # a tie at the bottom of four values spans ranks 0 and 1/3 -> 1/6
+        ranks = smallcap._percentile_ranks([1.0, 1.0, 2.0, 3.0])
+        self.assertEqual(ranks[0], ranks[1])
+        self.assertAlmostEqual(ranks[0], (0 + 1) / 2 / 3)
+        self.assertAlmostEqual(ranks[3], 1.0)
+
+    def test_untied_values_still_span_zero_to_one(self):
+        self.assertEqual(smallcap._percentile_ranks([1.0, 2.0, 3.0]),
                          [0.0, 0.5, 1.0])
 
     def test_grouped_ranks_use_the_group_once_it_has_min_group_members(self):
@@ -809,9 +820,15 @@ class HelperTests(SmallcapTestCase):
                 self.assertEqual(smallcap.industry_group(ind), group)
 
     def test_unmatched_and_blank_industries_fall_into_other(self):
-        for ind in ("", None, "N/A", "Communications", "Conglomerate"):
+        for ind in ("", None, "N/A", "Conglomerate"):
             with self.subTest(industry=ind):
                 self.assertEqual(smallcap.industry_group(ind), "Other")
+
+    def test_communications_companies_are_grouped_with_telecom(self):
+        # a live vendor label that matched no keyword, so those companies were
+        # ranked against the catch-all bucket instead of real peers
+        self.assertEqual(smallcap.industry_group("Communications"), "Telecom")
+        self.assertEqual(smallcap.industry_group("Telecommunication"), "Telecom")
 
     def test_name_key_strips_punctuation_and_case_and_truncates(self):
         self.assertEqual(smallcap._name_key("Acme Widgets, Inc."), "acmewidgetsinc")
@@ -827,13 +844,18 @@ class HelperTests(SmallcapTestCase):
         self.assertIsNone(smallcap.rev_ttm(cache, "AAA"))
         self.assertIsNone(smallcap.rev_ttm(cache, "MISSING"))
 
-    def test_zero_revenue_per_share_reads_as_unknown_rather_than_zero(self):
-        # recorded behaviour: the falsy check means a genuinely revenue-less
-        # company is dropped entirely instead of landing below the floor
+    def test_a_genuinely_revenue_less_company_lands_below_the_floor(self):
+        # zero must mean zero, not "unknown": pre-revenue companies used to
+        # vanish from the page entirely — unscored AND unlisted
         cache = make_cache()
         add_name(cache, "AAA", rps=0.0, shares=25.0)
-        self.assertIsNone(smallcap.rev_ttm(cache, "AAA"))
-        self.assertEqual(smallcap.below_floor(cache), [])
+        self.assertEqual(smallcap.rev_ttm(cache, "AAA"), 0.0)
+        self.assertEqual([r["ticker"] for r in smallcap.below_floor(cache)], ["AAA"])
+
+    def test_missing_revenue_data_still_reads_as_unknown(self):
+        cache = make_cache()
+        add_name(cache, "BBB", rps=None, shares=25.0)
+        self.assertIsNone(smallcap.rev_ttm(cache, "BBB"))
 
     def test_a_price_above_the_recorded_52_week_high_reads_as_unknown(self):
         cache = make_cache()
@@ -931,8 +953,11 @@ class HelperTests(SmallcapTestCase):
         self.assertEqual([r["ticker"] for r in up], ["M0", "M1", "M2", "M3", "M4"])
         self.assertEqual([r["ticker"] for r in down][0], "M6")
         self.assertNotIn("STALEQ", [r["ticker"] for r in up])
-        # recorded behaviour: with fewer than ten movers the two lists overlap
-        self.assertIn("M4", [r["ticker"] for r in down])
+        # the lists must be disjoint: the same stock used to be shown as both
+        # a top gainer and a top loser when few names were fresh
+        self.assertEqual(set(r["ticker"] for r in up)
+                         & set(r["ticker"] for r in down), set())
+        self.assertEqual([r["ticker"] for r in down], ["M6", "M5"])
 
     def test_movers_reports_no_losers_when_five_or_fewer_names_are_fresh(self):
         cache = make_cache()

@@ -93,8 +93,17 @@ DISCOVERY_RESERVE = 0.55                # share of a run held for new companies
 HOURS_BETWEEN_FULL = 2.5
 TRICKLE_BUDGET = 40
 BENCHES = ("IWO", "IWM")                # Russell 2000 Growth (primary) + Russell 2000
-MODEL_VERSION = "v3"                    # stamped on log entries; the track record is
-                                        # reported per version, never blended
+MODEL_VERSION = "v3.1"                  # stamped on log entries; the track record is
+                                        # reported per version, never blended.
+                                        # v3.1 (Sep 17, 2026): two scoring
+                                        # DEFECTS corrected — "Communications"
+                                        # companies were ranked against no peer
+                                        # group, and tied factor values were
+                                        # ranked by alphabetical position. Done
+                                        # now, one week into the record, because
+                                        # a correction costs a restart and a
+                                        # restart is cheapest while the record
+                                        # is young.
 # label, min age, max age (days) at which a cohort's reading is frozen, and how
 # far apart two readings must be to count as independent evidence.
 HORIZONS = (("1w", 6, 9, 7), ("4w", 25, 31, 28))
@@ -107,7 +116,9 @@ MIN_GROUP = 8                           # industry-relative ranks need this many
 INDUSTRY_GROUPS = [
     ("Financials",  ("bank", "financial", "insurance", "capital market", "credit", "thrift")),
     ("Health",      ("biotech", "pharma", "health", "life science", "medical")),
-    ("Telecom",     ("telecom",)),
+    # "Communications" is a live vendor label that matched nothing before, so
+    # those companies fell into "Other" and were never ranked against peers
+    ("Telecom",     ("telecom", "communication")),
     ("Technology",  ("software", "technology", "semiconductor", "internet",
                      "electronic", "computer")),
     ("Energy",      ("energy", "oil", "gas", "coal", "pipeline")),
@@ -285,7 +296,8 @@ def _fetch_profile(fh, cache, ticker):
         "mcap": _num(p.get("marketCapitalization")),
         "shares": _num(p.get("shareOutstanding")),
         "exch": _txt(p.get("exchange"), 40),
-        "ind": _txt(p.get("finnhubIndustry"), 28),
+        "ind": _txt(p.get("finnhubIndustry"), 64),   # long enough that no
+        #                          industry keyword can fall past the cut
         "name": _txt(p.get("name"), 60) or _txt(cache["universe"].get(ticker), 60),
         "t": _iso(),
     }
@@ -431,9 +443,16 @@ def rev_ttm(cache, ticker):
     """Trailing-12-month revenue in $ millions, or None if not computable."""
     m = cache["metrics"].get(ticker) or {}
     p = cache["profiles"].get(ticker) or {}
-    if m.get("rps") and p.get("shares"):
-        return m["rps"] * p["shares"]
-    return None
+    rps, shares = m.get("rps"), p.get("shares")
+    # a genuine zero must survive as 0.0, not be read as "unknown" — treating
+    # it as unknown made pre-revenue companies vanish from the page entirely:
+    # not scored, and not listed under the revenue floor either
+    if rps is None or shares is None:
+        return None
+    try:
+        return float(rps) * float(shares)
+    except (TypeError, ValueError):
+        return None
 
 
 def _base_eligible(cache, ticker):
@@ -473,12 +492,27 @@ def below_floor(cache):
 
 
 def _percentile_ranks(values):
-    """Ranks in [0,1]; None values sit at a neutral 0.5."""
-    known = [(v, i) for i, v in enumerate(values) if v is not None]
+    """Ranks in [0,1]; None values sit at a neutral 0.5.
+
+    Tied values share the average of the ranks they span. Otherwise two
+    companies with identical factor values received materially different
+    sub-scores decided by nothing but their alphabetical position.
+    """
+    known = sorted(((v, i) for i, v in enumerate(values) if v is not None),
+                   key=lambda x: x[0])
     ranks = [0.5] * len(values)
     n = len(known)
-    for pos, (_, i) in enumerate(sorted(known, key=lambda x: x[0])):
-        ranks[i] = pos / (n - 1) if n > 1 else 0.5
+    if n < 2:
+        return ranks
+    pos = 0
+    while pos < n:
+        end = pos
+        while end + 1 < n and known[end + 1][0] == known[pos][0]:
+            end += 1
+        shared = ((pos + end) / 2) / (n - 1)
+        for _v, i in known[pos:end + 1]:
+            ranks[i] = shared
+        pos = end + 1
     return ranks
 
 
@@ -598,20 +632,23 @@ def compute_screen(cache, prev_candidates=None, prev_published=None):
         flags = []
         edate = cache.get("earn_map", {}).get(t)
         if edate:
-            days = (datetime.fromisoformat(edate).date()
-                    - datetime.fromisoformat(today).date()).days
-            if 0 <= days <= 7:
-                flags.append(f"E-{days}d")
+            days_out = (datetime.fromisoformat(edate).date()
+                        - datetime.fromisoformat(today).date()).days
+            if 0 <= days_out <= 7:
+                flags.append(f"E-{days_out}d")
         ins = cache.get("insider", {}).get(t) or {}
         if (ins.get("net30") or 0) > 0 and _age_h(ins.get("t")) < 48:
             flags.append("ins+")
         secf = cache.get("sec_filings") or {}
         for cat, flag in (("material", "8-K"), ("activist", "act+"),
                           ("offering", "offer")):
-            fil = (secf.get(cat) or {}).get(t)  # not `f` — that's the factors dict
-            days = FILING_CATS[cat]["days"]
+            # distinct names throughout this loop: `f` is the factors dict and
+            # `days_out` above is the earnings countdown — both were shadowed
+            # here before, which is how an earlier NoneType crash happened
+            fil = (secf.get(cat) or {}).get(t)
+            window = FILING_CATS[cat]["days"]
             if fil and fil.get("date", "") >= (
-                    _now() - timedelta(days=days)).strftime("%Y-%m-%d"):
+                    _now() - timedelta(days=window)).strftime("%Y-%m-%d"):
                 flags.append(flag)
         rows.append({
             "ticker": t, "name": p.get("name") or t, "ind": p.get("ind") or "—",
@@ -656,7 +693,11 @@ def movers(cache):
                      "name": cache["profiles"][t].get("name") or t,
                      "px": q["px"], "dp": q["dp"]})
     rows.sort(key=lambda r: -r["dp"])
-    return rows[:5], rows[-5:][::-1] if len(rows) > 5 else []
+    up = rows[:5]
+    # the two lists must be disjoint: with only a handful of fresh names the
+    # same stock used to appear as both a top gainer and a top loser
+    down = rows[len(up):][-5:][::-1]
+    return up, down
 
 
 # --------------------------------------------------------- evaluation --------
@@ -824,7 +865,10 @@ def summarize(cache, note=None, published=None, candidates=None, log=None):
 #   offering  S-1/424B  — a securities registration/prospectus (dilution); filer
 FILING_CATS = {
     "material": {"prefixes": ("8-K",),                    "party": "filer",   "days": 3},
-    "activist": {"prefixes": ("SCHEDULE 13D", "SCHEDULE 13G"), "party": "subject", "days": 7},
+    # EDGAR currently titles these "SCHEDULE 13D"; the short form code is
+    # accepted too so a feed-format change cannot silently zero the flag
+    "activist": {"prefixes": ("SCHEDULE 13D", "SCHEDULE 13G", "SC 13D", "SC 13G"),
+                 "party": "subject", "days": 7},
     "offering": {"prefixes": ("S-1", "424B"),             "party": "filer",   "days": 7},
 }
 
@@ -845,11 +889,18 @@ def record_filings(filing_items):
     """Match fresh SEC filings to band companies by category and remember them.
     Titles look like 'FORM - COMPANY NAME (0001234567) (Filer|Subject)'."""
     cache = load_cache()
+    # longest tickers first, so the shortest — the common stock, matching
+    # _dedupe_by_company — wins any name collision between share classes.
+    # Otherwise a filing could be attributed to the class that never reaches
+    # the page, and the flag would be silently lost.
     name_to_ticker = {}
-    for t, p in cache["profiles"].items():
-        if in_band(p):
-            name_to_ticker[_name_key(p.get("name") or "")] = t
-            name_to_ticker.setdefault(_name_key(cache["universe"].get(t) or ""), t)
+    for t in sorted((t for t, p in cache["profiles"].items() if in_band(p)),
+                    key=lambda t: (len(t), t), reverse=True):
+        p = cache["profiles"][t]
+        for key in (_name_key(p.get("name") or ""),
+                    _name_key(cache["universe"].get(t) or "")):
+            if key:
+                name_to_ticker[key] = t
 
     store = cache.get("sec_filings") or {c: {} for c in FILING_CATS}
     for c in FILING_CATS:
