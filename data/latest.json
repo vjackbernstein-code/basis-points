@@ -1,17 +1,16 @@
 {
- "generated_at": "2026-09-16T23:44:59.047013+00:00",
+ "generated_at": "2026-09-17T04:06:04.294177+00:00",
  "market": [
   {
    "label": "S&P 500",
    "symbol": "SP500",
    "kind": "index",
-   "value": 7585.73,
-   "prev": 7619.98,
-   "value_txt": "7,585.73",
-   "delta": -0.44947624534447606,
+   "value": 7551.81,
+   "prev": 7585.73,
+   "value_txt": "7,551.81",
+   "delta": -0.44715538254062775,
    "delta_txt": "-0.45%",
    "spark": [
-    7798.99,
     7785.76,
     7745.06,
     7691.76,
@@ -33,21 +32,21 @@
     7591.7,
     7656.98,
     7619.98,
-    7585.73
+    7585.73,
+    7551.81
    ],
-   "asof": "Sep 15"
+   "asof": "Sep 16"
   },
   {
    "label": "Nasdaq",
    "symbol": "NASDAQCOM",
    "kind": "index",
-   "value": 25981.57,
-   "prev": 26186.41,
-   "value_txt": "25,981.57",
-   "delta": -0.7822378096119329,
-   "delta_txt": "-0.78%",
+   "value": 25978.42,
+   "prev": 25981.57,
+   "value_txt": "25,978.42",
+   "delta": -0.012123978651026306,
+   "delta_txt": "-0.01%",
    "spark": [
-    26803.03,
     26729.16,
     26644.91,
     26289.71,
@@ -69,9 +68,10 @@
     26081.72,
     26333.04,
     26186.41,
-    25981.57
+    25981.57,
+    25978.42
    ],
-   "asof": "Sep 15"
+   "asof": "Sep 16"
   },
   {
    "label": "Dow",
@@ -106,7 +106,8 @@
     52421.2,
     52093.11,
     51461.9
-   ]
+   ],
+   "asof": "Sep 16"
   },
   {
    "label": "VIX",
@@ -285,19 +286,19 @@
     1.1551,
     1.1539,
     1.1537
-   ]
+   ],
+   "asof": "Sep 16"
   },
   {
    "label": "Bitcoin",
    "symbol": "bitcoin",
    "kind": "crypto",
-   "value": 76144.3551972638,
-   "prev": 75590.24471973324,
-   "value_txt": "$76,144",
-   "delta": 0.7330449578315812,
-   "delta_txt": "+0.73%",
+   "value": 76317.4886125675,
+   "prev": 76146.81236783884,
+   "value_txt": "$76,317",
+   "delta": 0.22414102366384342,
+   "delta_txt": "+0.22%",
    "spark": [
-    78511.2331116067,
     79018.03405750773,
     80268.37474707834,
     77820.76428719184,
@@ -319,20 +320,20 @@
     76819.04496746542,
     78173.35158344489,
     75590.24471973324,
-    76144.3551972638
+    76146.81236783884,
+    76317.4886125675
    ]
   },
   {
    "label": "Ethereum",
    "symbol": "ethereum",
    "kind": "crypto",
-   "value": 2418.529420397259,
-   "prev": 2397.4972601650115,
-   "value_txt": "$2,419",
-   "delta": 0.8772548182515892,
-   "delta_txt": "+0.88%",
+   "value": 2431.6923711573604,
+   "prev": 2415.9596535242995,
+   "value_txt": "$2,432",
+   "delta": 0.6511995185892574,
+   "delta_txt": "+0.65%",
    "spark": [
-    2442.0111121033965,
     2506.3431057180687,
     2511.461241063819,
     2442.407614756763,
@@ -354,11 +355,12 @@
     2476.682526163658,
     2514.759550467769,
     2397.4972601650115,
-    2418.529420397259
+    2415.9596535242995,
+    2431.6923711573604
    ]
   }
  ],
- "tape_line": "S&P 500 -0.45%, Nasdaq -0.78%, Dow -1.21%; the 10-year Treasury at 5.00% (+3 bp); WTI crude $107.02 (+4.49%); bitcoin $76,144 (+0.73%).",
+ "tape_line": "S&P 500 -0.45%, Nasdaq -0.01%, Dow -1.21%; the 10-year Treasury at 5.00% (+3 bp); WTI crude $107.02 (+4.49%); bitcoin $76,317 (+0.22%).",
  "top": [
   {
    "title": "Fed rate hike fails to calm troubled markets as Dow falls 600 points. Expect more sharp swings in stocks and bonds.",
@@ -368,11 +370,18 @@
    "summary": "Fed Chair Kevin Warsh has sent investors a message: When it comes to tamping down inflation, he means business."
   },
   {
-   "title": "Federal Reserve decision as it happened: Trump calls for rates to be 1% or less after Fed tightens monetary policy",
+   "title": "Federal Reserve decision as it happened: US central bank raises interest rates for first time since 2023, Donald Trump calls for borrowing costs to be 1% or less",
    "link": "https://www.ft.com/content/61b5fbae-9dd6-4980-bd1f-effe54b72d84",
    "source": "Financial Times",
    "published": "2026-09-16T22:49:33+00:00",
-   "summary": "President urges policymakers to act as rate-setters lift borrowing costs for first time since 2023"
+   "summary": "Stocks end lower and Treasury yields rise after policymakers signal they are prepared to take further steps to curb inflation sweeping the US"
+  },
+  {
+   "title": "Fed Raises Rates in First Major Step by Warsh to Contain Inflation",
+   "link": "https://www.nytimes.com/2026/09/16/business/economy/federal-reserve-interest-rates-warsh.html",
+   "source": "NYT Business",
+   "published": "2026-09-17T03:06:27+00:00",
+   "summary": "The Federal Reserve’s first increase to interest rates since July 2023 comes less than two months before the midterm elections."
   },
   {
    "title": "Dow Falls 500 Points as the Federal Reserve Raises Key Interest Rate",
@@ -382,6 +391,13 @@
    "summary": "Stocks turned lower after Fed Chairman Kevin Warsh signaled inflation is still too hot."
   },
   {
+   "title": "Bitcoin absorbs Fed rate hike as officials see more tightening",
+   "link": "https://cointelegraph.com/markets/bitcoin-absorbs-fed-rate-hike-as-officials-see-more-tightening?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+   "source": "Cointelegraph",
+   "published": "2026-09-17T02:52:08+00:00",
+   "summary": "Bitcoin showed little immediate reaction to the Fed’s first rate increase since 2023, but 16 of 18 officials expect at least one more hike before the end of the year."
+  },
+  {
    "title": "10-year Treasury yield climbs back to 5% after Fed hikes rates, Warsh highlights inflation risks",
    "link": "https://www.cnbc.com/2026/09/16/treasury-yield-bond-market-fed-decision.html",
    "source": "CNBC",
@@ -389,61 +405,25 @@
    "summary": "The 10-year yield moved above the 5% mark after a Federal Reserve rate increase and comments from Chairman Kevin Warsh highlighting persistent inflation risks."
   },
   {
-   "title": "Fed Issues First Rate Hike Since 2023",
-   "link": "https://www.wsj.com/finance/investing/fed-issues-first-rate-hike-since-2023-10eea80d?mod=rss_markets_main",
+   "title": "Global Tightening Could Cap Dollar’s Fed Boost",
+   "link": "https://www.wsj.com/finance/currencies/global-tightening-could-cap-dollars-fed-boost-fe1f509c?mod=rss_markets_main",
    "source": "WSJ Markets",
-   "published": "2026-09-16T20:21:00+00:00",
-   "summary": "Plus, Treasury yields climb and OpenAI holds talks about new funding round"
-  },
-  {
-   "title": "The Fed Is Raising Rates As Its Inflation Fight Drags On",
-   "link": "https://www.wsj.com/politics/policy/the-fed-is-raising-rates-as-its-inflation-fight-drags-on-f9439ca4?mod=rss_markets_main",
-   "source": "WSJ Markets",
-   "published": "2026-09-16T21:16:00+00:00",
-   "summary": "Plus, a top Democrat opposes a major U.S. arms sale to Israel, and BlackRock’s plan to make your 401(k) more like a pension."
-  },
-  {
-   "title": "Federal Reserve issues FOMC statement",
-   "link": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a.htm",
-   "source": "Federal Reserve",
-   "published": "2026-09-16T18:00:00+00:00",
-   "summary": "Federal Reserve issues FOMC statement"
+   "published": "2026-09-17T01:19:00+00:00",
+   "summary": "The Fed hiking is positive for the dollar, but there may not be enough central bank policy divergence out there to move its value much higher, said Monex USA."
   }
  ],
  "smallcap": {
   "note": null,
-  "asof": "2026-09-16T23:56:00+00:00",
+  "asof": "2026-09-17T04:16:53+00:00",
   "coverage": {
    "universe": 9862,
-   "profiled": 9469,
-   "in_band": 1790,
-   "measured": 1738,
-   "scored": 894,
+   "profiled": 9771,
+   "in_band": 1842,
+   "measured": 1790,
+   "scored": 926,
    "below_floor": 71
   },
   "screen": [
-   {
-    "ticker": "PAYS",
-    "name": "Paysign Inc",
-    "ind": "Financial Services",
-    "group": "Financials",
-    "mcap": 759.4159787307096,
-    "rev_g": 46.84,
-    "accel": 1.2399999999999949,
-    "r13": 92.9699,
-    "momo": 1.64,
-    "from_high": -18.08731808731808,
-    "ev_rev": 7.2737,
-    "px": 11.82,
-    "dp": -2.8759,
-    "score": 84.2,
-    "sub": {
-     "g": 79,
-     "m": 100,
-     "q": 63
-    },
-    "flags": []
-   },
    {
     "ticker": "SBET",
     "name": "Sharplink Inc",
@@ -458,15 +438,35 @@
     "ev_rev": 34.9461,
     "px": 7.98,
     "dp": -4.2017,
-    "score": 82.6,
+    "score": 85.1,
     "sub": {
      "g": 100,
      "m": 83,
      "q": 60
     },
-    "flags": [
-     "new"
-    ]
+    "flags": []
+   },
+   {
+    "ticker": "PAYS",
+    "name": "Paysign Inc",
+    "ind": "Financial Services",
+    "group": "Financials",
+    "mcap": 759.4159787307096,
+    "rev_g": 46.84,
+    "accel": 1.2399999999999949,
+    "r13": 92.9699,
+    "momo": 1.64,
+    "from_high": -18.08731808731808,
+    "ev_rev": 7.2737,
+    "px": 11.82,
+    "dp": -2.8759,
+    "score": 83.9,
+    "sub": {
+     "g": 78,
+     "m": 100,
+     "q": 63
+    },
+    "flags": []
    },
    {
     "ticker": "ETON",
@@ -482,10 +482,10 @@
     "ev_rev": 15.8316,
     "px": 56.35,
     "dp": 2.5851,
-    "score": 82.3,
+    "score": 82.2,
     "sub": {
-     "g": 87,
-     "m": 97,
+     "g": 86,
+     "m": 98,
      "q": 43
     },
     "flags": []
@@ -504,11 +504,33 @@
     "ev_rev": 1.033,
     "px": 51.64,
     "dp": -1.9835,
-    "score": 82.1,
+    "score": 82.2,
     "sub": {
-     "g": 88,
+     "g": 89,
      "m": 86,
      "q": 61
+    },
+    "flags": []
+   },
+   {
+    "ticker": "REPX",
+    "name": "Riley Exploration Permian Inc",
+    "ind": "Energy",
+    "group": "Energy",
+    "mcap": 994.7050060273023,
+    "rev_g": 23.16,
+    "accel": 50.0,
+    "r13": 25.1665,
+    "momo": 0.88,
+    "from_high": -4.096170970614432,
+    "ev_rev": 2.5688,
+    "px": 43.08,
+    "dp": -4.0535,
+    "score": 82.1,
+    "sub": {
+     "g": 82,
+     "m": 91,
+     "q": 63
     },
     "flags": []
    },
@@ -530,29 +552,7 @@
     "sub": {
      "g": 79,
      "m": 98,
-     "q": 53
-    },
-    "flags": []
-   },
-   {
-    "ticker": "MAKO",
-    "name": "Mako Mining Corp",
-    "ind": "Metals & Mining",
-    "group": "Materials",
-    "mcap": 1188.812085,
-    "rev_g": 77.04,
-    "accel": 38.75,
-    "r13": 35.1594,
-    "momo": 0.57,
-    "from_high": -34.765625,
-    "ev_rev": 4.1275,
-    "px": 10.02,
-    "dp": -1.5717,
-    "score": 81.3,
-    "sub": {
-     "g": 92,
-     "m": 78,
-     "q": 67
+     "q": 52
     },
     "flags": []
    },
@@ -579,6 +579,28 @@
     "flags": []
    },
    {
+    "ticker": "MAKO",
+    "name": "Mako Mining Corp",
+    "ind": "Metals & Mining",
+    "group": "Materials",
+    "mcap": 1188.812085,
+    "rev_g": 77.04,
+    "accel": 38.75,
+    "r13": 35.1594,
+    "momo": 0.57,
+    "from_high": -34.765625,
+    "ev_rev": 4.1275,
+    "px": 10.02,
+    "dp": -1.5717,
+    "score": 80.9,
+    "sub": {
+     "g": 91,
+     "m": 78,
+     "q": 67
+    },
+    "flags": []
+   },
+   {
     "ticker": "PEBO",
     "name": "Peoples Bancorp Inc",
     "ind": "Banking",
@@ -592,11 +614,57 @@
     "ev_rev": null,
     "px": 39.61,
     "dp": -1.3941,
-    "score": 80.7,
+    "score": 80.8,
     "sub": {
      "g": 84,
      "m": 91,
      "q": 53
+    },
+    "flags": []
+   },
+   {
+    "ticker": "RDVT",
+    "name": "Red Violet Inc",
+    "ind": "Technology",
+    "group": "Technology",
+    "mcap": 1222.9399170500717,
+    "rev_g": 20.18,
+    "accel": 2.530000000000001,
+    "r13": 38.5636,
+    "momo": 1.15,
+    "from_high": -1.624365482233503,
+    "ev_rev": 11.8454,
+    "px": 77.52,
+    "dp": 1.7189,
+    "score": 80.6,
+    "sub": {
+     "g": 75,
+     "m": 97,
+     "q": 73
+    },
+    "flags": [
+     "new"
+    ]
+   },
+   {
+    "ticker": "MGTX",
+    "name": "MeiraGTx Holdings PLC",
+    "ind": "Biotechnology",
+    "group": "Health",
+    "mcap": 1225.5085839037265,
+    "rev_g": 948.35,
+    "accel": 50.0,
+    "r13": 34.1667,
+    "momo": 0.85,
+    "from_high": -16.87296416938111,
+    "ev_rev": 2.9748,
+    "px": 12.76,
+    "dp": 0,
+    "score": 80.5,
+    "sub": {
+     "g": 94,
+     "m": 91,
+     "q": 34
     },
     "flags": []
    },
@@ -614,7 +682,7 @@
     "ev_rev": null,
     "px": 53.56,
     "dp": -1.6526,
-    "score": 80.2,
+    "score": 80.1,
     "sub": {
      "g": 70,
      "m": 94,
@@ -625,28 +693,26 @@
     ]
    },
    {
-    "ticker": "REPX",
-    "name": "Riley Exploration Permian Inc",
+    "ticker": "KGEI",
+    "name": "Kolibri Global Energy Inc",
     "ind": "Energy",
     "group": "Energy",
-    "mcap": 994.7050060273023,
-    "rev_g": 23.16,
+    "mcap": 328.2227284122563,
+    "rev_g": 24.36,
     "accel": 50.0,
-    "r13": 25.1665,
-    "momo": 0.88,
-    "from_high": -4.096170970614432,
-    "ev_rev": 2.5688,
-    "px": 43.08,
-    "dp": -4.0535,
-    "score": 79.6,
+    "r13": 22.7882,
+    "momo": 0.6,
+    "from_high": -27.20510095642934,
+    "ev_rev": 3.8759,
+    "px": 6.85,
+    "dp": -0.436,
+    "score": 79.8,
     "sub": {
-     "g": 82,
-     "m": 91,
-     "q": 64
+     "g": 87,
+     "m": 79,
+     "q": 67
     },
-    "flags": [
-     "new"
-    ]
+    "flags": []
    },
    {
     "ticker": "BWFG",
@@ -662,57 +728,11 @@
     "ev_rev": null,
     "px": 66.69,
     "dp": -1.2,
-    "score": 79.5,
+    "score": 79.4,
     "sub": {
      "g": 70,
      "m": 99,
      "q": 60
-    },
-    "flags": []
-   },
-   {
-    "ticker": "MGTX",
-    "name": "MeiraGTx Holdings PLC",
-    "ind": "Biotechnology",
-    "group": "Health",
-    "mcap": 1225.5085839037265,
-    "rev_g": 948.35,
-    "accel": 50.0,
-    "r13": 34.1667,
-    "momo": 0.85,
-    "from_high": -16.87296416938111,
-    "ev_rev": 2.9748,
-    "px": 12.76,
-    "dp": 0,
-    "score": 78.2,
-    "sub": {
-     "g": 94,
-     "m": 90,
-     "q": 34
-    },
-    "flags": [
-     "new"
-    ]
-   },
-   {
-    "ticker": "FENC",
-    "name": "Fennec Pharmaceuticals Inc",
-    "ind": "Biotechnology",
-    "group": "Health",
-    "mcap": 434.48213806852596,
-    "rev_g": 33.76,
-    "accel": 38.88,
-    "r13": 35.262,
-    "momo": 0.72,
-    "from_high": -20.37735849056603,
-    "ev_rev": 6.6401,
-    "px": 10.55,
-    "dp": -0.8459,
-    "score": 77.8,
-    "sub": {
-     "g": 87,
-     "m": 84,
-     "q": 47
     },
     "flags": []
    },
@@ -730,9 +750,9 @@
     "ev_rev": 5.6319,
     "px": 18.76,
     "dp": 0.0533,
-    "score": 77.7,
+    "score": 77.9,
     "sub": {
-     "g": 58,
+     "g": 59,
      "m": 97,
      "q": 78
     },
@@ -754,37 +774,57 @@
     "ev_rev": 2.5094,
     "px": 14.8,
     "dp": -2.8234,
-    "score": 77.6,
+    "score": 77.7,
     "sub": {
-     "g": 82,
+     "g": 83,
      "m": 80,
      "q": 62
     },
     "flags": []
    },
    {
-    "ticker": "KGEI",
-    "name": "Kolibri Global Energy Inc",
-    "ind": "Energy",
-    "group": "Energy",
-    "mcap": 328.2227284122563,
-    "rev_g": 24.36,
-    "accel": 50.0,
-    "r13": 22.7882,
-    "momo": 0.6,
-    "from_high": -27.20510095642934,
-    "ev_rev": 3.8759,
-    "px": 6.85,
-    "dp": -0.436,
-    "score": 77.4,
+    "ticker": "FENC",
+    "name": "Fennec Pharmaceuticals Inc",
+    "ind": "Biotechnology",
+    "group": "Health",
+    "mcap": 434.48213806852596,
+    "rev_g": 33.76,
+    "accel": 38.88,
+    "r13": 35.262,
+    "momo": 0.72,
+    "from_high": -20.37735849056603,
+    "ev_rev": 6.6401,
+    "px": 10.55,
+    "dp": -0.8459,
+    "score": 77.6,
     "sub": {
      "g": 86,
-     "m": 79,
-     "q": 68
+     "m": 84,
+     "q": 47
     },
-    "flags": [
-     "new"
-    ]
+    "flags": []
+   },
+   {
+    "ticker": "NAT",
+    "name": "Nordic American Tankers Ltd",
+    "ind": "Energy",
+    "group": "Energy",
+    "mcap": 1662.2426750327652,
+    "rev_g": 48,
+    "accel": 49.489999999999995,
+    "r13": 48.1553,
+    "momo": 1.04,
+    "from_high": null,
+    "ev_rev": 7.3964,
+    "px": 7.99,
+    "dp": 1.7834,
+    "score": 77.5,
+    "sub": {
+     "g": 65,
+     "m": 94,
+     "q": 69
+    },
+    "flags": []
    },
    {
     "ticker": "CBLL",
@@ -800,13 +840,37 @@
     "ev_rev": 9.1235,
     "px": 24.5,
     "dp": -2.1565,
-    "score": 76.6,
+    "score": 76.5,
     "sub": {
-     "g": 77,
+     "g": 76,
      "m": 86,
      "q": 58
     },
     "flags": []
+   },
+   {
+    "ticker": "QNST",
+    "name": "QuinStreet Inc",
+    "ind": "Media",
+    "group": "Consumer",
+    "mcap": 1054.956817788901,
+    "rev_g": 18.29,
+    "accel": 24.380000000000003,
+    "r13": 51.5997,
+    "momo": 0.64,
+    "from_high": -17.45177209510992,
+    "ev_rev": 0.7699,
+    "px": 18.4,
+    "dp": 0.2179,
+    "score": 76.3,
+    "sub": {
+     "g": 88,
+     "m": 81,
+     "q": 43
+    },
+    "flags": [
+     "new"
+    ]
    },
    {
     "ticker": "BBNX",
@@ -822,7 +886,7 @@
     "ev_rev": 7.1578,
     "px": 22.18,
     "dp": 15.3406,
-    "score": 75.5,
+    "score": 75.4,
     "sub": {
      "g": 72,
      "m": 84,
@@ -847,79 +911,11 @@
     "ev_rev": null,
     "px": 20.02,
     "dp": -4.0728,
-    "score": 75.2,
+    "score": 74.8,
     "sub": {
-     "g": 96,
+     "g": 95,
      "m": 57,
      "q": 70
-    },
-    "flags": []
-   },
-   {
-    "ticker": "NAT",
-    "name": "Nordic American Tankers Ltd",
-    "ind": "Energy",
-    "group": "Energy",
-    "mcap": 1662.2426750327652,
-    "rev_g": 48,
-    "accel": 49.489999999999995,
-    "r13": 48.1553,
-    "momo": 1.04,
-    "from_high": null,
-    "ev_rev": 7.3964,
-    "px": 7.99,
-    "dp": 1.7834,
-    "score": 75.2,
-    "sub": {
-     "g": 65,
-     "m": 94,
-     "q": 69
-    },
-    "flags": [
-     "new"
-    ]
-   },
-   {
-    "ticker": "YORW",
-    "name": "York Water Co",
-    "ind": "Utilities",
-    "group": "Utilities",
-    "mcap": 501.03,
-    "rev_g": 9.5,
-    "accel": 13.16,
-    "r13": 15.0338,
-    "momo": 0.5,
-    "from_high": -5.2283826486641765,
-    "ev_rev": 8.931,
-    "px": 32.99,
-    "dp": 0.3651,
-    "score": 74.6,
-    "sub": {
-     "g": 78,
-     "m": 73,
-     "q": 71
-    },
-    "flags": []
-   },
-   {
-    "ticker": "CTRN",
-    "name": "Citi Trends Inc",
-    "ind": "Retail",
-    "group": "Consumer",
-    "mcap": 592.7519314781603,
-    "rev_g": 11.15,
-    "accel": -0.20000000000000107,
-    "r13": 53.8927,
-    "momo": 0.98,
-    "from_high": -25.298421255294567,
-    "ev_rev": 0.6171,
-    "px": 58.2,
-    "dp": 1.9264,
-    "score": 74.5,
-    "sub": {
-     "g": 61,
-     "m": 93,
-     "q": 65
     },
     "flags": []
    },
@@ -937,55 +933,55 @@
     "ev_rev": 12.3006,
     "px": 8.97,
     "dp": 0.1675,
-    "score": 74.4,
+    "score": 74.6,
     "sub": {
      "g": 89,
      "m": 71,
-     "q": 53
+     "q": 52
     },
     "flags": []
    },
    {
-    "ticker": "EVER",
-    "name": "EverQuote Inc",
-    "ind": "Media",
+    "ticker": "CTRN",
+    "name": "Citi Trends Inc",
+    "ind": "Retail",
     "group": "Consumer",
-    "mcap": 877.8222044863692,
-    "rev_g": 68.34,
-    "accel": -43.790000000000006,
-    "r13": 29.6046,
-    "momo": 0.79,
-    "from_high": -18.76087713191785,
-    "ev_rev": 0.9077,
-    "px": 23.34,
-    "dp": -4.6179,
-    "score": 74.4,
+    "mcap": 592.7519314781603,
+    "rev_g": 11.15,
+    "accel": -0.20000000000000107,
+    "r13": 53.8927,
+    "momo": 0.98,
+    "from_high": -25.298421255294567,
+    "ev_rev": 0.6171,
+    "px": 58.2,
+    "dp": 1.9264,
+    "score": 74.6,
     "sub": {
-     "g": 75,
-     "m": 88,
-     "q": 47
+     "g": 61,
+     "m": 93,
+     "q": 65
     },
     "flags": []
    },
    {
-    "ticker": "IBEX",
-    "name": "Ibex Ltd",
-    "ind": "Professional Services",
-    "group": "Industrials",
-    "mcap": 524.45166,
-    "rev_g": 17.04,
-    "accel": -0.21999999999999886,
-    "r13": 31.3548,
-    "momo": 1.07,
-    "from_high": -6.303791579437079,
-    "ev_rev": 0.8142,
-    "px": 40.28,
-    "dp": -1.2745,
-    "score": 73.8,
+    "ticker": "YORW",
+    "name": "York Water Co",
+    "ind": "Utilities",
+    "group": "Utilities",
+    "mcap": 501.03,
+    "rev_g": 9.5,
+    "accel": 13.16,
+    "r13": 15.0338,
+    "momo": 0.5,
+    "from_high": -5.2283826486641765,
+    "ev_rev": 8.931,
+    "px": 32.99,
+    "dp": 0.3651,
+    "score": 74.5,
     "sub": {
-     "g": 59,
-     "m": 95,
-     "q": 60
+     "g": 78,
+     "m": 73,
+     "q": 71
     },
     "flags": []
    }
@@ -1068,31 +1064,19 @@
     "dp": 23.2168
    },
    {
+    "ticker": "HCTPF",
+    "name": "Hutchison Port Holdings Trust",
+    "px": 0.2188,
+    "dp": 21.5556
+   },
+   {
     "ticker": "BBNX",
     "name": "Beta Bionics Inc",
     "px": 22.18,
     "dp": 15.3406
-   },
-   {
-    "ticker": "IONR",
-    "name": "ioneer Ltd",
-    "px": 3.27,
-    "dp": 12.3711
    }
   ],
   "movers_down": [
-   {
-    "ticker": "OPTT",
-    "name": "Ocean Power Technologies Inc",
-    "px": 2.05,
-    "dp": -24.9084
-   },
-   {
-    "ticker": "SION",
-    "name": "Sionna Therapeutics Inc",
-    "px": 6.88,
-    "dp": -16.707
-   },
    {
     "ticker": "CTMX",
     "name": "CytomX Therapeutics Inc",
@@ -1106,25 +1090,25 @@
     "dp": -14.4608
    },
    {
-    "ticker": "EYPT",
-    "name": "EyePoint Inc",
-    "px": 3.66,
-    "dp": -13.8824
+    "ticker": "SVRE",
+    "name": "Saverone 2014 Ltd",
+    "px": 2.25,
+    "dp": -13.4615
+   },
+   {
+    "ticker": "TRBG",
+    "name": "Turbogen Ltd",
+    "px": 3.705,
+    "dp": -12.8235
+   },
+   {
+    "ticker": "INDP",
+    "name": "Indaptus Therapeutics Inc",
+    "px": 3.22,
+    "dp": -11.5385
    }
   ],
   "earnings": [
-   {
-    "date": "2026-09-16",
-    "ticker": "ABAT",
-    "name": "American Battery Technology Co",
-    "hour": ""
-   },
-   {
-    "date": "2026-09-16",
-    "ticker": "LUXE",
-    "name": "LuxExperience BV",
-    "hour": "bmo"
-   },
    {
     "date": "2026-09-21",
     "ticker": "BNTC",
@@ -1154,12 +1138,24 @@
     "ticker": "SFIX",
     "name": "Stitch Fix Inc",
     "hour": "amc"
+   },
+   {
+    "date": "2026-09-24",
+    "ticker": "AFB",
+    "name": "Alliancebernstein National Municipal Income Fund Inc",
+    "hour": ""
+   },
+   {
+    "date": "2026-09-24",
+    "ticker": "SCHL",
+    "name": "Scholastic Corp",
+    "hour": ""
    }
   ],
   "evaluation": {
    "1w": {
-    "excess": 2.15,
-    "days": 4,
+    "excess": 2.2,
+    "days": 5,
     "indep": 1,
     "dropped": 0
    }
@@ -1168,7 +1164,7 @@
    "r13": -5.0422,
    "r26": 11.186,
    "label": "flat/choppy",
-   "t": "2026-09-16T12:56:22+00:00"
+   "t": "2026-09-17T04:16:53+00:00"
   },
   "filings_material": [
    {
@@ -1356,24 +1352,17 @@
     "date": "2026-09-11",
     "link": "https://www.sec.gov/Archives/edgar/data/17313/000001731326000152/0000017313-26-000152-index.htm",
     "form": "424B2"
-   },
-   {
-    "ticker": "MPLT",
-    "name": "MapLight Therapeutics Inc",
-    "date": "2026-09-09",
-    "link": "https://www.sec.gov/Archives/edgar/data/1770069/000119312526386648/0001193125-26-386648-index.htm",
-    "form": "S-1"
    }
   ],
   "budget_mode": "bootstrap",
   "news": [
    {
-    "title": "Investar Holding Corporation Declares Quarterly Common and Preferred Stock Cash Dividends",
-    "link": "https://www.prnewswire.com/news-releases/investar-holding-corporation-declares-quarterly-common-and-preferred-stock-cash-dividends-302881198.html",
-    "source": "PR Newswire",
-    "published": "2026-09-16T22:30:00+00:00",
-    "summary": "BATON ROUGE, La., Sept. 16, 2026 /PRNewswire/ -- Investar Holding Corporation (the \"Company\") (Nasdaq: ISTR), the holding company of Investar Bank, National Association (the \"Bank\"), declared a quarterly cash dividend of $0.12…",
-    "ticker": "ISTR"
+    "title": "Zumiez (ZUMZ) Falls on Weak Results and Lower Outlook, But Is the Selloff Overdone?",
+    "link": "https://finance.yahoo.com/markets/stocks/articles/zumiez-zumz-falls-weak-results-163241796.html",
+    "source": "Insider Monkey",
+    "published": "2026-09-15T16:32:41+00:00",
+    "summary": "",
+    "ticker": "ZUMZ"
    },
    {
     "title": "Pfizer (PFE), Valneva (VALN) Lyme Vaccine Moves to EMA Review Despite Phase 3 Caveat",
@@ -1389,8 +1378,8 @@
  "stats": {
   "feeds_total": 21,
   "feeds_failed": 3,
-  "items": 386,
-  "smallcap_calls": 552,
+  "items": 398,
+  "smallcap_calls": 554,
   "feed_errors": [
    [
     "GlobeNewswire",
