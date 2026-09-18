@@ -9,6 +9,10 @@ data/*
 !data/latest.json
 !data/smallcap.json
 !data/screen_log.json
+!data/portfolio.json
+# NOTE: every file the system must REMEMBER between runs has to be listed here.
+# The cloud starts from a fresh checkout each time, so an un-listed state file
+# is silently recreated from scratch on every run and never accumulates.
 
 # private research workspace living inside this public repo — NEVER commit
 Small Cap Research/
