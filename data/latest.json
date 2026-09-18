@@ -1,17 +1,16 @@
 {
- "generated_at": "2026-09-17T21:57:45.763068+00:00",
+ "generated_at": "2026-09-18T00:04:05.403613+00:00",
  "market": [
   {
    "label": "S&P 500",
    "symbol": "SP500",
    "kind": "index",
-   "value": 7551.81,
-   "prev": 7585.73,
-   "value_txt": "7,551.81",
-   "delta": -0.44715538254062775,
-   "delta_txt": "-0.45%",
+   "value": 7637.76,
+   "prev": 7551.81,
+   "value_txt": "7,637.76",
+   "delta": 1.138137744461259,
+   "delta_txt": "+1.14%",
    "spark": [
-    7785.76,
     7745.06,
     7691.76,
     7707.98,
@@ -33,9 +32,10 @@
     7656.98,
     7619.98,
     7585.73,
-    7551.81
+    7551.81,
+    7637.76
    ],
-   "asof": "Sep 16"
+   "asof": "Sep 17"
   },
   {
    "label": "Nasdaq",
@@ -77,13 +77,12 @@
    "label": "Dow",
    "symbol": "DJIA",
    "kind": "index",
-   "value": 51461.9,
-   "prev": 52093.11,
-   "value_txt": "51,461.90",
-   "delta": -1.2116957501673429,
-   "delta_txt": "-1.21%",
+   "value": 51778.04,
+   "prev": 51461.9,
+   "value_txt": "51,778.04",
+   "delta": 0.6143185541147905,
+   "delta_txt": "+0.61%",
    "spark": [
-    53732.41,
     53459.78,
     53343.4,
     53463.05,
@@ -105,9 +104,10 @@
     52573.29,
     52421.2,
     52093.11,
-    51461.9
+    51461.9,
+    51778.04
    ],
-   "asof": "Sep 16"
+   "asof": "Sep 17"
   },
   {
    "label": "VIX",
@@ -286,17 +286,18 @@
     1.1539,
     1.1537,
     1.1481
-   ]
+   ],
+   "asof": "Sep 17"
   },
   {
    "label": "Bitcoin",
    "symbol": "bitcoin",
    "kind": "crypto",
-   "value": 76377.35431499987,
+   "value": 76361.8320672492,
    "prev": 76146.81236783884,
-   "value_txt": "$76,377",
-   "delta": 0.302759813565627,
-   "delta_txt": "+0.30%",
+   "value_txt": "$76,362",
+   "delta": 0.28237518121136207,
+   "delta_txt": "+0.28%",
    "spark": [
     79018.03405750773,
     80268.37474707834,
@@ -320,18 +321,18 @@
     78173.35158344489,
     75590.24471973324,
     76146.81236783884,
-    76377.35431499987
+    76361.8320672492
    ]
   },
   {
    "label": "Ethereum",
    "symbol": "ethereum",
    "kind": "crypto",
-   "value": 2446.9907191524,
+   "value": 2446.0270620640244,
    "prev": 2415.9596535242995,
-   "value_txt": "$2,447",
-   "delta": 1.2844198611857423,
-   "delta_txt": "+1.28%",
+   "value_txt": "$2,446",
+   "delta": 1.2445327261928363,
+   "delta_txt": "+1.24%",
    "spark": [
     2506.3431057180687,
     2511.461241063819,
@@ -355,11 +356,11 @@
     2514.759550467769,
     2397.4972601650115,
     2415.9596535242995,
-    2446.9907191524
+    2446.0270620640244
    ]
   }
  ],
- "tape_line": "S&P 500 -0.45%, Nasdaq -0.01%, Dow -1.21%; the 10-year Treasury at 5.01% (+1 bp); WTI crude $107.02 (+4.49%); bitcoin $76,377 (+0.30%).",
+ "tape_line": "S&P 500 +1.14%, Nasdaq -0.01%, Dow +0.61%; the 10-year Treasury at 5.01% (+1 bp); WTI crude $107.02 (+4.49%); bitcoin $76,362 (+0.28%).",
  "top": [
   {
    "title": "Investors Come Back to AI Stocks, Snapping Market Out of Inflation Gloom",
@@ -380,7 +381,7 @@
    "link": "https://www.wsj.com/finance/long-term-jgb-yields-largely-steady-as-boj-starts-two-day-meeting-0e67c4e8?mod=rss_markets_main",
    "source": "WSJ Markets",
    "published": "2026-09-17T19:48:00+00:00",
-   "summary": "Treasury yields declined despite the Fed hike, as the central bank seems to convince Wall Street it is serious about bringing inflation down to target."
+   "summary": "Treasury yields declined despite the Fed hike, as the central bank seemed to convince Wall Street it is serious about bringing inflation down to target."
   },
   {
    "title": "Trump Blasts the Fed But Spares Kevin Warsh After Interest Rate Hike",
@@ -413,7 +414,7 @@
  ],
  "smallcap": {
   "note": null,
-  "asof": "2026-09-17T22:08:48+00:00",
+  "asof": "2026-09-18T00:05:59+00:00",
   "coverage": {
    "universe": 9862,
    "profiled": 9885,
@@ -433,10 +434,10 @@
     "accel": 50.0,
     "r13": 68.5083,
     "momo": 0.69,
-    "from_high": -57.25620680829281,
+    "from_high": -57.71691835167647,
     "ev_rev": 34.9461,
-    "px": 8.35,
-    "dp": 4.6366,
+    "px": 8.26,
+    "dp": 3.5088,
     "score": 84.6,
     "sub": {
      "g": 99,
@@ -455,15 +456,37 @@
     "accel": 1.2399999999999949,
     "r13": 92.9699,
     "momo": 1.64,
-    "from_high": -14.206514206514198,
+    "from_high": -13.929313929313924,
     "ev_rev": 7.2737,
-    "px": 12.38,
-    "dp": 4.7377,
+    "px": 12.42,
+    "dp": 5.0761,
     "score": 83.9,
     "sub": {
      "g": 79,
      "m": 100,
      "q": 63
+    },
+    "flags": []
+   },
+   {
+    "ticker": "RDVT",
+    "name": "Red Violet Inc",
+    "ind": "Technology",
+    "group": "Technology",
+    "mcap": 1222.9399170500717,
+    "rev_g": 20.18,
+    "accel": 2.530000000000001,
+    "r13": 38.5636,
+    "momo": 1.15,
+    "from_high": -2.131979695431463,
+    "ev_rev": 11.8454,
+    "px": 77.12,
+    "dp": -0.516,
+    "score": 83.0,
+    "sub": {
+     "g": 75,
+     "m": 97,
+     "q": 71
     },
     "flags": []
    },
@@ -477,10 +500,10 @@
     "accel": 17.10000000000001,
     "r13": 102.2491,
     "momo": 1.21,
-    "from_high": -14.976646075033905,
+    "from_high": -14.012354979659492,
     "ev_rev": 15.8316,
-    "px": 56.43,
-    "dp": 0.142,
+    "px": 57.07,
+    "dp": 1.2777,
     "score": 82.4,
     "sub": {
      "g": 87,
@@ -499,10 +522,10 @@
     "accel": 4.740000000000002,
     "r13": 55.3588,
     "momo": 0.76,
-    "from_high": -5.900124400213258,
+    "from_high": -5.544695219477525,
     "ev_rev": 1.033,
-    "px": 52.95,
-    "dp": 2.5368,
+    "px": 53.15,
+    "dp": 2.9241,
     "score": 81.9,
     "sub": {
      "g": 88,
@@ -521,10 +544,10 @@
     "accel": 16.25,
     "r13": 87.1153,
     "momo": 1.3,
-    "from_high": -14.270892497216515,
+    "from_high": -14.332405848689456,
     "ev_rev": 0.5569,
-    "px": 41.81,
-    "dp": 3.3366,
+    "px": 41.78,
+    "dp": 3.2625,
     "score": 81.7,
     "sub": {
      "g": 79,
@@ -543,10 +566,10 @@
     "accel": 50.0,
     "r13": 25.1665,
     "momo": 0.88,
-    "from_high": -3.984861976847731,
+    "from_high": -3.5841495992876227,
     "ev_rev": 2.5688,
-    "px": 43.13,
-    "dp": 0.1161,
+    "px": 43.31,
+    "dp": 0.5339,
     "score": 81.4,
     "sub": {
      "g": 81,
@@ -565,10 +588,10 @@
     "accel": -31.319229999999997,
     "r13": 15.642,
     "momo": 1.21,
-    "from_high": -3.780464402226058,
+    "from_high": -4.356169641143726,
     "ev_rev": null,
-    "px": 25.07,
-    "dp": 0.3603,
+    "px": 24.92,
+    "dp": -0.2402,
     "score": 81.3,
     "sub": {
      "g": 70,
@@ -587,10 +610,10 @@
     "accel": 38.75,
     "r13": 35.1594,
     "momo": 0.57,
-    "from_high": -32.2265625,
+    "from_high": -31.640625,
     "ev_rev": 4.1275,
-    "px": 10.41,
-    "dp": 3.8922,
+    "px": 10.5,
+    "dp": 4.7904,
     "score": 81.0,
     "sub": {
      "g": 91,
@@ -609,10 +632,10 @@
     "accel": 50.0,
     "r13": 34.1667,
     "momo": 0.85,
-    "from_high": -15.309446254071657,
+    "from_high": -14.983713355048856,
     "ev_rev": 2.9748,
-    "px": 13,
-    "dp": 1.8809,
+    "px": 13.05,
+    "dp": 2.2727,
     "score": 80.7,
     "sub": {
      "g": 95,
@@ -631,10 +654,10 @@
     "accel": 18.81649999999999,
     "r13": 10.3993,
     "momo": 0.88,
-    "from_high": -6.45542681484984,
+    "from_high": -6.644596831402227,
     "ev_rev": null,
-    "px": 39.56,
-    "dp": -0.1262,
+    "px": 39.48,
+    "dp": -0.3282,
     "score": 80.7,
     "sub": {
      "g": 84,
@@ -642,30 +665,6 @@
      "q": 53
     },
     "flags": []
-   },
-   {
-    "ticker": "RDVT",
-    "name": "Red Violet Inc",
-    "ind": "Technology",
-    "group": "Technology",
-    "mcap": 1222.9399170500717,
-    "rev_g": 20.18,
-    "accel": 2.530000000000001,
-    "r13": 38.5636,
-    "momo": 1.15,
-    "from_high": null,
-    "ev_rev": 11.8454,
-    "px": 79.47,
-    "dp": 2.5155,
-    "score": 80.5,
-    "sub": {
-     "g": 75,
-     "m": 97,
-     "q": 71
-    },
-    "flags": [
-     "new"
-    ]
    },
    {
     "ticker": "OBK",
@@ -677,10 +676,10 @@
     "accel": -32.77874,
     "r13": 11.8394,
     "momo": 1.01,
-    "from_high": -3.203167176534105,
+    "from_high": -3.365125067482455,
     "ev_rev": null,
-    "px": 53.79,
-    "dp": 0.4294,
+    "px": 53.7,
+    "dp": 0.2614,
     "score": 80.1,
     "sub": {
      "g": 70,
@@ -701,10 +700,10 @@
     "accel": 50.0,
     "r13": 22.7882,
     "momo": 0.6,
-    "from_high": -28.586609989373013,
+    "from_high": -28.799149840595106,
     "ev_rev": 3.8759,
-    "px": 6.72,
-    "dp": -1.8978,
+    "px": 6.7,
+    "dp": -2.1898,
     "score": 79.5,
     "sub": {
      "g": 86,
@@ -723,10 +722,10 @@
     "accel": -15.63805,
     "r13": 26.5778,
     "momo": 1.37,
-    "from_high": -3.578100301767506,
+    "from_high": -3.980456962207224,
     "ev_rev": null,
-    "px": 67.1,
-    "dp": 0.6148,
+    "px": 66.82,
+    "dp": 0.1949,
     "score": 79.4,
     "sub": {
      "g": 70,
@@ -745,10 +744,10 @@
     "accel": 38.88,
     "r13": 35.262,
     "momo": 0.72,
-    "from_high": -18.490566037735846,
+    "from_high": -18.641509433962266,
     "ev_rev": 6.6401,
-    "px": 10.8,
-    "dp": 2.3697,
+    "px": 10.78,
+    "dp": 2.1801,
     "score": 77.7,
     "sub": {
      "g": 86,
@@ -769,10 +768,10 @@
     "accel": 26.79,
     "r13": 12.9695,
     "momo": 1.19,
-    "from_high": -2.5899280575539696,
+    "from_high": -0.4316546762589968,
     "ev_rev": 5.6319,
-    "px": 20.31,
-    "dp": 8.2623,
+    "px": 20.76,
+    "dp": 10.661,
     "score": 77.6,
     "sub": {
      "g": 58,
@@ -795,8 +794,8 @@
     "momo": 1.04,
     "from_high": null,
     "ev_rev": 7.3964,
-    "px": 8.17,
-    "dp": 2.2528,
+    "px": 8.15,
+    "dp": 2.0025,
     "score": 77.4,
     "sub": {
      "g": 65,
@@ -815,10 +814,10 @@
     "accel": 45.68,
     "r13": 14.7898,
     "momo": 0.62,
-    "from_high": -5.526992287917743,
+    "from_high": -5.9125964010282805,
     "ev_rev": 2.5094,
-    "px": 14.7,
-    "dp": -0.6757,
+    "px": 14.64,
+    "dp": -1.0811,
     "score": 77.4,
     "sub": {
      "g": 83,
@@ -837,10 +836,10 @@
     "accel": -50.0,
     "r13": 39.8128,
     "momo": 0.71,
-    "from_high": -34.51543870376032,
+    "from_high": -34.48486701314582,
     "ev_rev": 7.1578,
-    "px": 21.42,
-    "dp": -3.4265,
+    "px": 21.43,
+    "dp": -3.3814,
     "score": 76.5,
     "sub": {
      "g": 74,
@@ -884,19 +883,17 @@
     "accel": 24.380000000000003,
     "r13": 51.5997,
     "momo": 0.64,
-    "from_high": -20.906235980260213,
+    "from_high": -20.72678331090174,
     "ev_rev": 0.7699,
-    "px": 17.63,
-    "dp": -4.1848,
+    "px": 17.67,
+    "dp": -3.9674,
     "score": 75.9,
     "sub": {
      "g": 88,
      "m": 81,
      "q": 42
     },
-    "flags": [
-     "new"
-    ]
+    "flags": []
    },
    {
     "ticker": "ELE",
@@ -908,10 +905,10 @@
     "accel": 24.670000000000016,
     "r13": 24.4717,
     "momo": 0.23,
-    "from_high": -37.03703703703704,
+    "from_high": -37.124526100904056,
     "ev_rev": null,
-    "px": 21.59,
-    "dp": 7.8422,
+    "px": 21.56,
+    "dp": 7.6923,
     "score": 75.0,
     "sub": {
      "g": 95,
@@ -930,10 +927,10 @@
     "accel": 1.6099999999999994,
     "r13": 7.1429,
     "momo": 0.45,
-    "from_high": -11.969111969111967,
+    "from_high": -13.079150579150568,
     "ev_rev": 12.3006,
-    "px": 9.12,
-    "dp": 1.6722,
+    "px": 9.005,
+    "dp": 0.3902,
     "score": 74.7,
     "sub": {
      "g": 89,
@@ -952,10 +949,10 @@
     "accel": -0.20000000000000107,
     "r13": 53.8927,
     "momo": 0.98,
-    "from_high": -24.515466563984077,
+    "from_high": -24.84918495700167,
     "ev_rev": 0.6171,
-    "px": 58.81,
-    "dp": 1.0481,
+    "px": 58.55,
+    "dp": 0.6014,
     "score": 74.6,
     "sub": {
      "g": 60,
@@ -974,10 +971,10 @@
     "accel": 13.16,
     "r13": 15.0338,
     "momo": 0.5,
-    "from_high": -4.969836253950022,
+    "from_high": -5.084745762711873,
     "ev_rev": 8.931,
-    "px": 33.08,
-    "dp": 0.2728,
+    "px": 33.04,
+    "dp": 0.1516,
     "score": 74.6,
     "sub": {
      "g": 78,
@@ -1342,23 +1339,19 @@
     "form": "424B2"
    }
   ],
-  "budget_mode": "full",
+  "budget_mode": "trickle",
   "news": [
    {
-    "title": "American Battery Technology (ABAT) Turns A Profit, But Faces A New Export Threat",
-    "link": "https://finance.yahoo.com/markets/stocks/articles/american-battery-technology-abat-turns-141323855.html",
-    "source": "Insider Monkey",
-    "published": "2026-09-16T14:13:23+00:00",
-    "summary": "",
-    "ticker": "ABAT"
+    "title": "LINCOLN EDUCATIONAL SERVICES CORP. (NASDAQ: LINC) INVESTORS: Hagens Berman Alerts Investors to Securities Class Action Lawsuit, Encourages LINC Shareholders with Losses to Contact the Firm",
+    "link": "https://www.prnewswire.com/news-releases/lincoln-educational-services-corp-nasdaq-linc-investors-hagens-berman-alerts-investors-to-securities-class-action-lawsuit-encourages-linc-shareholders-with-losses-to-contact-the-firm-302882662.html",
+    "source": "PR Newswire",
+    "published": "2026-09-17T22:40:00+00:00",
+    "summary": "SAN FRANCISCO, Sept. 17, 2026 /PRNewswire/ -- Lincoln Educational Services Corporation (NASDAQ: LINC) faces a securities class action seeking to represent investors who purchased or otherwise acquired Lincoln Educational…",
+    "ticker": "LINC"
    }
   ]
  },
  "econ_calendar": [
-  {
-   "date": "2026-09-17",
-   "label": "Housing starts"
-  },
   {
    "date": "2026-09-24",
    "label": "Housing starts"
@@ -1371,8 +1364,8 @@
  "stats": {
   "feeds_total": 21,
   "feeds_failed": 2,
-  "items": 403,
-  "smallcap_calls": 552,
+  "items": 389,
+  "smallcap_calls": 42,
   "feed_errors": [
    [
     "GlobeNewswire",
