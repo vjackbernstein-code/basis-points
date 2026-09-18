@@ -888,67 +888,63 @@ def _fmt_mcap(musd):
 
 
 def render_portfolio(pf):
-    """The paper portfolio. Labelled unmistakably: this is a simulation, and a
-    public page showing a rising number must never read as a real return."""
+    """The paper portfolios. Labelled unmistakably: these are simulations, and
+    a rising number on a public page must never read as a real return."""
     if not pf or pf.get("status") != "running":
-        return ('<div class="note-box"><strong>Paper portfolio — simulated.</strong> '
-                'Starting up: the first simulated rebalance happens on the next '
-                'Monday run. No money is involved at any point.</div>')
+        return ('<div class="note-box"><strong>Paper portfolios — simulated.</strong> '
+                'Starting up: the first simulated trades happen on the next run '
+                'with a published screen. No money is involved at any point.</div>')
     a = pf["assumptions"]
-    exc = pf.get("excess")
-    exc_txt = (f'<span class="{delta_class(exc)}">{exc:+.2f}%</span>'
-               if exc is not None else "—")
-    bench_txt = (f'{pf["bench_ret"]:+.2f}%' if pf.get("bench_ret") is not None else "—")
-    head = (
-        '<h2 class="brief-title">Paper portfolio <span class="flag offer">SIMULATED'
-        '</span></h2>'
+    note = (
+        '<h2 class="brief-title">Paper portfolios '
+        '<span class="flag offer">SIMULATED</span></h2>'
         '<div class="note-box"><strong>No money is invested. These are '
-        'hypothetical results.</strong> The portfolio holds the published screen, '
-        f'equally weighted, rebalanced {esc(a["cadence"])}, starting from a notional '
-        f'${a["capital"]:,.0f} and paying {a["cost_bps"]:.0f} basis points per side '
-        'in assumed spread and slippage. Simulated results leave out what hurts real '
-        'traders most: the market moving against a real order, taxes, and the nerve '
-        'required to follow a system through a losing stretch. It restarts whenever '
-        'the model version changes.</div>')
-    stats = (
-        f'<div class="tape">'
-        f'<div class="tile"><div class="tlabel">Simulated value</div>'
-        f'<div class="tvalue">${pf["value"]:,.0f}</div>'
-        f'<div class="tdelta {delta_class(pf["ret"])}">{pf["ret"]:+.2f}%</div></div>'
-        f'<div class="tile"><div class="tlabel">Benchmark (IWO)</div>'
-        f'<div class="tvalue">{bench_txt}</div>'
-        f'<div class="tdelta">same period</div></div>'
-        f'<div class="tile"><div class="tlabel">Difference</div>'
-        f'<div class="tvalue">{exc_txt}</div>'
-        f'<div class="tdelta">vs doing nothing</div></div>'
-        f'<div class="tile"><div class="tlabel">Worst dip</div>'
-        f'<div class="tvalue">{pf["max_drawdown"]:+.1f}%</div>'
-        f'<div class="tdelta">peak to trough</div></div>'
-        f'<div class="tile"><div class="tlabel">Frictions paid</div>'
-        f'<div class="tvalue">${pf["costs_paid"]:,.0f}</div>'
-        f'<div class="tdelta">{pf["positions"]} positions</div></div>'
-        f'<div class="tile"><div class="tlabel">Running since</div>'
-        f'<div class="tvalue">{esc(pf["started"])}</div>'
-        f'<div class="tdelta">{pf["days"]} day(s), {esc(pf["v"])}</div></div>'
-        f'</div>')
+        'hypothetical results.</strong> Five books run over the same screen, the '
+        'same prices and the same frictions, differing only in their rules, so '
+        'that the effect of each rule can be seen rather than assumed. '
+        f'Each starts from a notional ${a["capital"]:,.0f}, rebalances '
+        f'{esc(a["cadence"])}, and pays {a["cost_bps"]:.0f} basis points per side; '
+        f'a stop exit pays a further {a["stop_slippage_bps"]:.0f} because real '
+        'stops gap through in thin small-caps. <strong>Book A is the control</strong> '
+        '— if the cleverer books do not beat it, the cleverness is not earning its '
+        'keep. Simulated results still omit what hurts real traders most: the '
+        'market moving against a real order, taxes, and the nerve to follow a '
+        'system through a losing stretch.</div>')
+    head = ('<tr><th class="l">Book</th><th class="l">Rules</th><th>Value</th>'
+            '<th>Return</th><th>vs IWO</th><th>Worst dip</th><th>Stops</th>'
+            '<th>Held</th><th>Frictions</th></tr>')
+    rows = []
+    for b in pf["books"]:
+        exc = b.get("excess")
+        exc_td = (f'<td class="{delta_class(exc)}">{exc:+.2f}%</td>'
+                  if exc is not None else "<td>—</td>")
+        rows.append(
+            f'<tr><td class="l tick">{esc(b["key"])} {esc(b["label"])}</td>'
+            f'<td class="l">{esc(b["note"])}</td>'
+            f'<td>${b["value"]:,.0f}</td>'
+            f'<td class="{delta_class(b["ret"])}">{b["ret"]:+.2f}%</td>'
+            f'{exc_td}<td>{b["max_drawdown"]:+.1f}%</td>'
+            f'<td>{b["stops_hit"]}</td><td>{b["positions"]}</td>'
+            f'<td>${b["costs_paid"]:,.0f}</td></tr>')
+    table = f'<div class="tblwrap"><table class="screen">{head}{"".join(rows)}</table></div>'
     cols = []
     if pf.get("holdings"):
         lis = "".join(
             f'<div class="item"><strong>{esc(h["ticker"])}</strong> '
             f'<span class="{delta_class(h["ret"])}">{h["ret"]:+.1f}%</span>'
-            f'<div class="meta">${h["value"]:,.0f} · held since {esc(h["entry_date"] or "")}'
-            f'</div></div>' for h in pf["holdings"][:12])
-        cols.append('<section class="col"><h2 class="section-head">Simulated holdings'
-                    f'</h2>{lis}</section>')
+            f'<div class="meta">${h["value"]:,.0f} · since {esc(h["entry_date"] or "")}'
+            f'</div></div>' for h in pf["holdings"])
+        cols.append('<section class="col"><h2 class="section-head">Baseline book '
+                    f'holdings</h2>{lis}</section>')
     if pf.get("trades"):
         lis = "".join(
             f'<div class="item"><strong>{esc(t["side"].upper())}</strong> '
             f'{esc(t["ticker"])}<div class="meta">{esc(t["date"])} · '
-            f'{t["shares"]:.2f} sh @ ${t["px"]:,.2f} · cost ${t["cost"]:,.2f}'
-            f'</div></div>' for t in pf["trades"][:12])
-        cols.append('<section class="col"><h2 class="section-head">Simulated trades'
-                    f'</h2>{lis}</section>')
-    return head + stats + (f'<div class="duo">{"".join(cols)}</div>' if cols else "")
+            f'{t["shares"]:.2f} sh @ ${t["px"]:,.2f} · {esc(t.get("why") or "")}'
+            f'</div></div>' for t in pf["trades"])
+        cols.append('<section class="col"><h2 class="section-head">Recent simulated '
+                    f'trades</h2>{lis}</section>')
+    return note + table + (f'<div class="duo">{"".join(cols)}</div>' if cols else "")
 
 
 def render_smallcap_page(data):

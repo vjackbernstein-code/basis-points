@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""Regression tests for portfolio.py — the paper (simulated) portfolio.
+"""Regression tests for portfolio.py — the paper (simulated) portfolios.
 
-Offline and deterministic: the clock is pinned, the ledger is written to a
-temp file, and prices are supplied directly. No network, no real money, and
-no dependence on the committed data files.
+Offline and deterministic: the clock is pinned, the ledger goes to a temp file,
+prices are supplied directly. No network, no real money, no dependence on the
+committed data files.
 
 Run:  python3 -m unittest discover tests
 """
@@ -23,32 +23,32 @@ import smallcap  # noqa: E402
 NOW = datetime(2026, 9, 21, 15, 0, 0, tzinfo=timezone.utc)   # a Monday
 
 
-def iso(dt=None):
-    return (dt or NOW).isoformat(timespec="seconds")
+def iso(dt):
+    return dt.isoformat(timespec="seconds")
 
 
-def cache_with(prices, bench=100.0, quote_age_h=1.0):
-    # timestamps must follow the (pinned, advanceable) clock, not a constant —
-    # otherwise every quote looks stale as soon as a test moves time forward
+def cache_with(prices, bench=100.0, regime="uptrend", quote_age_h=1.0):
+    # timestamps follow the pinned, advanceable clock — a constant here would
+    # make every quote look stale as soon as a test moved time forward
     now = smallcap._now()
     t = iso(now - timedelta(hours=quote_age_h))
     return {"quotes": {k: {"px": v, "dp": 0.0, "t": t} for k, v in prices.items()},
-            "bench": {"iwo": bench, "iwm": 90.0, "t": iso(now)}}
+            "bench": {"iwo": bench, "iwm": 90.0, "t": iso(now)},
+            "regime": {"label": regime, "t": iso(now)}}
+
+
+def screen_of(tickers, scores=None):
+    scores = scores or {}
+    return [{"ticker": t, "score": scores.get(t, 70.0)} for t in tickers]
 
 
 def entry_cost(capital=None):
-    """Friction charged to put `capital` fully to work: the cost is taken out
-    of the money invested, so it is slightly under capital x bps."""
+    """Friction to put `capital` fully to work; taken out of the money invested."""
     cap = portfolio.START_CAPITAL if capital is None else capital
-    invested = cap / (1 + portfolio.COST_BPS / 10_000)
-    return invested * portfolio.COST_BPS / 10_000
+    return (cap / (1 + portfolio.COST_BPS / 10_000)) * portfolio.COST_BPS / 10_000
 
 
-def screen_of(tickers):
-    return [{"ticker": t} for t in tickers]
-
-
-class PaperPortfolioTestCase(unittest.TestCase):
+class PaperTestCase(unittest.TestCase):
     def setUp(self):
         self._tmp = tempfile.TemporaryDirectory()
         self.addCleanup(self._tmp.cleanup)
@@ -61,128 +61,205 @@ class PaperPortfolioTestCase(unittest.TestCase):
     def advance(self, days):
         self._now = self._now + timedelta(days=days)
 
+    def book(self, led, key="A"):
+        return led["books"][key]
 
-class InceptionTests(PaperPortfolioTestCase):
 
-    def test_first_rebalance_buys_an_equal_weight_of_every_screened_name(self):
+class SharedRuleTests(PaperTestCase):
+    """Rules every book obeys, whatever its strategy."""
+
+    def test_every_strategy_gets_its_own_independent_book(self):
+        led = portfolio.update(cache_with({"A1": 10.0}), screen_of(["A1"]))
+        self.assertEqual(sorted(led["books"]), sorted(portfolio.STRATEGIES))
+        for key in portfolio.STRATEGIES:
+            self.assertEqual(len(led["books"][key]["positions"]), 1)
+
+    def test_the_baseline_book_is_equally_weighted(self):
         names = [f"T{i}" for i in range(5)]
         led = portfolio.update(cache_with({n: 10.0 for n in names}), screen_of(names))
-        self.assertEqual(len(led["positions"]), 5)
-        values = [p["shares"] * p["last_px"] for p in led["positions"].values()]
-        for v in values:
-            self.assertAlmostEqual(v, values[0], places=6)
+        vals = [p["shares"] * p["last_px"] for p in self.book(led)["positions"].values()]
+        for v in vals:
+            self.assertAlmostEqual(v, vals[0], places=6)
 
-    def test_opening_the_book_costs_exactly_the_stated_friction(self):
-        names = [f"T{i}" for i in range(4)]
-        led = portfolio.update(cache_with({n: 10.0 for n in names}), screen_of(names))
-        self.assertAlmostEqual(led["costs_paid"], entry_cost(), places=2)
-        # a portfolio starts DOWN by its entry cost, before the market moves
-        self.assertAlmostEqual(portfolio.mark_to_market(led, cache_with(
-            {n: 10.0 for n in names})),
-            portfolio.START_CAPITAL - entry_cost(), places=2)
+    def test_opening_a_book_costs_exactly_the_stated_friction(self):
+        led = portfolio.update(cache_with({"A1": 10.0, "B1": 10.0}),
+                               screen_of(["A1", "B1"]))
+        self.assertAlmostEqual(self.book(led)["costs_paid"], entry_cost(), places=2)
+        self.assertAlmostEqual(portfolio.book_value(self.book(led)),
+                               portfolio.START_CAPITAL - entry_cost(), places=2)
 
     def test_a_name_without_a_usable_price_is_never_traded(self):
         cache = cache_with({"GOOD": 10.0})
         cache["quotes"]["STALE"] = {"px": 10.0, "dp": 0.0,
                                     "t": iso(NOW - timedelta(hours=200))}
         led = portfolio.update(cache, screen_of(["GOOD", "STALE", "ABSENT"]))
-        self.assertEqual(list(led["positions"]), ["GOOD"])
+        self.assertEqual(list(self.book(led)["positions"]), ["GOOD"])
 
-    def test_nothing_happens_at_all_without_a_screen(self):
-        led = portfolio.update(cache_with({"AAA": 10.0}), [])
-        self.assertEqual(led["positions"], {})
-        self.assertIsNone(led["started"])
-        self.assertEqual(portfolio.summarize(led)["status"], "not started")
-
-
-class RebalanceTests(PaperPortfolioTestCase):
-
-    def _open(self, names, px=10.0):
-        return portfolio.update(cache_with({n: px for n in names}), screen_of(names))
-
-    def test_the_book_is_left_alone_between_weekly_rebalances(self):
-        self._open(["A", "B"])
-        self.advance(2)                       # Wednesday
-        led = portfolio.update(cache_with({"A": 10.0, "B": 10.0, "C": 10.0}),
-                               screen_of(["A", "C"]))
-        self.assertEqual(sorted(led["positions"]), ["A", "B"])  # C not bought yet
+    def test_books_are_left_alone_between_weekly_rebalances(self):
+        portfolio.update(cache_with({"A1": 10.0, "B1": 10.0}), screen_of(["A1", "B1"]))
+        self.advance(2)
+        led = portfolio.update(cache_with({"A1": 10.0, "B1": 10.0, "C1": 10.0}),
+                               screen_of(["A1", "C1"]))
+        self.assertEqual(sorted(self.book(led)["positions"]), ["A1", "B1"])
 
     def test_a_week_later_the_book_moves_to_the_new_screen(self):
-        self._open(["A", "B"])
+        portfolio.update(cache_with({"A1": 10.0, "B1": 10.0}), screen_of(["A1", "B1"]))
         self.advance(7)
-        led = portfolio.update(cache_with({"A": 10.0, "B": 10.0, "C": 10.0}),
-                               screen_of(["A", "C"]))
-        self.assertEqual(sorted(led["positions"]), ["A", "C"])
+        led = portfolio.update(cache_with({"A1": 10.0, "B1": 10.0, "C1": 10.0}),
+                               screen_of(["A1", "C1"]))
+        self.assertEqual(sorted(self.book(led)["positions"]), ["A1", "C1"])
 
-    def test_selling_a_dropped_name_also_pays_the_friction(self):
-        self._open(["A", "B"])
-        before = portfolio.load_ledger()["costs_paid"]
-        self.advance(7)
-        led = portfolio.update(cache_with({"A": 10.0, "B": 10.0}), screen_of(["A"]))
-        self.assertGreater(led["costs_paid"], before)
-        self.assertIn("sell", [t["side"] for t in led["trades"]])
-
-    def test_a_gain_is_carried_into_the_next_rebalance(self):
-        self._open(["A", "B"])
-        self.advance(7)
-        led = portfolio.update(cache_with({"A": 20.0, "B": 20.0}), screen_of(["A", "B"]))
-        self.assertGreater(portfolio.mark_to_market(led, cache_with({"A": 20.0, "B": 20.0})),
-                           portfolio.START_CAPITAL * 1.9)
-
-
-class LedgerIntegrityTests(PaperPortfolioTestCase):
-
-    def test_a_model_version_change_restarts_the_simulation(self):
-        portfolio.update(cache_with({"A": 10.0}), screen_of(["A"]))
-        real_version = smallcap.MODEL_VERSION
-        smallcap.MODEL_VERSION = "v9-different"
-        try:
-            led = portfolio.update(cache_with({"A": 10.0}), screen_of(["A"]))
-        finally:
-            smallcap.MODEL_VERSION = real_version
-        self.assertEqual(led["restarted_from"], real_version)
-        self.assertAlmostEqual(led["costs_paid"], entry_cost(), places=2)
-
-    def test_a_held_name_keeps_its_last_mark_when_its_quote_goes_stale(self):
-        portfolio.update(cache_with({"A": 10.0}), screen_of(["A"]))
-        self.advance(1)
-        led = portfolio.load_ledger()
-        value = portfolio.mark_to_market(led, {"quotes": {}, "bench": {}})
-        self.assertAlmostEqual(value, portfolio.START_CAPITAL - entry_cost(),
-                               places=2)
-
-    def test_the_simulation_never_spends_money_it_does_not_have(self):
+    def test_no_book_ever_spends_money_it_does_not_have(self):
         names = [f"T{i}" for i in range(25)]
         led = portfolio.update(cache_with({n: 10.0 for n in names}), screen_of(names))
-        self.assertGreaterEqual(led["cash"], -1e-6)
+        for key in portfolio.STRATEGIES:
+            self.assertGreaterEqual(led["books"][key]["cash"], -1e-6, key)
+
+    def test_a_model_version_change_restarts_every_book(self):
+        portfolio.update(cache_with({"A1": 10.0}), screen_of(["A1"]))
+        real = smallcap.MODEL_VERSION
+        smallcap.MODEL_VERSION = "v9-different"
+        try:
+            led = portfolio.load_ledger()
+        finally:
+            smallcap.MODEL_VERSION = real
+        self.assertEqual(led["restarted_from"], real)
+        self.assertEqual(led["books"]["A"]["positions"], {})
 
 
-class ReportingTests(PaperPortfolioTestCase):
+class ConvictionSizingTests(PaperTestCase):
 
-    def test_it_reports_return_benchmark_and_the_difference_between_them(self):
-        portfolio.update(cache_with({"A": 10.0}, bench=100.0), screen_of(["A"]))
-        self.advance(7)
-        led = portfolio.update(cache_with({"A": 11.0}, bench=105.0), screen_of(["A"]))
-        s = portfolio.summarize(led)
+    def test_a_higher_score_earns_a_bigger_position(self):
+        scores = {"HI": 90.0, "MID": 70.0, "LO": 50.0}
+        led = portfolio.update(cache_with({t: 10.0 for t in scores}),
+                               screen_of(list(scores), scores))
+        pos = led["books"]["B"]["positions"]
+        val = {t: pos[t]["shares"] * pos[t]["last_px"] for t in scores}
+        self.assertGreater(val["HI"], val["MID"])
+        self.assertGreater(val["MID"], val["LO"])
+
+    def test_the_tilt_is_capped_so_noise_cannot_dominate(self):
+        # one wild score must not take over the book
+        scores = {"WILD": 100.0, **{f"T{i}": 1.0 for i in range(9)}}
+        w = portfolio.target_weights(screen_of(list(scores), scores),
+                                     portfolio.STRATEGIES["B"])
+        equal = 1.0 / len(scores)
+        self.assertLessEqual(w["WILD"], equal * portfolio.CONVICTION_MAX + 1e-9)
+        self.assertGreaterEqual(w["T0"], equal * portfolio.CONVICTION_MIN - 1e-9)
+        self.assertAlmostEqual(sum(w.values()), 1.0, places=9)
+
+    def test_the_baseline_book_ignores_scores_entirely(self):
+        scores = {"HI": 95.0, "LO": 45.0}
+        w = portfolio.target_weights(screen_of(list(scores), scores),
+                                     portfolio.STRATEGIES["A"])
+        self.assertAlmostEqual(w["HI"], w["LO"], places=9)
+
+
+class StopLossTests(PaperTestCase):
+
+    def _open(self, px=10.0):
+        return portfolio.update(cache_with({"A1": px, "B1": px}),
+                                screen_of(["A1", "B1"]))
+
+    def test_a_holding_through_its_stop_is_sold_from_the_risk_managed_book(self):
+        self._open()
+        self.advance(1)
+        led = portfolio.update(cache_with({"A1": 7.0, "B1": 10.0}),
+                               screen_of(["A1", "B1"]))
+        self.assertNotIn("A1", led["books"]["C"]["positions"])
+        self.assertEqual(led["books"]["C"]["stops_hit"], 1)
+
+    def test_the_baseline_book_holds_the_same_falling_name(self):
+        self._open()
+        self.advance(1)
+        led = portfolio.update(cache_with({"A1": 7.0, "B1": 10.0}),
+                               screen_of(["A1", "B1"]))
+        self.assertIn("A1", led["books"]["A"]["positions"])
+        self.assertEqual(led["books"]["A"]["stops_hit"], 0)
+
+    def test_stops_are_checked_every_day_not_only_on_rebalance_days(self):
+        self._open()
+        self.advance(3)                      # a Thursday, no rebalance due
+        led = portfolio.update(cache_with({"A1": 5.0, "B1": 10.0}),
+                               screen_of(["A1", "B1"]))
+        self.assertEqual(led["books"]["C"]["stops_hit"], 1)
+
+    def test_a_stop_exit_is_charged_extra_for_gapping_through(self):
+        self._open()
+        self.advance(1)
+        led = portfolio.update(cache_with({"A1": 7.0, "B1": 10.0}),
+                               screen_of(["A1", "B1"]))
+        stop_trade = [t for t in led["books"]["C"]["trades"] if t["why"] == "stop"][0]
+        ordinary = stop_trade["shares"] * stop_trade["px"] * portfolio.COST_BPS / 10_000
+        self.assertGreater(stop_trade["cost"], ordinary * 1.5)
+
+    def test_a_shallow_dip_does_not_trigger_the_stop(self):
+        self._open()
+        self.advance(1)
+        led = portfolio.update(cache_with({"A1": 9.5, "B1": 10.0}),
+                               screen_of(["A1", "B1"]))
+        self.assertIn("A1", led["books"]["C"]["positions"])
+
+
+class RegimeOverlayTests(PaperTestCase):
+
+    def test_a_falling_tape_leaves_the_regime_book_partly_in_cash(self):
+        led = portfolio.update(cache_with({"A1": 10.0}, regime="correction"),
+                               screen_of(["A1"]))
+        d = led["books"]["D"]
+        invested = sum(p["shares"] * p["last_px"] for p in d["positions"].values())
+        self.assertLess(invested, portfolio.START_CAPITAL * 0.5)
+        self.assertGreater(d["cash"], portfolio.START_CAPITAL * 0.5)
+
+    def test_the_baseline_book_stays_fully_invested_in_the_same_tape(self):
+        led = portfolio.update(cache_with({"A1": 10.0}, regime="correction"),
+                               screen_of(["A1"]))
+        self.assertLess(self.book(led)["cash"], portfolio.START_CAPITAL * 0.01)
+
+    def test_an_unknown_regime_label_means_full_exposure(self):
+        self.assertEqual(
+            portfolio.exposure_for(portfolio.STRATEGIES["D"],
+                                   {"regime": {"label": "something new"}}), 1.0)
+
+
+class ReportingTests(PaperTestCase):
+
+    def test_every_book_is_reported_with_its_rules(self):
+        portfolio.update(cache_with({"A1": 10.0}), screen_of(["A1"]))
+        s = portfolio.summarize()
         self.assertEqual(s["status"], "running")
-        self.assertGreater(s["ret"], 9.0)          # ~+10% less frictions
-        self.assertAlmostEqual(s["bench_ret"], 5.0, places=6)
-        self.assertAlmostEqual(s["excess"], s["ret"] - s["bench_ret"], places=6)
+        self.assertEqual({b["key"] for b in s["books"]}, set(portfolio.STRATEGIES))
+        for b in s["books"]:
+            self.assertTrue(b["note"])
+
+    def test_return_benchmark_and_the_difference_are_reported(self):
+        portfolio.update(cache_with({"A1": 10.0}, bench=100.0), screen_of(["A1"]))
+        self.advance(7)
+        portfolio.update(cache_with({"A1": 11.0}, bench=105.0), screen_of(["A1"]))
+        a = [b for b in portfolio.summarize()["books"] if b["key"] == "A"][0]
+        self.assertGreater(a["ret"], 9.0)
+        self.assertAlmostEqual(a["bench_ret"], 5.0, places=6)
+        self.assertAlmostEqual(a["excess"], a["ret"] - a["bench_ret"], places=6)
 
     def test_the_worst_dip_is_measured_from_the_peak(self):
-        portfolio.update(cache_with({"A": 10.0}), screen_of(["A"]))
+        portfolio.update(cache_with({"A1": 10.0}), screen_of(["A1"]))
         self.advance(7)
-        portfolio.update(cache_with({"A": 20.0}), screen_of(["A"]))   # peak
+        portfolio.update(cache_with({"A1": 20.0}), screen_of(["A1"]))
         self.advance(1)
-        led = portfolio.update(cache_with({"A": 15.0}), screen_of(["A"]))
-        self.assertLess(portfolio.summarize(led)["max_drawdown"], -20.0)
+        portfolio.update(cache_with({"A1": 15.0}), screen_of(["A1"]))
+        a = [b for b in portfolio.summarize()["books"] if b["key"] == "A"][0]
+        self.assertLess(a["max_drawdown"], -20.0)
 
     def test_the_assumptions_are_always_published_with_the_numbers(self):
-        portfolio.update(cache_with({"A": 10.0}), screen_of(["A"]))
+        portfolio.update(cache_with({"A1": 10.0}), screen_of(["A1"]))
         a = portfolio.summarize()["assumptions"]
         self.assertEqual(a["cost_bps"], portfolio.COST_BPS)
-        self.assertEqual(a["capital"], portfolio.START_CAPITAL)
+        self.assertEqual(a["stop_slippage_bps"], portfolio.STOP_SLIPPAGE_BPS)
         self.assertIn("weekly", a["cadence"])
+
+    def test_nothing_is_reported_before_the_first_screen_exists(self):
+        portfolio.update(cache_with({"A1": 10.0}), [])
+        self.assertEqual(portfolio.summarize()["status"], "not started")
 
 
 if __name__ == "__main__":
