@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-18T22:09:10.446867+00:00",
+ "generated_at": "2026-09-18T22:22:53.730954+00:00",
  "market": [
   {
    "label": "S&P 500",
@@ -292,11 +292,11 @@
    "label": "Bitcoin",
    "symbol": "bitcoin",
    "kind": "crypto",
-   "value": 81266.50246722203,
+   "value": 81300.43133657107,
    "prev": 76371.3617203135,
-   "value_txt": "$81,267",
-   "delta": 6.409654923838419,
-   "delta_txt": "+6.41%",
+   "value_txt": "$81,300",
+   "delta": 6.454081091690829,
+   "delta_txt": "+6.45%",
    "spark": [
     80268.37474707834,
     77820.76428719184,
@@ -320,18 +320,18 @@
     75590.24471973324,
     76146.81236783884,
     76371.3617203135,
-    81266.50246722203
+    81300.43133657107
    ]
   },
   {
    "label": "Ethereum",
    "symbol": "ethereum",
    "kind": "crypto",
-   "value": 2629.469324281043,
+   "value": 2632.1005296008425,
    "prev": 2446.143252227872,
-   "value_txt": "$2,629",
-   "delta": 7.4944945226001565,
-   "delta_txt": "+7.49%",
+   "value_txt": "$2,632",
+   "delta": 7.6020599858003575,
+   "delta_txt": "+7.60%",
    "spark": [
     2511.461241063819,
     2442.407614756763,
@@ -355,11 +355,11 @@
     2397.4972601650115,
     2415.9596535242995,
     2446.143252227872,
-    2629.469324281043
+    2632.1005296008425
    ]
   }
  ],
- "tape_line": "S&P 500 +1.14%, Nasdaq +1.69%, Dow +0.61%; the 10-year Treasury at 4.94% (-7 bp); WTI crude $107.02 (+4.49%); bitcoin $81,267 (+6.41%).",
+ "tape_line": "S&P 500 +1.14%, Nasdaq +1.69%, Dow +0.61%; the 10-year Treasury at 4.94% (-7 bp); WTI crude $107.02 (+4.49%); bitcoin $81,300 (+6.45%).",
  "top": [
   {
    "title": "U.S. Stocks Mixed as Inflation Trepidation Offsets AI Optimism",
@@ -413,7 +413,7 @@
  ],
  "smallcap": {
   "note": null,
-  "asof": "2026-09-18T22:20:48+00:00",
+  "asof": "2026-09-18T22:24:40+00:00",
   "coverage": {
    "universe": 9895,
    "profiled": 9966,
@@ -437,7 +437,7 @@
     "ev_rev": 34.9461,
     "px": 9.22,
     "dp": 11.6223,
-    "score": 84.7,
+    "score": 84.6,
     "sub": {
      "g": 99,
      "m": 83,
@@ -616,6 +616,44 @@
     }
    },
    {
+    "ticker": "REPX",
+    "name": "Riley Exploration Permian Inc",
+    "ind": "Energy",
+    "group": "Energy",
+    "mcap": 994.7050060273023,
+    "rev_g": 23.16,
+    "accel": 50.0,
+    "r13": 25.1665,
+    "momo": 0.88,
+    "from_high": -2.9162956366874493,
+    "ev_rev": 2.5688,
+    "px": 43.61,
+    "dp": 0.6927,
+    "score": 81.4,
+    "sub": {
+     "g": 81,
+     "m": 91,
+     "q": 62
+    },
+    "flags": [],
+    "why": {
+     "vol": 33.154495,
+     "r26": 34.8518,
+     "rg3": 6.8,
+     "rev_gq": 94.22,
+     "dte": 0.4223,
+     "gm_t": 70.96,
+     "om_t": 38.07,
+     "om_a": 34,
+     "cashps": 0.9329,
+     "rps": 22.7645,
+     "adv": 0.35576,
+     "hi52": 44.92,
+     "shares": 21.7,
+     "exch": "NYSE MKT LLC"
+    }
+   },
+   {
     "ticker": "OSBC",
     "name": "Old Second Bancorp Inc",
     "ind": "Banking",
@@ -651,44 +689,6 @@
      "hi52": 26.055,
      "shares": 50.94,
      "exch": "NASDAQ NMS - GLOBAL MARKET"
-    }
-   },
-   {
-    "ticker": "REPX",
-    "name": "Riley Exploration Permian Inc",
-    "ind": "Energy",
-    "group": "Energy",
-    "mcap": 994.7050060273023,
-    "rev_g": 23.16,
-    "accel": 50.0,
-    "r13": 25.1665,
-    "momo": 0.88,
-    "from_high": -2.9162956366874493,
-    "ev_rev": 2.5688,
-    "px": 43.61,
-    "dp": 0.6927,
-    "score": 81.3,
-    "sub": {
-     "g": 81,
-     "m": 91,
-     "q": 62
-    },
-    "flags": [],
-    "why": {
-     "vol": 33.154495,
-     "r26": 34.8518,
-     "rg3": 6.8,
-     "rev_gq": 94.22,
-     "dte": 0.4223,
-     "gm_t": 70.96,
-     "om_t": 38.07,
-     "om_a": 34,
-     "cashps": 0.9329,
-     "rps": 22.7645,
-     "adv": 0.35576,
-     "hi52": 44.92,
-     "shares": 21.7,
-     "exch": "NYSE MKT LLC"
     }
    },
    {
@@ -746,7 +746,7 @@
     "score": 80.8,
     "sub": {
      "g": 95,
-     "m": 90,
+     "m": 91,
      "q": 34
     },
     "flags": [],
@@ -860,7 +860,7 @@
     "ev_rev": null,
     "px": 39.24,
     "dp": -0.6079,
-    "score": 80.4,
+    "score": 80.5,
     "sub": {
      "g": 84,
      "m": 91,
@@ -898,7 +898,7 @@
     "ev_rev": 3.8759,
     "px": 6.83,
     "dp": 1.9403,
-    "score": 79.9,
+    "score": 79.8,
     "sub": {
      "g": 87,
      "m": 79,
@@ -976,10 +976,10 @@
     "ev_rev": null,
     "px": 54.15,
     "dp": -0.7515,
-    "score": 79.4,
+    "score": 79.5,
     "sub": {
      "g": 71,
-     "m": 89,
+     "m": 90,
      "q": 89
     },
     "flags": [
@@ -1095,7 +1095,7 @@
     "ev_rev": 2.4152,
     "px": 14.73,
     "dp": 0.6148,
-    "score": 77.6,
+    "score": 77.5,
     "sub": {
      "g": 83,
      "m": 81,
@@ -1783,7 +1783,7 @@
     "form": "424B2"
    }
   ],
-  "budget_mode": "full",
+  "budget_mode": "trickle",
   "news": [
    {
     "title": "The Simply Good Foods Company (SMPL) Investors: October 13, 2026, Filing Deadline in Securities Fraud Class Action - Contact Kessler Topaz Meltzer & Check, LLP",
@@ -1818,8 +1818,8 @@
  "stats": {
   "feeds_total": 21,
   "feeds_failed": 3,
-  "items": 389,
-  "smallcap_calls": 554,
+  "items": 393,
+  "smallcap_calls": 42,
   "feed_errors": [
    [
     "GlobeNewswire",
