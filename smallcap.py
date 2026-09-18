@@ -109,6 +109,12 @@ MODEL_VERSION = "v3.1"                  # stamped on log entries; the track reco
 HORIZONS = (("1w", 6, 9, 7), ("4w", 25, 31, 28))
 MIN_PRICEABLE = 20                      # names a cohort must still be able to
                                         # price for its reading to be trusted
+# The freeze, stated as numbers the page can render rather than only as prose:
+# scoring does not change until the live record holds this many INDEPENDENT
+# (non-overlapping) readings. The total reading count is always larger and is
+# deliberately not the number that counts.
+FREEZE_TARGET = {"1w": 12, "4w": 3}
+FREEZE_REVIEW_DATE = "2026-12-14"       # the scheduled review of that evidence
 MIN_GROUP = 8                           # industry-relative ranks need this many peers
 
 # Coarse industry groups: vendor tags are fragmented ("Banking" vs "Financial

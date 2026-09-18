@@ -30,7 +30,7 @@ import urllib.parse
 import urllib.request
 import zlib
 from concurrent.futures import ThreadPoolExecutor, as_completed
-from datetime import datetime, timedelta, timezone
+from datetime import date, datetime, timedelta, timezone
 from email.utils import parsedate_to_datetime
 from pathlib import Path
 from xml.etree import ElementTree as ET
@@ -785,6 +785,40 @@ table.screen td.tick { font-family: "IBM Plex Mono", ui-monospace, monospace;
 .flag.ins { color: var(--up); border-color: var(--up); }
 .flag.act { color: var(--up); border-color: var(--up); }
 .flag.offer { color: var(--down); border-color: var(--down); }
+.tracker { background: var(--surface); border: 1px solid var(--border);
+  border-radius: 10px; padding: 18px 20px 20px; margin: 22px 0 30px; }
+.tr-head { font-family: "Besley", Georgia, serif; font-weight: 700; font-size: 20px;
+  letter-spacing: -0.01em; }
+.tr-sub { font-size: 12.5px; color: var(--muted); margin: 3px 0 15px; max-width: 78ch; }
+.trgrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(148px, 1fr));
+  gap: 15px 22px; border-top: 1px solid var(--hair); padding-top: 15px; }
+.trl { font-size: 10.5px; font-weight: 700; letter-spacing: 0.07em;
+  text-transform: uppercase; color: var(--muted); }
+.trv { font-family: "Besley", Georgia, serif; font-size: 26px; font-weight: 700;
+  line-height: 1.2; font-variant-numeric: tabular-nums; }
+.trn { font-size: 11.5px; color: var(--ink2); line-height: 1.35; }
+.bars { display: grid; gap: 13px; max-width: 64ch; margin-top: 20px; }
+.barlab { display: flex; justify-content: space-between; gap: 12px; font-size: 12px;
+  color: var(--ink2); margin-bottom: 5px; }
+.barlab b { font-family: "IBM Plex Mono", ui-monospace, monospace; font-weight: 500;
+  color: var(--ink); white-space: nowrap; }
+.bar { height: 8px; background: var(--hair); border-radius: 4px; overflow: hidden; }
+.bar i { display: block; height: 100%; background: var(--accent); border-radius: 4px; }
+.mstones { list-style: none; margin-top: 20px; font-size: 13px; max-width: 86ch;
+  columns: 2; column-gap: 34px; }
+.mstones li { padding: 3.5px 0; color: var(--muted); break-inside: avoid; }
+.mstones li b { font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 11.5px; font-weight: 500; margin-right: 8px; color: var(--hair); }
+.mstones li.done { color: var(--ink2); }
+.mstones li.done b { color: var(--up); }
+.trsay { font-size: 13px; color: var(--ink2); max-width: 80ch; margin-top: 18px;
+  border-top: 1px solid var(--hair); padding-top: 14px; }
+@media (max-width: 560px) { .mstones { columns: 1; } }
+table.screen td.path { padding: 2px 8px; width: 118px; }
+table.screen td.path .spark { height: 26px; margin: 0; }
+.retired { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 11.5px;
+  color: var(--muted); margin: -14px 0 24px; max-width: 90ch; line-height: 1.6; }
+
 .method { font-size: 12.5px; color: var(--muted); max-width: 90ch;
   border-top: 1px solid var(--hair); padding-top: 12px; margin-top: 30px; }
 
@@ -803,10 +837,15 @@ def esc(s):
     return html.escape(s or "", quote=True)
 
 
-def spark_svg(closes):
+def spark_svg(closes, label="one-month trend", lo=None, hi=None):
+    """`lo`/`hi` force a SHARED vertical scale. Without one, every sparkline is
+    stretched to its own range, and two curves printed side by side look alike
+    whether one moved 0.4% or 24% — which is exactly the comparison a whole
+    column of them invites a reader to make."""
     if len(closes) < 2:
         return ""
-    lo, hi = min(closes), max(closes)
+    lo = min(closes) if lo is None else min(lo, min(closes))
+    hi = max(closes) if hi is None else max(hi, max(closes))
     span = (hi - lo) or 1.0
     w, h, pad = 120, 34, 4
     pts = []
@@ -816,7 +855,7 @@ def spark_svg(closes):
         pts.append(f"{x:.1f},{y:.1f}")
     ex, ey = pts[-1].split(",")
     return (f'<svg class="spark" viewBox="0 0 {w} {h}" preserveAspectRatio="none" '
-            f'role="img" aria-label="one-month trend">'
+            f'role="img" aria-label="{esc(label)}">'
             f'<polyline points="{" ".join(pts)}" fill="none" stroke="var(--spark)" '
             f'stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>'
             f'<circle cx="{ex}" cy="{ey}" r="3.5" fill="var(--accent)" '
@@ -887,12 +926,126 @@ def _fmt_mcap(musd):
     return f"${musd / 1000:.1f}B" if musd >= 1000 else f"${musd:.0f}M"
 
 
+def render_progress(data):
+    """The tracker panel. Progress toward the goal is measured in EVIDENCE, not
+    in profit: a book up 8% after a fortnight has proved nothing, and the bars
+    here are sized so that reading them cannot leave the opposite impression.
+    Everything in it is derived from published state — nothing is asserted."""
+    sc = data.get("smallcap") or {}
+    pf = data.get("portfolio") or {}
+    ev = sc.get("evaluation") or {}
+    books = pf.get("books") or []
+    by_key = {b["key"]: b for b in books}
+    ctrl = by_key.get("A")
+    tgt = smallcap.FREEZE_TARGET
+    got = {h: ((ev.get(h) or {}).get("indep") or 0) for h in ("1w", "4w")}
+    try:
+        today = datetime.fromisoformat(data["generated_at"]).date()
+        to_go = (date.fromisoformat(smallcap.FREEZE_REVIEW_DATE) - today).days
+    except (ValueError, KeyError):
+        to_go = None
+
+    tiles = []
+
+    def tile(label, value, note):
+        tiles.append(f'<div><div class="trl">{label}</div>'
+                     f'<div class="trv">{value}</div>'
+                     f'<div class="trn">{note}</div></div>')
+
+    if ctrl:
+        tile("Days on the record", f'{ctrl["days"]}',
+             f'first mark {esc(ctrl["started"] or "—")} · '
+             f'{len(books)} book{"s" if len(books) != 1 else ""} live')
+    else:
+        tile("Days on the record", "0", "the books have not opened yet")
+
+    if ctrl:
+        tile("Control book", f'{ctrl["ret"]:+.1f}%',
+             'equal weight, no overlays — the number every clever rule has to beat')
+    else:
+        tile("Control book", "—", "equal weight, no overlays")
+
+    # the best of several is biased upward, and saying so is the whole point of
+    # printing it next to the control rather than on its own
+    gaps = [(by_key[k]["ret"] - ctrl["ret"], by_key[k]) for k in "BCDE" if k in by_key] \
+        if ctrl else []
+    if gaps:
+        gap, best = max(gaps, key=lambda t: t[0])
+        tile("Best overlay, vs control", f'{gap:+.1f}%',
+             f'{esc(best["key"])} {esc(best["label"])} · highest of {len(gaps)}, '
+             'so it flatters itself')
+    else:
+        tile("Best overlay, vs control", "—", "needs a running control to compare against")
+
+    if to_go is not None:
+        tile("Days to the review", f'{to_go:,}' if to_go > 0 else "due",
+             f'evidence is judged {esc(smallcap.FREEZE_REVIEW_DATE)}, '
+             'on whatever it says')
+
+    bars = []
+    for h, lab, why in (
+            ("1w", "Independent 1-week readings",
+             "non-overlapping, so a single good week cannot be counted twelve times"),
+            ("4w", "Independent 4-week readings",
+             "the slower cadence, where a genuine edge should still be visible")):
+        n, need = got[h], tgt[h]
+        pct = min(100.0, 100.0 * n / need) if need else 0.0
+        bars.append(f'<div><div class="barlab"><span>{lab} — {why}</span>'
+                    f'<b>{n} of {need}</b></div>'
+                    f'<div class="bar"><i style="width:{pct:.0f}%"></i></div></div>')
+
+    stones = [
+        (bool(sc.get("screen")), "A ranked screen is published every run"),
+        (bool(books), f'{len(books) or "No"} paper books trading the screen'),
+        (got["1w"] >= tgt["1w"],
+         f'{got["1w"]} of {tgt["1w"]} independent 1-week readings'),
+        (got["4w"] >= tgt["4w"],
+         f'{got["4w"]} of {tgt["4w"]} independent 4-week readings'),
+        (to_go is not None and to_go <= 0,
+         f'Scheduled review of the evidence, {esc(smallcap.FREEZE_REVIEW_DATE)}'),
+        (False, "Verdict: trade it, change it, or abandon it"),
+    ]
+    lis = "".join(
+        f'<li class="{"done" if ok else ""}"><b>{"&#10003;" if ok else "&#9675;"}</b>'
+        f'{txt}</li>' for ok, txt in stones)
+
+    if not books:
+        say = ('The books have not opened, so there is nothing to judge yet. '
+               'They trade only while the US market is open.')
+    elif got["1w"] >= tgt["1w"] and got["4w"] >= tgt["4w"]:
+        say = ('The evidence bar is met. The scoring rules may now be revised, and '
+               'the scheduled review has a real sample to judge — including the '
+               'possibility that it says this does not work.')
+    else:
+        say = (f'Too early to judge, by design. {got["1w"]} of {tgt["1w"]} '
+               f'independent 1-week readings are in. Until that bar is cleared the '
+               f'scoring rules stay frozen, because a model tuned while its record '
+               f'is being written will always look good and will always be lying. '
+               f'The returns above are simulated and short; the friction column in '
+               f'the table below is the number most likely to decide the answer.')
+
+    return (f'<section class="tracker">'
+            f'<h2 class="tr-head">Where the trading system stands '
+            f'<span class="flag offer">SIMULATED</span></h2>'
+            f'<p class="tr-sub">The goal is to find out whether this screen is '
+            f'worth trading. Progress is counted in independent forward readings, '
+            f'not in the size of a simulated gain. Model '
+            f'{esc(str(sc.get("v") or smallcap.MODEL_VERSION))}.</p>'
+            f'<div class="trgrid">{"".join(tiles)}</div>'
+            f'<div class="bars">{"".join(bars)}</div>'
+            f'<ul class="mstones">{lis}</ul>'
+            f'<p class="trsay">{say} No money is invested and nothing here is a '
+            f'recommendation.</p></section>')
+
+
 def render_portfolio(pf):
     """The paper portfolios. Labelled unmistakably: these are simulations, and
     a rising number on a public page must never read as a real return."""
     if not pf or pf.get("status") != "running":
-        return ('<div class="note-box"><strong>Paper portfolios — simulated.</strong> '
-                'Waiting for market hours. The books only trade while the US market '
+        return ('<h2 class="brief-title">Paper portfolios '
+                '<span class="flag offer">SIMULATED</span></h2>'
+                '<div class="note-box"><strong>Not trading yet — waiting for market '
+                'hours.</strong> The books only trade while the US market '
                 'is actually open, because a price fetched outside those hours '
                 'carries the previous close — and buying at exactly the price that '
                 'put a name on the screen would hand the simulation a free day of '
@@ -909,7 +1062,9 @@ def render_portfolio(pf):
         f'Each starts from a notional ${a["capital"]:,.0f}, rebalances '
         f'{esc(a["cadence"])}, and pays {a["cost_bps"]:.0f} basis points per side; '
         f'a stop exit pays a further {a["stop_slippage_bps"]:.0f} because real '
-        'stops gap through in thin small-caps. <strong>Watch the friction column '
+        'stops gap through in thin small-caps. The <em>path</em> column shares one '
+        'vertical scale across all six rows, so the shapes can be compared '
+        'directly. <strong>Watch the friction column '
         'before the return column</strong> — this screen turns over its holdings '
         'many times a year, and at that rate the cost of trading may be the whole '
         'story rather than a rounding error. <strong>Book A is the control</strong> '
@@ -917,23 +1072,56 @@ def render_portfolio(pf):
         'keep. Simulated results still omit what hurts real traders most: the '
         'market moving against a real order, taxes, and the nerve to follow a '
         'system through a losing stretch.</div>')
-    head = ('<tr><th class="l">Book</th><th class="l">Rules</th><th>Value</th>'
+    head = ('<tr><th class="l">Book</th><th class="l">Rules</th><th class="l">Path</th>'
+            '<th>Value</th>'
             '<th>Return</th><th>vs IWO</th><th>Worst dip</th><th>Friction/yr</th>'
             '<th>Stops</th><th>Held</th></tr>')
+    # one vertical scale across every path in the column, benchmark included
+    allpts = [v for b in pf["books"] for v in (b.get("curve") or [])]
+    allpts += list(pf.get("bench_curve") or [])
+    lo, hi = (min(allpts), max(allpts)) if allpts else (None, None)
     rows = []
     for b in pf["books"]:
         exc = b.get("excess")
         exc_td = (f'<td class="{delta_class(exc)}">{exc:+.2f}%</td>'
                   if exc is not None else "<td>—</td>")
+        # the shape of the path, not just its endpoint — two books can finish in
+        # the same place having been very different things to hold
+        spark = spark_svg(b.get("curve") or [],
+                          f'{b["label"]} book, value over time', lo, hi)
         rows.append(
             f'<tr><td class="l tick">{esc(b["key"])} {esc(b["label"])}</td>'
             f'<td class="l">{esc(b["note"])}</td>'
+            f'<td class="path">{spark or "&mdash;"}</td>'
             f'<td>${b["value"]:,.0f}</td>'
             f'<td class="{delta_class(b["ret"])}">{b["ret"]:+.2f}%</td>'
             f'{exc_td}<td>{b["max_drawdown"]:+.1f}%</td>'
             f'<td class="down">{b["friction_yr"]:.1f}%</td>'
             f'<td>{b["stops_hit"]}</td><td>{b["positions"]}</td></tr>')
+    bench_spark = spark_svg(pf.get("bench_curve") or [],
+                            "Russell 2000 Growth ETF over the same period", lo, hi)
+    if bench_spark:
+        rows.append(
+            '<tr><td class="l tick">IWO benchmark</td>'
+            '<td class="l">the index these books are trying to beat</td>'
+            f'<td class="path">{bench_spark}</td>'
+            '<td>—</td><td>—</td><td>—</td><td>—</td><td>—</td>'
+            '<td>—</td><td>—</td></tr>')
     table = f'<div class="tblwrap"><table class="screen">{head}{"".join(rows)}</table></div>'
+    # a restart that quietly erased its own bad run would leave a record made
+    # only of good stretches, so closed books stay visible
+    ret = pf.get("retired") or []
+    if ret:
+        bits = "; ".join(
+            f'{esc(str(r.get("v") or "?"))} book {esc(str(r.get("key") or "?"))} '
+            f'{esc(str(r.get("label") or ""))} closed {esc(str(r.get("retired_on") or ""))} '
+            f'at {r["ret"]:+.1f}% after {r.get("days", 0)} days'
+            for r in ret if r.get("ret") is not None)
+        if bits:
+            table += (f'<div class="retired">closed books, kept on the record: '
+                      f'{bits} — a model change restarts the books, and the old '
+                      f'runs are shown so that restarting cannot be used to '
+                      f'forget a bad one.</div>')
     cols = []
     if pf.get("holdings"):
         lis = "".join(
@@ -966,6 +1154,10 @@ def render_smallcap_page(data):
     ctx = [t for t in (data.get("market") or []) if t["label"] in ctx_labels]
     if ctx:
         parts.append(render_tiles(ctx))
+
+    # the tracker leads the page: the goal is now to settle whether this screen
+    # is worth trading, so the state of that question outranks today's screen
+    parts.append(render_progress(data))
 
     if sc.get("note") == "waiting-for-key":
         parts.append(

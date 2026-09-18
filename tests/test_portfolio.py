@@ -341,5 +341,53 @@ class AuditedHonestyTests(PaperTestCase):
         self.assertEqual(portfolio.summarize()["status"], "not started")
 
 
+class ProgressTrackingTests(PaperTestCase):
+    """The ledger has to publish enough for a reader to see where the
+    experiment has got to — not just where it currently stands."""
+
+    def test_each_book_publishes_its_path_not_only_its_endpoint(self):
+        for px in (10.0, 11.0, 12.0):
+            portfolio.update(cache_with({"A1": px}), screen_of(["A1"]))
+            self.advance(1)
+        a = [b for b in portfolio.summarize()["books"] if b["key"] == "A"][0]
+        self.assertGreaterEqual(len(a["curve"]), 3)
+        self.assertAlmostEqual(a["curve"][0], 100.0, delta=1.0)   # rebased to 100
+
+    def test_the_benchmark_path_is_published_on_the_same_scale(self):
+        portfolio.update(cache_with({"A1": 10.0}, bench=100.0), screen_of(["A1"]))
+        self.advance(1)
+        portfolio.update(cache_with({"A1": 10.0}, bench=110.0), screen_of(["A1"]))
+        bc = portfolio.summarize()["bench_curve"]
+        self.assertAlmostEqual(bc[0], 100.0, delta=0.01)
+        self.assertAlmostEqual(bc[-1], 110.0, delta=0.01)
+
+    def test_a_missing_benchmark_mark_is_skipped_not_carried_forward(self):
+        # carrying the last value across a gap would draw the benchmark as
+        # having held still, which is a claim the data does not support
+        self.assertEqual(portfolio._curve([100.0, None, 120.0], 100.0),
+                         [100.0, 120.0])
+
+    def test_a_long_history_is_thinned_but_keeps_its_newest_mark(self):
+        vals = [100.0 + i for i in range(400)]
+        c = portfolio._curve(vals, 100.0, cap=50)
+        self.assertEqual(len(c), 50)
+        self.assertAlmostEqual(c[-1], 499.0, delta=0.01)
+
+    def test_a_retired_book_stays_visible_after_a_version_change(self):
+        portfolio.update(cache_with({"A1": 10.0}), screen_of(["A1"]))
+        self.advance(1)
+        portfolio.update(cache_with({"A1": 12.0}), screen_of(["A1"]))
+        real = smallcap.MODEL_VERSION
+        smallcap.MODEL_VERSION = "v9.9"
+        try:
+            portfolio.update(cache_with({"A1": 12.0}), screen_of(["A1"]))
+            retired = portfolio.summarize()["retired"]
+        finally:
+            smallcap.MODEL_VERSION = real
+        self.assertTrue(retired, "a restart must not erase the run it replaced")
+        self.assertTrue(any(r["key"] == "A" for r in retired))
+        self.assertIsNotNone(retired[0]["ret"])
+
+
 if __name__ == "__main__":
     unittest.main()

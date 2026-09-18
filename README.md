@@ -211,6 +211,31 @@ Implementation notes worth keeping:
 - **Stops are checked every day**, not only on rebalance days — a weekly stop
   would be fiction.
 
+### Tracking progress (the panel at the top of the page)
+
+`render_progress()` in `pipeline.py` is the tracker. It answers one question —
+*how far has the experiment actually got* — and it answers it in **evidence**,
+not profit:
+
+- **independent readings against the freeze bar**, `smallcap.FREEZE_TARGET`
+  (12 at one week, 3 at four weeks). Independent means non-overlapping; the
+  larger total-readings count is deliberately not the number on the bar.
+- **days to `smallcap.FREEZE_REVIEW_DATE`** (2026-12-14), the scheduled review.
+- **the control book's return, and the best overlay's margin over it**, with
+  the margin labelled as the highest of several and therefore upward-biased.
+- a milestone checklist ending in an outcome that is not assumed to be
+  favourable: *trade it, change it, or abandon it*.
+
+The rule this panel exists to enforce: the headline number is a reading count,
+not a return. A book up 20% after three weeks moves no bar on this page.
+
+Two further honesty fixes live alongside it. The per-book **path** sparklines
+share one vertical scale (`spark_svg(..., lo, hi)`) — scaled individually, a
+book that moved 0.4% and one that moved 24% draw the identical picture, which
+is exactly the comparison a column of them invites. And **retired books are
+printed**: a model change restarts the ledger, and a restart that silently
+dropped its bad run would leave a record made only of good stretches.
+
 ### Honesty notes
 
 - **Simulated stops flatter themselves.** Prices are sampled a few times a

@@ -387,5 +387,121 @@ class VendorTypeConfusionTests(unittest.TestCase):
         self.assertEqual(smallcap._txt("abcdef", 3), "abc")
 
 
+class ProgressTrackerTests(unittest.TestCase):
+    """The tracker panel is the page's answer to 'how is this going'. It must
+    stay readable when nothing has happened, and must not let a short, lucky
+    stretch of simulated gains read as a settled result."""
+
+    def _data(self, indep_1w=0, indep_4w=0, books=None):
+        d = {"generated_at": NOW.isoformat(),
+             "smallcap": {"v": "v3.1", "screen": [{"ticker": "A1"}],
+                          "evaluation": {}},
+             "portfolio": {"status": "running" if books else "not started",
+                           "books": books or []}}
+        if indep_1w:
+            d["smallcap"]["evaluation"]["1w"] = {
+                "excess": 1.0, "days": indep_1w * 3, "indep": indep_1w}
+        if indep_4w:
+            d["smallcap"]["evaluation"]["4w"] = {
+                "excess": 1.0, "days": indep_4w * 3, "indep": indep_4w}
+        return d
+
+    def _book(self, key, ret, label="X", curve=None):
+        return {"key": key, "label": label, "note": "n", "ret": ret,
+                "days": 30, "started": "2026-08-20", "value": 100000 * (1 + ret / 100),
+                "excess": ret, "friction_yr": 9.0, "max_drawdown": -5.0,
+                "positions": 25, "cash": 0.0, "costs_paid": 0.0, "stops_hit": 0,
+                "curve": curve or [100.0, 100.0 + ret]}
+
+    def test_it_renders_before_anything_has_started(self):
+        html = pipeline.render_progress(self._data())
+        self.assertIn("0 of 12", html)
+        self.assertIn("SIMULATED", html)
+
+    def test_the_progress_bar_tracks_independent_readings_only(self):
+        html = pipeline.render_progress(self._data(indep_1w=6))
+        self.assertIn("6 of 12", html)
+        self.assertIn("width:50%", html)
+
+    def test_a_bar_never_overfills_past_its_target(self):
+        html = pipeline.render_progress(self._data(indep_1w=40))
+        self.assertIn("width:100%", html)
+        self.assertNotIn("width:333%", html)
+
+    def test_it_says_the_evidence_is_short_until_the_bar_is_met(self):
+        html = pipeline.render_progress(
+            self._data(indep_1w=3, books=[self._book("A", 22.0)]))
+        self.assertIn("Too early to judge", html)
+        self.assertNotIn("evidence bar is met", html)
+
+    def test_it_only_claims_the_bar_is_met_when_both_horizons_clear(self):
+        html = pipeline.render_progress(
+            self._data(indep_1w=12, indep_4w=1, books=[self._book("A", 5.0)]))
+        self.assertIn("Too early to judge", html)
+        html = pipeline.render_progress(
+            self._data(indep_1w=12, indep_4w=3, books=[self._book("A", 5.0)]))
+        self.assertIn("evidence bar is met", html)
+
+    def test_the_best_overlay_is_measured_against_the_control_and_flagged(self):
+        books = [self._book("A", 4.0, "Baseline"), self._book("B", 9.0, "Conviction"),
+                 self._book("C", 6.0, "Risk-managed")]
+        html = pipeline.render_progress(self._data(books=books))
+        self.assertIn("+5.0%", html)                 # 9.0 against the control's 4.0
+        self.assertIn("highest of 2", html)          # and said to be the best of
+        self.assertIn("flatters itself", html)       # several, so upward-biased
+
+    def test_no_simulated_return_is_shown_without_the_simulated_label(self):
+        html = pipeline.render_progress(self._data(books=[self._book("A", 31.0)]))
+        self.assertIn("SIMULATED", html)
+        self.assertIn("No money is invested", html)
+
+
+class SharedScaleSparklineTests(unittest.TestCase):
+    """A column of sparklines invites shape-to-shape comparison between rows,
+    so the rows have to share a vertical scale."""
+
+    def _ys(self, svg):
+        import re
+        pts = re.search(r'points="([^"]+)"', svg).group(1)
+        return [float(p.split(",")[1]) for p in pts.split()]
+
+    def test_without_a_shared_scale_a_tiny_move_fills_the_whole_box(self):
+        small = pipeline.spark_svg([100.0, 100.4])
+        big = pipeline.spark_svg([100.0, 124.0])
+        self.assertEqual(self._ys(small), self._ys(big))   # indistinguishable
+
+    def test_with_a_shared_scale_a_tiny_move_looks_tiny(self):
+        lo, hi = 100.0, 124.0
+        small = pipeline.spark_svg([100.0, 100.4], "s", lo, hi)
+        big = pipeline.spark_svg([100.0, 124.0], "s", lo, hi)
+        small_travel = abs(self._ys(small)[0] - self._ys(small)[-1])
+        big_travel = abs(self._ys(big)[0] - self._ys(big)[-1])
+        self.assertGreater(big_travel, small_travel * 10)
+
+    def test_a_series_outside_the_shared_range_is_not_clipped_off_the_chart(self):
+        svg = pipeline.spark_svg([100.0, 300.0], "s", 100.0, 120.0)
+        ys = self._ys(svg)
+        self.assertTrue(all(0 <= y <= 34 for y in ys), ys)
+
+
+class PortfolioTableTests(unittest.TestCase):
+
+    def test_closed_books_are_printed_rather_than_forgotten(self):
+        pf = {"status": "running", "v": "v3.1",
+              "assumptions": {"capital": 100000.0, "cost_bps": 40.0,
+                              "stop_slippage_bps": 75.0, "cadence": "weekly"},
+              "books": [{"key": "A", "label": "Baseline", "note": "n",
+                         "value": 101000.0, "ret": 1.0, "excess": 0.5,
+                         "max_drawdown": -2.0, "friction_yr": 8.0, "stops_hit": 0,
+                         "positions": 25, "curve": [100.0, 101.0]}],
+              "bench_curve": [100.0, 100.5],
+              "retired": [{"v": "v3.0", "key": "A", "label": "Baseline",
+                           "ret": -4.2, "days": 11, "retired_on": "2026-09-16"}]}
+        html = pipeline.render_portfolio(pf)
+        self.assertIn("closed books, kept on the record", html)
+        self.assertIn("-4.2%", html)
+        self.assertIn("IWO benchmark", html)
+
+
 if __name__ == "__main__":
     unittest.main()

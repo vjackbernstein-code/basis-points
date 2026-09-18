@@ -465,7 +465,22 @@ def _stats(book):
         "costs_paid": round(book.get("costs_paid", 0.0), 2),
         "stops_hit": book.get("stops_hit", 0),
         "days": len(hist), "started": book["started"],
+        "curve": _curve([h["value"] for h in hist], START_CAPITAL),
     }
+
+
+def _curve(vals, base, cap=150):
+    """A book's path rebased so 100 is its starting capital, thinned to `cap`
+    points. Rebasing is what makes five books drawable on one scale; thinning
+    keeps a 400-day ledger from bloating the page by 6 curves' worth of text."""
+    vals = [v for v in vals if v]
+    if len(vals) < 2 or not base:
+        return []
+    if len(vals) > cap:
+        step = (len(vals) - 1) / (cap - 1)
+        # always keep the LAST point: the newest mark is the one being read
+        vals = [vals[min(len(vals) - 1, round(i * step))] for i in range(cap)]
+    return [round(v / base * 100, 3) for v in vals]
 
 
 def summarize(led=None):
@@ -486,10 +501,27 @@ def summarize(led=None):
     holdings.sort(key=lambda h: -h["value"])
     trades = sorted((t for b in led["books"].values() for t in b.get("trades", [])),
                     key=lambda t: t["date"], reverse=True)
+    # the benchmark on the same rebased scale, drawn from the control book's
+    # marks. Unknown marks are SKIPPED rather than carried forward: a flat
+    # segment across a gap would misdescribe the benchmark as having held still
+    bh = [h for h in (base.get("history") or []) if h.get("bench")]
+    b0 = base.get("start_bench") or (bh[0]["bench"] if bh else None)
+    bench_curve = _curve([h["bench"] for h in bh], b0) if b0 else []
+    # books that were retired by a version or format change, surfaced rather
+    # than quietly dropped: a restart that erases a bad run is how a simulation
+    # ends up with a record made only of its good stretches
+    retired = []
+    for r in (led.get("retired") or [])[-10:]:
+        retired.append({"v": r.get("v"), "key": r.get("key"),
+                        "label": (STRATEGIES.get(r.get("key")) or {}).get("label", ""),
+                        "ret": r.get("ret"), "days": r.get("days"),
+                        "retired_on": r.get("retired_on")})
     return {
         "status": "running" if books else "not started",
         "v": led.get("v"),
         "books": books,
+        "bench_curve": bench_curve,
+        "retired": retired,
         "holdings": holdings[:12],
         "trades": trades[:10],
         "assumptions": {
