@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-18T19:53:26.030789+00:00",
+ "generated_at": "2026-09-18T20:13:20.829614+00:00",
  "market": [
   {
    "label": "S&P 500",
@@ -292,11 +292,11 @@
    "label": "Bitcoin",
    "symbol": "bitcoin",
    "kind": "crypto",
-   "value": 81266.54410519663,
+   "value": 81011.3212659736,
    "prev": 76371.3617203135,
-   "value_txt": "$81,267",
-   "delta": 6.4097094442419635,
-   "delta_txt": "+6.41%",
+   "value_txt": "$81,011",
+   "delta": 6.075522867658837,
+   "delta_txt": "+6.08%",
    "spark": [
     80268.37474707834,
     77820.76428719184,
@@ -320,18 +320,18 @@
     75590.24471973324,
     76146.81236783884,
     76371.3617203135,
-    81266.54410519663
+    81011.3212659736
    ]
   },
   {
    "label": "Ethereum",
    "symbol": "ethereum",
    "kind": "crypto",
-   "value": 2640.0810341362157,
+   "value": 2632.3707893845108,
    "prev": 2446.143252227872,
-   "value_txt": "$2,640",
-   "delta": 7.928308439487805,
-   "delta_txt": "+7.93%",
+   "value_txt": "$2,632",
+   "delta": 7.613108389585464,
+   "delta_txt": "+7.61%",
    "spark": [
     2511.461241063819,
     2442.407614756763,
@@ -355,11 +355,11 @@
     2397.4972601650115,
     2415.9596535242995,
     2446.143252227872,
-    2640.0810341362157
+    2632.3707893845108
    ]
   }
  ],
- "tape_line": "S&P 500 +1.14%, Nasdaq +1.69%, Dow +0.61%; the 10-year Treasury at 5.01% (+1 bp); WTI crude $107.02 (+4.49%); bitcoin $81,267 (+6.41%).",
+ "tape_line": "S&P 500 +1.14%, Nasdaq +1.69%, Dow +0.61%; the 10-year Treasury at 5.01% (+1 bp); WTI crude $107.02 (+4.49%); bitcoin $81,011 (+6.08%).",
  "top": [
   {
    "title": "Stocks Decline as Treasury Yields Rise",
@@ -413,7 +413,7 @@
  ],
  "smallcap": {
   "note": null,
-  "asof": "2026-09-18T19:54:50+00:00",
+  "asof": "2026-09-18T20:15:39+00:00",
   "coverage": {
    "universe": 9895,
    "profiled": 9966,
@@ -615,10 +615,10 @@
     "ev_rev": 4.3082,
     "px": 10.53,
     "dp": 0.2857,
-    "score": 81.0,
+    "score": 80.9,
     "sub": {
      "g": 91,
-     "m": 78,
+     "m": 77,
      "q": 67
     },
     "flags": []
@@ -706,10 +706,10 @@
     "ev_rev": 3.8759,
     "px": 6.83,
     "dp": 1.9403,
-    "score": 80.0,
+    "score": 79.9,
     "sub": {
      "g": 87,
-     "m": 80,
+     "m": 79,
      "q": 66
     },
     "flags": []
@@ -748,10 +748,10 @@
     "accel": -22.428200000000004,
     "r13": 18.9976,
     "momo": 0.83,
-    "from_high": -5.4009536194191465,
+    "from_high": -6.111833550065016,
     "ev_rev": null,
-    "px": 54.56,
-    "dp": 0.3495,
+    "px": 54.15,
+    "dp": -0.7515,
     "score": 79.3,
     "sub": {
      "g": 71,
@@ -799,7 +799,7 @@
     "ev_rev": 6.6401,
     "px": 10.71,
     "dp": -0.6494,
-    "score": 78.0,
+    "score": 77.9,
     "sub": {
      "g": 86,
      "m": 85,
@@ -808,28 +808,6 @@
     "flags": [
      "8-K"
     ]
-   },
-   {
-    "ticker": "TXO",
-    "name": "TXO Partners LP",
-    "ind": "Energy",
-    "group": "Energy",
-    "mcap": 856.0925270791367,
-    "rev_g": 22.18,
-    "accel": 45.68,
-    "r13": 14.7287,
-    "momo": 0.63,
-    "from_high": -5.450250656328026,
-    "ev_rev": 2.4152,
-    "px": 14.73,
-    "dp": 0.6148,
-    "score": 77.6,
-    "sub": {
-     "g": 83,
-     "m": 81,
-     "q": 61
-    },
-    "flags": []
    },
    {
     "ticker": "TH",
@@ -854,6 +832,28 @@
     "flags": [
      "act+"
     ]
+   },
+   {
+    "ticker": "TXO",
+    "name": "TXO Partners LP",
+    "ind": "Energy",
+    "group": "Energy",
+    "mcap": 856.0925270791367,
+    "rev_g": 22.18,
+    "accel": 45.68,
+    "r13": 14.7287,
+    "momo": 0.63,
+    "from_high": -5.450250656328026,
+    "ev_rev": 2.4152,
+    "px": 14.73,
+    "dp": 0.6148,
+    "score": 77.5,
+    "sub": {
+     "g": 83,
+     "m": 81,
+     "q": 61
+    },
+    "flags": []
    },
    {
     "ticker": "CBLL",
@@ -935,7 +935,7 @@
     "ev_rev": 3.3099,
     "px": 52.43,
     "dp": -0.7196,
-    "score": 74.3,
+    "score": 74.4,
     "sub": {
      "g": 70,
      "m": 95,
@@ -983,7 +983,7 @@
     "ev_rev": 8.7668,
     "px": 32.49,
     "dp": -1.6646,
-    "score": 74.2,
+    "score": 74.1,
     "sub": {
      "g": 78,
      "m": 72,
@@ -1373,287 +1373,33 @@
   "news": []
  },
  "portfolio": {
-  "status": "running",
+  "status": "not started",
   "v": "v3.1",
-  "books": [
-   {
-    "key": "A",
-    "label": "Baseline",
-    "note": "the control — equal weight, no stop, always fully invested",
-    "value": 99750.62,
-    "ret": -0.25,
-    "bench_ret": 0.0,
-    "excess": -0.25,
-    "max_drawdown": -0.25,
-    "positions": 25,
-    "cash": 0.0,
-    "costs_paid": 249.38,
-    "stops_hit": 0,
-    "days": 1,
-    "started": "2026-09-18"
-   },
-   {
-    "key": "B",
-    "label": "Conviction",
-    "note": "weighted by score, capped at 2x / floored at 0.5x equal weight",
-    "value": 99750.62,
-    "ret": -0.25,
-    "bench_ret": 0.0,
-    "excess": -0.25,
-    "max_drawdown": -0.25,
-    "positions": 25,
-    "cash": 0.0,
-    "costs_paid": 249.38,
-    "stops_hit": 0,
-    "days": 1,
-    "started": "2026-09-18"
-   },
-   {
-    "key": "C",
-    "label": "Risk-managed",
-    "note": "equal weight, sells a holding down 20% from entry",
-    "value": 99750.62,
-    "ret": -0.25,
-    "bench_ret": 0.0,
-    "excess": -0.25,
-    "max_drawdown": -0.25,
-    "positions": 25,
-    "cash": 0.0,
-    "costs_paid": 249.38,
-    "stops_hit": 0,
-    "days": 1,
-    "started": "2026-09-18"
-   },
-   {
-    "key": "D",
-    "label": "Regime-aware",
-    "note": "equal weight, exposure cut when the small-cap tape falls",
-    "value": 99800.5,
-    "ret": -0.2,
-    "bench_ret": 0.0,
-    "excess": -0.2,
-    "max_drawdown": -0.2,
-    "positions": 25,
-    "cash": 20000.0,
-    "costs_paid": 199.5,
-    "stops_hit": 0,
-    "days": 1,
-    "started": "2026-09-18"
-   },
-   {
-    "key": "E",
-    "label": "Combined",
-    "note": "conviction + stop + regime together",
-    "value": 99800.5,
-    "ret": -0.2,
-    "bench_ret": 0.0,
-    "excess": -0.2,
-    "max_drawdown": -0.2,
-    "positions": 25,
-    "cash": 20000.0,
-    "costs_paid": 199.5,
-    "stops_hit": 0,
-    "days": 1,
-    "started": "2026-09-18"
-   }
-  ],
-  "holdings": [
-   {
-    "ticker": "SBET",
-    "value": 3990.02,
-    "entry_date": "2026-09-18",
-    "ret": 0.0
-   },
-   {
-    "ticker": "PAYS",
-    "value": 3990.02,
-    "entry_date": "2026-09-18",
-    "ret": 0.0
-   },
-   {
-    "ticker": "RDVT",
-    "value": 3990.02,
-    "entry_date": "2026-09-18",
-    "ret": 0.0
-   },
-   {
-    "ticker": "ETON",
-    "value": 3990.02,
-    "entry_date": "2026-09-18",
-    "ret": 0.0
-   },
-   {
-    "ticker": "GCT",
-    "value": 3990.02,
-    "entry_date": "2026-09-18",
-    "ret": 0.0
-   },
-   {
-    "ticker": "FRD",
-    "value": 3990.02,
-    "entry_date": "2026-09-18",
-    "ret": 0.0
-   },
-   {
-    "ticker": "OSBC",
-    "value": 3990.02,
-    "entry_date": "2026-09-18",
-    "ret": 0.0
-   },
-   {
-    "ticker": "REPX",
-    "value": 3990.02,
-    "entry_date": "2026-09-18",
-    "ret": 0.0
-   },
-   {
-    "ticker": "MAKO",
-    "value": 3990.02,
-    "entry_date": "2026-09-18",
-    "ret": 0.0
-   },
-   {
-    "ticker": "MGTX",
-    "value": 3990.02,
-    "entry_date": "2026-09-18",
-    "ret": 0.0
-   },
-   {
-    "ticker": "PEBO",
-    "value": 3990.02,
-    "entry_date": "2026-09-18",
-    "ret": 0.0
-   },
-   {
-    "ticker": "BBNX",
-    "value": 3990.02,
-    "entry_date": "2026-09-18",
-    "ret": 0.0
-   }
-  ],
-  "trades": [
-   {
-    "date": "2026-09-18",
-    "ticker": "SBET",
-    "side": "buy",
-    "shares": 432.7576,
-    "px": 9.22,
-    "cost": 9.98,
-    "why": "rebalance"
-   },
-   {
-    "date": "2026-09-18",
-    "ticker": "PAYS",
-    "side": "buy",
-    "shares": 324.6562,
-    "px": 12.29,
-    "cost": 9.98,
-    "why": "rebalance"
-   },
-   {
-    "date": "2026-09-18",
-    "ticker": "RDVT",
-    "side": "buy",
-    "shares": 52.1436,
-    "px": 76.52,
-    "cost": 9.98,
-    "why": "rebalance"
-   },
-   {
-    "date": "2026-09-18",
-    "ticker": "ETON",
-    "side": "buy",
-    "shares": 71.0601,
-    "px": 56.15,
-    "cost": 9.98,
-    "why": "rebalance"
-   },
-   {
-    "date": "2026-09-18",
-    "ticker": "GCT",
-    "side": "buy",
-    "shares": 73.9441,
-    "px": 53.96,
-    "cost": 9.98,
-    "why": "rebalance"
-   },
-   {
-    "date": "2026-09-18",
-    "ticker": "FRD",
-    "side": "buy",
-    "shares": 100.6058,
-    "px": 39.66,
-    "cost": 9.98,
-    "why": "rebalance"
-   },
-   {
-    "date": "2026-09-18",
-    "ticker": "OSBC",
-    "side": "buy",
-    "shares": 160.0491,
-    "px": 24.93,
-    "cost": 9.98,
-    "why": "rebalance"
-   },
-   {
-    "date": "2026-09-18",
-    "ticker": "REPX",
-    "side": "buy",
-    "shares": 91.4933,
-    "px": 43.61,
-    "cost": 9.98,
-    "why": "rebalance"
-   },
-   {
-    "date": "2026-09-18",
-    "ticker": "MAKO",
-    "side": "buy",
-    "shares": 378.9197,
-    "px": 10.53,
-    "cost": 9.98,
-    "why": "rebalance"
-   },
-   {
-    "date": "2026-09-18",
-    "ticker": "MGTX",
-    "side": "buy",
-    "shares": 300.2276,
-    "px": 13.29,
-    "cost": 9.98,
-    "why": "rebalance"
-   }
-  ],
+  "books": [],
+  "holdings": [],
+  "trades": [],
   "assumptions": {
    "capital": 100000.0,
-   "cost_bps": 25.0,
+   "cost_bps": 40.0,
    "stop_slippage_bps": 75.0,
    "cadence": "weekly (Monday)",
-   "stop_pct": 0.2,
-   "conviction_cap": 2.0
+   "stop_sigma": 3.0,
+   "conviction_cap": 1.5
   }
  },
- "econ_calendar": [
-  {
-   "date": "2026-09-24",
-   "label": "Housing starts"
-  },
-  {
-   "date": "2026-09-24",
-   "label": "New home sales"
-  }
- ],
+ "econ_calendar": [],
  "stats": {
   "feeds_total": 21,
-  "feeds_failed": 3,
-  "items": 381,
+  "feeds_failed": 4,
+  "items": 406,
   "smallcap_calls": 42,
   "feed_errors": [
    [
-    "PR Newswire",
-    "HTTP Error 404: Not Found"
+    "GlobeNewswire",
+    "The read operation timed out"
    ],
    [
-    "GlobeNewswire",
+    "SEC EDGAR",
     "The read operation timed out"
    ]
   ],
@@ -1661,6 +1407,10 @@
    [
     "Yahoo",
     "rate-limited; using fallback sources"
+   ],
+   [
+    "FRED calendar",
+    "The read operation timed out"
    ]
   ]
  }
