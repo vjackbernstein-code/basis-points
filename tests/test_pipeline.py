@@ -9,6 +9,7 @@ untested rather than mocked into a fake internet.
 Run:  python3 -m unittest discover tests
 """
 
+import re
 import sys
 import tempfile
 import unittest
@@ -483,6 +484,83 @@ class SharedScaleSparklineTests(unittest.TestCase):
         svg = pipeline.spark_svg([100.0, 300.0], "s", 100.0, 120.0)
         ys = self._ys(svg)
         self.assertTrue(all(0 <= y <= 34 for y in ys), ys)
+
+
+class EquityChartTests(unittest.TestCase):
+    """The headline chart is the first thing a reader sees, so its failure modes
+    are the expensive ones: a flat line that looks like a result, or six lines
+    that cannot be told apart."""
+
+    def _pf(self, curves, bench=None):
+        return {"books": [{"key": k, "label": f"Book {k}", "curve": c}
+                          for k, c in curves.items()],
+                "bench_curve": bench or [], "span": ["2026-07-01", "2026-09-01"]}
+
+    def test_an_empty_record_is_shown_as_empty_not_as_a_flat_line_at_zero(self):
+        out = pipeline.equity_chart({"books": [], "bench_curve": []})
+        self.assertIn("No return chart yet", out)
+        self.assertNotIn("<polyline", out)
+
+    def test_a_book_with_a_single_mark_is_not_plotted(self):
+        out = pipeline.equity_chart(self._pf({"A": [100.0]}))
+        self.assertIn("No return chart yet", out)
+
+    def test_every_line_starts_from_the_same_height(self):
+        # rebasing is what makes the lines comparable; without it a book that
+        # started later would look like an outperformer for no reason
+        out = pipeline.equity_chart(self._pf({"A": [100.0, 140.0],
+                                              "B": [100.0, 90.0]}))
+        firsts = [pts.split()[0].split(",")[1]
+                  for pts in re.findall(r'points="([^"]+)"', out)]
+        self.assertEqual(len(set(firsts)), 1, firsts)
+
+    def test_the_zero_line_is_drawn_more_heavily_than_the_other_gridlines(self):
+        out = pipeline.equity_chart(self._pf({"A": [100.0, 120.0]}))
+        self.assertIn('stroke="var(--border)"', out)   # the 0% line
+        self.assertIn('stroke="var(--hair)"', out)     # the rest
+
+    def test_the_books_are_drawn_in_different_colours(self):
+        out = pipeline.equity_chart(self._pf({"A": [100.0, 110.0],
+                                              "B": [100.0, 105.0],
+                                              "C": [100.0, 95.0]}))
+        strokes = set(re.findall(r'<polyline[^>]*stroke="(var\(--bk-[a-e]\))"', out))
+        self.assertEqual(len(strokes), 3, strokes)
+
+    def test_the_benchmark_is_dashed_in_the_chart_and_in_its_legend_key(self):
+        out = pipeline.equity_chart(self._pf({"A": [100.0, 110.0]},
+                                             bench=[100.0, 104.0]))
+        self.assertIn("stroke-dasharray", out)
+        self.assertIn("repeating-linear-gradient", out)   # the matching swatch
+
+    def test_a_dead_flat_record_still_gets_a_readable_axis(self):
+        out = pipeline.equity_chart(self._pf({"A": [100.0, 100.0, 100.0]}))
+        self.assertIn("<polyline", out)
+        self.assertIn("+0%", out)
+
+
+class PageNavigationTests(unittest.TestCase):
+
+    def _page(self):
+        return pipeline.render_smallcap_page({
+            "generated_at": NOW.isoformat(), "market": [], "top": [],
+            "smallcap": {"v": "v3.1", "screen": [], "evaluation": {},
+                         "coverage": {"universe": 10, "profiled": 10}},
+            "portfolio": {"status": "not started", "books": []}})
+
+    def test_every_jump_link_lands_on_a_section_that_exists(self):
+        html = self._page()
+        ids = set(re.findall(r'id="([a-z]+)"', html))
+        targets = set(re.findall(r'href="#([a-z]+)"', html))
+        self.assertTrue(targets, "the page should have a section nav")
+        self.assertEqual(targets - ids, set())
+
+    def test_no_section_heading_is_printed_twice(self):
+        html = self._page()
+        heads = re.findall(r'<h2 class="sechead">(.*?)</h2>', html)
+        self.assertEqual(len(heads), len(set(heads)), heads)
+
+    def test_the_page_still_renders_when_nothing_has_data(self):
+        self.assertIn("Basis", self._page())
 
 
 class CompanyPageTests(unittest.TestCase):

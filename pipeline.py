@@ -22,6 +22,7 @@ import argparse
 import gzip
 import html
 import json
+import math
 import re
 import sys
 import time
@@ -669,6 +670,8 @@ CSS = """
   --ink: #0b0b0b; --ink2: #52514e; --muted: #898781;
   --hair: #e1e0d9; --border: rgba(11,11,11,.10);
   --accent: #2a78d6; --spark: #9ec5f4;
+  --bk-a: #0b0b0b; --bk-b: #2a78d6; --bk-c: #c47510;
+  --bk-d: #7b46bd; --bk-e: #0a8a5f;
   --up: #006300; --down: #d03b3b;
 }
 @media (prefers-color-scheme: dark) {
@@ -678,6 +681,8 @@ CSS = """
     --ink: #ffffff; --ink2: #c3c2b7; --muted: #898781;
     --hair: #2c2c2a; --border: rgba(255,255,255,.10);
     --accent: #3987e5; --spark: #1c5cab;
+    --bk-a: #ffffff; --bk-b: #5aa2f0; --bk-c: #e8a33f;
+    --bk-d: #b18ae8; --bk-e: #2fc58c;
     --up: #0ca30c; --down: #e66767;
   }
 }
@@ -687,6 +692,8 @@ CSS = """
   --ink: #ffffff; --ink2: #c3c2b7; --muted: #898781;
   --hair: #2c2c2a; --border: rgba(255,255,255,.10);
   --accent: #3987e5; --spark: #1c5cab;
+  --bk-a: #ffffff; --bk-b: #5aa2f0; --bk-c: #e8a33f;
+  --bk-d: #b18ae8; --bk-e: #2fc58c;
   --up: #0ca30c; --down: #e66767;
 }
 body {
@@ -785,6 +792,36 @@ table.screen td.tick { font-family: "IBM Plex Mono", ui-monospace, monospace;
 .flag.ins { color: var(--up); border-color: var(--up); }
 .flag.act { color: var(--up); border-color: var(--up); }
 .flag.offer { color: var(--down); border-color: var(--down); }
+.chart { margin: 4px 0 10px; }
+.chart svg { width: 100%; height: auto; display: block; overflow: visible; }
+.axl { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 11px;
+  fill: var(--muted); }
+/* the chart scales down with the page, so its labels are enlarged in SVG user
+   units on small screens — otherwise they render at about four real pixels */
+@media (max-width: 720px) { .axl { font-size: 17px; } }
+@media (max-width: 460px) { .axl { font-size: 20px; } }
+.legend { display: flex; flex-wrap: wrap; gap: 5px 18px; margin-top: 8px;
+  font-size: 12px; color: var(--ink2); }
+.legend span { display: inline-flex; align-items: center; gap: 6px;
+  white-space: nowrap; }
+.legend i { width: 14px; height: 3px; border-radius: 2px; flex: none; }
+.legend b { font-family: "IBM Plex Mono", ui-monospace, monospace; font-weight: 500; }
+.legend em { font-style: normal; font-variant-numeric: tabular-nums; }
+
+.snav { position: sticky; top: 0; z-index: 5; background: var(--page);
+  border-bottom: 1px solid var(--hair); margin: 0 0 20px;
+  padding: 9px 0; display: flex; flex-wrap: wrap; gap: 4px 20px;
+  font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 11.5px; }
+.snav a { color: var(--muted); }
+.snav a:hover { color: var(--ink); text-decoration-color: var(--accent); }
+.psec { scroll-margin-top: 54px; }
+.psec + .psec { margin-top: 34px; }
+.sechead { font-family: "Besley", Georgia, serif; font-weight: 700; font-size: 21px;
+  letter-spacing: -0.01em; border-top: 2px solid var(--ink); padding-top: 11px;
+  margin-bottom: 4px; }
+.secsub { font-size: 12.5px; color: var(--muted); max-width: 80ch;
+  margin-bottom: 14px; }
+
 .tracker { background: var(--surface); border: 1px solid var(--border);
   border-radius: 10px; padding: 18px 20px 20px; margin: 22px 0 30px; }
 .tr-head { font-family: "Besley", Georgia, serif; font-weight: 700; font-size: 20px;
@@ -981,6 +1018,111 @@ def _fmt_mcap(musd):
     return f"${musd / 1000:.1f}B" if musd >= 1000 else f"${musd:.0f}M"
 
 
+
+BOOK_STROKE = {"A": "var(--bk-a)", "B": "var(--bk-b)", "C": "var(--bk-c)",
+               "D": "var(--bk-d)", "E": "var(--bk-e)"}
+
+
+def _nice_step(span, want=4):
+    """A gridline interval a person would have chosen. Ticks at 3.7% intervals
+    are technically correct and unreadable."""
+    if span <= 0:
+        return 1.0
+    for step in (1, 2, 5, 10, 20, 25, 50, 100, 200, 500):
+        if span / step <= want:
+            return float(step)
+    return 1000.0
+
+
+def equity_chart(pf):
+    """The headline chart: every book's value against the benchmark, rebased so
+    the start of each is 0%.
+
+    Rebasing to a common start is what makes six lines comparable at a glance.
+    The alternative — plotting dollars — would let a book that began later look
+    like an outperformer purely because it started from a different place."""
+    pf = pf or {}
+    series = [(b["key"], b["label"], b["curve"], BOOK_STROKE.get(b["key"], "var(--ink)"),
+               2.4 if b["key"] == "A" else 1.6, "")
+              for b in (pf.get("books") or []) if len(b.get("curve") or []) >= 2]
+    bench = pf.get("bench_curve") or []
+    if len(bench) >= 2:
+        series.append(("IWO", "Russell 2000 Growth ETF", bench,
+                       "var(--muted)", 1.6, "5 4"))
+    if not series:
+        return ('<div class="note-box"><strong>No return chart yet.</strong> '
+                'The simulated books have not opened, so there is nothing to '
+                'plot. They begin trading at the first weekly rebalance that '
+                'falls inside US market hours, and this chart appears with '
+                'them. An empty chart is shown as empty rather than as a flat '
+                'line at zero, which would look like a result.</div>')
+
+    pts = [v for _, _, c, _, _, _ in series for v in c]
+    lo_p, hi_p = min(pts) - 100.0, max(pts) - 100.0
+    step = _nice_step(max(hi_p - lo_p, 1.0))
+    lo_p = math.floor(lo_p / step) * step
+    hi_p = math.ceil(hi_p / step) * step
+    if hi_p - lo_p < step:                      # a dead-flat record still needs an axis
+        hi_p = lo_p + step
+    # Labels sit INSIDE the plot, just above their gridline, rather than in a
+    # left gutter. On a phone this chart is scaled to ~40% of its authored
+    # width, and a gutter sized for 10px text clips the moment the text is
+    # enlarged enough to stay readable at that scale.
+    W, H, PL, PR, PT, PB = 760, 292, 6, 10, 18, 40
+    iw, ih = W - PL - PR, H - PT - PB
+
+    def y_of(pct):
+        return PT + ih * (1 - (pct - lo_p) / (hi_p - lo_p))
+
+    grid, tick = [], lo_p
+    while tick <= hi_p + 1e-9:
+        y = y_of(tick)
+        zero = abs(tick) < 1e-9
+        grid.append(
+            f'<line x1="{PL}" y1="{y:.1f}" x2="{W - PR}" y2="{y:.1f}" '
+            f'stroke="var({"--border" if zero else "--hair"})" '
+            f'stroke-width="{1.2 if zero else 1}"/>'
+            f'<text x="{PL + 1}" y="{y - 3:.1f}" class="axl">{tick:+.0f}%</text>')
+        tick += step
+
+    paths, legend = [], []
+    for key, label, curve, colour, width, dash in series:
+        n = len(curve)
+        pl = " ".join(f'{PL + iw * i / (n - 1):.1f},{y_of(v - 100.0):.1f}'
+                      for i, v in enumerate(curve))
+        paths.append(
+            f'<polyline points="{pl}" fill="none" stroke="{colour}" '
+            f'stroke-width="{width}" stroke-linejoin="round" stroke-linecap="round"'
+            f'{f" stroke-dasharray=\"{dash}\"" if dash else ""}/>')
+        ret = curve[-1] - 100.0
+        # the swatch must match how the line is actually drawn — a legend that
+        # shows a solid key for a dashed line is a legend to be checked twice
+        swatch = (f'background:repeating-linear-gradient(90deg,{colour} 0 5px,'
+                  f'transparent 5px 9px)' if dash else f'background:{colour}')
+        legend.append(
+            f'<span><i style="{swatch}"></i>'
+            f'<b>{esc(key)}</b> {esc(label)} '
+            f'<em class="{delta_class(ret)}">{ret:+.1f}%</em></span>')
+
+    span = pf.get("span") or []
+    axis = ""
+    if len(span) == 2 and all(span):
+        axis = (f'<text x="{PL}" y="{H - 7}" class="axl">{esc(span[0])}</text>'
+                f'<text x="{W - PR}" y="{H - 7}" text-anchor="end" '
+                f'class="axl">{esc(span[1])}</text>')
+
+    return (
+        f'<figure class="chart"><svg viewBox="0 0 {W} {H}" role="img" '
+        f'aria-label="Simulated value of each paper book and the benchmark, '
+        f'rebased so each starts at zero percent">'
+        f'{"".join(grid)}{"".join(paths)}{axis}</svg>'
+        f'<figcaption class="legend">{"".join(legend)}</figcaption></figure>'
+        '<p class="cofoot">Every line starts at 0%, so they can be compared '
+        'directly. <strong>Book A is the control</strong> — a clever book that '
+        'does not finish above it has not earned its extra trading. The dashed '
+        'line is the index all five are trying to beat. These are simulated '
+        'results; no money is invested.</p>')
+
 def render_progress(data):
     """The tracker panel. Progress toward the goal is measured in EVIDENCE, not
     in profit: a book up 8% after a fortnight has proved nothing, and the bars
@@ -1086,6 +1228,7 @@ def render_progress(data):
             f'worth trading. Progress is counted in independent forward readings, '
             f'not in the size of a simulated gain. Model '
             f'{esc(str(sc.get("v") or smallcap.MODEL_VERSION))}.</p>'
+            f'{equity_chart(pf)}'
             f'<div class="trgrid">{"".join(tiles)}</div>'
             f'<div class="bars">{"".join(bars)}</div>'
             f'<ul class="mstones">{lis}</ul>'
@@ -1097,9 +1240,7 @@ def render_portfolio(pf):
     """The paper portfolios. Labelled unmistakably: these are simulations, and
     a rising number on a public page must never read as a real return."""
     if not pf or pf.get("status") != "running":
-        return ('<h2 class="brief-title">Paper portfolios '
-                '<span class="flag offer">SIMULATED</span></h2>'
-                '<div class="note-box"><strong>Not trading yet — waiting for market '
+        return ('<div class="note-box"><strong>Not trading yet — waiting for market '
                 'hours.</strong> The books only trade while the US market '
                 'is actually open, because a price fetched outside those hours '
                 'carries the previous close — and buying at exactly the price that '
@@ -1108,8 +1249,6 @@ def render_portfolio(pf):
                 'point.</div>')
     a = pf["assumptions"]
     note = (
-        '<h2 class="brief-title">Paper portfolios '
-        '<span class="flag offer">SIMULATED</span></h2>'
         '<div class="note-box"><strong>No money is invested. These are '
         'hypothetical results.</strong> Five books run over the same screen, the '
         'same prices and the same frictions, differing only in their rules, so '
@@ -1420,18 +1559,21 @@ def render_smallcap_page(data):
     date_line = now.astimezone().strftime("%A, %B %-d, %Y · %-I:%M %p %Z")
     sc = data.get("smallcap") or {}
     cov = sc.get("coverage") or {}
-    parts = [masthead_html(date_line)]
+    # The page is assembled as NAMED SECTIONS rather than one long scroll.
+    # Each carries an anchor, so the nav can jump to it and a reader can link
+    # to the part they care about instead of describing where to scroll.
+    secs = []                      # (anchor, nav label, html)
 
-    # slim macro-context strip: the dials that matter to small-cap analysis
+    # the experiment's state leads: the goal is to settle whether this screen is
+    # worth trading, so the answer-so-far outranks today's list of companies
+    secs.append(("progress", "Progress", render_progress(data)))
+
+    # ---- the market backdrop, kept as context and never scored ----
     ctx_labels = {"Russell 2000", "VIX", "10-yr Treasury", "WTI crude"}
     ctx = [t for t in (data.get("market") or []) if t["label"] in ctx_labels]
-    if ctx:
-        parts.append(render_tiles(ctx))
+    mkt = [render_tiles(ctx)] if ctx else []
 
-    # the tracker leads the page: the goal is now to settle whether this screen
-    # is worth trading, so the state of that question outranks today's screen
-    parts.append(render_progress(data))
-
+    parts = []                     # the screen section
     if sc.get("note") == "waiting-for-key":
         parts.append(
             '<div class="note-box"><strong>Scorecard pending.</strong> The small-cap '
@@ -1440,7 +1582,7 @@ def render_smallcap_page(data):
     reg = sc.get("regime") or {}
     if reg.get("label"):
         r26 = (f', {reg["r26"]:+.1f}% over 26 weeks' if reg.get("r26") is not None else "")
-        parts.append(
+        mkt.append(
             f'<div class="coverage">market context: small-cap growth tape '
             f'<strong>{esc(reg["label"])}</strong> — Russell 2000 Growth ETF '
             f'{reg["r13"]:+.1f}% over 13 weeks{r26} · context only, never affects scores</div>')
@@ -1515,15 +1657,19 @@ def render_smallcap_page(data):
                 f'<td>{r["r13"]:+.1f}%</td><td>{fh52}</td>'
                 f'{dp_td}<td><strong>{r["score"]:.1f}</strong></td>'
                 f'<td class="l">{flags}</td></tr>')
-        parts.append('<h2 class="brief-title">Growth screen — top 25</h2>'
-                     f'<div class="tblwrap"><table class="screen">{head}{"".join(trs)}'
+        parts.append(f'<div class="tblwrap"><table class="screen">{head}{"".join(trs)}'
                      '</table></div>')
     elif not sc.get("note") and cov:
         parts.append('<div class="note-box">The scorecard is still building coverage — '
                      'the ranked screen appears once enough companies are fully '
                      'measured. Check back within a day.</div>')
 
-    parts.append(render_portfolio(data.get("portfolio")))
+    # the books come before the screen that feeds them: the books are the
+    # subject of the experiment, the screen is one of its inputs
+    secs.append(("books", "Portfolios", render_portfolio(data.get("portfolio"))))
+    secs.append(("screen", "Screen", "".join(parts)))
+    if mkt:
+        secs.append(("market", "Market", "".join(mkt)))
 
     cols = []
 
@@ -1584,9 +1730,13 @@ def render_smallcap_page(data):
                     'revenue — growth percentages on tiny bases are unreliable, so '
                     'these are listed, never scored.</div></section>')
     if cols:
-        parts.append(f'<div class="duo">{"".join(cols)}</div>')
+        secs.append(("signals", "Signals",
+                     '<p class="secsub">Company events matched to the small-cap '
+                     'band. These feed the analysis as context and are never '
+                     'scored — a headline cannot move a company up the '
+                     f'screen.</p><div class="duo">{"".join(cols)}</div>'))
 
-    parts.append(
+    method = (
         '<div class="method"><strong>Methodology (model v3.1, Sep 17, 2026).</strong> '
         '<em>v3.1 corrected two scoring defects and restarted the record: '
         'companies labelled “Communications” had been ranked against no peer '
@@ -1623,6 +1773,44 @@ def render_smallcap_page(data):
         'caps; all measures come from one free data vendor and quotes may be a few '
         'hours old. Data: SEC (universe), Finnhub (measures). Facts by fixed rules — '
         '<strong>not investment advice</strong>.</div>')
+    secs.append(("method", "Method", method))
+
+    # The nav is built from the SAME list the sections are, so a jump link can
+    # never point at a section that was not rendered. Short label in the bar,
+    # full title on the heading.
+    TITLES = {
+        "progress": ("Where the trading system stands",
+                     "The simulated books, the evidence they have produced so "
+                     "far, and how far that is from enough to judge."),
+        "books": ("Paper portfolios <span class=\"flag offer\">SIMULATED</span>",
+                  "Five books over the same screen, the same prices and the same "
+                  "costs, differing only in their rules. No money is invested."),
+        "screen": ("Today's growth screen",
+                   "The ranked list the books trade. Click any ticker for the "
+                   "arithmetic behind its score, its position size and its stop."),
+        "market": ("Market context",
+                   "Background only. None of this enters a score."),
+        "signals": ("Company signals", ""),
+        "method": ("How it works", ""),
+    }
+    nav = ('<nav class="snav" aria-label="Sections">'
+           + "".join(f'<a href="#{a}">{esc(lab)}</a>' for a, lab, html in secs
+                     if html and a in TITLES)
+           + '</nav>')
+    body_secs = []
+    for anchor, _label, html in secs:
+        if not html:
+            continue
+        title, sub = TITLES.get(anchor, ("", ""))
+        # the progress panel is its own card with its own heading inside it
+        # titles are authored here, not derived from data, so they carry their
+        # own markup (the SIMULATED badge) rather than being escaped
+        headed = ("" if anchor == "progress" else
+                  f'<h2 class="sechead">{title}</h2>'
+                  + (f'<p class="secsub">{sub}</p>' if sub else ""))
+        body_secs.append(f'<section class="psec" id="{anchor}">{headed}{html}</section>')
+
+    parts = [masthead_html(date_line), nav] + body_secs
     parts.append(
         '<footer><p><strong>Not investment advice.</strong> Facts by fixed, published '
         'rules from public data. Inputs: SEC EDGAR (company universe and filings), '

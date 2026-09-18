@@ -236,6 +236,30 @@ is exactly the comparison a column of them invites. And **retired books are
 printed**: a model change restarts the ledger, and a restart that silently
 dropped its bad run would leave a record made only of good stretches.
 
+### The page's shape
+
+The single public page is assembled as **named sections with anchors**, built
+from one list so a nav link can never point at a section that was not rendered:
+
+`#progress` → `#books` → `#screen` → `#market` → `#signals` → `#method`
+
+The books come before the screen that feeds them: the books are the subject of
+the experiment, the screen is one of its inputs.
+
+`equity_chart()` draws the headline return chart at the top of the progress
+panel — all five books plus the benchmark, each **rebased so its own start is
+0%**. Rebasing is what makes six lines comparable at a glance; plotting dollars
+would let a book that began later look like an outperformer purely because it
+started somewhere else. Three things it must keep doing:
+
+- **an empty record renders as empty**, never as a flat line at zero, which
+  would read as a result;
+- **the benchmark's legend swatch is dashed** because its line is dashed — a
+  legend that does not match its chart is a legend to be checked twice;
+- **axis labels sit inside the plot and grow on small screens.** The chart is
+  scaled to roughly 40% of its authored width on a phone, where 11px text
+  renders at about four real pixels.
+
 ### Per-company pages (`site/co/<TICKER>.html`)
 
 One page per name on the screen, linked from its ticker. Each shows the

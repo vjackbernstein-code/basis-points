@@ -534,6 +534,11 @@ def summarize(led=None):
         "v": led.get("v"),
         "books": books,
         "bench_curve": bench_curve,
+        # first and last date on the record, so a chart can label its own axis
+        # rather than leave the reader guessing what span they are looking at
+        "span": ([(base.get("history") or [{}])[0].get("date"),
+                  (base.get("history") or [{}])[-1].get("date")]
+                 if base.get("history") else None),
         "retired": retired,
         "weights": weights,
         "holdings": holdings[:12],
