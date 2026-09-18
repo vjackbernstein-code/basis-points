@@ -1,0 +1,233 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; base-uri 'none'; form-action 'none'"><meta http-equiv="refresh" content="900"><title>Company signals — Basis Points</title><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Besley:ital,wght@0,700;0,800;1,700&family=Libre+Franklin:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap"><style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  color-scheme: light;
+  --page: #f9f9f7; --surface: #fcfcfb;
+  --ink: #0b0b0b; --ink2: #52514e; --muted: #898781;
+  --hair: #e1e0d9; --border: rgba(11,11,11,.10);
+  --accent: #2a78d6; --spark: #9ec5f4;
+  --bk-a: #0b0b0b; --bk-b: #2a78d6; --bk-c: #c47510;
+  --bk-d: #7b46bd; --bk-e: #0a8a5f;
+  --up: #006300; --down: #d03b3b;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --page: #0d0d0d; --surface: #1a1a19;
+    --ink: #ffffff; --ink2: #c3c2b7; --muted: #898781;
+    --hair: #2c2c2a; --border: rgba(255,255,255,.10);
+    --accent: #3987e5; --spark: #1c5cab;
+    --bk-a: #ffffff; --bk-b: #5aa2f0; --bk-c: #e8a33f;
+    --bk-d: #b18ae8; --bk-e: #2fc58c;
+    --up: #0ca30c; --down: #e66767;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --page: #0d0d0d; --surface: #1a1a19;
+  --ink: #ffffff; --ink2: #c3c2b7; --muted: #898781;
+  --hair: #2c2c2a; --border: rgba(255,255,255,.10);
+  --accent: #3987e5; --spark: #1c5cab;
+  --bk-a: #ffffff; --bk-b: #5aa2f0; --bk-c: #e8a33f;
+  --bk-d: #b18ae8; --bk-e: #2fc58c;
+  --up: #0ca30c; --down: #e66767;
+}
+body {
+  background: var(--page); color: var(--ink);
+  font-family: "Libre Franklin", -apple-system, "Segoe UI", sans-serif;
+  font-size: 15px; line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+.wrap { max-width: 1180px; margin: 0 auto; padding: 28px 24px 48px; }
+a { color: inherit; text-decoration: none; }
+a:hover { text-decoration: underline; text-decoration-color: var(--accent); }
+
+.masthead { display: flex; align-items: baseline; justify-content: space-between;
+  flex-wrap: wrap; gap: 8px 20px; padding-bottom: 14px; border-bottom: 2px solid var(--ink); }
+.brand { font-family: "Besley", Georgia, serif; font-weight: 800;
+  font-size: clamp(28px, 4vw, 40px); letter-spacing: -0.01em; }
+.brand .tick { color: var(--accent); }
+.kicker { color: var(--ink2); font-size: 13.5px; }
+.updated { font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 12px; color: var(--muted); }
+
+.tape { display: grid; grid-template-columns: repeat(auto-fill, minmax(168px, 1fr));
+  gap: 10px; margin: 22px 0 8px; }
+.tile { background: var(--surface); border: 1px solid var(--border);
+  border-radius: 8px; padding: 12px 12px 8px; }
+.tlabel { font-size: 11px; font-weight: 600; letter-spacing: 0.06em;
+  text-transform: uppercase; color: var(--muted); }
+.tvalue { font-size: 21px; font-weight: 600; margin-top: 2px; }
+.tdelta { font-size: 12.5px; font-weight: 600; margin-top: 1px;
+  font-family: "IBM Plex Mono", ui-monospace, monospace; }
+.up { color: var(--up); } .down { color: var(--down); } .flat { color: var(--muted); }
+.tasof { font-size: 10.5px; color: var(--muted); margin-top: 1px; }
+.spark { display: block; width: 100%; height: 34px; margin-top: 6px; }
+
+.section-head { font-size: 12px; font-weight: 700; letter-spacing: 0.09em;
+  text-transform: uppercase; color: var(--ink2);
+  border-top: 1px solid var(--hair); padding-top: 10px; margin-bottom: 6px; }
+
+.brief { margin: 30px 0 6px; max-width: 74ch; }
+.brief-title { font-family: "Besley", Georgia, serif; font-weight: 700;
+  font-size: 24px; margin-bottom: 2px; }
+.brief-date { font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 12px; color: var(--muted); margin-bottom: 14px; }
+.tape-line { font-size: 15px; color: var(--ink2); margin-bottom: 14px; }
+.take { background: var(--surface); border: 1px solid var(--border);
+  border-left: 3px solid var(--accent); border-radius: 8px;
+  padding: 14px 16px; margin-bottom: 22px; }
+.take-label { font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }
+.take p { margin-bottom: 8px; color: var(--ink); }
+.take p:last-child { margin-bottom: 0; }
+.take .attribution { font-size: 12px; color: var(--muted); margin-top: 6px; }
+
+.story { padding: 12px 0; border-bottom: 1px solid var(--hair); }
+.story h3 { font-family: "Besley", Georgia, serif; font-weight: 700;
+  font-size: 17.5px; line-height: 1.35; }
+.story p { color: var(--ink2); font-size: 14px; margin-top: 3px; }
+.meta { font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 11.5px; color: var(--muted); margin-top: 4px; }
+
+.columns { display: grid; grid-template-columns: repeat(auto-fill, minmax(262px, 1fr));
+  gap: 8px 30px; margin-top: 34px; }
+.item { padding: 9px 0; border-bottom: 1px solid var(--hair); }
+.item a { font-weight: 600; font-size: 14px; line-height: 1.4; display: block; }
+.filing-list .item a { font-weight: 400;
+  font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 12.5px; }
+
+.mastright { text-align: right; }
+.nav { font-size: 12.5px; margin-top: 4px; }
+.nav a { color: var(--accent); font-weight: 600; }
+.navcur { color: var(--muted); font-weight: 600; }
+.navsep { color: var(--muted); }
+
+.coverage { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 12px;
+  color: var(--muted); margin: 18px 0 10px; }
+.note-box { background: var(--surface); border: 1px solid var(--border);
+  border-radius: 8px; padding: 14px 16px; margin: 18px 0; color: var(--ink2);
+  max-width: 74ch; }
+.tblwrap { overflow-x: auto; margin: 10px 0 26px; }
+table.screen { width: 100%; border-collapse: collapse; font-size: 13px;
+  font-variant-numeric: tabular-nums; }
+table.screen th { font-size: 10.5px; font-weight: 700; letter-spacing: 0.07em;
+  text-transform: uppercase; color: var(--muted); text-align: right;
+  padding: 6px 8px; border-bottom: 2px solid var(--ink); }
+table.screen td { padding: 7px 8px; border-bottom: 1px solid var(--hair);
+  text-align: right; white-space: nowrap; }
+table.screen th.l, table.screen td.l { text-align: left; }
+table.screen td.tick { font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-weight: 500; }
+.duo { display: grid; grid-template-columns: repeat(auto-fill, minmax(262px, 1fr));
+  gap: 8px 30px; margin-top: 10px; }
+.flag { display: inline-block; font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 10px; border: 1px solid var(--border); border-radius: 4px;
+  padding: 0 4px; margin-left: 4px; color: var(--ink2); }
+.flag.new { color: var(--accent); border-color: var(--accent); }
+.flag.ins { color: var(--up); border-color: var(--up); }
+.flag.act { color: var(--up); border-color: var(--up); }
+.flag.offer { color: var(--down); border-color: var(--down); }
+.chart { margin: 4px 0 10px; }
+.chart svg { width: 100%; height: auto; display: block; overflow: visible; }
+.axl { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 11px;
+  fill: var(--muted); }
+/* the chart scales down with the page, so its labels are enlarged in SVG user
+   units on small screens — otherwise they render at about four real pixels */
+@media (max-width: 720px) { .axl { font-size: 17px; } }
+@media (max-width: 460px) { .axl { font-size: 20px; } }
+.legend { display: flex; flex-wrap: wrap; gap: 5px 18px; margin-top: 8px;
+  font-size: 12px; color: var(--ink2); }
+.legend span { display: inline-flex; align-items: center; gap: 6px;
+  white-space: nowrap; }
+.legend i { width: 14px; height: 3px; border-radius: 2px; flex: none; }
+.legend b { font-family: "IBM Plex Mono", ui-monospace, monospace; font-weight: 500; }
+.legend em { font-style: normal; font-variant-numeric: tabular-nums; }
+
+.tabs { display: flex; flex-wrap: wrap; gap: 0 4px; margin: 0 0 24px;
+  border-bottom: 1px solid var(--hair); }
+.tab { display: inline-block; padding: 8px 12px 9px; font-size: 13px;
+  font-weight: 600; color: var(--muted); border-bottom: 2px solid transparent;
+  margin-bottom: -1px; white-space: nowrap; }
+a.tab:hover { color: var(--ink); text-decoration: none;
+  border-bottom-color: var(--hair); }
+.tab.cur { color: var(--ink); border-bottom-color: var(--accent); }
+.pager { display: flex; justify-content: space-between; gap: 16px;
+  margin-top: 38px; border-top: 1px solid var(--hair); padding-top: 13px;
+  font-size: 13px; font-weight: 600; }
+.pager a { color: var(--ink2); }
+.pager a:only-child:last-child { margin-left: auto; }
+.sechead { font-family: "Besley", Georgia, serif; font-weight: 700; font-size: 21px;
+  letter-spacing: -0.01em; border-top: 2px solid var(--ink); padding-top: 11px;
+  margin-bottom: 4px; }
+.secsub { font-size: 12.5px; color: var(--muted); max-width: 80ch;
+  margin-bottom: 14px; }
+
+.tracker { background: var(--surface); border: 1px solid var(--border);
+  border-radius: 10px; padding: 18px 20px 20px; margin: 22px 0 30px; }
+.tr-head { font-family: "Besley", Georgia, serif; font-weight: 700; font-size: 20px;
+  letter-spacing: -0.01em; }
+.tr-sub { font-size: 12.5px; color: var(--muted); margin: 3px 0 15px; max-width: 78ch; }
+.trgrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(148px, 1fr));
+  gap: 15px 22px; border-top: 1px solid var(--hair); padding-top: 15px; }
+.trl { font-size: 10.5px; font-weight: 700; letter-spacing: 0.07em;
+  text-transform: uppercase; color: var(--muted); }
+.trv { font-family: "Besley", Georgia, serif; font-size: 26px; font-weight: 700;
+  line-height: 1.2; font-variant-numeric: tabular-nums; }
+.trn { font-size: 11.5px; color: var(--ink2); line-height: 1.35; }
+.bars { display: grid; gap: 13px; max-width: 64ch; margin-top: 20px; }
+.barlab { display: flex; justify-content: space-between; gap: 12px; font-size: 12px;
+  color: var(--ink2); margin-bottom: 5px; }
+.barlab b { font-family: "IBM Plex Mono", ui-monospace, monospace; font-weight: 500;
+  color: var(--ink); white-space: nowrap; }
+.bar { height: 8px; background: var(--hair); border-radius: 4px; overflow: hidden; }
+.bar i { display: block; height: 100%; background: var(--accent); border-radius: 4px; }
+.mstones { list-style: none; margin-top: 20px; font-size: 13px; max-width: 86ch;
+  columns: 2; column-gap: 34px; }
+.mstones li { padding: 3.5px 0; color: var(--muted); break-inside: avoid; }
+.mstones li b { font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 11.5px; font-weight: 500; margin-right: 8px; color: var(--hair); }
+.mstones li.done { color: var(--ink2); }
+.mstones li.done b { color: var(--up); }
+.trsay { font-size: 13px; color: var(--ink2); max-width: 80ch; margin-top: 18px;
+  border-top: 1px solid var(--hair); padding-top: 14px; }
+@media (max-width: 560px) { .mstones { columns: 1; } }
+table.screen td.path { padding: 2px 8px; width: 118px; }
+table.screen td.path .spark { height: 26px; margin: 0; }
+.retired { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 11.5px;
+  color: var(--muted); margin: -14px 0 24px; max-width: 90ch; line-height: 1.6; }
+
+.wrap.co { max-width: 900px; }
+.backlink { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 12px;
+  color: var(--muted); display: inline-block; margin-bottom: 18px; }
+.co-tick { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 34px;
+  font-weight: 500; letter-spacing: -0.01em; line-height: 1.1; }
+.co-name { font-family: "Besley", Georgia, serif; font-weight: 700; font-size: 23px;
+  line-height: 1.2; margin-top: 2px; }
+.co-sub { font-size: 13px; color: var(--muted); margin: 5px 0 4px; }
+.cogrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(146px, 1fr));
+  gap: 14px 22px; margin: 12px 0 4px; }
+.cofv { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 17px;
+  font-variant-numeric: tabular-nums; }
+.cofoot { font-size: 12.5px; color: var(--muted); max-width: 82ch; margin: 10px 0 26px; }
+.expl { border-top: 1px solid var(--hair); padding: 12px 0 13px; max-width: 84ch; }
+.explhead { display: flex; align-items: baseline; gap: 6px 14px; flex-wrap: wrap; }
+.expltag { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 13px;
+  font-weight: 500; min-width: 16ch; }
+.explval { font-family: "Besley", Georgia, serif; font-size: 22px; font-weight: 700;
+  font-variant-numeric: tabular-nums; }
+.explk { font-size: 10.5px; font-weight: 700; letter-spacing: 0.07em;
+  text-transform: uppercase; color: var(--muted); }
+.explbody { font-size: 13.5px; color: var(--ink2); margin-top: 4px; }
+.screen a { text-decoration: underline; text-decoration-color: var(--border);
+  text-underline-offset: 3px; }
+.screen a:hover { text-decoration-color: var(--accent); }
+.co .section-head { margin-top: 30px; }
+
+.method { font-size: 12.5px; color: var(--muted); max-width: 90ch;
+  border-top: 1px solid var(--hair); padding-top: 12px; margin-top: 30px; }
+
+footer { margin-top: 44px; border-top: 2px solid var(--ink); padding-top: 14px;
+  font-size: 12.5px; color: var(--muted); max-width: 90ch; }
+footer p { margin-bottom: 8px; }
+</style></head><body><div class="wrap"><header class="masthead"><div><div class="brand">Basis<span class="tick">/</span>Points</div><div class="kicker">An automated small-cap growth rating system.</div></div><div class="mastright"><div class="updated">updated Friday, September 18, 2026 · 6:09 PM EDT</div></div></header><nav class="tabs" aria-label="Sections"><a class="tab" href="index.html">Progress</a><a class="tab" href="portfolios.html">Portfolios</a><a class="tab" href="screen.html">Screen</a><a class="tab" href="market.html">Market</a><span class="tab cur" aria-current="page">Signals</span><a class="tab" href="method.html">Method</a></nav><main class="psec"><h2 class="sechead">Company signals</h2><p class="secsub">Company events matched against the small-cap band. These feed the analysis as context and are never scored — a headline cannot move a company up the screen.</p><div class="duo"><section class="col"><h2 class="section-head">Movers — up</h2><div class="item"><strong>GEMI</strong> · Gemini Space Station Inc<div class="meta"><span class="up">+31.15%</span> · $5.81</div></div><div class="item"><strong>FWDI</strong> · Forward Industries Inc<div class="meta"><span class="up">+24.19%</span> · $7.70</div></div><div class="item"><strong>HCTPF</strong> · Hutchison Port Holdings Trust<div class="meta"><span class="up">+21.56%</span> · $0.22</div></div><div class="item"><strong>DSP</strong> · Viant Technology Inc<div class="meta"><span class="up">+20.36%</span> · $12.06</div></div><div class="item"><strong>CD</strong> · Chaince Digital Holdings Inc<div class="meta"><span class="up">+20.27%</span> · $3.50</div></div></section><section class="col"><h2 class="section-head">Movers — down</h2><div class="item"><strong>EU</strong> · enCore Energy Corp<div class="meta"><span class="down">-18.56%</span> · $0.79</div></div><div class="item"><strong>KDK</strong> · Kodiak AI Inc<div class="meta"><span class="down">-14.36%</span> · $3.28</div></div><div class="item"><strong>SION</strong> · Sionna Therapeutics Inc<div class="meta"><span class="down">-10.31%</span> · $6.44</div></div><div class="item"><strong>INDP</strong> · Indaptus Therapeutics Inc<div class="meta"><span class="down">-9.67%</span> · $3.55</div></div><div class="item"><strong>CMGMF</strong> · Chemring Group PLC<div class="meta"><span class="down">-8.63%</span> · $7.20</div></div></section><section class="col"><h2 class="section-head">Earnings this week</h2><div class="item"><strong>BNTC</strong> · Benitec Biopharma Inc<div class="meta">Mon Sep 21 · after close</div></div><div class="item"><strong>EBF</strong> · Ennis Inc<div class="meta">Mon Sep 21</div></div><div class="item"><strong>MLKN</strong> · MillerKnoll Inc<div class="meta">Tue Sep 22 · before open</div></div><div class="item"><strong>SFIX</strong> · Stitch Fix Inc<div class="meta">Wed Sep 23 · after close</div></div><div class="item"><strong>AFB</strong> · Alliancebernstein National Municipal Income Fund Inc<div class="meta">Thu Sep 24</div></div><div class="item"><strong>SCHL</strong> · Scholastic Corp<div class="meta">Thu Sep 24 · after close</div></div><div class="item"><strong>TBN</strong> · Tamboran Resources Corp<div class="meta">Fri Sep 25</div></div></section><section class="col"><h2 class="section-head">In the news</h2><div class="item"><a href="https://www.prnewswire.com/news-releases/the-simply-good-foods-company-smpl-investors-october-13-2026-filing-deadline-in-securities-fraud-class-action---contact-kessler-topaz-meltzer--check-llp-302883605.html" target="_blank" rel="noopener">The Simply Good Foods Company (SMPL) Investors: October 13, 2026, Filing Deadline in Securities Fraud Class Action - Contact Kessler Topaz Meltzer &amp; Check, LLP</a><div class="meta">SMPL · PR Newswire</div></div></section><section class="col"><h2 class="section-head">Material events (8-K)</h2><div class="item"><a href="https://www.sec.gov/Archives/edgar/data/1839970/000119312526395031/0001193125-26-395031-index.htm" target="_blank" rel="noopener"><strong>BLSM</strong> · BlossomHill Therapeutics Inc</a><div class="meta">8-K filed 2026-09-18</div></div><div class="item"><a href="https://www.sec.gov/Archives/edgar/data/944745/000119312526395696/0001193125-26-395696-index.htm" target="_blank" rel="noopener"><strong>CIVB</strong> · Civista Bancshares Inc</a><div class="meta">8-K filed 2026-09-18</div></div><div class="item"><a href="https://www.sec.gov/Archives/edgar/data/1852551/000149315226043228/0001493152-26-043228-index.htm" target="_blank" rel="noopener"><strong>NVA</strong> · Nova Minerals Ltd</a><div class="meta">8-K filed 2026-09-18</div></div><div class="item"><a href="https://www.sec.gov/Archives/edgar/data/1781730/000119312526395617/0001193125-26-395617-index.htm" target="_blank" rel="noopener"><strong>TCBX</strong> · Third Coast Bancshares Inc</a><div class="meta">8-K filed 2026-09-18</div></div><div class="item"><a href="https://www.sec.gov/Archives/edgar/data/1782430/000149315226043261/0001493152-26-043261-index.htm" target="_blank" rel="noopener"><strong>STRW</strong> · Strawberry Fields Reit Inc</a><div class="meta">8-K filed 2026-09-18</div></div><div class="item"><a href="https://www.sec.gov/Archives/edgar/data/1921603/000119312526395111/0001193125-26-395111-index.htm" target="_blank" rel="noopener"><strong>WHK</strong> · Whitehawk Minerals Corp</a><div class="meta">8-K filed 2026-09-18</div></div><div class="item"><a href="https://www.sec.gov/Archives/edgar/data/1964333/000110465926108748/0001104659-26-108748-index.htm" target="_blank" rel="noopener"><strong>BHRB</strong> · Burke &amp; Herbert Financial Services Corp</a><div class="meta">8-K filed 2026-09-18</div></div><div class="item"><a href="https://www.sec.gov/Archives/edgar/data/1670541/000167054126000105/0001670541-26-000105-index.htm" target="_blank" rel="noopener"><strong>ADNT</strong> · Adient PLC</a><div class="meta">8-K filed 2026-09-18</div></div><div class="item"><a href="https://www.sec.gov/Archives/edgar/data/1866226/000121390026101116/0001213900-26-101116-index.htm" target="_blank" rel="noopener"><strong>EMAT</strong> · Evolution Metals &amp; Technologies Corp</a><div class="meta">8-K filed 2026-09-18</div></div><div class="item"><a href="https://www.sec.gov/Archives/edgar/data/1828791/000182879126000080/0001828791-26-000080-index.htm" target="_blank" rel="noopener"><strong>DSP</strong> · Viant Technology Inc</a><div class="meta">8-K filed 2026-09-18</div></div></section><section class="col"><h2 class="section-head">Activist stakes (13D/13G)</h2><div class="item"><a href="https://www.sec.gov/Archives/edgar/data/1381640/000119312526395000/0001193125-26-395000-index.htm" target="_blank" rel="noopener"><strong>MLCO</strong> · Melco Resorts &amp; Entertainment Ltd</a><div class="meta">SCHEDULE 13D/A filed 2026-09-18</div></div><div class="item"><a href="https://www.sec.gov/Archives/edgar/data/879585/000110465926108905/0001104659-26-108905-index.htm" target="_blank" rel="noopener"><strong>ATNI</strong> · ATN International Inc</a><div class="meta">SCHEDULE 13D/A filed 2026-09-18</div></div><div class="item"><a href="https://www.sec.gov/Archives/edgar/data/1436126/000119312526395732/0001193125-26-395732-index.htm" target="_blank" rel="noopener"><strong>MG</strong> · Mistras Group Inc</a><div class="meta">SCHEDULE 13D/A filed 2026-09-18</div></div><div class="item"><a href="https://www.sec.gov/Archives/edgar/data/2028707/000149315226043375/0001493152-26-043375-index.htm" target="_blank" rel="noopener"><strong>MRLN</strong> · Merlin Inc</a><div class="meta">SCHEDULE 13G/A filed 2026-09-18</div></div><div class="item"><a href="https://www.sec.gov/Archives/edgar/data/2092574/000110465926108628/0001104659-26-108628-index.htm" target="_blank" rel="noopener"><strong>SWMR</strong> · Swarmer Inc</a><div class="meta">SCHEDULE 13D/A filed 2026-09-17</div></div><div class="item"><a href="https://www.sec.gov/Archives/edgar/data/883569/000168852226000004/0001688522-26-000004-index.htm" target="_blank" rel="noopener"><strong>FOSL</strong> · Fossil Group Inc</a><div class="meta">SCHEDULE 13G filed 2026-09-17</div></div><div class="item"><a href="https://www.sec.gov/Archives/edgar/data/1566044/000200536926000053/0002005369-26-000053-index.htm" target="_blank" rel="noopener"><strong>YARW</strong> · Vyne Therapeutics Inc</a><div class="meta">SCHEDULE 13G filed 2026-09-17</div></div><div class="item"><a href="https://www.sec.gov/Archives/edgar/data/1273441/000101359426000982/0001013594-26-000982-index.htm" target="_blank" rel="noopener"><strong>GTE</strong> · Gran Tierra Energy Inc</a><div class="meta">SCHEDULE 13G/A filed 2026-09-17</div></div><div class="item"><a href="https://www.sec.gov/Archives/edgar/data/1863127/000134682426000237/0001346824-26-000237-index.htm" target="_blank" rel="noopener"><strong>TYRA</strong> · Tyra Biosciences Inc</a><div class="meta">SCHEDULE 13D/A filed 2026-09-17</div></div><div class="item"><a href="https://www.sec.gov/Archives/edgar/data/95029/000092189526002570/0000921895-26-002570-index.htm" target="_blank" rel="noopener"><strong>RGR</strong> · Sturm Ruger &amp; Company Inc</a><div class="meta">SCHEDULE 13D/A filed 2026-09-17</div></div></section><section class="col"><h2 class="section-head">Offering filings (dilution)</h2><div class="item"><a href="https://www.sec.gov/Archives/edgar/data/1782430/000149315226043264/0001493152-26-043264-index.htm" target="_blank" rel="noopener"><strong>STRW</strong> · Strawberry Fields Reit Inc</a><div class="meta">424B5 filed 2026-09-18</div></div><div class="item"><a href="https://www.sec.gov/Archives/edgar/data/2087587/000121390026101142/0001213900-26-101142-index.htm" target="_blank" rel="noopener"><strong>CSHR</strong> · Coinshares PLC</a><div class="meta">424B3 filed 2026-09-18</div></div><div class="item"><a href="https://www.sec.gov/Archives/edgar/data/1770069/000119312526395559/0001193125-26-395559-index.htm" target="_blank" rel="noopener"><strong>MPLT</strong> · MapLight Therapeutics Inc</a><div class="meta">S-1/A filed 2026-09-18</div></div><div class="item"><a href="https://www.sec.gov/Archives/edgar/data/775215/000110465926108951/0001104659-26-108951-index.htm" target="_blank" rel="noopener"><strong>HBT</strong> · HBT Financial, Inc</a><div class="meta">424B3 filed 2026-09-18</div></div><div class="item"><a href="https://www.sec.gov/Archives/edgar/data/1734342/000162828026062314/0001628280-26-062314-index.htm" target="_blank" rel="noopener"><strong>AMTB</strong> · Amerant Bancorp Inc</a><div class="meta">424B2 filed 2026-09-16</div></div><div class="item"><a href="https://www.sec.gov/Archives/edgar/data/1674632/000119312526392277/0001193125-26-392277-index.htm" target="_blank" rel="noopener"><strong>BBNX</strong> · Beta Bionics Inc</a><div class="meta">424B5 filed 2026-09-16</div></div><div class="item"><a href="https://www.sec.gov/Archives/edgar/data/1828791/000162828026062297/0001628280-26-062297-index.htm" target="_blank" rel="noopener"><strong>DSP</strong> · Viant Technology Inc</a><div class="meta">424B5 filed 2026-09-16</div></div><div class="item"><a href="https://www.sec.gov/Archives/edgar/data/2111838/000119312526391060/0001193125-26-391060-index.htm" target="_blank" rel="noopener"><strong>HYAC</strong> · Haymaker Acquisition Corp 4</a><div class="meta">S-1/A filed 2026-09-15</div></div><div class="item"><a href="https://www.sec.gov/Archives/edgar/data/2097725/000119312526388604/0001193125-26-388604-index.htm" target="_blank" rel="noopener"><strong>AIIR</strong> · Air Global PLC</a><div class="meta">424B3 filed 2026-09-11</div></div><div class="item"><a href="https://www.sec.gov/Archives/edgar/data/17313/000001731326000152/0000017313-26-000152-index.htm" target="_blank" rel="noopener"><strong>CSWC</strong> · Capital Southwest Corp</a><div class="meta">424B2 filed 2026-09-11</div></div></section><section class="col"><h2 class="section-head">Below the revenue floor (unranked)</h2><div class="item"><strong>FBRX</strong> · Forte Biosciences Inc<div class="meta">rev $1M · growth -100% · 13-wk +251%</div></div><div class="item"><strong>ARCT</strong> · Arcturus Therapeutics Holdings Inc<div class="meta">rev $29M · growth -76% · 13-wk +97%</div></div><div class="item"><strong>OABI</strong> · OmniAb Inc<div class="meta">rev $43M · growth +67% · 13-wk +91%</div></div><div class="item"><strong>PINWF</strong> · Pinewood Technologies Group PLC<div class="meta">rev $41M · growth -44% · 13-wk +80%</div></div><div class="item"><strong>TKNO</strong> · Alpha Teknova Inc<div class="meta">rev $44M · growth +12% · 13-wk +55%</div></div><div class="item"><strong>STTK</strong> · Shattuck Labs Inc<div class="meta">rev $1M · growth -67% · 13-wk +50%</div></div><div class="item"><strong>OBIO</strong> · Orchestra Biomed Holdings Inc<div class="meta">rev $30M · growth +986% · 13-wk +45%</div></div><div class="item"><strong>ODTX</strong> · Odyssey Therapeutics Inc<div class="meta">rev $5M · growth -19% · 13-wk +44%</div></div><div class="meta" style="padding-top:8px">Under $50M trailing revenue — growth percentages on tiny bases are unreliable, so these are listed, never scored.</div></section></div></main><nav class="pager"><a href="market.html">&larr; Market</a><a href="method.html">Method &rarr;</a></nav><footer><p><strong>Not investment advice.</strong> Facts by fixed, published rules from public data. Inputs: SEC EDGAR (company universe and filings), Finnhub (measures), and 20 news and press-release feeds matched against the small-cap band as signals — headlines link to and belong to their publishers. Generated Friday, September 18, 2026 · 6:09 PM EDT · refreshes on a schedule.</p></footer></div></body></html>

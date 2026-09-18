@@ -538,29 +538,98 @@ class EquityChartTests(unittest.TestCase):
         self.assertIn("+0%", out)
 
 
-class PageNavigationTests(unittest.TestCase):
+class SiteNavigationTests(unittest.TestCase):
+    """The site is now several pages with a tab bar. The failure that matters
+    is a tab offering a page that was never written — a dead link is worse than
+    a missing tab."""
 
-    def _page(self):
-        return pipeline.render_smallcap_page({
-            "generated_at": NOW.isoformat(), "market": [], "top": [],
-            "smallcap": {"v": "v3.1", "screen": [], "evaluation": {},
-                         "coverage": {"universe": 10, "profiled": 10}},
-            "portfolio": {"status": "not started", "books": []}})
+    def _data(self, **over):
+        d = {"generated_at": NOW.isoformat(), "market": [], "top": [],
+             "smallcap": {"v": "v3.1", "screen": [], "evaluation": {},
+                          "coverage": {"universe": 10, "profiled": 10}},
+             "portfolio": {"status": "not started", "books": []}}
+        d.update(over)
+        return d
 
-    def test_every_jump_link_lands_on_a_section_that_exists(self):
-        html = self._page()
-        ids = set(re.findall(r'id="([a-z]+)"', html))
-        targets = set(re.findall(r'href="#([a-z]+)"', html))
-        self.assertTrue(targets, "the page should have a section nav")
-        self.assertEqual(targets - ids, set())
+    def _site(self, **over):
+        pages, sections, _dl = pipeline.render_site(self._data(**over))
+        return pages, sections
 
-    def test_no_section_heading_is_printed_twice(self):
-        html = self._page()
-        heads = re.findall(r'<h2 class="sechead">(.*?)</h2>', html)
-        self.assertEqual(len(heads), len(set(heads)), heads)
+    def test_every_tab_points_at_a_page_that_was_written(self):
+        pages, _ = self._site()
+        for name, html in pages.items():
+            for href in re.findall(r'<a class="tab" href="([^"]+)"', html):
+                self.assertIn(href, pages, f"{name} links to missing {href}")
 
-    def test_the_page_still_renders_when_nothing_has_data(self):
-        self.assertIn("Basis", self._page())
+    def test_the_current_tab_is_marked_and_is_not_a_link(self):
+        pages, _ = self._site()
+        for name, html in pages.items():
+            cur = re.findall(r'<span class="tab cur" aria-current="page">'
+                             r'(.*?)</span>', html)
+            self.assertEqual(len(cur), 1, f"{name} has {len(cur)} current tabs")
+            self.assertNotIn(f'<a class="tab" href="{name}"', html)
+
+    def test_a_section_with_no_content_gets_neither_a_page_nor_a_tab(self):
+        pages, sections = self._site()
+        self.assertNotIn("market.html", pages)     # no market tiles in this data
+        self.assertNotIn("market", sections)
+        for html in pages.values():
+            self.assertNotIn('href="market.html"', html)
+
+    def test_the_original_address_keeps_working(self):
+        pages, _ = self._site()
+        self.assertIn("smallcap.html", pages)
+        self.assertEqual(pages["smallcap.html"], pages["index.html"])
+
+    def test_the_landing_page_is_the_progress_page(self):
+        pages, _ = self._site()
+        self.assertIn("Where the trading system stands", pages["index.html"])
+
+    def test_each_section_appears_on_exactly_one_page(self):
+        pages, _ = self._site()
+        body = {n: h for n, h in pages.items() if n != "smallcap.html"}
+        marker = "Where the trading system stands"
+        self.assertEqual(sum(marker in h for h in body.values()), 1)
+
+    def test_the_next_and_previous_links_point_at_real_pages(self):
+        pages, _ = self._site()
+        for name, html in pages.items():
+            pager = re.findall(r'<nav class="pager">(.*?)</nav>', html, re.S)
+            for href in re.findall(r'href="([^"]+)"', pager[0] if pager else ""):
+                self.assertIn(href, pages, f"{name} pager links to missing {href}")
+
+    def test_the_first_page_has_no_previous_link_and_the_last_no_next(self):
+        pages, _ = self._site()
+        order = [f"{s[0]}.html" for s in pipeline.SECTIONS
+                 if f"{s[0]}.html" in pages]
+        first, last = pages[order[0]], pages[order[-1]]
+        self.assertNotIn("&larr;", re.findall(
+            r'<nav class="pager">(.*?)</nav>', first, re.S)[0])
+        self.assertNotIn("&rarr;", re.findall(
+            r'<nav class="pager">(.*?)</nav>', last, re.S)[0])
+
+    def test_a_page_title_is_readable_text_not_markup(self):
+        pages, _ = self._site()
+        for name, html in pages.items():
+            title = re.findall(r"<title>(.*?)</title>", html)[0]
+            self.assertNotIn("&amp;", title, name)   # a double-escaped entity
+            self.assertNotIn("<", title, name)
+            self.assertIn("Basis Points", title)
+
+    def test_every_page_still_carries_the_disclaimer(self):
+        pages, _ = self._site()
+        for name, html in pages.items():
+            self.assertIn("Not investment advice", html, name)
+
+    def test_a_company_page_links_back_to_the_screen_not_the_landing_page(self):
+        row = {"ticker": "ABC", "name": "Abc Inc", "ind": "Tech", "group": "Tech",
+               "mcap": 900.0, "rev_g": 40.0, "accel": 5.0, "r13": 20.0,
+               "momo": 0.5, "from_high": -10.0, "ev_rev": 3.0, "px": 10.0,
+               "dp": 1.0, "score": 80.0, "sub": {"g": 90, "m": 70, "q": 60},
+               "flags": [], "why": {"vol": 52.0}}
+        html = pipeline.render_company_page(row, 1, [row], {}, {}, "today")
+        self.assertIn('href="../screen.html"', html)
+        self.assertNotIn('href="../index.html"', html)
 
 
 class CompanyPageTests(unittest.TestCase):

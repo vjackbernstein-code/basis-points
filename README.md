@@ -236,14 +236,32 @@ is exactly the comparison a column of them invites. And **retired books are
 printed**: a model change restarts the ledger, and a restart that silently
 dropped its bad run would leave a record made only of good stretches.
 
-### The page's shape
+### The site's shape
 
-The single public page is assembled as **named sections with anchors**, built
-from one list so a nav link can never point at a section that was not rendered:
+Each section is **its own page**, with a tab bar across the top:
 
-`#progress` → `#books` → `#screen` → `#market` → `#signals` → `#method`
+| Page | What it holds |
+|---|---|
+| `index.html` | Progress — the return chart and the evidence tracker |
+| `portfolios.html` | The five simulated books |
+| `screen.html` | Today's ranked screen |
+| `market.html` | Market backdrop (context only, never scored) |
+| `signals.html` | Filings, earnings, news matched to the band |
+| `method.html` | The rules in full |
 
-The books come before the screen that feeds them: the books are the subject of
+`smallcap.html` was the original address and still resolves, to the same
+content as `index.html`, so old links do not break.
+
+The tabs are **ordinary links**, not JavaScript. The site runs none, so this is
+not a workaround but the better form: every section has an address that can be
+linked, bookmarked and reached with the back button.
+
+`build_sections()` returns only sections that produced content, and the tab bar
+is built from that same set — **a tab can never offer a page that was not
+written**. Pages whose sections fall silent are deleted, so the public cannot
+reach a page the tabs no longer link to. Both are covered by tests.
+
+Portfolios comes before the screen that feeds it: the books are the subject of
 the experiment, the screen is one of its inputs.
 
 `equity_chart()` draws the headline return chart at the top of the progress

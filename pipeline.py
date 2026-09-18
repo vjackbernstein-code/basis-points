@@ -808,14 +808,19 @@ table.screen td.tick { font-family: "IBM Plex Mono", ui-monospace, monospace;
 .legend b { font-family: "IBM Plex Mono", ui-monospace, monospace; font-weight: 500; }
 .legend em { font-style: normal; font-variant-numeric: tabular-nums; }
 
-.snav { position: sticky; top: 0; z-index: 5; background: var(--page);
-  border-bottom: 1px solid var(--hair); margin: 0 0 20px;
-  padding: 9px 0; display: flex; flex-wrap: wrap; gap: 4px 20px;
-  font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 11.5px; }
-.snav a { color: var(--muted); }
-.snav a:hover { color: var(--ink); text-decoration-color: var(--accent); }
-.psec { scroll-margin-top: 54px; }
-.psec + .psec { margin-top: 34px; }
+.tabs { display: flex; flex-wrap: wrap; gap: 0 4px; margin: 0 0 24px;
+  border-bottom: 1px solid var(--hair); }
+.tab { display: inline-block; padding: 8px 12px 9px; font-size: 13px;
+  font-weight: 600; color: var(--muted); border-bottom: 2px solid transparent;
+  margin-bottom: -1px; white-space: nowrap; }
+a.tab:hover { color: var(--ink); text-decoration: none;
+  border-bottom-color: var(--hair); }
+.tab.cur { color: var(--ink); border-bottom-color: var(--accent); }
+.pager { display: flex; justify-content: space-between; gap: 16px;
+  margin-top: 38px; border-top: 1px solid var(--hair); padding-top: 13px;
+  font-size: 13px; font-weight: 600; }
+.pager a { color: var(--ink2); }
+.pager a:only-child:last-child { margin-left: auto; }
 .sechead { font-family: "Besley", Georgia, serif; font-weight: 700; font-size: 21px;
   letter-spacing: -0.01em; border-top: 2px solid var(--ink); padding-top: 11px;
   margin-bottom: 4px; }
@@ -1371,7 +1376,7 @@ def render_company_page(row, rank, screen, pf, sc, date_line):
     sub = row.get("sub") or {}
     px = row.get("px")
 
-    head = (f'<a class="backlink" href="../index.html">&larr; back to the screen</a>'
+    head = (f'<a class="backlink" href="../screen.html">&larr; back to the screen</a>'
             f'<h1 class="co-tick">{esc(t)}</h1>'
             f'<p class="co-name">{esc(row.get("name") or t)}</p>'
             f'<p class="co-sub">{esc(row.get("ind") or "—")}'
@@ -1547,26 +1552,29 @@ def render_company_page(row, rank, screen, pf, sc, date_line):
             f'fixed, published rules from public data; positions described are '
             f'simulated. Generated {esc(date_line)}. This page is a snapshot — the '
             f'screen is rebuilt every run and this company may not be on the next '
-            f'one. <a href="../index.html">Back to the screen</a>.</p></footer></div>')
+            f'one. <a href="../screen.html">Back to the screen</a>.</p></footer></div>')
     return (f'<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">'
             f'<meta name="viewport" content="width=device-width, initial-scale=1">'
             f'<meta http-equiv="Content-Security-Policy" content="{CSP}">'
             f'<title>{esc(t)} — {esc(row.get("name") or "")} — Basis Points</title>'
             f'{FONTS_LINK}<style>{CSS}</style></head><body>{body}</body></html>')
 
-def render_smallcap_page(data):
-    now = datetime.fromisoformat(data["generated_at"])
-    date_line = now.astimezone().strftime("%A, %B %-d, %Y · %-I:%M %p %Z")
+def build_sections(data):
+    """Build each section's inner HTML, keyed by the page it will become.
+
+    Sections are built ONCE and handed to the page renderer, so the tab bar and
+    the pages that exist can never disagree: a tab is shown only for a section
+    that actually produced content."""
     sc = data.get("smallcap") or {}
     cov = sc.get("coverage") or {}
     # The page is assembled as NAMED SECTIONS rather than one long scroll.
     # Each carries an anchor, so the nav can jump to it and a reader can link
     # to the part they care about instead of describing where to scroll.
-    secs = []                      # (anchor, nav label, html)
+    secs = []                      # (page slug, html)
 
     # the experiment's state leads: the goal is to settle whether this screen is
     # worth trading, so the answer-so-far outranks today's list of companies
-    secs.append(("progress", "Progress", render_progress(data)))
+    secs.append(("index", render_progress(data)))
 
     # ---- the market backdrop, kept as context and never scored ----
     ctx_labels = {"Russell 2000", "VIX", "10-yr Treasury", "WTI crude"}
@@ -1666,10 +1674,10 @@ def render_smallcap_page(data):
 
     # the books come before the screen that feeds them: the books are the
     # subject of the experiment, the screen is one of its inputs
-    secs.append(("books", "Portfolios", render_portfolio(data.get("portfolio"))))
-    secs.append(("screen", "Screen", "".join(parts)))
+    secs.append(("portfolios", render_portfolio(data.get("portfolio"))))
+    secs.append(("screen", "".join(parts)))
     if mkt:
-        secs.append(("market", "Market", "".join(mkt)))
+        secs.append(("market", "".join(mkt)))
 
     cols = []
 
@@ -1730,11 +1738,7 @@ def render_smallcap_page(data):
                     'revenue — growth percentages on tiny bases are unreliable, so '
                     'these are listed, never scored.</div></section>')
     if cols:
-        secs.append(("signals", "Signals",
-                     '<p class="secsub">Company events matched to the small-cap '
-                     'band. These feed the analysis as context and are never '
-                     'scored — a headline cannot move a company up the '
-                     f'screen.</p><div class="duo">{"".join(cols)}</div>'))
+        secs.append(("signals", f'<div class="duo">{"".join(cols)}</div>'))
 
     method = (
         '<div class="method"><strong>Methodology (model v3.1, Sep 17, 2026).</strong> '
@@ -1773,59 +1777,106 @@ def render_smallcap_page(data):
         'caps; all measures come from one free data vendor and quotes may be a few '
         'hours old. Data: SEC (universe), Finnhub (measures). Facts by fixed rules — '
         '<strong>not investment advice</strong>.</div>')
-    secs.append(("method", "Method", method))
+    secs.append(("method", method))
+    return {slug: html for slug, html in secs if html}
 
-    # The nav is built from the SAME list the sections are, so a jump link can
-    # never point at a section that was not rendered. Short label in the bar,
-    # full title on the heading.
-    TITLES = {
-        "progress": ("Where the trading system stands",
-                     "The simulated books, the evidence they have produced so "
-                     "far, and how far that is from enough to judge."),
-        "books": ("Paper portfolios <span class=\"flag offer\">SIMULATED</span>",
-                  "Five books over the same screen, the same prices and the same "
-                  "costs, differing only in their rules. No money is invested."),
-        "screen": ("Today's growth screen",
-                   "The ranked list the books trade. Click any ticker for the "
-                   "arithmetic behind its score, its position size and its stop."),
-        "market": ("Market context",
-                   "Background only. None of this enters a score."),
-        "signals": ("Company signals", ""),
-        "method": ("How it works", ""),
-    }
-    nav = ('<nav class="snav" aria-label="Sections">'
-           + "".join(f'<a href="#{a}">{esc(lab)}</a>' for a, lab, html in secs
-                     if html and a in TITLES)
-           + '</nav>')
-    body_secs = []
-    for anchor, _label, html in secs:
-        if not html:
+
+# Each section is its own page, and the tabs are ordinary links. The page runs
+# no JavaScript, so that is not a workaround — it is the better form: every
+# section gets an address that can be linked, bookmarked, shared and reached
+# with the back button, and nothing depends on a script to be readable.
+SECTIONS = (
+    ("index", "Progress", "Where the trading system stands",
+     "The simulated books, the evidence they have produced so far, and how far "
+     "that is from enough to judge."),
+    ("portfolios", "Portfolios",
+     'Paper portfolios <span class="flag offer">SIMULATED</span>',
+     "Five books over the same screen, the same prices and the same costs, "
+     "differing only in their rules. No money is invested."),
+    ("screen", "Screen", "Today’s growth screen",
+     "The ranked list the books trade. Click any ticker for the arithmetic "
+     "behind its score, its position size and its stop."),
+    ("market", "Market", "Market context",
+     "Background only. None of this enters a score."),
+    ("signals", "Signals", "Company signals",
+     "Company events matched against the small-cap band. These feed the "
+     "analysis as context and are never scored — a headline cannot move a "
+     "company up the screen."),
+    ("method", "Method", "How it works",
+     "The rules in full, including what they are known to get wrong."),
+)
+
+
+def _href(slug, prefix=""):
+    return f"{prefix}{slug}.html"
+
+
+def tab_bar(current, available, prefix=""):
+    """The tabs. A tab is rendered only for a section that actually produced
+    content, so the bar can never offer a page that was not written."""
+    out = []
+    for slug, label, _title, _sub in SECTIONS:
+        if slug not in available:
             continue
-        title, sub = TITLES.get(anchor, ("", ""))
-        # the progress panel is its own card with its own heading inside it
-        # titles are authored here, not derived from data, so they carry their
-        # own markup (the SIMULATED badge) rather than being escaped
-        headed = ("" if anchor == "progress" else
-                  f'<h2 class="sechead">{title}</h2>'
-                  + (f'<p class="secsub">{sub}</p>' if sub else ""))
-        body_secs.append(f'<section class="psec" id="{anchor}">{headed}{html}</section>')
+        if slug == current:
+            out.append(f'<span class="tab cur" aria-current="page">'
+                       f'{esc(label)}</span>')
+        else:
+            out.append(f'<a class="tab" href="{_href(slug, prefix)}">'
+                       f'{esc(label)}</a>')
+    return f'<nav class="tabs" aria-label="Sections">{"".join(out)}</nav>'
 
-    parts = [masthead_html(date_line), nav] + body_secs
-    parts.append(
-        '<footer><p><strong>Not investment advice.</strong> Facts by fixed, published '
-        'rules from public data. Inputs: SEC EDGAR (company universe and filings), '
-        f'Finnhub (measures), and {len(FEEDS)} news and press-release feeds matched '
-        'against the small-cap band as signals — headlines link to and belong to their '
-        f'publishers. Generated {esc(date_line)} · refreshes on a schedule.</p></footer>')
 
-    body = f'<div class="wrap">{"".join(parts)}</div>'
+def render_page(slug, sections, date_line, prefix=""):
+    """One section, as a standalone page."""
+    meta = {s[0]: s for s in SECTIONS}[slug]
+    _slug, label, title, sub = meta
+    # the progress panel is a self-contained card carrying its own heading
+    head = ("" if slug == "index" else
+            f'<h2 class="sechead">{title}</h2>'
+            + (f'<p class="secsub">{sub}</p>' if sub else ""))
+
+    order = [s[0] for s in SECTIONS if s[0] in sections]
+    i = order.index(slug)
+    steps = []
+    if i > 0:
+        pv = {s[0]: s for s in SECTIONS}[order[i - 1]]
+        steps.append(f'<a href="{_href(pv[0], prefix)}">&larr; {esc(pv[1])}</a>')
+    if i < len(order) - 1:
+        nx = {s[0]: s for s in SECTIONS}[order[i + 1]]
+        steps.append(f'<a href="{_href(nx[0], prefix)}">{esc(nx[1])} &rarr;</a>')
+    walk = f'<nav class="pager">{"".join(steps)}</nav>' if steps else ""
+
+    body = (f'<div class="wrap">{masthead_html(date_line)}'
+            f'{tab_bar(slug, sections, prefix)}'
+            f'<main class="psec">{head}{sections[slug]}</main>{walk}'
+            '<footer><p><strong>Not investment advice.</strong> Facts by fixed, '
+            'published rules from public data. Inputs: SEC EDGAR (company universe '
+            f'and filings), Finnhub (measures), and {len(FEEDS)} news and '
+            'press-release feeds matched against the small-cap band as signals — '
+            'headlines link to and belong to their publishers. Generated '
+            f'{esc(date_line)} · refreshes on a schedule.</p></footer></div>')
+    plain = re.sub(r"<[^>]+>", "", title).strip()
     return (f'<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">'
             f'<meta name="viewport" content="width=device-width, initial-scale=1">'
             f'<meta http-equiv="Content-Security-Policy" content="{CSP}">'
             f'<meta http-equiv="refresh" content="900">'
-            f'<title>Basis Points — small-cap growth screen</title>{FONTS_LINK}'
+            f'<title>{esc(plain)} — Basis Points</title>{FONTS_LINK}'
             f'<style>{CSS}</style></head><body>{body}</body></html>')
 
+
+def render_site(data):
+    """Every page of the site, keyed by file name."""
+    date_line = datetime.fromisoformat(
+        data["generated_at"]).astimezone().strftime("%A, %B %-d, %Y · %-I:%M %p %Z")
+    sections = build_sections(data)
+    pages = {f"{slug}.html": render_page(slug, sections, date_line)
+             for slug in sections}
+    # smallcap.html was the original address and may be linked from elsewhere;
+    # it keeps working rather than becoming a dead link
+    if "index.html" in pages:
+        pages["smallcap.html"] = pages["index.html"]
+    return pages, sections, date_line
 
 # --------------------------------------------------------------- main --------
 
@@ -1944,17 +1995,25 @@ def main():
         (DATA / "latest.json").write_text(
             json.dumps(data, indent=1, ensure_ascii=False), encoding="utf-8")
 
-    # the rating system IS the site: one page, served at both addresses.
-    # Rendering is fenced so one malformed vendor field degrades the page
-    # instead of aborting the job and freezing the site at its last state.
+    # One page per section. Rendering is fenced so one malformed vendor field
+    # degrades the site instead of aborting the job and freezing it at its last
+    # state. Pages are written only if ALL of them rendered: a half-written set
+    # would leave tabs pointing at yesterday's pages beside today's.
+    n_pages = 0
     try:
-        page = render_smallcap_page(data)
+        pages, _sections, _dl = render_site(data)
     except Exception as e:  # noqa: BLE001
-        print(f"  warn: page render failed, previous page kept: {_scrub(e)}",
+        print(f"  warn: page render failed, previous pages kept: {_scrub(e)}",
               file=sys.stderr)
     else:
-        (SITE / "index.html").write_text(page, encoding="utf-8")
-        (SITE / "smallcap.html").write_text(page, encoding="utf-8")
+        for name, html in pages.items():
+            (SITE / name).write_text(html, encoding="utf-8")
+        n_pages = len(pages)
+        # a section that stops producing content must not leave its page behind
+        # for the tabs to no longer link to but the public to still reach
+        for stale in SITE.glob("*.html"):
+            if stale.name not in pages:
+                stale.unlink()
 
     try:
         n_co = write_company_pages(data)
@@ -1964,6 +2023,7 @@ def main():
 
     s = data.get("stats", {})
     s["company_pages"] = n_co
+    s["pages"] = n_pages
     cov = (data.get("smallcap") or {}).get("coverage") or {}
     print(f"ok: {s.get('items', '?')} items, {len(data['market'])}/{len(INSTRUMENTS)} "
           f"instruments; smallcap: "
