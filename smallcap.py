@@ -667,6 +667,16 @@ def compute_screen(cache, prev_candidates=None, prev_published=None):
             "sub": {"g": round(100 * growth), "m": round(100 * mo[i]),
                     "q": round(100 * quality)},
             "flags": flags,
+            # the raw inputs behind the score, the position size and the stop.
+            # Published so the per-company page can SHOW its arithmetic instead
+            # of asserting a conclusion the reader has to take on trust.
+            "why": {"vol": m.get("vol"), "r26": m.get("r26"),
+                    "rg3": m.get("rg3"), "rev_gq": m.get("rev_gq"),
+                    "dte": m.get("dte"), "gm_t": m.get("gm_t"),
+                    "om_t": m.get("om_t"), "om_a": m.get("om_a"),
+                    "cashps": m.get("cashps"), "rps": m.get("rps"),
+                    "adv": m.get("adv"), "hi52": m.get("hi52"),
+                    "shares": p.get("shares"), "exch": p.get("exch")},
         })
     rows.sort(key=lambda r: -r["score"])
     candidates = rows[:CANDIDATES]

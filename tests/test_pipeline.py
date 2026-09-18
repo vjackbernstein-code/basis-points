@@ -18,6 +18,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 import pipeline  # noqa: E402
+import portfolio  # noqa: E402
 import smallcap  # noqa: E402
 
 
@@ -482,6 +483,57 @@ class SharedScaleSparklineTests(unittest.TestCase):
         svg = pipeline.spark_svg([100.0, 300.0], "s", 100.0, 120.0)
         ys = self._ys(svg)
         self.assertTrue(all(0 <= y <= 34 for y in ys), ys)
+
+
+class CompanyPageTests(unittest.TestCase):
+    """The per-company pages restate the rules to a reader, so a wrong unit or
+    a restated-instead-of-called formula is a lie with a number attached."""
+
+    def _row(self, ticker="ABC"):
+        return {"ticker": ticker, "name": "Abc Inc", "ind": "Technology",
+                "group": "Technology", "mcap": 900.0, "rev_g": 40.0, "accel": 5.0,
+                "r13": 20.0, "momo": 0.5, "from_high": -10.0, "ev_rev": 3.0,
+                "px": 10.0, "dp": 1.0, "score": 80.0,
+                "sub": {"g": 90, "m": 70, "q": 60}, "flags": [],
+                "why": {"vol": 52.0, "r26": 30.0, "rg3": 25.0, "dte": 0.4,
+                        "gm_t": 50.0, "om_t": 5.0, "om_a": 3.0, "cashps": 1.0,
+                        "rps": 2.0, "adv": 0.35, "hi52": 12.0, "shares": 90.0,
+                        "exch": "NASDAQ"}}
+
+    def test_average_daily_volume_is_reported_in_the_unit_it_arrives_in(self):
+        # the feed sends MILLIONS of shares; smallcap.ADV_MIN is 0.05 = 50k
+        self.assertEqual(pipeline._fmt_adv(0.05), "50k shares")
+        self.assertEqual(pipeline._fmt_adv(8.3), "8.3M shares")
+        self.assertEqual(pipeline._fmt_adv(None), "—")
+
+    def test_a_ticker_that_is_not_a_ticker_never_becomes_a_file_or_a_link(self):
+        for bad in ("../../etc/passwd", "A/B", "", None, "javascript:x",
+                    "..", "A" * 20):
+            self.assertIsNone(pipeline.safe_ticker(bad), bad)
+            self.assertNotIn("<a href", pipeline.co_link(bad))
+        self.assertEqual(pipeline.safe_ticker("brk.b"), "BRK.B")
+
+    def test_the_size_and_stop_shown_are_the_ones_the_code_would_use(self):
+        row = self._row()
+        screen = [row] + [dict(self._row(f"T{i}"), score=70.0 - i) for i in range(9)]
+        html = pipeline.render_company_page(row, 1, screen, {}, {}, "today")
+        want_w = portfolio.target_weights(screen, {"sizing": "score"})["ABC"] * 100
+        self.assertIn(f"{want_w:,.2f}%", html)
+        want_stop = portfolio.stop_distance({"metrics": {"ABC": {"vol": 52.0}}}, "ABC")
+        self.assertIn(f"{want_stop:.1%}", html)
+
+    def test_it_says_plainly_that_nobody_read_anything_about_the_company(self):
+        html = pipeline.render_company_page(self._row(), 1, [self._row()], {}, {}, "t")
+        self.assertIn("not a recommendation", html)
+        self.assertIn("nobody has read its filings", html)
+        self.assertIn("simulat", html)
+
+    def test_a_missing_figure_is_shown_as_missing_not_as_zero(self):
+        row = self._row()
+        row["why"]["dte"] = None
+        html = pipeline.render_company_page(row, 1, [row], {}, {}, "t")
+        self.assertIn("—", html)
+        self.assertNotIn("debt to equity 0.00", html)
 
 
 class PortfolioTableTests(unittest.TestCase):

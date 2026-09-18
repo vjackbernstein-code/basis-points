@@ -516,12 +516,26 @@ def summarize(led=None):
                         "label": (STRATEGIES.get(r.get("key")) or {}).get("label", ""),
                         "ret": r.get("ret"), "days": r.get("days"),
                         "retired_on": r.get("retired_on")})
+    # what each book ACTUALLY holds, as a share of its own value, so a company
+    # page can say "held at 4.2%" rather than only "the rule would give it 4.0%"
+    weights = {}
+    for key in STRATEGIES:
+        bk = led["books"].get(key) or {}
+        val = book_value(bk) if bk.get("started") else 0.0
+        if not val:
+            continue
+        for tick, pos in (bk.get("positions") or {}).items():
+            px = pos.get("last_px") or pos.get("entry_px")
+            if px:
+                weights.setdefault(tick, {})[key] = round(
+                    pos["shares"] * px / val * 100, 2)
     return {
         "status": "running" if books else "not started",
         "v": led.get("v"),
         "books": books,
         "bench_curve": bench_curve,
         "retired": retired,
+        "weights": weights,
         "holdings": holdings[:12],
         "trades": trades[:10],
         "assumptions": {

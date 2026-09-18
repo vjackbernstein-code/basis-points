@@ -819,6 +819,33 @@ table.screen td.path .spark { height: 26px; margin: 0; }
 .retired { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 11.5px;
   color: var(--muted); margin: -14px 0 24px; max-width: 90ch; line-height: 1.6; }
 
+.wrap.co { max-width: 900px; }
+.backlink { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 12px;
+  color: var(--muted); display: inline-block; margin-bottom: 18px; }
+.co-tick { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 34px;
+  font-weight: 500; letter-spacing: -0.01em; line-height: 1.1; }
+.co-name { font-family: "Besley", Georgia, serif; font-weight: 700; font-size: 23px;
+  line-height: 1.2; margin-top: 2px; }
+.co-sub { font-size: 13px; color: var(--muted); margin: 5px 0 4px; }
+.cogrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(146px, 1fr));
+  gap: 14px 22px; margin: 12px 0 4px; }
+.cofv { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 17px;
+  font-variant-numeric: tabular-nums; }
+.cofoot { font-size: 12.5px; color: var(--muted); max-width: 82ch; margin: 10px 0 26px; }
+.expl { border-top: 1px solid var(--hair); padding: 12px 0 13px; max-width: 84ch; }
+.explhead { display: flex; align-items: baseline; gap: 6px 14px; flex-wrap: wrap; }
+.expltag { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 13px;
+  font-weight: 500; min-width: 16ch; }
+.explval { font-family: "Besley", Georgia, serif; font-size: 22px; font-weight: 700;
+  font-variant-numeric: tabular-nums; }
+.explk { font-size: 10.5px; font-weight: 700; letter-spacing: 0.07em;
+  text-transform: uppercase; color: var(--muted); }
+.explbody { font-size: 13.5px; color: var(--ink2); margin-top: 4px; }
+.screen a { text-decoration: underline; text-decoration-color: var(--border);
+  text-underline-offset: 3px; }
+.screen a:hover { text-decoration-color: var(--accent); }
+.co .section-head { margin-top: 30px; }
+
 .method { font-size: 12.5px; color: var(--muted); max-width: 90ch;
   border-top: 1px solid var(--hair); padding-top: 12px; margin-top: 30px; }
 
@@ -920,6 +947,34 @@ def render_econ_column(rows):
                    f'<div class="meta">{esc(day)}</div></div>')
     return ('<section class="col"><h2 class="section-head">Economic calendar</h2>'
             f'{"".join(lis)}</section>')
+
+
+def _fmt_adv(adv):
+    """Average daily volume arrives in MILLIONS of shares (smallcap.ADV_MIN is
+    0.05 = fifty thousand). Printing it as though it were thousands understated
+    every company on the page by a factor of a thousand."""
+    try:
+        m = float(adv)
+    except (TypeError, ValueError):
+        return "—"
+    return f"{m:,.1f}M shares" if m >= 1 else f"{m * 1000:,.0f}k shares"
+
+
+def expl(label, value, kicker, body):
+    """A labelled figure with its reasoning underneath. Deliberately NOT a table:
+    a column of explanatory prose has no width at which a table reads well."""
+    return (f'<div class="expl"><div class="explhead">'
+            f'<span class="expltag">{label}</span>'
+            f'<span class="explval">{value}</span>'
+            f'<span class="explk">{kicker}</span></div>'
+            f'<p class="explbody">{body}</p></div>')
+
+
+def co_link(ticker, prefix="co/"):
+    """Link a ticker to its own page — but only if it is a ticker. An unvalidated
+    one would put attacker-chosen text into an href on a public page."""
+    t = safe_ticker(ticker)
+    return (f'<a href="{prefix}{t}.html">{esc(t)}</a>' if t else esc(ticker or ""))
 
 
 def _fmt_mcap(musd):
@@ -1125,7 +1180,7 @@ def render_portfolio(pf):
     cols = []
     if pf.get("holdings"):
         lis = "".join(
-            f'<div class="item"><strong>{esc(h["ticker"])}</strong> '
+            f'<div class="item"><strong>{co_link(h["ticker"])}</strong> '
             f'<span class="{delta_class(h["ret"])}">{h["ret"]:+.1f}%</span>'
             f'<div class="meta">${h["value"]:,.0f} · since {esc(h["entry_date"] or "")}'
             f'</div></div>' for h in pf["holdings"])
@@ -1141,6 +1196,224 @@ def render_portfolio(pf):
                     f'trades</h2>{lis}</section>')
     return note + table + (f'<div class="duo">{"".join(cols)}</div>' if cols else "")
 
+
+
+TICKER_RE = re.compile(r"^[A-Z0-9][A-Z0-9.\-]{0,11}$")
+
+
+def safe_ticker(t):
+    """A ticker becomes a FILE NAME, so it is validated, never sanitised.
+    Anything that is not plainly a ticker is refused outright rather than
+    stripped into something that merely looks safe."""
+    t = (t or "").strip().upper()
+    return t if TICKER_RE.match(t) and ".." not in t else None
+
+
+def _n(v, fmt="{:,.1f}", suffix="", dash="—"):
+    """Format a number, or say plainly that it is missing. A blank where a
+    figure belongs reads as zero; this never does."""
+    try:
+        return fmt.format(float(v)) + suffix
+    except (TypeError, ValueError):
+        return dash
+
+
+def render_company_page(row, rank, screen, pf, sc, date_line):
+    """One company, explained: what it is, why it scores what it does, what
+    size the rules give it and where its stop would sit — each shown as the
+    arithmetic that produced it.
+
+    The sizing and stop figures are obtained by CALLING the live functions in
+    portfolio.py, never by restating their formulas here. A page that restated
+    them would drift from the code the moment either changed, and would then be
+    describing a system that no longer exists."""
+    t = row["ticker"]
+    w = row.get("why") or {}
+    sub = row.get("sub") or {}
+    px = row.get("px")
+
+    head = (f'<a class="backlink" href="../index.html">&larr; back to the screen</a>'
+            f'<h1 class="co-tick">{esc(t)}</h1>'
+            f'<p class="co-name">{esc(row.get("name") or t)}</p>'
+            f'<p class="co-sub">{esc(row.get("ind") or "—")}'
+            f'{" · " + esc(w["exch"]) if w.get("exch") else ""} · '
+            f'{_fmt_mcap(row["mcap"])} market value · ranked '
+            f'<strong>{rank}</strong> of {len(screen)} on today&rsquo;s screen</p>')
+
+    intro = ('<div class="note-box"><strong>This page explains a rule, not a '
+             'recommendation.</strong> Every number below was produced '
+             'mechanically from public data. Nothing here is a judgement about '
+             'the company, nobody has read its filings, and no position '
+             'described on this page is real — the portfolios are simulations. '
+             'It is published so that the reasoning can be checked and '
+             'disagreed with, which is the only thing that makes an automated '
+             'system worth trusting.</div>')
+
+    # ---- what the company is, strictly from fetched fields ----
+    shares = w.get("shares")
+    rev = (w["rps"] * shares) if (w.get("rps") and shares) else None
+    facts = [
+        ("Market value", _fmt_mcap(row["mcap"])),
+        ("Revenue, trailing 12 months", f'${rev:,.0f}M' if rev else "—"),
+        ("Price", _n(px, "${:,.2f}")),
+        ("Enterprise value / revenue", _n(row.get("ev_rev"), "{:,.1f}", "×")),
+        ("Gross margin", _n(w.get("gm_t"), "{:,.1f}", "%")),
+        ("Operating margin", _n(w.get("om_t"), "{:+,.1f}", "%")),
+        ("Debt to equity", _n(w.get("dte"), "{:,.2f}")),
+        ("Cash per share", _n(w.get("cashps"), "${:,.2f}")),
+        ("Average daily volume", _fmt_adv(w.get("adv"))),
+        ("Shares outstanding", _n(shares, "{:,.0f}", "M")),
+        ("Annual volatility", _n(w.get("vol"), "{:,.0f}", "%")),
+        ("Below its 52-week high", _n(row.get("from_high"), "{:+,.1f}", "%")),
+    ]
+    fact_html = "".join(f'<div><div class="trl">{k}</div><div class="cofv">{v}</div></div>'
+                        for k, v in facts)
+    company = (
+        '<h2 class="section-head">The company, from the data</h2>'
+        f'<div class="cogrid">{fact_html}</div>'
+        '<p class="cofoot">Assembled from the data feed — an industry label, a '
+        'set of filed figures and a price history. It is not a description of '
+        'what the business does, because nothing in this system reads about '
+        'the business.</p>')
+
+    # ---- why it scores what it does ----
+    score_rows = [
+        ("Growth", 40, sub.get("g"),
+         f'revenue up {_n(row.get("rev_g"), "{:+,.1f}", "%")} over the last twelve '
+         f'months, {_n(w.get("rg3"), "{:+,.1f}", "%")} a year over three years, and '
+         f'the latest quarter running {_n(row.get("accel"), "{:+,.1f}", " points")} '
+         f'against that trend. Ranked against its own industry group '
+         f'({esc(row.get("group") or "—")}), not against the whole market, so a '
+         f'sector where everyone grows fast earns nobody a high mark.'),
+        ("Momentum", 40, sub.get("m"),
+         f'up {_n(row.get("r13"), "{:+,.1f}", "%")} over 13 weeks and '
+         f'{_n(w.get("r26"), "{:+,.1f}", "%")} over 26, divided by its volatility of '
+         f'{_n(w.get("vol"), "{:,.0f}", "%")} — a big move in a jumpy stock counts '
+         f'for less than the same move in a steady one.'),
+        ("Quality", 20, sub.get("q"),
+         f'debt to equity {_n(w.get("dte"), "{:,.2f}")}, operating margin moving from '
+         f'{_n(w.get("om_a"), "{:+,.1f}", "%")} to {_n(w.get("om_t"), "{:+,.1f}", "%")}, '
+         f'cash of {_n(w.get("cashps"), "${:,.2f}")} a share, and whether the share '
+         f'count has been growing. Leverage is judged against its own industry.'),
+    ]
+    trs = "".join(expl(k, _n(v, "{:,.0f}"), f"{pct}% of the score", txt)
+                  for k, pct, v, txt in score_rows)
+    scoring = (
+        f'<h2 class="section-head">Why it scores {row["score"]:.1f}</h2>'
+        f'{trs}'
+        '<p class="cofoot">Each mark is a percentile against the other eligible '
+        'companies measured today — 80 means it beat four out of five of them on '
+        'that part, not that it scored 80 out of 100. The set it is ranked against '
+        'changes daily, so a mark can move without the company changing at all.</p>')
+
+    # ---- what size the rules give it ----
+    eq = 100.0 / max(len(screen), 1)
+    conv = portfolio.target_weights(screen, {"sizing": "score"}).get(t)
+    conv_pct = conv * 100 if conv else None
+    held = ((pf or {}).get("weights") or {}).get(t) or {}
+    held_html = (" · ".join(f'{esc(k)} {v:.2f}%' for k, v in sorted(held.items()))
+                 if held else
+                 'not currently held in any book — a name can rank well today and '
+                 'still be bought only at the next weekly rebalance, or be held '
+                 'back by a rule')
+    sizing = (
+        '<h2 class="section-head">What size the rules give it, and why</h2>'
+        + expl('Books A, C, D', f'{eq:.2f}%', 'equal weight',
+               'one twenty-fifth of the book, the same as every other holding. '
+               'The company&rsquo;s identity never enters.')
+        + expl('Books B, E', _n(conv_pct, "{:,.2f}", "%"), 'conviction weight',
+               f'from its <strong>rank</strong> alone — {rank} of {len(screen)} — '
+               f'on a straight ramp from {portfolio.CONVICTION_MAX:g}× equal '
+               f'weight at the top to {portfolio.CONVICTION_MIN:g}× at the '
+               f'bottom, then clamped back inside those bounds. The <em>size</em> '
+               f'of its score lead is deliberately ignored: the ranking is what a '
+               f'score of this kind can honestly assert; the gaps between scores '
+               f'are not.')
+        + f'<p class="cofoot"><strong>Simulated holding right now:</strong> '
+          f'{held_html}.</p>')
+
+    # ---- where the stop sits ----
+    vol = w.get("vol")
+    dist = portfolio.stop_distance({"metrics": {t: {"vol": vol}}}, t)
+    weekly = (float(vol) / 100.0 / (52 ** 0.5) * 100) if vol else None
+    raw = weekly * portfolio.STOP_SIGMA if weekly else None
+    clamped = (raw is not None
+               and abs(raw / 100 - dist) > 1e-9)
+    level = px * (1 - dist) if px else None
+    stop = (
+        '<h2 class="section-head">Where its stop sits, and why</h2>'
+        + expl('Its own volatility', _n(vol, "{:,.1f}", "%"), 'step 1',
+               'measured from this company&rsquo;s own price history'
+               + ('' if vol else ' — <strong>missing</strong>, so the default '
+                  'stop distance is used instead'))
+        + expl('One week of it', _n(weekly, "{:,.1f}", "%"), 'step 2',
+               'the annual figure divided by the square root of 52')
+        + expl(f'Multiplied by {portfolio.STOP_SIGMA:g}', _n(raw, "{:,.1f}", "%"),
+               'step 3', 'far enough out that ordinary weekly noise does not '
+               'trigger it')
+        + expl(f'Held within {portfolio.STOP_MIN:.0%}–{portfolio.STOP_MAX:.0%}',
+               f'{dist:.1%}', 'the stop',
+               'clamped — the raw figure fell outside the bounds' if clamped
+               else 'inside the bounds, so it stands unchanged')
+        + f'<p class="cofoot">Books C and E sell it if it falls <strong>{dist:.1%}</strong> '
+        f'below its highest close since purchase — from today&rsquo;s '
+        f'{_n(px, "${:,.2f}")} that would be {_n(level, "${:,.2f}")}, and the '
+        f'level rises with the price but never falls. Books A, B and D hold it '
+        f'through anything, on purpose: they are the control that shows whether '
+        f'stopping out helped or simply sold the dips. A simulated stop is '
+        f'optimistic — real ones gap through in stocks this thin, which is why an '
+        f'extra {portfolio.STOP_SLIPPAGE_BPS:.0f} basis points is charged on every '
+        f'stop exit and books C and E should still be read as a best case.</p>')
+
+    # ---- how it fits ----
+    fit = (
+        '<h2 class="section-head">How it fits the whole</h2>'
+        '<div class="note-box">It is one of twenty-five, and it is meant to be. '
+        'No single holding is supposed to carry the result, and the system has no '
+        'view about this company that survives its leaving the screen — when it '
+        'drops out, it is sold, whatever anyone thinks of it. The purpose of the '
+        'whole exercise is narrow: to find out, on forward evidence rather than '
+        'backtest, whether ranking small companies this way beats simply owning '
+        'the small-cap growth index after the cost of all that trading. That '
+        'question is still open, and the trading cost is the part most likely to '
+        'settle it. Nothing here is a recommendation and no money is invested.</div>')
+
+    # ---- anything filed or reported about this ticker today ----
+    ev_bits = []
+    for key, lab in (("filings_material", "material event (8-K)"),
+                     ("filings_activist", "5%+ stake disclosed (13D/13G)"),
+                     ("filings_offering", "share offering filed (S-1/424B)")):
+        for f in (sc.get(key) or []):
+            if f.get("ticker") == t:
+                ev_bits.append(f'<div class="item"><a href="{esc(f["link"])}" '
+                               f'target="_blank" rel="noopener">{lab}</a>'
+                               f'<div class="meta">{esc(f.get("form") or "")} · '
+                               f'filed {esc(f["date"])}</div></div>')
+    for n in (sc.get("news") or []):
+        if n.get("ticker") == t:
+            ev_bits.append(f'<div class="item"><a href="{esc(n["link"])}" '
+                           f'target="_blank" rel="noopener">{esc(n["title"])}</a>'
+                           f'<div class="meta">{esc(n["source"])} · headline matched '
+                           f'by ticker, never scored</div></div>')
+    events = (('<h2 class="section-head">Filed or reported recently</h2>'
+               + "".join(ev_bits[:8])
+               + '<p class="cofoot">Matched from SEC EDGAR and public feeds. These '
+                 'are context for a human reader and are never scored — a headline '
+                 'cannot move this company up the screen.</p>')
+              if ev_bits else "")
+
+    body = (f'<div class="wrap co">{head}{intro}{company}{scoring}{sizing}{stop}'
+            f'{fit}{events}'
+            f'<footer><p><strong>Not investment advice.</strong> Facts produced by '
+            f'fixed, published rules from public data; positions described are '
+            f'simulated. Generated {esc(date_line)}. This page is a snapshot — the '
+            f'screen is rebuilt every run and this company may not be on the next '
+            f'one. <a href="../index.html">Back to the screen</a>.</p></footer></div>')
+    return (f'<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">'
+            f'<meta name="viewport" content="width=device-width, initial-scale=1">'
+            f'<meta http-equiv="Content-Security-Policy" content="{CSP}">'
+            f'<title>{esc(t)} — {esc(row.get("name") or "")} — Basis Points</title>'
+            f'{FONTS_LINK}<style>{CSS}</style></head><body>{body}</body></html>')
 
 def render_smallcap_page(data):
     now = datetime.fromisoformat(data["generated_at"])
@@ -1235,7 +1508,7 @@ def render_smallcap_page(data):
             ev_rev = (f'{r["ev_rev"]:.1f}×' if r.get("ev_rev") is not None else "—")
             trs.append(
                 f'<tr title="{esc(sub_t)}"><td class="l">{i}</td>'
-                f'<td class="l tick">{esc(r["ticker"])}</td>'
+                f'<td class="l tick">{co_link(r["ticker"])}</td>'
                 f'<td class="l">{esc(r["name"])}</td><td class="l">{esc(r["ind"])}</td>'
                 f'<td>{_fmt_mcap(r["mcap"])}</td><td>{ev_rev}</td>'
                 f'<td>{r["rev_g"]:+.1f}%</td>'
@@ -1433,6 +1706,40 @@ def build_data():
     return data
 
 
+def write_company_pages(data):
+    """One page per company on today's screen, under site/co/.
+
+    Stale pages are DELETED, not left behind. A page for a company that dropped
+    off the screen weeks ago still carries a confident-looking analysis with an
+    old date on it, and a public URL that nobody revisits is exactly where a
+    wrong number survives longest."""
+    sc = data.get("smallcap") or {}
+    screen = sc.get("screen") or []
+    if not screen:
+        return 0
+    pf = data.get("portfolio") or {}
+    date_line = datetime.fromisoformat(
+        data["generated_at"]).astimezone().strftime("%A, %B %-d, %Y · %-I:%M %p %Z")
+    codir = SITE / "co"
+    codir.mkdir(exist_ok=True)
+    written = set()
+    for rank, row in enumerate(screen, 1):
+        t = safe_ticker(row.get("ticker"))
+        if not t:
+            continue
+        try:
+            html = render_company_page(row, rank, screen, pf, sc, date_line)
+        except Exception as e:  # noqa: BLE001 — one bad row must not lose the rest
+            print(f"  warn: {t} page skipped: {_scrub(e)}", file=sys.stderr)
+            continue
+        (codir / f"{t}.html").write_text(html, encoding="utf-8")
+        written.add(f"{t}.html")
+    for stale in codir.glob("*.html"):
+        if stale.name not in written:
+            stale.unlink()
+    return len(written)
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--render-only", action="store_true",
@@ -1461,7 +1768,14 @@ def main():
         (SITE / "index.html").write_text(page, encoding="utf-8")
         (SITE / "smallcap.html").write_text(page, encoding="utf-8")
 
+    try:
+        n_co = write_company_pages(data)
+    except Exception as e:  # noqa: BLE001 — never let a detail page break the site
+        n_co = 0
+        print(f"  warn: company pages skipped: {_scrub(e)}", file=sys.stderr)
+
     s = data.get("stats", {})
+    s["company_pages"] = n_co
     cov = (data.get("smallcap") or {}).get("coverage") or {}
     print(f"ok: {s.get('items', '?')} items, {len(data['market'])}/{len(INSTRUMENTS)} "
           f"instruments; smallcap: "
