@@ -35,6 +35,7 @@ from email.utils import parsedate_to_datetime
 from pathlib import Path
 from xml.etree import ElementTree as ET
 
+import portfolio
 import smallcap
 
 BASE = Path(__file__).resolve().parent
@@ -886,6 +887,70 @@ def _fmt_mcap(musd):
     return f"${musd / 1000:.1f}B" if musd >= 1000 else f"${musd:.0f}M"
 
 
+def render_portfolio(pf):
+    """The paper portfolio. Labelled unmistakably: this is a simulation, and a
+    public page showing a rising number must never read as a real return."""
+    if not pf or pf.get("status") != "running":
+        return ('<div class="note-box"><strong>Paper portfolio — simulated.</strong> '
+                'Starting up: the first simulated rebalance happens on the next '
+                'Monday run. No money is involved at any point.</div>')
+    a = pf["assumptions"]
+    exc = pf.get("excess")
+    exc_txt = (f'<span class="{delta_class(exc)}">{exc:+.2f}%</span>'
+               if exc is not None else "—")
+    bench_txt = (f'{pf["bench_ret"]:+.2f}%' if pf.get("bench_ret") is not None else "—")
+    head = (
+        '<h2 class="brief-title">Paper portfolio <span class="flag offer">SIMULATED'
+        '</span></h2>'
+        '<div class="note-box"><strong>No money is invested. These are '
+        'hypothetical results.</strong> The portfolio holds the published screen, '
+        f'equally weighted, rebalanced {esc(a["cadence"])}, starting from a notional '
+        f'${a["capital"]:,.0f} and paying {a["cost_bps"]:.0f} basis points per side '
+        'in assumed spread and slippage. Simulated results leave out what hurts real '
+        'traders most: the market moving against a real order, taxes, and the nerve '
+        'required to follow a system through a losing stretch. It restarts whenever '
+        'the model version changes.</div>')
+    stats = (
+        f'<div class="tape">'
+        f'<div class="tile"><div class="tlabel">Simulated value</div>'
+        f'<div class="tvalue">${pf["value"]:,.0f}</div>'
+        f'<div class="tdelta {delta_class(pf["ret"])}">{pf["ret"]:+.2f}%</div></div>'
+        f'<div class="tile"><div class="tlabel">Benchmark (IWO)</div>'
+        f'<div class="tvalue">{bench_txt}</div>'
+        f'<div class="tdelta">same period</div></div>'
+        f'<div class="tile"><div class="tlabel">Difference</div>'
+        f'<div class="tvalue">{exc_txt}</div>'
+        f'<div class="tdelta">vs doing nothing</div></div>'
+        f'<div class="tile"><div class="tlabel">Worst dip</div>'
+        f'<div class="tvalue">{pf["max_drawdown"]:+.1f}%</div>'
+        f'<div class="tdelta">peak to trough</div></div>'
+        f'<div class="tile"><div class="tlabel">Frictions paid</div>'
+        f'<div class="tvalue">${pf["costs_paid"]:,.0f}</div>'
+        f'<div class="tdelta">{pf["positions"]} positions</div></div>'
+        f'<div class="tile"><div class="tlabel">Running since</div>'
+        f'<div class="tvalue">{esc(pf["started"])}</div>'
+        f'<div class="tdelta">{pf["days"]} day(s), {esc(pf["v"])}</div></div>'
+        f'</div>')
+    cols = []
+    if pf.get("holdings"):
+        lis = "".join(
+            f'<div class="item"><strong>{esc(h["ticker"])}</strong> '
+            f'<span class="{delta_class(h["ret"])}">{h["ret"]:+.1f}%</span>'
+            f'<div class="meta">${h["value"]:,.0f} · held since {esc(h["entry_date"] or "")}'
+            f'</div></div>' for h in pf["holdings"][:12])
+        cols.append('<section class="col"><h2 class="section-head">Simulated holdings'
+                    f'</h2>{lis}</section>')
+    if pf.get("trades"):
+        lis = "".join(
+            f'<div class="item"><strong>{esc(t["side"].upper())}</strong> '
+            f'{esc(t["ticker"])}<div class="meta">{esc(t["date"])} · '
+            f'{t["shares"]:.2f} sh @ ${t["px"]:,.2f} · cost ${t["cost"]:,.2f}'
+            f'</div></div>' for t in pf["trades"][:12])
+        cols.append('<section class="col"><h2 class="section-head">Simulated trades'
+                    f'</h2>{lis}</section>')
+    return head + stats + (f'<div class="duo">{"".join(cols)}</div>' if cols else "")
+
+
 def render_smallcap_page(data):
     now = datetime.fromisoformat(data["generated_at"])
     date_line = now.astimezone().strftime("%A, %B %-d, %Y · %-I:%M %p %Z")
@@ -989,6 +1054,8 @@ def render_smallcap_page(data):
         parts.append('<div class="note-box">The scorecard is still building coverage — '
                      'the ranked screen appears once enough companies are fully '
                      'measured. Check back within a day.</div>')
+
+    parts.append(render_portfolio(data.get("portfolio")))
 
     cols = []
 
@@ -1138,6 +1205,14 @@ def build_data():
         market_errors.append(("Small-cap engine", _scrub(e)))
 
     try:
+        paper = portfolio.summarize(
+            portfolio.update(smallcap.load_cache(),
+                             (sc_summary or {}).get("screen") or []))
+    except Exception as e:  # noqa: BLE001 — a simulation must never break the page
+        paper = None
+        market_errors.append(("Paper portfolio", _scrub(e)))
+
+    try:
         econ = fred_calendar()
     except Exception as e:  # noqa: BLE001
         econ = []
@@ -1149,6 +1224,7 @@ def build_data():
         "tape_line": tape_line(tiles),
         "top": [slim(i) for i in top],
         "smallcap": sc_summary,
+        "portfolio": paper,
         "econ_calendar": econ,
         "stats": {
             "feeds_total": len(FEEDS) + 1,

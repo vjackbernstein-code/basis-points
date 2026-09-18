@@ -176,6 +176,40 @@ record then, in this priority order:
 Shipped early because it is display-only and score-neutral: the CAN SLIM-style
 market-context banner (the benchmark's own 13/26-week trend).
 
+## Paper portfolio (`portfolio.py`) — a SIMULATION
+
+No money is ever involved. This layer answers what the ranked screen cannot:
+if you actually held the published names and paid real frictions, what would
+have happened? Ledger in `data/portfolio.json`, rendered on the page under an
+unmistakable **SIMULATED** label.
+
+Deliberately the dullest possible translation of the screen into a portfolio,
+because every discretionary knob is a parameter nobody has evidence to set:
+
+- **The portfolio IS the screen** — the published top 25, equally weighted.
+  No conviction sizing, no stop-losses, no overlays.
+- **Weekly rebalancing** (Monday). The screen churns daily and small-cap
+  spreads are wide; rebalancing daily would measure friction, not skill.
+- **Frictions charged explicitly** on both sides at `COST_BPS` (25 bps =
+  0.25%), covering assumed spread and slippage. An assumption, stated, not a
+  measurement. The cost is reserved out of each slot so the last position
+  bought is not left underweight.
+- **Marks before trades.** The book is valued at current prices *before*
+  sizing decisions — sizing off stale marks mis-weights every position after
+  a move.
+- **Never trades blind**: a name with no usable price (older than 72h) is
+  skipped rather than guessed at.
+- **Restarts when `MODEL_VERSION` changes**, exactly like the live track
+  record. A portfolio spanning two different models measures nothing.
+
+Reported: simulated value, return, benchmark return, the difference, worst
+peak-to-trough dip, frictions paid, holdings and recent trades.
+
+**What a simulation leaves out**, and it is the part that matters: the market
+moving against a real order, borrow costs, tax, and the discipline required to
+follow a system through a drawdown. Hypothetical results are not a track
+record, and nothing here is investment advice.
+
 ## Security posture (reviewed Sep 16, 2026)
 
 This system republishes text written by strangers, so every feed field is
