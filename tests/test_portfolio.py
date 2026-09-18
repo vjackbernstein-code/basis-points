@@ -208,8 +208,15 @@ class RegimeOverlayTests(PaperTestCase):
                                screen_of(["A1"]))
         d = led["books"]["D"]
         invested = sum(p["shares"] * p["last_px"] for p in d["positions"].values())
-        self.assertLess(invested, portfolio.START_CAPITAL * 0.5)
-        self.assertGreater(d["cash"], portfolio.START_CAPITAL * 0.5)
+        target = portfolio.REGIME_EXPOSURE["correction"]
+        self.assertAlmostEqual(invested / portfolio.START_CAPITAL, target, places=2)
+        self.assertGreater(d["cash"], portfolio.START_CAPITAL * (1 - target) * 0.9)
+
+    def test_the_regime_response_never_goes_to_zero(self):
+        # a filter on one index gives ~2 independent signals a year; a binary
+        # switch would need to be right ~74% of the time just to break even
+        for exposure in portfolio.REGIME_EXPOSURE.values():
+            self.assertGreaterEqual(exposure, 0.5)
 
     def test_the_baseline_book_stays_fully_invested_in_the_same_tape(self):
         led = portfolio.update(cache_with({"A1": 10.0}, regime="correction"),

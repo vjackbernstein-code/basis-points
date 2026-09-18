@@ -9,10 +9,23 @@ nothing to do with its cleverness, and without a plain control there is no way
 to tell. Book A is therefore deliberately dull and never changes.
 
   A  Baseline       equal weight, no stop, full exposure          (the control)
-  B  Conviction     weight by score, capped so no name dominates
-  C  Risk-managed   equal weight + per-position stop loss
-  D  Regime-aware   equal weight, exposure cut in a falling tape
+  B  Conviction     weight by RANK (not by raw score — see below)
+  C  Risk-managed   equal weight + volatility-scaled trailing stop
+  D  Regime-aware   equal weight, exposure shaded in a falling tape
   E  Combined       B + C + D together
+
+The forms follow established practice rather than invention (reviewed Sept
+2026). Three corrections came out of that review and are worth remembering:
+rank-weighting instead of score-proportional, because a composite score is
+ordinal and proportional weighting is not even scale-invariant; stops scaled
+to each name's own volatility instead of a flat percentage, because a flat
+stop culls the most volatile names and so places a factor bet nobody intended;
+and a shallow regime response that never reaches zero, because a filter on one
+index yields roughly two independent signals a year.
+
+The same review argues the evidence is AGAINST per-name stops in this exact
+setting — long-only, weekly, small-cap, with momentum already in the score.
+Book C exists to measure that, not because it is expected to win.
 
 Shared rules: hold the published screen, rebalance weekly, charge COST_BPS per
 side, never trade a name without a usable price, restart when MODEL_VERSION
@@ -49,30 +62,47 @@ MAX_POSITIONS = 25               # matches the published screen
 HISTORY_DAYS = 400
 LEDGER_FORMAT = 2                # bump to discard incompatible old ledgers
 
-# Sizing caps for the conviction book: scores at the top of the screen sit
-# within a point or two of each other and that gap is noise, so the tilt is
-# deliberately bounded rather than proportional.
-CONVICTION_MAX = 2.0             # x equal weight
-CONVICTION_MIN = 0.5             # x equal weight
+# Conviction sizing is RANK-based, not score-proportional. A 0-100 composite is
+# ordinal: its numeric gaps are not calibrated to expected-return magnitudes, so
+# proportional weighting is not even scale-invariant (rescaling the same ranking
+# to 50-100 would produce a different portfolio). Bounds follow the institutional
+# convention of a <=2:1 max/min ratio on a concentrated book.
+CONVICTION_MAX = 1.5             # x equal weight  (~6% of a 25-name book)
+CONVICTION_MIN = 0.6             # x equal weight  (~2.5%)
 
-STOP_PCT = 0.20                  # sell a holding down this much from entry
+# Stops are scaled to each name's OWN volatility and trail the high-water mark.
+# A fixed percentage applied across names running 25%-90% annualised volatility
+# fires mostly on the volatile ones, which quietly culls exactly the high-beta
+# growth names the strategy is built to hold — a factor bet nobody intended.
+STOP_SIGMA = 3.0                 # multiples of the name's weekly volatility
+STOP_MIN, STOP_MAX = 0.10, 0.40  # floor/ceiling on the resulting distance
+STOP_DEFAULT = 0.25              # when a name's volatility is unknown
+
+# Regime response is deliberately shallow and never goes to zero: a filter on a
+# single index supplies roughly two independent signals a year, which cannot be
+# validated in any reasonable time, and a binary switch would need to be right
+# ~74% of the time merely to break even (Sharpe, 1975).
 REGIME_EXPOSURE = {              # fraction of the book invested, by tape
-    "correction": 0.4,
-    "flat/choppy": 0.8,
+    "correction": 0.65,
+    "flat/choppy": 0.90,
     "early rebound": 1.0,
     "uptrend": 1.0,
 }
+
+# Do not trade a name whose weight has merely drifted. Pure cost control, no
+# return forecast attached.
+NO_TRADE_BAND = 0.25             # relative deviation from target
 
 STRATEGIES = {
     "A": {"label": "Baseline", "sizing": "equal", "stop": None, "regime": False,
           "note": "the control — equal weight, no stop, always fully invested"},
     "B": {"label": "Conviction", "sizing": "score", "stop": None, "regime": False,
-          "note": "weighted by score, capped at 2x / floored at 0.5x equal weight"},
-    "C": {"label": "Risk-managed", "sizing": "equal", "stop": STOP_PCT, "regime": False,
-          "note": f"equal weight, sells a holding down {STOP_PCT:.0%} from entry"},
+          "note": "weighted by rank, 1.5x down to 0.6x equal weight"},
+    "C": {"label": "Risk-managed", "sizing": "equal", "stop": True, "regime": False,
+          "note": "equal weight, trailing stop at 3x the name's own weekly volatility"},
     "D": {"label": "Regime-aware", "sizing": "equal", "stop": None, "regime": True,
           "note": "equal weight, exposure cut when the small-cap tape falls"},
-    "E": {"label": "Combined", "sizing": "score", "stop": STOP_PCT, "regime": True,
+    "E": {"label": "Combined", "sizing": "score", "stop": True, "regime": True,
           "note": "conviction + stop + regime together"},
 }
 
@@ -144,8 +174,12 @@ def target_weights(screen, spec):
     scores = {r["ticker"]: float(r.get("score") or 0.0) for r in screen[:MAX_POSITIONS]}
     n = len(names)
     lo, hi = CONVICTION_MIN / n, CONVICTION_MAX / n
-    total_s = sum(scores.values()) or 1.0
-    w = {t: s / total_s for t, s in scores.items()}
+    # rank-based ramp from the cap down to the floor — the ranking is what the
+    # score is entitled to assert; the size of its gaps is not
+    order = sorted(names, key=lambda t: (-scores.get(t, 0.0), t))
+    span = max(n - 1, 1)
+    w = {t: (CONVICTION_MAX - (CONVICTION_MAX - CONVICTION_MIN) * i / span) / n
+         for i, t in enumerate(order)}
     # Clamp and redistribute until every weight is inside its bounds AND the
     # weights still sum to 1. Clamping once and then renormalising does NOT
     # work: pushing the small names up inflates the big one back over its cap,
@@ -184,18 +218,36 @@ def _sell(book, tick, px, today, extra_bps=0.0, reason="rebalance"):
                            "cost": round(cost, 2), "why": reason})
 
 
+def stop_distance(cache, ticker):
+    """How far below its high-water mark a name may fall before it is sold,
+    expressed in its OWN weekly volatility rather than a flat percentage."""
+    m = (cache.get("metrics") or {}).get(ticker) or {}
+    ann = m.get("vol")
+    if not ann:
+        return STOP_DEFAULT
+    weekly = (float(ann) / 100.0) / (52 ** 0.5)
+    return max(STOP_MIN, min(STOP_MAX, STOP_SIGMA * weekly))
+
+
 def apply_stops(book, spec, cache, today):
-    """Sell anything that has fallen through its stop. Runs EVERY day, not only
-    on rebalance days — a stop that only checked weekly would be fiction."""
-    stop = spec.get("stop")
-    if not stop:
+    """Sell anything that has fallen through its trailing stop. Runs EVERY day,
+    not only on rebalance days — a stop that checked weekly would be fiction.
+
+    The exit is charged STOP_SLIPPAGE_BPS on top of ordinary friction. That is
+    a proxy for gap risk: we hold prices sampled a few times a day, so we
+    cannot see the intraday path, and a real stop in a thin small-cap fills
+    well below its trigger. This remains optimistic.
+    """
+    if not spec.get("stop"):
         return
     for tick in list(book["positions"]):
         pos = book["positions"][tick]
         px = _price(cache, tick, pos.get("last_px"))
         if not px:
             continue
-        if px <= pos["entry_px"] * (1 - stop):
+        dist = stop_distance(cache, tick)
+        peak = pos.get("peak_px") or pos["entry_px"]
+        if px <= peak * (1 - dist):
             _sell(book, tick, px, today, extra_bps=STOP_SLIPPAGE_BPS, reason="stop")
             book["stops_hit"] += 1
 
@@ -225,7 +277,7 @@ def rebalance(book, spec, cache, screen, today):
         held = book["positions"].get(tick)
         have = held["shares"] * px if held else 0.0
         delta_value = slot - have
-        if abs(delta_value) < max(slot, 1.0) * 0.05:      # ignore trivial drift
+        if abs(delta_value) < max(slot, 1.0) * NO_TRADE_BAND:   # ignore drift
             continue
         shares = delta_value / px
         gross = abs(delta_value)
@@ -355,7 +407,7 @@ def summarize(led=None):
         "assumptions": {
             "capital": START_CAPITAL, "cost_bps": COST_BPS,
             "stop_slippage_bps": STOP_SLIPPAGE_BPS,
-            "cadence": "weekly (Monday)", "stop_pct": STOP_PCT,
+            "cadence": "weekly (Monday)", "stop_sigma": STOP_SIGMA,
             "conviction_cap": CONVICTION_MAX,
         },
     }
