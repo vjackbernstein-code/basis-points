@@ -892,8 +892,12 @@ def render_portfolio(pf):
     a rising number on a public page must never read as a real return."""
     if not pf or pf.get("status") != "running":
         return ('<div class="note-box"><strong>Paper portfolios — simulated.</strong> '
-                'Starting up: the first simulated trades happen on the next run '
-                'with a published screen. No money is involved at any point.</div>')
+                'Waiting for market hours. The books only trade while the US market '
+                'is actually open, because a price fetched outside those hours '
+                'carries the previous close — and buying at exactly the price that '
+                'put a name on the screen would hand the simulation a free day of '
+                'gains it could never have earned. No money is involved at any '
+                'point.</div>')
     a = pf["assumptions"]
     note = (
         '<h2 class="brief-title">Paper portfolios '
@@ -905,14 +909,17 @@ def render_portfolio(pf):
         f'Each starts from a notional ${a["capital"]:,.0f}, rebalances '
         f'{esc(a["cadence"])}, and pays {a["cost_bps"]:.0f} basis points per side; '
         f'a stop exit pays a further {a["stop_slippage_bps"]:.0f} because real '
-        'stops gap through in thin small-caps. <strong>Book A is the control</strong> '
+        'stops gap through in thin small-caps. <strong>Watch the friction column '
+        'before the return column</strong> — this screen turns over its holdings '
+        'many times a year, and at that rate the cost of trading may be the whole '
+        'story rather than a rounding error. <strong>Book A is the control</strong> '
         '— if the cleverer books do not beat it, the cleverness is not earning its '
         'keep. Simulated results still omit what hurts real traders most: the '
         'market moving against a real order, taxes, and the nerve to follow a '
         'system through a losing stretch.</div>')
     head = ('<tr><th class="l">Book</th><th class="l">Rules</th><th>Value</th>'
-            '<th>Return</th><th>vs IWO</th><th>Worst dip</th><th>Stops</th>'
-            '<th>Held</th><th>Frictions</th></tr>')
+            '<th>Return</th><th>vs IWO</th><th>Worst dip</th><th>Friction/yr</th>'
+            '<th>Stops</th><th>Held</th></tr>')
     rows = []
     for b in pf["books"]:
         exc = b.get("excess")
@@ -924,8 +931,8 @@ def render_portfolio(pf):
             f'<td>${b["value"]:,.0f}</td>'
             f'<td class="{delta_class(b["ret"])}">{b["ret"]:+.2f}%</td>'
             f'{exc_td}<td>{b["max_drawdown"]:+.1f}%</td>'
-            f'<td>{b["stops_hit"]}</td><td>{b["positions"]}</td>'
-            f'<td>${b["costs_paid"]:,.0f}</td></tr>')
+            f'<td class="down">{b["friction_yr"]:.1f}%</td>'
+            f'<td>{b["stops_hit"]}</td><td>{b["positions"]}</td></tr>')
     table = f'<div class="tblwrap"><table class="screen">{head}{"".join(rows)}</table></div>'
     cols = []
     if pf.get("holdings"):

@@ -53,11 +53,26 @@ BASE = Path(__file__).resolve().parent
 LEDGER_PATH = BASE / "data" / "portfolio.json"
 
 START_CAPITAL = 100_000.0        # notional; the percentages are what matter
-COST_BPS = 25.0                  # per side. Spread + slippage for $300M-$2B
-                                 # names. An ASSUMPTION, not a measurement.
+COST_BPS = 40.0                  # per side. Raised from 25 after an audit
+                                 # measured this screen's real turnover at
+                                 # 18-44x the book per year and found 8 of 25
+                                 # published names trading under $5M/day. At
+                                 # that churn the friction assumption is not a
+                                 # haircut on the answer, it may BE the answer.
+COST_BPS_PESSIMISTIC = 60.0      # published alongside, as an upper bound
 STOP_SLIPPAGE_BPS = 75.0         # EXTRA cost when a stop fires: real stops gap
                                  # through in thin names. Still optimistic.
 REBALANCE_WEEKDAY = 0            # Monday (0=Mon ... 6=Sun)
+# Trade only while the US market is open. A quote FETCHED on Sunday carries
+# Friday's closing print with an age of zero, so the staleness gate cannot see
+# a closed market: the book was buying at exactly the price that put the name
+# on the screen, collecting a free trading day of drift on every rebalance.
+MARKET_OPEN_UTC, MARKET_CLOSE_UTC = 14, 20
+REBALANCE_OVERDUE_DAYS = 10      # failsafe so an outage cannot freeze the book
+STALE_BENCH_H = 72               # the benchmark gets the same gate as holdings
+# A holding that simply stops being quoted is usually not fine. Write it down
+# on a schedule rather than carrying it at full value until the next rebalance.
+DELIST_WRITEDOWN = ((3, 0.30), (10, 0.60), (30, 1.00))
 MAX_POSITIONS = 25               # matches the published screen
 HISTORY_DAYS = 400
 LEDGER_FORMAT = 2                # bump to discard incompatible old ledgers
@@ -114,7 +129,12 @@ def _today():
 def _blank_book():
     return {"cash": START_CAPITAL, "positions": {}, "last_rebalance": None,
             "history": [], "trades": [], "costs_paid": 0.0, "stops_hit": 0,
-            "started": None, "start_bench": None}
+            "started": None, "start_bench": None,
+            # carried monotonically, NOT recomputed from the history window:
+            # a peak that scrolled out of the window used to be forgotten, so
+            # the worst dip could only ever shrink toward zero with time — on
+            # the single statistic a reader leans on hardest
+            "peak_value": START_CAPITAL, "max_drawdown": 0.0}
 
 
 def load_ledger():
@@ -126,9 +146,23 @@ def load_ledger():
             led = {}
     if (led.get("format") != LEDGER_FORMAT
             or led.get("v") != smallcap.MODEL_VERSION):
+        # RETIRE, never delete. Wiping the books on a version change and
+        # starting clean is mechanically what closing a fund after a bad year
+        # and reopening looks like — and the incentive to revise is strongest
+        # exactly after a bad stretch. Every closed book stays on the record.
+        retired = list(led.get("retired") or [])
+        for key, book in (led.get("books") or {}).items():
+            st = _stats(book)
+            if st:
+                retired.append({"v": led.get("v"), "key": key,
+                                "ret": st["ret"], "max_drawdown": st["max_drawdown"],
+                                "days": st["days"], "started": st["started"],
+                                "retired_on": _today()})
         led = {"format": LEDGER_FORMAT, "v": smallcap.MODEL_VERSION,
-               "restarted_from": led.get("v"), "books": {}}
+               "restarted_from": led.get("v"), "books": {},
+               "retired": retired[-100:]}
     led.setdefault("books", {})
+    led.setdefault("retired", [])
     for key in STRATEGIES:
         led["books"].setdefault(key, _blank_book())
     return led
@@ -151,14 +185,34 @@ def _price(cache, ticker, fallback=None):
     return fallback
 
 
-def refresh_marks(book, cache):
-    """Re-mark every holding at current prices. A holding whose quote has gone
-    stale keeps its last mark rather than silently vanishing."""
+def refresh_marks(book, cache, today=None):
+    """Re-mark every holding at current prices.
+
+    A holding that stops being quoted is written DOWN on a schedule rather than
+    carried at its last good mark. The events that make a quote disappear —
+    bankruptcy, a fraud halt, deregistration — are exactly the ones that cost
+    real money, so carrying the last mark made the book structurally incapable
+    of losing anything to them, and made a blow-up impossible to see in the
+    drawdown.
+    """
+    today = today or _today()
     for tick, pos in book["positions"].items():
-        px = _price(cache, tick, pos.get("last_px"))
+        px = _price(cache, tick, None)
         if px:
             pos["last_px"] = px
             pos["peak_px"] = max(pos.get("peak_px") or px, px)
+            pos["last_quote"] = today
+            continue
+        seen = pos.get("last_quote") or pos.get("entry_date") or today
+        dark = (datetime.fromisoformat(today).date()
+                - datetime.fromisoformat(seen).date()).days
+        good = pos.get("good_px") or pos.get("last_px") or pos["entry_px"]
+        pos["good_px"] = good
+        cut = 0.0
+        for days, frac in DELIST_WRITEDOWN:
+            if dark >= days:
+                cut = frac
+        pos["last_px"] = good * (1 - cut)
 
 
 # ------------------------------------------------------------- sizing --------
@@ -308,14 +362,27 @@ def rebalance(book, spec, cache, screen, today):
     book["trades"] = book["trades"][-200:]
 
 
+def _market_open_now():
+    """Only trade while the US market is actually open. Quote freshness cannot
+    detect a closed market — a price fetched on Sunday carries Friday's close
+    with an age of zero — so without this the book bought at precisely the
+    price that had put the name on the screen."""
+    now = smallcap._now()
+    return (now.weekday() < 5
+            and MARKET_OPEN_UTC <= now.hour < MARKET_CLOSE_UTC)
+
+
 def _due_for_rebalance(book, today):
     if book["last_rebalance"] is None:
-        return True
+        return _market_open_now()
     last = datetime.fromisoformat(book["last_rebalance"]).date()
     now = datetime.fromisoformat(today).date()
-    if (now - last).days >= 7:
-        return True
-    return now.weekday() == REBALANCE_WEEKDAY and now != last
+    gap = (now - last).days
+    if gap >= REBALANCE_OVERDUE_DAYS:
+        return True                      # failsafe: an outage must not freeze it
+    if not _market_open_now():
+        return False
+    return gap >= 7 or (now.weekday() == REBALANCE_WEEKDAY and now != last)
 
 
 def book_value(book):
@@ -329,21 +396,30 @@ def book_value(book):
 def update(cache, screen):
     led = load_ledger()
     today = _today()
-    bench = (cache.get("bench") or {}).get("iwo")
+    # the benchmark gets the same staleness gate as the holdings. Marking the
+    # book up against a frozen benchmark inflates excess return one-directionally
+    b = cache.get("bench") or {}
+    bench = b.get("iwo") if smallcap._age_h(b.get("t")) < STALE_BENCH_H else None
 
     for key, spec in STRATEGIES.items():
         book = led["books"][key]
         # value first: sizing off stale marks mis-weights every position
-        refresh_marks(book, cache)
+        refresh_marks(book, cache, today)
         apply_stops(book, spec, cache, today)
         if screen and _due_for_rebalance(book, today):
             if book["started"] is None:
                 book["started"] = today
                 book["start_bench"] = bench
             rebalance(book, spec, cache, screen, today)
-            refresh_marks(book, cache)
+            refresh_marks(book, cache, today)
         if book["started"]:
             value = book_value(book)
+            # peak and worst dip are carried forward, never recomputed from the
+            # visible window, so an old peak cannot scroll out of memory
+            book["peak_value"] = max(book.get("peak_value") or START_CAPITAL, value)
+            book["max_drawdown"] = min(
+                book.get("max_drawdown", 0.0),
+                (value / book["peak_value"] - 1) * 100)
             hist = book["history"]
             point = {"date": today, "value": round(value, 2), "bench": bench}
             if hist and hist[-1]["date"] == today:
@@ -361,18 +437,30 @@ def _stats(book):
         return None
     value = hist[-1]["value"]
     ret = (value / START_CAPITAL - 1) * 100
-    b0 = book.get("start_bench") or hist[0].get("bench")
+    # the opening benchmark from the median of the first few marks, not one
+    # tick: a single reading taken at a market-closed instant is frozen into
+    # every excess figure the book will ever publish
+    firsts = [h["bench"] for h in hist[:3] if h.get("bench")]
+    b0 = book.get("start_bench") or (sorted(firsts)[len(firsts) // 2] if firsts else None)
+    # the CURRENT mark must be current: walking back to the last known value
+    # would resume marking the book up against a frozen benchmark, which is
+    # the exact one-directional flattery the staleness gate exists to stop
     b1 = hist[-1].get("bench")
     bench_ret = (b1 / b0 - 1) * 100 if b0 and b1 else None
-    peak, dd = START_CAPITAL, 0.0
-    for h in hist:
-        peak = max(peak, h["value"])
-        dd = min(dd, (h["value"] / peak - 1) * 100)
+    # GEOMETRIC excess. Subtracting cumulative percentages overstates whenever
+    # the benchmark is up — +60% against +30% is +23.1%, not +30%.
+    excess = (((1 + ret / 100) / (1 + bench_ret / 100) - 1) * 100
+              if bench_ret is not None else None)
+    days = len(hist)
+    friction_yr = (book.get("costs_paid", 0.0) / START_CAPITAL * 100
+                   * 365 / max(days, 1))
     return {
         "value": round(value, 2), "ret": round(ret, 2),
         "bench_ret": round(bench_ret, 2) if bench_ret is not None else None,
-        "excess": round(ret - bench_ret, 2) if bench_ret is not None else None,
-        "max_drawdown": round(dd, 2), "positions": len(book.get("positions", {})),
+        "excess": round(excess, 2) if excess is not None else None,
+        "friction_yr": round(friction_yr, 1),
+        "max_drawdown": round(book.get("max_drawdown", 0.0), 2),
+        "positions": len(book.get("positions", {})),
         "cash": round(book.get("cash", 0.0), 2),
         "costs_paid": round(book.get("costs_paid", 0.0), 2),
         "stops_hit": book.get("stops_hit", 0),

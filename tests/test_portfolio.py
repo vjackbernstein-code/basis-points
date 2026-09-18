@@ -246,7 +246,79 @@ class ReportingTests(PaperTestCase):
         a = [b for b in portfolio.summarize()["books"] if b["key"] == "A"][0]
         self.assertGreater(a["ret"], 9.0)
         self.assertAlmostEqual(a["bench_ret"], 5.0, places=6)
-        self.assertAlmostEqual(a["excess"], a["ret"] - a["bench_ret"], places=6)
+        # GEOMETRIC, not arithmetic: subtracting cumulative percentages
+        # overstates whenever the benchmark is up
+        expected = ((1 + a["ret"] / 100) / (1 + a["bench_ret"] / 100) - 1) * 100
+        self.assertAlmostEqual(a["excess"], round(expected, 2), places=2)
+        self.assertLess(a["excess"], a["ret"] - a["bench_ret"])
+
+
+class AuditedHonestyTests(PaperTestCase):
+    """Each of these pins a way the simulation was found to flatter itself."""
+
+    def test_the_worst_dip_is_remembered_after_the_book_recovers(self):
+        portfolio.update(cache_with({"A1": 10.0}), screen_of(["A1"]))
+        self.advance(7)
+        portfolio.update(cache_with({"A1": 5.0}), screen_of(["A1"]))    # -50%
+        self.advance(7)
+        portfolio.update(cache_with({"A1": 40.0}), screen_of(["A1"]))   # recovers
+        a = [b for b in portfolio.summarize()["books"] if b["key"] == "A"][0]
+        self.assertLess(a["max_drawdown"], -40.0)   # the fall is still on record
+        self.assertGreater(a["ret"], 0.0)
+
+    def test_a_version_change_retires_the_books_instead_of_erasing_them(self):
+        portfolio.update(cache_with({"A1": 10.0}), screen_of(["A1"]))
+        self.advance(7)
+        portfolio.update(cache_with({"A1": 4.0}), screen_of(["A1"]))    # a bad run
+        real = smallcap.MODEL_VERSION
+        smallcap.MODEL_VERSION = "v9-next"
+        try:
+            led = portfolio.load_ledger()
+        finally:
+            smallcap.MODEL_VERSION = real
+        retired = led["retired"]
+        self.assertTrue(retired)
+        self.assertTrue(any(r["ret"] < -30 for r in retired))
+        self.assertTrue(all(r["v"] == real for r in retired))
+
+    def test_a_stale_benchmark_suspends_the_excess_figure(self):
+        portfolio.update(cache_with({"A1": 10.0}, bench=100.0), screen_of(["A1"]))
+        self.advance(7)
+        stale = cache_with({"A1": 14.0}, bench=100.0)
+        stale["bench"]["t"] = iso(smallcap._now() - timedelta(hours=400))
+        portfolio.update(stale, screen_of(["A1"]))
+        a = [b for b in portfolio.summarize()["books"] if b["key"] == "A"][0]
+        self.assertGreater(a["ret"], 0.0)          # the flattering number stays
+        self.assertIsNone(a["excess"])             # the accountable one is withheld
+
+    def test_a_holding_that_stops_being_quoted_is_written_down(self):
+        portfolio.update(cache_with({"A1": 10.0, "B1": 10.0}), screen_of(["A1", "B1"]))
+        before = portfolio.book_value(portfolio.load_ledger()["books"]["A"])
+        self.advance(4)                            # A1 goes dark
+        portfolio.update(cache_with({"B1": 10.0}), screen_of(["A1", "B1"]))
+        after = portfolio.book_value(portfolio.load_ledger()["books"]["A"])
+        self.assertLess(after, before * 0.9)
+
+    def test_a_long_dark_holding_is_written_off_entirely(self):
+        portfolio.update(cache_with({"A1": 10.0, "B1": 10.0}), screen_of(["A1", "B1"]))
+        self.advance(31)
+        portfolio.update(cache_with({"B1": 10.0}), screen_of(["B1"]))
+        led = portfolio.load_ledger()
+        self.assertNotIn("A1", led["books"]["A"]["positions"])   # sold at ~zero
+
+    def test_nothing_is_traded_while_the_market_is_closed(self):
+        self._now = NOW.replace(hour=2)            # Monday, 2am UTC
+        led = portfolio.update(cache_with({"A1": 10.0}), screen_of(["A1"]))
+        self.assertEqual(led["books"]["A"]["positions"], {})
+        self._now = NOW                            # Monday, market open
+        led = portfolio.update(cache_with({"A1": 10.0}), screen_of(["A1"]))
+        self.assertIn("A1", led["books"]["A"]["positions"])
+
+    def test_annualised_friction_is_published_beside_the_return(self):
+        portfolio.update(cache_with({"A1": 10.0}), screen_of(["A1"]))
+        a = [b for b in portfolio.summarize()["books"] if b["key"] == "A"][0]
+        self.assertIn("friction_yr", a)
+        self.assertGreater(a["friction_yr"], 0.0)
 
     def test_the_worst_dip_is_measured_from_the_peak(self):
         portfolio.update(cache_with({"A1": 10.0}), screen_of(["A1"]))
