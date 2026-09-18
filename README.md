@@ -236,6 +236,52 @@ is exactly the comparison a column of them invites. And **retired books are
 printed**: a model change restarts the ledger, and a restart that silently
 dropped its bad run would leave a record made only of good stretches.
 
+### Per-company pages (`site/co/<TICKER>.html`)
+
+One page per name on the screen, linked from its ticker. Each shows the
+arithmetic that produced its treatment rather than a conclusion about it:
+
+- the company **strictly from fetched fields**, captioned as such. There is no
+  narrative business summary, and there must not be — nothing in this system
+  reads about the business, so a paragraph that sounded like it had would be
+  the most misleading thing on the page.
+- each score part with the company's own inputs, plus the reminder that a mark
+  is a percentile against *today's* eligible set and moves when the company
+  does not.
+- its weight in each book, with the rank-to-weight ramp spelled out.
+- its stop, derived in four visible steps from its own volatility.
+
+**These pages CALL `portfolio.target_weights()` and `portfolio.stop_distance()`
+rather than restating their formulas.** A page that restated them would drift
+from the code the moment either changed and would then be describing a system
+that no longer exists. A test asserts page and code agree.
+
+Stale pages are deleted each run — a public URL nobody revisits is where a
+wrong number survives longest.
+
+### Weekly decision review (agent, read-only)
+
+`trig_013uXmZ6NT1i2GKzCaaTLBKm`, Saturdays 14:00 UTC, Opus, read-only. It
+reviews the week's simulated decisions and sorts every finding into one of two
+buckets — the distinction is the whole point of it:
+
+| Bucket | Example | What happens |
+|---|---|---|
+| **Defect** — *this number is wrong* | stop computed off a stale volatility; a page claiming a rule the code does not follow; a figure in the wrong unit | fix now, no reason to wait |
+| **Calibration** — *this number should be different* | "the stop multiple should be 2.5"; "momentum should weigh less" | recorded, **parked** until the December review |
+
+The second bucket is parked because a model tuned while its own record is being
+written will always look good and will always be lying: some tweak can always
+be found that improves the record so far. The freeze covers the *scoring rules*
+only — defects, honesty of the published numbers, risk-control correctness and
+the site have never been frozen and should keep moving.
+
+It is told there is **no per-company reasoning to review** — sizing is rank
+alone, stops are the name's own volatility — so that it audits the *inputs* and
+the *outputs* of those mechanical rules rather than inventing a judgement to
+critique. It is also told that a week with nothing wrong is a good result: a
+review that always finds something is a review nobody can trust.
+
 ### Honesty notes
 
 - **Simulated stops flatter themselves.** Prices are sampled a few times a
