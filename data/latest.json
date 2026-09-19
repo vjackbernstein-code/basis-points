@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-19T01:26:59.928387+00:00",
+ "generated_at": "2026-09-19T06:29:17.936731+00:00",
  "market": [
   {
    "label": "S&P 500",
@@ -41,13 +41,12 @@
    "label": "Nasdaq",
    "symbol": "NASDAQCOM",
    "kind": "index",
-   "value": 26418.3,
-   "prev": 25978.42,
-   "value_txt": "26,418.30",
-   "delta": 1.693251552634845,
-   "delta_txt": "+1.69%",
+   "value": 26522.55,
+   "prev": 26418.3,
+   "value_txt": "26,522.55",
+   "delta": 0.39461282520071317,
+   "delta_txt": "+0.39%",
    "spark": [
-    26644.91,
     26289.71,
     26331.09,
     26067.17,
@@ -69,9 +68,10 @@
     26186.41,
     25981.57,
     25978.42,
-    26418.3
+    26418.3,
+    26522.55
    ],
-   "asof": "Sep 17"
+   "asof": "Sep 18"
   },
   {
    "label": "Dow",
@@ -293,11 +293,11 @@
    "label": "Bitcoin",
    "symbol": "bitcoin",
    "kind": "crypto",
-   "value": 81278.70316565012,
+   "value": 80913.61745410082,
    "prev": 80873.58287659245,
-   "value_txt": "$81,279",
-   "delta": 0.5009303095620898,
-   "delta_txt": "+0.50%",
+   "value_txt": "$80,914",
+   "delta": 0.049502663396847044,
+   "delta_txt": "+0.05%",
    "spark": [
     77820.76428719184,
     78225.13950818499,
@@ -321,18 +321,18 @@
     76146.81236783884,
     76371.3617203135,
     80873.58287659245,
-    81278.70316565012
+    80913.61745410082
    ]
   },
   {
    "label": "Ethereum",
    "symbol": "ethereum",
    "kind": "crypto",
-   "value": 2611.765593819242,
+   "value": 2621.1404327820883,
    "prev": 2611.5555571198493,
-   "value_txt": "$2,612",
-   "delta": 0.008042589743883131,
-   "delta_txt": "+0.01%",
+   "value_txt": "$2,621",
+   "delta": 0.36701787316405765,
+   "delta_txt": "+0.37%",
    "spark": [
     2442.407614756763,
     2457.089335222437,
@@ -356,11 +356,11 @@
     2415.9596535242995,
     2446.143252227872,
     2611.5555571198493,
-    2611.765593819242
+    2621.1404327820883
    ]
   }
  ],
- "tape_line": "S&P 500 +1.14%, Nasdaq +1.69%, Dow -0.18%; the 10-year Treasury at 4.94% (-7 bp); WTI crude $107.02 (+4.49%); bitcoin $81,279 (+0.50%).",
+ "tape_line": "S&P 500 +1.14%, Nasdaq +0.39%, Dow -0.18%; the 10-year Treasury at 4.94% (-7 bp); WTI crude $107.02 (+4.49%); bitcoin $80,914 (+0.05%).",
  "top": [
   {
    "title": "U.S. Stocks Mixed as Inflation Trepidation Offsets AI Optimism",
@@ -384,6 +384,13 @@
    "summary": "The U.K.-based company didn’t say how many shares it would offer, or at what price, but intends to list shares on the New York Stock Exchange under the symbol NSCL."
   },
   {
+   "title": "US state department under pressure to disclose Venezuelan oil takings",
+   "link": "https://www.ft.com/content/05887f92-c777-48ab-8efa-9a39e7e18a9f?syn-25a6b1a6=1",
+   "source": "Financial Times",
+   "published": "2026-09-19T04:00:23+00:00",
+   "summary": "Trump administration holds back from revealing how much money it has collected and how much it has sent back to Caracas"
+  },
+  {
    "title": "Stocks Decline as Treasury Yields Rise",
    "link": "https://www.wsj.com/finance/stocks/stock-futures-rise-as-oil-extends-losses-treasury-yields-rise-0bda0bff?mod=rss_markets_main",
    "source": "WSJ Markets",
@@ -403,18 +410,11 @@
    "source": "WSJ Markets",
    "published": "2026-09-18T19:11:00+00:00",
    "summary": "Gold futures settled higher on the day and on the week, holding their ground despite the rise in Treasury yields and the Fed’s first interest-rate increase since 2023."
-  },
-  {
-   "title": "White House attacks Fed official after review of Silicon Valley Bank collapse",
-   "link": "https://www.ft.com/content/98c6db91-44c7-487e-a733-331a58766ba1?syn-25a6b1a6=1",
-   "source": "Financial Times",
-   "published": "2026-09-18T19:48:35+00:00",
-   "summary": "New report finds ‘culture of risk aversion’ among banking regulators led to mishandling of weaknesses at tech-heavy lender"
   }
  ],
  "smallcap": {
   "note": null,
-  "asof": "2026-09-19T01:37:54+00:00",
+  "asof": "2026-09-19T06:40:02+00:00",
   "coverage": {
    "universe": 9895,
    "profiled": 9966,
@@ -1458,6 +1458,12 @@
     "dp": 24.1935
    },
    {
+    "ticker": "CODQL",
+    "name": "Coronado Global Resources Inc",
+    "px": 0.1727,
+    "dp": 23.3571
+   },
+   {
     "ticker": "HCTPF",
     "name": "Hutchison Port Holdings Trust",
     "px": 0.2188,
@@ -1468,15 +1474,15 @@
     "name": "Viant Technology Inc",
     "px": 12.06,
     "dp": 20.3593
-   },
-   {
-    "ticker": "CD",
-    "name": "Chaince Digital Holdings Inc",
-    "px": 3.5,
-    "dp": 20.2749
    }
   ],
   "movers_down": [
+   {
+    "ticker": "CLCHF",
+    "name": "Clinch Resources Ltd",
+    "px": 0.5525,
+    "dp": -24.3151
+   },
    {
     "ticker": "EU",
     "name": "enCore Energy Corp",
@@ -1490,22 +1496,16 @@
     "dp": -14.3603
    },
    {
+    "ticker": "ISOU",
+    "name": "Isoenergy Ltd",
+    "px": 9.27,
+    "dp": -11.1218
+   },
+   {
     "ticker": "SION",
     "name": "Sionna Therapeutics Inc",
     "px": 6.44,
     "dp": -10.3064
-   },
-   {
-    "ticker": "INDP",
-    "name": "Indaptus Therapeutics Inc",
-    "px": 3.55,
-    "dp": -9.6692
-   },
-   {
-    "ticker": "CMGMF",
-    "name": "Chemring Group PLC",
-    "px": 7.2,
-    "dp": -8.6294
    }
   ],
   "earnings": [
@@ -1764,44 +1764,28 @@
   "budget_mode": "full",
   "news": [
    {
+    "title": "Simply Good Foods Shareholder Alert: ClaimsFiler Reminds Investors With Losses In Excess Of $100,000 Of Lead Plaintiff Deadline In Class Action Lawsuit Against The Simply Good Foods Company - SMPL",
+    "link": "https://www.prnewswire.com/news-releases/simply-good-foods-shareholder-alert-claimsfiler-reminds-investors-with-losses-in-excess-of-100-000-of-lead-plaintiff-deadline-in-class-action-lawsuit-against-the-simply-good-foods-company---smpl-302883664.html",
+    "source": "PR Newswire",
+    "published": "2026-09-19T02:00:00+00:00",
+    "summary": "NEW ORLEANS, Sept. 18, 2026 /PRNewswire/ -- ClaimsFiler, a FREE shareholder information service, reminds investors that they have until October 13, 2026 to file lead plaintiff applications in a securities class action lawsuit…",
+    "ticker": "SMPL"
+   },
+   {
+    "title": "AEVEX Shareholder Alert: ClaimsFiler Reminds Investors With Losses In Excess Of $100,000 Of Lead Plaintiff Deadline In Class Action Lawsuit Against AEVEX Corp. - AVEX",
+    "link": "https://www.prnewswire.com/news-releases/aevex-shareholder-alert-claimsfiler-reminds-investors-with-losses-in-excess-of-100-000-of-lead-plaintiff-deadline-in-class-action-lawsuit-against-aevex-corp---avex-302883649.html",
+    "source": "PR Newswire",
+    "published": "2026-09-19T02:00:00+00:00",
+    "summary": "NEW ORLEANS, Sept. 18, 2026 /PRNewswire/ -- ClaimsFiler, a FREE shareholder information service, reminds investors that they have until October 20, 2026 to file lead plaintiff applications in a securities class action lawsuit…",
+    "ticker": "AVEX"
+   },
+   {
     "title": "TBLA Deadline: TBLA Investors Have Opportunity to Lead Taboola.com Ltd. Securities Fraud Lawsuit",
     "link": "https://www.prnewswire.com/news-releases/tbla-deadline-tbla-investors-have-opportunity-to-lead-taboolacom-ltd-securities-fraud-lawsuit-302883633.html",
     "source": "PR Newswire",
     "published": "2026-09-18T23:09:00+00:00",
     "summary": "NEW YORK, Sept. 18, 2026 /PRNewswire/ -- Rosen Law Firm, a global investor rights law firm, reminds purchasers of securities of Taboola.com Ltd. (NASDAQ: TBLA) between May 6, 2026 and August 4, 2026, both dates inclusive (the…",
     "ticker": "TBLA"
-   },
-   {
-    "title": "HYLN Deadline: HYLN Investors Have Opportunity to Lead Hyliion Holdings Corp. Securities Fraud Lawsuit",
-    "link": "https://www.prnewswire.com/news-releases/hyln-deadline-hyln-investors-have-opportunity-to-lead-hyliion-holdings-corp-securities-fraud-lawsuit-302883624.html",
-    "source": "PR Newswire",
-    "published": "2026-09-18T22:57:00+00:00",
-    "summary": "NEW YORK, Sept. 18, 2026 /PRNewswire/ -- Rosen Law Firm, a global investor rights law firm, reminds purchasers of securities of Hyliion Holdings Corp. (NYSE American: HYLN) between May 12, 2026 and June 23, 2026, both dates…",
-    "ticker": "HYLN"
-   },
-   {
-    "title": "Fluence Energy Investigation Notice: Levi & Korsinsky Notifies Investors of Pending Investigation Into Fluence Energy (FLNC)",
-    "link": "https://www.prnewswire.com/news-releases/fluence-energy-investigation-notice-levi--korsinsky-notifies-investors-of-pending-investigation-into-fluence-energy-flnc-302883630.html",
-    "source": "PR Newswire",
-    "published": "2026-09-18T22:43:00+00:00",
-    "summary": "Fluence Energy's periodic reports describe an ongoing U.S. Securities and Exchange Commission investigation relating to the Company's revenue recognition and internal controls -- disclosed alongside a fiscal 2026 outlook that now…",
-    "ticker": "FLNC"
-   },
-   {
-    "title": "The Elmet Group (ELMT) Announces $450 Million Commitment. Can Tungsten Expansion Deliver Profits?",
-    "link": "https://finance.yahoo.com/markets/stocks/articles/elmet-group-elmt-announces-450-181329050.html",
-    "source": "Insider Monkey",
-    "published": "2026-09-17T18:13:29+00:00",
-    "summary": "",
-    "ticker": "ELMT"
-   },
-   {
-    "title": "GMR Solutions (GMRS) Targets $28 Million in Interest Savings. How Much Comes from Cheaper Debt?",
-    "link": "https://finance.yahoo.com/markets/stocks/articles/gmr-solutions-gmrs-targets-28-180302608.html",
-    "source": "Insider Monkey",
-    "published": "2026-09-17T18:03:02+00:00",
-    "summary": "",
-    "ticker": "GMRS"
    }
   ]
  },
@@ -1841,7 +1825,7 @@
  "stats": {
   "feeds_total": 21,
   "feeds_failed": 2,
-  "items": 385,
+  "items": 393,
   "smallcap_calls": 552,
   "feed_errors": [
    [
