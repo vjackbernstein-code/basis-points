@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-21T19:08:12.367723+00:00",
+ "generated_at": "2026-09-21T22:44:36.987087+00:00",
  "market": [
   {
    "label": "S&P 500",
@@ -77,13 +77,12 @@
    "label": "Dow",
    "symbol": "DJIA",
    "kind": "index",
-   "value": 51682.64,
-   "prev": 51778.04,
-   "value_txt": "51,682.64",
-   "delta": -0.1842479939372009,
-   "delta_txt": "-0.18%",
+   "value": 52048.83,
+   "prev": 51682.64,
+   "value_txt": "52,048.83",
+   "delta": 0.708535786871573,
+   "delta_txt": "+0.71%",
    "spark": [
-    53343.4,
     53463.05,
     52759.21,
     53277.01,
@@ -105,9 +104,9 @@
     52093.11,
     51461.9,
     51778.04,
-    51682.64
-   ],
-   "asof": "Sep 18"
+    51682.64,
+    52048.83
+   ]
   },
   {
    "label": "VIX",
@@ -149,13 +148,12 @@
    "label": "10-yr Treasury",
    "symbol": "DGS10",
    "kind": "yield",
-   "value": 49.400000000000006,
-   "prev": 50.099999999999994,
-   "value_txt": "4.94%",
-   "delta": -1.3972055888223327,
-   "delta_txt": "-7 bp",
+   "value": 50.099999999999994,
+   "prev": 49.400000000000006,
+   "value_txt": "5.01%",
+   "delta": 1.4170040485829727,
+   "delta_txt": "+7 bp",
    "spark": [
-    47.199999999999996,
     47.1,
     46.5,
     46.900000000000006,
@@ -177,25 +175,21 @@
     49.699999999999996,
     50.0,
     50.099999999999994,
-    49.400000000000006
+    49.400000000000006,
+    50.099999999999994
    ],
-   "asof": "Sep 17"
+   "asof": "Sep 18"
   },
   {
    "label": "Dollar (broad)",
    "symbol": "DTWEXBGS",
    "kind": "level",
-   "value": 118.2126,
-   "prev": 118.0787,
-   "value_txt": "118.21",
-   "delta": 0.11339894494095636,
-   "delta_txt": "+0.11%",
+   "value": 119.5133,
+   "prev": 119.3489,
+   "value_txt": "119.51",
+   "delta": 0.13774739440413825,
+   "delta_txt": "+0.14%",
    "spark": [
-    119.179,
-    119.1179,
-    119.1848,
-    118.9028,
-    118.814,
     118.9831,
     118.3328,
     118.2548,
@@ -213,9 +207,14 @@
     117.9127,
     117.8834,
     118.0787,
-    118.2126
+    118.2126,
+    118.6923,
+    118.8822,
+    118.9206,
+    119.3489,
+    119.5133
    ],
-   "asof": "Sep 11"
+   "asof": "Sep 18"
   },
   {
    "label": "WTI crude",
@@ -292,11 +291,11 @@
    "label": "Bitcoin",
    "symbol": "bitcoin",
    "kind": "crypto",
-   "value": 86008.12623283983,
+   "value": 86411.51475545166,
    "prev": 81169.03511950027,
-   "value_txt": "$86,008",
-   "delta": 5.961745271722467,
-   "delta_txt": "+5.96%",
+   "value_txt": "$86,412",
+   "delta": 6.458718682848945,
+   "delta_txt": "+6.46%",
    "spark": [
     77658.23133225394,
     78552.77932895812,
@@ -320,18 +319,18 @@
     80873.58287659245,
     81236.41383660372,
     81169.03511950027,
-    86008.12623283983
+    86411.51475545166
    ]
   },
   {
    "label": "Ethereum",
    "symbol": "ethereum",
    "kind": "crypto",
-   "value": 2758.3264157859235,
+   "value": 2775.8320120585813,
    "prev": 2644.7349398187544,
-   "value_txt": "$2,758",
-   "delta": 4.295004170624131,
-   "delta_txt": "+4.30%",
+   "value_txt": "$2,776",
+   "delta": 4.956907789360968,
+   "delta_txt": "+4.96%",
    "spark": [
     2416.2418165172735,
     2466.565659094493,
@@ -355,72 +354,72 @@
     2611.5555571198493,
     2632.0095970320526,
     2644.7349398187544,
-    2758.3264157859235
+    2775.8320120585813
    ]
   }
  ],
- "tape_line": "S&P 500 +0.17%, Nasdaq +0.39%, Dow -0.18%; the 10-year Treasury at 4.94% (-7 bp); WTI crude $107.02 (+4.49%); bitcoin $86,008 (+5.96%).",
+ "tape_line": "S&P 500 +0.17%, Nasdaq +0.39%, Dow +0.71%; the 10-year Treasury at 5.01% (+7 bp); WTI crude $107.02 (+4.49%); bitcoin $86,412 (+6.46%).",
  "top": [
   {
-   "title": "Treasury Yields Ease, Inflation Concerns Tread Lower",
+   "title": "U.S. Stocks Rise, Nasdaq Hits Record, as Oil Slides, AI Bets Surge",
+   "link": "https://www.wsj.com/finance/stocks/u-s-stocks-rise-nasdaq-hits-record-as-oil-slides-ai-bets-surge-6f886ab6?mod=rss_markets_main",
+   "source": "WSJ Markets",
+   "published": "2026-09-21T20:46:00+00:00",
+   "summary": "Stocks rose as oil futures tumbled due to hopes of a resumption in U.S.-Iran negotiations, causing a relief rally that pushed high-risk technology stocks to record highs."
+  },
+  {
+   "title": "Treasury Yields Change Little Despite Falling Oil Prices",
    "link": "https://www.wsj.com/finance/citi-raises-10-year-u-s-treasury-yield-forecast-ee0a5651?mod=rss_markets_main",
    "source": "WSJ Markets",
-   "published": "2026-09-21T14:16:00+00:00",
-   "summary": "U.S. Treasury yields retreated as oil prices fall, easing inflation concerns following the weekend meeting between Treasury Secretary Scott Bessent and Chinese Vice Premier He Lifeng."
+   "published": "2026-09-21T19:58:00+00:00",
+   "summary": "Treasury yields were little changed after a volatile stretch, despite a sharp drop in oil prices."
   },
   {
-   "title": "S&P 500 rises 1% and Nasdaq heads for record close as AI-related stocks surge, oil and yields slide: Live updates",
-   "link": "https://news.google.com/rss/articles/CBMid0FVX3lxTE9PV3BMZGlwWktIQVdmYWdJMWl3eVJHMUFfR2pPNUQ3dVk5OVROd2ZYQ3BzNEdSbElpSW5UREJmLVJxbVdJUzdITzNTM2QyM3FlV1hlZUp6anc5MFd6cEtPeW84WWNzZHZGaXVjd0Q3STRJRUFERmFN0gF8QVVfeXFMT1JBRmVDRWpaTXhKZDhZSTVWbllXZ3dZNzVhQVlPdjExaXNsY3daUVF1ZmFIOFNsQlJzeXpTc0plejhnNGhvRjdaZWlyYlp5QlFmMVFncmZvNEJNQjNUZTdLUldiMWJfS2JMYm5YaUJaNWRHekNLX1FqeXl6dw?oc=5",
-   "source": "CNBC",
-   "published": "2026-09-21T18:54:30+00:00",
-   "summary": "S&P 500 rises 1% and Nasdaq heads for record close as AI-related stocks surge, oil and yields slide: Live updates CNBC Stock Market Today: Dow Opens Higher as Oil Prices Fall — Live Updates WSJ Stock market today: Nasdaq surges…"
+   "title": "Crackdown clouds $46bn IPO of world’s biggest derivatives exchange",
+   "link": "https://www.ft.com/content/23da023b-8be8-433d-9b11-49bc825076c9?syn-25a6b1a6=1",
+   "source": "Financial Times",
+   "published": "2026-09-21T21:00:07+00:00",
+   "summary": "Long-delayed debut of the National Stock Exchange of India comes amid rising scrutiny of options trading"
   },
   {
-   "title": "‘It's awful’: How tariffs, soaring fuel costs and higher interest rates are squeezing American companies",
-   "link": "https://www.cnbc.com/2026/09/20/tariffs-fuel-prices-and-interest-rates-squeeze-us-companies.html",
-   "source": "CNBC",
-   "published": "2026-09-21T15:04:04+00:00",
-   "summary": "Tariffs, fuel prices and interest rates are squeezing American companies, particularly manufacturers, auto suppliers, retailers and transportation businesses."
+   "title": "AI and Chip Stocks Race Ahead",
+   "link": "https://www.wsj.com/finance/stocks/ai-and-chip-stocks-race-ahead-5cbdea7d?mod=rss_markets_main",
+   "source": "WSJ Markets",
+   "published": "2026-09-21T20:42:00+00:00",
+   "summary": "Plus, Paramount settles and crude prices drop again"
   },
   {
-   "title": "Federal Reserve official says fighting inflation likely to be ‘painful’",
+   "title": "Federal Reserve official says Iran war pushed her toward supporting rate hike",
    "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxQZ3dEZVlWRUlJSG5hc2RlT2ZyYkpFME5teENRcGMtdmhUTDdDbVU4cENBSXRmSTZVblJPYU54eHZtb2lHOWNBQ1FfMUM5MGE0Q3ZPM3p3WEc0clVqU2hWdHFIbXk2dFU1T1RsYkhmMTNIblpmLXRnNWdJLUZiemM1UXNVZGd2d2hDbWJ2ZUNJX3dvMUgtMThNSDZwbUpCZkNhTGc?oc=5",
    "source": "AP News",
-   "published": "2026-09-21T18:17:00+00:00",
-   "summary": "Federal Reserve official says fighting inflation likely to be ‘painful’ AP News Federal Reserve will need to be ‘aggressive’ on inflation, says top official Financial Times Goolsbee: The Fed Can’t Keep Waiting Out Oil Shocks WSJ…"
+   "published": "2026-09-21T20:26:00+00:00",
+   "summary": "Federal Reserve official says Iran war pushed her toward supporting rate hike AP News See more headlines & perspectives on Google News"
   },
   {
-   "title": "Opinion | Don’t Expand Payroll Taxes for Social Security",
-   "link": "https://www.wsj.com/opinion/dont-expand-payroll-taxes-for-social-security-493897c2?mod=rss_markets_main",
-   "source": "WSJ Markets",
-   "published": "2026-09-21T16:01:00+00:00",
-   "summary": "Lifting the payroll tax cap would harm the broader economy."
+   "title": "Paramount Settles States’ Lawsuit, Clearing Way for Warner Bros. Merger",
+   "link": "https://www.nytimes.com/2026/09/21/business/paramount-warner-bros-ellison.html",
+   "source": "NYT DealBook",
+   "published": "2026-09-21T22:04:38+00:00",
+   "summary": "By resolving a lawsuit filed by a group of states, the media mogul David Ellison removed the last major hurdle he faced in buying Warner Bros. Discovery."
   },
   {
-   "title": "Paramount and state AGs settle lawsuit, allowing Warner Bros. merger to proceed",
-   "link": "https://www.cnbc.com/2026/09/21/paramount-reaches-settlement-over-warner-bros-merger.html",
-   "source": "CNBC",
-   "published": "2026-09-21T19:00:48+00:00",
-   "summary": "The antitrust lawsuit threatened to delay Paramount's acquisition until mid-2027 and to cost the company hundreds of millions of dollars in fees."
-  },
-  {
-   "title": "Meta's Muse personal AI agent tops ChatGPT, Grok and Claude for post-launch downloads",
+   "title": "Meta's Muse AI agent downloads are surging. Here's how it compares to ChatGPT, Grok and Claude",
    "link": "https://www.cnbc.com/2026/09/21/meta-muse-personal-ai-agent-downloads.html",
    "source": "CNBC",
-   "published": "2026-09-21T19:00:18+00:00",
-   "summary": "Meta's Muse AI personal agent tool had 730,000 downloads over the roughly five days after its launch."
+   "published": "2026-09-21T21:31:37+00:00",
+   "summary": "Meta's Muse AI personal agent tool had 730,000 and 2.5 million downloads over the roughly five-day and thirteen-day time frames after its launch."
   }
  ],
  "smallcap": {
   "note": null,
-  "asof": "2026-09-21T19:19:15+00:00",
+  "asof": "2026-09-21T22:56:08+00:00",
   "coverage": {
    "universe": 9895,
    "profiled": 9966,
    "in_band": 1856,
    "measured": 1856,
-   "scored": 954,
-   "below_floor": 73
+   "scored": 958,
+   "below_floor": 75
   },
   "screen": [
    {
@@ -462,6 +461,44 @@
     }
    },
    {
+    "ticker": "PAYS",
+    "name": "Paysign Inc",
+    "ind": "Financial Services",
+    "group": "Financials",
+    "mcap": 696.7429896199678,
+    "rev_g": 46.84,
+    "accel": 1.2399999999999949,
+    "r13": 69.5839,
+    "momo": 1.43,
+    "from_high": -12.95911295911295,
+    "ev_rev": 6.3593,
+    "px": 12.56,
+    "dp": 1.7828,
+    "score": 83.7,
+    "sub": {
+     "g": 79,
+     "m": 99,
+     "q": 63
+    },
+    "flags": [],
+    "why": {
+     "vol": 71.24788,
+     "r26": 233.8983,
+     "rg3": 29.2,
+     "rev_gq": 48.08,
+     "dte": 0,
+     "gm_t": 61,
+     "om_t": 17.01,
+     "om_a": 8.98,
+     "cashps": 0.485,
+     "rps": 1.6239,
+     "adv": 0.79556,
+     "hi52": 14.43,
+     "shares": 55.91,
+     "exch": "NASDAQ NMS - GLOBAL MARKET"
+    }
+   },
+   {
     "ticker": "SBET",
     "name": "Sharplink Inc",
     "ind": "Hotels, Restaurants & Leisur",
@@ -496,44 +533,6 @@
      "adv": 8.92861,
      "hi52": 19.535,
      "shares": 210.26,
-     "exch": "NASDAQ NMS - GLOBAL MARKET"
-    }
-   },
-   {
-    "ticker": "PAYS",
-    "name": "Paysign Inc",
-    "ind": "Financial Services",
-    "group": "Financials",
-    "mcap": 696.7429896199678,
-    "rev_g": 46.84,
-    "accel": 1.2399999999999949,
-    "r13": 69.5839,
-    "momo": 1.43,
-    "from_high": -12.95911295911295,
-    "ev_rev": 6.3593,
-    "px": 12.56,
-    "dp": 1.7828,
-    "score": 83.6,
-    "sub": {
-     "g": 78,
-     "m": 99,
-     "q": 63
-    },
-    "flags": [],
-    "why": {
-     "vol": 71.24788,
-     "r26": 233.8983,
-     "rg3": 29.2,
-     "rev_gq": 48.08,
-     "dte": 0,
-     "gm_t": 61,
-     "om_t": 17.01,
-     "om_a": 8.98,
-     "cashps": 0.485,
-     "rps": 1.6239,
-     "adv": 0.79556,
-     "hi52": 14.43,
-     "shares": 55.91,
      "exch": "NASDAQ NMS - GLOBAL MARKET"
     }
    },
@@ -667,7 +666,7 @@
     "ev_rev": null,
     "px": 54.42,
     "dp": 0.4986,
-    "score": 81.7,
+    "score": 81.8,
     "sub": {
      "g": 70,
      "m": 89,
@@ -708,7 +707,7 @@
     "score": 81.5,
     "sub": {
      "g": 94,
-     "m": 92,
+     "m": 93,
      "q": 34
     },
     "flags": [],
@@ -768,6 +767,44 @@
     }
    },
    {
+    "ticker": "MAKO",
+    "name": "Mako Mining Corp",
+    "ind": "Metals & Mining",
+    "group": "Materials",
+    "mcap": 1188.812085,
+    "rev_g": 77.04,
+    "accel": 38.75,
+    "r13": 25.1799,
+    "momo": 0.56,
+    "from_high": -34.244791666666664,
+    "ev_rev": 4.3082,
+    "px": 10.1,
+    "dp": -4.1746,
+    "score": 80.6,
+    "sub": {
+     "g": 91,
+     "m": 77,
+     "q": 67
+    },
+    "flags": [],
+    "why": {
+     "vol": 56.032665,
+     "r26": 41.3198,
+     "rg3": 32.81,
+     "rev_gq": 115.79,
+     "dte": 0.0003,
+     "gm_t": 53.71,
+     "om_t": 40.21,
+     "om_a": 36.1,
+     "cashps": 1.074,
+     "rps": 2.0708,
+     "adv": 0.18688,
+     "hi52": 15.36,
+     "shares": 87.6,
+     "exch": "TSX VENTURE EXCHANGE - NEX"
+    }
+   },
+   {
     "ticker": "BBNX",
     "name": "Beta Bionics Inc",
     "ind": "Health Care",
@@ -808,44 +845,6 @@
     }
    },
    {
-    "ticker": "MAKO",
-    "name": "Mako Mining Corp",
-    "ind": "Metals & Mining",
-    "group": "Materials",
-    "mcap": 1188.812085,
-    "rev_g": 77.04,
-    "accel": 38.75,
-    "r13": 25.1799,
-    "momo": 0.56,
-    "from_high": -34.244791666666664,
-    "ev_rev": 4.3082,
-    "px": 10.1,
-    "dp": -4.1746,
-    "score": 80.5,
-    "sub": {
-     "g": 91,
-     "m": 77,
-     "q": 67
-    },
-    "flags": [],
-    "why": {
-     "vol": 56.032665,
-     "r26": 41.3198,
-     "rg3": 32.81,
-     "rev_gq": 115.79,
-     "dte": 0.0003,
-     "gm_t": 53.71,
-     "om_t": 40.21,
-     "om_a": 36.1,
-     "cashps": 1.074,
-     "rps": 2.0708,
-     "adv": 0.18688,
-     "hi52": 15.36,
-     "shares": 87.6,
-     "exch": "TSX VENTURE EXCHANGE - NEX"
-    }
-   },
-   {
     "ticker": "FRD",
     "name": "Friedman Industries Inc",
     "ind": "Metals & Mining",
@@ -859,7 +858,7 @@
     "ev_rev": 0.5203,
     "px": 40.18,
     "dp": -2.4994,
-    "score": 80.3,
+    "score": 80.5,
     "sub": {
      "g": 79,
      "m": 96,
@@ -897,7 +896,7 @@
     "ev_rev": null,
     "px": 39.26,
     "dp": -0.33,
-    "score": 80.3,
+    "score": 80.4,
     "sub": {
      "g": 84,
      "m": 90,
@@ -935,7 +934,7 @@
     "ev_rev": null,
     "px": 25.02,
     "dp": 0.12,
-    "score": 80.2,
+    "score": 80.3,
     "sub": {
      "g": 70,
      "m": 95,
@@ -973,7 +972,7 @@
     "ev_rev": null,
     "px": 53.89,
     "dp": 0.2978,
-    "score": 79.6,
+    "score": 79.7,
     "sub": {
      "g": 69,
      "m": 93,
@@ -1087,7 +1086,7 @@
     "ev_rev": 3.3099,
     "px": 51.05,
     "dp": -1.9965,
-    "score": 77.1,
+    "score": 77.2,
     "sub": {
      "g": 71,
      "m": 95,
@@ -1125,10 +1124,10 @@
     "ev_rev": null,
     "px": 21.52,
     "dp": 1.0329,
-    "score": 76.9,
+    "score": 77.0,
     "sub": {
      "g": 95,
-     "m": 62,
+     "m": 63,
      "q": 70
     },
     "flags": [],
@@ -1239,7 +1238,7 @@
     "ev_rev": 3.9787,
     "px": 3.35,
     "dp": 0,
-    "score": 75.3,
+    "score": 75.2,
     "sub": {
      "g": 76,
      "m": 84,
@@ -1319,7 +1318,7 @@
     "ev_rev": 0.7824,
     "px": 40.89,
     "dp": 1.7164,
-    "score": 74.2,
+    "score": 74.3,
     "sub": {
      "g": 60,
      "m": 93,
@@ -1444,16 +1443,22 @@
   ],
   "movers_up": [
    {
+    "ticker": "CRML",
+    "name": "Critical Metals Corp",
+    "px": 9.33,
+    "dp": 38.633
+   },
+   {
     "ticker": "NUAI",
     "name": "New Era Energy & Digital Inc",
     "px": 7.85,
     "dp": 33.959
    },
    {
-    "ticker": "GEMI",
-    "name": "Gemini Space Station Inc",
-    "px": 5.81,
-    "dp": 31.1512
+    "ticker": "PRTH",
+    "name": "Priority Technology Holdings Inc",
+    "px": 7.8,
+    "dp": 33.7907
    },
    {
     "ticker": "CODQL",
@@ -1466,12 +1471,6 @@
     "name": "Hutchison Port Holdings Trust",
     "px": 0.2188,
     "dp": 21.5556
-   },
-   {
-    "ticker": "EU",
-    "name": "enCore Energy Corp",
-    "px": 1.08,
-    "dp": 20.5088
    }
   ],
   "movers_down": [
@@ -1488,22 +1487,22 @@
     "dp": -16.4179
    },
    {
-    "ticker": "KDK",
-    "name": "Kodiak AI Inc",
-    "px": 3.28,
-    "dp": -14.3603
-   },
-   {
     "ticker": "INDP",
     "name": "Indaptus Therapeutics Inc",
-    "px": 3.55,
-    "dp": -9.6692
+    "px": 3.09,
+    "dp": -12.9577
    },
    {
     "ticker": "TALMF",
     "name": "Fuerte Metals Corp",
     "px": 6.7036,
     "dp": -9.4108
+   },
+   {
+    "ticker": "CMGMF",
+    "name": "Chemring Group PLC",
+    "px": 7.2,
+    "dp": -8.6294
    }
   ],
   "earnings": [
@@ -1655,6 +1654,20 @@
   ],
   "filings_activist": [
    {
+    "ticker": "TYRA",
+    "name": "Tyra Biosciences Inc",
+    "date": "2026-09-21",
+    "link": "https://www.sec.gov/Archives/edgar/data/1863127/000092189526002613/0000921895-26-002613-index.htm",
+    "form": "SCHEDULE 13G"
+   },
+   {
+    "ticker": "MG",
+    "name": "Mistras Group Inc",
+    "date": "2026-09-21",
+    "link": "https://www.sec.gov/Archives/edgar/data/1436126/000110465926109294/0001104659-26-109294-index.htm",
+    "form": "SCHEDULE 13D/A"
+   },
+   {
     "ticker": "HYAC",
     "name": "Haymaker Acquisition Corp 4",
     "date": "2026-09-21",
@@ -1669,59 +1682,45 @@
     "form": "SCHEDULE 13D/A"
    },
    {
-    "ticker": "MLCO",
-    "name": "Melco Resorts & Entertainment Ltd",
-    "date": "2026-09-18",
-    "link": "https://www.sec.gov/Archives/edgar/data/1381640/000119312526395000/0001193125-26-395000-index.htm",
-    "form": "SCHEDULE 13D/A"
-   },
-   {
-    "ticker": "ATNI",
-    "name": "ATN International Inc",
-    "date": "2026-09-18",
-    "link": "https://www.sec.gov/Archives/edgar/data/879585/000110465926108905/0001104659-26-108905-index.htm",
-    "form": "SCHEDULE 13D/A"
-   },
-   {
-    "ticker": "MG",
-    "name": "Mistras Group Inc",
-    "date": "2026-09-18",
-    "link": "https://www.sec.gov/Archives/edgar/data/1436126/000119312526395732/0001193125-26-395732-index.htm",
-    "form": "SCHEDULE 13D/A"
-   },
-   {
-    "ticker": "MRLN",
-    "name": "Merlin Inc",
-    "date": "2026-09-18",
-    "link": "https://www.sec.gov/Archives/edgar/data/2028707/000149315226043375/0001493152-26-043375-index.htm",
-    "form": "SCHEDULE 13G/A"
-   },
-   {
-    "ticker": "SWMR",
-    "name": "Swarmer Inc",
-    "date": "2026-09-17",
-    "link": "https://www.sec.gov/Archives/edgar/data/2092574/000110465926108628/0001104659-26-108628-index.htm",
-    "form": "SCHEDULE 13D/A"
-   },
-   {
-    "ticker": "FOSL",
-    "name": "Fossil Group Inc",
-    "date": "2026-09-17",
-    "link": "https://www.sec.gov/Archives/edgar/data/883569/000168852226000005/0001688522-26-000005-index.htm",
+    "ticker": "RIV",
+    "name": "RiverNorth Opportunities Fund Inc",
+    "date": "2026-09-21",
+    "link": "https://www.sec.gov/Archives/edgar/data/1501072/000031498426000045/0000314984-26-000045-index.htm",
     "form": "SCHEDULE 13G"
    },
    {
-    "ticker": "YARW",
-    "name": "Vyne Therapeutics Inc",
-    "date": "2026-09-17",
-    "link": "https://www.sec.gov/Archives/edgar/data/1566044/000200536926000053/0002005369-26-000053-index.htm",
+    "ticker": "HSTM",
+    "name": "HealthStream Inc",
+    "date": "2026-09-21",
+    "link": "https://www.sec.gov/Archives/edgar/data/1095565/000215202526000004/0002152025-26-000004-index.htm",
+    "form": "SCHEDULE 13D"
+   },
+   {
+    "ticker": "RES",
+    "name": "RPC Inc",
+    "date": "2026-09-21",
+    "link": "https://www.sec.gov/Archives/edgar/data/742278/000110465926109328/0001104659-26-109328-index.htm",
+    "form": "SCHEDULE 13D/A"
+   },
+   {
+    "ticker": "MCFT",
+    "name": "Mastercraft Boat Holdings Inc",
+    "date": "2026-09-21",
+    "link": "https://www.sec.gov/Archives/edgar/data/1638290/000110465926109327/0001104659-26-109327-index.htm",
+    "form": "SCHEDULE 13D/A"
+   },
+   {
+    "ticker": "ACRS",
+    "name": "Aclaris Therapeutics Inc",
+    "date": "2026-09-21",
+    "link": "https://www.sec.gov/Archives/edgar/data/1557746/000123191926001199/0001231919-26-001199-index.htm",
     "form": "SCHEDULE 13G"
    },
    {
-    "ticker": "GTE",
-    "name": "Gran Tierra Energy Inc",
-    "date": "2026-09-17",
-    "link": "https://www.sec.gov/Archives/edgar/data/1273441/000101359426000982/0001013594-26-000982-index.htm",
+    "ticker": "SHIP",
+    "name": "Seanergy Maritime Holdings Corp",
+    "date": "2026-09-21",
+    "link": "https://www.sec.gov/Archives/edgar/data/1448397/000090514826004240/0000905148-26-004240-index.htm",
     "form": "SCHEDULE 13G/A"
    }
   ],
@@ -1745,6 +1744,20 @@
     "name": "Universal Insurance Holdings Inc",
     "date": "2026-09-21",
     "link": "https://www.sec.gov/Archives/edgar/data/891166/000119312526395998/0001193125-26-395998-index.htm",
+    "form": "424B3"
+   },
+   {
+    "ticker": "FAC",
+    "name": "Cartesian Growth Corp III",
+    "date": "2026-09-21",
+    "link": "https://www.sec.gov/Archives/edgar/data/2049662/000110465926109360/0001104659-26-109360-index.htm",
+    "form": "424B3"
+   },
+   {
+    "ticker": "CURR",
+    "name": "CURRENC Group Inc",
+    "date": "2026-09-21",
+    "link": "https://www.sec.gov/Archives/edgar/data/1862935/000149315226043588/0001493152-26-043588-index.htm",
     "form": "424B3"
    },
    {
@@ -1781,20 +1794,6 @@
     "date": "2026-09-16",
     "link": "https://www.sec.gov/Archives/edgar/data/1734342/000162828026062314/0001628280-26-062314-index.htm",
     "form": "424B2"
-   },
-   {
-    "ticker": "BBNX",
-    "name": "Beta Bionics Inc",
-    "date": "2026-09-16",
-    "link": "https://www.sec.gov/Archives/edgar/data/1674632/000119312526392277/0001193125-26-392277-index.htm",
-    "form": "424B5"
-   },
-   {
-    "ticker": "DSP",
-    "name": "Viant Technology Inc",
-    "date": "2026-09-16",
-    "link": "https://www.sec.gov/Archives/edgar/data/1828791/000162828026062297/0001628280-26-062297-index.htm",
-    "form": "424B5"
    }
   ],
   "budget_mode": "full",
@@ -1810,8 +1809,8 @@
     "note": "the control — equal weight, no stop, always fully invested",
     "value": 99601.59,
     "ret": -0.4,
-    "bench_ret": 0.0,
-    "excess": -0.4,
+    "bench_ret": -0.19,
+    "excess": -0.2,
     "friction_yr": 145.4,
     "max_drawdown": -0.4,
     "positions": 25,
@@ -1828,8 +1827,8 @@
     "note": "weighted by rank, 1.5x down to 0.6x equal weight",
     "value": 99601.59,
     "ret": -0.4,
-    "bench_ret": 0.0,
-    "excess": -0.4,
+    "bench_ret": -0.19,
+    "excess": -0.2,
     "friction_yr": 145.4,
     "max_drawdown": -0.4,
     "positions": 25,
@@ -1846,8 +1845,8 @@
     "note": "equal weight, trailing stop at 3x the name's own weekly volatility",
     "value": 99601.59,
     "ret": -0.4,
-    "bench_ret": 0.0,
-    "excess": -0.4,
+    "bench_ret": -0.19,
+    "excess": -0.2,
     "friction_yr": 145.4,
     "max_drawdown": -0.4,
     "positions": 25,
@@ -1864,8 +1863,8 @@
     "note": "equal weight, exposure cut when the small-cap tape falls",
     "value": 99641.43,
     "ret": -0.36,
-    "bench_ret": 0.0,
-    "excess": -0.36,
+    "bench_ret": -0.19,
+    "excess": -0.16,
     "friction_yr": 130.9,
     "max_drawdown": -0.36,
     "positions": 25,
@@ -1882,8 +1881,8 @@
     "note": "conviction + stop + regime together",
     "value": 99641.43,
     "ret": -0.36,
-    "bench_ret": 0.0,
-    "excess": -0.36,
+    "bench_ret": -0.19,
+    "excess": -0.16,
     "friction_yr": 130.9,
     "max_drawdown": -0.36,
     "positions": 25,
@@ -2257,8 +2256,8 @@
  "stats": {
   "feeds_total": 21,
   "feeds_failed": 3,
-  "items": 347,
-  "smallcap_calls": 553,
+  "items": 359,
+  "smallcap_calls": 552,
   "feed_errors": [
    [
     "GlobeNewswire",
