@@ -246,6 +246,7 @@ Each section is **its own page**, with a tab bar across the top:
 | `portfolios.html` | The five simulated books |
 | `screen.html` | Today's ranked screen |
 | `market.html` | Market backdrop (context only, never scored) |
+| `changes.html` | What entered and left the screen, and what the books did |
 | `signals.html` | Filings, earnings, news matched to the band |
 | `method.html` | The rules in full |
 
@@ -277,6 +278,23 @@ started somewhere else. Three things it must keep doing:
 - **axis labels sit inside the plot and grow on small screens.** The chart is
   scaled to roughly 40% of its authored width on a phone, where 11px text
   renders at about four real pixels.
+
+### Staleness: what a static page can and cannot tell you
+
+`staleness_alerts()` raises a banner — on **every** page, above the tabs — when
+an input is older than `FRESH_LIMITS` allows, stating what each stale input
+breaks rather than just its age. `render_freshness()` shows every input's age
+on the Method page **always**, not only on failure: a panel that appears only
+when something is wrong teaches nobody what normal looks like.
+
+**The honest limit, stated on the page itself:** a static page is written once
+and served unchanged until the next run, so it cannot know how long it has been
+sitting in front of a reader, and nothing on it can detect that publishing has
+*stopped*. What it can report is the age of the data it was BUILT from — and
+that is where this system's characteristic failure actually lives: the job
+keeps running and publishing on schedule while a source behind it has been
+failing for days. Detecting a stopped job is the watchdog agent's work, not the
+page's.
 
 ### Per-company pages (`site/co/<TICKER>.html`)
 

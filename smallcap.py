@@ -719,6 +719,57 @@ def movers(cache):
 # --------------------------------------------------------- evaluation --------
 
 
+def _freshness(cache):
+    """How old the INPUTS behind this page are.
+
+    A static page cannot tell how long it has been sitting there — it is
+    rendered once and served unchanged until the next run, so any 'age'
+    computed here is zero by construction. What it CAN report honestly is the
+    age of the data it was built from, and that is where this system's real
+    silent failure lives: the job keeps running and publishing while a source
+    behind it has been failing for days."""
+    q = cache.get("quotes") or {}
+    ages = sorted(_age_h(v.get("t")) for v in q.values()) or [None]
+    med = ages[len(ages) // 2] if ages[0] is not None else None
+    return {
+        "last_full_h": round(_age_h(cache.get("last_full")), 1),
+        "quote_median_h": round(med, 1) if med is not None else None,
+        "quote_count": len(q),
+        "bench_h": round(_age_h((cache.get("bench") or {}).get("t")), 1),
+        "universe_h": round(_age_h(cache.get("universe_fetched")), 1),
+        "earnings_h": round(_age_h(cache.get("earnings_fetched")), 1),
+        # the gate the books themselves apply: past this the benchmark is not
+        # trusted and the simulation stops marking against it
+        "bench_gate_h": 72,
+    }
+
+
+def _screen_changes(log, published):
+    """Which names entered and left the screen since the previous logged day.
+
+    Compared against the most recent PRIOR day that actually published a
+    screen, not simply yesterday: the market closes at weekends, and calling a
+    Monday screen 'unchanged since Sunday' would be describing a day that never
+    produced one."""
+    today = _now().strftime("%Y-%m-%d")
+    prior = [d for d in sorted(log) if d < today and (log[d].get("pub"))]
+    if not prior or not published:
+        return None
+    prev_day = prior[-1]
+    was = {p[0] for p in log[prev_day].get("pub", [])}
+    now = {r["ticker"] for r in published}
+    by_tick = {r["ticker"]: r for r in published}
+    return {
+        "prev_day": prev_day,
+        "entered": [{"ticker": t, "name": by_tick[t].get("name") or t,
+                     "score": by_tick[t].get("score"),
+                     "ind": by_tick[t].get("ind") or ""}
+                    for t in sorted(now - was, key=lambda t: -by_tick[t]["score"])],
+        "left": sorted(was - now),
+        "held": len(now & was),
+    }
+
+
 def update_log(cache, published, candidates):
     log = load_log()
     today = _now().strftime("%Y-%m-%d")
@@ -857,6 +908,8 @@ def summarize(cache, note=None, published=None, candidates=None, log=None):
                                and (rev_ttm(cache, t) or REV_FLOOR) < REV_FLOOR),
         },
         "screen": published,
+        "freshness": _freshness(cache),
+        "changes": _screen_changes(log or load_log(), published),
         "below_floor": below_floor(cache),
         "movers_up": up,
         "movers_down": down,

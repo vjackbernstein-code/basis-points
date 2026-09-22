@@ -632,6 +632,154 @@ class SiteNavigationTests(unittest.TestCase):
         self.assertNotIn('href="../index.html"', html)
 
 
+class TradeListTests(unittest.TestCase):
+    """All five books trade the same names on a rebalance day, so an
+    unlabelled list shows one purchase five times and reads as though the
+    system bought it five times over."""
+
+    def test_a_trade_names_the_books_that_made_it(self):
+        html = pipeline.trade_list([{
+            "date": "2026-09-21", "ticker": "ABC", "side": "buy", "why": "rebalance",
+            "books": ["C", "E"], "px": 10.0, "shares_lo": 90.0, "shares_hi": 110.0,
+            "all_books": False}])
+        self.assertIn("books C, E", html)
+        self.assertIn("90–110 sh", html)
+
+    def test_a_trade_made_by_every_book_is_said_so_once(self):
+        html = pipeline.trade_list([{
+            "date": "2026-09-21", "ticker": "ABC", "side": "buy", "why": "rebalance",
+            "books": list("ABCDE"), "px": 10.0, "shares_lo": 100.0,
+            "shares_hi": 100.0, "all_books": True}])
+        self.assertIn("all five books", html)
+        self.assertEqual(html.count("ABC"), 2)      # the link text and its href
+
+    def test_the_previous_ungrouped_trade_shape_still_renders(self):
+        # between a deploy and the next data refresh the committed file is
+        # still in the old shape; a crash there freezes the WHOLE site
+        html = pipeline.trade_list([{
+            "date": "2026-09-21", "ticker": "ABC", "side": "sell",
+            "shares": 74.48, "px": 53.49, "cost": 15.94, "why": "rebalance"}])
+        self.assertIn("ABC", html)
+        self.assertNotIn("None", html)
+        self.assertNotIn("· ·", html)               # no gap where a field was
+
+
+class CompanyLinkTests(unittest.TestCase):
+    """Company pages exist only for the CURRENT screen, but the books hold
+    names after they leave it — and trades and holdings both print tickers.
+    Every one of those is a chance to link to a page nobody wrote."""
+
+    def test_a_ticker_with_no_page_is_printed_but_not_linked(self):
+        self.assertIn("<a href", pipeline.co_link("ABC", known={"ABC"}))
+        self.assertEqual(pipeline.co_link("ABC", known={"XYZ"}), "ABC")
+        self.assertIn("<a href", pipeline.co_link("ABC"))   # unrestricted
+
+    def test_a_linked_ticker_points_into_the_company_directory(self):
+        self.assertIn('href="co/ABC.html"', pipeline.co_link("ABC"))
+        self.assertIn('href="co/ABC.html"', pipeline.trade_list(
+            [{"date": "d", "ticker": "ABC", "side": "buy", "px": 1.0,
+              "books": ["A"], "shares_lo": 1.0, "shares_hi": 1.0}]))
+
+    def test_no_page_links_to_a_company_page_that_was_not_written(self):
+        screen = [{"ticker": "ONSCREEN", "name": "On Inc", "ind": "Tech",
+                   "group": "Tech", "mcap": 900.0, "rev_g": 1.0, "accel": 0.0,
+                   "r13": 1.0, "momo": 0.1, "from_high": -1.0, "ev_rev": 1.0,
+                   "px": 10.0, "dp": 0.0, "score": 80.0,
+                   "sub": {"g": 1, "m": 1, "q": 1}, "flags": [], "why": {}}]
+        data = {"generated_at": NOW.isoformat(), "market": [], "top": [],
+                "smallcap": {"v": "v3.1", "screen": screen, "evaluation": {},
+                             "coverage": {"universe": 1, "profiled": 1}},
+                "portfolio": {
+                    "status": "running", "v": "v3.1", "books": [],
+                    # DROPPED left the screen but is still held and still trades
+                    "holdings": [{"ticker": "DROPPED", "value": 10.0,
+                                  "entry_date": "2026-09-01", "ret": 1.0}],
+                    "trades": [{"date": "2026-09-21", "ticker": "DROPPED",
+                                "side": "sell", "px": 9.0, "books": ["A"],
+                                "shares_lo": 5.0, "shares_hi": 5.0,
+                                "why": "left the screen"}],
+                    "assumptions": {"capital": 1.0, "cost_bps": 40.0,
+                                    "stop_slippage_bps": 75.0, "cadence": "weekly"}}}
+        pages, _s, _d = pipeline.render_site(data)
+        written = {f"co/{t['ticker']}.html" for t in screen}
+        for name, html in pages.items():
+            for href in re.findall(r'href="(co/[^"]+)"', html):
+                self.assertIn(href, written, f"{name} links to unwritten {href}")
+        self.assertIn("DROPPED", pages["portfolios.html"])   # shown, just not linked
+
+
+class StalenessTests(unittest.TestCase):
+    """The system's characteristic failure is publishing on schedule while a
+    source behind it has been dead for days."""
+
+    def _data(self, **fresh):
+        f = {"last_full_h": 2.0, "quote_median_h": 5.0, "bench_h": 2.0,
+             "earnings_h": 10.0, "universe_h": 100.0, "quote_count": 1800,
+             "bench_gate_h": 72}
+        f.update(fresh)
+        return {"generated_at": NOW.isoformat(), "market": [], "top": [],
+                "smallcap": {"v": "v3.1", "screen": [], "evaluation": {},
+                             "coverage": {"universe": 10, "profiled": 10},
+                             "freshness": f},
+                "portfolio": {"status": "not started", "books": []}}
+
+    def test_healthy_data_raises_no_alarm(self):
+        self.assertEqual(pipeline.staleness_alerts(self._data()), [])
+        self.assertEqual(pipeline.render_alert_banner([]), "")
+
+    def test_stale_prices_raise_an_alarm_that_says_what_they_break(self):
+        alerts = pipeline.staleness_alerts(self._data(quote_median_h=50.0))
+        self.assertEqual(len(alerts), 1)
+        banner = pipeline.render_alert_banner(alerts)
+        self.assertIn("stale data", banner)
+        self.assertIn("momentum", banner)          # names the consequence
+
+    def test_a_stale_benchmark_is_flagged_at_the_gate_the_books_use(self):
+        self.assertEqual(pipeline.staleness_alerts(self._data(bench_h=71.0)), [])
+        a = pipeline.staleness_alerts(self._data(bench_h=73.0))
+        self.assertEqual([x["what"] for x in a], ["the benchmark"])
+
+    def test_the_alarm_appears_on_every_page_not_just_one(self):
+        pages, _s, _d = pipeline.render_site(self._data(quote_median_h=99.0))
+        for name, html in pages.items():
+            self.assertIn('class="alarm"', html, name)
+
+    def test_the_freshness_panel_is_shown_even_when_everything_is_healthy(self):
+        html = pipeline.render_freshness(self._data())
+        self.assertIn("How fresh the data is", html)
+        self.assertIn("cannot tell you how old it is", html)
+
+    def test_it_admits_a_static_page_cannot_know_its_own_age(self):
+        # the honest limit: nothing here can detect that publishing STOPPED
+        html = pipeline.render_freshness(self._data())
+        self.assertIn("served unchanged until the next run", html)
+
+
+class ScreenChangeTests(unittest.TestCase):
+
+    def test_it_compares_against_the_last_day_that_actually_published(self):
+        # a weekend logs no screen; calling Monday "unchanged since Sunday"
+        # would describe a day that never produced one
+        log = {"2026-09-18": {"pub": [["AAA", 80.0, 1.0], ["BBB", 70.0, 1.0]]},
+               "2026-09-19": {"pub": []},
+               "2026-09-20": {}}
+        pub = [{"ticker": "AAA", "name": "A Inc", "score": 81.0, "ind": "Tech"},
+               {"ticker": "CCC", "name": "C Inc", "score": 75.0, "ind": "Energy"}]
+        real_now = smallcap._now
+        smallcap._now = lambda: datetime(2026, 9, 21, tzinfo=timezone.utc)
+        try:
+            ch = smallcap._screen_changes(log, pub)
+        finally:
+            smallcap._now = real_now
+        self.assertEqual(ch["prev_day"], "2026-09-18")
+        self.assertEqual([e["ticker"] for e in ch["entered"]], ["CCC"])
+        self.assertEqual(ch["left"], ["BBB"])
+        self.assertEqual(ch["held"], 1)
+
+    def test_no_prior_screen_means_no_comparison_is_claimed(self):
+        self.assertIsNone(smallcap._screen_changes({}, [{"ticker": "A"}]))
+
+
 class CompanyPageTests(unittest.TestCase):
     """The per-company pages restate the rules to a reader, so a wrong unit or
     a restated-instead-of-called formula is a lie with a number attached."""

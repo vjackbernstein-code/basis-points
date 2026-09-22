@@ -758,6 +758,9 @@ a:hover { text-decoration: underline; text-decoration-color: var(--accent); }
   gap: 8px 30px; margin-top: 34px; }
 .item { padding: 9px 0; border-bottom: 1px solid var(--hair); }
 .item a { font-weight: 600; font-size: 14px; line-height: 1.4; display: block; }
+/* a ticker link following its BUY/SELL label stays on the same line — the
+   list's default block links are for headlines, which do want their own */
+.item strong + a { display: inline; }
 .filing-list .item a { font-weight: 400;
   font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 12.5px; }
 
@@ -807,6 +810,14 @@ table.screen td.tick { font-family: "IBM Plex Mono", ui-monospace, monospace;
 .legend i { width: 14px; height: 3px; border-radius: 2px; flex: none; }
 .legend b { font-family: "IBM Plex Mono", ui-monospace, monospace; font-weight: 500; }
 .legend em { font-style: normal; font-variant-numeric: tabular-nums; }
+
+.alarm { border: 1px solid var(--down); border-left-width: 4px; border-radius: 6px;
+  padding: 13px 16px; margin: 14px 0 6px; font-size: 13.5px; color: var(--ink); }
+.alarm strong { color: var(--down); }
+.alarm ul { margin: 7px 0 0 18px; }
+.alarm li { padding: 2px 0; }
+.alarm li strong { color: var(--ink); }
+.alarm p { margin-top: 9px; color: var(--ink2); font-size: 12.5px; }
 
 .tabs { display: flex; flex-wrap: wrap; gap: 0 4px; margin: 0 0 24px;
   border-bottom: 1px solid var(--hair); }
@@ -1012,11 +1023,21 @@ def expl(label, value, kicker, body):
             f'<p class="explbody">{body}</p></div>')
 
 
-def co_link(ticker, prefix="co/"):
-    """Link a ticker to its own page — but only if it is a ticker. An unvalidated
-    one would put attacker-chosen text into an href on a public page."""
+def co_link(ticker, prefix="co/", known=None):
+    """Link a ticker to its own page — but only if it is a ticker, and only if
+    that page exists.
+
+    Validation, because an unvalidated ticker would put attacker-chosen text
+    into an href on a public page. And `known`, because company pages are
+    written for the CURRENT screen: a name the books still hold after it left
+    the screen has no page, and linking to one would be a dead link on exactly
+    the holding a reader is most likely to click."""
     t = safe_ticker(ticker)
-    return (f'<a href="{prefix}{t}.html">{esc(t)}</a>' if t else esc(ticker or ""))
+    if not t:
+        return esc(ticker or "")
+    if known is not None and t not in known:
+        return esc(t)
+    return f'<a href="{prefix}{t}.html">{esc(t)}</a>'
 
 
 def _fmt_mcap(musd):
@@ -1241,7 +1262,36 @@ def render_progress(data):
             f'recommendation.</p></section>')
 
 
-def render_portfolio(pf):
+def trade_list(trades, prefix="co/", known=None):
+    """Trades, showing WHICH books acted. Two books selling on a stop while
+    three hold is the most informative thing the simulation produces, and an
+    unlabelled list throws it away."""
+    out = []
+    for t in trades:
+        # tolerate an ungrouped trade: between a deploy and the next data
+        # refresh the committed file is still in the previous shape, and a page
+        # that crashes on it freezes the whole site at its last version
+        books = t.get("books") or []
+        who = ("all five books" if t.get("all_books") else
+               f"book {books[0]}" if len(books) == 1 else
+               "books " + ", ".join(books) if books else "")
+        lo = t.get("shares_lo", t.get("shares"))
+        hi = t.get("shares_hi", t.get("shares"))
+        if lo is None or hi is None:
+            sh = ""
+        else:
+            sh = f'{lo:,.0f} sh' if lo == hi else f'{lo:,.0f}–{hi:,.0f} sh'
+        bits = " · ".join(x for x in (f'${t["px"]:,.2f}', sh, who,
+                                      t.get("why") or "") if x)
+        side = t["side"].upper()
+        out.append(
+            f'<div class="item"><strong class="{"down" if side == "SELL" else ""}">'
+            f'{esc(side)}</strong> {co_link(t["ticker"], prefix, known)}'
+            f'<div class="meta">{esc(t["date"])} · {esc(bits)}</div></div>')
+    return "".join(out)
+
+
+def render_portfolio(pf, known=None):
     """The paper portfolios. Labelled unmistakably: these are simulations, and
     a rising number on a public page must never read as a real return."""
     if not pf or pf.get("status") != "running":
@@ -1324,20 +1374,19 @@ def render_portfolio(pf):
     cols = []
     if pf.get("holdings"):
         lis = "".join(
-            f'<div class="item"><strong>{co_link(h["ticker"])}</strong> '
+            f'<div class="item"><strong>{co_link(h["ticker"], known=known)}</strong> '
             f'<span class="{delta_class(h["ret"])}">{h["ret"]:+.1f}%</span>'
             f'<div class="meta">${h["value"]:,.0f} · since {esc(h["entry_date"] or "")}'
             f'</div></div>' for h in pf["holdings"])
         cols.append('<section class="col"><h2 class="section-head">Baseline book '
                     f'holdings</h2>{lis}</section>')
     if pf.get("trades"):
-        lis = "".join(
-            f'<div class="item"><strong>{esc(t["side"].upper())}</strong> '
-            f'{esc(t["ticker"])}<div class="meta">{esc(t["date"])} · '
-            f'{t["shares"]:.2f} sh @ ${t["px"]:,.2f} · {esc(t.get("why") or "")}'
-            f'</div></div>' for t in pf["trades"])
         cols.append('<section class="col"><h2 class="section-head">Recent simulated '
-                    f'trades</h2>{lis}</section>')
+                    f'trades</h2>{trade_list(pf["trades"], known=known)}'
+                    '<div class="meta" style="padding-top:8px">Grouped by the books '
+                    'that made each trade. A name bought by all five is one entry, '
+                    'not five — but the share counts differ, which is the conviction '
+                    'sizing doing its work.</div></section>')
     return note + table + (f'<div class="duo">{"".join(cols)}</div>' if cols else "")
 
 
@@ -1559,6 +1608,159 @@ def render_company_page(row, rank, screen, pf, sc, date_line):
             f'<title>{esc(t)} — {esc(row.get("name") or "")} — Basis Points</title>'
             f'{FONTS_LINK}<style>{CSS}</style></head><body>{body}</body></html>')
 
+
+# How old each input may be before the page says so. These are deliberately
+# generous: the job is throttled to roughly six runs a day, so a few hours of
+# age is normal operation, not a fault.
+FRESH_LIMITS = (
+    ("last_full_h", 26, "the full measurement sweep",
+     "every company measure on the page is carried over from that sweep"),
+    ("quote_median_h", 30, "prices",
+     "today's moves, the screen's momentum ranks and the simulated book "
+     "valuations all rest on these"),
+    ("bench_h", 72, "the benchmark",
+     "past this the books STOP marking themselves against it, so every "
+     "excess-return figure freezes where it was"),
+    ("earnings_h", 96, "the earnings calendar",
+     "the 'reports in N days' flags go stale first"),
+    ("universe_h", 360, "the company list from the SEC",
+     "new listings stop being discovered"),
+)
+
+
+def staleness_alerts(data):
+    """What is too old, stated in terms of what it breaks.
+
+    NOTE the limit of a static page: it is rendered once and served unchanged
+    until the next run, so it cannot know how long it has been sitting in front
+    of a reader. What it can do — and what this does — is report the age of the
+    data it was BUILT from. That is where this system's characteristic failure
+    actually lives: the job keeps running and publishing on schedule while a
+    source behind it has been failing for days."""
+    f = ((data.get("smallcap") or {}).get("freshness")) or {}
+    out = []
+    for key, limit, what, why in FRESH_LIMITS:
+        age = f.get(key)
+        if age is None or age <= limit:
+            continue
+        out.append({"what": what, "why": why, "age_h": age, "limit_h": limit})
+    return out
+
+
+def render_alert_banner(alerts):
+    if not alerts:
+        return ""
+    def line(a):
+        d = a["age_h"] / 24
+        old = f'{a["age_h"]:.0f} hours' if a["age_h"] < 48 else f'{d:.1f} days'
+        return (f'<li><strong>{esc(a["what"])}</strong> — {old} old '
+                f'(expected under {a["limit_h"]}h). {esc(a["why"])}.</li>')
+    return ('<div class="alarm" role="alert"><strong>This page is built on stale '
+            'data.</strong><ul>' + "".join(line(a) for a in alerts) +
+            '</ul><p>The page itself rebuilt on schedule — which is exactly how '
+            'this kind of failure hides. Numbers below are shown as they stand; '
+            'treat them as of the ages above, not as of now.</p></div>')
+
+
+def render_freshness(data):
+    """The age of every input, always shown — not only when something is wrong.
+    A panel that appears only on failure teaches nobody what normal looks
+    like."""
+    f = ((data.get("smallcap") or {}).get("freshness")) or {}
+    if not f:
+        return ""
+    rows = []
+    for key, limit, what, why in FRESH_LIMITS:
+        age = f.get(key)
+        if age is None:
+            rows.append(f'<tr><td class="l">{esc(what)}</td><td>—</td>'
+                        f'<td class="l">not recorded</td></tr>')
+            continue
+        bad = age > limit
+        shown = f'{age:.1f}h' if age < 48 else f'{age / 24:.1f} days'
+        rows.append(
+            f'<tr><td class="l">{esc(what)}</td>'
+            f'<td class="{"down" if bad else "up"}">{shown}</td>'
+            f'<td class="l">{"too old — " if bad else ""}{esc(why)}</td></tr>')
+    st = data.get("stats") or {}
+    errs = (st.get("feed_errors") or []) + (st.get("market_errors") or [])
+    err_html = ""
+    if errs:
+        err_html = ('<p class="cofoot">Sources that failed on the most recent '
+                    'run: ' + "; ".join(f'<strong>{esc(str(n))}</strong> '
+                                        f'({esc(str(m))})' for n, m in errs[:8]) +
+                    '. A failed source does not blank the page — the previous '
+                    'value is carried, which is why the ages above matter.</p>')
+    return (
+        '<h2 class="section-head">How fresh the data is</h2>'
+        f'<div class="tblwrap"><table class="screen">'
+        '<tr><th class="l">Input</th><th>Age</th>'
+        '<th class="l">What it affects</th></tr>'
+        f'{"".join(rows)}</table></div>'
+        '<p class="cofoot"><strong>This page cannot tell you how old it is.</strong> '
+        'It is written once and served unchanged until the next run, so it has no '
+        'way to know whether you are reading it one minute or one month later. '
+        'The ages above are of the DATA it was built from, measured when it was '
+        'built. Check the timestamp in the header for that. If it is more than a '
+        'few hours behind the current time, the publishing job has stopped and '
+        'nothing on these pages will say so.</p>' + err_html)
+
+
+def render_changes(data, known=None):
+    """What moved since the previous published screen."""
+    sc = data.get("smallcap") or {}
+    ch = sc.get("changes") or {}
+    pf = data.get("portfolio") or {}
+    parts = []
+    if ch.get("prev_day"):
+        ent, left = ch.get("entered") or [], ch.get("left") or []
+        parts.append(
+            f'<p class="secsub">Against the previous published screen, '
+            f'<strong>{esc(ch["prev_day"])}</strong>. {ch.get("held", 0)} names '
+            f'held their place, {len(ent)} entered, {len(left)} dropped out.</p>')
+        cols = []
+        if ent:
+            lis = "".join(
+                f'<div class="item"><strong>{co_link(e["ticker"], known=known)}</strong> · '
+                f'{esc(e["name"])}<div class="meta">{esc(e.get("ind") or "")} · '
+                f'score {e["score"]:.1f}</div></div>' for e in ent)
+            cols.append('<section class="col"><h2 class="section-head">Entered the '
+                        f'screen</h2>{lis}</section>')
+        if left:
+            lis = "".join(
+                f'<div class="item"><strong>{esc(t)}</strong>'
+                '<div class="meta">no longer in the top 25</div></div>'
+                for t in left)
+            cols.append('<section class="col"><h2 class="section-head">Dropped out'
+                        f'</h2>{lis}'
+                        '<div class="meta" style="padding-top:8px">A name leaving '
+                        'the screen is sold at the next rebalance, whatever anyone '
+                        'thinks of it.</div></section>')
+        if not ent and not left:
+            parts.append('<div class="note-box">The screen is unchanged since '
+                         'the previous publication. That is common — the '
+                         'measures behind it move slowly, and the books only '
+                         'rebalance weekly in any case.</div>')
+        if cols:
+            parts.append(f'<div class="duo">{"".join(cols)}</div>')
+    if pf.get("trades"):
+        parts.append('<h2 class="section-head">What the simulated books did</h2>'
+                     + trade_list(pf["trades"], known=known)
+                     + '<p class="cofoot">Grouped by which books acted. A name '
+                       'bought by all five is one entry, not five — but the share '
+                       'counts differ across them, and that spread is the '
+                       'conviction sizing at work. Two books selling while three '
+                       'hold is a stop firing, and is the most informative thing '
+                       'this simulation produces.</p>')
+    stops = sum(b.get("stops_hit", 0) for b in (pf.get("books") or []))
+    if pf.get("books"):
+        parts.append(
+            f'<div class="note-box"><strong>Stops fired so far: {stops}.</strong> '
+            'Only books C and E use them; A, B and D hold through everything on '
+            'purpose, so that the difference between them is what a stop is '
+            'actually worth.</div>')
+    return "".join(parts)
+
 def build_sections(data):
     """Build each section's inner HTML, keyed by the page it will become.
 
@@ -1567,6 +1769,9 @@ def build_sections(data):
     that actually produced content."""
     sc = data.get("smallcap") or {}
     cov = sc.get("coverage") or {}
+    # exactly the tickers write_company_pages() will write a page for
+    known = {t for t in (safe_ticker(r.get("ticker"))
+                         for r in (sc.get("screen") or [])) if t}
     # The page is assembled as NAMED SECTIONS rather than one long scroll.
     # Each carries an anchor, so the nav can jump to it and a reader can link
     # to the part they care about instead of describing where to scroll.
@@ -1658,7 +1863,7 @@ def build_sections(data):
             ev_rev = (f'{r["ev_rev"]:.1f}×' if r.get("ev_rev") is not None else "—")
             trs.append(
                 f'<tr title="{esc(sub_t)}"><td class="l">{i}</td>'
-                f'<td class="l tick">{co_link(r["ticker"])}</td>'
+                f'<td class="l tick">{co_link(r["ticker"], known=known)}</td>'
                 f'<td class="l">{esc(r["name"])}</td><td class="l">{esc(r["ind"])}</td>'
                 f'<td>{_fmt_mcap(r["mcap"])}</td><td>{ev_rev}</td>'
                 f'<td>{r["rev_g"]:+.1f}%</td>'
@@ -1674,7 +1879,7 @@ def build_sections(data):
 
     # the books come before the screen that feeds them: the books are the
     # subject of the experiment, the screen is one of its inputs
-    secs.append(("portfolios", render_portfolio(data.get("portfolio"))))
+    secs.append(("portfolios", render_portfolio(data.get("portfolio"), known)))
     secs.append(("screen", "".join(parts)))
     if mkt:
         secs.append(("market", "".join(mkt)))
@@ -1777,7 +1982,8 @@ def build_sections(data):
         'caps; all measures come from one free data vendor and quotes may be a few '
         'hours old. Data: SEC (universe), Finnhub (measures). Facts by fixed rules — '
         '<strong>not investment advice</strong>.</div>')
-    secs.append(("method", method))
+    secs.append(("changes", render_changes(data, known)))
+    secs.append(("method", method + render_freshness(data)))
     return {slug: html for slug, html in secs if html}
 
 
@@ -1793,6 +1999,9 @@ SECTIONS = (
      'Paper portfolios <span class="flag offer">SIMULATED</span>',
      "Five books over the same screen, the same prices and the same costs, "
      "differing only in their rules. No money is invested."),
+    ("changes", "Changes", "What changed",
+     "Which companies entered and left the screen, and what the simulated "
+     "books did about it."),
     ("screen", "Screen", "Today’s growth screen",
      "The ranked list the books trade. Click any ticker for the arithmetic "
      "behind its score, its position size and its stop."),
@@ -1827,7 +2036,7 @@ def tab_bar(current, available, prefix=""):
     return f'<nav class="tabs" aria-label="Sections">{"".join(out)}</nav>'
 
 
-def render_page(slug, sections, date_line, prefix=""):
+def render_page(slug, sections, date_line, alerts=(), prefix=""):
     """One section, as a standalone page."""
     meta = {s[0]: s for s in SECTIONS}[slug]
     _slug, label, title, sub = meta
@@ -1847,7 +2056,10 @@ def render_page(slug, sections, date_line, prefix=""):
         steps.append(f'<a href="{_href(nx[0], prefix)}">{esc(nx[1])} &rarr;</a>')
     walk = f'<nav class="pager">{"".join(steps)}</nav>' if steps else ""
 
+    # the alarm sits ABOVE the tabs, on every page. Stale data does not become
+    # less stale because the reader happened to open a different section
     body = (f'<div class="wrap">{masthead_html(date_line)}'
+            f'{render_alert_banner(alerts)}'
             f'{tab_bar(slug, sections, prefix)}'
             f'<main class="psec">{head}{sections[slug]}</main>{walk}'
             '<footer><p><strong>Not investment advice.</strong> Facts by fixed, '
@@ -1870,7 +2082,8 @@ def render_site(data):
     date_line = datetime.fromisoformat(
         data["generated_at"]).astimezone().strftime("%A, %B %-d, %Y · %-I:%M %p %Z")
     sections = build_sections(data)
-    pages = {f"{slug}.html": render_page(slug, sections, date_line)
+    alerts = staleness_alerts(data)
+    pages = {f"{slug}.html": render_page(slug, sections, date_line, alerts)
              for slug in sections}
     # smallcap.html was the original address and may be linked from elsewhere;
     # it keeps working rather than becoming a dead link
@@ -2024,6 +2237,13 @@ def main():
     s = data.get("stats", {})
     s["company_pages"] = n_co
     s["pages"] = n_pages
+    # A render failure leaves the site frozen at its last good version while
+    # everything else succeeds — the job's own summary line said "ok" through
+    # exactly that. It says so now, in the line anyone actually reads.
+    if not n_pages:
+        print("FAILED: no pages written — the published site is now STALE and "
+              "will keep serving its previous version until this is fixed",
+              file=sys.stderr)
     cov = (data.get("smallcap") or {}).get("coverage") or {}
     print(f"ok: {s.get('items', '?')} items, {len(data['market'])}/{len(INSTRUMENTS)} "
           f"instruments; smallcap: "

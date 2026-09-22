@@ -483,6 +483,33 @@ def _curve(vals, base, cap=150):
     return [round(v / base * 100, 3) for v in vals]
 
 
+def _group_trades(led, limit=14):
+    """Trades, grouped across the books that made them.
+
+    All five books trade the same names on a rebalance day, so an ungrouped
+    list shows the same purchase five times with five different share counts
+    and no way to tell them apart — it reads as though the system bought the
+    name five times over. What actually distinguishes the books is WHICH of
+    them acted, so that is what the grouping keys on."""
+    groups = {}
+    for key in STRATEGIES:                      # fixed order, so books read A-E
+        for t in (led["books"].get(key) or {}).get("trades", []):
+            k = (t["date"], t["ticker"], t["side"], t.get("why") or "")
+            g = groups.setdefault(k, {"date": t["date"], "ticker": t["ticker"],
+                                      "side": t["side"], "why": t.get("why") or "",
+                                      "books": [], "px": t["px"],
+                                      "shares": []})
+            g["books"].append(key)
+            g["shares"].append(t["shares"])
+    out = []
+    for g in sorted(groups.values(), key=lambda g: g["date"], reverse=True)[:limit]:
+        sh = g.pop("shares")
+        g["shares_lo"], g["shares_hi"] = round(min(sh), 2), round(max(sh), 2)
+        g["all_books"] = len(g["books"]) == len(STRATEGIES)
+        out.append(g)
+    return out
+
+
 def summarize(led=None):
     led = led or load_ledger()
     books = []
@@ -499,8 +526,7 @@ def summarize(led=None):
                          "entry_date": p.get("entry_date"),
                          "ret": (px / p["entry_px"] - 1) * 100 if p.get("entry_px") else 0.0})
     holdings.sort(key=lambda h: -h["value"])
-    trades = sorted((t for b in led["books"].values() for t in b.get("trades", [])),
-                    key=lambda t: t["date"], reverse=True)
+    trades = _group_trades(led)
     # the benchmark on the same rebased scale, drawn from the control book's
     # marks. Unknown marks are SKIPPED rather than carried forward: a flat
     # segment across a gap would misdescribe the benchmark as having held still
