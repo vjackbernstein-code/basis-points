@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-22T17:12:20.545161+00:00",
+ "generated_at": "2026-09-22T20:25:49.827125+00:00",
  "market": [
   {
    "label": "S&P 500",
@@ -149,13 +149,12 @@
    "label": "10-yr Treasury",
    "symbol": "DGS10",
    "kind": "yield",
-   "value": 50.099999999999994,
-   "prev": 49.400000000000006,
-   "value_txt": "5.01%",
-   "delta": 1.4170040485829727,
-   "delta_txt": "+7 bp",
+   "value": 49.6,
+   "prev": 50.099999999999994,
+   "value_txt": "4.96%",
+   "delta": -0.998003992015954,
+   "delta_txt": "-5 bp",
    "spark": [
-    47.1,
     46.5,
     46.900000000000006,
     47.400000000000006,
@@ -177,9 +176,10 @@
     50.0,
     50.099999999999994,
     49.400000000000006,
-    50.099999999999994
+    50.099999999999994,
+    49.6
    ],
-   "asof": "Sep 18"
+   "asof": "Sep 21"
   },
   {
    "label": "Dollar (broad)",
@@ -292,11 +292,11 @@
    "label": "Bitcoin",
    "symbol": "bitcoin",
    "kind": "crypto",
-   "value": 86479.96475854101,
+   "value": 86307.85265067648,
    "prev": 86596.74004249526,
-   "value_txt": "$86,480",
-   "delta": -0.13484951500131198,
-   "delta_txt": "-0.13%",
+   "value_txt": "$86,308",
+   "delta": -0.3336007702796025,
+   "delta_txt": "-0.33%",
    "spark": [
     78552.77932895812,
     77416.44110979848,
@@ -320,18 +320,18 @@
     81236.41383660372,
     81169.03511950027,
     86596.74004249526,
-    86479.96475854101
+    86307.85265067648
    ]
   },
   {
    "label": "Ethereum",
    "symbol": "ethereum",
    "kind": "crypto",
-   "value": 2746.876086243983,
+   "value": 2753.7374363758936,
    "prev": 2775.1686826711957,
-   "value_txt": "$2,747",
-   "delta": -1.0194910530620442,
-   "delta_txt": "-1.02%",
+   "value_txt": "$2,754",
+   "delta": -0.7722502213693836,
+   "delta_txt": "-0.77%",
    "spark": [
     2466.565659094493,
     2417.6758884733536,
@@ -355,32 +355,39 @@
     2632.0095970320526,
     2644.7349398187544,
     2775.1686826711957,
-    2746.876086243983
+    2753.7374363758936
    ]
   }
  ],
- "tape_line": "S&P 500 +1.49%, Nasdaq +2.26%, Dow +0.71%; the 10-year Treasury at 5.01% (+7 bp); WTI crude $107.02 (+4.49%); bitcoin $86,480 (-0.13%).",
+ "tape_line": "S&P 500 +1.49%, Nasdaq +2.26%, Dow +0.71%; the 10-year Treasury at 4.96% (-5 bp); WTI crude $107.02 (+4.49%); bitcoin $86,308 (-0.33%).",
  "top": [
   {
-   "title": "Treasury yields are little changed as traders await Fed comments",
-   "link": "https://www.cnbc.com/2026/09/22/treasury-yield-us-bond-market-trump.html",
-   "source": "CNBC",
-   "published": "2026-09-22T16:32:11+00:00",
-   "summary": "U.S. Treasury yields were relatively unchanged on Tuesday as investors awaited new clues on the state of the U.S. economy."
-  },
-  {
-   "title": "Treasury Yields Decline as Oil Falls",
+   "title": "Treasury Yields Little Changed",
    "link": "https://www.wsj.com/finance/macro-backdrop-might-weigh-on-two-year-u-s-treasury-auction-ebc5d728?mod=rss_markets_main",
    "source": "WSJ Markets",
-   "published": "2026-09-22T13:23:00+00:00",
-   "summary": "Treasury yields slipped, tracking oil prices and ahead of an auction of two-year notes."
+   "published": "2026-09-22T20:06:00+00:00",
+   "summary": "Bond markets traded sideways but the U.S. Treasury borrowing costs keep rising."
   },
   {
-   "title": "Stock Market Today: Dow falls 230 points, S&P 500 and Nasdaq edge higher after best day in nearly 2 months; oil prices fall for fourth day",
-   "link": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxPbmhzXzMzb19DdExqUnpuYU9Vengtc1d1cFNpcEpqZTlwVkZHaFMyVjFhVzhqZlFxZElIWHZhd2lHV190enFScnRaamJfZEIyR3RnRnJENTVzcFNFcmh1NVJiSUgzclBZQXc3cGh0eHBmQ1ZtWWV6VVhuUEFPbjc1R0hkNlhWT0dGQTdvTTRRa2VwSExSZnUxWlZUVTNRa1pISU5IM2NtczZsRVhYOHJFXzM2V25xcWFpNkRfVDZyY2NRbXVBakJLSw?oc=5",
-   "source": "MarketWatch",
-   "published": "2026-09-22T16:14:00+00:00",
-   "summary": "Stock Market Today: Dow falls 230 points, S&P 500 and Nasdaq edge higher after best day in nearly 2 months; oil prices fall for fourth day MarketWatch Dow Falls 134 Points On Losses For Shares Of Cisco, JPMorgan Chase Moomoo A…"
+   "title": "Investors Demand Highest Yield at Two-Year U.S. Treasury Auction Since 2024",
+   "link": "https://www.wsj.com/finance/investing/investors-demand-highest-yield-at-two-year-u-s-treasury-auction-since-2024-2daca035?mod=rss_markets_main",
+   "source": "WSJ Markets",
+   "published": "2026-09-22T17:42:00+00:00",
+   "summary": "The auction, which saw the notes sell at a yield of 4.787%, comes as investors brace for rising interest rates after hawkish communication from Federal Reserve officials followed a rate increase last week."
+  },
+  {
+   "title": "Tech-Stocks Rise as Oil Sinks Below $100",
+   "link": "https://www.wsj.com/finance/stocks/ai-stock-rally-loses-steam-oil-prices-turn-negative-e19323a8?mod=rss_markets_main",
+   "source": "WSJ Markets",
+   "published": "2026-09-22T18:14:00+00:00",
+   "summary": "The Nasdaq Composite Index was poised for a second straight record high as falling oil prices helped U.S. tech stocks stay buoyant."
+  },
+  {
+   "title": "Anthropic and OpenAI roll out cheaper models in first release since call for slowdown",
+   "link": "https://www.cnbc.com/2026/09/22/anthropic-openai-cheaper-ai-models.html",
+   "source": "CNBC",
+   "published": "2026-09-22T19:43:21+00:00",
+   "summary": "OpenAI introduced GPT-6 Sol and GPT-6 Luna. Anthropic unveiled Claude Opus 5.5."
   },
   {
    "title": "Trump’s U.N. Speech and China Talks Put Tariffs, AI and Energy in Focus",
@@ -390,36 +397,29 @@
    "summary": "Plus, the Magnificent Seven has roared back, and we unpack the concessions that helped David Ellison end his stalemate with California."
   },
   {
-   "title": "Fed's Barkin says economy may be firming, inflation not limited to energy, tariff shocks",
-   "link": "https://finance.yahoo.com/economy/policy/articles/feds-barkin-says-economy-may-165255863.html",
-   "source": "Reuters",
-   "published": "2026-09-22T16:52:55+00:00",
-   "summary": ""
-  },
-  {
-   "title": "Stocks Mixed as Oil Sinks Below $100",
-   "link": "https://www.wsj.com/finance/stocks/ai-stock-rally-loses-steam-oil-prices-turn-negative-e19323a8?mod=rss_markets_main",
-   "source": "WSJ Markets",
-   "published": "2026-09-22T16:40:00+00:00",
-   "summary": "The Nasdaq Composite Index rose modestly as falling oil prices helped U.S. tech stocks stay buoyant."
-  },
-  {
-   "title": "Gold Falls as U.S. Treasury Yields, Crude Rise",
+   "title": "Gold Futures Slip As U.S. Dollar Gains",
    "link": "https://www.wsj.com/finance/commodities-futures/gold-rises-as-strong-fundamentals-support-9f92da11?mod=rss_markets_main",
    "source": "WSJ Markets",
-   "published": "2026-09-22T07:38:00+00:00",
-   "summary": "Gold futures traded lower but remained within the $4,300-$4,400 range, as rising Treasury yields and a rebound in crude prices weighed on the precious metal."
+   "published": "2026-09-22T18:17:00+00:00",
+   "summary": "Gold futures settled modestly lower as the U.S. dollar firmed and yields edged up, while finding some support in lower oil prices that if sustained could ease inflation pressures."
+  },
+  {
+   "title": "Top UK graft prosecutors joined Trump’s Venezuela oil baron during Swiss probe",
+   "link": "https://www.ft.com/content/f2f37449-f9c7-4556-9f97-4cca735980e4?syn-25a6b1a6=1",
+   "source": "Financial Times",
+   "published": "2026-09-22T20:00:05+00:00",
+   "summary": "Alejandro Betancourt was previously wanted by authorities in Switzerland as part of a money-laundering investigation"
   }
  ],
  "smallcap": {
   "note": null,
-  "asof": "2026-09-22T17:23:29+00:00",
+  "asof": "2026-09-22T20:36:54+00:00",
   "coverage": {
    "universe": 9895,
    "profiled": 9966,
    "in_band": 1856,
    "measured": 1856,
-   "scored": 958,
+   "scored": 959,
    "below_floor": 76
   },
   "screen": [
@@ -591,7 +591,7 @@
     "ev_rev": 3.9439,
     "px": 6.72,
     "dp": 0.2985,
-    "score": 82.2,
+    "score": 82.3,
     "sub": {
      "g": 88,
      "m": 84,
@@ -705,7 +705,7 @@
     "ev_rev": 3.0448,
     "px": 12.57,
     "dp": -3.8991,
-    "score": 81.5,
+    "score": 81.3,
     "sub": {
      "g": 94,
      "m": 93,
@@ -743,9 +743,9 @@
     "ev_rev": 15.4581,
     "px": 56.8,
     "dp": 2.6939,
-    "score": 81.2,
+    "score": 81.0,
     "sub": {
-     "g": 87,
+     "g": 86,
      "m": 95,
      "q": 43
     },
@@ -819,7 +819,7 @@
     "ev_rev": 7.5283,
     "px": 22.93,
     "dp": 4.0381,
-    "score": 80.7,
+    "score": 80.5,
     "sub": {
      "g": 74,
      "m": 94,
@@ -1163,9 +1163,9 @@
     "ev_rev": 9.3004,
     "px": 24.15,
     "dp": -0.4124,
-    "score": 76.0,
+    "score": 75.8,
     "sub": {
-     "g": 77,
+     "g": 76,
      "m": 84,
      "q": 58
     },
@@ -1279,7 +1279,7 @@
     "ev_rev": 3.9787,
     "px": 3.46,
     "dp": 3.9039,
-    "score": 75.4,
+    "score": 75.2,
     "sub": {
      "g": 76,
      "m": 84,
@@ -1474,16 +1474,16 @@
   ],
   "movers_down": [
    {
+    "ticker": "CMPX",
+    "name": "Compass Therapeutics Inc.",
+    "px": 1.24,
+    "dp": -31.8681
+   },
+   {
     "ticker": "CLCHF",
     "name": "Clinch Resources Ltd",
     "px": 0.5525,
     "dp": -24.3151
-   },
-   {
-    "ticker": "SCTX",
-    "name": "Scribe Therapeutics Inc",
-    "px": 28.05,
-    "dp": -15
    },
    {
     "ticker": "EMAT",
@@ -1492,16 +1492,16 @@
     "dp": -14.6766
    },
    {
-    "ticker": "MSC",
-    "name": "Studio City International Holdings Ltd",
-    "px": 0.850099,
-    "dp": -14.1314
-   },
-   {
     "ticker": "TPB",
     "name": "Turning Point Brands Inc",
     "px": 61.31,
     "dp": -10.0235
+   },
+   {
+    "ticker": "AESI",
+    "name": "Atlas Energy Solutions Inc",
+    "px": 12,
+    "dp": -9.5705
    }
   ],
   "earnings": [
@@ -1583,9 +1583,16 @@
    "r13": -4.7182,
    "r26": 13.6111,
    "label": "flat/choppy",
-   "t": "2026-09-22T06:55:09+00:00"
+   "t": "2026-09-22T20:36:54+00:00"
   },
   "filings_material": [
+   {
+    "ticker": "PUMP",
+    "name": "ProPetro Holding Corp",
+    "date": "2026-09-22",
+    "link": "https://www.sec.gov/Archives/edgar/data/1680247/000168024726000112/0001680247-26-000112-index.htm",
+    "form": "8-K"
+   },
    {
     "ticker": "CTGO",
     "name": "Contango Silver & Gold Inc",
@@ -1648,13 +1655,6 @@
     "date": "2026-09-22",
     "link": "https://www.sec.gov/Archives/edgar/data/1490906/000149090626000028/0001490906-26-000028-index.htm",
     "form": "8-K"
-   },
-   {
-    "ticker": "HCIC",
-    "name": "Hennessy Capital Investment Corp. VIII",
-    "date": "2026-09-22",
-    "link": "https://www.sec.gov/Archives/edgar/data/1846416/000149315226043680/0001493152-26-043680-index.htm",
-    "form": "8-K"
    }
   ],
   "filings_activist": [
@@ -1677,6 +1677,13 @@
     "name": "MarineMax Inc",
     "date": "2026-09-22",
     "link": "https://www.sec.gov/Archives/edgar/data/1057060/000121390026101887/0001213900-26-101887-index.htm",
+    "form": "SCHEDULE 13D/A"
+   },
+   {
+    "ticker": "TNC",
+    "name": "Tennant Co",
+    "date": "2026-09-22",
+    "link": "https://www.sec.gov/Archives/edgar/data/97134/000080724926000086/0000807249-26-000086-index.htm",
     "form": "SCHEDULE 13D/A"
    },
    {
@@ -1720,13 +1727,6 @@
     "date": "2026-09-21",
     "link": "https://www.sec.gov/Archives/edgar/data/1095565/000215202526000004/0002152025-26-000004-index.htm",
     "form": "SCHEDULE 13D"
-   },
-   {
-    "ticker": "RES",
-    "name": "RPC Inc",
-    "date": "2026-09-21",
-    "link": "https://www.sec.gov/Archives/edgar/data/742278/000110465926109328/0001104659-26-109328-index.htm",
-    "form": "SCHEDULE 13D/A"
    }
   ],
   "filings_offering": [
@@ -1804,44 +1804,20 @@
   "budget_mode": "full",
   "news": [
    {
-    "title": "Lincoln Educational Services Corporation (LINC) Shareholders Who Lost Money Have Opportunity to Lead Securities Fraud Lawsuit",
-    "link": "https://www.prnewswire.com/news-releases/lincoln-educational-services-corporation-linc-shareholders-who-lost-money-have-opportunity-to-lead-securities-fraud-lawsuit-302885962.html",
-    "source": "PR Newswire",
-    "published": "2026-09-22T17:10:00+00:00",
-    "summary": "LOS ANGELES, Sept. 22, 2026 /PRNewswire/ -- The Law Offices of Frank R. Cruz announces that investors with losses related to Lincoln Educational Services Corporation (LINC) have opportunity to lead the securities fraud class…",
-    "ticker": "LINC"
+    "title": "IonQ, Rigetti Computing, D-Wave Quantum, and Quantum Computing Inc. Are Sending Shockwaves Through Wall Street With This $895 Million Warning",
+    "link": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxNLS1DRXo3amkyOUgyTGpOVVlvT2EwSllac3VVeGVZS1g2Y1RqcElvUVBOM2E2Y19Zc3hpc1J4WndRRW9keVVNS3YxY241WGxCWElBY3QwUC0wT051eVlFSHhMMmNrNjZjY2pweFhjRXpQRW93TzJ0T3hsRXA3SEo4SktBS19EN2hzZUE3VXJpdk1SODQ4YTEzZGRNRmVwVm1CX25CVEFlXy1DbkxyV3Nqa0FhcFNaM1owNlNYSXJPLUd4d1Q2V0pRRFg1LWs3R3Q0NGZPUzg3Zw?oc=5",
+    "source": "The Motley Fool",
+    "published": "2026-09-22T10:06:00+00:00",
+    "summary": "IonQ, Rigetti Computing, D-Wave Quantum, and Quantum Computing Inc. Are Sending Shockwaves Through Wall Street With This $895 Million Warning The Motley Fool See more headlines & perspectives on Google News",
+    "ticker": "QUBT"
    },
    {
-    "title": "Hyliion Holdings Corp. (HYLN) Shareholders Who Lost Money Have Opportunity to Lead Securities Fraud Lawsuit",
-    "link": "https://www.prnewswire.com/news-releases/hyliion-holdings-corp-hyln-shareholders-who-lost-money-have-opportunity-to-lead-securities-fraud-lawsuit-302885943.html",
-    "source": "PR Newswire",
-    "published": "2026-09-22T17:00:00+00:00",
-    "summary": "LOS ANGELES, Sept. 22, 2026 /PRNewswire/ -- The Law Offices of Frank R. Cruz announces that investors with losses related to Hyliion Holdings Corp. (HYLN) have opportunity to lead the securities fraud class action lawsuit. IF YOU…",
-    "ticker": "HYLN"
-   },
-   {
-    "title": "Why RPC (RES) Was a Q2 Detractor for Gabelli Small Cap Growth Fund",
-    "link": "https://finance.yahoo.com/markets/stocks/articles/why-rpc-res-q2-detractor-163646235.html",
-    "source": "Insider Monkey",
-    "published": "2026-09-22T16:36:46+00:00",
+    "title": "This Artificial Intelligence (AI) Stock Has Raised Its Dividend by Over 150% in 10 Years",
+    "link": "https://finance.yahoo.com/markets/stocks/articles/artificial-intelligence-ai-stock-raised-113254600.html",
+    "source": "Motley Fool",
+    "published": "2026-09-21T11:32:54+00:00",
     "summary": "",
-    "ticker": "RES"
-   },
-   {
-    "title": "Why Myers Industries (MYE) Was a Top Performer for Gabelli in Q2",
-    "link": "https://finance.yahoo.com/markets/stocks/articles/why-myers-industries-mye-top-163520531.html",
-    "source": "Insider Monkey",
-    "published": "2026-09-22T16:35:20+00:00",
-    "summary": "",
-    "ticker": "MYE"
-   },
-   {
-    "title": "Why Gorman-Rupp Co. (GRC) Was a Top Performer for Gabelli in Q2",
-    "link": "https://finance.yahoo.com/markets/stocks/articles/why-gorman-rupp-co-grc-163458570.html",
-    "source": "Insider Monkey",
-    "published": "2026-09-22T16:34:58+00:00",
-    "summary": "",
-    "ticker": "GRC"
+    "ticker": "AI"
    }
   ]
  },
@@ -1855,8 +1831,8 @@
     "note": "the control — equal weight, no stop, always fully invested",
     "value": 99115.07,
     "ret": -0.88,
-    "bench_ret": 0.28,
-    "excess": -1.16,
+    "bench_ret": 0.56,
+    "excess": -1.44,
     "friction_yr": 72.7,
     "max_drawdown": -0.88,
     "positions": 25,
@@ -1876,8 +1852,8 @@
     "note": "weighted by rank, 1.5x down to 0.6x equal weight",
     "value": 99261.76,
     "ret": -0.74,
-    "bench_ret": 0.28,
-    "excess": -1.01,
+    "bench_ret": 0.56,
+    "excess": -1.29,
     "friction_yr": 72.7,
     "max_drawdown": -0.74,
     "positions": 25,
@@ -1897,8 +1873,8 @@
     "note": "equal weight, trailing stop at 3x the name's own weekly volatility",
     "value": 99115.07,
     "ret": -0.88,
-    "bench_ret": 0.28,
-    "excess": -1.16,
+    "bench_ret": 0.56,
+    "excess": -1.44,
     "friction_yr": 72.7,
     "max_drawdown": -0.88,
     "positions": 25,
@@ -1918,8 +1894,8 @@
     "note": "equal weight, exposure cut when the small-cap tape falls",
     "value": 99203.57,
     "ret": -0.8,
-    "bench_ret": 0.28,
-    "excess": -1.07,
+    "bench_ret": 0.56,
+    "excess": -1.35,
     "friction_yr": 65.4,
     "max_drawdown": -0.8,
     "positions": 25,
@@ -1939,8 +1915,8 @@
     "note": "conviction + stop + regime together",
     "value": 99335.58,
     "ret": -0.66,
-    "bench_ret": 0.28,
-    "excess": -0.94,
+    "bench_ret": 0.56,
+    "excess": -1.22,
     "friction_yr": 65.4,
     "max_drawdown": -0.66,
     "positions": 25,
@@ -1957,7 +1933,7 @@
   ],
   "bench_curve": [
    99.806,
-   100.279
+   100.563
   ],
   "span": [
    "2026-09-21",
@@ -2319,10 +2295,14 @@
  "econ_calendar": [],
  "stats": {
   "feeds_total": 21,
-  "feeds_failed": 3,
-  "items": 391,
-  "smallcap_calls": 552,
+  "feeds_failed": 4,
+  "items": 376,
+  "smallcap_calls": 553,
   "feed_errors": [
+   [
+    "PR Newswire",
+    "HTTP Error 404: Not Found"
+   ],
    [
     "GlobeNewswire",
     "The read operation timed out"
