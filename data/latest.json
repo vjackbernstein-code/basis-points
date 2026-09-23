@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-23T01:41:13.215691+00:00",
+ "generated_at": "2026-09-23T07:31:51.292547+00:00",
  "market": [
   {
    "label": "S&P 500",
@@ -41,13 +41,12 @@
    "label": "Nasdaq",
    "symbol": "NASDAQCOM",
    "kind": "index",
-   "value": 27122.09,
-   "prev": 26522.55,
-   "value_txt": "27,122.09",
-   "delta": 2.2604915439880435,
-   "delta_txt": "+2.26%",
+   "value": 27244.28,
+   "prev": 27122.09,
+   "value_txt": "27,244.28",
+   "delta": 0.4505183781928262,
+   "delta_txt": "+0.45%",
    "spark": [
-    26331.09,
     26067.17,
     26180.45,
     25980.19,
@@ -69,9 +68,10 @@
     25978.42,
     26418.3,
     26522.55,
-    27122.09
+    27122.09,
+    27244.28
    ],
-   "asof": "Sep 21"
+   "asof": "Sep 22"
   },
   {
    "label": "Dow",
@@ -293,11 +293,11 @@
    "label": "Bitcoin",
    "symbol": "bitcoin",
    "kind": "crypto",
-   "value": 86410.11979648907,
+   "value": 86382.37461643579,
    "prev": 86183.29442787907,
-   "value_txt": "$86,410",
-   "delta": 0.26318948482506865,
-   "delta_txt": "+0.26%",
+   "value_txt": "$86,382",
+   "delta": 0.2309962619534305,
+   "delta_txt": "+0.23%",
    "spark": [
     77416.44110979848,
     77297.13347191992,
@@ -321,18 +321,18 @@
     81169.03511950027,
     86596.74004249526,
     86183.29442787907,
-    86410.11979648907
+    86382.37461643579
    ]
   },
   {
    "label": "Ethereum",
    "symbol": "ethereum",
    "kind": "crypto",
-   "value": 2757.592761504106,
+   "value": 2750.186531105474,
    "prev": 2752.629093198004,
-   "value_txt": "$2,758",
-   "delta": 0.18032463285256303,
-   "delta_txt": "+0.18%",
+   "value_txt": "$2,750",
+   "delta": -0.08873560548225294,
+   "delta_txt": "-0.09%",
    "spark": [
     2417.6758884733536,
     2390.783044679688,
@@ -356,18 +356,46 @@
     2644.7349398187544,
     2775.1686826711957,
     2752.629093198004,
-    2757.592761504106
+    2750.186531105474
    ]
   }
  ],
- "tape_line": "S&P 500 -0.00%, Nasdaq +2.26%, Dow -0.36%; the 10-year Treasury at 4.96% (-5 bp); WTI crude $107.02 (+4.49%); bitcoin $86,410 (+0.26%).",
+ "tape_line": "S&P 500 -0.00%, Nasdaq +0.45%, Dow -0.36%; the 10-year Treasury at 4.96% (-5 bp); WTI crude $107.02 (+4.49%); bitcoin $86,382 (+0.23%).",
  "top": [
   {
-   "title": "Gold Edges Up as Markets Weigh Oil Pullback",
-   "link": "https://www.wsj.com/finance/commodities-futures/gold-edges-up-as-markets-weigh-oil-pullback-af01967f?mod=rss_markets_main",
+   "title": "Oil tanker costs hit record $1.2mn a day as Iran war disrupts shipping",
+   "link": "https://www.ft.com/content/f95db340-8c8f-435f-957d-4623255ac29e?syn-25a6b1a6=1",
+   "source": "Financial Times",
+   "published": "2026-09-23T04:00:29+00:00",
+   "summary": "Shortage of biggest supertankers has more than doubled rates on key Middle East-China routes since late August"
+  },
+  {
+   "title": "Airtel Money launches one of London’s biggest IPOs in recent years",
+   "link": "https://www.ft.com/content/62a6939f-7e24-492e-bdf6-b9ab9e1d3578?syn-25a6b1a6=1",
+   "source": "Financial Times",
+   "published": "2026-09-23T06:56:18+00:00",
+   "summary": "African mobile payments group is seeking to raise at least $800mn at $8bn to $9bn valuation"
+  },
+  {
+   "title": "Private credit’s “soft” defaults",
+   "link": "https://www.ft.com/content/04c5abf0-d7c4-47ca-9391-4a154c14e178?syn-25a6b1a6=1",
+   "source": "Financial Times",
+   "published": "2026-09-23T05:30:08+00:00",
+   "summary": "How the can gets kicked, and why"
+  },
+  {
+   "title": "Oil Falls on Hopes for U.S.-Iran Talks",
+   "link": "https://www.wsj.com/finance/commodities-futures/oil-falls-as-mideast-developments-remain-in-focus-9a5a30e4?mod=rss_markets_main",
    "source": "WSJ Markets",
-   "published": "2026-09-23T00:33:00+00:00",
-   "summary": "Gold edged higher as markets weigh a pullback in oil prices. If crude’s declines hold, that could ease the inflation fears that have sent bond yields up and stoked rate-hike expectations, weighing on the precious metal."
+   "published": "2026-09-23T06:57:00+00:00",
+   "summary": "Oil prices fell in early European trading on hopes for a diplomatic solution to the Middle East war and as Saudi Arabia began efforts to restart a critical pipeline."
+  },
+  {
+   "title": "Oil price on track for longest losing streak in more than 12 months",
+   "link": "https://www.ft.com/content/0a5a5b70-adea-40af-9933-1f7679f9f359?syn-25a6b1a6=1",
+   "source": "Financial Times",
+   "published": "2026-09-23T05:35:38+00:00",
+   "summary": "Brent crude falls below $99 a barrel in Asian trading amid talks over Middle East conflict"
   },
   {
    "title": "Federal Reserve Board announces approval of application by BancFirst Corporation",
@@ -377,50 +405,22 @@
    "summary": "Federal Reserve Board announces approval of application by BancFirst Corporation"
   },
   {
-   "title": "Nasdaq 100 rises to new high as ‘AI Fomo’ returns",
-   "link": "https://www.ft.com/content/2c60812b-77b4-4de5-a276-5e3eb2ceb5c3?syn-25a6b1a6=1",
-   "source": "Financial Times",
-   "published": "2026-09-22T20:28:13+00:00",
-   "summary": "Tech-heavy index recovers from summer sell-off"
-  },
-  {
-   "title": "Stock Market News, Sept. 22, 2026: Nasdaq logs fresh record as chip stocks extend rally, while Dow sheds 185 points as bank shares face pressure",
-   "link": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxPbmhzXzMzb19DdExqUnpuYU9Vengtc1d1cFNpcEpqZTlwVkZHaFMyVjFhVzhqZlFxZElIWHZhd2lHV190enFScnRaamJfZEIyR3RnRnJENTVzcFNFcmh1NVJiSUgzclBZQXc3cGh0eHBmQ1ZtWWV6VVhuUEFPbjc1R0hkNlhWT0dGQTdvTTRRa2VwSExSZnUxWlZUVTNRa1pISU5IM2NtczZsRVhYOHJFXzM2V25xcWFpNkRfVDZyY2NRbXVBakJLSw?oc=5",
-   "source": "MarketWatch",
-   "published": "2026-09-22T22:07:00+00:00",
-   "summary": "Stock Market News, Sept. 22, 2026: Nasdaq logs fresh record as chip stocks extend rally, while Dow sheds 185 points as bank shares face pressure MarketWatch Nasdaq rises to new record; S&P 500 closes flat as oil slides for a…"
-  },
-  {
-   "title": "U.S. Stocks Mixed as AI Buzz Stokes Tech Gains",
-   "link": "https://www.wsj.com/finance/stocks/u-s-stocks-mixed-as-ai-buzz-stokes-tech-gains-7d1bf50b?mod=rss_markets_main",
-   "source": "WSJ Markets",
-   "published": "2026-09-22T21:06:00+00:00",
-   "summary": "U.S. stocks ended mixed as buzz about AI products propelled large tech companies to more record highs even as energy inflation fears lingered."
-  },
-  {
-   "title": "Why the Fed isn't ready to declare victory on inflation",
-   "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNUFE3U1hIZHE4OEYwS1BraUFKbXVNRVFXQ3RNSzJqOGJCRkUxNjZ1N2ROamhoLVJ5UF9yLU1GWlBRajBxOGREaWItUXhLWk5rMnJqcDFCWVNISWdIVE95WXZRTnJlSnZxWThmRTJpYVJQekd0QnBURVJZbzhaakhTZ2lURGwydEnSAYwBQVVfeXFMTjlEMmVyM1htcGZxc0dWaF82RlNHVHBxRzRhTmhXVXF0SnJLRjVoMi1lNGJhaXVoYnBSblcyaUlJcmZYMlJjYUp2VnYtOGIzdDdkODUwM3RVZW0xQURsWVFkc2xCX0lpTHpRdjh6c2IzVWJhSUJza1B3VEZRanRaQUtQLWtKanZTSXp6UDM?oc=5",
-   "source": "Fox Business",
-   "published": "2026-09-22T21:46:00+00:00",
-   "summary": "Why the Fed isn't ready to declare victory on inflation Fox Business Fed's Barkin says economy may be firming, inflation not limited to energy, tariff shocks reuters.com Fed’s Collins Says Rate Hike Will Help Reach Inflation Goal…"
-  },
-  {
-   "title": "Oil Falls as Mideast Developments Remain in Focus",
-   "link": "https://www.wsj.com/finance/commodities-futures/oil-falls-as-mideast-developments-remain-in-focus-9a5a30e4?mod=rss_markets_main",
-   "source": "WSJ Markets",
-   "published": "2026-09-23T00:36:00+00:00",
-   "summary": "Oil fell in early Asian trade. Japan’s Kyodo News Agency reported Iran proposed to reopen the Strait of Hormuz if the U.S. lifts its blockade, though Iran’s Fars News Agency later cited sources denying the report."
+   "title": "US Treasury secretary emerges as frontrunner for Trump’s AI czar role: Report",
+   "link": "https://cointelegraph.com/news/us-treasury-secretary-emerges-as-contender-for-trumps-ai-czar-role?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+   "source": "Cointelegraph",
+   "published": "2026-09-23T05:34:49+00:00",
+   "summary": "US President Donald Trump previously tapped David Sacks as his AI and crypto czar before Sacks stepped down from the role earlier this year after reaching his service limit as a special government employee."
   }
  ],
  "smallcap": {
   "note": null,
-  "asof": "2026-09-23T01:43:19+00:00",
+  "asof": "2026-09-23T07:42:41+00:00",
   "coverage": {
    "universe": 9895,
    "profiled": 9966,
    "in_band": 1856,
    "measured": 1856,
-   "scored": 961,
+   "scored": 964,
    "below_floor": 76
   },
   "screen": [
@@ -438,10 +438,10 @@
     "ev_rev": 4.4639,
     "px": 10.4,
     "dp": 2.4631,
-    "score": 84.2,
+    "score": 84.1,
     "sub": {
      "g": 91,
-     "m": 86,
+     "m": 85,
      "q": 67
     },
     "flags": [],
@@ -590,7 +590,7 @@
     "ev_rev": 11.8454,
     "px": 73.41,
     "dp": -2.7682,
-    "score": 82.8,
+    "score": 82.9,
     "sub": {
      "g": 75,
      "m": 96,
@@ -744,11 +744,11 @@
     "ev_rev": 3.0448,
     "px": 12.35,
     "dp": -5.581,
-    "score": 81.2,
+    "score": 81.3,
     "sub": {
      "g": 94,
      "m": 92,
-     "q": 33
+     "q": 34
     },
     "flags": [],
     "why": {
@@ -858,9 +858,9 @@
     "ev_rev": 7.5283,
     "px": 22.81,
     "dp": 3.4936,
-    "score": 80.4,
+    "score": 80.3,
     "sub": {
-     "g": 74,
+     "g": 73,
      "m": 93,
      "q": 68
     },
@@ -1126,7 +1126,7 @@
     "ev_rev": 9.0031,
     "px": 24.25,
     "dp": 0,
-    "score": 77.1,
+    "score": 77.0,
     "sub": {
      "g": 76,
      "m": 87,
@@ -1316,7 +1316,7 @@
     "ev_rev": 3.3238,
     "px": 17.83,
     "dp": -3.8814,
-    "score": 75.2,
+    "score": 75.1,
     "sub": {
      "g": 81,
      "m": 83,
@@ -1383,12 +1383,12 @@
    }
   ],
   "freshness": {
-   "last_full_h": 2.4,
-   "quote_median_h": 8.4,
+   "last_full_h": 0.0,
+   "quote_median_h": 11.1,
    "quote_count": 1860,
    "bench_h": 0.0,
-   "universe_h": 102.6,
-   "earnings_h": 0.0,
+   "universe_h": 108.6,
+   "earnings_h": 6.0,
    "bench_gate_h": 72
   },
   "changes": {
@@ -1397,7 +1397,7 @@
     {
      "ticker": "SHIP",
      "name": "Seanergy Maritime Holdings Corp",
-     "score": 75.2,
+     "score": 75.1,
      "ind": "Marine"
     }
    ],
@@ -1466,16 +1466,16 @@
   ],
   "movers_up": [
    {
-    "ticker": "NUAI",
-    "name": "New Era Energy & Digital Inc",
-    "px": 7.65,
-    "dp": 30.5461
+    "ticker": "SVRE",
+    "name": "Saverone 2014 Ltd",
+    "px": 2.8,
+    "dp": 27.8539
    },
    {
-    "ticker": "SECZ",
-    "name": "Securitize Corp",
-    "px": 13.5,
-    "dp": 24.3094
+    "ticker": "MAZE",
+    "name": "Maze Therapeutics Inc",
+    "px": 28.38,
+    "dp": 26.753
    },
    {
     "ticker": "CODQL",
@@ -1484,16 +1484,16 @@
     "dp": 23.3571
    },
    {
-    "ticker": "EULIF",
-    "name": "European Lithium Ltd",
-    "px": 0.3185,
-    "dp": 22.5
-   },
-   {
     "ticker": "BFLY",
     "name": "Butterfly Network Inc",
     "px": 9.93,
     "dp": 21.9902
+   },
+   {
+    "ticker": "HCTPF",
+    "name": "Hutchison Port Holdings Trust",
+    "px": 0.2188,
+    "dp": 21.5556
    }
   ],
   "movers_down": [
@@ -1510,12 +1510,6 @@
     "dp": -24.3151
    },
    {
-    "ticker": "EMAT",
-    "name": "Evolution Metals & Technologies Corp",
-    "px": 3.43,
-    "dp": -14.6766
-   },
-   {
     "ticker": "EVER",
     "name": "EverQuote Inc",
     "px": 19.55,
@@ -1526,6 +1520,12 @@
     "name": "QuinStreet Inc",
     "px": 15.28,
     "dp": -11.4716
+   },
+   {
+    "ticker": "AESI",
+    "name": "Atlas Energy Solutions Inc",
+    "px": 12,
+    "dp": -9.5705
    }
   ],
   "earnings": [
@@ -1832,17 +1832,8 @@
     "form": "424B3"
    }
   ],
-  "budget_mode": "trickle",
-  "news": [
-   {
-    "title": "Northern Dynasty Minerals Ltd. (NAK) Gained 36.3% in Q2: The Alaska Gold-Copper Opportunity",
-    "link": "https://finance.yahoo.com/markets/stocks/articles/northern-dynasty-minerals-ltd-nak-134700461.html",
-    "source": "Insider Monkey",
-    "published": "2026-09-21T13:47:00+00:00",
-    "summary": "",
-    "ticker": "NAK"
-   }
-  ]
+  "budget_mode": "full",
+  "news": []
  },
  "portfolio": {
   "status": "running",
@@ -2405,8 +2396,8 @@
  "stats": {
   "feeds_total": 21,
   "feeds_failed": 3,
-  "items": 406,
-  "smallcap_calls": 43,
+  "items": 409,
+  "smallcap_calls": 552,
   "feed_errors": [
    [
     "GlobeNewswire",
