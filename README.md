@@ -296,6 +296,30 @@ keeps running and publishing on schedule while a source behind it has been
 failing for days. Detecting a stopped job is the watchdog agent's work, not the
 page's.
 
+### Per-book pages (`site/book/<KEY>.html`)
+
+One page per simulated book, reached from its name in the comparison table.
+Each shows the rules it actually runs (derived from its spec, never restated by
+hand), its own curve against the benchmark, and a holdings table with **weight,
+average cost, return, where its stop sits and how much room is left** before
+that stop fires. Conviction sizing becomes visible here: book B spans 5.99%
+down to 2.35% where book A sits flat near 4%.
+
+Each non-control page prints its gap against book A and says the gap is noise
+at this length — stated up front so it cannot be quietly dropped later if it
+turns out unflattering.
+
+Two honesty fixes these pages forced:
+
+- **Cost basis is re-averaged on top-ups.** `entry_px` used to stay at the
+  first purchase, so buying at 10 and topping up at 20 reported +100% on a
+  position sitting at 20. Selling part of a position still leaves the basis
+  alone — the remaining shares keep theirs.
+- **`friction_yr` is not shown as a rate on a short record** (`FRICTION_MIN_DAYS`,
+  45). One rebalance three days in annualises to "48.5%/yr", a number nobody
+  will ever pay printed beside real ones. Below the threshold the page reports
+  what was actually spent.
+
 ### Per-company pages (`site/co/<TICKER>.html`)
 
 One page per name on the screen, linked from its ticker. Each shows the

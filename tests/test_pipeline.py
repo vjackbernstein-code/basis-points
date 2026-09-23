@@ -664,6 +664,89 @@ class TradeListTests(unittest.TestCase):
         self.assertNotIn("· ·", html)               # no gap where a field was
 
 
+class BookPageTests(unittest.TestCase):
+    """A page per simulated book. Its job is to make the five comparable, so
+    the rules it prints must be the rules that book actually runs."""
+
+    def _pf(self):
+        def book(k, label, note, ret, costs, stops):
+            return {"key": k, "label": label, "note": note, "value": 99000.0,
+                    "ret": ret, "bench_ret": 0.5, "excess": ret - 0.5,
+                    "friction_yr": 48.5, "max_drawdown": -1.0, "positions": 2,
+                    "cash": 10.0, "costs_paid": costs, "stops_hit": stops,
+                    "days": 3, "started": "2026-09-21",
+                    "curve": [100.0, 99.5, 99.0]}
+        hold = lambda t, stop: {
+            "ticker": t, "shares": 100.0, "entry_px": 10.0, "px": 11.0,
+            "entry_date": "2026-09-21", "value": 1100.0, "weight": 4.0,
+            "ret": 10.0, "peak_px": 11.5,
+            "stop_pct": 25.0 if stop else None,
+            "stop_px": 8.62 if stop else None,
+            "room_pct": 27.6 if stop else None}
+        return {
+            "status": "running", "v": "v3.1",
+            "books": [book("A", "Baseline", "the control", -1.0, 398.0, 0),
+                      book("C", "Risk-managed", "equal weight, trailing stop",
+                           -1.2, 402.0, 2)],
+            "bench_curve": [100.0, 100.2, 100.5], "span": ["2026-09-21", "2026-09-23"],
+            "detail": {
+                "A": {"holdings": [hold("ONSCREEN", False)], "trades": [],
+                      "uses_stops": False, "uses_conviction": False,
+                      "uses_regime": False},
+                "C": {"holdings": [hold("ONSCREEN", True)], "trades": [
+                          {"date": "2026-09-21", "ticker": "ONSCREEN", "side": "buy",
+                           "shares": 100.0, "px": 10.0, "cost": 4.0,
+                           "why": "rebalance"}],
+                      "uses_stops": True, "uses_conviction": False,
+                      "uses_regime": False}},
+            "assumptions": {"capital": 100000.0, "cost_bps": 40.0,
+                            "stop_slippage_bps": 75.0, "cadence": "weekly"}}
+
+    def _page(self, key):
+        return pipeline.render_book_page(
+            key, self._pf(), "today", {"portfolios", "index"}, {"ONSCREEN"})
+
+    def test_the_rules_printed_are_the_rules_that_book_runs(self):
+        a, c = self._page("A"), self._page("C")
+        self.assertIn("no stop", a)
+        self.assertNotIn("trailing stop", a.split("</ul>")[0])
+        self.assertIn("trailing stop", c.split("</ul>")[0])
+
+    def test_stop_columns_are_filled_for_a_stop_book_and_empty_for_others(self):
+        self.assertIn("$8.62", self._page("C"))
+        self.assertNotIn("$8.62", self._page("A"))
+        self.assertIn("runs no stop", self._page("A"))
+
+    def test_a_three_day_cost_is_not_annualised_into_a_rate(self):
+        # one rebalance in three days annualises to ~48%/yr, which is an
+        # artefact, not a rate anyone pays
+        for key in "AC":
+            html = self._page(key)
+            self.assertNotIn("48.5%/yr", html)
+            self.assertIn("% spent", html)
+
+    def test_it_states_the_gap_against_the_control_even_when_unflattering(self):
+        html = self._page("C")
+        self.assertIn("Against the control", html)
+        self.assertIn("-0.20%", html)                 # C is behind A
+        self.assertIn("noise", html)                  # and says so
+
+    def test_the_control_says_it_is_the_control(self):
+        self.assertIn("This is the control", self._page("A"))
+
+    def test_it_marks_portfolios_as_the_current_tab_not_a_seventh_one(self):
+        html = self._page("A")
+        self.assertIn('<span class="tab cur" aria-current="page">Portfolios', html)
+        self.assertIn('href="../index.html"', html)
+
+    def test_company_links_reach_up_out_of_the_book_directory(self):
+        self.assertIn('href="../co/ONSCREEN.html"', self._page("C"))
+
+    def test_a_book_with_no_summary_row_gets_no_page(self):
+        self.assertIsNone(pipeline.render_book_page(
+            "Z", self._pf(), "today", {"portfolios"}, set()))
+
+
 class CompanyLinkTests(unittest.TestCase):
     """Company pages exist only for the CURRENT screen, but the books hold
     names after they leave it — and trades and holdings both print tickers.

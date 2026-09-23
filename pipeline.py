@@ -885,6 +885,12 @@ table.screen td.path .spark { height: 26px; margin: 0; }
 .cofv { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 17px;
   font-variant-numeric: tabular-nums; }
 .cofoot { font-size: 12.5px; color: var(--muted); max-width: 82ch; margin: 10px 0 26px; }
+.rules { list-style: none; margin: 14px 0 4px; font-size: 13.5px;
+  color: var(--ink2); max-width: 80ch; }
+.rules li { padding: 3px 0 3px 16px; position: relative; }
+.rules li::before { content: "·"; position: absolute; left: 3px;
+  color: var(--accent); font-weight: 700; }
+
 .expl { border-top: 1px solid var(--hair); padding: 12px 0 13px; max-width: 84ch; }
 .explhead { display: flex; align-items: baseline; gap: 6px 14px; flex-wrap: wrap; }
 .expltag { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 13px;
@@ -1038,6 +1044,23 @@ def co_link(ticker, prefix="co/", known=None):
     if known is not None and t not in known:
         return esc(t)
     return f'<a href="{prefix}{t}.html">{esc(t)}</a>'
+
+
+FRICTION_MIN_DAYS = 45          # below this an annualised rate is an artefact
+
+
+def fmt_friction(b):
+    """Cost of trading, as a rate only once a rate means something.
+
+    friction_yr scales the cost paid so far up to a full year. Three days after
+    the books opened that turns one rebalance into '48%/yr' — a number nobody
+    will ever pay, printed next to real ones. Until the record is long enough,
+    report what was actually spent."""
+    spent = ((b.get("costs_paid") or 0.0)
+             / max(portfolio.START_CAPITAL, 1) * 100)
+    if (b.get("days") or 0) < FRICTION_MIN_DAYS:
+        return f'{spent:.2f}% spent', f'over {b.get("days", 0)} days'
+    return f'{b["friction_yr"]:.1f}%/yr', "annualised"
 
 
 def _fmt_mcap(musd):
@@ -1316,14 +1339,16 @@ def render_portfolio(pf, known=None):
         'directly. <strong>Watch the friction column '
         'before the return column</strong> — this screen turns over its holdings '
         'many times a year, and at that rate the cost of trading may be the whole '
-        'story rather than a rounding error. <strong>Book A is the control</strong> '
+        'story rather than a rounding error. Each book&rsquo;s name links to its '
+        'own page — what it holds, at what size, and where every stop sits. '
+        '<strong>Book A is the control</strong> '
         '— if the cleverer books do not beat it, the cleverness is not earning its '
         'keep. Simulated results still omit what hurts real traders most: the '
         'market moving against a real order, taxes, and the nerve to follow a '
         'system through a losing stretch.</div>')
     head = ('<tr><th class="l">Book</th><th class="l">Rules</th><th class="l">Path</th>'
             '<th>Value</th>'
-            '<th>Return</th><th>vs IWO</th><th>Worst dip</th><th>Friction/yr</th>'
+            '<th>Return</th><th>vs IWO</th><th>Worst dip</th><th>Cost of trading</th>'
             '<th>Stops</th><th>Held</th></tr>')
     # one vertical scale across every path in the column, benchmark included
     allpts = [v for b in pf["books"] for v in (b.get("curve") or [])]
@@ -1339,13 +1364,15 @@ def render_portfolio(pf, known=None):
         spark = spark_svg(b.get("curve") or [],
                           f'{b["label"]} book, value over time', lo, hi)
         rows.append(
-            f'<tr><td class="l tick">{esc(b["key"])} {esc(b["label"])}</td>'
+            f'<tr><td class="l tick">'
+            f'<a href="book/{esc(b["key"])}.html">{esc(b["key"])} '
+            f'{esc(b["label"])}</a></td>'
             f'<td class="l">{esc(b["note"])}</td>'
             f'<td class="path">{spark or "&mdash;"}</td>'
             f'<td>${b["value"]:,.0f}</td>'
             f'<td class="{delta_class(b["ret"])}">{b["ret"]:+.2f}%</td>'
             f'{exc_td}<td>{b["max_drawdown"]:+.1f}%</td>'
-            f'<td class="down">{b["friction_yr"]:.1f}%</td>'
+            f'<td class="down">{fmt_friction(b)[0]}</td>'
             f'<td>{b["stops_hit"]}</td><td>{b["positions"]}</td></tr>')
     bench_spark = spark_svg(pf.get("bench_curve") or [],
                             "Russell 2000 Growth ETF over the same period", lo, hi)
@@ -1761,6 +1788,160 @@ def render_changes(data, known=None):
             'actually worth.</div>')
     return "".join(parts)
 
+
+def render_book_page(key, pf, date_line, sections, known=None):
+    """One simulated book in full: what it holds, at what size, where each stop
+    sits, and what it has actually done.
+
+    Books live one directory down, so every link out of here needs `../`. The
+    tab bar marks Portfolios as current — a book is a part of that section, not
+    a seventh tab."""
+    books = {b["key"]: b for b in (pf.get("books") or [])}
+    b = books.get(key)
+    det = ((pf.get("detail") or {}).get(key)) or {}
+    if not b:
+        return None
+    ctrl = books.get("A")
+    up = "../"
+
+    rules = []
+    if det.get("uses_conviction"):
+        rules.append("sized by <strong>rank</strong>, from 1.5&times; equal "
+                     "weight at the top of the screen down to 0.6&times; at the "
+                     "bottom")
+    else:
+        rules.append("<strong>equal weight</strong> — every holding the same "
+                     "size, whatever its rank")
+    if det.get("uses_stops"):
+        rules.append("a <strong>trailing stop</strong> at 3&times; each name&rsquo;s "
+                     "own weekly volatility, checked every day")
+    else:
+        rules.append("<strong>no stop</strong> — it holds through everything, "
+                     "on purpose")
+    if det.get("uses_regime"):
+        rules.append("<strong>exposure cut</strong> when the small-cap tape "
+                     "falls, down to 65% invested in a correction")
+    else:
+        rules.append("<strong>always fully invested</strong>, whatever the tape "
+                     "is doing")
+
+    head = (f'<a class="backlink" href="{up}portfolios.html">&larr; all five '
+            f'books</a>'
+            f'<h1 class="co-tick">Book {esc(key)}</h1>'
+            f'<p class="co-name">{esc(b["label"])} '
+            f'<span class="flag offer">SIMULATED</span></p>'
+            f'<p class="co-sub">{esc(b["note"])} · opened '
+            f'{esc(b.get("started") or "—")}</p>'
+            '<ul class="rules">' + "".join(f'<li>{r}</li>' for r in rules) +
+            '</ul>')
+
+    exc = b.get("excess")
+    facts = [
+        ("Value", f'${b["value"]:,.0f}'),
+        ("Return", f'{b["ret"]:+.2f}%'),
+        ("vs the index", f'{exc:+.2f}%' if exc is not None else "—"),
+        ("Worst dip", f'{b["max_drawdown"]:+.1f}%'),
+        ("Cost of trading", fmt_friction(b)[0]),
+        ("Stops fired", f'{b["stops_hit"]}' if det.get("uses_stops") else "n/a"),
+        ("Holdings", f'{b["positions"]}'),
+        ("Days running", f'{b["days"]}'),
+    ]
+    facts_html = "".join(f'<div><div class="trl">{k}</div>'
+                         f'<div class="cofv">{v}</div></div>' for k, v in facts)
+
+    chart = equity_chart({"books": [b], "bench_curve": pf.get("bench_curve"),
+                          "span": pf.get("span")})
+
+    # how it differs from the control, stated as the only question that matters
+    if ctrl and key != "A":
+        gap = b["ret"] - ctrl["ret"]
+        cost_gap = ((b.get("costs_paid") or 0) - (ctrl.get("costs_paid") or 0))
+        verdict = (
+            f'<div class="note-box"><strong>Against the control: '
+            f'{gap:+.2f}%.</strong> Book A runs the same screen with none of '
+            f'this book&rsquo;s rules, and is {ctrl["ret"]:+.2f}%. This book has '
+            f'spent ${b.get("costs_paid", 0):,.0f} on trading against the '
+            f'control&rsquo;s ${ctrl.get("costs_paid", 0):,.0f} — '
+            f'${abs(cost_gap):,.0f} {"more" if cost_gap > 0 else "less"}. '
+            f'The rules have to beat '
+            f'the control by more than they cost, and after {b["days"]} day'
+            f'{"s" if b["days"] != 1 else ""} this number is noise. It is here so '
+            f'that it cannot be quietly dropped later if it turns out '
+            f'unflattering.</div>')
+    else:
+        verdict = ('<div class="note-box"><strong>This is the control.</strong> '
+                   'It runs the screen with no cleverness at all: equal weight, '
+                   'no stop, always fully invested. Every other book has to beat '
+                   'it to justify its extra rules and extra trading. If none of '
+                   'them do, the honest conclusion is that the overlays are not '
+                   'worth running.</div>')
+
+    rows = []
+    for h in det.get("holdings") or []:
+        if det.get("uses_stops") and h.get("stop_px") is not None:
+            stop = (f'<td>${h["stop_px"]:,.2f}</td>'
+                    f'<td class="{delta_class(h["room_pct"])}">'
+                    f'{h["room_pct"]:+.0f}%</td>')
+        else:
+            stop = '<td>—</td><td>—</td>'
+        rows.append(
+            f'<tr><td class="l tick">{co_link(h["ticker"], up + "co/", known)}</td>'
+            f'<td>{h["weight"]:.2f}%</td><td>{h["shares"]:,.0f}</td>'
+            f'<td>${h["entry_px"]:,.2f}</td><td>${h["px"]:,.2f}</td>'
+            f'<td class="{delta_class(h["ret"])}">{h["ret"]:+.1f}%</td>'
+            f'{stop}<td>${h["value"]:,.0f}</td></tr>')
+    holdings = ""
+    if rows:
+        holdings = (
+            '<h2 class="section-head">What it holds</h2>'
+            '<div class="tblwrap"><table class="screen">'
+            '<tr><th class="l">Ticker</th><th>Weight</th><th>Shares</th>'
+            '<th>Bought at</th><th>Now</th><th>Return</th><th>Stop at</th>'
+            '<th>Room</th><th>Value</th></tr>'
+            f'{"".join(rows)}</table></div>'
+            '<p class="cofoot"><em>Bought at</em> is the average price paid — a '
+            'position topped up later carries a blended cost, not the price of '
+            'its first share. <em>Room</em> is how far the price can fall before '
+            'the stop fires, measured from its highest close since purchase, so '
+            'it shrinks on the way down and never widens on the way up. '
+            + ('' if det.get("uses_stops") else
+               'This book runs no stop, so those two columns are empty by '
+               'design rather than for want of data. ')
+            + 'All of it is simulated.</p>')
+
+    trades = ""
+    if det.get("trades"):
+        lis = "".join(
+            f'<div class="item"><strong class="{"down" if t["side"] == "sell" else ""}">'
+            f'{esc(t["side"].upper())}</strong> '
+            f'{co_link(t["ticker"], up + "co/", known)}'
+            f'<div class="meta">{esc(t["date"])} · {t["shares"]:,.0f} sh @ '
+            f'${t["px"]:,.2f} · cost ${t.get("cost", 0):,.2f}'
+            f'{" · " + esc(t["why"]) if t.get("why") else ""}</div></div>'
+            for t in det["trades"][:20])
+        trades = (f'<h2 class="section-head">What it has done</h2>{lis}'
+                  '<p class="cofoot">This book&rsquo;s own trades, newest first, '
+                  'each with the friction it paid. Every one of these is '
+                  'hypothetical.</p>')
+
+    body = (f'<div class="wrap co">{masthead_html(date_line)}'
+            f'{tab_bar("portfolios", sections, up)}'
+            f'{head}<div class="cogrid">{facts_html}</div>{chart}{verdict}'
+            f'{holdings}{trades}'
+            f'<nav class="pager"><a href="{up}portfolios.html">&larr; all five '
+            f'books</a></nav>'
+            '<footer><p><strong>Not investment advice.</strong> This book is a '
+            'simulation. No money is invested, no order was ever placed, and '
+            'hypothetical results omit what hurts real traders most: the market '
+            'moving against a real order, taxes, and the nerve to follow a system '
+            f'through a losing stretch. Generated {esc(date_line)}.</p>'
+            f'</footer></div>')
+    return (f'<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">'
+            f'<meta name="viewport" content="width=device-width, initial-scale=1">'
+            f'<meta http-equiv="Content-Security-Policy" content="{CSP}">'
+            f'<title>Book {esc(key)}, {esc(b["label"])} — Basis Points</title>'
+            f'{FONTS_LINK}<style>{CSS}</style></head><body>{body}</body></html>')
+
 def build_sections(data):
     """Build each section's inner HTML, keyed by the page it will become.
 
@@ -2158,6 +2339,35 @@ def build_data():
     return data
 
 
+def write_book_pages(data):
+    """One page per simulated book, under site/book/."""
+    pf = data.get("portfolio") or {}
+    if not pf.get("books"):
+        return 0
+    date_line = datetime.fromisoformat(
+        data["generated_at"]).astimezone().strftime("%A, %B %-d, %Y · %-I:%M %p %Z")
+    sections = build_sections(data)
+    known = {t for t in (safe_ticker(r.get("ticker"))
+                         for r in ((data.get("smallcap") or {}).get("screen") or []))
+             if t}
+    bdir = SITE / "book"
+    bdir.mkdir(exist_ok=True)
+    written = set()
+    for b in pf["books"]:
+        key = b.get("key")
+        if not (isinstance(key, str) and key.isalnum() and len(key) <= 3):
+            continue
+        html = render_book_page(key, pf, date_line, sections, known)
+        if html:
+            (bdir / f"{key}.html").write_text(html, encoding="utf-8")
+            written.add(f"{key}.html")
+    # a retired book must not leave a page the tables no longer link to
+    for stale in bdir.glob("*.html"):
+        if stale.name not in written:
+            stale.unlink()
+    return len(written)
+
+
 def write_company_pages(data):
     """One page per company on today's screen, under site/co/.
 
@@ -2229,6 +2439,12 @@ def main():
                 stale.unlink()
 
     try:
+        n_bk = write_book_pages(data)
+    except Exception as e:  # noqa: BLE001 — a book page must not break the site
+        n_bk = 0
+        print(f"  warn: book pages skipped: {_scrub(e)}", file=sys.stderr)
+
+    try:
         n_co = write_company_pages(data)
     except Exception as e:  # noqa: BLE001 — never let a detail page break the site
         n_co = 0
@@ -2236,6 +2452,7 @@ def main():
 
     s = data.get("stats", {})
     s["company_pages"] = n_co
+    s["book_pages"] = n_bk
     s["pages"] = n_pages
     # A render failure leaves the site frozen at its last good version while
     # everything else succeeds — the job's own summary line said "ok" through

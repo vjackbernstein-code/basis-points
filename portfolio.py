@@ -345,6 +345,15 @@ def rebalance(book, spec, cache, screen, today):
         book["cash"] -= shares * px + cost
         book["costs_paid"] += cost
         if held:
+            # Re-average the cost basis when ADDING. Leaving entry_px at the
+            # first purchase overstates every later return: buy at 10, top up
+            # at 20, and a position sitting at 20 reports +100% while it has in
+            # fact made nothing on the second half. Selling part of a position
+            # leaves the basis alone — the shares that remain keep theirs.
+            if shares > 0:
+                total = held["shares"] + shares
+                held["entry_px"] = ((held["shares"] * held["entry_px"]
+                                     + shares * px) / total) if total else px
             held["shares"] += shares
             held["last_px"] = px
             if held["shares"] <= 1e-9:
@@ -555,7 +564,53 @@ def summarize(led=None):
             if px:
                 weights.setdefault(tick, {})[key] = round(
                     pos["shares"] * px / val * 100, 2)
+    # per-book detail: what each book actually holds, at what size, with the
+    # stop it is actually running. The summary rows say how the books DIFFER;
+    # this says what each one IS.
+    detail = {}
+    cache = None
+    for key, spec in STRATEGIES.items():
+        bk = led["books"].get(key) or {}
+        if not bk.get("started"):
+            continue
+        val = book_value(bk)
+        rows = []
+        for tick, pos in sorted((bk.get("positions") or {}).items()):
+            px = pos.get("last_px") or pos.get("entry_px")
+            if not px:
+                continue
+            if spec["stop"]:
+                if cache is None:
+                    cache = smallcap.load_cache()
+                dist = stop_distance(cache, tick)
+                peak = pos.get("peak_px") or px
+                stop_px, room = peak * (1 - dist), (px / (peak * (1 - dist)) - 1) * 100
+            else:
+                dist = stop_px = room = None
+            rows.append({
+                "ticker": tick, "shares": round(pos["shares"], 2),
+                "entry_px": round(pos["entry_px"], 2), "px": round(px, 2),
+                "entry_date": pos.get("entry_date"),
+                "value": round(pos["shares"] * px, 2),
+                "weight": round(pos["shares"] * px / val * 100, 2) if val else 0.0,
+                "ret": round((px / pos["entry_px"] - 1) * 100, 2)
+                       if pos.get("entry_px") else 0.0,
+                "peak_px": round(pos.get("peak_px") or px, 2),
+                "stop_pct": round(dist * 100, 1) if dist is not None else None,
+                "stop_px": round(stop_px, 2) if stop_px is not None else None,
+                "room_pct": round(room, 1) if room is not None else None,
+            })
+        rows.sort(key=lambda r: -r["value"])
+        detail[key] = {
+            "holdings": rows,
+            "trades": sorted(bk.get("trades") or [], key=lambda t: t["date"],
+                             reverse=True)[:30],
+            "uses_stops": bool(spec["stop"]),
+            "uses_conviction": spec["sizing"] == "score",
+            "uses_regime": bool(spec["regime"]),
+        }
     return {
+        "detail": detail,
         "status": "running" if books else "not started",
         "v": led.get("v"),
         "books": books,

@@ -341,6 +341,43 @@ class AuditedHonestyTests(PaperTestCase):
         self.assertEqual(portfolio.summarize()["status"], "not started")
 
 
+class CostBasisTests(PaperTestCase):
+    """A holding's displayed return is only as honest as its cost basis."""
+
+    def test_topping_up_re_averages_the_cost_basis(self):
+        # two names at 10, then one leaves: the survivor's target weight
+        # doubles and it is topped up at whatever it now costs
+        portfolio.update(cache_with({"A1": 10.0, "A2": 10.0}),
+                         screen_of(["A1", "A2"]))
+        before = portfolio.load_ledger()["books"]["A"]["positions"]["A1"]
+        self.assertAlmostEqual(before["entry_px"], 10.0, places=6)
+        held = before["shares"]
+        self.advance(7)
+        portfolio.update(cache_with({"A1": 20.0}), screen_of(["A1"]))
+        pos = portfolio.load_ledger()["books"]["A"]["positions"]["A1"]
+        self.assertGreater(pos["shares"], held, "A1 should have been topped up")
+        self.assertGreater(pos["entry_px"], 10.0,
+                           "basis must rise toward the price paid for the top-up")
+        self.assertLess(pos["entry_px"], 20.0,
+                        "but not all the way — the first shares cost 10")
+
+    def test_a_holding_bought_once_keeps_the_price_it_was_bought_at(self):
+        portfolio.update(cache_with({"A1": 10.0}), screen_of(["A1"]))
+        self.assertAlmostEqual(
+            portfolio.load_ledger()["books"]["A"]["positions"]["A1"]["entry_px"],
+            10.0, places=6)
+
+    def test_a_topped_up_holding_does_not_report_a_profit_it_never_made(self):
+        # buy at 10, top up at 20, sit at 20: the old code showed +100%
+        portfolio.update(cache_with({"A1": 10.0, "A2": 10.0}),
+                         screen_of(["A1", "A2"]))
+        self.advance(7)
+        portfolio.update(cache_with({"A1": 20.0}), screen_of(["A1"]))
+        pos = portfolio.load_ledger()["books"]["A"]["positions"]["A1"]
+        shown = (20.0 / pos["entry_px"] - 1) * 100
+        self.assertLess(shown, 100.0)
+
+
 class ProgressTrackingTests(PaperTestCase):
     """The ledger has to publish enough for a reader to see where the
     experiment has got to — not just where it currently stands."""
