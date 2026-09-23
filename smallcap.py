@@ -109,6 +109,16 @@ MODEL_VERSION = "v3.1"                  # stamped on log entries; the track reco
 HORIZONS = (("1w", 6, 9, 7), ("4w", 25, 31, 28))
 MIN_PRICEABLE = 20                      # names a cohort must still be able to
                                         # price for its reading to be trusted
+# What a published name is assumed to have lost when it vanishes from the data
+# entirely. A convention, not a measurement — but every alternative is worse:
+# excluding it silently biases the record UPWARD exactly when a holding fails,
+# and in small caps failure is the usual reason a name disappears.
+DELIST_ASSUMED_LOSS = 0.60
+# Carrying stale prices keeps names in the average, but a reading built mostly
+# from an old sweep is re-measuring yesterday. Require this many genuinely
+# fresh prices before freezing one. Skipping is safe: the horizon window is
+# several days wide, so the reading is simply retried tomorrow.
+MIN_FRESH = 15
 # The freeze, stated as numbers the page can render rather than only as prose:
 # scoring does not change until the live record holds this many INDEPENDENT
 # (non-overlapping) readings. The total reading count is always larger and is
@@ -803,16 +813,34 @@ def _cohort_excess(cache, entry, bench_now):
     b0 = (entry.get("bench") or {}).get("iwo")
     if not b0 or not bench_now:
         return None, 0
-    rets, dropped = [], 0
+    rets, carried, gone, fresh = [], 0, 0, 0
     for tick, _score, px0 in entry.get("pub", []):
+        if not px0:
+            continue
         q = cache["quotes"].get(tick) or {}
-        if px0 and q.get("px") and _age_h(q.get("t")) < 30:
-            rets.append((q["px"] / px0 - 1) * 100)
+        px = q.get("px")
+        if px and _age_h(q.get("t")) < 30:
+            rets.append((px / px0 - 1) * 100)
+            fresh += 1
+        elif px:
+            # a stale quote is a COVERAGE gap, not an outcome: the budget did
+            # not get round to refreshing this name. Carry its last known
+            # price rather than deleting the name from the average.
+            rets.append((px / px0 - 1) * 100)
+            carried += 1
         else:
-            dropped += 1
-    if len(rets) < MIN_PRICEABLE:
-        return None, dropped
-    return sum(rets) / len(rets) - (bench_now / b0 - 1) * 100, dropped
+            # No price at all, and the company has left the profiled universe:
+            # treat it as the loss it almost certainly is. Dropping it instead
+            # would quietly lift the average every time a holding disappeared,
+            # and in small caps disappearing is overwhelmingly a downside
+            # event — delisting, failure, a collapse into a shell. The precise
+            # figure is a convention; silently excluding it is a lie.
+            rets.append(-DELIST_ASSUMED_LOSS * 100)
+            gone += 1
+    if len(rets) < MIN_PRICEABLE or fresh < MIN_FRESH:
+        return None, {"carried": carried, "gone": gone, "priced": len(rets)}
+    return (sum(rets) / len(rets) - (bench_now / b0 - 1) * 100,
+            {"carried": carried, "gone": gone, "priced": len(rets)})
 
 
 def snapshot_readings(cache, log):
@@ -838,11 +866,11 @@ def snapshot_readings(cache, log):
             key = f"read_{horizon}"
             if key in entry or not (lo <= age <= hi):
                 continue
-            excess, dropped = _cohort_excess(cache, entry, bench_now)
+            excess, counts = _cohort_excess(cache, entry, bench_now)
             if excess is None:
                 continue
             entry[key] = {"excess": round(excess, 2), "age": age,
-                          "dropped": dropped}
+                          "dropped": 0, **counts}
             changed = True
     if changed:
         save_log(log)
@@ -860,17 +888,28 @@ def evaluate(cache, log):
                if log[day].get("v") == MODEL_VERSION and key in log[day]]
         if not got:
             continue
-        indep, last = 0, None
-        for day, _r in got:
+        indep, last, indep_vals = 0, None, []
+        for day, r in got:
             d = datetime.fromisoformat(day).date()
             if last is None or (d - last).days >= gap:
                 indep += 1
+                indep_vals.append(r["excess"])
                 last = d
         out[horizon] = {
             "excess": round(sum(r["excess"] for _d, r in got) / len(got), 2),
             "days": len(got),
             "indep": indep,
             "dropped": sum(r.get("dropped", 0) for _d, r in got),
+            "carried": sum(r.get("carried", 0) for _d, r in got),
+            "gone": sum(r.get("gone", 0) for _d, r in got),
+            # every frozen reading, so the spread can be measured rather than
+            # only the mean — a mean with no spread cannot be judged. The
+            # INDEPENDENT subset is the one the decision rule uses: overlapping
+            # cohorts share most of their names and most of their week, so
+            # counting them all would shrink the error bar on evidence that
+            # is not actually there.
+            "values": [r["excess"] for _d, r in got],
+            "indep_values": indep_vals,
         }
     return out
 

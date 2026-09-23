@@ -106,7 +106,12 @@ REGIME_EXPOSURE = {              # fraction of the book invested, by tape
 
 # Do not trade a name whose weight has merely drifted. Pure cost control, no
 # return forecast attached.
-NO_TRADE_BAND = 0.25             # relative deviation from target
+NO_TRADE_BAND = 0.25
+# How long a stopped name is barred from being bought back. A stop that sells
+# on Monday and re-buys on the next rebalance has achieved nothing except two
+# sets of costs, and would make books C and E look worse than the control for
+# a reason that is purely mechanical.
+STOP_COOLOFF_DAYS = 21             # relative deviation from target
 
 STRATEGIES = {
     "A": {"label": "Baseline", "sizing": "equal", "stop": None, "regime": False,
@@ -267,6 +272,10 @@ def _sell(book, tick, px, today, extra_bps=0.0, reason="rebalance"):
     cost = gross * (COST_BPS + extra_bps) / 10_000
     book["cash"] += gross - cost
     book["costs_paid"] += cost
+    # realised profit against the AVERAGE cost of the shares sold, so that
+    # attribution reconciles to the book's actual value rather than approximating it
+    book["realised_pl"] = (book.get("realised_pl", 0.0)
+                           + pos["shares"] * (px - pos["entry_px"]))
     book["trades"].append({"date": today, "ticker": tick, "side": "sell",
                            "shares": round(pos["shares"], 4), "px": round(px, 4),
                            "cost": round(cost, 2), "why": reason})
@@ -304,9 +313,24 @@ def apply_stops(book, spec, cache, today):
         if px <= peak * (1 - dist):
             _sell(book, tick, px, today, extra_bps=STOP_SLIPPAGE_BPS, reason="stop")
             book["stops_hit"] += 1
+            # Remember it. Without this the next rebalance sees the name still
+            # on the screen and buys it straight back — paying the exit, the
+            # stop slippage and the re-entry, roughly 1.5% round trip, to end
+            # up holding exactly what it held before. That is not a stop; it
+            # is a fee.
+            book.setdefault("stopped", {})[tick] = today
 
 
 def rebalance(book, spec, cache, screen, today):
+    # a stopped name is barred from re-entry for STOP_COOLOFF_DAYS
+    cool = book.get("stopped") or {}
+    if cool:
+        cutoff = (datetime.fromisoformat(today).date()
+                  - timedelta(days=STOP_COOLOFF_DAYS))
+        cool = {t: d for t, d in cool.items()
+                if datetime.fromisoformat(d).date() > cutoff}
+        book["stopped"] = cool
+    screen = [r for r in screen if r["ticker"] not in cool]
     weights = target_weights(screen, spec)
     priced = {t: _price(cache, t) for t in weights}
     weights = {t: w for t, w in weights.items() if priced.get(t)}
@@ -492,6 +516,56 @@ def _curve(vals, base, cap=150):
     return [round(v / base * 100, 3) for v in vals]
 
 
+def attribution(book, top_n=3):
+    """Where a book's return actually came from.
+
+    This is arithmetic, not narrative. Every holding's contribution, plus what
+    has been realised, minus what trading cost, must equal the book's change in
+    value — and the residual is published so that if it ever stops adding up,
+    the failure is visible instead of quietly absorbed.
+
+    The point of it is `ex_top`: a book that beat the index because of three
+    names has not demonstrated a screen that works, it has demonstrated three
+    names. Without this the December verdict cannot tell those apart."""
+    if not book.get("started"):
+        return None
+    rows = []
+    for tick, p in (book.get("positions") or {}).items():
+        px = p.get("last_px") or p.get("entry_px")
+        if not px or not p.get("entry_px"):
+            continue
+        rows.append({"ticker": tick,
+                     "pl": round(p["shares"] * (px - p["entry_px"]), 2)})
+    rows.sort(key=lambda r: -r["pl"])
+    unreal = sum(r["pl"] for r in rows)
+    realised = book.get("realised_pl", 0.0)
+    costs = book.get("costs_paid", 0.0)
+    explained = unreal + realised - costs
+    actual = book_value(book) - START_CAPITAL
+    gains = [r for r in rows if r["pl"] > 0]
+    top = gains[:top_n]
+    # the same book with its best few names removed entirely
+    ex_top = explained - sum(r["pl"] for r in top)
+    for r in rows:
+        r["pct"] = round(r["pl"] / START_CAPITAL * 100, 3)
+    return {
+        "contributors": rows[:10],
+        "detractors": rows[-5:][::-1] if len(rows) > 10 else [],
+        "unrealised_pct": round(unreal / START_CAPITAL * 100, 2),
+        "realised_pct": round(realised / START_CAPITAL * 100, 2),
+        "cost_pct": round(-costs / START_CAPITAL * 100, 2),
+        "total_pct": round(explained / START_CAPITAL * 100, 2),
+        "actual_pct": round(actual / START_CAPITAL * 100, 2),
+        "residual_pct": round((explained - actual) / START_CAPITAL * 100, 4),
+        "reconciles": abs(explained - actual) < max(1.0, abs(actual) * 1e-6),
+        "top_n": len(top),
+        "top_pct": round(sum(r["pl"] for r in top) / START_CAPITAL * 100, 2),
+        "ex_top_pct": round(ex_top / START_CAPITAL * 100, 2),
+        "winners": sum(1 for r in rows if r["pl"] > 0),
+        "losers": sum(1 for r in rows if r["pl"] < 0),
+    }
+
+
 def _group_trades(led, limit=14):
     """Trades, grouped across the books that made them.
 
@@ -602,6 +676,7 @@ def summarize(led=None):
             })
         rows.sort(key=lambda r: -r["value"])
         detail[key] = {
+            "attribution": attribution(bk),
             "holdings": rows,
             "trades": sorted(bk.get("trades") or [], key=lambda t: t["date"],
                              reverse=True)[:30],

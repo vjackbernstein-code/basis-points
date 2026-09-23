@@ -428,20 +428,50 @@ class TrackRecordTests(SmallcapTestCase):
         self.assertEqual(out["1w"]["days"], 2)
         self.assertEqual(out["4w"]["days"], 1)
 
-    def test_evaluate_skips_readings_with_fewer_than_twenty_priceable_names(self):
+    def test_a_reading_waits_while_most_of_its_prices_are_stale(self):
+        # skipping is safe — the horizon window is several days wide, so the
+        # reading is simply retried tomorrow rather than lost
         names = self._names(25)
         cache = self._priceable_cache(names)
-        for t in names[:6]:                       # 19 priceable names left
-            cache["quotes"][t]["t"] = hours_ago(40)   # stale beyond 30h
+        for t in names[:11]:                      # only 14 fresh, below MIN_FRESH
+            cache["quotes"][t]["t"] = hours_ago(40)
         log = {days_ago(7): log_entry(names)}
         smallcap.snapshot_readings(cache, log)
         self.assertEqual(smallcap.evaluate(cache, log), {})
 
-        cache["quotes"][names[0]]["t"] = hours_ago(1)  # back to 20
+        cache["quotes"][names[0]]["t"] = hours_ago(1)      # 15 fresh
         smallcap.snapshot_readings(cache, log)
         out = smallcap.evaluate(cache, log)
         self.assertEqual(out["1w"]["days"], 1)
-        self.assertEqual(out["1w"]["dropped"], 5)
+        self.assertEqual(out["1w"]["carried"], 10)         # the rest carried,
+        self.assertEqual(out["1w"]["gone"], 0)             # none discarded
+
+    def test_a_name_that_vanishes_stays_in_the_average_as_a_loss(self):
+        # the survivorship leak: excluding a vanished name lifts the average
+        # exactly when a holding fails
+        names = self._names(25)
+        cache = self._priceable_cache(names)
+        cache["quotes"].pop(names[0])                      # gone entirely
+        log = {days_ago(7): log_entry(names)}
+        smallcap.snapshot_readings(cache, log)
+        out = smallcap.evaluate(cache, log)
+        self.assertEqual(out["1w"]["gone"], 1)
+
+        clean = self._priceable_cache(names)
+        clean_log = {days_ago(7): log_entry(names)}
+        smallcap.snapshot_readings(clean, clean_log)
+        intact = smallcap.evaluate(clean, clean_log)
+        self.assertLess(out["1w"]["excess"], intact["1w"]["excess"],
+                        "a vanished name must drag the reading DOWN, not "
+                        "disappear from it")
+
+    def test_every_frozen_reading_is_published_so_the_spread_can_be_seen(self):
+        names = self._names(25)
+        cache = self._priceable_cache(names)
+        log = {days_ago(7): log_entry(names)}
+        smallcap.snapshot_readings(cache, log)
+        out = smallcap.evaluate(cache, log)
+        self.assertEqual(out["1w"]["values"], [out["1w"]["excess"]])
 
     def _frozen(self, names, age, excess):
         return dict(log_entry(names),

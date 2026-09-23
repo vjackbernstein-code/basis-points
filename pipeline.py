@@ -36,6 +36,7 @@ from email.utils import parsedate_to_datetime
 from pathlib import Path
 from xml.etree import ElementTree as ET
 
+import decision
 import portfolio
 import smallcap
 
@@ -1927,6 +1928,7 @@ def render_book_page(key, pf, date_line, sections, known=None):
     body = (f'<div class="wrap co">{masthead_html(date_line)}'
             f'{tab_bar("portfolios", sections, up)}'
             f'{head}<div class="cogrid">{facts_html}</div>{chart}{verdict}'
+            f'{render_attribution(det.get("attribution"))}'
             f'{holdings}{trades}'
             f'<nav class="pager"><a href="{up}portfolios.html">&larr; all five '
             f'books</a></nav>'
@@ -1941,6 +1943,110 @@ def render_book_page(key, pf, date_line, sections, known=None):
             f'<meta http-equiv="Content-Security-Policy" content="{CSP}">'
             f'<title>Book {esc(key)}, {esc(b["label"])} — Basis Points</title>'
             f'{FONTS_LINK}<style>{CSS}</style></head><body>{body}</body></html>')
+
+
+def render_decision(data):
+    """The pre-registered rule, and where it currently stands.
+
+    Rendered on every build rather than written up in December. A rule that
+    only appears on the day it is applied is a rule that can be adjusted on
+    the day it is applied."""
+    try:
+        a = decision.assess(data)
+    except Exception:  # noqa: BLE001 — never let the rule break the page
+        return ""
+    rows = []
+    for g in a["gates"]:
+        if g.get("passed"):
+            mark, cls, state = "&#10003;", "up", "met"
+        elif g.get("failed"):
+            mark, cls, state = "&#10007;", "down", "not met"
+        else:
+            mark, cls, state = "&#9675;", "", "too early to say"
+        if g["name"].startswith("A signal"):
+            got = (f'{g["n"]} of {decision.MIN_INDEP_1W} readings'
+                   + (f', mean {g["mean"]:+.2f}%' if g.get("mean") is not None else "")
+                   + (f', t = {g["t"]:.2f}' if g.get("t") is not None else ""))
+        elif g["name"].startswith("Survives"):
+            got = (f'best is book {esc(str(g.get("best")))} at '
+                   f'{g["excess"]:+.2f}%' if g.get("excess") is not None
+                   else "no book has a full reading yet")
+        else:
+            got = (f'book {esc(str(g.get("book")))} would be '
+                   f'{g["ex_top"]:+.2f}% against the index&rsquo;s '
+                   f'{g["bench"]:+.2f}%'
+                   if g.get("ex_top") is not None else "needs a running book")
+        rows.append(
+            f'<tr><td class="l"><span class="{cls}">{mark}</span> '
+            f'{esc(g["name"])}</td><td class="l">{esc(g["asks"])}</td>'
+            f'<td class="l">{got}</td><td class="l {cls}">{state}</td></tr>')
+
+    return (
+        '<h2 class="section-head">The December decision, decided in advance</h2>'
+        f'<div class="note-box"><strong>Written {esc(a["written_on"])}, to be '
+        f'applied {esc(a["review_date"])}.</strong> This rule was fixed while '
+        'the record was eight readings old and the books three days old — '
+        'before anyone knew how it would come out. That is the only time such a '
+        'rule can be written honestly. Without one, the review is a person '
+        'looking at a number they have already seen and deciding what it means, '
+        'which is how a project runs forever and never concludes anything. '
+        '<strong>No outcome below authorises real money.</strong> Twelve weeks '
+        'cannot tell a real edge from a lucky one, and saying so now prevents '
+        'the claim being made later.</div>'
+        '<div class="tblwrap"><table class="screen">'
+        '<tr><th class="l">Gate</th><th class="l">What it asks</th>'
+        '<th class="l">Where it stands</th><th class="l">Status</th></tr>'
+        f'{"".join(rows)}</table></div>'
+        f'<div class="note-box"><strong>As things stand: {esc(a["title"])}.</strong> '
+        f'{esc(a["body"])}</div>'
+        '<p class="cofoot">One clause matters more than the gates. <strong>A '
+        'disappointing result does not authorise changing the scoring rules.</strong> '
+        'The only outcomes are to continue unchanged or to stop. Tuning the model '
+        'after seeing its record is how a system is made to look good in hindsight, '
+        'and it is the exact thing the freeze exists to prevent — so it is ruled out '
+        'here, in writing, in advance. Rules may change only to fix a defect: '
+        'something that does not do what it is documented to do.</p>')
+
+
+def render_attribution(a, label=""):
+    """Where a book's return came from — arithmetic that must add up."""
+    if not a:
+        return ""
+    if not a.get("reconciles"):
+        note = (f'<div class="alarm" role="alert"><strong>These parts do not add '
+                f'up.</strong> They come to {a["total_pct"]:+.2f}% against an '
+                f'actual {a["actual_pct"]:+.2f}% — a gap of '
+                f'{a["residual_pct"]:+.4f}. Something is unaccounted for and the '
+                f'breakdown below should not be trusted until it is found.</div>')
+    else:
+        note = ""
+    parts = [("Holdings, unrealised", a["unrealised_pct"]),
+             ("Realised on sales", a["realised_pct"]),
+             ("Cost of trading", a["cost_pct"])]
+    bars = "".join(
+        f'<tr><td class="l">{esc(k)}</td>'
+        f'<td class="{delta_class(v)}">{v:+.2f}%</td></tr>' for k, v in parts)
+    top = "".join(
+        f'<span><b>{esc(r["ticker"])}</b> '
+        f'<em class="{delta_class(r["pct"])}">{r["pct"]:+.2f}%</em></span>'
+        for r in (a.get("contributors") or [])[:5])
+    return (
+        f'<h2 class="section-head">Where the return came from</h2>{note}'
+        '<div class="tblwrap"><table class="screen">'
+        '<tr><th class="l">Part</th><th>Of starting capital</th></tr>'
+        f'{bars}'
+        f'<tr><td class="l"><strong>Total</strong></td>'
+        f'<td class="{delta_class(a["total_pct"])}"><strong>'
+        f'{a["total_pct"]:+.2f}%</strong></td></tr></table></div>'
+        f'<p class="cofoot">{a["winners"]} holdings up, {a["losers"]} down. '
+        f'Best {a.get("top_n", 3)} contributed {a["top_pct"]:+.2f}%; '
+        f'<strong>without them the book would be {a["ex_top_pct"]:+.2f}%</strong>. '
+        'That second figure is the one that matters: a book ahead only because '
+        'of its best few names has shown that a few names went up, not that the '
+        'screen works. These parts are checked against the book&rsquo;s actual '
+        'change in value on every build, and the difference is published above '
+        'rather than absorbed.</p>'
+        + (f'<div class="legend">{top}</div>' if top else ""))
 
 def build_sections(data):
     """Build each section's inner HTML, keyed by the page it will become.
@@ -1960,7 +2066,7 @@ def build_sections(data):
 
     # the experiment's state leads: the goal is to settle whether this screen is
     # worth trading, so the answer-so-far outranks today's list of companies
-    secs.append(("index", render_progress(data)))
+    secs.append(("index", render_progress(data) + render_decision(data)))
 
     # ---- the market backdrop, kept as context and never scored ----
     ctx_labels = {"Russell 2000", "VIX", "10-yr Treasury", "WTI crude"}

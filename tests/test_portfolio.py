@@ -341,6 +341,42 @@ class AuditedHonestyTests(PaperTestCase):
         self.assertEqual(portfolio.summarize()["status"], "not started")
 
 
+class StopCoolOffTests(PaperTestCase):
+
+    def test_a_stopped_name_is_not_bought_straight_back(self):
+        # selling on a stop and re-buying at the next rebalance achieves
+        # nothing but two sets of costs
+        screen = screen_of(["A1", "A2"])
+        portfolio.update(cache_with({"A1": 100.0, "A2": 100.0}), screen)
+        self.advance(1)
+        portfolio.update(cache_with({"A1": 40.0, "A2": 100.0}), screen)  # stop
+        led = portfolio.load_ledger()
+        self.assertGreater(led["books"]["C"]["stops_hit"], 0)
+        self.assertNotIn("A1", led["books"]["C"]["positions"])
+        self.advance(7)                                   # next rebalance day
+        portfolio.update(cache_with({"A1": 40.0, "A2": 100.0}), screen)
+        self.assertNotIn("A1", portfolio.load_ledger()["books"]["C"]["positions"],
+                         "a stop that re-buys immediately is just a fee")
+
+    def test_the_bar_lifts_after_the_cool_off(self):
+        screen = screen_of(["A1", "A2"])
+        portfolio.update(cache_with({"A1": 100.0, "A2": 100.0}), screen)
+        self.advance(1)
+        portfolio.update(cache_with({"A1": 40.0, "A2": 100.0}), screen)
+        self.advance(portfolio.STOP_COOLOFF_DAYS + 7)
+        portfolio.update(cache_with({"A1": 40.0, "A2": 100.0}), screen)
+        self.assertIn("A1", portfolio.load_ledger()["books"]["C"]["positions"])
+
+    def test_books_without_stops_are_untouched_by_the_bar(self):
+        screen = screen_of(["A1", "A2"])
+        portfolio.update(cache_with({"A1": 100.0, "A2": 100.0}), screen)
+        self.advance(1)
+        portfolio.update(cache_with({"A1": 40.0, "A2": 100.0}), screen)
+        for key in ("A", "B", "D"):
+            self.assertIn("A1", portfolio.load_ledger()["books"][key]["positions"],
+                          f"book {key} runs no stop and should still hold it")
+
+
 class CostBasisTests(PaperTestCase):
     """A holding's displayed return is only as honest as its cost basis."""
 

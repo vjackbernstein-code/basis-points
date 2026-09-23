@@ -279,6 +279,79 @@ started somewhere else. Three things it must keep doing:
   scaled to roughly 40% of its authored width on a phone, where 11px text
   renders at about four real pixels.
 
+## The December decision, pre-registered (`decision.py`)
+
+Written **2026-09-23**, with the live record eight readings old and the paper
+books three days old — before anyone knew how it would come out. That timing is
+the whole point of the file.
+
+Without a rule fixed in advance, the 14 December review is a person looking at
+a number they have already seen and deciding what it means. That is exactly
+where motivated reasoning lives: `+1.5%` becomes "promising, extend the test",
+`-1.5%` becomes "the regime was unfavourable, extend the test", and the project
+runs forever without ever concluding anything or costing anyone the discomfort
+of being wrong.
+
+Three gates, all computed on every build and rendered on the front page, so the
+rule cannot be revised quietly — changing it means changing this file in a
+public repository with the old version in the history beside it:
+
+| Gate | What it asks |
+|---|---|
+| **A signal at all** | mean of 12 independent 1-week readings above zero by at least `T_MIN` (2.0) standard errors, plus 3 independent 4-week readings |
+| **Survives its costs** | at least one book ahead of the index *after* all trading costs |
+| **Broad, not a few names** | the leading book still ahead of the index with its 3 best holdings removed |
+
+Two clauses matter more than the gates themselves:
+
+- **No outcome authorises real money.** Twelve weeks cannot separate a real
+  edge from a lucky one. The best available verdict is "continue, still
+  frozen". Saying so now stops the claim being made in December.
+- **A disappointing result does not authorise changing the scoring rules.** The
+  only outcomes are continue unchanged or stop. Tuning a model after seeing its
+  record is how a system is made to look good in hindsight. Rules may change
+  only to fix a **defect** — something that does not do what it is documented
+  to do.
+
+`tests/test_decision.py` exists mainly to stop the "stop" branch becoming
+unreachable, which is how such a rule usually dies: not repealed, just quietly
+made impossible to trigger.
+
+### Attribution — arithmetic, not narrative
+
+`portfolio.attribution()` decomposes each book's return into every holding's
+contribution, what has been realised, and what trading cost. **It must
+reconcile to the book's actual change in value**, and the residual is published
+rather than absorbed — if it ever stops adding up, the page says so.
+
+The figure that matters is `ex_top_pct`: the book with its best three holdings
+removed. A book ahead of the index only because of three names has not shown
+that the screen works; it has shown that three companies went up, and its
+effective sample size is three, not twelve. Gate 3 is built on it.
+
+This is deliberately **not** narrative explanation. "The books fell because the
+Fed moved" is a story told with hindsight, and it is never neutral — every such
+explanation is a half-finished argument for changing a weight. The test between
+them: attribution sums to the return; a narrative sums to nothing.
+
+### Survivorship: no published name may leave the average
+
+`_cohort_excess()` used to drop any name it could not price and average the
+rest. Over twelve weeks something always delists, and in small caps vanishing
+is overwhelmingly a downside event — so the record would have quietly improved
+every time a holding failed, biasing the December evidence upward.
+
+Now every published name contributes something:
+
+- a **stale** quote is a coverage gap, not an outcome — its last known price is
+  carried, and the count is published (`carried`);
+- a name **gone** from the data entirely is booked at `DELIST_ASSUMED_LOSS`
+  (60%). A convention, not a measurement — but every alternative is worse, and
+  the count is published (`gone`);
+- a reading waits while fewer than `MIN_FRESH` (15) of its prices are fresh,
+  which is safe because the horizon window is several days wide and the reading
+  is simply retried tomorrow.
+
 ### Staleness: what a static page can and cannot tell you
 
 `staleness_alerts()` raises a banner — on **every** page, above the tabs — when
