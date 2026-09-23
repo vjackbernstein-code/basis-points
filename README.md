@@ -317,6 +317,20 @@ Two clauses matter more than the gates themselves:
 unreachable, which is how such a rule usually dies: not repealed, just quietly
 made impossible to trigger.
 
+**Two independent guards against the rule drifting**, because they catch
+different things:
+
+1. **The tests pin the numbers literally** — `MIN_INDEP_1W = 12`, `T_MIN = 2.0`,
+   `REVIEW_DATE = "2026-12-14"` and the rest. Every other test would still pass
+   if `T_MIN` quietly became 1.0 in November; the gates would just get easier
+   and the rule would still "work". Changing a threshold now means changing the
+   test in the same commit, in public.
+2. **The daily watchdog (check 16) reports any commit touching `decision.py`**,
+   quotes the diff, and re-checks the constants and clauses itself. This catches
+   a change even if the tests were edited alongside it. It does not judge
+   whether the change was justified — it makes it impossible for one to pass
+   unnoticed.
+
 ### Attribution — arithmetic, not narrative
 
 `portfolio.attribution()` decomposes each book's return into every holding's

@@ -38,6 +38,32 @@ def attrib(ex_top, top_pct=1.0):
                             "winners": 10, "losers": 15}}
 
 
+class PreRegistrationTests(unittest.TestCase):
+    """The thresholds themselves, pinned.
+
+    Every other test here would still pass if T_MIN were quietly changed from
+    2.0 to 1.0 in November — the gates would simply become easier and the rule
+    would still "work". Lowering a bar after the record starts to become
+    visible is the precise failure this whole file exists to prevent, so the
+    numbers are asserted literally. Changing one means changing this test too,
+    in the same commit, in public.
+    """
+
+    def test_the_bar_is_where_it_was_set_on_2026_09_23(self):
+        self.assertEqual(decision.MIN_INDEP_1W, 12)
+        self.assertEqual(decision.MIN_INDEP_4W, 3)
+        self.assertEqual(decision.T_MIN, 2.0)
+        self.assertEqual(decision.BREADTH_TOP_N, 3)
+
+    def test_the_dates_are_unchanged(self):
+        self.assertEqual(decision.WRITTEN_ON, "2026-09-23")
+        self.assertEqual(decision.REVIEW_DATE, "2026-12-14")
+
+    def test_the_review_date_is_not_quietly_pushed_back(self):
+        # "extend the test" is the most comfortable wrong answer available
+        self.assertEqual(decision.REVIEW_DATE, "2026-12-14")
+
+
 class GateSignalTests(unittest.TestCase):
 
     def test_a_short_record_is_neither_a_pass_nor_a_failure(self):
