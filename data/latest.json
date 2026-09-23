@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-23T21:21:25.501439+00:00",
+ "generated_at": "2026-09-23T21:49:17.709013+00:00",
  "market": [
   {
    "label": "S&P 500",
@@ -292,11 +292,11 @@
    "label": "Bitcoin",
    "symbol": "bitcoin",
    "kind": "crypto",
-   "value": 84330.6902345363,
+   "value": 84485.8428432113,
    "prev": 86183.29442787907,
-   "value_txt": "$84,331",
-   "delta": -2.149609394304462,
-   "delta_txt": "-2.15%",
+   "value_txt": "$84,486",
+   "delta": -1.9695830798023735,
+   "delta_txt": "-1.97%",
    "spark": [
     77416.44110979848,
     77297.13347191992,
@@ -320,18 +320,18 @@
     81169.03511950027,
     86596.74004249526,
     86183.29442787907,
-    84330.6902345363
+    84485.8428432113
    ]
   },
   {
    "label": "Ethereum",
    "symbol": "ethereum",
    "kind": "crypto",
-   "value": 2672.0907441469326,
+   "value": 2678.0341655694224,
    "prev": 2752.629093198004,
-   "value_txt": "$2,672",
-   "delta": -2.925870007335489,
-   "delta_txt": "-2.93%",
+   "value_txt": "$2,678",
+   "delta": -2.7099520168885913,
+   "delta_txt": "-2.71%",
    "spark": [
     2417.6758884733536,
     2390.783044679688,
@@ -355,11 +355,11 @@
     2644.7349398187544,
     2775.1686826711957,
     2752.629093198004,
-    2672.0907441469326
+    2678.0341655694224
    ]
   }
  ],
- "tape_line": "S&P 500 -0.00%, Nasdaq +0.45%, Dow -0.36%; the 10-year Treasury at 4.96% (+0 bp); WTI crude $96.41 (-0.58%); bitcoin $84,331 (-2.15%).",
+ "tape_line": "S&P 500 -0.00%, Nasdaq +0.45%, Dow -0.36%; the 10-year Treasury at 4.96% (+0 bp); WTI crude $96.41 (-0.58%); bitcoin $84,486 (-1.97%).",
  "top": [
   {
    "title": "Bond Yields Soar as Investors Foresee Another Fed Interest Rate Increase",
@@ -413,7 +413,7 @@
  ],
  "smallcap": {
   "note": null,
-  "asof": "2026-09-23T21:22:49+00:00",
+  "asof": "2026-09-23T21:51:10+00:00",
   "coverage": {
    "universe": 9895,
    "profiled": 9966,
@@ -1384,12 +1384,12 @@
    }
   ],
   "freshness": {
-   "last_full_h": 1.3,
-   "quote_median_h": 4.7,
+   "last_full_h": 1.8,
+   "quote_median_h": 5.2,
    "quote_count": 1860,
    "bench_h": 0.0,
-   "universe_h": 122.3,
-   "earnings_h": 4.7,
+   "universe_h": 122.7,
+   "earnings_h": 5.1,
    "bench_gate_h": 72
   },
   "changes": {
@@ -1627,6 +1627,13 @@
   },
   "filings_material": [
    {
+    "ticker": "HYMC",
+    "name": "Hycroft Mining Holding Corporation",
+    "date": "2026-09-23",
+    "link": "https://www.sec.gov/Archives/edgar/data/1718405/000149315226043969/0001493152-26-043969-index.htm",
+    "form": "8-K/A"
+   },
+   {
     "ticker": "PESI",
     "name": "Perma-Fix Environmental Services Inc",
     "date": "2026-09-23",
@@ -1688,13 +1695,6 @@
     "date": "2026-09-23",
     "link": "https://www.sec.gov/Archives/edgar/data/1879016/000110465926109810/0001104659-26-109810-index.htm",
     "form": "8-K"
-   },
-   {
-    "ticker": "SFIX",
-    "name": "Stitch Fix Inc",
-    "date": "2026-09-23",
-    "link": "https://www.sec.gov/Archives/edgar/data/1576942/000162828026063208/0001628280-26-063208-index.htm",
-    "form": "8-K"
    }
   ],
   "filings_activist": [
@@ -1744,8 +1744,8 @@
     "ticker": "HZO",
     "name": "MarineMax Inc",
     "date": "2026-09-22",
-    "link": "https://www.sec.gov/Archives/edgar/data/1057060/000094787126000879/0000947871-26-000879-index.htm",
-    "form": "SCHEDULE 13G"
+    "link": "https://www.sec.gov/Archives/edgar/data/1057060/000121390026101887/0001213900-26-101887-index.htm",
+    "form": "SCHEDULE 13D/A"
    },
    {
     "ticker": "TNC",
@@ -5792,7 +5792,7 @@
  "stats": {
   "feeds_total": 21,
   "feeds_failed": 4,
-  "items": 393,
+  "items": 382,
   "smallcap_calls": 42,
   "feed_errors": [
    [
