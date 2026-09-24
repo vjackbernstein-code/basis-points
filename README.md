@@ -331,6 +331,35 @@ different things:
    whether the change was justified — it makes it impossible for one to pass
    unnoticed.
 
+### The plain-English explainer is GENERATED
+
+There was a hand-written explainer in the private research folder. It was
+accurate on 5 September and obsolete by the 21st: it described a news desk that
+had been retired, and had never heard of the paper portfolios, the stops or the
+December decision. **A hand-written explanation of a weekly-changing system
+will always rot, and one that is quietly wrong is worse than none.**
+
+`render_explainer()` now generates it at the top of the Method page from the
+same data as every other page — universe size, how many names pass, readings
+collected, days running, what the control book has actually spent on trading.
+It cannot drift from the system it describes. The private file is superseded.
+
+### Accessibility of the return chart
+
+Five lines told apart by colour alone excluded anyone who cannot separate amber
+from green — which happened to be books C and E, the two that differ *only* by
+whether they use a stop, and therefore the single most important pair to be
+able to tell apart. Now each line is labelled with its book letter where it
+ends (with collision spacing when they converge), each has its own dash
+pattern, and every legend swatch mirrors the dash of the line it stands for.
+
+### The screen table on a phone
+
+Twelve columns behind a sideways scroll. Below 700px the same markup restacks
+in CSS into one card per company — each cell labelled from its `data-l`
+attribute, since the header row is gone and a bare "+81.5%" would have nothing
+to say what it measures. No duplicated rows, no JavaScript.
+
 ### Two yardsticks, because one of them is a confound
 
 The books hold 25 names **equally weighted**; IWO holds ~1,100 weighted by

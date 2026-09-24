@@ -777,6 +777,38 @@ a:hover { text-decoration: underline; text-decoration-color: var(--accent); }
   border-radius: 8px; padding: 14px 16px; margin: 18px 0; color: var(--ink2);
   max-width: 74ch; }
 .tblwrap { overflow-x: auto; margin: 10px 0 26px; }
+/* On a phone a twelve-column table is a sideways scroll nobody reads. Below
+   700px the screen table becomes one card per company: same markup, restacked
+   in CSS, each cell labelled from its data-l attribute. No duplicated rows. */
+@media (max-width: 700px) {
+  table.screen.cards, table.screen.cards tbody, table.screen.cards tr,
+  table.screen.cards td { display: block; width: 100%; }
+  /* hide the header ROW, not just its cells — hiding only the cells leaves an
+     empty bordered card sitting above the first company */
+  table.screen.cards thead, table.screen.cards tr:has(th) { display: none; }
+  /* a company with no flags should not get an empty labelled row */
+  table.screen.cards td:empty { display: none; }
+  table.screen.cards tr { border: 1px solid var(--border); border-radius: 8px;
+    padding: 11px 13px; margin-bottom: 10px; background: var(--surface); }
+  table.screen.cards td { border: 0; padding: 2px 0; text-align: left !important;
+    white-space: normal; display: flex; justify-content: space-between;
+    gap: 14px; font-variant-numeric: tabular-nums; }
+  table.screen.cards td::before { content: attr(data-l); color: var(--muted);
+    font-size: 11px; font-weight: 600; letter-spacing: 0.05em;
+    text-transform: uppercase; flex: none; padding-top: 2px; }
+  /* the identifying cells read as a heading, not as another labelled row */
+  table.screen.cards td.rank, table.screen.cards td.tick,
+  table.screen.cards td.nm { display: block; }
+  table.screen.cards td.rank::before, table.screen.cards td.tick::before,
+  table.screen.cards td.nm::before { content: none; }
+  table.screen.cards td.rank { float: right; color: var(--muted);
+    font-size: 12px; font-family: "IBM Plex Mono", ui-monospace, monospace; }
+  table.screen.cards td.tick { font-size: 17px; font-weight: 600; }
+  table.screen.cards td.nm { font-size: 13px; color: var(--ink2);
+    margin-bottom: 7px; padding-bottom: 7px;
+    border-bottom: 1px solid var(--hair); }
+  .tblwrap:has(table.cards) { overflow-x: visible; }
+}
 table.screen { width: 100%; border-collapse: collapse; font-size: 13px;
   font-variant-numeric: tabular-nums; }
 table.screen th { font-size: 10.5px; font-weight: 700; letter-spacing: 0.07em;
@@ -800,6 +832,10 @@ table.screen td.tick { font-family: "IBM Plex Mono", ui-monospace, monospace;
 .chart svg { width: 100%; height: auto; display: block; overflow: visible; }
 .axl { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 11px;
   fill: var(--muted); }
+.endlab { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 12px;
+  font-weight: 500; }
+@media (max-width: 720px) { .endlab { font-size: 18px; } }
+@media (max-width: 460px) { .endlab { font-size: 21px; } }
 /* the chart scales down with the page, so its labels are enlarged in SVG user
    units on small screens — otherwise they render at about four real pixels */
 @media (max-width: 720px) { .axl { font-size: 17px; } }
@@ -886,6 +922,12 @@ table.screen td.path .spark { height: 26px; margin: 0; }
 .cofv { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 17px;
   font-variant-numeric: tabular-nums; }
 .cofoot { font-size: 12.5px; color: var(--muted); max-width: 82ch; margin: 10px 0 26px; }
+.plain { max-width: 74ch; font-size: 15px; }
+.plain h3 { font-family: "Besley", Georgia, serif; font-weight: 700;
+  font-size: 17px; margin: 24px 0 7px; }
+.plain p { margin-bottom: 11px; color: var(--ink2); }
+.plain .rules { margin: 8px 0 14px; font-size: 14.5px; }
+
 .rules { list-style: none; margin: 14px 0 4px; font-size: 13.5px;
   color: var(--ink2); max-width: 80ch; }
 .rules li { padding: 3px 0 3px 16px; position: relative; }
@@ -1071,6 +1113,10 @@ def _fmt_mcap(musd):
 
 BOOK_STROKE = {"A": "var(--bk-a)", "B": "var(--bk-b)", "C": "var(--bk-c)",
                "D": "var(--bk-d)", "E": "var(--bk-e)"}
+# A second signal besides colour. Amber and green — books C and E, the pair
+# that differs only by its stop — are a common confusion, and a chart whose
+# whole point is comparison must not rest that comparison on hue alone.
+BOOK_DASH = {"A": "", "B": "7 3", "C": "2 3", "D": "10 3 2 3", "E": "4 3"}
 
 
 def _nice_step(span, want=4):
@@ -1093,7 +1139,7 @@ def equity_chart(pf):
     like an outperformer purely because it started from a different place."""
     pf = pf or {}
     series = [(b["key"], b["label"], b["curve"], BOOK_STROKE.get(b["key"], "var(--ink)"),
-               2.4 if b["key"] == "A" else 1.6, "")
+               2.4 if b["key"] == "A" else 1.6, BOOK_DASH.get(b["key"], ""))
               for b in (pf.get("books") or []) if len(b.get("curve") or []) >= 2]
     bench = pf.get("bench_curve") or []
     if len(bench) >= 2:
@@ -1118,7 +1164,7 @@ def equity_chart(pf):
     # left gutter. On a phone this chart is scaled to ~40% of its authored
     # width, and a gutter sized for 10px text clips the moment the text is
     # enlarged enough to stay readable at that scale.
-    W, H, PL, PR, PT, PB = 760, 292, 6, 10, 18, 40
+    W, H, PL, PR, PT, PB = 760, 292, 6, 34, 18, 40
     iw, ih = W - PL - PR, H - PT - PB
 
     def y_of(pct):
@@ -1135,7 +1181,7 @@ def equity_chart(pf):
             f'<text x="{PL + 1}" y="{y - 3:.1f}" class="axl">{tick:+.0f}%</text>')
         tick += step
 
-    paths, legend = [], []
+    paths, legend, ends = [], [], []
     for key, label, curve, colour, width, dash in series:
         n = len(curve)
         pl = " ".join(f'{PL + iw * i / (n - 1):.1f},{y_of(v - 100.0):.1f}'
@@ -1144,15 +1190,32 @@ def equity_chart(pf):
             f'<polyline points="{pl}" fill="none" stroke="{colour}" '
             f'stroke-width="{width}" stroke-linejoin="round" stroke-linecap="round"'
             f'{f" stroke-dasharray=\"{dash}\"" if dash else ""}/>')
+        ends.append([y_of(curve[-1] - 100.0), key, colour])
         ret = curve[-1] - 100.0
         # the swatch must match how the line is actually drawn — a legend that
         # shows a solid key for a dashed line is a legend to be checked twice
-        swatch = (f'background:repeating-linear-gradient(90deg,{colour} 0 5px,'
-                  f'transparent 5px 9px)' if dash else f'background:{colour}')
+        if dash:
+            on, off = (dash.split() + ["3"])[:2]
+            swatch = (f'background:repeating-linear-gradient(90deg,{colour} 0 '
+                      f'{on}px,transparent {on}px {int(on) + int(off)}px)')
+        else:
+            swatch = f'background:{colour}'
         legend.append(
             f'<span><i style="{swatch}"></i>'
             f'<b>{esc(key)}</b> {esc(label)} '
             f'<em class="{delta_class(ret)}">{ret:+.1f}%</em></span>')
+
+    # Label each line where it ends. Five lines told apart by colour alone
+    # exclude anyone who cannot separate the amber from the green — which is
+    # books C and E, the two that differ only by their stop. Direct labels are
+    # also simply easier to read than a legend, for everybody.
+    ends.sort(key=lambda e: e[0])
+    for i in range(1, len(ends)):                 # push apart where they collide
+        if ends[i][0] - ends[i - 1][0] < 11:
+            ends[i][0] = ends[i - 1][0] + 11
+    tags = "".join(
+        f'<text x="{W - PR + 3}" y="{y + 3.5:.1f}" class="endlab" '
+        f'fill="{colour}">{esc(key)}</text>' for y, key, colour in ends)
 
     span = pf.get("span") or []
     axis = ""
@@ -1165,7 +1228,7 @@ def equity_chart(pf):
         f'<figure class="chart"><svg viewBox="0 0 {W} {H}" role="img" '
         f'aria-label="Simulated value of each paper book and the benchmark, '
         f'rebased so each starts at zero percent">'
-        f'{"".join(grid)}{"".join(paths)}{axis}</svg>'
+        f'{"".join(grid)}{"".join(paths)}{tags}{axis}</svg>'
         f'<figcaption class="legend">{"".join(legend)}</figcaption></figure>'
         '<p class="cofoot">Every line starts at 0%, so they can be compared '
         'directly. <strong>Book A is the control</strong> — a clever book that '
@@ -2076,6 +2139,133 @@ def render_attribution(a, label=""):
         'rather than absorbed.</p>'
         + (f'<div class="legend">{top}</div>' if top else ""))
 
+
+def render_explainer(data):
+    """The whole thing in plain English, GENERATED rather than written.
+
+    There was a hand-written version of this. It was accurate on the 5th of
+    September and obsolete by the 21st: it described a news desk that had been
+    retired, and had not heard of the paper portfolios, the stops or the
+    December decision. A hand-written explainer of a system that changes weekly
+    will always be out of date, and an explanation that is quietly wrong is
+    worse than none. So the numbers here come from the same data as every other
+    page, and the prose describes only things the code actually does."""
+    sc = data.get("smallcap") or {}
+    pf = data.get("portfolio") or {}
+    cov = sc.get("coverage") or {}
+    ev = sc.get("evaluation") or {}
+    reach = sc.get("reach") or {}
+    books = pf.get("books") or []
+    a = ((pf.get("detail") or {}).get("A") or {}).get("attribution") or {}
+    ctrl = next((b for b in books if b["key"] == "A"), None)
+
+    uni = cov.get("universe") or 0
+    scored = cov.get("scored") or 0
+    band = cov.get("in_band") or 0
+    one = ev.get("1w") or {}
+    got1 = one.get("indep") or 0
+    need1 = smallcap.FREEZE_TARGET["1w"]
+
+    if ctrl:
+        where = (f'The books have been running for {ctrl["days"]} day'
+                 f'{"s" if ctrl["days"] != 1 else ""}. The plain one is '
+                 f'{ctrl["ret"]:+.2f}%, of which '
+                 f'{abs(a.get("cost_pct", 0)):.2f} percentage points went on the '
+                 f'cost of trading alone.')
+    else:
+        where = 'The books have not started trading yet.'
+
+    return (
+        '<h2 class="section-head">In plain English</h2>'
+        '<div class="plain">'
+
+        '<h3>What this is</h3>'
+        '<p>A machine that reads public financial data about small American '
+        'companies, scores them by a fixed set of rules, and publishes the '
+        'twenty-five that score highest. Nobody chooses the companies. Nobody '
+        'reads about them. The rules are written down, they do not change, and '
+        'the same rules applied to the same data would produce the same list '
+        'tomorrow.</p>'
+
+        '<h3>What it does, each time it runs</h3>'
+        f'<p>It starts from every company filed with the American financial '
+        f'regulator &mdash; about {uni:,} of them &mdash; and throws almost all '
+        f'of them away. Too big, too small, too cheap, too rarely traded, too '
+        f'little revenue: roughly {band:,} survive as the right size, and about '
+        f'{scored:,} have enough measured about them to be scored at all. Those '
+        f'are ranked on three things, in these proportions:</p>'
+        '<ul class="rules">'
+        '<li><strong>Growth (40%)</strong> &mdash; is revenue rising, and is it '
+        'rising faster than it was? Compared against other companies in the '
+        'same industry, so a good year for mining does not make every miner '
+        'look clever.</li>'
+        '<li><strong>Momentum (40%)</strong> &mdash; has the share price been '
+        'rising, divided by how jumpy that price is. A steady climb counts for '
+        'more than a violent one.</li>'
+        '<li><strong>Quality (20%)</strong> &mdash; debt, cash, whether margins '
+        'are improving, and whether the company keeps issuing new shares.</li>'
+        '</ul>'
+        '<p>Price is deliberately <em>not</em> part of the score. This looks for '
+        'companies that are growing, not companies that are cheap &mdash; those '
+        'are different questions and mixing them produces an answer to '
+        'neither.</p>'
+
+        '<h3>The five portfolios, and why there are five</h3>'
+        f'<p>Five imaginary pots of money, each with a notional '
+        f'${(pf.get("assumptions") or {}).get("capital", 100000):,.0f} '
+        f'&mdash; these are American shares, priced in dollars &mdash; all '
+        f'buying the same twenty-five companies and all paying '
+        f'the same trading costs. They differ only in their rules. One holds '
+        'everything in equal amounts and never sells early &mdash; that is the '
+        '<strong>control</strong>. The others add one idea each: bigger bets on '
+        'higher-ranked companies; an automatic sell if a holding falls far '
+        'enough; holding back cash when the market is falling; and all three '
+        'together.</p>'
+        '<p>The point of the plain one is that it is the thing to beat. Any '
+        'clever rule has to earn back the extra trading it causes. If the '
+        'clever books do not finish ahead of the simple one, the cleverness is '
+        f'costing money for nothing. {where}</p>'
+        '<p><strong>No money is involved anywhere in this.</strong> No order '
+        'has ever been placed. These are simulations, and simulations leave out '
+        'the things that hurt real traders most: the price moving against you '
+        'as you buy, tax, and the nerve required to keep following a system '
+        'through a bad stretch.</p>'
+
+        '<h3>What it is trying to find out</h3>'
+        '<p>One question: <em>does ranking small companies this way beat simply '
+        'buying the whole small-company market, after paying for all the '
+        'trading it takes?</em> That last clause is where most systems like '
+        'this quietly fail.</p>'
+        f'<p>To answer it, every published list is checked again about a week '
+        f'later and the result is written down and never touched again. '
+        f'{got1} of the {need1} separate weekly checks needed '
+        f'{"is" if got1 == 1 else "are"} done. The answer gets judged on '
+        f'{esc(decision.REVIEW_DATE)}, against a rule written in advance on '
+        f'{esc(decision.WRITTEN_ON)}, before anyone knew how it would turn out. '
+        f'That rule can say &ldquo;stop&rdquo;, and none of its outcomes allows '
+        f'real money to be risked.</p>'
+
+        '<h3>Things worth distrusting</h3>'
+        '<ul class="rules">'
+        '<li>It is young. A few weeks of results tell you almost nothing, and '
+        'anyone reading a short run of numbers as skill is fooling '
+        'themselves.</li>'
+        '<li>All the company data comes from one free supplier. If that '
+        'supplier is wrong about a company, so is this.</li>'
+        '<li>Nothing here understands any business. It has an industry label, '
+        'some filed figures and a price history. It cannot tell a genuine '
+        'growth company from an accounting artefact.</li>'
+        '<li>Buying companies that have already risen is a well-known approach '
+        'that works until it stops, usually suddenly.</li>'
+        '<li>The trading costs are estimates. Real ones in companies this small '
+        'are often worse.</li>'
+        '</ul>'
+        '<p><strong>None of this is investment advice</strong>, and it is not '
+        'written by anyone qualified to give any. It is a record of what a set '
+        'of fixed rules did, published so that it can be checked.</p>'
+        '</div>')
+
+
 def build_sections(data):
     """Build each section's inner HTML, keyed by the page it will become.
 
@@ -2178,8 +2368,8 @@ def build_sections(data):
         trs = []
         for i, r in enumerate(screen, 1):
             dp = r.get("dp")
-            dp_td = (f'<td class="{delta_class(dp)}">{dp:+.1f}%</td>'
-                     if dp is not None else "<td>—</td>")
+            dp_td = (f'<td class="{delta_class(dp)}" data-l="Today">{dp:+.1f}%</td>'
+                     if dp is not None else '<td data-l="Today">—</td>')
             fh52 = (f'{r["from_high"]:+.1f}%' if r.get("from_high") is not None else "—")
             sub = r.get("sub") or {}
             sub_t = (f'growth {sub.get("g", "?")} · momentum {sub.get("m", "?")} · '
@@ -2189,17 +2379,26 @@ def build_sections(data):
                 f'<span class="flag {flag_cls.get(f, "")}">{esc(f)}</span>'
                 for f in (r.get("flags") or []))
             ev_rev = (f'{r["ev_rev"]:.1f}×' if r.get("ev_rev") is not None else "—")
+            # every cell carries its own column name. On a phone the table
+            # becomes a stack of cards and the header row is gone, so a bare
+            # "+81.5%" would have nothing to say what it measures.
             trs.append(
-                f'<tr title="{esc(sub_t)}"><td class="l">{i}</td>'
-                f'<td class="l tick">{co_link(r["ticker"], known=known)}</td>'
-                f'<td class="l">{esc(r["name"])}</td><td class="l">{esc(r["ind"])}</td>'
-                f'<td>{_fmt_mcap(r["mcap"])}</td><td>{ev_rev}</td>'
-                f'<td>{r["rev_g"]:+.1f}%</td>'
-                f'<td>{r["r13"]:+.1f}%</td><td>{fh52}</td>'
-                f'{dp_td}<td><strong>{r["score"]:.1f}</strong></td>'
-                f'<td class="l">{flags}</td></tr>')
-        parts.append(f'<div class="tblwrap"><table class="screen">{head}{"".join(trs)}'
-                     '</table></div>')
+                f'<tr title="{esc(sub_t)}">'
+                f'<td class="l rank" data-l="Rank">{i}</td>'
+                f'<td class="l tick" data-l="Ticker">'
+                f'{co_link(r["ticker"], known=known)}</td>'
+                f'<td class="l nm" data-l="Company">{esc(r["name"])}</td>'
+                f'<td class="l" data-l="Industry">{esc(r["ind"])}</td>'
+                f'<td data-l="Mkt cap">{_fmt_mcap(r["mcap"])}</td>'
+                f'<td data-l="EV/Rev">{ev_rev}</td>'
+                f'<td data-l="Rev growth">{r["rev_g"]:+.1f}%</td>'
+                f'<td data-l="13-wk">{r["r13"]:+.1f}%</td>'
+                f'<td data-l="vs 52w high">{fh52}</td>'
+                f'{dp_td}'
+                f'<td data-l="Score"><strong>{r["score"]:.1f}</strong></td>'
+                f'<td class="l" data-l="Flags">{flags}</td></tr>')
+        parts.append(f'<div class="tblwrap"><table class="screen cards">'
+                     f'{head}{"".join(trs)}</table></div>')
     elif not sc.get("note") and cov:
         parts.append('<div class="note-box">The scorecard is still building coverage — '
                      'the ranked screen appears once enough companies are fully '
@@ -2311,7 +2510,8 @@ def build_sections(data):
         'hours old. Data: SEC (universe), Finnhub (measures). Facts by fixed rules — '
         '<strong>not investment advice</strong>.</div>')
     secs.append(("changes", render_changes(data, known)))
-    secs.append(("method", method + render_freshness(data)))
+    secs.append(("method",
+                 render_explainer(data) + method + render_freshness(data)))
     return {slug: html for slug, html in secs if html}
 
 

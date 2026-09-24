@@ -112,6 +112,38 @@ a:hover { text-decoration: underline; text-decoration-color: var(--accent); }
   border-radius: 8px; padding: 14px 16px; margin: 18px 0; color: var(--ink2);
   max-width: 74ch; }
 .tblwrap { overflow-x: auto; margin: 10px 0 26px; }
+/* On a phone a twelve-column table is a sideways scroll nobody reads. Below
+   700px the screen table becomes one card per company: same markup, restacked
+   in CSS, each cell labelled from its data-l attribute. No duplicated rows. */
+@media (max-width: 700px) {
+  table.screen.cards, table.screen.cards tbody, table.screen.cards tr,
+  table.screen.cards td { display: block; width: 100%; }
+  /* hide the header ROW, not just its cells — hiding only the cells leaves an
+     empty bordered card sitting above the first company */
+  table.screen.cards thead, table.screen.cards tr:has(th) { display: none; }
+  /* a company with no flags should not get an empty labelled row */
+  table.screen.cards td:empty { display: none; }
+  table.screen.cards tr { border: 1px solid var(--border); border-radius: 8px;
+    padding: 11px 13px; margin-bottom: 10px; background: var(--surface); }
+  table.screen.cards td { border: 0; padding: 2px 0; text-align: left !important;
+    white-space: normal; display: flex; justify-content: space-between;
+    gap: 14px; font-variant-numeric: tabular-nums; }
+  table.screen.cards td::before { content: attr(data-l); color: var(--muted);
+    font-size: 11px; font-weight: 600; letter-spacing: 0.05em;
+    text-transform: uppercase; flex: none; padding-top: 2px; }
+  /* the identifying cells read as a heading, not as another labelled row */
+  table.screen.cards td.rank, table.screen.cards td.tick,
+  table.screen.cards td.nm { display: block; }
+  table.screen.cards td.rank::before, table.screen.cards td.tick::before,
+  table.screen.cards td.nm::before { content: none; }
+  table.screen.cards td.rank { float: right; color: var(--muted);
+    font-size: 12px; font-family: "IBM Plex Mono", ui-monospace, monospace; }
+  table.screen.cards td.tick { font-size: 17px; font-weight: 600; }
+  table.screen.cards td.nm { font-size: 13px; color: var(--ink2);
+    margin-bottom: 7px; padding-bottom: 7px;
+    border-bottom: 1px solid var(--hair); }
+  .tblwrap:has(table.cards) { overflow-x: visible; }
+}
 table.screen { width: 100%; border-collapse: collapse; font-size: 13px;
   font-variant-numeric: tabular-nums; }
 table.screen th { font-size: 10.5px; font-weight: 700; letter-spacing: 0.07em;
@@ -135,6 +167,10 @@ table.screen td.tick { font-family: "IBM Plex Mono", ui-monospace, monospace;
 .chart svg { width: 100%; height: auto; display: block; overflow: visible; }
 .axl { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 11px;
   fill: var(--muted); }
+.endlab { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 12px;
+  font-weight: 500; }
+@media (max-width: 720px) { .endlab { font-size: 18px; } }
+@media (max-width: 460px) { .endlab { font-size: 21px; } }
 /* the chart scales down with the page, so its labels are enlarged in SVG user
    units on small screens — otherwise they render at about four real pixels */
 @media (max-width: 720px) { .axl { font-size: 17px; } }
@@ -221,6 +257,12 @@ table.screen td.path .spark { height: 26px; margin: 0; }
 .cofv { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 17px;
   font-variant-numeric: tabular-nums; }
 .cofoot { font-size: 12.5px; color: var(--muted); max-width: 82ch; margin: 10px 0 26px; }
+.plain { max-width: 74ch; font-size: 15px; }
+.plain h3 { font-family: "Besley", Georgia, serif; font-weight: 700;
+  font-size: 17px; margin: 24px 0 7px; }
+.plain p { margin-bottom: 11px; color: var(--ink2); }
+.plain .rules { margin: 8px 0 14px; font-size: 14.5px; }
+
 .rules { list-style: none; margin: 14px 0 4px; font-size: 13.5px;
   color: var(--ink2); max-width: 80ch; }
 .rules li { padding: 3px 0 3px 16px; position: relative; }
@@ -247,4 +289,4 @@ table.screen td.path .spark { height: 26px; margin: 0; }
 footer { margin-top: 44px; border-top: 2px solid var(--ink); padding-top: 14px;
   font-size: 12.5px; color: var(--muted); max-width: 90ch; }
 footer p { margin-bottom: 8px; }
-</style></head><body><div class="wrap"><header class="masthead"><div><div class="brand">Basis<span class="tick">/</span>Points</div><div class="kicker">An automated small-cap growth rating system.</div></div><div class="mastright"><div class="updated">updated Thursday, September 24, 2026 · 2:05 PM UTC</div></div></header><nav class="tabs" aria-label="Sections"><a class="tab" href="index.html">Progress</a><a class="tab" href="portfolios.html">Portfolios</a><span class="tab cur" aria-current="page">Changes</span><a class="tab" href="screen.html">Screen</a><a class="tab" href="market.html">Market</a><a class="tab" href="signals.html">Signals</a><a class="tab" href="method.html">Method</a></nav><main class="psec"><h2 class="sechead">What changed</h2><p class="secsub">Which companies entered and left the screen, and what the simulated books did about it.</p><p class="secsub">Against the previous published screen, <strong>2026-09-23</strong>. 25 names held their place, 0 entered, 0 dropped out.</p><div class="note-box">The screen is unchanged since the previous publication. That is common — the measures behind it move slowly, and the books only rebalance weekly in any case.</div><h2 class="section-head">What the simulated books did</h2><div class="item"><strong class="">BUY</strong> <a href="co/GCT.html">GCT</a><div class="meta">2026-09-21 · $53.49 · 67–112 sh · all five books · rebalance</div></div><div class="item"><strong class="">BUY</strong> <a href="co/SBET.html">SBET</a><div class="meta">2026-09-21 · $9.90 · 362–566 sh · all five books · rebalance</div></div><div class="item"><strong class="">BUY</strong> <a href="co/PAYS.html">PAYS</a><div class="meta">2026-09-21 · $12.56 · 285–435 sh · all five books · rebalance</div></div><div class="item"><strong class="">BUY</strong> <a href="co/RDVT.html">RDVT</a><div class="meta">2026-09-21 · $75.62 · 47–70 sh · all five books · rebalance</div></div><div class="item"><strong class="">BUY</strong> <a href="co/KGEI.html">KGEI</a><div class="meta">2026-09-21 · $6.72 · 534–768 sh · all five books · rebalance</div></div><div class="item"><strong class="">BUY</strong> <a href="co/REPX.html">REPX</a><div class="meta">2026-09-21 · $41.29 · 87–121 sh · all five books · rebalance</div></div><div class="item"><strong class="">BUY</strong> <a href="co/BSVN.html">BSVN</a><div class="meta">2026-09-21 · $54.42 · 66–89 sh · all five books · rebalance</div></div><div class="item"><strong class="">BUY</strong> <a href="co/MGTX.html">MGTX</a><div class="meta">2026-09-21 · $12.88 · 278–366 sh · all five books · rebalance</div></div><div class="item"><strong class="">BUY</strong> <a href="co/ETON.html">ETON</a><div class="meta">2026-09-21 · $55.65 · 64–82 sh · all five books · rebalance</div></div><div class="item"><strong class="">BUY</strong> <a href="co/BBNX.html">BBNX</a><div class="meta">2026-09-21 · $22.18 · 162–199 sh · all five books · rebalance</div></div><p class="cofoot">Grouped by which books acted. A name bought by all five is one entry, not five — but the share counts differ across them, and that spread is the conviction sizing at work. Two books selling while three hold is a stop firing, and is the most informative thing this simulation produces.</p><div class="note-box"><strong>Stops fired so far: 0.</strong> Only books C and E use them; A, B and D hold through everything on purpose, so that the difference between them is what a stop is actually worth.</div></main><nav class="pager"><a href="portfolios.html">&larr; Portfolios</a><a href="screen.html">Screen &rarr;</a></nav><footer><p><strong>Not investment advice.</strong> Facts by fixed, published rules from public data. Inputs: SEC EDGAR (company universe and filings), Finnhub (measures), and 20 news and press-release feeds matched against the small-cap band as signals — headlines link to and belong to their publishers. Generated Thursday, September 24, 2026 · 2:05 PM UTC · refreshes on a schedule.</p></footer></div></body></html>
+</style></head><body><div class="wrap"><header class="masthead"><div><div class="brand">Basis<span class="tick">/</span>Points</div><div class="kicker">An automated small-cap growth rating system.</div></div><div class="mastright"><div class="updated">updated Thursday, September 24, 2026 · 10:05 AM EDT</div></div></header><nav class="tabs" aria-label="Sections"><a class="tab" href="index.html">Progress</a><a class="tab" href="portfolios.html">Portfolios</a><span class="tab cur" aria-current="page">Changes</span><a class="tab" href="screen.html">Screen</a><a class="tab" href="market.html">Market</a><a class="tab" href="signals.html">Signals</a><a class="tab" href="method.html">Method</a></nav><main class="psec"><h2 class="sechead">What changed</h2><p class="secsub">Which companies entered and left the screen, and what the simulated books did about it.</p><p class="secsub">Against the previous published screen, <strong>2026-09-23</strong>. 25 names held their place, 0 entered, 0 dropped out.</p><div class="note-box">The screen is unchanged since the previous publication. That is common — the measures behind it move slowly, and the books only rebalance weekly in any case.</div><h2 class="section-head">What the simulated books did</h2><div class="item"><strong class="">BUY</strong> <a href="co/GCT.html">GCT</a><div class="meta">2026-09-21 · $53.49 · 67–112 sh · all five books · rebalance</div></div><div class="item"><strong class="">BUY</strong> <a href="co/SBET.html">SBET</a><div class="meta">2026-09-21 · $9.90 · 362–566 sh · all five books · rebalance</div></div><div class="item"><strong class="">BUY</strong> <a href="co/PAYS.html">PAYS</a><div class="meta">2026-09-21 · $12.56 · 285–435 sh · all five books · rebalance</div></div><div class="item"><strong class="">BUY</strong> <a href="co/RDVT.html">RDVT</a><div class="meta">2026-09-21 · $75.62 · 47–70 sh · all five books · rebalance</div></div><div class="item"><strong class="">BUY</strong> <a href="co/KGEI.html">KGEI</a><div class="meta">2026-09-21 · $6.72 · 534–768 sh · all five books · rebalance</div></div><div class="item"><strong class="">BUY</strong> <a href="co/REPX.html">REPX</a><div class="meta">2026-09-21 · $41.29 · 87–121 sh · all five books · rebalance</div></div><div class="item"><strong class="">BUY</strong> <a href="co/BSVN.html">BSVN</a><div class="meta">2026-09-21 · $54.42 · 66–89 sh · all five books · rebalance</div></div><div class="item"><strong class="">BUY</strong> <a href="co/MGTX.html">MGTX</a><div class="meta">2026-09-21 · $12.88 · 278–366 sh · all five books · rebalance</div></div><div class="item"><strong class="">BUY</strong> <a href="co/ETON.html">ETON</a><div class="meta">2026-09-21 · $55.65 · 64–82 sh · all five books · rebalance</div></div><div class="item"><strong class="">BUY</strong> <a href="co/BBNX.html">BBNX</a><div class="meta">2026-09-21 · $22.18 · 162–199 sh · all five books · rebalance</div></div><p class="cofoot">Grouped by which books acted. A name bought by all five is one entry, not five — but the share counts differ across them, and that spread is the conviction sizing at work. Two books selling while three hold is a stop firing, and is the most informative thing this simulation produces.</p><div class="note-box"><strong>Stops fired so far: 0.</strong> Only books C and E use them; A, B and D hold through everything on purpose, so that the difference between them is what a stop is actually worth.</div></main><nav class="pager"><a href="portfolios.html">&larr; Portfolios</a><a href="screen.html">Screen &rarr;</a></nav><footer><p><strong>Not investment advice.</strong> Facts by fixed, published rules from public data. Inputs: SEC EDGAR (company universe and filings), Finnhub (measures), and 20 news and press-release feeds matched against the small-cap band as signals — headlines link to and belong to their publishers. Generated Thursday, September 24, 2026 · 10:05 AM EDT · refreshes on a schedule.</p></footer></div></body></html>
