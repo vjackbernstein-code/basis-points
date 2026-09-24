@@ -331,6 +331,39 @@ different things:
    whether the change was justified — it makes it impossible for one to pass
    unnoticed.
 
+### Two yardsticks, because one of them is a confound
+
+The books hold 25 names **equally weighted**; IWO holds ~1,100 weighted by
+size. Equal-weighting a small-cap universe has historically paid something on
+its own, entirely separate from stock picking — so an excess measured only
+against IWO partly rewards *how we weight* rather than *what we pick*, and in
+December that ambiguity would sit directly underneath the headline number.
+
+So every logged day now also records `samp`: a draw of `PEER_SAMPLE` (100)
+names from the same eligible universe, priced by the **same rules** as the
+cohort (stale carried, vanished booked at a loss — otherwise the comparison
+measures the pricing, not the picking). Each frozen reading carries `vs_peers`
+alongside `excess`.
+
+- **vs the index** answers *could I have just bought small-cap growth instead?*
+- **vs the random draw** answers the narrower and more important question: *is
+  the ranking doing anything?*, with universe and weighting held constant.
+
+The draw is seeded from the date and the model version, so it is reproducible
+by anyone holding the same data and **cannot be re-rolled until it flatters**.
+
+### Reachability: the December bar has no slack
+
+`smallcap.reachability()` checks whether the bar can *still* be met. Taken end
+to end from the first published screen, the twelfth weekly reading and the
+third monthly one land on 8 and 7 December, against a review on the 14th —
+there is no spare. A single reading skipped past its window makes the bar
+arithmetically unreachable, and December would then return "not enough
+evidence" for a plumbing reason rather than an evidential one.
+
+The bar is **not** lowered to fit. The page raises an alarm the day it becomes
+unreachable, and warns while the slack is one or zero.
+
 ### Attribution — arithmetic, not narrative
 
 `portfolio.attribution()` decomposes each book's return into every holding's

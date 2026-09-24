@@ -446,6 +446,42 @@ class TrackRecordTests(SmallcapTestCase):
         self.assertEqual(out["1w"]["carried"], 10)         # the rest carried,
         self.assertEqual(out["1w"]["gone"], 0)             # none discarded
 
+    def _sampleable(self, n=200, size=20):
+        """A cache whose names all count as eligible, so the DRAW can be tested
+        without rebuilding the whole eligibility fixture."""
+        names = self._names(n)
+        cache = self._priceable_cache(names)
+        cache["metrics"] = {t: {} for t in names}
+        real_elig, real_size = smallcap._eligible, smallcap.PEER_SAMPLE
+        smallcap._eligible = lambda c, t: True
+        smallcap.PEER_SAMPLE = size
+        self.addCleanup(setattr, smallcap, "_eligible", real_elig)
+        self.addCleanup(setattr, smallcap, "PEER_SAMPLE", real_size)
+        return cache
+
+    def test_the_peer_draw_is_reproducible_and_cannot_be_re_rolled(self):
+        cache = self._sampleable()
+        a = smallcap._peer_sample(cache, "2026-10-01")
+        self.assertEqual(len(a), 20)
+        self.assertEqual(a, smallcap._peer_sample(cache, "2026-10-01"),
+                         "the same day must always draw the same names")
+        self.assertNotEqual(a, smallcap._peer_sample(cache, "2026-10-02"))
+
+    def test_a_universe_too_small_to_sample_yields_no_draw(self):
+        cache = self._sampleable(n=10, size=20)
+        self.assertEqual(smallcap._peer_sample(cache, "2026-10-01"), [])
+
+    def test_both_baskets_are_priced_by_the_same_rules(self):
+        # if the screen's names were priced differently from the peers', the
+        # comparison between them would measure the pricing, not the picking
+        names = self._names(25)
+        cache = self._priceable_cache(names)
+        cache["quotes"].pop(names[0])                        # one vanishes
+        rows = [[t, 10.0] for t in names]
+        r, c = smallcap._basket_return(cache, rows)
+        self.assertEqual(c["gone"], 1)
+        self.assertEqual(c["priced"], len(names))            # nothing dropped
+
     def test_a_name_that_vanishes_stays_in_the_average_as_a_loss(self):
         # the survivorship leak: excluding a vanished name lifts the average
         # exactly when a holding fails

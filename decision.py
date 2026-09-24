@@ -28,6 +28,11 @@ import math
 
 REVIEW_DATE = "2026-12-14"
 WRITTEN_ON = "2026-09-23"
+# Named NOW, for the same reason the rest of this file is. Three of the four
+# outcomes below end in "continue to a new checkpoint", and a new checkpoint
+# with no date is how a deadline quietly becomes never — each review deferring
+# to a next one that is always a comfortable distance away. This is that date.
+SECOND_CHECKPOINT = "2027-03-15"
 
 # Gate 1 — is there a signal at all, before costs?
 MIN_INDEP_1W = 12          # independent (non-overlapping) 1-week readings
@@ -44,7 +49,8 @@ VERDICTS = {
     "insufficient": (
         "Not enough evidence yet",
         "The record did not reach the bar. No rule changes are authorised. "
-        "The books continue unchanged to a new checkpoint."),
+        "The books continue unchanged to the second checkpoint, "
+        f"{SECOND_CHECKPOINT}."),
     "abandon": (
         "The screen is not earning its costs — stop",
         "The evidence is in and it does not support trading this. The honest "
@@ -54,12 +60,12 @@ VERDICTS = {
         "Inconclusive — continue unchanged",
         "Some gates passed and some did not. This is the most likely outcome "
         "at this length and it authorises nothing: no rule changes, no real "
-        "money, continue to a new checkpoint."),
+        f"money, continue to the second checkpoint, {SECOND_CHECKPOINT}."),
     "continue": (
         "Evidence is positive — continue the paper test, still frozen",
         "All three gates passed. This does NOT authorise real money and does "
         "not lift the freeze. It authorises continuing, with a longer record, "
-        "to a second checkpoint."),
+        f"to the second checkpoint, {SECOND_CHECKPOINT}."),
 }
 
 

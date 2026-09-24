@@ -181,6 +181,18 @@ def save_ledger(led):
 # ------------------------------------------------------------- pricing -------
 
 
+def _day_range(cache, ticker):
+    """The day's low and high, when we have them.
+
+    Only trusted while the quote is fresh: a stale quote's high and low belong
+    to whatever day it was last fetched, and testing today's stop against last
+    week's low would invent exits that never happened."""
+    q = (cache.get("quotes") or {}).get(ticker) or {}
+    if smallcap._age_h(q.get("t")) > 30:
+        return None, None
+    return q.get("lo"), q.get("hi")
+
+
 def _price(cache, ticker, fallback=None):
     """Latest known price, or the last mark. Never invent a price."""
     q = (cache.get("quotes") or {}).get(ticker) or {}
@@ -205,7 +217,11 @@ def refresh_marks(book, cache, today=None):
         px = _price(cache, tick, None)
         if px:
             pos["last_px"] = px
-            pos["peak_px"] = max(pos.get("peak_px") or px, px)
+            # the mark a trailing stop trails from is the day's HIGH, not a
+            # sampled price — using samples understates the peak, which leaves
+            # the stop sitting lower than it should and firing less often
+            _lo, hi = _day_range(cache, tick)
+            pos["peak_px"] = max(pos.get("peak_px") or px, px, hi or px)
             pos["last_quote"] = today
             continue
         seen = pos.get("last_quote") or pos.get("entry_date") or today
@@ -310,8 +326,19 @@ def apply_stops(book, spec, cache, today):
             continue
         dist = stop_distance(cache, tick)
         peak = pos.get("peak_px") or pos["entry_px"]
-        if px <= peak * (1 - dist):
-            _sell(book, tick, px, today, extra_bps=STOP_SLIPPAGE_BPS, reason="stop")
+        trigger = peak * (1 - dist)
+        low, _hi = _day_range(cache, tick)
+        # Test against the day's LOW, not the sampled price. Prices are sampled
+        # a few times a day, so testing only those misses every intraday break
+        # that recovered before the next sample — which is exactly the whipsaw
+        # a real stop suffers and a simulated one must not be spared.
+        worst = min(px, low) if low else px
+        if worst <= trigger:
+            # filled at the trigger, not at the low: a stop becomes a market
+            # order when touched. STOP_SLIPPAGE_BPS is what covers the gap.
+            fill = min(px, trigger) if low and low <= trigger else px
+            _sell(book, tick, fill, today, extra_bps=STOP_SLIPPAGE_BPS,
+                  reason="stop")
             book["stops_hit"] += 1
             # Remember it. Without this the next rebalance sees the name still
             # on the screen and buys it straight back — paying the exit, the

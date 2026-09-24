@@ -341,6 +341,74 @@ class AuditedHonestyTests(PaperTestCase):
         self.assertEqual(portfolio.summarize()["status"], "not started")
 
 
+class IntradayStopTests(PaperTestCase):
+    """Prices are sampled a few times a day. A stop tested only against those
+    samples never suffers the whipsaw a real one does."""
+
+    def _cache(self, px, lo=None, hi=None, bench=100.0):
+        c = cache_with({"A1": px}, bench=bench)
+        q = c["quotes"]["A1"]
+        q["lo"], q["hi"] = lo, hi
+        return c
+
+    def test_a_stop_fires_on_an_intraday_low_that_recovered(self):
+        portfolio.update(self._cache(100.0, lo=100.0, hi=100.0),
+                         screen_of(["A1"]))
+        self.advance(1)
+        # closed flat, but touched 40 during the day
+        portfolio.update(self._cache(100.0, lo=40.0, hi=100.0), screen_of(["A1"]))
+        led = portfolio.load_ledger()
+        self.assertGreater(led["books"]["C"]["stops_hit"], 0,
+                           "the day's low broke the stop even though it closed flat")
+        self.assertIn("A1", led["books"]["A"]["positions"])   # A runs no stop
+
+    def test_the_fill_is_at_the_trigger_not_at_the_days_worst_price(self):
+        # a stop becomes a market order when touched; it does not fill at the low
+        portfolio.update(self._cache(100.0, lo=100.0, hi=100.0), screen_of(["A1"]))
+        self.advance(1)
+        portfolio.update(self._cache(100.0, lo=10.0, hi=100.0), screen_of(["A1"]))
+        trades = portfolio.load_ledger()["books"]["C"]["trades"]
+        stop = [t for t in trades if t.get("why") == "stop"][-1]
+        self.assertGreater(stop["px"], 10.0, "must not fill at the day's low")
+
+    def test_the_high_water_mark_trails_the_days_high(self):
+        portfolio.update(self._cache(100.0, lo=100.0, hi=100.0), screen_of(["A1"]))
+        self.advance(1)
+        # closes at 100 but printed 110 during the day — a 9% fall from the
+        # high, comfortably inside the stop, so it should still be held
+        portfolio.update(self._cache(100.0, lo=100.0, hi=110.0), screen_of(["A1"]))
+        pos = portfolio.load_ledger()["books"]["C"]["positions"]["A1"]
+        self.assertGreaterEqual(pos["peak_px"], 110.0,
+                                "a trailing stop trails from the high, not a sample")
+
+    def test_a_higher_mark_pulls_the_stop_up_behind_it(self):
+        portfolio.update(self._cache(100.0, lo=100.0, hi=100.0), screen_of(["A1"]))
+        self.advance(1)
+        portfolio.update(self._cache(100.0, lo=100.0, hi=110.0), screen_of(["A1"]))
+        self.advance(1)
+        # 12% below the 110 high; would have survived against a 100 mark
+        portfolio.update(self._cache(96.8, lo=96.8, hi=96.8), screen_of(["A1"]))
+        led = portfolio.load_ledger()
+        self.assertIn("A1", led["books"]["C"]["positions"])   # still inside 25%
+        self.assertGreaterEqual(led["books"]["C"]["positions"]["A1"]["peak_px"],
+                                110.0, "the mark must not fall back")
+
+    def test_a_stale_quotes_high_and_low_are_not_used(self):
+        # last week's low must not invent an exit that never happened
+        portfolio.update(self._cache(100.0, lo=100.0, hi=100.0), screen_of(["A1"]))
+        self.advance(1)
+        c = self._cache(100.0, lo=1.0, hi=100.0)
+        c["quotes"]["A1"]["t"] = (NOW - timedelta(hours=100)).isoformat()
+        portfolio.update(c, screen_of(["A1"]))
+        self.assertEqual(portfolio.load_ledger()["books"]["C"]["stops_hit"], 0)
+
+    def test_a_feed_without_high_and_low_still_works(self):
+        portfolio.update(self._cache(100.0), screen_of(["A1"]))
+        self.advance(1)
+        portfolio.update(self._cache(40.0), screen_of(["A1"]))
+        self.assertGreater(portfolio.load_ledger()["books"]["C"]["stops_hit"], 0)
+
+
 class StopCoolOffTests(PaperTestCase):
 
     def test_a_stopped_name_is_not_bought_straight_back(self):

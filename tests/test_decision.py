@@ -58,6 +58,14 @@ class PreRegistrationTests(unittest.TestCase):
     def test_the_dates_are_unchanged(self):
         self.assertEqual(decision.WRITTEN_ON, "2026-09-23")
         self.assertEqual(decision.REVIEW_DATE, "2026-12-14")
+        self.assertEqual(decision.SECOND_CHECKPOINT, "2027-03-15")
+
+    def test_every_continuing_verdict_names_the_next_date(self):
+        # "continue to a new checkpoint" with no date is how a deadline
+        # quietly becomes never
+        for key in ("insufficient", "inconclusive", "continue"):
+            self.assertIn(decision.SECOND_CHECKPOINT, decision.VERDICTS[key][1],
+                          f"{key} must name when the next review happens")
 
     def test_the_review_date_is_not_quietly_pushed_back(self):
         # "extend the test" is the most comfortable wrong answer available

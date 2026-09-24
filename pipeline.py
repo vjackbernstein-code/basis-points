@@ -1981,6 +1981,33 @@ def render_decision(data):
             f'{esc(g["name"])}</td><td class="l">{esc(g["asks"])}</td>'
             f'<td class="l">{got}</td><td class="l {cls}">{state}</td></tr>')
 
+    # whether the bar can still be met AT ALL, said the day it stops being
+    # possible rather than discovered in December
+    reach = ((data.get("smallcap") or {}).get("reach")) or {}
+    warn = ""
+    dead = [h for h, r in reach.items() if not r.get("reachable")]
+    if dead:
+        bits = "; ".join(
+            f'{h}: {reach[h]["have"]} frozen, at most {reach[h]["possible"]} '
+            f'possible by then, {reach[h]["target"]} needed' for h in dead)
+        warn = (f'<div class="alarm" role="alert"><strong>The bar can no longer '
+                f'be met by {esc(a["review_date"])}.</strong> {bits}. A reading '
+                f'was missed and the schedule has no spare — so the review will '
+                f'return &ldquo;not enough evidence&rdquo; for a data reason, not '
+                f'because the strategy failed. The bar is NOT being lowered to '
+                f'fit; the shortfall is shown instead.</div>')
+    else:
+        tight = [h for h, r in reach.items() if r.get("slack", 9) <= 1]
+        if tight:
+            bits = "; ".join(
+                f'{h} has {reach[h]["have"]} of {reach[h]["target"]} with room '
+                f'for {reach[h]["slack"]} more missed' for h in tight)
+            warn = (f'<p class="cofoot"><strong>The schedule has almost no '
+                    f'spare:</strong> {bits}. Readings run end to end from the '
+                    f'first published screen to the review date, so a single one '
+                    f'skipped makes the bar unreachable. If that happens this '
+                    f'panel will say so that day rather than in December.</p>')
+
     return (
         '<h2 class="section-head">The December decision, decided in advance</h2>'
         f'<div class="note-box"><strong>Written {esc(a["written_on"])}, to be '
@@ -1997,6 +2024,7 @@ def render_decision(data):
         '<tr><th class="l">Gate</th><th class="l">What it asks</th>'
         '<th class="l">Where it stands</th><th class="l">Status</th></tr>'
         f'{"".join(rows)}</table></div>'
+        f'{warn}'
         f'<div class="note-box"><strong>As things stand: {esc(a["title"])}.</strong> '
         f'{esc(a["body"])}</div>'
         '<p class="cofoot">One clause matters more than the gates. <strong>A '
@@ -2111,10 +2139,14 @@ def build_sections(data):
                 e = ev[h]
                 dropped = (f'; {e["dropped"]} name-readings dropped'
                            if e.get("dropped") else "")
+                peer = (f'; <strong>{e["vs_peers"]:+.2f}% against {e.get("peer_n", 100)} '
+                        f'randomly chosen eligible names</strong>, equally '
+                        f'weighted like the screen itself'
+                        if e.get("vs_peers") is not None else "")
                 bits.append(f'{lab}: {e["excess"]:+.2f}% vs the Russell 2000 Growth '
                             f'ETF ({e["days"]} frozen cohort reading'
                             f'{"s" if e["days"] != 1 else ""} / '
-                            f'{e.get("indep", "?")} independent{dropped})')
+                            f'{e.get("indep", "?")} independent{dropped}){peer}')
         parts.append('<div class="note-box"><strong>Live track record.</strong> '
                      'Average forward return of published screens minus the benchmark — '
                      + "; ".join(bits) +
@@ -2123,7 +2155,16 @@ def build_sections(data):
                      'backfilled — so readings accumulate as real forward evidence. '
                      'Cohorts published within the same week overlap, so the '
                      '<em>independent</em> count, not the total, is the honest '
-                     'sample size.</div>')
+                     'sample size. <strong>Two yardsticks, deliberately.</strong> '
+                     'The index tells you whether the whole package beat simply '
+                     'buying small-cap growth. The random draw tells you '
+                     'something narrower and more important: whether the '
+                     '<em>ranking</em> is doing anything, with the universe and '
+                     'the equal weighting held constant. Equal-weighting a '
+                     'small-cap universe has historically paid something on its '
+                     'own, so a lead over the index alone could be the weighting '
+                     'rather than the picking. The draw is seeded from the date, '
+                     'so it cannot be re-rolled until it flatters.</div>')
     elif screen:
         parts.append('<div class="note-box"><strong>Live track record:</strong> '
                      'collecting. Each day’s screen is logged; the first 1-week '

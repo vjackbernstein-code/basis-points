@@ -45,6 +45,7 @@ Model v2 (fixed rules, disclosed on the page; not investment advice):
 import hashlib
 import json
 import os
+import random
 import re
 import time
 import urllib.error
@@ -365,6 +366,14 @@ def _fetch_quote(fh, cache, ticker):
     cache["quotes"][ticker] = {
         "px": q.get("c") or None,
         "dp": q.get("dp"),
+        # The day's high and low arrive in the SAME call and were being thrown
+        # away. Without them a stop can only be tested against the handful of
+        # prices we happen to sample, so a name that fell through its stop at
+        # 10am and recovered by noon is never sold — the simulated stop gets
+        # the protection of a stop without the whipsaw cost of one. Free to
+        # keep, and books C and E are dishonest without them.
+        "hi": q.get("h") or None,
+        "lo": q.get("l") or None,
         "t": _iso(),
     }
 
@@ -797,6 +806,7 @@ def update_log(cache, published, candidates):
         "v": MODEL_VERSION,
         "pub": [[r["ticker"], r["score"], r["px"]] for r in published],
         "cand": [r["ticker"] for r in candidates],
+        "samp": _peer_sample(cache, today),
         "bench": {"iwo": bench.get("iwo"), "iwm": bench.get("iwm")},
     }
     # keep a year of history
@@ -804,6 +814,59 @@ def update_log(cache, published, candidates):
         del log[day]
     save_log(log)
     return log
+
+
+PEER_SAMPLE = 100
+
+
+def _peer_sample(cache, day):
+    """A random draw from the names the screen was choosing BETWEEN.
+
+    The books hold 25 names equally weighted; IWO holds about 1,100 weighted by
+    size. Equal-weighting a small-cap universe has historically produced a
+    return difference all on its own, so an excess measured only against IWO
+    partly rewards HOW WE WEIGHT rather than WHAT WE PICK — and in December
+    that ambiguity would sit directly underneath the headline number.
+
+    This is the second yardstick: the same universe, the same equal weighting,
+    the same pricing rules, chosen at random instead of by score. The screen
+    beating it is evidence about the ranking. The screen beating IWO is
+    evidence about the whole package.
+
+    The draw is seeded from the date, so it is reproducible by anyone holding
+    the same data and cannot be re-rolled until it flatters."""
+    pool = sorted(t for t in cache.get("metrics", {})
+                  if _eligible(cache, t)
+                  and (cache["quotes"].get(t) or {}).get("px"))
+    if len(pool) < PEER_SAMPLE:
+        return []
+    rng = random.Random(f"{day}:{MODEL_VERSION}")
+    return [[t, cache["quotes"][t]["px"]] for t in rng.sample(pool, PEER_SAMPLE)]
+
+
+def _basket_return(cache, rows):
+    """Mean forward return of a basket, priced exactly as a cohort is — stale
+    prices carried, vanished names booked at a loss. Both baskets must be
+    measured the same way or the comparison between them is meaningless."""
+    rets, carried, gone, fresh = [], 0, 0, 0
+    for tick, px0 in rows:
+        if not px0:
+            continue
+        q = cache["quotes"].get(tick) or {}
+        px = q.get("px")
+        if px and _age_h(q.get("t")) < 30:
+            rets.append((px / px0 - 1) * 100)
+            fresh += 1
+        elif px:
+            rets.append((px / px0 - 1) * 100)
+            carried += 1
+        else:
+            rets.append(-DELIST_ASSUMED_LOSS * 100)
+            gone += 1
+    if not rets:
+        return None, {"carried": 0, "gone": 0, "priced": 0, "fresh": 0}
+    return (sum(rets) / len(rets),
+            {"carried": carried, "gone": gone, "priced": len(rets), "fresh": fresh})
 
 
 def _cohort_excess(cache, entry, bench_now):
@@ -869,8 +932,17 @@ def snapshot_readings(cache, log):
             excess, counts = _cohort_excess(cache, entry, bench_now)
             if excess is None:
                 continue
-            entry[key] = {"excess": round(excess, 2), "age": age,
-                          "dropped": 0, **counts}
+            reading = {"excess": round(excess, 2), "age": age,
+                       "dropped": 0, **counts}
+            # the same cohort against a random draw from the same universe,
+            # which isolates the ranking from the weighting
+            mine, _ = _basket_return(
+                cache, [[t, px] for t, _s, px in entry.get("pub", [])])
+            peers, pc = _basket_return(cache, entry.get("samp") or [])
+            if mine is not None and peers is not None and pc["priced"] >= 50:
+                reading["vs_peers"] = round(mine - peers, 2)
+                reading["peer_n"] = pc["priced"]
+            entry[key] = reading
             changed = True
     if changed:
         save_log(log)
@@ -910,6 +982,63 @@ def evaluate(cache, log):
             # is not actually there.
             "values": [r["excess"] for _d, r in got],
             "indep_values": indep_vals,
+            # against a random draw from the same eligible universe, equally
+            # weighted — the ranking's own contribution, with the weighting
+            # scheme held constant
+            "vs_peers": (round(sum(r["vs_peers"] for _d, r in got
+                                   if "vs_peers" in r)
+                               / max(1, sum(1 for _d, r in got
+                                            if "vs_peers" in r)), 2)
+                         if any("vs_peers" in r for _d, r in got) else None),
+            "peer_readings": sum(1 for _d, r in got if "vs_peers" in r),
+        }
+    return out
+
+
+def reachability(log, review_date):
+    """Can the freeze bar still be met by the review date?
+
+    The bar is 12 independent 1-week readings and 3 independent 4-week ones,
+    and the schedule has NO slack: taken end to end from the first published
+    screen they land on 8 and 7 December against a review on the 14th. A single
+    reading skipped past its window makes the bar arithmetically unreachable —
+    and the failure would not show up until December, where it would read as
+    'not enough evidence' when the real cause was a plumbing gap weeks earlier.
+
+    This says so on the day it becomes true instead."""
+    review = datetime.fromisoformat(review_date).date()
+    today = _now().date()
+    out = {}
+    for horizon, lo, _hi, gap in HORIZONS:
+        key = f"read_{horizon}"
+        got, last = 0, None
+        for day in sorted(log):
+            e = log[day]
+            if e.get("v") != MODEL_VERSION or key not in e:
+                continue
+            d = datetime.fromisoformat(day).date()
+            if last is None or (d - last).days >= gap:
+                got += 1
+                last = d
+        # when the next independent reading could first be frozen
+        pub = [d for d in sorted(log)
+               if log[d].get("v") == MODEL_VERSION and log[d].get("pub")]
+        if last is not None:
+            nxt = last + timedelta(days=gap)
+        elif pub:
+            nxt = datetime.fromisoformat(pub[0]).date() + timedelta(days=lo)
+        else:
+            nxt = today + timedelta(days=lo)
+        spare, t = 0, max(nxt, today)
+        while t <= review:
+            spare += 1
+            t = t + timedelta(days=gap)
+        target = FREEZE_TARGET[horizon]
+        out[horizon] = {
+            "have": got, "target": target, "possible": got + spare,
+            "next_due": max(nxt, today).isoformat(),
+            "reachable": got + spare >= target,
+            "slack": got + spare - target,
         }
     return out
 
@@ -948,6 +1077,7 @@ def summarize(cache, note=None, published=None, candidates=None, log=None):
         },
         "screen": published,
         "freshness": _freshness(cache),
+        "reach": reachability(log or load_log(), FREEZE_REVIEW_DATE),
         "changes": _screen_changes(log or load_log(), published),
         "below_floor": below_floor(cache),
         "movers_up": up,
