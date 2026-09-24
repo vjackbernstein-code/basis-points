@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-24T15:33:12.317103+00:00",
+ "generated_at": "2026-09-24T15:38:20.721896+00:00",
  "market": [
   {
    "label": "S&P 500",
@@ -292,11 +292,11 @@
    "label": "Bitcoin",
    "symbol": "bitcoin",
    "kind": "crypto",
-   "value": 84170.39601629881,
+   "value": 84331.69349257307,
    "prev": 84382.39990356649,
-   "value_txt": "$84,170",
-   "delta": -0.25124183183929677,
-   "delta_txt": "-0.25%",
+   "value_txt": "$84,332",
+   "delta": -0.06009121694969868,
+   "delta_txt": "-0.06%",
    "spark": [
     77297.13347191992,
     81264.70153038795,
@@ -320,18 +320,18 @@
     86596.74004249526,
     86183.29442787907,
     84382.39990356649,
-    84170.39601629881
+    84331.69349257307
    ]
   },
   {
    "label": "Ethereum",
    "symbol": "ethereum",
    "kind": "crypto",
-   "value": 2671.14334307567,
+   "value": 2680.9730160314252,
    "prev": 2684.342871490596,
-   "value_txt": "$2,671",
-   "delta": -0.4917228925974006,
-   "delta_txt": "-0.49%",
+   "value_txt": "$2,681",
+   "delta": -0.12553744512150708,
+   "delta_txt": "-0.13%",
    "spark": [
     2390.783044679688,
     2507.6482840896088,
@@ -355,11 +355,11 @@
     2775.1686826711957,
     2752.629093198004,
     2684.342871490596,
-    2671.14334307567
+    2680.9730160314252
    ]
   }
  ],
- "tape_line": "S&P 500 -0.75%, Nasdaq -1.13%, Dow -0.68%; the 10-year Treasury at 4.96% (+0 bp); WTI crude $96.41 (-0.58%); bitcoin $84,170 (-0.25%).",
+ "tape_line": "S&P 500 -0.75%, Nasdaq -1.13%, Dow -0.68%; the 10-year Treasury at 4.96% (+0 bp); WTI crude $96.41 (-0.58%); bitcoin $84,332 (-0.06%).",
  "top": [
   {
    "title": "Fed Rate-Hike Expectations Strengthen Dollar, Lift Treasury Yields",
@@ -413,7 +413,7 @@
  ],
  "smallcap": {
   "note": null,
-  "asof": "2026-09-24T15:36:03+00:00",
+  "asof": "2026-09-24T15:40:34+00:00",
   "coverage": {
    "universe": 9895,
    "profiled": 9966,
@@ -1381,12 +1381,12 @@
    }
   ],
   "freshness": {
-   "last_full_h": 1.7,
+   "last_full_h": 1.8,
    "quote_median_h": 6.4,
    "quote_count": 1860,
    "bench_h": 0.0,
-   "universe_h": 140.5,
-   "earnings_h": 6.3,
+   "universe_h": 140.6,
+   "earnings_h": 6.4,
    "bench_gate_h": 72
   },
   "reach": {
@@ -1808,6 +1808,13 @@
     "form": "424B3"
    },
    {
+    "ticker": "FWDI",
+    "name": "Forward Industries Inc",
+    "date": "2026-09-24",
+    "link": "https://www.sec.gov/Archives/edgar/data/38264/000168316826007369/0001683168-26-007369-index.htm",
+    "form": "424B5"
+   },
+   {
     "ticker": "AIIR",
     "name": "Air Global PLC",
     "date": "2026-09-23",
@@ -1841,13 +1848,6 @@
     "date": "2026-09-22",
     "link": "https://www.sec.gov/Archives/edgar/data/1268533/000121390026102299/0001213900-26-102299-index.htm",
     "form": "424B2"
-   },
-   {
-    "ticker": "NKLR",
-    "name": "Terra Innovatum Global NV",
-    "date": "2026-09-22",
-    "link": "https://www.sec.gov/Archives/edgar/data/2067627/000121390026102281/0001213900-26-102281-index.htm",
-    "form": "424B3"
    }
   ],
   "budget_mode": "trickle",
@@ -5970,8 +5970,8 @@
     "common_days": 1,
     "value": 97842.78,
     "ret": -2.16,
-    "bench_ret": -2.6,
-    "excess": 0.45,
+    "bench_ret": -2.68,
+    "excess": 0.54,
     "friction_yr": 36.4,
     "max_drawdown": -2.16,
     "positions": 25,
@@ -5997,8 +5997,8 @@
     "common_days": 1,
     "value": 97868.55,
     "ret": -2.13,
-    "bench_ret": -2.6,
-    "excess": 0.48,
+    "bench_ret": -2.68,
+    "excess": 0.57,
     "friction_yr": 36.4,
     "max_drawdown": -2.13,
     "positions": 25,
@@ -6024,8 +6024,8 @@
     "common_days": 1,
     "value": 97842.78,
     "ret": -2.16,
-    "bench_ret": -2.6,
-    "excess": 0.45,
+    "bench_ret": -2.68,
+    "excess": 0.54,
     "friction_yr": 36.4,
     "max_drawdown": -2.16,
     "positions": 25,
@@ -6051,8 +6051,8 @@
     "common_days": 1,
     "value": 98058.5,
     "ret": -1.94,
-    "bench_ret": -2.6,
-    "excess": 0.68,
+    "bench_ret": -2.68,
+    "excess": 0.76,
     "friction_yr": 32.7,
     "max_drawdown": -1.94,
     "positions": 25,
@@ -6078,8 +6078,8 @@
     "common_days": 1,
     "value": 98081.7,
     "ret": -1.92,
-    "bench_ret": -2.6,
-    "excess": 0.7,
+    "bench_ret": -2.68,
+    "excess": 0.79,
     "friction_yr": 32.7,
     "max_drawdown": -1.92,
     "positions": 25,
@@ -6105,8 +6105,8 @@
     "common_days": 1,
     "value": 99601.59,
     "ret": -0.4,
-    "bench_ret": -0.59,
-    "excess": 0.19,
+    "bench_ret": -0.67,
+    "excess": 0.28,
     "friction_yr": 145.4,
     "max_drawdown": -0.4,
     "positions": 25,
@@ -6122,7 +6122,7 @@
    99.806,
    100.563,
    98.505,
-   97.401
+   97.316
   ],
   "span": [
    "2026-09-21",
@@ -6581,7 +6581,7 @@
  "stats": {
   "feeds_total": 21,
   "feeds_failed": 2,
-  "items": 440,
+  "items": 438,
   "smallcap_calls": 42,
   "feed_errors": [
    [
