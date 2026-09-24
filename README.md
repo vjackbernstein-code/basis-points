@@ -479,6 +479,22 @@ Now every published name contributes something:
   which is safe because the horizon window is several days wide and the reading
   is simply retried tomorrow.
 
+### Network timeouts: measured, not guessed
+
+`SLOW_TIMEOUT = 40` (was 15). The FRED release calendar answers in **16-22
+seconds** and GlobeNewswire's RSS is similarly erratic; against a 15-second
+ceiling both failed roughly every attempt, and with one retry that meant losing
+them outright. The economic calendar was empty on the live site for six days
+and the job reported success every single run.
+
+The watchdog caught it and **diagnosed it wrongly** — it reported the vendors as
+"blocking or throttling", which would have sent someone to check API keys.
+Timing the endpoints by hand showed they answer fine, just slowly. Its brief now
+says so explicitly: a persistent timeout usually means the timeout is too short,
+and since the watchdog cannot make network calls it must state the configured
+timeout and say the endpoint needs timing by hand, rather than assert a cause it
+cannot test.
+
 ### Staleness: what a static page can and cannot tell you
 
 `staleness_alerts()` raises a banner — on **every** page, above the tabs — when

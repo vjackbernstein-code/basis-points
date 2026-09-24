@@ -57,6 +57,14 @@ TOP_COUNT = 7
 
 # Hard ceilings on untrusted input. A feed host can serve anything it likes;
 # without limits one hostile response can exhaust the unattended runner.
+# Measured, not guessed: the FRED release calendar answers in 10-22 seconds and
+# GlobeNewswire's RSS is similarly erratic. At the old 15-second timeout both
+# failed roughly one attempt in two, and with a single retry that meant losing
+# them outright most runs — which is exactly what happened, silently, for six
+# days. Fetches run in parallel, so a longer ceiling costs wall-clock only when
+# something is genuinely slow.
+SLOW_TIMEOUT = 40
+
 MAX_FETCH_BYTES = 8 * 1024 * 1024        # far above any real feed
 MAX_UNZIPPED_BYTES = 32 * 1024 * 1024    # a small gzip can expand to gigabytes
 MAX_TITLE_CHARS = 300                    # also bounds the filing-title regex
@@ -185,7 +193,7 @@ def _gunzip(raw, limit=MAX_UNZIPPED_BYTES):
     return out
 
 
-def fetch(url, ua=BROWSER_UA, timeout=15, retries=1):
+def fetch(url, ua=BROWSER_UA, timeout=SLOW_TIMEOUT, retries=1):
     last_err = None
     for attempt in range(retries + 1):
         try:
