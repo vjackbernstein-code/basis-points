@@ -69,6 +69,15 @@ REBALANCE_WEEKDAY = 0            # Monday (0=Mon ... 6=Sun)
 # on the screen, collecting a free trading day of drift on every rebalance.
 MARKET_OPEN_UTC, MARKET_CLOSE_UTC = 14, 20
 REBALANCE_OVERDUE_DAYS = 10      # failsafe so an outage cannot freeze the book
+# How often each book may trade. The weekly numbers reproduce the behaviour
+# every existing book has had since it opened and must not be altered: changing
+# them would change what those books' records mean.
+CADENCE = {
+    "weekly":  {"days": 7,  "overdue": 10, "any_monday": True,
+                "label": "weekly (Monday)"},
+    "monthly": {"days": 28, "overdue": 38, "any_monday": False,
+                "label": "every 4 weeks"},
+}
 STALE_BENCH_H = 72               # the benchmark gets the same gate as holdings
 # A holding that simply stops being quoted is usually not fine. Write it down
 # on a schedule rather than carrying it at full value until the next rebalance.
@@ -124,7 +133,25 @@ STRATEGIES = {
           "note": "equal weight, exposure cut when the small-cap tape falls"},
     "E": {"label": "Combined", "sizing": "score", "stop": True, "regime": True,
           "note": "conviction + stop + regime together"},
+    # Added 2026-09-24, four days into the record, deliberately early: a book
+    # started later would have no comparable history at either checkpoint.
+    #
+    # It isolates the cost of trading, which is the single number most likely
+    # to decide this whole question — the screen turns over heavily and the
+    # control has already spent 0.4% on friction in four days. F is the control
+    # in every respect except that it trades monthly, so the gap between A and
+    # F is what the weekly cadence is worth, net of what it costs. Unlike a
+    # leveraged book, whose result is very nearly A multiplied by a constant,
+    # this one cannot be worked out from any existing book.
+    "F": {"label": "Slow", "sizing": "equal", "stop": None, "regime": False,
+          "cadence": "monthly",
+          "note": "the control again, but trading every 4 weeks instead of "
+                  "weekly — isolates what the trading itself costs"},
 }
+
+
+def cadence_of(spec):
+    return CADENCE[spec.get("cadence", "weekly")]
 
 
 def _today():
@@ -432,17 +459,23 @@ def _market_open_now():
             and MARKET_OPEN_UTC <= now.hour < MARKET_CLOSE_UTC)
 
 
-def _due_for_rebalance(book, today):
+def _due_for_rebalance(book, today, spec=None):
+    cad = cadence_of(spec or {})
     if book["last_rebalance"] is None:
         return _market_open_now()
     last = datetime.fromisoformat(book["last_rebalance"]).date()
     now = datetime.fromisoformat(today).date()
     gap = (now - last).days
-    if gap >= REBALANCE_OVERDUE_DAYS:
+    if gap >= cad["overdue"]:
         return True                      # failsafe: an outage must not freeze it
     if not _market_open_now():
         return False
-    return gap >= 7 or (now.weekday() == REBALANCE_WEEKDAY and now != last)
+    if gap >= cad["days"]:
+        return True
+    # a weekly book also trades on a Monday that arrives early; a monthly one
+    # must not, or it would trade every Monday and stop being monthly
+    return bool(cad["any_monday"]
+                and now.weekday() == REBALANCE_WEEKDAY and now != last)
 
 
 def book_value(book):
@@ -466,7 +499,7 @@ def update(cache, screen):
         # value first: sizing off stale marks mis-weights every position
         refresh_marks(book, cache, today)
         apply_stops(book, spec, cache, today)
-        if screen and _due_for_rebalance(book, today):
+        if screen and _due_for_rebalance(book, today, spec):
             if book["started"] is None:
                 book["started"] = today
                 book["start_bench"] = bench
@@ -620,14 +653,65 @@ def _group_trades(led, limit=14):
     return out
 
 
+def _common_window(led):
+    """The latest date on which EVERY open book was already running.
+
+    Books added mid-flight start later, and in a falling market the newest book
+    is ahead of all the others on its first day purely by having missed the
+    fall. Comparing since-inception returns would hand it the prize for
+    arriving late. Any book-against-book comparison has to start here."""
+    firsts = []
+    for bk in (led.get("books") or {}).values():
+        hist = bk.get("history") or []
+        if bk.get("started") and hist:
+            firsts.append(hist[0]["date"])
+    return max(firsts) if firsts else None
+
+
+def _ret_since(book, day):
+    """A book's return measured from `day`, not from its own opening."""
+    hist = [h for h in (book.get("history") or []) if h["date"] >= day]
+    if len(hist) < 1 or not hist[0].get("value"):
+        return None
+    return (hist[-1]["value"] / hist[0]["value"] - 1) * 100
+
+
+def _excess_since(book, day):
+    """Return against the benchmark, both measured from the same date. A book
+    that started later also missed whatever the index did in the meantime, so
+    its since-inception excess is not comparable with an older book's."""
+    hist = [h for h in (book.get("history") or []) if h["date"] >= day]
+    if len(hist) < 1 or not hist[0].get("value"):
+        return None
+    b0 = next((h["bench"] for h in hist if h.get("bench")), None)
+    b1 = hist[-1].get("bench")
+    if not b0 or not b1:
+        return None
+    r = hist[-1]["value"] / hist[0]["value"]
+    return ((r / (b1 / b0)) - 1) * 100
+
+
 def summarize(led=None):
     led = led or load_ledger()
+    common = _common_window(led)
     books = []
     for key, spec in STRATEGIES.items():
         st = _stats(led["books"].get(key) or {})
         if st:
+            rc = _ret_since(led["books"][key], common) if common else None
             books.append({"key": key, "label": spec["label"],
-                          "note": spec["note"], **st})
+                          "note": spec["note"],
+                          # the like-for-like figure, and how long it covers
+                          "ret_common": round(rc, 2) if rc is not None else None,
+                          "excess_common": (
+                              lambda x: round(x, 2) if x is not None else None)(
+                                  _excess_since(led["books"][key], common)
+                                  if common else None),
+                          "common_from": common,
+                          "common_days": sum(
+                              1 for h in (led["books"][key].get("history") or [])
+                              if common and h["date"] >= common),
+                          **st})
     base = led["books"].get("A") or {}
     holdings = []
     for tick, p in (base.get("positions") or {}).items():
@@ -707,6 +791,7 @@ def summarize(led=None):
             "holdings": rows,
             "trades": sorted(bk.get("trades") or [], key=lambda t: t["date"],
                              reverse=True)[:30],
+            "cadence": cadence_of(spec)["label"],
             "uses_stops": bool(spec["stop"]),
             "uses_conviction": spec["sizing"] == "score",
             "uses_regime": bool(spec["regime"]),
@@ -729,7 +814,8 @@ def summarize(led=None):
         "assumptions": {
             "capital": START_CAPITAL, "cost_bps": COST_BPS,
             "stop_slippage_bps": STOP_SLIPPAGE_BPS,
-            "cadence": "weekly (Monday)", "stop_sigma": STOP_SIGMA,
+            "cadence": "weekly (Monday), except book F every 4 weeks",
+            "stop_sigma": STOP_SIGMA,
             "conviction_cap": CONVICTION_MAX,
         },
     }

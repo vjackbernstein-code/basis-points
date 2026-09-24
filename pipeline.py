@@ -672,7 +672,7 @@ CSS = """
   --hair: #e1e0d9; --border: rgba(11,11,11,.10);
   --accent: #2a78d6; --spark: #9ec5f4;
   --bk-a: #0b0b0b; --bk-b: #2a78d6; --bk-c: #c47510;
-  --bk-d: #7b46bd; --bk-e: #0a8a5f;
+  --bk-d: #7b46bd; --bk-e: #0a8a5f; --bk-f: #b03a6e;
   --up: #006300; --down: #d03b3b;
 }
 @media (prefers-color-scheme: dark) {
@@ -683,7 +683,7 @@ CSS = """
     --hair: #2c2c2a; --border: rgba(255,255,255,.10);
     --accent: #3987e5; --spark: #1c5cab;
     --bk-a: #ffffff; --bk-b: #5aa2f0; --bk-c: #e8a33f;
-    --bk-d: #b18ae8; --bk-e: #2fc58c;
+    --bk-d: #b18ae8; --bk-e: #2fc58c; --bk-f: #f07fae;
     --up: #0ca30c; --down: #e66767;
   }
 }
@@ -1051,6 +1051,18 @@ def render_econ_column(rows):
             f'{"".join(lis)}</section>')
 
 
+_NUM_WORD = {1: "one", 2: "two", 3: "three", 4: "four", 5: "five", 6: "six",
+             7: "seven", 8: "eight", 9: "nine", 10: "ten"}
+
+
+def books_word(pf=None):
+    """How many books there are, in words. Derived, never typed — the page said
+    "five books" in nine places, and every one of them would have quietly
+    become a lie the moment a sixth was added."""
+    n = len((pf or {}).get("books") or portfolio.STRATEGIES)
+    return _NUM_WORD.get(n, str(n))
+
+
 def _fmt_adv(adv):
     """Average daily volume arrives in MILLIONS of shares (smallcap.ADV_MIN is
     0.05 = fifty thousand). Printing it as though it were thousands understated
@@ -1112,11 +1124,12 @@ def _fmt_mcap(musd):
 
 
 BOOK_STROKE = {"A": "var(--bk-a)", "B": "var(--bk-b)", "C": "var(--bk-c)",
-               "D": "var(--bk-d)", "E": "var(--bk-e)"}
+               "D": "var(--bk-d)", "E": "var(--bk-e)", "F": "var(--bk-f)"}
 # A second signal besides colour. Amber and green — books C and E, the pair
 # that differs only by its stop — are a common confusion, and a chart whose
 # whole point is comparison must not rest that comparison on hue alone.
-BOOK_DASH = {"A": "", "B": "7 3", "C": "2 3", "D": "10 3 2 3", "E": "4 3"}
+BOOK_DASH = {"A": "", "B": "7 3", "C": "2 3", "D": "10 3 2 3", "E": "4 3",
+             "F": "14 4"}
 
 
 def _nice_step(span, want=4):
@@ -1233,7 +1246,7 @@ def equity_chart(pf):
         '<p class="cofoot">Every line starts at 0%, so they can be compared '
         'directly. <strong>Book A is the control</strong> — a clever book that '
         'does not finish above it has not earned its extra trading. The dashed '
-        'line is the index all five are trying to beat. These are simulated '
+        f'line is the index all {books_word()} are trying to beat. These are simulated '
         'results; no money is invested.</p>')
 
 def render_progress(data):
@@ -1277,13 +1290,18 @@ def render_progress(data):
 
     # the best of several is biased upward, and saying so is the whole point of
     # printing it next to the control rather than on its own
-    gaps = [(by_key[k]["ret"] - ctrl["ret"], by_key[k]) for k in "BCDE" if k in by_key] \
-        if ctrl else []
+    # like-for-like: over the window every book shares, not since each opened.
+    # A book added mid-flight also missed whatever happened before it opened.
+    def _cmp(b):
+        return b.get("ret_common") if b.get("ret_common") is not None else b["ret"]
+    gaps = ([(_cmp(by_key[k]) - _cmp(ctrl), by_key[k])
+             for k in by_key if k != "A"] if ctrl else [])
     if gaps:
         gap, best = max(gaps, key=lambda t: t[0])
         tile("Best overlay, vs control", f'{gap:+.1f}%',
              f'{esc(best["key"])} {esc(best["label"])} · highest of {len(gaps)}, '
-             'so it flatters itself')
+             'so it flatters itself · measured over the period all the books '
+             'share')
     else:
         tile("Best overlay, vs control", "—", "needs a running control to compare against")
 
@@ -1359,7 +1377,7 @@ def trade_list(trades, prefix="co/", known=None):
         # refresh the committed file is still in the previous shape, and a page
         # that crashes on it freezes the whole site at its last version
         books = t.get("books") or []
-        who = ("all five books" if t.get("all_books") else
+        who = (f"all {books_word()} books" if t.get("all_books") else
                f"book {books[0]}" if len(books) == 1 else
                "books " + ", ".join(books) if books else "")
         lo = t.get("shares_lo", t.get("shares"))
@@ -1392,7 +1410,8 @@ def render_portfolio(pf, known=None):
     a = pf["assumptions"]
     note = (
         '<div class="note-box"><strong>No money is invested. These are '
-        'hypothetical results.</strong> Five books run over the same screen, the '
+        f'hypothetical results.</strong> {books_word(pf).capitalize()} books run '
+        f'over the same screen, the '
         'same prices and the same frictions, differing only in their rules, so '
         'that the effect of each rule can be seen rather than assumed. '
         f'Each starts from a notional ${a["capital"]:,.0f}, rebalances '
@@ -1410,10 +1429,13 @@ def render_portfolio(pf, known=None):
         'keep. Simulated results still omit what hurts real traders most: the '
         'market moving against a real order, taxes, and the nerve to follow a '
         'system through a losing stretch.</div>')
+    ages = {b.get("days") for b in pf["books"]}
+    mixed = len(ages) > 1          # a book was added mid-flight
+    lfl_h = ('<th>Same period</th>' if mixed else "")
     head = ('<tr><th class="l">Book</th><th class="l">Rules</th><th class="l">Path</th>'
             '<th>Value</th>'
-            '<th>Return</th><th>vs IWO</th><th>Worst dip</th><th>Cost of trading</th>'
-            '<th>Stops</th><th>Held</th></tr>')
+            f'<th>Return</th>{lfl_h}<th>vs IWO</th><th>Worst dip</th>'
+            '<th>Cost of trading</th><th>Stops</th><th>Held</th></tr>')
     # one vertical scale across every path in the column, benchmark included
     allpts = [v for b in pf["books"] for v in (b.get("curve") or [])]
     allpts += list(pf.get("bench_curve") or [])
@@ -1435,7 +1457,11 @@ def render_portfolio(pf, known=None):
             f'<td class="path">{spark or "&mdash;"}</td>'
             f'<td>${b["value"]:,.0f}</td>'
             f'<td class="{delta_class(b["ret"])}">{b["ret"]:+.2f}%</td>'
-            f'{exc_td}<td>{b["max_drawdown"]:+.1f}%</td>'
+            + ((f'<td class="{delta_class(b.get("ret_common") or 0)}">'
+                f'{b["ret_common"]:+.2f}%</td>')
+               if mixed and b.get("ret_common") is not None
+               else ('<td>—</td>' if mixed else ''))
+            + f'{exc_td}<td>{b["max_drawdown"]:+.1f}%</td>'
             f'<td class="down">{fmt_friction(b)[0]}</td>'
             f'<td>{b["stops_hit"]}</td><td>{b["positions"]}</td></tr>')
     bench_spark = spark_svg(pf.get("bench_curve") or [],
@@ -1445,7 +1471,8 @@ def render_portfolio(pf, known=None):
             '<tr><td class="l tick">IWO benchmark</td>'
             '<td class="l">the index these books are trying to beat</td>'
             f'<td class="path">{bench_spark}</td>'
-            '<td>—</td><td>—</td><td>—</td><td>—</td><td>—</td>'
+            + ('<td>—</td>' if mixed else '')
+            + '<td>—</td><td>—</td><td>—</td><td>—</td><td>—</td>'
             '<td>—</td><td>—</td></tr>')
     table = f'<div class="tblwrap"><table class="screen">{head}{"".join(rows)}</table></div>'
     # a restart that quietly erased its own bad run would leave a record made
@@ -1475,7 +1502,7 @@ def render_portfolio(pf, known=None):
         cols.append('<section class="col"><h2 class="section-head">Recent simulated '
                     f'trades</h2>{trade_list(pf["trades"], known=known)}'
                     '<div class="meta" style="padding-top:8px">Grouped by the books '
-                    'that made each trade. A name bought by all five is one entry, '
+                    f'that made each trade. A name bought by all {books_word()} is one entry, '
                     'not five — but the share counts differ, which is the conviction '
                     'sizing doing its work.</div></section>')
     return note + table + (f'<div class="duo">{"".join(cols)}</div>' if cols else "")
@@ -1838,7 +1865,7 @@ def render_changes(data, known=None):
         parts.append('<h2 class="section-head">What the simulated books did</h2>'
                      + trade_list(pf["trades"], known=known)
                      + '<p class="cofoot">Grouped by which books acted. A name '
-                       'bought by all five is one entry, not five — but the share '
+                       f'bought by all {books_word()} is one entry, not {books_word()} — but the share '
                        'counts differ across them, and that spread is the '
                        'conviction sizing at work. Two books selling while three '
                        'hold is a stop firing, and is the most informative thing '
@@ -1882,6 +1909,13 @@ def render_book_page(key, pf, date_line, sections, known=None):
     else:
         rules.append("<strong>no stop</strong> — it holds through everything, "
                      "on purpose")
+    cad = det.get("cadence")
+    if cad and cad != "weekly (Monday)":
+        rules.append(f'<strong>trades {esc(cad)}</strong>, not weekly — it holds '
+                     f'a name that has dropped off the screen until its next '
+                     f'rebalance comes round')
+    else:
+        rules.append('<strong>rebalances weekly</strong>, on a Monday')
     if det.get("uses_regime"):
         rules.append("<strong>exposure cut</strong> when the small-cap tape "
                      "falls, down to 65% invested in a correction")
@@ -1889,8 +1923,8 @@ def render_book_page(key, pf, date_line, sections, known=None):
         rules.append("<strong>always fully invested</strong>, whatever the tape "
                      "is doing")
 
-    head = (f'<a class="backlink" href="{up}portfolios.html">&larr; all five '
-            f'books</a>'
+    head = (f'<a class="backlink" href="{up}portfolios.html">&larr; all '
+            f'{books_word(pf)} books</a>'
             f'<h1 class="co-tick">Book {esc(key)}</h1>'
             f'<p class="co-name">{esc(b["label"])} '
             f'<span class="flag offer">SIMULATED</span></p>'
@@ -1918,12 +1952,14 @@ def render_book_page(key, pf, date_line, sections, known=None):
 
     # how it differs from the control, stated as the only question that matters
     if ctrl and key != "A":
-        gap = b["ret"] - ctrl["ret"]
+        _c = lambda x: x.get("ret_common") if x.get("ret_common") is not None else x["ret"]
+        gap = _c(b) - _c(ctrl)
         cost_gap = ((b.get("costs_paid") or 0) - (ctrl.get("costs_paid") or 0))
         verdict = (
             f'<div class="note-box"><strong>Against the control: '
             f'{gap:+.2f}%.</strong> Book A runs the same screen with none of '
-            f'this book&rsquo;s rules, and is {ctrl["ret"]:+.2f}%. This book has '
+            f'this book&rsquo;s rules, and is {_c(ctrl):+.2f}% over the same '
+            f'period. This book has '
             f'spent ${b.get("costs_paid", 0):,.0f} on trading against the '
             f'control&rsquo;s ${ctrl.get("costs_paid", 0):,.0f} — '
             f'${abs(cost_gap):,.0f} {"more" if cost_gap > 0 else "less"}. '
@@ -1993,8 +2029,8 @@ def render_book_page(key, pf, date_line, sections, known=None):
             f'{head}<div class="cogrid">{facts_html}</div>{chart}{verdict}'
             f'{render_attribution(det.get("attribution"))}'
             f'{holdings}{trades}'
-            f'<nav class="pager"><a href="{up}portfolios.html">&larr; all five '
-            f'books</a></nav>'
+            f'<nav class="pager"><a href="{up}portfolios.html">&larr; all '
+            f'{books_word(pf)} books</a></nav>'
             '<footer><p><strong>Not investment advice.</strong> This book is a '
             'simulation. No money is invested, no order was ever placed, and '
             'hypothetical results omit what hurts real traders most: the market '
@@ -2211,7 +2247,7 @@ def render_explainer(data):
         'neither.</p>'
 
         '<h3>The five portfolios, and why there are five</h3>'
-        f'<p>Five imaginary pots of money, each with a notional '
+        f'<p>{books_word(pf).capitalize()} imaginary pots of money, each with a notional '
         f'${(pf.get("assumptions") or {}).get("capital", 100000):,.0f} '
         f'&mdash; these are American shares, priced in dollars &mdash; all '
         f'buying the same twenty-five companies and all paying '
@@ -2525,7 +2561,8 @@ SECTIONS = (
      "that is from enough to judge."),
     ("portfolios", "Portfolios",
      'Paper portfolios <span class="flag offer">SIMULATED</span>',
-     "Five books over the same screen, the same prices and the same costs, "
+     f"{books_word().capitalize()} books over the same screen, the same "
+     f"prices and the same costs, "
      "differing only in their rules. No money is invested."),
     ("changes", "Changes", "What changed",
      "Which companies entered and left the screen, and what the simulated "

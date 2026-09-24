@@ -211,6 +211,57 @@ Implementation notes worth keeping:
 - **Stops are checked every day**, not only on rebalance days — a weekly stop
   would be fiction.
 
+### Book F, and why not leverage
+
+Added 2026-09-24, four days into the record — deliberately early, because a
+book started later has no comparable history at either checkpoint. It is the
+control in every respect except that it **rebalances every 4 weeks instead of
+weekly**, so the gap between A and F is what the weekly cadence is worth net of
+what it costs.
+
+That is the question most likely to decide the whole project. This screen turns
+over heavily and the control spent 0.4% on friction in its first four days; if
+trading costs eat the edge, nothing else on the page matters. F has a real
+trade-off on both sides — less friction, but it keeps holding a name that has
+already dropped off the screen — so it is a genuine experiment, not a free win.
+
+**A leveraged book was considered and rejected.** It would add no information:
+holding the same names in the same proportions, its result is very nearly the
+control multiplied by a constant, computable from book A with a calculator.
+Every other book isolates a *decision* — how to size, when to sell, when to
+hold cash; leverage is a volume knob on the whole thing. It would also be
+modelled dishonestly, because there is no borrowing cost, maintenance margin or
+forced-liquidation machinery here, which makes a leveraged book optimistic in
+precisely the scenario where leverage actually hurts. And it would dominate the
+"best overlay" figure mechanically, in a direction already flagged as biased.
+
+It becomes a fair question only if the edge is first shown to exist.
+
+**Adding a book mid-flight created a trap I had to close.** On its first day F
+showed -0.40% against the control's -2.16% — not because it is better, but
+because it missed four days of falling market. Since-inception returns would
+have handed the newest book the "best overlay" label for arriving late, and the
+decision rule's cost gate would have picked it too.
+
+So every book-against-book comparison now runs over `_common_window()`: the
+latest date on which *every* open book was already running. `ret_common` and
+`excess_common` sit beside the since-inception figures, the comparison table
+grows a "Same period" column whenever the books differ in age, and
+`gate_costs()` judges on the shared window. Over the one day they currently
+share, all six books are +0.00% — which is the honest answer.
+
+`CADENCE` holds both schedules. **The weekly numbers reproduce exactly what
+every existing book has done since it opened and must not be altered** —
+changing them would change what those records mean. A test asserts A–E still
+resolve to the weekly cadence, and that each cadence's outage failsafe is
+longer than its own interval (otherwise the "monthly" book would quietly trade
+every ten days).
+
+The page never types the number of books. `books_word()` derives it: the text
+said "five books" in nine places, and every one of them would have become a lie
+the day F arrived. A test renders the whole site and fails if the next wrong
+number appears anywhere in it.
+
 ### Tracking progress (the panel at the top of the page)
 
 `render_progress()` in `pipeline.py` is the tracker. It answers one question —

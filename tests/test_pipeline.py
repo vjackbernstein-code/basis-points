@@ -648,10 +648,24 @@ class TradeListTests(unittest.TestCase):
     def test_a_trade_made_by_every_book_is_said_so_once(self):
         html = pipeline.trade_list([{
             "date": "2026-09-21", "ticker": "ABC", "side": "buy", "why": "rebalance",
-            "books": list("ABCDE"), "px": 10.0, "shares_lo": 100.0,
+            "books": sorted(portfolio.STRATEGIES), "px": 10.0, "shares_lo": 100.0,
             "shares_hi": 100.0, "all_books": True}])
-        self.assertIn("all five books", html)
+        # derived, not typed — the page said "five books" in nine places and
+        # every one became a lie the day a sixth book was added
+        self.assertIn(f"all {pipeline.books_word()} books", html)
         self.assertEqual(html.count("ABC"), 2)      # the link text and its href
+
+    def test_the_book_count_is_never_hard_coded_in_the_page(self):
+        n = len(portfolio.STRATEGIES)
+        self.assertEqual(pipeline.books_word(), pipeline._NUM_WORD[n])
+        stale = {5: "five", 6: "six"}.get(n + 1)    # the next wrong answer
+        for name, html in pipeline.render_site({
+                "generated_at": NOW.isoformat(), "market": [], "top": [],
+                "smallcap": {"v": "v3.1", "screen": [], "evaluation": {},
+                             "coverage": {"universe": 1, "profiled": 1}},
+                "portfolio": {"status": "not started", "books": []}})[0].items():
+            if stale:
+                self.assertNotIn(f"{stale} books", html, name)
 
     def test_the_previous_ungrouped_trade_shape_still_renders(self):
         # between a deploy and the next data refresh the committed file is

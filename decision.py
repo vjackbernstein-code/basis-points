@@ -116,18 +116,25 @@ def gate_signal(ev):
 
 
 def gate_costs(books):
-    """Does anything survive the cost of the trading it takes to run it?"""
-    live = [b for b in (books or []) if b.get("excess") is not None]
-    best = max(live, key=lambda b: b["excess"]) if live else None
+    """Does anything survive the cost of the trading it takes to run it?
+
+    Judged on excess measured over the window EVERY book shares. A book added
+    mid-flight also missed whatever the index did before it opened, so its
+    since-inception excess flatters or damns it for nothing it did."""
+    live = [b for b in (books or [])
+            if b.get("excess_common", b.get("excess")) is not None]
+    key_of = lambda b: b.get("excess_common", b.get("excess"))
+    best = max(live, key=key_of) if live else None
     return {
         "name": "Survives its costs",
-        "asks": "at least one book ahead of the index after all trading costs",
+        "asks": ("at least one book ahead of the index after all trading "
+                 "costs, over the period every book shares"),
         "best": best["key"] if best else None,
         "best_label": best["label"] if best else None,
-        "excess": best["excess"] if best else None,
+        "excess": key_of(best) if best else None,
         "enough": bool(live),
-        "passed": bool(best and best["excess"] > 0),
-        "failed": bool(live and best and best["excess"] <= 0),
+        "passed": bool(best and key_of(best) > 0),
+        "failed": bool(live and best and key_of(best) <= 0),
     }
 
 

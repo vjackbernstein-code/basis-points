@@ -341,6 +341,104 @@ class AuditedHonestyTests(PaperTestCase):
         self.assertEqual(portfolio.summarize()["status"], "not started")
 
 
+class MonthlyCadenceTests(PaperTestCase):
+    """Book F is the control again, trading every four weeks instead of weekly.
+    The gap between A and F is what the weekly cadence is worth net of its cost
+    — the number most likely to decide the whole question."""
+
+    def test_the_slow_book_skips_the_weekly_rebalance(self):
+        screen = screen_of(["A1", "A2"])
+        portfolio.update(cache_with({"A1": 10.0, "A2": 10.0}), screen)
+        self.advance(7)
+        portfolio.update(cache_with({"A1": 10.0, "A2": 10.0}), screen_of(["A2"]))
+        led = portfolio.load_ledger()
+        self.assertNotIn("A1", led["books"]["A"]["positions"],
+                         "the weekly control should have sold A1")
+        self.assertIn("A1", led["books"]["F"]["positions"],
+                      "the slow book holds until its own rebalance comes round")
+
+    def test_it_does_rebalance_once_four_weeks_have_passed(self):
+        screen = screen_of(["A1", "A2"])
+        portfolio.update(cache_with({"A1": 10.0, "A2": 10.0}), screen)
+        self.advance(28)
+        portfolio.update(cache_with({"A1": 10.0, "A2": 10.0}), screen_of(["A2"]))
+        self.assertNotIn("A1",
+                         portfolio.load_ledger()["books"]["F"]["positions"])
+
+    def test_it_trades_far_less_than_the_control(self):
+        screen = screen_of(["A1", "A2", "A3"])
+        portfolio.update(cache_with({"A1": 10.0, "A2": 10.0, "A3": 10.0}), screen)
+        for i in range(4):                       # four weekly rebalance chances
+            self.advance(7)
+            pick = ["A1", "A2", "A3"][i % 3]     # the screen churns every week
+            portfolio.update(cache_with({"A1": 10.0, "A2": 10.0, "A3": 10.0}),
+                             screen_of([pick]))
+        led = portfolio.load_ledger()
+        self.assertLess(led["books"]["F"]["costs_paid"],
+                        led["books"]["A"]["costs_paid"],
+                        "trading monthly must cost less than trading weekly")
+
+    def test_the_weekly_books_behaviour_is_unchanged_by_its_arrival(self):
+        # A-E have a live record; altering their cadence would change what it
+        # means, so the weekly path must be byte-identical
+        for key in "ABCDE":
+            self.assertNotIn("cadence", portfolio.STRATEGIES[key])
+            self.assertEqual(portfolio.cadence_of(portfolio.STRATEGIES[key]),
+                             portfolio.CADENCE["weekly"])
+
+    def test_the_failsafe_is_longer_for_the_slower_book(self):
+        # the overdue failsafe must not fire before the book's own cadence,
+        # or the "monthly" book would quietly trade every ten days
+        for name, cad in portfolio.CADENCE.items():
+            self.assertGreater(cad["overdue"], cad["days"], name)
+
+
+class CommonWindowTests(PaperTestCase):
+    """A book added mid-flight also missed whatever happened before it opened.
+    Comparing since-inception returns would hand the newest book the prize for
+    arriving late — in a falling market it leads on its first day by having
+    been absent for the fall."""
+
+    def _open_late(self):
+        """Run A-E for a week through a fall, then let F open."""
+        real = dict(portfolio.STRATEGIES)
+        f = real.pop("F")
+        portfolio.STRATEGIES.clear(); portfolio.STRATEGIES.update(real)
+        self.addCleanup(lambda: portfolio.STRATEGIES.update({"F": f}))
+        portfolio.update(cache_with({"A1": 100.0}), screen_of(["A1"]))
+        self.advance(3)
+        portfolio.update(cache_with({"A1": 70.0}), screen_of(["A1"]))   # -30%
+        portfolio.STRATEGIES["F"] = f                                   # F arrives
+        self.advance(1)
+        portfolio.update(cache_with({"A1": 70.0}), screen_of(["A1"]))
+        return portfolio.summarize()
+
+    def test_the_newest_book_does_not_lead_on_a_fall_it_missed(self):
+        books = {b["key"]: b for b in self._open_late()["books"]}
+        self.assertIn("F", books)
+        self.assertGreater(books["F"]["ret"], books["A"]["ret"],
+                           "since inception F looks far ahead — that is the trap")
+        self.assertAlmostEqual(books["F"]["ret_common"], books["A"]["ret_common"],
+                               msg="over the shared window they must be level",
+                               delta=0.5)
+
+    def test_the_shared_window_starts_when_the_last_book_opened(self):
+        out = self._open_late()
+        commons = {b["common_from"] for b in out["books"]}
+        self.assertEqual(len(commons), 1, "one window for everyone")
+        f = [b for b in out["books"] if b["key"] == "F"][0]
+        self.assertEqual(f["common_from"], f["started"])
+
+    def test_the_decision_gate_judges_on_the_shared_window(self):
+        import decision
+        books = [{"key": "A", "label": "a", "excess": -5.0, "excess_common": 1.0},
+                 {"key": "F", "label": "f", "excess": 9.0, "excess_common": -1.0}]
+        g = decision.gate_costs(books)
+        self.assertEqual(g["best"], "A",
+                         "F's since-inception lead is an artefact of its start")
+        self.assertTrue(g["passed"])
+
+
 class IntradayStopTests(PaperTestCase):
     """Prices are sampled a few times a day. A stop tested only against those
     samples never suffers the whipsaw a real one does."""
