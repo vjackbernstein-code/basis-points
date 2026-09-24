@@ -1,17 +1,16 @@
 {
- "generated_at": "2026-09-23T23:53:19.413926+00:00",
+ "generated_at": "2026-09-24T03:50:58.717233+00:00",
  "market": [
   {
    "label": "S&P 500",
    "symbol": "SP500",
    "kind": "index",
-   "value": 7764.64,
-   "prev": 7764.7,
-   "value_txt": "7,764.64",
-   "delta": -0.0007727278581206059,
-   "delta_txt": "-0.00%",
+   "value": 7706.03,
+   "prev": 7764.64,
+   "value_txt": "7,706.03",
+   "delta": -0.7548321622122929,
+   "delta_txt": "-0.75%",
    "spark": [
-    7641.16,
     7674.37,
     7652.86,
     7677.28,
@@ -33,21 +32,21 @@
     7637.76,
     7650.5,
     7764.7,
-    7764.64
+    7764.64,
+    7706.03
    ],
-   "asof": "Sep 22"
+   "asof": "Sep 23"
   },
   {
    "label": "Nasdaq",
    "symbol": "NASDAQCOM",
    "kind": "index",
-   "value": 27244.28,
-   "prev": 27122.09,
-   "value_txt": "27,244.28",
-   "delta": 0.4505183781928262,
-   "delta_txt": "+0.45%",
+   "value": 26936.04,
+   "prev": 27244.28,
+   "value_txt": "26,936.04",
+   "delta": -1.1313934521301277,
+   "delta_txt": "-1.13%",
    "spark": [
-    26067.17,
     26180.45,
     25980.19,
     26151.3,
@@ -69,9 +68,10 @@
     26418.3,
     26522.55,
     27122.09,
-    27244.28
+    27244.28,
+    26936.04
    ],
-   "asof": "Sep 22"
+   "asof": "Sep 23"
   },
   {
    "label": "Dow",
@@ -106,7 +106,8 @@
     52048.83,
     51863.69,
     51511.59
-   ]
+   ],
+   "asof": "Sep 23"
   },
   {
    "label": "VIX",
@@ -285,19 +286,19 @@
     1.149,
     1.1463,
     1.1411
-   ]
+   ],
+   "asof": "Sep 23"
   },
   {
    "label": "Bitcoin",
    "symbol": "bitcoin",
    "kind": "crypto",
-   "value": 84366.22934828451,
-   "prev": 86183.29442787907,
-   "value_txt": "$84,366",
-   "delta": -2.108372732392045,
-   "delta_txt": "-2.11%",
+   "value": 83934.84998352133,
+   "prev": 84382.39990356649,
+   "value_txt": "$83,935",
+   "delta": -0.5303830189193794,
+   "delta_txt": "-0.53%",
    "spark": [
-    77416.44110979848,
     77297.13347191992,
     81264.70153038795,
     79671.25767420157,
@@ -319,20 +320,20 @@
     81169.03511950027,
     86596.74004249526,
     86183.29442787907,
-    84366.22934828451
+    84382.39990356649,
+    83934.84998352133
    ]
   },
   {
    "label": "Ethereum",
    "symbol": "ethereum",
    "kind": "crypto",
-   "value": 2683.802271173935,
-   "prev": 2752.629093198004,
-   "value_txt": "$2,684",
-   "delta": -2.500403058085311,
-   "delta_txt": "-2.50%",
+   "value": 2674.584900502473,
+   "prev": 2684.342871490596,
+   "value_txt": "$2,675",
+   "delta": -0.3635143294010119,
+   "delta_txt": "-0.36%",
    "spark": [
-    2417.6758884733536,
     2390.783044679688,
     2507.6482840896088,
     2456.085066364875,
@@ -354,12 +355,20 @@
     2644.7349398187544,
     2775.1686826711957,
     2752.629093198004,
-    2683.802271173935
+    2684.342871490596,
+    2674.584900502473
    ]
   }
  ],
- "tape_line": "S&P 500 -0.00%, Nasdaq +0.45%, Dow -0.68%; the 10-year Treasury at 4.96% (+0 bp); WTI crude $96.41 (-0.58%); bitcoin $84,366 (-2.11%).",
+ "tape_line": "S&P 500 -0.75%, Nasdaq -1.13%, Dow -0.68%; the 10-year Treasury at 4.96% (+0 bp); WTI crude $96.41 (-0.58%); bitcoin $83,935 (-0.53%).",
  "top": [
+  {
+   "title": "Gold Muted as Oil, Treasury Yields Resume Climb",
+   "link": "https://www.wsj.com/finance/commodities-futures/gold-muted-as-oil-treasury-yields-resume-climb-10080af9?mod=rss_markets_main",
+   "source": "WSJ Markets",
+   "published": "2026-09-24T00:28:00+00:00",
+   "summary": "Gold was flat in early Asian trade, staying under $4,300 a troy ounce as a rebound in oil prices and Treasury yields overnight pressured the precious metal."
+  },
   {
    "title": "Bond Yields Soar as Investors Foresee Another Fed Interest Rate Increase",
    "link": "https://www.nytimes.com/2026/09/23/business/bonds-interest-rates.html",
@@ -375,6 +384,20 @@
    "summary": "Traders crank up bets on Federal Reserve rate rises after data fuels worries economy is overheating"
   },
   {
+   "title": "Japan's 10-year bond yield hits 30-year high following sell-off in Treasurys",
+   "link": "https://www.cnbc.com/2026/09/24/japan-jgb-bond-yield-treasurys.html",
+   "source": "CNBC",
+   "published": "2026-09-24T02:53:11+00:00",
+   "summary": "Japanese 10-year government bond yield rose to a 30-year high on Thursday, following a surge in Treasury yields."
+  },
+  {
+   "title": "Here's what happens to the economy when Treasury yields soar like they are now",
+   "link": "https://www.cnbc.com/2026/09/23/what-happens-to-the-economy-when-treasury-yields-soar.html",
+   "source": "CNBC",
+   "published": "2026-09-24T02:50:12+00:00",
+   "summary": "Government debt costs leaped higher Wednesday, the product of multiple factors."
+  },
+  {
    "title": "U.S. Stocks Drop as Treasury Yields Surge",
    "link": "https://www.wsj.com/finance/investing/u-s-stocks-drop-as-treasury-yields-surge-e5fdcfaf?mod=rss_markets_main",
    "source": "WSJ Markets",
@@ -387,32 +410,11 @@
    "source": "WSJ Markets",
    "published": "2026-09-23T20:05:00+00:00",
    "summary": "The 10-year benchmark, which has a broad impact on borrowing costs across the economy, rose as high as 5.14%, an intraday level last seen in July 2007."
-  },
-  {
-   "title": "Higher interest rates squeeze younger and lower-income households. 'A rate hike is a blunt tool,' says expert",
-   "link": "https://www.cnbc.com/2026/09/23/fed-rate-hike-borrowing-costs.html",
-   "source": "CNBC",
-   "published": "2026-09-23T19:31:08+00:00",
-   "summary": "Higher interest rates will significantly affect consumer borrowing costs and savings returns, but the impact will not be felt equally across all households."
-  },
-  {
-   "title": "Treasury Yields Resume Their Rise",
-   "link": "https://www.wsj.com/finance/stocks/treasury-yields-resume-their-rise-f1717b38?mod=rss_markets_main",
-   "source": "WSJ Markets",
-   "published": "2026-09-23T20:33:00+00:00",
-   "summary": "Plus, oil’s streak ends and McDonald’s outlines a spending plan"
-  },
-  {
-   "title": "Market sees next Fed hike in October, following Barr comments and hot inflation reading",
-   "link": "https://www.cnbc.com/2026/09/23/market-sees-next-fed-hike-in-october-following-barr-comments-hot-inflation.html",
-   "source": "CNBC",
-   "published": "2026-09-23T18:12:18+00:00",
-   "summary": "S&P Global said its overall inflation measure hit its highest level since October 2022."
   }
  ],
  "smallcap": {
   "note": null,
-  "asof": "2026-09-24T00:04:47+00:00",
+  "asof": "2026-09-24T04:01:56+00:00",
   "coverage": {
    "universe": 9895,
    "profiled": 9966,
@@ -436,7 +438,7 @@
     "ev_rev": 4.4639,
     "px": 10.07,
     "dp": -3.1731,
-    "score": 84.2,
+    "score": 84.3,
     "sub": {
      "g": 91,
      "m": 86,
@@ -474,7 +476,7 @@
     "ev_rev": 39.338,
     "px": 9.81,
     "dp": -4.1056,
-    "score": 83.8,
+    "score": 83.9,
     "sub": {
      "g": 99,
      "m": 81,
@@ -512,7 +514,7 @@
     "ev_rev": 1.0768,
     "px": 52.5,
     "dp": -1.1672,
-    "score": 83.7,
+    "score": 83.8,
     "sub": {
      "g": 88,
      "m": 91,
@@ -666,7 +668,7 @@
     "ev_rev": 3.9439,
     "px": 6.47,
     "dp": -1.7464,
-    "score": 82.2,
+    "score": 82.3,
     "sub": {
      "g": 88,
      "m": 84,
@@ -688,44 +690,6 @@
      "hi52": 9.7,
      "shares": 35.76,
      "exch": "TORONTO STOCK EXCHANGE"
-    }
-   },
-   {
-    "ticker": "REPX",
-    "name": "Riley Exploration Permian Inc",
-    "ind": "Energy",
-    "group": "Energy",
-    "mcap": 994.7050060273023,
-    "rev_g": 23.16,
-    "accel": 50.0,
-    "r13": 29.7872,
-    "momo": 0.94,
-    "from_high": -9.357757669388656,
-    "ev_rev": 2.4931,
-    "px": 41.07,
-    "dp": 2.1642,
-    "score": 82.1,
-    "sub": {
-     "g": 82,
-     "m": 93,
-     "q": 62
-    },
-    "flags": [],
-    "why": {
-     "vol": 31.854477,
-     "r26": 30.4518,
-     "rg3": 6.8,
-     "rev_gq": 94.22,
-     "dte": 0.4223,
-     "gm_t": 70.96,
-     "om_t": 38.07,
-     "om_a": 34,
-     "cashps": 0.9329,
-     "rps": 22.7645,
-     "adv": 0.36575,
-     "hi52": 45.31,
-     "shares": 21.7,
-     "exch": "NYSE MKT LLC"
     }
    },
    {
@@ -783,7 +747,7 @@
     "score": 80.5,
     "sub": {
      "g": 84,
-     "m": 90,
+     "m": 91,
      "q": 53
     },
     "flags": [],
@@ -1084,7 +1048,7 @@
     "ev_rev": 2.3674,
     "px": 14.2,
     "dp": -0.3509,
-    "score": 77.0,
+    "score": 77.1,
     "sub": {
      "g": 83,
      "m": 79,
@@ -1122,7 +1086,7 @@
     "ev_rev": null,
     "px": 20.43,
     "dp": -4.6664,
-    "score": 76.8,
+    "score": 76.7,
     "sub": {
      "g": 95,
      "m": 62,
@@ -1187,6 +1151,44 @@
     }
    },
    {
+    "ticker": "REPX",
+    "name": "Riley Exploration Permian Inc",
+    "ind": "Energy",
+    "group": "Energy",
+    "mcap": 994.7050060273023,
+    "rev_g": 23.16,
+    "accel": 50.0,
+    "r13": 20.0358,
+    "momo": 0.58,
+    "from_high": -9.357757669388656,
+    "ev_rev": 2.3953,
+    "px": 41.07,
+    "dp": 2.1642,
+    "score": 76.0,
+    "sub": {
+     "g": 82,
+     "m": 77,
+     "q": 62
+    },
+    "flags": [],
+    "why": {
+     "vol": 34.771355,
+     "r26": 20.0358,
+     "rg3": 6.8,
+     "rev_gq": 94.22,
+     "dte": 0.4223,
+     "gm_t": 70.96,
+     "om_t": 38.07,
+     "om_a": 34,
+     "cashps": 0.9329,
+     "rps": 22.7645,
+     "adv": 0.52119,
+     "hi52": 45.31,
+     "shares": 21.7,
+     "exch": "NYSE MKT LLC"
+    }
+   },
+   {
     "ticker": "GNE",
     "name": "Genie Energy Ltd",
     "ind": "Utilities",
@@ -1200,7 +1202,7 @@
     "ev_rev": 0.479,
     "px": 15.84,
     "dp": -1.737,
-    "score": 75.6,
+    "score": 75.7,
     "sub": {
      "g": 74,
      "m": 81,
@@ -1222,6 +1224,44 @@
      "hi52": 16.28,
      "shares": 26.4,
      "exch": "NEW YORK STOCK EXCHANGE, INC."
+    }
+   },
+   {
+    "ticker": "CRON",
+    "name": "Cronos Group Inc",
+    "ind": "Pharmaceuticals",
+    "group": "Health",
+    "mcap": 1643.121425,
+    "rev_g": 37.46,
+    "accel": 20.979999999999997,
+    "r13": 25.2033,
+    "momo": 0.7,
+    "from_high": -31.863727454909828,
+    "ev_rev": 3.9787,
+    "px": 3.4,
+    "dp": -0.8746,
+    "score": 75.5,
+    "sub": {
+     "g": 76,
+     "m": 84,
+     "q": 57
+    },
+    "flags": [],
+    "why": {
+     "vol": 42.092583,
+     "r26": 36.2832,
+     "rg3": 16.84,
+     "rev_gq": 58.44,
+     "dte": 0,
+     "gm_t": 46.48,
+     "om_t": -1.36,
+     "om_a": -11.87,
+     "cashps": 2.1499,
+     "rps": 0.4775,
+     "adv": 0.09173,
+     "hi52": 4.99,
+     "shares": 373.03,
+     "exch": "TORONTO STOCK EXCHANGE"
     }
    },
    {
@@ -1260,44 +1300,6 @@
      "hi52": 3.72,
      "shares": 381.39,
      "exch": "NEW YORK STOCK EXCHANGE, INC."
-    }
-   },
-   {
-    "ticker": "CRON",
-    "name": "Cronos Group Inc",
-    "ind": "Pharmaceuticals",
-    "group": "Health",
-    "mcap": 1643.121425,
-    "rev_g": 37.46,
-    "accel": 20.979999999999997,
-    "r13": 25.2033,
-    "momo": 0.7,
-    "from_high": -31.863727454909828,
-    "ev_rev": 3.9787,
-    "px": 3.4,
-    "dp": -0.8746,
-    "score": 75.4,
-    "sub": {
-     "g": 76,
-     "m": 84,
-     "q": 57
-    },
-    "flags": [],
-    "why": {
-     "vol": 42.092583,
-     "r26": 36.2832,
-     "rg3": 16.84,
-     "rev_gq": 58.44,
-     "dte": 0,
-     "gm_t": 46.48,
-     "om_t": -1.36,
-     "om_a": -11.87,
-     "cashps": 2.1499,
-     "rps": 0.4775,
-     "adv": 0.09173,
-     "hi52": 4.99,
-     "shares": 373.03,
-     "exch": "TORONTO STOCK EXCHANGE"
     }
    },
    {
@@ -1381,11 +1383,11 @@
   ],
   "freshness": {
    "last_full_h": 0.0,
-   "quote_median_h": 7.4,
+   "quote_median_h": 8.0,
    "quote_count": 1860,
    "bench_h": 0.0,
-   "universe_h": 125.0,
-   "earnings_h": 7.4,
+   "universe_h": 128.9,
+   "earnings_h": 11.3,
    "bench_gate_h": 72
   },
   "changes": {
@@ -1478,10 +1480,10 @@
     "dp": 14.7595
    },
    {
-    "ticker": "OMER",
-    "name": "Omeros Corp",
-    "px": 21.07,
-    "dp": 13.9535
+    "ticker": "QNC",
+    "name": "Quantum eMotion Corp",
+    "px": 1.97,
+    "dp": 11.9318
    }
   ],
   "movers_down": [
@@ -1490,6 +1492,12 @@
     "name": "Clinch Resources Ltd",
     "px": 0.5525,
     "dp": -24.3151
+   },
+   {
+    "ticker": "CGEM",
+    "name": "Cullinan Therapeutics Inc",
+    "px": 16.87,
+    "dp": -22.1504
    },
    {
     "ticker": "SVRE",
@@ -1508,12 +1516,6 @@
     "name": "InnovAge Holding Corp",
     "px": 9.03,
     "dp": -15.2511
-   },
-   {
-    "ticker": "KARD",
-    "name": "Kardigan Inc",
-    "px": 14.48,
-    "dp": -11.9221
    }
   ],
   "earnings": [
@@ -1608,10 +1610,10 @@
    }
   },
   "regime": {
-   "r13": -6.1408,
-   "r26": 13.7539,
+   "r13": -6.5837,
+   "r26": 16.589,
    "label": "flat/choppy",
-   "t": "2026-09-23T13:38:23+00:00"
+   "t": "2026-09-24T04:01:56+00:00"
   },
   "filings_material": [
    {
@@ -1832,12 +1834,28 @@
   "budget_mode": "full",
   "news": [
    {
-    "title": "What Makes CRA International (CRAI) an Investment Bet?",
-    "link": "https://finance.yahoo.com/markets/stocks/articles/makes-cra-international-crai-investment-151656266.html",
+    "title": "Why RPC (RES) Was a Q2 Detractor for Gabelli Small Cap Growth Fund",
+    "link": "https://finance.yahoo.com/markets/stocks/articles/why-rpc-res-q2-detractor-163646235.html",
     "source": "Insider Monkey",
-    "published": "2026-09-22T15:16:56+00:00",
+    "published": "2026-09-22T16:36:46+00:00",
     "summary": "",
-    "ticker": "CRAI"
+    "ticker": "RES"
+   },
+   {
+    "title": "Why Myers Industries (MYE) Was a Top Performer for Gabelli in Q2",
+    "link": "https://finance.yahoo.com/markets/stocks/articles/why-myers-industries-mye-top-163520531.html",
+    "source": "Insider Monkey",
+    "published": "2026-09-22T16:35:20+00:00",
+    "summary": "",
+    "ticker": "MYE"
+   },
+   {
+    "title": "Why Gorman-Rupp Co. (GRC) Was a Top Performer for Gabelli in Q2",
+    "link": "https://finance.yahoo.com/markets/stocks/articles/why-gorman-rupp-co-grc-163458570.html",
+    "source": "Insider Monkey",
+    "published": "2026-09-22T16:34:58+00:00",
+    "summary": "",
+    "ticker": "GRC"
    }
   ]
  },
@@ -3428,9 +3446,9 @@
       "weight": 4.05,
       "ret": -0.53,
       "peak_px": 41.29,
-      "stop_pct": 13.3,
-      "stop_px": 35.82,
-      "room_pct": 14.7
+      "stop_pct": 14.5,
+      "stop_px": 35.32,
+      "room_pct": 16.3
      },
      {
       "ticker": "SBET",
@@ -4712,9 +4730,9 @@
       "weight": 4.57,
       "ret": -0.53,
       "peak_px": 41.29,
-      "stop_pct": 13.3,
-      "stop_px": 35.82,
-      "room_pct": 14.7
+      "stop_pct": 14.5,
+      "stop_px": 35.32,
+      "room_pct": 16.3
      },
      {
       "ticker": "KGEI",
@@ -5795,8 +5813,8 @@
  "stats": {
   "feeds_total": 21,
   "feeds_failed": 3,
-  "items": 409,
-  "smallcap_calls": 552,
+  "items": 411,
+  "smallcap_calls": 553,
   "feed_errors": [
    [
     "GlobeNewswire",
