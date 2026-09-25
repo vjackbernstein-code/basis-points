@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-25T00:42:22.302871+00:00",
+ "generated_at": "2026-09-25T05:57:35.911139+00:00",
  "market": [
   {
    "label": "S&P 500",
@@ -41,13 +41,12 @@
    "label": "Nasdaq",
    "symbol": "NASDAQCOM",
    "kind": "index",
-   "value": 26936.04,
-   "prev": 27244.28,
-   "value_txt": "26,936.04",
-   "delta": -1.1313934521301277,
-   "delta_txt": "-1.13%",
+   "value": 26939.37,
+   "prev": 26936.04,
+   "value_txt": "26,939.37",
+   "delta": 0.01236261900412276,
+   "delta_txt": "+0.01%",
    "spark": [
-    26180.45,
     25980.19,
     26151.3,
     26130.2,
@@ -69,9 +68,10 @@
     26522.55,
     27122.09,
     27244.28,
-    26936.04
+    26936.04,
+    26939.37
    ],
-   "asof": "Sep 23"
+   "asof": "Sep 24"
   },
   {
    "label": "Dow",
@@ -293,11 +293,11 @@
    "label": "Bitcoin",
    "symbol": "bitcoin",
    "kind": "crypto",
-   "value": 84601.79185503429,
+   "value": 84197.66034224007,
    "prev": 84377.96508359577,
-   "value_txt": "$84,602",
-   "delta": 0.26526685162028124,
-   "delta_txt": "+0.27%",
+   "value_txt": "$84,198",
+   "delta": -0.2136869989422874,
+   "delta_txt": "-0.21%",
    "spark": [
     81264.70153038795,
     79671.25767420157,
@@ -321,18 +321,18 @@
     86183.29442787907,
     84382.39990356649,
     84377.96508359577,
-    84601.79185503429
+    84197.66034224007
    ]
   },
   {
    "label": "Ethereum",
    "symbol": "ethereum",
    "kind": "crypto",
-   "value": 2691.119913098878,
+   "value": 2680.610083307842,
    "prev": 2687.1259839506374,
-   "value_txt": "$2,691",
-   "delta": 0.1486320020756398,
-   "delta_txt": "+0.15%",
+   "value_txt": "$2,681",
+   "delta": -0.24248586339876485,
+   "delta_txt": "-0.24%",
    "spark": [
     2507.6482840896088,
     2456.085066364875,
@@ -356,12 +356,47 @@
     2752.629093198004,
     2684.342871490596,
     2687.1259839506374,
-    2691.119913098878
+    2680.610083307842
    ]
   }
  ],
- "tape_line": "S&P 500 -0.02%, Nasdaq -1.13%, Dow -0.31%; the 10-year Treasury at 5.11% (+15 bp); WTI crude $96.41 (-0.58%); bitcoin $84,602 (+0.27%).",
+ "tape_line": "S&P 500 -0.02%, Nasdaq +0.01%, Dow -0.31%; the 10-year Treasury at 5.11% (+15 bp); WTI crude $96.41 (-0.58%); bitcoin $84,198 (-0.21%).",
  "top": [
+  {
+   "title": "Asian Bond Yields Rise Despite Oil Decline as Caution Reigns",
+   "link": "https://www.wsj.com/finance/stocks/asian-bond-yields-rise-despite-oil-decline-as-caution-reigns-956be482?mod=rss_markets_main",
+   "source": "WSJ Markets",
+   "published": "2026-09-25T04:25:00+00:00",
+   "summary": "The selloff in U.S. government bonds spilled over into Asian debt markets, but oil fell as traders weighed reports of a potential proposal to reopen the Strait of Hormuz."
+  },
+  {
+   "title": "The Robust U.S. Economy Powers Through Rate Hikes and Rising Bond Yields",
+   "link": "https://www.wsj.com/finance/investing/us-economy-bond-market-0bfda8b3?mod=rss_markets_main",
+   "source": "WSJ Markets",
+   "published": "2026-09-25T01:00:00+00:00",
+   "summary": "AI-driven growth looks resistant to higher borrowing costs, spooking Treasury investors."
+  },
+  {
+   "title": "Singapore Dollar Consolidates; Fed Rate-Hike Prospects Could Weigh",
+   "link": "https://www.wsj.com/finance/currencies/asian-currencies-consolidate-as-treasury-yields-hit-new-highs-50a63fb4?mod=rss_markets_main",
+   "source": "WSJ Markets",
+   "published": "2026-09-25T04:17:00+00:00",
+   "summary": "The Singapore dollar consolidated against its U.S. counterpart, but prospects of rate increases by the Federal Reserve could weigh on the Asian currency."
+  },
+  {
+   "title": "Surging Treasury yields pose a brand new problem for Kevin Warsh and the Fed",
+   "link": "https://www.cnbc.com/2026/09/24/surging-treasury-yields-are-posing-a-brand-new-problem-for-kevin-warsh-and-the-fed.html",
+   "source": "CNBC",
+   "published": "2026-09-25T02:38:53+00:00",
+   "summary": "Markets expect the central bank will take a firmer hand on inflation. It's not that easy."
+  },
+  {
+   "title": "Japanese government bond yields hit new high as global sell-off continues",
+   "link": "https://www.ft.com/content/c5af4151-2c14-481b-8145-f5ec1f43a3f4?syn-25a6b1a6=1",
+   "source": "Financial Times",
+   "published": "2026-09-25T05:41:20+00:00",
+   "summary": "Sharp increase in interest rate expectations across advanced economies, says Capital Economics"
+  },
   {
    "title": "Gold Falls Amid Expectations for Fed Rate Increase",
    "link": "https://www.wsj.com/finance/commodities-futures/gold-falls-amid-expectations-for-fed-rate-increase-368c44e9?mod=rss_markets_main",
@@ -370,51 +405,16 @@
    "summary": "Gold fell. The precious metal remained under pressure as higher oil prices and resilient U.S. activity data reinforce expectations that the Fed might need to keep its policy tighter for longer, ANZ said."
   },
   {
-   "title": "Surging Treasury yields pose a brand new problem for Kevin Warsh and the Fed",
-   "link": "https://www.cnbc.com/2026/09/24/surging-treasury-yields-are-posing-a-brand-new-problem-for-kevin-warsh-and-the-fed.html",
-   "source": "CNBC Economy",
-   "published": "2026-09-24T21:40:19+00:00",
-   "summary": "Markets expect the central bank will take a firmer hand on inflation. It's not that easy."
-  },
-  {
    "title": "Stock market today: Dow, S&P 500, Nasdaq trims losses as hopes of Hormuz deal offset rising bond yields",
    "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxOaVZEcVBrek55VmF3RHMxd3ZnamdrdlFzdW40dkJtS2dFeWp1bnFzcU00SnVpaGJ1eWVsZ0doRVRMTVJYdERjUXFvaUkwR2FxNlAtQ0l3cXllTXpkMHNHRkpxZzBPazFkeWJGY29YenV5T0ZXWkUxTnY5UEdyUUZhY01ZRnlyVGV2blpmeWZnV1Z2b1FJcXgxZWhjTWdlVnU1VU11MHRJUFJlUVo4UENHRXF3?oc=5",
    "source": "Yahoo Finance",
    "published": "2026-09-24T20:37:25+00:00",
-   "summary": "Stock market today: Dow, S&P 500, Nasdaq trims losses as hopes of Hormuz deal offset rising bond yields Yahoo Finance US Stock Futures Drop as Yields Climb Further, Oil Rises Bloomberg A shaky day for oil prices and the bond…"
-  },
-  {
-   "title": "Analysis: Higher Treasury yields deliver a reality check on a hot, inflation-prone economy",
-   "link": "https://www.cnbc.com/2026/09/24/treasury-yields-warsh-bessent-fed-national-debt-analysis.html",
-   "source": "CNBC",
-   "published": "2026-09-24T18:38:44+00:00",
-   "summary": "Elevated Treasury yields will complicate both Federal Reserve policy and Treasury financing."
-  },
-  {
-   "title": "Bond Traders Are Paying Too Much Attention to the Oil Price",
-   "link": "https://www.wsj.com/finance/investing/bond-traders-are-paying-too-much-attention-to-the-oil-price-faa6a6cb?mod=rss_markets_main",
-   "source": "WSJ Markets",
-   "published": "2026-09-24T22:00:00+00:00",
-   "summary": "Bond yields and oil are dancing to the same tune, but in some ways that doesn’t make sense."
-  },
-  {
-   "title": "30-year Treasury yield hits highest level since 2004 as bond market rout continues",
-   "link": "https://www.cnbc.com/2026/09/24/us-treasury-yields-bonds-fed-inflation.html",
-   "source": "CNBC",
-   "published": "2026-09-24T20:25:07+00:00",
-   "summary": "U.S. Treasury yields continued their upward momentum after hitting a 19-year high on Wednesday."
-  },
-  {
-   "title": "Federal Reserve Board requests public comment on two proposals related to establishing a regulatory framework for Board-supervised payment stablecoin issuers under the GENIUS Act",
-   "link": "https://www.federalreserve.gov/newsevents/pressreleases/bcreg20260924a.htm",
-   "source": "Federal Reserve",
-   "published": "2026-09-24T18:30:00+00:00",
-   "summary": "Federal Reserve Board requests public comment on two proposals related to establishing a regulatory framework for Board-supervised payment stablecoin issuers under the GENIUS Act"
+   "summary": "Stock market today: Dow, S&P 500, Nasdaq trims losses as hopes of Hormuz deal offset rising bond yields Yahoo Finance Stock futures are little changed as Dow heads for fourth straight losing week: Live updates CNBC Stocks Climb…"
   }
  ],
  "smallcap": {
   "note": null,
-  "asof": "2026-09-25T00:45:51+00:00",
+  "asof": "2026-09-25T06:09:12+00:00",
   "coverage": {
    "universe": 9895,
    "profiled": 9966,
@@ -1384,12 +1384,12 @@
    }
   ],
   "freshness": {
-   "last_full_h": 2.5,
-   "quote_median_h": 6.1,
+   "last_full_h": 0.0,
+   "quote_median_h": 8.0,
    "quote_count": 1860,
    "bench_h": 0.0,
-   "universe_h": 149.6,
-   "earnings_h": 2.5,
+   "universe_h": 155.0,
+   "earnings_h": 7.8,
    "bench_gate_h": 72
   },
   "reach": {
@@ -1516,18 +1516,24 @@
     "dp": 19.4639
    },
    {
-    "ticker": "CD",
-    "name": "Chaince Digital Holdings Inc",
-    "px": 4.9,
-    "dp": 14.486
+    "ticker": "SECZ",
+    "name": "Securitize Corp",
+    "px": 16.53,
+    "dp": 15.1114
    }
   ],
   "movers_down": [
    {
     "ticker": "SFIX",
     "name": "Stitch Fix Inc",
-    "px": 2.2,
-    "dp": -21.9858
+    "px": 2.21,
+    "dp": -21.6312
+   },
+   {
+    "ticker": "AXG",
+    "name": "Solowin Holdings Ltd",
+    "px": 1.3,
+    "dp": -20.7317
    },
    {
     "ticker": "SCTX",
@@ -1536,22 +1542,16 @@
     "dp": -18.545
    },
    {
-    "ticker": "APMD",
-    "name": "Apnimed Inc",
-    "px": 22.49,
-    "dp": -11.8385
+    "ticker": "LRMR",
+    "name": "Larimar Therapeutics Inc",
+    "px": 3.32,
+    "dp": -14.1009
    },
    {
-    "ticker": "FXHO",
-    "name": "UTime Ltd",
-    "px": 9.72,
-    "dp": -11.3139
-   },
-   {
-    "ticker": "FISN",
-    "name": "Deep Fission, Inc",
-    "px": 6.99,
-    "dp": -10.3846
+    "ticker": "SGMT",
+    "name": "Sagimet Biosciences Inc",
+    "px": 9.11,
+    "dp": -12.572
    }
   ],
   "earnings": [
@@ -1727,6 +1727,13 @@
   ],
   "filings_activist": [
    {
+    "ticker": "ASPN",
+    "name": "Aspen Aerogels Inc",
+    "date": "2026-09-25",
+    "link": "https://www.sec.gov/Archives/edgar/data/1145986/000119312526401393/0001193125-26-401393-index.htm",
+    "form": "SCHEDULE 13D/A"
+   },
+   {
     "ticker": "PNRG",
     "name": "Primeenergy Resources Corp",
     "date": "2026-09-24",
@@ -1788,13 +1795,6 @@
     "date": "2026-09-23",
     "link": "https://www.sec.gov/Archives/edgar/data/2111838/000110465926110056/0001104659-26-110056-index.htm",
     "form": "SCHEDULE 13G"
-   },
-   {
-    "ticker": "CRDL",
-    "name": "Cardiol Therapeutics Inc",
-    "date": "2026-09-23",
-    "link": "https://www.sec.gov/Archives/edgar/data/1702123/000187971326000003/0001879713-26-000003-index.htm",
-    "form": "SCHEDULE 13G/A"
    }
   ],
   "filings_offering": [
@@ -1869,49 +1869,8 @@
     "form": "424B2"
    }
   ],
-  "budget_mode": "trickle",
-  "news": [
-   {
-    "title": "Sabre Corporation Announces Results of Previously Announced Cash Tender Offers by Sabre GLBL Inc.",
-    "link": "https://www.prnewswire.com/news-releases/sabre-corporation-announces-results-of-previously-announced-cash-tender-offers-by-sabre-glbl-inc-302889867.html",
-    "source": "PR Newswire",
-    "published": "2026-09-24T23:34:00+00:00",
-    "summary": "SOUTHLAKE, Texas, Sept. 24, 2026 /PRNewswire/ -- Sabre Corporation (\"Sabre\") (Nasdaq: SABR) today announced the results of the previously announced cash tender offers (the \"Tender Offers\") by Sabre GLBL Inc. (\"Sabre GLBL\"), its…",
-    "ticker": "SABR"
-   },
-   {
-    "title": "Atlanticus Holdings (ATLC) Sells Auto Finance Unit. Can it Replace Lost Earnings?",
-    "link": "https://finance.yahoo.com/markets/stocks/articles/atlanticus-holdings-atlc-sells-auto-005703318.html",
-    "source": "Insider Monkey",
-    "published": "2026-09-23T00:57:03+00:00",
-    "summary": "",
-    "ticker": "ATLC"
-   },
-   {
-    "title": "Vista Gold (VGZ) Agrees to Sale. Can its Buyer Fund the Mt Todd Gold Mine?",
-    "link": "https://finance.yahoo.com/markets/commodities/articles/vista-gold-vgz-agrees-sale-014206537.html",
-    "source": "Insider Monkey",
-    "published": "2026-09-23T01:42:06+00:00",
-    "summary": "",
-    "ticker": "VGZ"
-   },
-   {
-    "title": "Cantor Fitzgerald Sees Big Upside in Securitize (SECZ): Is It Time to Buy?",
-    "link": "https://finance.yahoo.com/markets/stocks/articles/cantor-fitzgerald-sees-big-upside-052416150.html",
-    "source": "Insider Monkey",
-    "published": "2026-09-23T05:24:16+00:00",
-    "summary": "",
-    "ticker": "SECZ"
-   },
-   {
-    "title": "Chewy (CHWY) vs. Petco (WOOF): Proven Growth Story or Turnaround Bet?",
-    "link": "https://finance.yahoo.com/markets/stocks/articles/chewy-chwy-vs-petco-woof-045607515.html",
-    "source": "Insider Monkey",
-    "published": "2026-09-23T04:56:07+00:00",
-    "summary": "",
-    "ticker": "WOOF"
-   }
-  ]
+  "budget_mode": "full",
+  "news": []
  },
  "portfolio": {
   "detail": {
@@ -6608,10 +6567,14 @@
  ],
  "stats": {
   "feeds_total": 21,
-  "feeds_failed": 2,
-  "items": 418,
-  "smallcap_calls": 42,
+  "feeds_failed": 3,
+  "items": 363,
+  "smallcap_calls": 552,
   "feed_errors": [
+   [
+    "PR Newswire",
+    "HTTP Error 404: Not Found"
+   ],
    [
     "GlobeNewswire",
     "The read operation timed out"
