@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-25T16:51:02.159982+00:00",
+ "generated_at": "2026-09-25T20:19:18.178691+00:00",
  "market": [
   {
    "label": "S&P 500",
@@ -149,13 +149,12 @@
    "label": "10-yr Treasury",
    "symbol": "DGS10",
    "kind": "yield",
-   "value": 51.1,
-   "prev": 49.6,
-   "value_txt": "5.11%",
-   "delta": 3.0241935483870965,
-   "delta_txt": "+15 bp",
+   "value": 51.8,
+   "prev": 51.1,
+   "value_txt": "5.18%",
+   "delta": 1.3698630136986218,
+   "delta_txt": "+7 bp",
    "spark": [
-    47.400000000000006,
     47.0,
     46.4,
     46.6,
@@ -177,9 +176,10 @@
     50.099999999999994,
     49.6,
     49.6,
-    51.1
+    51.1,
+    51.8
    ],
-   "asof": "Sep 23"
+   "asof": "Sep 24"
   },
   {
    "label": "Dollar (broad)",
@@ -292,11 +292,11 @@
    "label": "Bitcoin",
    "symbol": "bitcoin",
    "kind": "crypto",
-   "value": 83797.70279209092,
+   "value": 83986.5589522932,
    "prev": 84377.96508359577,
-   "value_txt": "$83,798",
-   "delta": -0.6876941046515791,
-   "delta_txt": "-0.69%",
+   "value_txt": "$83,987",
+   "delta": -0.4638724469294754,
+   "delta_txt": "-0.46%",
    "spark": [
     81264.70153038795,
     79671.25767420157,
@@ -320,18 +320,18 @@
     86183.29442787907,
     84382.39990356649,
     84377.96508359577,
-    83797.70279209092
+    83986.5589522932
    ]
   },
   {
    "label": "Ethereum",
    "symbol": "ethereum",
    "kind": "crypto",
-   "value": 2685.238114150249,
+   "value": 2691.3271883656635,
    "prev": 2687.1259839506374,
-   "value_txt": "$2,685",
-   "delta": -0.07025609560786773,
-   "delta_txt": "-0.07%",
+   "value_txt": "$2,691",
+   "delta": 0.15634564364002732,
+   "delta_txt": "+0.16%",
    "spark": [
     2507.6482840896088,
     2456.085066364875,
@@ -355,18 +355,25 @@
     2752.629093198004,
     2684.342871490596,
     2687.1259839506374,
-    2685.238114150249
+    2691.3271883656635
    ]
   }
  ],
- "tape_line": "S&P 500 -0.02%, Nasdaq +0.01%, Dow -0.31%; the 10-year Treasury at 5.11% (+15 bp); WTI crude $96.41 (-0.58%); bitcoin $83,798 (-0.69%).",
+ "tape_line": "S&P 500 -0.02%, Nasdaq +0.01%, Dow -0.31%; the 10-year Treasury at 5.18% (+7 bp); WTI crude $96.41 (-0.58%); bitcoin $83,987 (-0.46%).",
  "top": [
   {
-   "title": "Eurozone Bond Yields Fall as Oil Prices Decline; U.S. Treasury Yields Stabilize",
+   "title": "S&P 500 posts weekly gains despite Treasury yield, oil headwinds",
+   "link": "https://seekingalpha.com/news/4647307-s-and-p-500-posts-weekly-gains-despite-treasury-yield-oil-headwinds?utm_source=feed_news_all&utm_medium=referral&feed_item_type=news",
+   "source": "Seeking Alpha",
+   "published": "2026-09-25T20:11:24+00:00",
+   "summary": ""
+  },
+  {
+   "title": "Treasury Bond Yields Resume Their March Higher to End the Week",
    "link": "https://www.wsj.com/finance/investing/u-s-treasury-yields-stay-near-multiyear-highs-in-asian-trade-69ae3ed8?mod=rss_markets_main",
    "source": "WSJ Markets",
-   "published": "2026-09-25T12:21:00+00:00",
-   "summary": "Treasury yields stabilized but remained close to recent multiyear highs as markets priced in significant Fed rate hikes."
+   "published": "2026-09-25T16:53:00+00:00",
+   "summary": "U.S. Treasury yields rose as new indications of economic resilience fuel forecasts for a prolonged cycle of interest rate increases."
   },
   {
    "title": "Fed Faces Prospect of Another Interest Rate Increase Just Before Midterm Elections",
@@ -376,48 +383,41 @@
    "summary": "Financial markets are placing nearly 70 percent odds on the Federal Reserve raising interest rates in late October."
   },
   {
-   "title": "10-year Treasury yield hit a 19-year high—and some investors see opportunity to buy bonds",
-   "link": "https://www.cnbc.com/2026/09/25/treasury-yield-buy-bonds.html",
+   "title": "10-year Treasury yield is little changed to end a volatile week",
+   "link": "https://www.cnbc.com/2026/09/25/treasury-yields-bonds-debt.html",
    "source": "CNBC",
-   "published": "2026-09-25T16:40:09+00:00",
-   "summary": "The 10-year Treasury yield hit its highest level since 2007. Here’s what higher yields can mean for bond investors and borrowers."
+   "published": "2026-09-25T20:17:09+00:00",
+   "summary": "The 10-year Treasury note yield was relatively unchanged on Friday after recent selling pressure intensified."
   },
   {
-   "title": "US bond sell-off pushes long-term yields to new post-2004 high",
-   "link": "https://www.ft.com/content/c5af4151-2c14-481b-8145-f5ec1f43a3f4?syn-25a6b1a6=1",
-   "source": "Financial Times",
-   "published": "2026-09-25T16:47:47+00:00",
-   "summary": "Investors ‘don’t want to hold risk going into the weekend’, said one investor, as market heads for worst week since 2024"
-  },
-  {
-   "title": "Surging Treasury yields pose a brand new problem for Kevin Warsh and the Fed",
-   "link": "https://www.cnbc.com/2026/09/24/surging-treasury-yields-are-posing-a-brand-new-problem-for-kevin-warsh-and-the-fed.html",
+   "title": "U.S. crude oil falls nearly 8% for the week after Tehran and Washington hold talks at the U.N.",
+   "link": "https://www.cnbc.com/2026/09/25/oil-falls-as-potential-diplomatic-solution-to-iran-conflict-arises.html",
    "source": "CNBC",
-   "published": "2026-09-25T11:08:05+00:00",
-   "summary": "Markets expect the central bank will take a firmer hand on inflation. It's not that easy."
+   "published": "2026-09-25T19:38:31+00:00",
+   "summary": "Iran has asked the U.S. to meet the same conditions laid out in the June 17 memorandum of understanding, Iran's foreign minister said."
   },
   {
    "title": "S&P 500 rises, heads for winning week despite Treasury yield surge: Live updates",
    "link": "https://news.google.com/rss/articles/CBMid0FVX3lxTFBXMWpxUWlWdlJ4X1pmZ0VpUUFQWFlVUWZ3LTlDZjBjSVVaMmNfeFhpRkk2OHFWQVlITXZ6d0NabXNHNEoxY3BfRmtlRDh5RjF1Mmh5akhEMWxMR0lVYkM0eFFuLWdKMGxFNjFSZUtPWDRQeTdNTmpj0gF8QVVfeXFMUHhhWS0yNlp3TlFFTTNpaFNWeEdoT3pJeFI0MFZQRnduTXBWdkFQVG5fOTc1cnZSVERvVWZGa0lSczNxRU1pWHNTZ3F1cXZweEdfeHhKb0s4UmFJM29VYnRaeGpibEE0NDlKSVNsQ21vTTV5VS1ydXAzYjFXWg?oc=5",
    "source": "CNBC",
-   "published": "2026-09-25T16:12:00+00:00",
-   "summary": "S&P 500 rises, heads for winning week despite Treasury yield surge: Live updates CNBC Watch Bond Selloff Fades as Oil Cools, Lifting Stocks Bloomberg.com Stock market today: Dow, S&P 500, Nasdaq rise as bond sell-off eases up…"
+   "published": "2026-09-25T19:04:00+00:00",
+   "summary": "S&P 500 rises, heads for winning week despite Treasury yield surge: Live updates CNBC See more headlines & perspectives on Google News"
   },
   {
-   "title": "Stock Market Today: Bond Yields Drop With Oil Prices Near End of Volatile Week",
-   "link": "https://www.wsj.com/livecoverage/stock-market-today-dow-sp-500-nasdaq-09-25-2026?mod=rss_markets_main",
-   "source": "WSJ Markets",
-   "published": "2026-09-25T08:52:23+00:00",
-   "summary": "Dow rises amid hopes for a deal to reopen Hormuz"
+   "title": "10-year Treasury yield hit a 19-year high—and some investors see opportunity to buy bonds",
+   "link": "https://www.cnbc.com/2026/09/25/treasury-yield-buy-bonds.html",
+   "source": "CNBC",
+   "published": "2026-09-25T16:40:09+00:00",
+   "summary": "The 10-year Treasury yield hit its highest level since 2007. Here’s what higher yields can mean for bond investors and borrowers."
   }
  ],
  "smallcap": {
   "note": null,
-  "asof": "2026-09-25T17:03:23+00:00",
+  "asof": "2026-09-25T20:31:17+00:00",
   "coverage": {
-   "universe": 9895,
-   "profiled": 9966,
-   "in_band": 1856,
+   "universe": 9869,
+   "profiled": 10011,
+   "in_band": 1858,
    "measured": 1856,
    "scored": 969,
    "below_floor": 75
@@ -1323,7 +1323,9 @@
      "m": 86,
      "q": 61
     },
-    "flags": [],
+    "flags": [
+     "8-K"
+    ],
     "why": {
      "vol": 41.04818,
      "r26": 57.9618,
@@ -1384,11 +1386,11 @@
   ],
   "freshness": {
    "last_full_h": 0.0,
-   "quote_median_h": 5.3,
+   "quote_median_h": 3.6,
    "quote_count": 1860,
    "bench_h": 0.0,
-   "universe_h": 165.9,
-   "earnings_h": 5.2,
+   "universe_h": 0.2,
+   "earnings_h": 8.6,
    "bench_gate_h": 72
   },
   "reach": {
@@ -1509,36 +1511,30 @@
     "dp": 15.1114
    },
    {
-    "ticker": "BALY",
-    "name": "Bally's Corp",
-    "px": 14.05,
-    "dp": 15.0696
+    "ticker": "AESI",
+    "name": "Atlas Energy Solutions Inc",
+    "px": 12.47,
+    "dp": 13.4668
    },
    {
-    "ticker": "QMCO",
-    "name": "Quantum Corp",
-    "px": 29.49,
-    "dp": 13.5541
+    "ticker": "WNC",
+    "name": "Wabash National Corp",
+    "px": 13.03,
+    "dp": 11.2724
    }
   ],
   "movers_down": [
+   {
+    "ticker": "AXG",
+    "name": "Solowin Holdings Ltd",
+    "px": 0.2,
+    "dp": -84.6154
+   },
    {
     "ticker": "SFIX",
     "name": "Stitch Fix Inc",
     "px": 2.21,
     "dp": -21.6312
-   },
-   {
-    "ticker": "AXG",
-    "name": "Solowin Holdings Ltd",
-    "px": 1.3,
-    "dp": -20.7317
-   },
-   {
-    "ticker": "LRMR",
-    "name": "Larimar Therapeutics Inc",
-    "px": 3.32,
-    "dp": -14.1009
    },
    {
     "ticker": "MTC",
@@ -1547,10 +1543,16 @@
     "dp": -13.8728
    },
    {
-    "ticker": "SGMT",
-    "name": "Sagimet Biosciences Inc",
-    "px": 9.11,
-    "dp": -12.572
+    "ticker": "SMWB",
+    "name": "Similarweb Ltd",
+    "px": 7.53,
+    "dp": -12.2378
+   },
+   {
+    "ticker": "OBX",
+    "name": "Obsidian Therapeutics, Inc",
+    "px": 13.41,
+    "dp": -12.1232
    }
   ],
   "earnings": [
@@ -1654,6 +1656,13 @@
   },
   "filings_material": [
    {
+    "ticker": "SFIX",
+    "name": "Stitch Fix Inc",
+    "date": "2026-09-25",
+    "link": "https://www.sec.gov/Archives/edgar/data/1576942/000162828026063556/0001628280-26-063556-index.htm",
+    "form": "8-K"
+   },
+   {
     "ticker": "AESI",
     "name": "Atlas Energy Solutions Inc",
     "date": "2026-09-25",
@@ -1715,13 +1724,6 @@
     "date": "2026-09-25",
     "link": "https://www.sec.gov/Archives/edgar/data/1398733/000139873326000048/0001398733-26-000048-index.htm",
     "form": "8-K"
-   },
-   {
-    "ticker": "NUAI",
-    "name": "New Era Energy & Digital Inc",
-    "date": "2026-09-24",
-    "link": "https://www.sec.gov/Archives/edgar/data/2028336/000121390026102859/0001213900-26-102859-index.htm",
-    "form": "8-K"
    }
   ],
   "filings_activist": [
@@ -1738,6 +1740,13 @@
     "date": "2026-09-25",
     "link": "https://www.sec.gov/Archives/edgar/data/1145986/000119312526401393/0001193125-26-401393-index.htm",
     "form": "SCHEDULE 13D/A"
+   },
+   {
+    "ticker": "RWT",
+    "name": "Redwood Trust Inc",
+    "date": "2026-09-25",
+    "link": "https://www.sec.gov/Archives/edgar/data/930236/000090485326000006/0000904853-26-000006-index.htm",
+    "form": "SCHEDULE 13D"
    },
    {
     "ticker": "PNRG",
@@ -1787,13 +1796,6 @@
     "date": "2026-09-24",
     "link": "https://www.sec.gov/Archives/edgar/data/1690511/000114036126037590/0001140361-26-037590-index.htm",
     "form": "SCHEDULE 13G/A"
-   },
-   {
-    "ticker": "SWMR",
-    "name": "Swarmer Inc",
-    "date": "2026-09-23",
-    "link": "https://www.sec.gov/Archives/edgar/data/2092574/000110465926109988/0001104659-26-109988-index.htm",
-    "form": "SCHEDULE 13D/A"
    }
   ],
   "filings_offering": [
@@ -1868,15 +1870,23 @@
     "form": "424B2"
    }
   ],
-  "budget_mode": "full",
+  "budget_mode": "bootstrap",
   "news": [
    {
-    "title": "Taboola.com Ltd. (TBLA) Shareholders Who Lost Money Have Opportunity to Lead Securities Fraud Lawsuit",
-    "link": "https://www.prnewswire.com/news-releases/taboolacom-ltd-tbla-shareholders-who-lost-money-have-opportunity-to-lead-securities-fraud-lawsuit-302889829.html",
+    "title": "abrdn Global Infrastructure Income Fund Declares Distribution Dates and Amount",
+    "link": "https://www.prnewswire.com/news-releases/abrdn-global-infrastructure-income-fund-declares-distribution-dates-and-amount-302890358.html",
     "source": "PR Newswire",
-    "published": "2026-09-25T16:30:00+00:00",
-    "summary": "BENSALEM TOWNSHIP, Pa., Sept. 25, 2026 /PRNewswire/ -- The Law Offices of Howard G. Smith announces that investors with substantial losses have opportunity to lead the securities fraud class action lawsuit against Taboola.com…",
-    "ticker": "TBLA"
+    "published": "2026-09-25T20:17:00+00:00",
+    "summary": "PHILADELPHIA, Sept. 25, 2026 /PRNewswire/ -- The abrdn Global Infrastructure Income Fund (NYSE: ASGI) (the \"Fund\") announced today that it will pay the distribution indicated on a per-share basis on October 30, 2026, to all…",
+    "ticker": "ASGI"
+   },
+   {
+    "title": "International Paper CEO to Speak at Baird 2026 Global Industrial Conference",
+    "link": "https://www.prnewswire.com/news-releases/international-paper-ceo-to-speak-at-baird-2026-global-industrial-conference-302890460.html",
+    "source": "PR Newswire",
+    "published": "2026-09-25T20:05:00+00:00",
+    "summary": "MEMPHIS, Tenn., Sep 25, 2026 /PRNewswire/ -- International Paper (NYSE: IP; LSE: IPC) Chief Executive Officer Andy Silvernail will speak at the Baird 2026 Global Industrial Conference on November 11, 2026. The Fireside Chat and…",
+    "ticker": "GIC"
    }
   ]
  },
@@ -5959,13 +5969,13 @@
     "label": "Baseline",
     "note": "the control — equal weight, no stop, always fully invested",
     "ret_common": -0.06,
-    "excess_common": -0.34,
+    "excess_common": -0.03,
     "common_from": "2026-09-24",
     "common_days": 2,
     "value": 98219.69,
     "ret": -1.78,
-    "bench_ret": -1.26,
-    "excess": -0.53,
+    "bench_ret": -1.56,
+    "excess": -0.22,
     "friction_yr": 29.1,
     "max_drawdown": -2.16,
     "positions": 25,
@@ -5987,13 +5997,13 @@
     "label": "Conviction",
     "note": "weighted by rank, 1.5x down to 0.6x equal weight",
     "ret_common": -0.07,
-    "excess_common": -0.36,
+    "excess_common": -0.05,
     "common_from": "2026-09-24",
     "common_days": 2,
     "value": 98318.33,
     "ret": -1.68,
-    "bench_ret": -1.26,
-    "excess": -0.43,
+    "bench_ret": -1.56,
+    "excess": -0.12,
     "friction_yr": 29.1,
     "max_drawdown": -2.13,
     "positions": 25,
@@ -6015,13 +6025,13 @@
     "label": "Risk-managed",
     "note": "equal weight, trailing stop at 3x the name's own weekly volatility",
     "ret_common": -0.06,
-    "excess_common": -0.34,
+    "excess_common": -0.03,
     "common_from": "2026-09-24",
     "common_days": 2,
     "value": 98219.69,
     "ret": -1.78,
-    "bench_ret": -1.26,
-    "excess": -0.53,
+    "bench_ret": -1.56,
+    "excess": -0.22,
     "friction_yr": 29.1,
     "max_drawdown": -2.16,
     "positions": 25,
@@ -6043,13 +6053,13 @@
     "label": "Regime-aware",
     "note": "equal weight, exposure cut when the small-cap tape falls",
     "ret_common": -0.05,
-    "excess_common": -0.33,
+    "excess_common": -0.03,
     "common_from": "2026-09-24",
     "common_days": 2,
     "value": 98397.72,
     "ret": -1.6,
-    "bench_ret": -1.26,
-    "excess": -0.35,
+    "bench_ret": -1.56,
+    "excess": -0.04,
     "friction_yr": 26.2,
     "max_drawdown": -1.94,
     "positions": 25,
@@ -6071,13 +6081,13 @@
     "label": "Combined",
     "note": "conviction + stop + regime together",
     "ret_common": -0.07,
-    "excess_common": -0.35,
+    "excess_common": -0.04,
     "common_from": "2026-09-24",
     "common_days": 2,
     "value": 98486.5,
     "ret": -1.51,
-    "bench_ret": -1.26,
-    "excess": -0.26,
+    "bench_ret": -1.56,
+    "excess": 0.05,
     "friction_yr": 26.2,
     "max_drawdown": -1.92,
     "positions": 25,
@@ -6099,13 +6109,13 @@
     "label": "Slow",
     "note": "the control again, but trading every 4 weeks instead of weekly — isolates what the trading itself costs",
     "ret_common": -0.21,
-    "excess_common": -0.49,
+    "excess_common": -0.19,
     "common_from": "2026-09-24",
     "common_days": 2,
     "value": 99965.98,
     "ret": -0.03,
-    "bench_ret": 0.78,
-    "excess": -0.81,
+    "bench_ret": 0.47,
+    "excess": -0.51,
     "friction_yr": 72.7,
     "max_drawdown": -0.4,
     "positions": 25,
@@ -6125,7 +6135,7 @@
    100.563,
    98.505,
    98.464,
-   98.743
+   98.439
   ],
   "span": [
    "2026-09-21",
@@ -6576,7 +6586,7 @@
  "stats": {
   "feeds_total": 21,
   "feeds_failed": 2,
-  "items": 384,
+  "items": 383,
   "smallcap_calls": 552,
   "feed_errors": [
    [
