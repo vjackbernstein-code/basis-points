@@ -1159,13 +1159,14 @@ def equity_chart(pf):
     The alternative — plotting dollars — would let a book that began later look
     like an outperformer purely because it started from a different place."""
     pf = pf or {}
-    series = [(b["key"], b["label"], b["curve"], BOOK_STROKE.get(b["key"], "var(--ink)"),
+    series = [(b["key"], b["label"], b["curve"], b.get("curve_dates") or [],
+               BOOK_STROKE.get(b["key"], "var(--ink)"),
                2.4 if b["key"] == "A" else 1.6, BOOK_DASH.get(b["key"], ""))
               for b in (pf.get("books") or []) if len(b.get("curve") or []) >= 2]
     bench = pf.get("bench_curve") or []
     if len(bench) >= 2:
         series.append(("IWO", "Russell 2000 Growth ETF", bench,
-                       "var(--muted)", 1.6, "5 4"))
+                       pf.get("bench_dates") or [], "var(--muted)", 1.6, "5 4"))
     if not series:
         return ('<div class="note-box"><strong>No return chart yet.</strong> '
                 'The simulated books have not opened, so there is nothing to '
@@ -1174,7 +1175,7 @@ def equity_chart(pf):
                 'them. An empty chart is shown as empty rather than as a flat '
                 'line at zero, which would look like a result.</div>')
 
-    pts = [v for _, _, c, _, _, _ in series for v in c]
+    pts = [v for _, _, c, _, _, _, _ in series for v in c]
     lo_p, hi_p = min(pts) - 100.0, max(pts) - 100.0
     step = _nice_step(max(hi_p - lo_p, 1.0))
     lo_p = math.floor(lo_p / step) * step
@@ -1202,16 +1203,32 @@ def equity_chart(pf):
             f'<text x="{PL + 1}" y="{y - 3:.1f}" class="axl">{tick:+.0f}%</text>')
         tick += step
 
+    # x by DATE, not by position in the list. A book that opened later has
+    # fewer points, and spacing them evenly across the full width stretched its
+    # short record over the whole chart — which made the newest book look like
+    # it was beating the rest when a like-for-like reading had it mid-pack.
+    all_dates = sorted({d for _k, _l, _c, ds, _s, _w, _h in series for d in ds if d})
+    def x_of(d, i, n):
+        if not (all_dates and d):          # no dates: fall back to position
+            return PL + iw * (i / (n - 1) if n > 1 else 0)
+        lo, hi = all_dates[0], all_dates[-1]
+        if hi == lo:
+            return PL + iw / 2
+        span = (date.fromisoformat(hi) - date.fromisoformat(lo)).days or 1
+        return PL + iw * (date.fromisoformat(d) - date.fromisoformat(lo)).days / span
+
     paths, legend, ends = [], [], []
-    for key, label, curve, colour, width, dash in series:
+    for key, label, curve, dts, colour, width, dash in series:
         n = len(curve)
-        pl = " ".join(f'{PL + iw * i / (n - 1):.1f},{y_of(v - 100.0):.1f}'
-                      for i, v in enumerate(curve))
+        pl = " ".join(
+            f'{x_of(dts[i] if i < len(dts) else None, i, n):.1f},'
+            f'{y_of(v - 100.0):.1f}' for i, v in enumerate(curve))
         paths.append(
             f'<polyline points="{pl}" fill="none" stroke="{colour}" '
             f'stroke-width="{width}" stroke-linejoin="round" stroke-linecap="round"'
             f'{f" stroke-dasharray=\"{dash}\"" if dash else ""}/>')
-        ends.append([y_of(curve[-1] - 100.0), key, colour])
+        ends.append([y_of(curve[-1] - 100.0), key, colour,
+                     x_of(dts[-1] if dts else None, n - 1, n)])
         ret = curve[-1] - 100.0
         # the swatch must match how the line is actually drawn — a legend that
         # shows a solid key for a dashed line is a legend to be checked twice
@@ -1235,10 +1252,10 @@ def equity_chart(pf):
         if ends[i][0] - ends[i - 1][0] < 11:
             ends[i][0] = ends[i - 1][0] + 11
     tags = "".join(
-        f'<text x="{W - PR + 3}" y="{y + 3.5:.1f}" class="endlab" '
-        f'fill="{colour}">{esc(key)}</text>' for y, key, colour in ends)
+        f'<text x="{ex + 4:.1f}" y="{y + 3.5:.1f}" class="endlab" '
+        f'fill="{colour}">{esc(key)}</text>' for y, key, colour, ex in ends)
 
-    span = pf.get("span") or []
+    span = [all_dates[0], all_dates[-1]] if all_dates else (pf.get("span") or [])
     axis = ""
     if len(span) == 2 and all(span):
         axis = (f'<text x="{PL}" y="{H - 7}" class="axl">{esc(span[0])}</text>'
@@ -1644,7 +1661,10 @@ def render_company_page(row, rank, screen, pf, sc, date_line):
                f'from its <strong>rank</strong> alone — {rank} of {len(screen)} — '
                f'on a straight ramp from {portfolio.CONVICTION_MAX:g}× equal '
                f'weight at the top to {portfolio.CONVICTION_MIN:g}× at the '
-               f'bottom, then clamped back inside those bounds. The <em>size</em> '
+               f'bottom. The weights are then pushed back inside those bounds and the '
+               f'difference redistributed until they both fit the bounds AND '
+               f'add to 100%, which is why the figure above will not usually '
+               f'equal the ramp value on its own. The <em>size</em> '
                f'of its score lead is deliberately ignored: the ranking is what a '
                f'score of this kind can honestly assert; the gaps between scores '
                f'are not.')
@@ -1674,10 +1694,14 @@ def render_company_page(row, rank, screen, pf, sc, date_line):
                f'{dist:.1%}', 'the stop',
                'clamped — the raw figure fell outside the bounds' if clamped
                else 'inside the bounds, so it stands unchanged')
-        + f'<p class="cofoot">Books C and E sell it if it falls <strong>{dist:.1%}</strong> '
-        f'below its highest close since purchase — from today&rsquo;s '
-        f'{_n(px, "${:,.2f}")} that would be {_n(level, "${:,.2f}")}, and the '
-        f'level rises with the price but never falls. Books A, B and D hold it '
+        + f'<p class="cofoot">Books C and E sell it if it trades <strong>{dist:.1%}</strong> '
+        f'below its highest point since purchase — from today&rsquo;s '
+        f'{_n(px, "${:,.2f}")} that would be {_n(level, "${:,.2f}")}. The mark it '
+        f'falls from is the <em>day&rsquo;s high</em> and the test is against the '
+        f'<em>day&rsquo;s low</em>, so a break through the level during the day '
+        f'sells the holding even if it recovers by the close. The level rises '
+        f'with the price and never falls, though the distance itself moves with '
+        f'the name&rsquo;s volatility. Books A, B and D hold it '
         f'through anything, on purpose: they are the control that shows whether '
         f'stopping out helped or simply sold the dips. A simulated stop is '
         f'optimistic — real ones gap through in stocks this thin, which is why an '
@@ -2097,12 +2121,19 @@ def render_decision(data):
         bits = "; ".join(
             f'{h}: {reach[h]["have"]} frozen, at most {reach[h]["possible"]} '
             f'possible by then, {reach[h]["target"]} needed' for h in dead)
+        # do NOT assert which cause: a missed reading and a model correction
+        # produce the identical shortfall, and guessing between them from here
+        # would be stating something this page cannot check
         warn = (f'<div class="alarm" role="alert"><strong>The bar can no longer '
-                f'be met by {esc(a["review_date"])}.</strong> {bits}. A reading '
-                f'was missed and the schedule has no spare — so the review will '
-                f'return &ldquo;not enough evidence&rdquo; for a data reason, not '
-                f'because the strategy failed. The bar is NOT being lowered to '
-                f'fit; the shortfall is shown instead.</div>')
+                f'be met by {esc(a["review_date"])}.</strong> {bits}. The '
+                f'schedule had no spare, so either a reading was missed or a '
+                f'correction to the model restarted the record — the model '
+                f'version and the closed books below say which. Either way the '
+                f'review will return &ldquo;not enough evidence&rdquo; for a '
+                f'reason that is not about the strategy, and the pre-registered '
+                f'rule already covers that case: continue unchanged to '
+                f'{esc(decision.SECOND_CHECKPOINT)}. The bar is NOT being '
+                f'lowered to fit; the shortfall is shown instead.</div>')
     else:
         tight = [h for h, r in reach.items() if r.get("slack", 9) <= 1]
         if tight:

@@ -375,7 +375,12 @@ class VendorTypeConfusionTests(unittest.TestCase):
         self.assertTrue(smallcap.in_band({"mcap": 800.0, "exch": "NASDAQ"}))
 
     def test_non_string_exchange_does_not_raise(self):
-        self.assertTrue(smallcap.in_band({"mcap": 800.0, "exch": None}))
+        # the point of this test is that a junk exchange field cannot crash the
+        # run. Under the US allowlist such a profile is now correctly REFUSED
+        # rather than admitted — an unknown venue is not a US one.
+        for junk in (None, 123, [], {}, True):
+            self.assertFalse(smallcap.in_band({"mcap": 800.0, "exch": junk}),
+                             repr(junk))
 
     def test_numbers_are_coerced_or_discarded(self):
         self.assertEqual(smallcap._num("1200"), 1200.0)
@@ -531,6 +536,37 @@ class EquityChartTests(unittest.TestCase):
                                              bench=[100.0, 104.0]))
         self.assertIn("stroke-dasharray", out)
         self.assertIn("repeating-linear-gradient", out)   # the matching swatch
+
+    def test_a_book_that_opened_later_starts_further_along_the_chart(self):
+        # the bug this pins: positions were spaced by INDEX, so a book with
+        # half the points was stretched across the full width and appeared to
+        # be beating books it was actually mid-pack against
+        pf = {"books": [
+                  {"key": "A", "label": "Baseline", "curve": [100.0] * 5,
+                   "curve_dates": ["2026-09-21", "2026-09-22", "2026-09-23",
+                                   "2026-09-24", "2026-09-25"]},
+                  {"key": "F", "label": "Slow", "curve": [100.0, 101.0],
+                   "curve_dates": ["2026-09-24", "2026-09-25"]}],
+              "bench_curve": [], "span": ["2026-09-21", "2026-09-25"]}
+        out = pipeline.equity_chart(pf)
+        runs = re.findall(r'points="([^"]+)"', out)
+        xs = [[float(pt.split(",")[0]) for pt in r.split()] for r in runs]
+        a, f = (xs[0], xs[1]) if len(xs[0]) == 5 else (xs[1], xs[0])
+        self.assertAlmostEqual(a[-1], f[-1], delta=0.5,
+                               msg="both end on the same day, so same x")
+        self.assertGreater(f[0], a[0] + 1,
+                           "F opened three days later and must start further in")
+        self.assertAlmostEqual(f[0], a[3], delta=0.5,
+                               msg="F's first day is A's fourth day")
+
+    def test_the_axis_dates_cover_every_line_drawn(self):
+        pf = {"books": [{"key": "A", "label": "B", "curve": [100.0, 101.0],
+                         "curve_dates": ["2026-09-21", "2026-09-30"]}],
+              "bench_curve": [], "span": ["1999-01-01", "1999-01-02"]}
+        out = pipeline.equity_chart(pf)
+        self.assertIn("2026-09-21", out)
+        self.assertIn("2026-09-30", out)
+        self.assertNotIn("1999", out, "a stale span must not label the axis")
 
     def test_a_dead_flat_record_still_gets_a_readable_axis(self):
         out = pipeline.equity_chart(self._pf({"A": [100.0, 100.0, 100.0]}))
@@ -913,6 +949,22 @@ class CompanyPageTests(unittest.TestCase):
         self.assertIn(f"{want_w:,.2f}%", html)
         want_stop = portfolio.stop_distance({"metrics": {"ABC": {"vol": 52.0}}}, "ABC")
         self.assertIn(f"{want_stop:.1%}", html)
+
+    def test_the_stop_described_is_the_stop_the_code_runs(self):
+        # the page described a close-based stop for days after the code moved
+        # to testing the day's low against the day's high
+        row = self._row()
+        html = pipeline.render_company_page(row, 1, [row], {}, {}, "t")
+        self.assertIn("day&rsquo;s low", html)
+        self.assertIn("day&rsquo;s high", html)
+        self.assertNotIn("highest close since purchase", html)
+
+    def test_the_weight_explanation_admits_the_clamping_step(self):
+        # the stated recipe gives 5.10% for rank 7; the page shows 4.88%,
+        # because weights are clamped and redistributed to sum to 100%
+        row = self._row()
+        html = pipeline.render_company_page(row, 1, [row], {}, {}, "t")
+        self.assertIn("redistributed", html)
 
     def test_it_says_plainly_that_nobody_read_anything_about_the_company(self):
         html = pipeline.render_company_page(self._row(), 1, [self._row()], {}, {}, "t")

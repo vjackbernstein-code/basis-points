@@ -94,8 +94,23 @@ DISCOVERY_RESERVE = 0.55                # share of a run held for new companies
 HOURS_BETWEEN_FULL = 2.5
 TRICKLE_BUDGET = 40
 BENCHES = ("IWO", "IWM")                # Russell 2000 Growth (primary) + Russell 2000
-MODEL_VERSION = "v3.1"                  # stamped on log entries; the track record is
-                                        # reported per version, never blended.
+MODEL_VERSION = "v3.2"                  # v3.2 (2026-10-01) enforces the
+                                        # published "U.S. listed" rule, which
+                                        # the code had never applied: 149
+                                        # foreign listings sat in the eligible
+                                        # band and four Toronto names were in
+                                        # the top 25. Their market caps are
+                                        # also not in dollars. This changes
+                                        # WHICH companies are eligible, so the
+                                        # record restarts — and that puts the
+                                        # 12-reading bar out of reach by
+                                        # 2026-12-14. The pre-registered rule
+                                        # already covers it: "not enough
+                                        # evidence" continues unchanged to the
+                                        # second checkpoint. Protecting the
+                                        # December date by leaving a known
+                                        # defect in place is the one thing
+                                        # that would have been worse.
                                         # v3.1 (Sep 17, 2026): two scoring
                                         # DEFECTS corrected — "Communications"
                                         # companies were ranked against no peer
@@ -292,15 +307,43 @@ def _txt(v, limit):
     return (v if isinstance(v, str) else "" if v is None else str(v))[:limit]
 
 
+# An ALLOWLIST of US venues, not a denylist of foreign ones.
+#
+# The published rule has always said "U.S. listed common stocks", but the code
+# only excluded OTC — so 149 foreign listings sat in the eligible band and four
+# Toronto names were in today's top 25. Foreign listings also carry mixed-
+# currency data: price times shares disagrees with the vendor's market cap by
+# about 30% on Toronto and Sydney, so those companies were being measured for
+# the $300M-$2B band in something other than dollars. Excluding them settles
+# that question rather than guessing at an exchange rate.
+#
+# A denylist would be wrong here: a new venue appearing in the vendor's data
+# would be silently admitted. Note "NYSE" alone cannot be matched — "NYSE
+# EURONEXT - EURONEXT PARIS" contains it.
+US_EXCHANGES = ("NASDAQ", "NEW YORK STOCK EXCHANGE", "NYSE MKT", "NYSE ARCA",
+                "BATS EXCHANGE", "CBOE")
+# Both US names are licensed abroad and WILL match the allowlist on their own:
+# "NASDAQ OMX HELSINKI LTD." and "NYSE EURONEXT - EURONEXT PARIS" are a Finnish
+# and a French venue. Caught by measuring the allowlist against every exchange
+# string in the data rather than trusting it to be right.
+NOT_US = ("OMX", "NORDIC", "HELSINKI", "COPENHAGEN", "STOCKHOLM", "ICELAND",
+          "VILNIUS", "RIGA", "TALLINN", "EURONEXT", "OTC")
+
+
+def is_us_listed(exch):
+    e = (exch if isinstance(exch, str) else "").upper()
+    if not e or any(x in e for x in NOT_US):
+        return False
+    return any(v in e for v in US_EXCHANGES)
+
+
 def in_band(profile):
     if not profile:
         return False
     mcap = profile.get("mcap")
     if isinstance(mcap, bool) or not isinstance(mcap, (int, float)) or not mcap:
         return False
-    exch = profile.get("exch")
-    exch = exch if isinstance(exch, str) else ""
-    return MCAP_MIN <= mcap <= MCAP_MAX and "OTC" not in exch.upper()
+    return MCAP_MIN <= mcap <= MCAP_MAX and is_us_listed(profile.get("exch"))
 
 
 def _fetch_profile(fh, cache, ticker):

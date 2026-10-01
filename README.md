@@ -411,6 +411,32 @@ in CSS into one card per company — each cell labelled from its `data-l`
 attribute, since the header row is gone and a bare "+81.5%" would have nothing
 to say what it measures. No duplicated rows, no JavaScript.
 
+## Model v3.2 (2026-10-01) — the "U.S. listed" rule is now enforced
+
+The published methodology has always said **"U.S. listed common stocks."** The
+code only excluded OTC. So 149 foreign listings sat in the eligible band and
+**four Toronto names were in the top 25** and held by every book.
+
+Their market caps are also not in dollars: price × shares divided by the
+vendor's market cap is ~0.98 on US venues but 0.70 on Toronto and Sydney. Those
+companies were being measured against the $300M–$2B band in another currency.
+Excluding them settles that question rather than guessing an exchange rate.
+
+`US_EXCHANGES` is an **allowlist**, with a `NOT_US` guard, because both US
+venue names are licensed abroad and match on their own: `NASDAQ OMX HELSINKI`
+and `NYSE EURONEXT - EURONEXT PARIS`. Caught by running the allowlist against
+every exchange string in the data rather than trusting it. An unknown venue is
+refused, not admitted.
+
+**This cost the December deadline, and that was the right trade.** Changing
+eligibility changes the screen, so the record restarted — and from 1 October
+only 10 of the 12 weekly readings and 2 of the 3 monthly ones can land by 14
+December. The page now says so in an alarm. The bar was **not** lowered to fit:
+the pre-registered rule already covers this case ("not enough evidence" →
+continue unchanged to 2027-03-15), which is precisely why it was worth writing
+in advance. Leaving a known defect in place to protect a date would have been
+the worse error. All six v3.1 books are retired onto the record, not erased.
+
 ### Two yardsticks, because one of them is a confound
 
 The books hold 25 names **equally weighted**; IWO holds ~1,100 weighted by

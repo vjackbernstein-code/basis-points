@@ -603,14 +603,21 @@ class ProgressTrackingTests(PaperTestCase):
     def test_a_missing_benchmark_mark_is_skipped_not_carried_forward(self):
         # carrying the last value across a gap would draw the benchmark as
         # having held still, which is a claim the data does not support
-        self.assertEqual(portfolio._curve([100.0, None, 120.0], 100.0),
-                         [100.0, 120.0])
+        vals, dates = portfolio._curve([100.0, None, 120.0], 100.0,
+                                       dates=["d1", "d2", "d3"])
+        self.assertEqual(vals, [100.0, 120.0])
+        self.assertEqual(dates, ["d1", "d3"],
+                         "a dropped point must take its date with it, or every "
+                         "later point is plotted on the wrong day")
 
     def test_a_long_history_is_thinned_but_keeps_its_newest_mark(self):
         vals = [100.0 + i for i in range(400)]
-        c = portfolio._curve(vals, 100.0, cap=50)
+        c, ds = portfolio._curve(vals, 100.0, cap=50,
+                                 dates=[f"d{i}" for i in range(400)])
         self.assertEqual(len(c), 50)
+        self.assertEqual(len(ds), 50, "values and dates must stay in step")
         self.assertAlmostEqual(c[-1], 499.0, delta=0.01)
+        self.assertEqual(ds[-1], "d399")
 
     def test_a_retired_book_stays_visible_after_a_version_change(self):
         portfolio.update(cache_with({"A1": 10.0}), screen_of(["A1"]))

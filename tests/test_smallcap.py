@@ -384,6 +384,46 @@ class SpendBudgetTests(SmallcapTestCase):
 # -------------------------------------------------------- track record -------
 
 
+class UsListingTests(unittest.TestCase):
+    """The published rule has always said "U.S. listed common stocks". The code
+    only excluded OTC, so 149 foreign listings were eligible and four Toronto
+    names reached the top 25 — where their market caps are not even in dollars.
+    """
+
+    def test_the_real_us_venues_in_the_data_are_kept(self):
+        for e in ("NASDAQ NMS - GLOBAL MARKET", "NEW YORK STOCK EXCHANGE, INC.",
+                  "NYSE MKT LLC", "BATS EXCHANGE"):
+            self.assertTrue(smallcap.is_us_listed(e), e)
+
+    def test_the_foreign_venues_in_the_data_are_excluded(self):
+        for e in ("TORONTO STOCK EXCHANGE", "TSX VENTURE EXCHANGE - NEX",
+                  "ASX - ALL MARKETS", "LONDON STOCK EXCHANGE",
+                  "TEL AVIV STOCK EXCHANGE", "HONG KONG EXCHANGES AND CLEARING LTD",
+                  "CANADIAN NATIONAL STOCK EXCHANGE", "SHANGHAI STOCK EXCHANGE"):
+            self.assertFalse(smallcap.is_us_listed(e), e)
+
+    def test_the_two_names_that_are_licensed_abroad_do_not_sneak_through(self):
+        # both of these match the allowlist on their own and are not US venues
+        self.assertFalse(smallcap.is_us_listed("NASDAQ OMX HELSINKI LTD."))
+        self.assertFalse(smallcap.is_us_listed("NASDAQ OMX NORDIC"))
+        self.assertFalse(smallcap.is_us_listed("NYSE EURONEXT - EURONEXT PARIS"))
+        self.assertFalse(smallcap.is_us_listed("NYSE EURONEXT - EURONEXT AMSTERDAM"))
+
+    def test_an_unknown_or_blank_venue_is_refused_not_assumed(self):
+        # an allowlist, not a denylist: a venue nobody has seen before must not
+        # be admitted just because it is not on a list of bad ones
+        for e in ("", None, "(blank)", "SOME NEW EXCHANGE 2027", "OTC MARKETS"):
+            self.assertFalse(smallcap.is_us_listed(e), repr(e))
+
+    def test_the_band_still_needs_a_market_cap_in_range(self):
+        us = "NASDAQ NMS - GLOBAL MARKET"
+        self.assertTrue(smallcap.in_band({"mcap": 900.0, "exch": us}))
+        self.assertFalse(smallcap.in_band({"mcap": 90.0, "exch": us}))
+        self.assertFalse(smallcap.in_band({"mcap": 9000.0, "exch": us}))
+        self.assertFalse(smallcap.in_band({"mcap": 900.0,
+                                           "exch": "TORONTO STOCK EXCHANGE"}))
+
+
 class TrackRecordTests(SmallcapTestCase):
     """update_log + evaluate: the live, versioned record."""
 

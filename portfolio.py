@@ -558,22 +558,32 @@ def _stats(book):
         "costs_paid": round(book.get("costs_paid", 0.0), 2),
         "stops_hit": book.get("stops_hit", 0),
         "days": len(hist), "started": book["started"],
-        "curve": _curve([h["value"] for h in hist], START_CAPITAL),
+        "curve": _curve([h["value"] for h in hist], START_CAPITAL,
+                        dates=[h["date"] for h in hist])[0],
+        "curve_dates": _curve([h["value"] for h in hist], START_CAPITAL,
+                              dates=[h["date"] for h in hist])[1],
     }
 
 
-def _curve(vals, base, cap=150):
+def _curve(vals, base, cap=150, dates=None):
     """A book's path rebased so 100 is its starting capital, thinned to `cap`
-    points. Rebasing is what makes five books drawable on one scale; thinning
-    keeps a 400-day ledger from bloating the page by 6 curves' worth of text."""
-    vals = [v for v in vals if v]
-    if len(vals) < 2 or not base:
-        return []
-    if len(vals) > cap:
-        step = (len(vals) - 1) / (cap - 1)
+    points. Rebasing is what makes the books drawable on one scale; thinning
+    keeps a 400-day ledger from bloating the page by several curves' worth of
+    text.
+
+    Returns (values, dates). The DATES matter: a book that opened later has
+    fewer points, and a chart that places points by position rather than by
+    date stretches its short record across the full width — which made the
+    newest book look like it was winning when it was mid-pack."""
+    pairs = [(d, v) for d, v in zip(dates or [None] * len(vals), vals) if v]
+    if len(pairs) < 2 or not base:
+        return [], []
+    if len(pairs) > cap:
+        step = (len(pairs) - 1) / (cap - 1)
         # always keep the LAST point: the newest mark is the one being read
-        vals = [vals[min(len(vals) - 1, round(i * step))] for i in range(cap)]
-    return [round(v / base * 100, 3) for v in vals]
+        pairs = [pairs[min(len(pairs) - 1, round(i * step))] for i in range(cap)]
+    return ([round(v / base * 100, 3) for _d, v in pairs],
+            [d for d, _v in pairs])
 
 
 def attribution(book, top_n=3):
@@ -726,7 +736,9 @@ def summarize(led=None):
     # segment across a gap would misdescribe the benchmark as having held still
     bh = [h for h in (base.get("history") or []) if h.get("bench")]
     b0 = base.get("start_bench") or (bh[0]["bench"] if bh else None)
-    bench_curve = _curve([h["bench"] for h in bh], b0) if b0 else []
+    bench_curve, bench_dates = (
+        _curve([h["bench"] for h in bh], b0, dates=[h["date"] for h in bh])
+        if b0 else ([], []))
     # books that were retired by a version or format change, surfaced rather
     # than quietly dropped: a restart that erases a bad run is how a simulation
     # ends up with a record made only of its good stretches
@@ -802,6 +814,7 @@ def summarize(led=None):
         "v": led.get("v"),
         "books": books,
         "bench_curve": bench_curve,
+        "bench_dates": bench_dates,
         # first and last date on the record, so a chart can label its own axis
         # rather than leave the reader guessing what span they are looking at
         "span": ([(base.get("history") or [{}])[0].get("date"),
