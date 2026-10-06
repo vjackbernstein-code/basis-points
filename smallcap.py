@@ -584,6 +584,34 @@ def _percentile_ranks(values):
     return ranks
 
 
+# A trailing-growth figure that its own three-year figure contradicts.
+#
+# Measured 2026-10-03 across 99 eligible banks: median trailing growth 43.2%
+# and latest quarter 36.4%, against a three-year figure of 7.4% a year. Three
+# years at 43% compounds to +193%; both cannot describe the same companies.
+# Every other industry is internally consistent (6.2 / 7.7 / 3.8). The bank
+# distribution is a tidy hump centred on +40-50% across all 99 — the shape of
+# a measurement convention, not of 99 exceptional years.
+#
+# This FLAGS, it does not exclude. Which of the three figures is wrong has not
+# been established, and changing how growth is measured — or dropping an
+# industry — is a scoring change, frozen until the record is judged. What is
+# not frozen is saying so on the page: the screen claims to show its
+# arithmetic, and four of its holdings reached it on this number.
+IMPLAUSIBLE_TTM = 25.0      # trailing growth above this...
+IMPLAUSIBLE_3Y = 15.0       # ...while the three-year figure is below this
+
+
+def growth_is_contradicted(m):
+    """True when a company's trailing growth is not supported by its own
+    three-year growth. Both figures come from the same vendor, for the same
+    company, and are supposed to describe the same thing."""
+    ttm, g3 = (m or {}).get("rev_g"), (m or {}).get("rg3")
+    if ttm is None or g3 is None:
+        return False
+    return ttm > IMPLAUSIBLE_TTM and g3 < IMPLAUSIBLE_3Y
+
+
 def _factors(cache, ticker):
     m = cache["metrics"][ticker]
     q = cache["quotes"][ticker]
@@ -729,6 +757,8 @@ def compute_screen(cache, prev_candidates=None, prev_published=None):
             "sub": {"g": round(100 * growth), "m": round(100 * mo[i]),
                     "q": round(100 * quality)},
             "flags": flags,
+            # disclosure, not exclusion: see growth_is_contradicted
+            "growth_doubt": growth_is_contradicted(m),
             # the raw inputs behind the score, the position size and the stop.
             # Published so the per-company page can SHOW its arithmetic instead
             # of asserting a conclusion the reader has to take on trust.

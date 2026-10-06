@@ -846,6 +846,8 @@ table.screen td.tick { font-family: "IBM Plex Mono", ui-monospace, monospace;
 .flag.ins { color: var(--up); border-color: var(--up); }
 .flag.act { color: var(--up); border-color: var(--up); }
 .flag.offer { color: var(--down); border-color: var(--down); }
+.flag.doubt { color: var(--down); border-color: var(--down);
+  background: color-mix(in srgb, var(--down) 10%, transparent); }
 .chart { margin: 4px 0 10px; }
 .chart svg { width: 100%; height: auto; display: block; overflow: visible; }
 .axl { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 11px;
@@ -1071,6 +1073,19 @@ def render_econ_column(rows):
 
 _NUM_WORD = {1: "one", 2: "two", 3: "three", 4: "four", 5: "five", 6: "six",
              7: "seven", 8: "eight", 9: "nine", 10: "ten"}
+
+
+# What the current model version changed, beside the version itself. Keeping
+# these together is the only way the page's prose cannot drift from the code:
+# a version bump that forgets this tuple fails a test rather than publishing a
+# stale sentence.
+MODEL_NOTE = (
+    "Oct 1, 2026",
+    "v3.2 enforces the published &ldquo;U.S. listed&rdquo; rule, which the code "
+    "had never applied \u2014 149 foreign listings were eligible and four "
+    "Toronto names were in the top 25, their market caps not even denominated "
+    "in dollars. Changing eligibility changes the screen, so the record "
+    "restarted and the six previous books were retired onto it.")
 
 
 def books_word(pf=None):
@@ -2295,7 +2310,7 @@ def render_explainer(data):
         'are different questions and mixing them produces an answer to '
         'neither.</p>'
 
-        '<h3>The five portfolios, and why there are five</h3>'
+        f'<h3>The {books_word(pf)} portfolios, and why there are {books_word(pf)}</h3>'
         f'<p>{books_word(pf).capitalize()} imaginary pots of money, each with a notional '
         f'${(pf.get("assumptions") or {}).get("capital", 100000):,.0f} '
         f'&mdash; these are American shares, priced in dollars &mdash; all '
@@ -2459,10 +2474,14 @@ def build_sections(data):
             sub = r.get("sub") or {}
             sub_t = (f'growth {sub.get("g", "?")} · momentum {sub.get("m", "?")} · '
                      f'quality {sub.get("q", "?")}')
-            flag_cls = {"new": "new", "ins+": "ins", "act+": "act", "offer": "offer"}
+            flag_cls = {"new": "new", "ins+": "ins", "act+": "act",
+                        "offer": "offer", "growth?": "doubt"}
+            shown = list(r.get("flags") or [])
+            if r.get("growth_doubt"):
+                shown.append("growth?")
             flags = "".join(
                 f'<span class="flag {flag_cls.get(f, "")}">{esc(f)}</span>'
-                for f in (r.get("flags") or []))
+                for f in shown)
             ev_rev = (f'{r["ev_rev"]:.1f}×' if r.get("ev_rev") is not None else "—")
             # every cell carries its own column name. On a phone the table
             # becomes a stack of cards and the header row is gone, so a bare
@@ -2558,11 +2577,12 @@ def build_sections(data):
         secs.append(("signals", f'<div class="duo">{"".join(cols)}</div>'))
 
     method = (
-        '<div class="method"><strong>Methodology (model v3.1, Sep 17, 2026).</strong> '
-        '<em>v3.1 corrected two scoring defects and restarted the record: '
-        'companies labelled “Communications” had been ranked against no peer '
-        'group, and tied factor values had been ordered by alphabetical '
-        'position. Corrected one week in, while a restart was still cheap.</em> '
+        # The version and its note are DERIVED. This block said "model v3.1"
+        # for five days after the model became v3.2 — a page whose whole claim
+        # is that it publishes its own rules cannot be hand-stamped.
+        f'<div class="method"><strong>Methodology (model '
+        f'{esc(smallcap.MODEL_VERSION)}, {esc(MODEL_NOTE[0])}).</strong> '
+        f'<em>{MODEL_NOTE[1]}</em> '
         'Eligibility: U.S. listed common stocks (one security per company — the common '
         'ticker), market value $300M–$2B, price ≥ $2, 10-day average volume ≥ 50k shares, '
         'trailing-12-month revenue ≥ $50M, no over-the-counter listings, no closed-end '
@@ -2584,7 +2604,18 @@ def build_sections(data):
         '<em>8-K</em> = filed a material-event report with the SEC in the last 3 days; '
         '<em>act+</em> = an investor disclosed a 5%+ stake (13D/13G) in the last 7 days; '
         '<em>offer</em> = filed a securities registration/prospectus (S-1/424B, a '
-        'potential dilution event) in the last 7 days. These filing flags are matched '
+        'potential dilution event) in the last 7 days; '
+        '<em>growth?</em> = the company&rsquo;s trailing revenue growth is not '
+        'supported by its own three-year figure from the same source. '
+        '<strong>This flag is a disclosure, not an exclusion.</strong> Measured '
+        'on 3 October across 99 eligible banks: median trailing growth 43.2% '
+        'and latest quarter 36.4%, against a three-year figure of 7.4% a year '
+        '&mdash; and three years at 43% compounds to +193%, so both cannot be '
+        'true of the same companies. Every other industry is internally '
+        'consistent. Which of the three figures is wrong has not been '
+        'established, and dropping an industry or changing how growth is '
+        'measured would be a scoring change, which is frozen. Saying so is '
+        'not, and four of the names below reached this screen on that number. These filing flags are matched '
         'from SEC EDGAR and, like all news signals, inform context only — they are '
         'never scored. '
         '<strong>Freeze:</strong> scoring rules do not change until the live record '

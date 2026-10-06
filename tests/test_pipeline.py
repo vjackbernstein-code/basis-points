@@ -709,17 +709,42 @@ class TradeListTests(unittest.TestCase):
         self.assertIn(f"all {pipeline.books_word()} books", html)
         self.assertEqual(html.count("ABC"), 2)      # the link text and its href
 
+    def _blank_site(self):
+        return pipeline.render_site({
+            "generated_at": NOW.isoformat(), "market": [], "top": [],
+            "smallcap": {"screen": [], "evaluation": {},
+                         "coverage": {"universe": 1, "profiled": 1}},
+            "portfolio": {"status": "not started", "books": []}})[0]
+
     def test_the_book_count_is_never_hard_coded_in_the_page(self):
         n = len(portfolio.STRATEGIES)
         self.assertEqual(pipeline.books_word(), pipeline._NUM_WORD[n])
-        stale = {5: "five", 6: "six"}.get(n + 1)    # the next wrong answer
-        for name, html in pipeline.render_site({
-                "generated_at": NOW.isoformat(), "market": [], "top": [],
-                "smallcap": {"v": "v3.1", "screen": [], "evaluation": {},
-                             "coverage": {"universe": 1, "profiled": 1}},
-                "portfolio": {"status": "not started", "books": []}})[0].items():
-            if stale:
-                self.assertNotIn(f"{stale} books", html, name)
+        # the earlier version of this test only looked for "<word> books", so
+        # "The five portfolios, and why there are five" survived a book being
+        # added. Check every noun the page actually uses.
+        nouns = ("books", "portfolios", "pots of money", "simulated books")
+        wrong = [w for k, w in pipeline._NUM_WORD.items() if k != n]
+        for name, html in self._blank_site().items():
+            low = html.lower()
+            for w in wrong:
+                for noun in nouns:
+                    self.assertNotIn(f"{w} {noun}", low, f"{name}: '{w} {noun}'")
+
+    def test_the_page_never_states_a_model_version_the_code_does_not_have(self):
+        # the methodology block said "model v3.1" for five days after the model
+        # became v3.2, on a page whose whole claim is that it publishes its rules
+        import re as _re
+        for name, html in self._blank_site().items():
+            for found in set(_re.findall(r"\bv3(?:\.\d+)?\b", html)):
+                self.assertEqual(found, smallcap.MODEL_VERSION,
+                                 f"{name} mentions {found}, code is "
+                                 f"{smallcap.MODEL_VERSION}")
+
+    def test_the_version_note_describes_the_current_version(self):
+        date, note = pipeline.MODEL_NOTE
+        self.assertIn(smallcap.MODEL_VERSION, note,
+                      "the note must name the version it describes, so a bump "
+                      "that forgets to update it fails here instead of shipping")
 
     def test_the_previous_ungrouped_trade_shape_still_renders(self):
         # between a deploy and the next data refresh the committed file is

@@ -411,6 +411,29 @@ in CSS into one card per company — each cell labelled from its `data-l`
 attribute, since the header row is gone and a bare "+81.5%" would have nothing
 to say what it measures. No duplicated rows, no JavaScript.
 
+### Contradicted growth: flagged, never excluded
+
+The weekly reviewer found, on 2026-10-03, that the vendor's trailing revenue
+growth for **banks** is contradicted by its own three-year figure. Measured
+across 99 eligible banks: trailing growth 43.2%, latest quarter 36.4%,
+three-year 7.4% a year. Three years at 43% compounds to +193%. Both cannot
+describe the same companies. Every other industry is internally consistent
+(6.2 / 7.7 / 3.8), and the bank distribution is a tidy hump centred on +40-50%
+across all 99 — the shape of a measurement convention, not of 99 exceptional
+years. Growth is ranked *within* industry group, so this does not let banks
+beat technology companies; it lets them beat other **financial** companies,
+and four of the five financial slots in the published 25 were banks.
+
+`growth_is_contradicted()` flags any name whose trailing growth its own
+three-year figure does not support, and the screen shows a `growth?` chip.
+**It flags; it does not exclude** — which of the three figures is wrong has not
+been established, and dropping an industry or changing how growth is measured
+is a *scoring* change, frozen until the record is judged. Saying so on the page
+is not frozen, and is required: the screen claims to show its arithmetic.
+
+A test asserts the flag appears nowhere in the eligibility or factor code, so
+it cannot quietly become an exclusion during the freeze.
+
 ## Model v3.2 (2026-10-01) — the "U.S. listed" rule is now enforced
 
 The published methodology has always said **"U.S. listed common stocks."** The

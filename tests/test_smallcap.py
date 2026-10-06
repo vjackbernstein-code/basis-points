@@ -384,6 +384,35 @@ class SpendBudgetTests(SmallcapTestCase):
 # -------------------------------------------------------- track record -------
 
 
+class ContradictedGrowthTests(unittest.TestCase):
+    """The vendor's trailing growth for banks is contradicted by its own
+    three-year figure. The flag discloses that; it must not exclude anything,
+    because excluding is a scoring change and the scoring is frozen."""
+
+    def test_trailing_growth_unsupported_by_three_years_is_flagged(self):
+        self.assertTrue(smallcap.growth_is_contradicted(
+            {"rev_g": 81.2, "rg3": 7.4}))
+
+    def test_consistent_growth_is_not_flagged(self):
+        self.assertFalse(smallcap.growth_is_contradicted(
+            {"rev_g": 18.3, "rg3": 13.0}))
+        self.assertFalse(smallcap.growth_is_contradicted(
+            {"rev_g": 90.0, "rg3": 60.0}))   # fast, but its own record agrees
+
+    def test_a_missing_figure_is_not_treated_as_a_contradiction(self):
+        for m in ({"rev_g": 80.0}, {"rg3": 5.0}, {}, None):
+            self.assertFalse(smallcap.growth_is_contradicted(m), repr(m))
+
+    def test_the_flag_changes_no_score_and_no_eligibility(self):
+        # the whole point: it is a label. If this ever starts excluding names
+        # it has become a scoring change made during the freeze.
+        import inspect
+        src = inspect.getsource(smallcap._eligible) + inspect.getsource(
+            smallcap._base_eligible) + inspect.getsource(smallcap._factors)
+        self.assertNotIn("growth_is_contradicted", src)
+        self.assertNotIn("growth_doubt", src)
+
+
 class UsListingTests(unittest.TestCase):
     """The published rule has always said "U.S. listed common stocks". The code
     only excluded OTC, so 149 foreign listings were eligible and four Toronto
