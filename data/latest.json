@@ -1,17 +1,16 @@
 {
- "generated_at": "2026-10-05T23:05:28.848538+00:00",
+ "generated_at": "2026-10-06T03:13:15.622361+00:00",
  "market": [
   {
    "label": "S&P 500",
    "symbol": "SP500",
    "kind": "index",
-   "value": 7722.72,
-   "prev": 7666.45,
-   "value_txt": "7,722.72",
-   "delta": 0.7339772645748741,
-   "delta_txt": "+0.73%",
+   "value": 7773.95,
+   "prev": 7722.72,
+   "value_txt": "7,773.95",
+   "delta": 0.6633673109992277,
+   "delta_txt": "+0.66%",
    "spark": [
-    7631.47,
     7666.6,
     7747.71,
     7718.6,
@@ -33,9 +32,10 @@
     7670.84,
     7651.54,
     7666.45,
-    7722.72
+    7722.72,
+    7773.95
    ],
-   "asof": "Oct 2"
+   "asof": "Oct 5"
   },
   {
    "label": "Nasdaq",
@@ -106,7 +106,8 @@
     50926.56,
     51176.96,
     51267.9
-   ]
+   ],
+   "asof": "Oct 5"
   },
   {
    "label": "VIX",
@@ -285,19 +286,19 @@
     1.1298,
     1.1225,
     1.1204
-   ]
+   ],
+   "asof": "Oct 5"
   },
   {
    "label": "Bitcoin",
    "symbol": "bitcoin",
    "kind": "crypto",
-   "value": 86036.9582868659,
-   "prev": 86489.73482686514,
-   "value_txt": "$86,037",
-   "delta": -0.5235032121506691,
-   "delta_txt": "-0.52%",
+   "value": 85510.31041599008,
+   "prev": 85770.87224573967,
+   "value_txt": "$85,510",
+   "delta": -0.30378824760351497,
+   "delta_txt": "-0.30%",
    "spark": [
-    76819.04496746542,
     78173.35158344489,
     75590.24471973324,
     76146.81236783884,
@@ -319,20 +320,20 @@
     84506.46895963937,
     84742.78638478836,
     86489.73482686514,
-    86036.9582868659
+    85770.87224573967,
+    85510.31041599008
    ]
   },
   {
    "label": "Ethereum",
    "symbol": "ethereum",
    "kind": "crypto",
-   "value": 2718.311303505847,
-   "prev": 2725.9105379372454,
-   "value_txt": "$2,718",
-   "delta": -0.27877783682325474,
-   "delta_txt": "-0.28%",
+   "value": 2700.2288356830973,
+   "prev": 2710.4181759245234,
+   "value_txt": "$2,700",
+   "delta": -0.37593240526254207,
+   "delta_txt": "-0.38%",
    "spark": [
-    2476.682526163658,
     2514.759550467769,
     2397.4972601650115,
     2415.9596535242995,
@@ -354,11 +355,12 @@
     2667.9504418816,
     2686.891434728346,
     2725.9105379372454,
-    2718.311303505847
+    2710.4181759245234,
+    2700.2288356830973
    ]
   }
  ],
- "tape_line": "S&P 500 +0.73%, Nasdaq +1.19%, Dow +0.18%; the 10-year Treasury at 5.28% (+4 bp); WTI crude $96.16 (-3.23%); bitcoin $86,037 (-0.52%).",
+ "tape_line": "S&P 500 +0.66%, Nasdaq +1.19%, Dow +0.18%; the 10-year Treasury at 5.28% (+4 bp); WTI crude $96.16 (-3.23%); bitcoin $85,510 (-0.30%).",
  "top": [
   {
    "title": "U.S. Stocks Rise as AI Bets Offset Bond Yield Fears",
@@ -375,6 +377,13 @@
    "summary": "Oil prices settled lower as traders weighed a planned release of emergency oil and diesel stocks by the Group of Seven countries against renewed attacks around the Strait of Hormuz and persistent Middle East supply risks."
   },
   {
+   "title": "Oil Little Changed as Traders Weigh Mideast Crude Export Data",
+   "link": "https://www.wsj.com/finance/commodities-futures/oil-little-changed-as-traders-weigh-mideast-crude-export-data-6785f907?mod=rss_markets_main",
+   "source": "WSJ Markets",
+   "published": "2026-10-06T00:55:00+00:00",
+   "summary": "Oil was little changed. Brent remains above the psychologically-important $100-a-barrel level even though ship tracking data show a significant uptick in Middle Eastern oil exports to levels close to pre‑war levels, CBA said."
+  },
+  {
    "title": "Nasdaq Hits New Record as Bond Yields March Higher",
    "link": "https://www.wsj.com/finance/investing/stocks-keep-climbingand-so-do-bond-yields-c91d7d75?mod=rss_markets_main",
    "source": "WSJ Markets",
@@ -382,37 +391,30 @@
    "summary": "The yield on the 10-year Treasury touched a fresh 24-year high, as a global bond rout and AI-investing boom ripple through markets in tandem."
   },
   {
+   "title": "Gold Muted as Traders Weigh Yields Against Concerns Driving Them",
+   "link": "https://www.wsj.com/finance/commodities-futures/gold-muted-as-traders-weigh-yields-against-concerns-driving-them-a60d8709?mod=rss_markets_main",
+   "source": "WSJ Markets",
+   "published": "2026-10-06T00:58:00+00:00",
+   "summary": "Gold made a subdued start in Asia as high bond yields offset pared-back rate-hike expectations."
+  },
+  {
+   "title": "Trump eases red diesel limits in attempt to quell fuel inflation",
+   "link": "https://www.ft.com/content/8a733f73-d506-49ae-9030-2bbf0987bc8d?syn-25a6b1a6=1",
+   "source": "Financial Times",
+   "published": "2026-10-06T00:46:01+00:00",
+   "summary": "US president announces the move during a trip to the agricultural state of Nebraska"
+  },
+  {
    "title": "Nasdaq Poised to Hit New High as Treasury Yields Climb",
    "link": "https://www.wsj.com/finance/stocks/u-s-stock-futures-steady-as-french-fiscal-pressure-raises-contagion-risk-468c102a?mod=rss_markets_main",
    "source": "WSJ Markets",
    "published": "2026-10-05T18:29:00+00:00",
    "summary": "The Nasdaq composite is leading U.S. stock indexes higher, poised to close at a record."
-  },
-  {
-   "title": "Gold little changed as fading likelihood of U.S. rate hike offset by rising dollar and yields",
-   "link": "https://seekingalpha.com/news/4650374-gold-little-changed-as-fading-likelihood-of-us-rate-hike-offset-by-rising-dollar-and-yields?utm_source=feed_news_all&utm_medium=referral&feed_item_type=news",
-   "source": "Seeking Alpha",
-   "published": "2026-10-05T21:45:36+00:00",
-   "summary": ""
-  },
-  {
-   "title": "Federal Reserve Board announces approval of application by Isabella Bank Corporation",
-   "link": "https://www.federalreserve.gov/newsevents/pressreleases/orders20261005a.htm",
-   "source": "Federal Reserve",
-   "published": "2026-10-05T20:30:00+00:00",
-   "summary": "Federal Reserve Board announces approval of application by Isabella Bank Corporation"
-  },
-  {
-   "title": "Oil Industry’s Bid to Kill Climate Change Lawsuits Faces SCOTUS Skepticism",
-   "link": "https://www.wsj.com/politics/policy/oil-industrys-bid-to-kill-climate-change-lawsuits-faces-scotus-skepticism-a9be9855?mod=rss_markets_main",
-   "source": "WSJ Markets",
-   "published": "2026-10-05T21:30:00+00:00",
-   "summary": "Plus, why the U.S. to abruptly pulled bombers from a U.K. base and new Trump Account rules will put individual stocks kids’ portfolios."
   }
  ],
  "smallcap": {
   "note": null,
-  "asof": "2026-10-05T23:17:07+00:00",
+  "asof": "2026-10-06T03:24:50+00:00",
   "coverage": {
    "universe": 9891,
    "profiled": 10060,
@@ -843,6 +845,44 @@
     }
    },
    {
+    "ticker": "SHIP",
+    "name": "Seanergy Maritime Holdings Corp",
+    "ind": "Marine",
+    "group": "Industrials",
+    "mcap": 398.9115135526316,
+    "rev_g": 31.98,
+    "accel": 16.599999999999998,
+    "r13": 32.688,
+    "momo": 0.81,
+    "from_high": -8.06451612903224,
+    "ev_rev": 3.2466,
+    "px": 17.67,
+    "dp": -0.8418,
+    "score": 78.2,
+    "sub": {
+     "g": 82,
+     "m": 89,
+     "q": 47
+    },
+    "flags": [],
+    "why": {
+     "vol": 48.134174,
+     "r26": 48.3764,
+     "rg3": 8.14,
+     "rev_gq": 48.58,
+     "dte": 0.9417,
+     "gm_t": 69.98,
+     "om_t": 40.68,
+     "om_a": 26.36,
+     "cashps": 2.3456,
+     "rps": 9.236,
+     "adv": 0.53114,
+     "hi52": 19.22,
+     "shares": 21.67,
+     "exch": "NASDAQ NMS - GLOBAL MARKET"
+    }
+   },
+   {
     "ticker": "GOTU",
     "name": "Gaotu Techedu Inc",
     "ind": "Diversified Consumer Services",
@@ -862,9 +902,7 @@
      "m": 91,
      "q": 55
     },
-    "flags": [
-     "new"
-    ],
+    "flags": [],
     "why": {
      "vol": 48.73614,
      "r26": 36.1702,
@@ -997,6 +1035,82 @@
     }
    },
    {
+    "ticker": "IDT",
+    "name": "IDT Corp",
+    "ind": "Telecommunication",
+    "group": "Telecom",
+    "mcap": 1711.703509,
+    "rev_g": 5.4,
+    "accel": 1.67,
+    "r13": 38.0155,
+    "momo": 1.79,
+    "from_high": -2.090720136936064,
+    "ev_rev": 1.4341,
+    "px": 80.08,
+    "dp": 1.3928,
+    "score": 76.8,
+    "sub": {
+     "g": 61,
+     "m": 100,
+     "q": 62
+    },
+    "flags": [],
+    "why": {
+     "vol": 28.141768,
+     "r26": 68.663,
+     "rg3": 1.56,
+     "rev_gq": 7.07,
+     "dte": 0,
+     "gm_t": 38.27,
+     "om_t": 9.34,
+     "om_a": 9.34,
+     "cashps": 10.9485,
+     "rps": 52.0642,
+     "adv": 0.51986,
+     "hi52": 81.79,
+     "shares": 24.87,
+     "exch": "NEW YORK STOCK EXCHANGE, INC."
+    }
+   },
+   {
+    "ticker": "TEN",
+    "name": "Tsakos Energy Navigation Ltd",
+    "ind": "Energy",
+    "group": "Energy",
+    "mcap": 1288.1180526363216,
+    "rev_g": 23.23,
+    "accel": 31.139999999999997,
+    "r13": 38.4789,
+    "momo": 0.93,
+    "from_high": -4.736255572065384,
+    "ev_rev": 3.2243,
+    "px": 51.29,
+    "dp": 2.4775,
+    "score": 76.7,
+    "sub": {
+     "g": 72,
+     "m": 93,
+     "q": 54
+    },
+    "flags": [],
+    "why": {
+     "vol": 36.93339,
+     "r26": 28.4216,
+     "rg3": -2.45,
+     "rev_gq": 54.37,
+     "dte": 1.0231,
+     "gm_t": 61.58,
+     "om_t": 43.17,
+     "om_a": 31.59,
+     "cashps": 15.4723,
+     "rps": 32.0197,
+     "adv": 0.5418,
+     "hi52": 53.84,
+     "shares": 30.13,
+     "exch": "NEW YORK STOCK EXCHANGE, INC."
+    }
+   },
+   {
     "ticker": "MGTX",
     "name": "MeiraGTx Holdings PLC",
     "ind": "Biotechnology",
@@ -1031,6 +1145,46 @@
      "adv": 0.87655,
      "hi52": 15.35,
      "shares": 92.61,
+     "exch": "NASDAQ NMS - GLOBAL MARKET"
+    }
+   },
+   {
+    "ticker": "LIND",
+    "name": "Lindblad Expeditions Holdings Inc",
+    "ind": "Hotels, Restaurants & Leisure",
+    "group": "Consumer",
+    "mcap": 1807.166216103896,
+    "rev_g": 18.27,
+    "accel": 0.370000000000001,
+    "r13": 25.7196,
+    "momo": 1.07,
+    "from_high": null,
+    "ev_rev": 3.161,
+    "px": 35.6,
+    "dp": 2.3577,
+    "score": 76.2,
+    "sub": {
+     "g": 80,
+     "m": 95,
+     "q": 31
+    },
+    "flags": [
+     "new"
+    ],
+    "why": {
+     "vol": 51.78277,
+     "r26": 99.348,
+     "rg3": 22.3,
+     "rev_gq": 18.64,
+     "dte": 102.4293,
+     "gm_t": 46.65,
+     "om_t": 4.16,
+     "om_a": 2.85,
+     "cashps": 4.8673,
+     "rps": 12.6863,
+     "adv": 1.05649,
+     "hi52": 35,
+     "shares": 65.6,
      "exch": "NASDAQ NMS - GLOBAL MARKET"
     }
    },
@@ -1113,46 +1267,6 @@
     }
    },
    {
-    "ticker": "SHIP",
-    "name": "Seanergy Maritime Holdings Corp",
-    "ind": "Marine",
-    "group": "Industrials",
-    "mcap": 398.9115135526316,
-    "rev_g": 31.98,
-    "accel": 16.599999999999998,
-    "r13": 32.688,
-    "momo": 0.81,
-    "from_high": -8.06451612903224,
-    "ev_rev": 3.2466,
-    "px": 17.67,
-    "dp": -0.8418,
-    "score": 75.8,
-    "sub": {
-     "g": 82,
-     "m": 89,
-     "q": 47
-    },
-    "flags": [
-     "new"
-    ],
-    "why": {
-     "vol": 48.134174,
-     "r26": 48.3764,
-     "rg3": 8.14,
-     "rev_gq": 48.58,
-     "dte": 0.9417,
-     "gm_t": 69.98,
-     "om_t": 40.68,
-     "om_a": 26.36,
-     "cashps": 2.3456,
-     "rps": 9.236,
-     "adv": 0.53114,
-     "hi52": 19.22,
-     "shares": 21.67,
-     "exch": "NASDAQ NMS - GLOBAL MARKET"
-    }
-   },
-   {
     "ticker": "TK",
     "name": "Teekay Corp Ltd",
     "ind": "Energy",
@@ -1229,46 +1343,6 @@
     }
    },
    {
-    "ticker": "IDT",
-    "name": "IDT Corp",
-    "ind": "Telecommunication",
-    "group": "Telecom",
-    "mcap": 1711.703509,
-    "rev_g": 5.4,
-    "accel": 1.67,
-    "r13": 38.0155,
-    "momo": 1.79,
-    "from_high": -2.090720136936064,
-    "ev_rev": 1.4341,
-    "px": 80.08,
-    "dp": 1.3928,
-    "score": 74.5,
-    "sub": {
-     "g": 61,
-     "m": 100,
-     "q": 62
-    },
-    "flags": [
-     "new"
-    ],
-    "why": {
-     "vol": 28.141768,
-     "r26": 68.663,
-     "rg3": 1.56,
-     "rev_gq": 7.07,
-     "dte": 0,
-     "gm_t": 38.27,
-     "om_t": 9.34,
-     "om_a": 9.34,
-     "cashps": 10.9485,
-     "rps": 52.0642,
-     "adv": 0.51986,
-     "hi52": 81.79,
-     "shares": 24.87,
-     "exch": "NEW YORK STOCK EXCHANGE, INC."
-    }
-   },
-   {
     "ticker": "BBNX",
     "name": "Beta Bionics Inc",
     "ind": "Health Care",
@@ -1305,93 +1379,15 @@
      "shares": 44.99,
      "exch": "NASDAQ NMS - GLOBAL MARKET"
     }
-   },
-   {
-    "ticker": "SEPN",
-    "name": "Septerna Inc",
-    "ind": "Pharmaceuticals",
-    "group": "Health",
-    "mcap": 1813.866037748167,
-    "rev_g": 13520.11,
-    "accel": 50.0,
-    "r13": 8.0726,
-    "momo": 0.37,
-    "from_high": -25.89041095890412,
-    "ev_rev": 17.4073,
-    "px": 37.87,
-    "dp": 0.4243,
-    "score": 74.4,
-    "sub": {
-     "g": 82,
-     "m": 69,
-     "q": 70
-    },
-    "flags": [],
-    "why": {
-     "vol": 71.859764,
-     "r26": 53.8982,
-     "rg3": null,
-     "rev_gq": 22375.63,
-     "dte": 0,
-     "gm_t": null,
-     "om_t": -44.04,
-     "om_a": -148.63,
-     "cashps": 8.1529,
-     "rps": 2.1954,
-     "adv": 0.3314,
-     "hi52": 51.1,
-     "shares": 45.08,
-     "exch": "NASDAQ NMS - GLOBAL MARKET"
-    }
-   },
-   {
-    "ticker": "TEN",
-    "name": "Tsakos Energy Navigation Ltd",
-    "ind": "Energy",
-    "group": "Energy",
-    "mcap": 1288.1180526363216,
-    "rev_g": 23.23,
-    "accel": 31.139999999999997,
-    "r13": 38.4789,
-    "momo": 0.93,
-    "from_high": -4.736255572065384,
-    "ev_rev": 3.2243,
-    "px": 51.29,
-    "dp": 2.4775,
-    "score": 74.4,
-    "sub": {
-     "g": 72,
-     "m": 93,
-     "q": 54
-    },
-    "flags": [
-     "new"
-    ],
-    "why": {
-     "vol": 36.93339,
-     "r26": 28.4216,
-     "rg3": -2.45,
-     "rev_gq": 54.37,
-     "dte": 1.0231,
-     "gm_t": 61.58,
-     "om_t": 43.17,
-     "om_a": 31.59,
-     "cashps": 15.4723,
-     "rps": 32.0197,
-     "adv": 0.5418,
-     "hi52": 53.84,
-     "shares": 30.13,
-     "exch": "NEW YORK STOCK EXCHANGE, INC."
-    }
    }
   ],
   "freshness": {
    "last_full_h": 0.0,
-   "quote_median_h": 6.3,
+   "quote_median_h": 4.2,
    "quote_count": 1862,
    "bench_h": 0.0,
-   "universe_h": 72.4,
-   "earnings_h": 6.2,
+   "universe_h": 76.5,
+   "earnings_h": 10.3,
    "bench_gate_h": 72
   },
   "reach": {
@@ -1413,40 +1409,19 @@
    }
   },
   "changes": {
-   "prev_day": "2026-10-02",
+   "prev_day": "2026-10-05",
    "entered": [
     {
-     "ticker": "GOTU",
-     "name": "Gaotu Techedu Inc",
-     "score": 77.7,
-     "ind": "Diversified Consumer Services"
-    },
-    {
-     "ticker": "SHIP",
-     "name": "Seanergy Maritime Holdings Corp",
-     "score": 75.8,
-     "ind": "Marine"
-    },
-    {
-     "ticker": "IDT",
-     "name": "IDT Corp",
-     "score": 74.5,
-     "ind": "Telecommunication"
-    },
-    {
-     "ticker": "TEN",
-     "name": "Tsakos Energy Navigation Ltd",
-     "score": 74.4,
-     "ind": "Energy"
+     "ticker": "LIND",
+     "name": "Lindblad Expeditions Holdings Inc",
+     "score": 76.2,
+     "ind": "Hotels, Restaurants & Leisure"
     }
    ],
    "left": [
-    "CBLL",
-    "DJCO",
-    "TH",
-    "TXO"
+    "SEPN"
    ],
-   "held": 21
+   "held": 24
   },
   "below_floor": [
    {
@@ -1508,34 +1483,34 @@
   ],
   "movers_up": [
    {
+    "ticker": "PICS",
+    "name": "Pics NV",
+    "px": 11.62,
+    "dp": 27.8328
+   },
+   {
+    "ticker": "DNA",
+    "name": "Ginkgo Bioworks Holdings Inc",
+    "px": 14.98,
+    "dp": 21.2955
+   },
+   {
     "ticker": "HLTC",
     "name": "National Healthcare Properties Inc",
     "px": 13.05,
     "dp": 20.2765
    },
    {
+    "ticker": "NVAX",
+    "name": "Novavax Inc",
+    "px": 12.56,
+    "dp": 20.0765
+   },
+   {
     "ticker": "RXRX",
     "name": "Recursion Pharmaceuticals Inc",
     "px": 4.78,
     "dp": 16.0194
-   },
-   {
-    "ticker": "IMC",
-    "name": "IMC Rare Earths Ltd",
-    "px": 9.11,
-    "dp": 13.875
-   },
-   {
-    "ticker": "PACB",
-    "name": "Pacific Biosciences of California Inc",
-    "px": 2.87,
-    "dp": 12.9921
-   },
-   {
-    "ticker": "AHG",
-    "name": "Akso Health Group",
-    "px": 1.15,
-    "dp": 12.7451
    }
   ],
   "movers_down": [
@@ -1552,6 +1527,12 @@
     "dp": -21.1933
    },
    {
+    "ticker": "VELO",
+    "name": "Velo3D Inc",
+    "px": 9.57,
+    "dp": -14.5536
+   },
+   {
     "ticker": "BRUN",
     "name": "Boost Run Inc",
     "px": 14.33,
@@ -1562,12 +1543,6 @@
     "name": "Capricor Therapeutics Inc",
     "px": 7.78,
     "dp": -13.0726
-   },
-   {
-    "ticker": "AXG",
-    "name": "Solowin Holdings Ltd",
-    "px": 0.115,
-    "dp": -10.8527
    }
   ],
   "earnings": [
@@ -1725,6 +1700,13 @@
   ],
   "filings_activist": [
    {
+    "ticker": "ABUS",
+    "name": "Arbutus Biopharma Corp",
+    "date": "2026-10-06",
+    "link": "https://www.sec.gov/Archives/edgar/data/1447028/000114036126038693/0001140361-26-038693-index.htm",
+    "form": "SCHEDULE 13D/A"
+   },
+   {
     "ticker": "TH",
     "name": "Target Hospitality Corp",
     "date": "2026-10-05",
@@ -1786,13 +1768,6 @@
     "date": "2026-10-05",
     "link": "https://www.sec.gov/Archives/edgar/data/1657853/000090514826004357/0000905148-26-004357-index.htm",
     "form": "SCHEDULE 13D/A"
-   },
-   {
-    "ticker": "OBX",
-    "name": "Obsidian Therapeutics, Inc",
-    "date": "2026-10-05",
-    "link": "https://www.sec.gov/Archives/edgar/data/2130606/000110465926113688/0001104659-26-113688-index.htm",
-    "form": "SCHEDULE 13G"
    }
   ],
   "filings_offering": [
@@ -1858,13 +1833,6 @@
     "date": "2026-09-29",
     "link": "https://www.sec.gov/Archives/edgar/data/1572694/000119312526407931/0001193125-26-407931-index.htm",
     "form": "424B2"
-   },
-   {
-    "ticker": "GMTL",
-    "name": "Guardian Metal Resources PLC",
-    "date": "2026-09-28",
-    "link": "https://www.sec.gov/Archives/edgar/data/2039972/000110465926111099/0001104659-26-111099-index.htm",
-    "form": "424B3"
    }
   ],
   "budget_mode": "full",
@@ -6176,24 +6144,25 @@
     "ret_common": 1.5,
     "excess_common": -0.22,
     "common_from": "2026-10-01",
-    "common_days": 5,
+    "common_days": 6,
     "value": 102554.93,
     "ret": 2.55,
     "bench_ret": 1.52,
     "excess": 1.02,
-    "friction_yr": 38.4,
+    "friction_yr": 32.0,
     "max_drawdown": -0.4,
     "positions": 25,
     "cash": 2.01,
     "costs_paid": 525.86,
     "stops_hit": 0,
-    "days": 5,
+    "days": 6,
     "started": "2026-10-01",
     "curve": [
      101.04,
      101.797,
      101.797,
      101.797,
+     102.555,
      102.555
     ],
     "curve_dates": [
@@ -6201,7 +6170,8 @@
      "2026-10-02",
      "2026-10-03",
      "2026-10-04",
-     "2026-10-05"
+     "2026-10-05",
+     "2026-10-06"
     ]
    },
    {
@@ -6211,24 +6181,25 @@
     "ret_common": 1.72,
     "excess_common": -0.01,
     "common_from": "2026-10-01",
-    "common_days": 5,
+    "common_days": 6,
     "value": 102977.0,
     "ret": 2.98,
     "bench_ret": 1.52,
     "excess": 1.44,
-    "friction_yr": 37.0,
+    "friction_yr": 30.8,
     "max_drawdown": -0.4,
     "positions": 25,
     "cash": 1906.91,
     "costs_paid": 506.98,
     "stops_hit": 0,
-    "days": 5,
+    "days": 6,
     "started": "2026-10-01",
     "curve": [
      101.238,
      102.129,
      102.129,
      102.129,
+     102.977,
      102.977
     ],
     "curve_dates": [
@@ -6236,7 +6207,8 @@
      "2026-10-02",
      "2026-10-03",
      "2026-10-04",
-     "2026-10-05"
+     "2026-10-05",
+     "2026-10-06"
     ]
    },
    {
@@ -6246,24 +6218,25 @@
     "ret_common": 1.5,
     "excess_common": -0.22,
     "common_from": "2026-10-01",
-    "common_days": 5,
+    "common_days": 6,
     "value": 102554.93,
     "ret": 2.55,
     "bench_ret": 1.52,
     "excess": 1.02,
-    "friction_yr": 38.4,
+    "friction_yr": 32.0,
     "max_drawdown": -0.4,
     "positions": 25,
     "cash": 2.01,
     "costs_paid": 525.86,
     "stops_hit": 0,
-    "days": 5,
+    "days": 6,
     "started": "2026-10-01",
     "curve": [
      101.04,
      101.797,
      101.797,
      101.797,
+     102.555,
      102.555
     ],
     "curve_dates": [
@@ -6271,7 +6244,8 @@
      "2026-10-02",
      "2026-10-03",
      "2026-10-04",
-     "2026-10-05"
+     "2026-10-05",
+     "2026-10-06"
     ]
    },
    {
@@ -6281,24 +6255,25 @@
     "ret_common": 0.89,
     "excess_common": -0.81,
     "common_from": "2026-10-01",
-    "common_days": 5,
+    "common_days": 6,
     "value": 101576.35,
     "ret": 1.58,
     "bench_ret": 1.52,
     "excess": 0.06,
-    "friction_yr": 31.2,
+    "friction_yr": 26.0,
     "max_drawdown": -0.26,
     "positions": 25,
     "cash": 13522.51,
     "costs_paid": 427.38,
     "stops_hit": 0,
-    "days": 5,
+    "days": 6,
     "started": "2026-10-01",
     "curve": [
      100.676,
      101.168,
      101.168,
      101.168,
+     101.576,
      101.576
     ],
     "curve_dates": [
@@ -6306,7 +6281,8 @@
      "2026-10-02",
      "2026-10-03",
      "2026-10-04",
-     "2026-10-05"
+     "2026-10-05",
+     "2026-10-06"
     ]
    },
    {
@@ -6316,24 +6292,25 @@
     "ret_common": 1.03,
     "excess_common": -0.68,
     "common_from": "2026-10-01",
-    "common_days": 5,
+    "common_days": 6,
     "value": 101846.24,
     "ret": 1.85,
     "bench_ret": 1.52,
     "excess": 0.32,
-    "friction_yr": 30.2,
+    "friction_yr": 25.1,
     "max_drawdown": -0.26,
     "positions": 25,
     "cash": 13975.67,
     "costs_paid": 413.35,
     "stops_hit": 0,
-    "days": 5,
+    "days": 6,
     "started": "2026-10-01",
     "curve": [
      100.805,
      101.384,
      101.384,
      101.384,
+     101.846,
      101.846
     ],
     "curve_dates": [
@@ -6341,7 +6318,8 @@
      "2026-10-02",
      "2026-10-03",
      "2026-10-04",
-     "2026-10-05"
+     "2026-10-05",
+     "2026-10-06"
     ]
    },
    {
@@ -6351,24 +6329,25 @@
     "ret_common": 1.6,
     "excess_common": -0.12,
     "common_from": "2026-10-01",
-    "common_days": 5,
+    "common_days": 6,
     "value": 102656.57,
     "ret": 2.66,
     "bench_ret": 1.52,
     "excess": 1.12,
-    "friction_yr": 29.1,
+    "friction_yr": 24.2,
     "max_drawdown": -0.4,
     "positions": 25,
     "cash": 0.0,
     "costs_paid": 398.41,
     "stops_hit": 0,
-    "days": 5,
+    "days": 6,
     "started": "2026-10-01",
     "curve": [
      101.04,
      101.797,
      101.797,
      101.797,
+     102.657,
      102.657
     ],
     "curve_dates": [
@@ -6376,7 +6355,8 @@
      "2026-10-02",
      "2026-10-03",
      "2026-10-04",
-     "2026-10-05"
+     "2026-10-05",
+     "2026-10-06"
     ]
    }
   ],
@@ -6385,6 +6365,7 @@
    100.692,
    100.692,
    100.692,
+   101.518,
    101.518
   ],
   "bench_dates": [
@@ -6392,11 +6373,12 @@
    "2026-10-02",
    "2026-10-03",
    "2026-10-04",
-   "2026-10-05"
+   "2026-10-05",
+   "2026-10-06"
   ],
   "span": [
    "2026-10-01",
-   "2026-10-05"
+   "2026-10-06"
   ],
   "retired": [
    {
@@ -6928,7 +6910,7 @@
  "stats": {
   "feeds_total": 21,
   "feeds_failed": 2,
-  "items": 316,
+  "items": 325,
   "smallcap_calls": 552,
   "feed_errors": [
    [
