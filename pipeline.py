@@ -1251,7 +1251,7 @@ def equity_chart(pf):
         paths.append(
             f'<polyline points="{pl}" fill="none" stroke="{colour}" '
             f'stroke-width="{width}" stroke-linejoin="round" stroke-linecap="round"'
-            f'{f" stroke-dasharray=\"{dash}\"" if dash else ""}/>')
+            + (f' stroke-dasharray="{dash}"' if dash else '') + '/>')
         ends.append([y_of(curve[-1] - 100.0), key, colour,
                      x_of(dts[-1] if dts else None, n - 1, n)])
         ret = curve[-1] - 100.0
@@ -1579,6 +1579,48 @@ def _n(v, fmt="{:,.1f}", suffix="", dash="—"):
         return dash
 
 
+def _has(v):
+    """Is there a figure here at all? A tuple means every part must be present
+    — a clause that reads "margin moving from X to Y" needs both or neither."""
+    if isinstance(v, tuple):
+        return all(_has(x) for x in v)
+    try:
+        float(v)
+        return True
+    except (TypeError, ValueError):
+        return False
+
+
+def _join(xs):
+    if len(xs) < 2:
+        return xs[0] if xs else ""
+    return ", ".join(xs[:-1]) + f" and {xs[-1]}"
+
+
+def _sentence(parts, nothing, tail=""):
+    """Assemble a sentence from only the clauses whose figure is present, then
+    name the absences once, at the end.
+
+    Substituting a dash into the middle of a sentence produced prose like
+    "revenue up +13,520.1% over the last twelve months, \u2014 a year over three
+    years, and the latest quarter running \u2014 points against that trend",
+    which reads as a typesetting fault rather than as a gap in the data. Two
+    different things were being conflated: _n's dash is right in a table, where
+    the column says what the missing figure would have been, and wrong in a
+    sentence, where nothing does. So the clause is dropped and the gap stated
+    in words — an absence can then be neither mistaken for a number nor
+    mistaken for a bug, which is the whole point of not leaving it blank.
+    """
+    have = [txt for v, txt, _lab in parts if _has(v)]
+    gone = [lab for v, _txt, lab in parts if not _has(v)]
+    body = (_join(have) if have else nothing) + "."
+    # when nothing is present, `nothing` has already said so — listing every
+    # absence again underneath it just says it twice
+    if gone and have:
+        body += f" Not reported: {_join(gone)}."
+    return body + (f" {tail}" if tail else "")
+
+
 def render_company_page(row, rank, screen, pf, sc, date_line):
     """One company, explained: what it is, why it scores what it does, what
     size the rules give it and where its stop would sit — each shown as the
@@ -1640,22 +1682,51 @@ def render_company_page(row, rank, screen, pf, sc, date_line):
     # ---- why it scores what it does ----
     score_rows = [
         ("Growth", 40, sub.get("g"),
-         f'revenue up {_n(row.get("rev_g"), "{:+,.1f}", "%")} over the last twelve '
-         f'months, {_n(w.get("rg3"), "{:+,.1f}", "%")} a year over three years, and '
-         f'the latest quarter running {_n(row.get("accel"), "{:+,.1f}", " points")} '
-         f'against that trend. Ranked against its own industry group '
-         f'({esc(row.get("group") or "—")}), not against the whole market, so a '
-         f'sector where everyone grows fast earns nobody a high mark.'),
+         _sentence([
+             (row.get("rev_g"),
+              f'revenue up {_n(row.get("rev_g"), "{:+,.1f}", "%")} over the '
+              'last twelve months', 'trailing revenue growth'),
+             (w.get("rg3"),
+              f'{_n(w.get("rg3"), "{:+,.1f}", "%")} a year over three years',
+              'three-year growth'),
+             (row.get("accel"),
+              'the latest quarter running '
+              f'{_n(row.get("accel"), "{:+,.1f}", " points")} against that '
+              'trend', 'the latest quarter'),
+         ], 'no revenue growth figures were reported',
+             'Ranked against its own industry group '
+             f'({esc(row.get("group") or "unclassified")}), not against the '
+             'whole market, so a sector where everyone grows fast earns '
+             'nobody a high mark.')),
         ("Momentum", 40, sub.get("m"),
-         f'up {_n(row.get("r13"), "{:+,.1f}", "%")} over 13 weeks and '
-         f'{_n(w.get("r26"), "{:+,.1f}", "%")} over 26, divided by its volatility of '
-         f'{_n(w.get("vol"), "{:,.0f}", "%")} — a big move in a jumpy stock counts '
-         f'for less than the same move in a steady one.'),
+         _sentence([
+             (row.get("r13"),
+              f'up {_n(row.get("r13"), "{:+,.1f}", "%")} over 13 weeks',
+              'the 13-week return'),
+             (w.get("r26"),
+              f'{_n(w.get("r26"), "{:+,.1f}", "%")} over 26', 'the 26-week '
+              'return'),
+             (w.get("vol"),
+              'measured against a volatility of '
+              f'{_n(w.get("vol"), "{:,.0f}", "%")}', 'volatility'),
+         ], 'no price history was reported',
+             'A big move in a jumpy stock counts for less than the same move '
+             'in a steady one.')),
         ("Quality", 20, sub.get("q"),
-         f'debt to equity {_n(w.get("dte"), "{:,.2f}")}, operating margin moving from '
-         f'{_n(w.get("om_a"), "{:+,.1f}", "%")} to {_n(w.get("om_t"), "{:+,.1f}", "%")}, '
-         f'cash of {_n(w.get("cashps"), "${:,.2f}")} a share, and whether the share '
-         f'count has been growing. Leverage is judged against its own industry.'),
+         _sentence([
+             (w.get("dte"),
+              f'debt to equity {_n(w.get("dte"), "{:,.2f}")}', 'debt to '
+              'equity'),
+             ((w.get("om_a"), w.get("om_t")),
+              'operating margin moving from '
+              f'{_n(w.get("om_a"), "{:+,.1f}", "%")} to '
+              f'{_n(w.get("om_t"), "{:+,.1f}", "%")}', 'operating margin'),
+             (w.get("cashps"),
+              f'cash of {_n(w.get("cashps"), "${:,.2f}")} a share',
+              'cash per share'),
+         ], 'no balance-sheet figures were reported',
+             'Whether the share count has been growing also counts, and '
+             'leverage is judged against its own industry.')),
     ]
     trs = "".join(expl(k, _n(v, "{:,.0f}"), f"{pct}% of the score", txt)
                   for k, pct, v, txt in score_rows)

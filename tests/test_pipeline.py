@@ -1042,5 +1042,63 @@ class PortfolioTableTests(unittest.TestCase):
         self.assertIn("IWO benchmark", html)
 
 
+class MissingFigureProseTests(unittest.TestCase):
+    """A figure that is absent must not be dropped into a sentence as a dash.
+
+    A company page once read "revenue up +13,520.1% over the last twelve
+    months, \u2014 a year over three years" because the three-year figure was
+    missing and the dash used for an empty table cell was substituted into
+    running prose. It reads as a typesetting fault, which is worse than either
+    alternative: a reader who notices it distrusts the page, and a reader who
+    does not may read the dash as a number.
+    """
+
+    def test_a_missing_clause_is_dropped_not_dashed(self):
+        s = pipeline._sentence(
+            [(18.3, "up 18.3% this year", "this year"),
+             (None, "flat over three years", "three-year growth")],
+            "nothing was reported")
+        self.assertNotIn("\u2014", s)
+        self.assertNotIn("flat over three years", s)
+        self.assertIn("up 18.3% this year", s)
+        self.assertIn("Not reported: three-year growth", s)
+
+    def test_an_absence_is_always_named_somewhere(self):
+        # dropping the clause silently would let a gap read as a complete
+        # sentence, which is the opposite failure
+        s = pipeline._sentence([(1.0, "a", "first"), (None, "b", "second")],
+                               "nothing was reported")
+        self.assertIn("second", s)
+
+    def test_everything_missing_says_so_once(self):
+        s = pipeline._sentence([(None, "a", "first"), (None, "b", "second")],
+                               "nothing was reported")
+        self.assertIn("nothing was reported", s)
+        self.assertEqual(s.count("first"), 0, "said twice over")
+
+    def test_a_two_part_clause_needs_both_parts(self):
+        # "margin moving from X to Y" with one side missing is still a dash
+        # in a sentence, just a harder one to spot
+        s = pipeline._sentence(
+            [((None, 4.0), "margin moving from \u2014 to +4.0%", "margin")],
+            "nothing was reported")
+        self.assertNotIn("\u2014", s)
+        self.assertIn("nothing was reported", s)
+
+    def test_the_real_company_page_has_no_dash_mid_sentence(self):
+        import re
+        row = {"ticker": "ZZ", "name": "Example Inc", "score": 70.0,
+               "rev_g": 13520.1, "accel": 50.0, "r13": 8.1, "px": 10.0,
+               "group": "Health", "ind": "Biotechnology", "exch": "NASDAQ",
+               "mcap": 500.0, "rev_ttm": 60.0, "sub": {"g": 82, "m": 67,
+               "q": 55}, "why": {"rg3": None, "r26": 12.0, "vol": 60.0,
+               "dte": 0.3, "om_a": -5.0, "om_t": -2.0, "cashps": 1.2,
+               "adv": 200000.0}}
+        html = pipeline.render_company_page(row, 1, [row], {}, {}, "today")
+        txt = re.sub(r"<[^>]+>", " ", html)
+        self.assertNotRegex(txt, r",\s*\u2014\s*a year",
+                            "a missing figure is in the middle of a sentence")
+
+
 if __name__ == "__main__":
     unittest.main()
