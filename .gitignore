@@ -20,3 +20,21 @@ Small Cap Research/
 # a local slot for previewing states the live data does not currently
 # show (e.g. the books mid-run before they have opened). Never shipped.
 site/_preview.html
+
+# --- credential catch-all ---
+# The data/ allowlist above covers data/*.key, but a key pasted ANYWHERE else
+# — a root .env, a scratch file, a config dir — would be swept in by
+# `git add -A`. This repo is PUBLIC and that has already happened once: two
+# live keys were committed, the history had to be rewritten and both keys
+# rotated. These patterns are deliberately broad. Comments must be on their
+# own line: git treats a trailing "# ..." as part of the pattern.
+.env
+*.env
+.env.*
+*.key
+*.pem
+*.p12
+*credentials*
+*secret*
+*token*
+
