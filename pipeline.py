@@ -88,7 +88,14 @@ FEEDS = [
     ("WSJ Markets",     "https://feeds.content.dowjones.io/public/rss/RSSMarketsMain",       "markets", 2.0),
     ("WSJ Business",    "https://feeds.content.dowjones.io/public/rss/WSJcomUSBusiness",     "companies", 2.0),
     ("WSJ World",       "https://feeds.content.dowjones.io/public/rss/RSSWorldNews",         "global",  1.6),
-    ("Yahoo Finance",   "https://finance.yahoo.com/news/rssindex",               "markets",   1.2),
+    # Yahoo's news RSS went to a hard 404 (not a timeout — the URL is gone) and
+    # their alternative rate-limits. Replaced with a press-release wire rather
+    # than another general-news feed: CNBC and MarketWatch are already here
+    # twice over, and for a SMALL-CAP screen the company wires are where the
+    # relevant text actually appears. Wires are analysis inputs matched against
+    # the band, never headline material, and news never enters a score — so
+    # this changes no model behaviour and needs no version bump.
+    ("Business Wire",   "https://feed.businesswire.com/rss/home/?rss=G1QFDERJXkJeEFpRXg==", "wire", 0.8),
     ("Financial Times", "https://www.ft.com/markets?format=rss",                 "markets",   2.0),
     ("The Economist",   "https://www.economist.com/finance-and-economics/rss.xml", "economy", 1.8),
     ("Federal Reserve", "https://www.federalreserve.gov/feeds/press_all.xml",    "economy",   2.2),
@@ -100,7 +107,10 @@ FEEDS = [
     ("Cointelegraph",   "https://cointelegraph.com/rss",                         "crypto",    1.0),
     # press-release wires: small companies announce directly here, no journalist
     # required — matched against the band as signals, never shown as headlines
-    ("GlobeNewswire",   "https://www.globenewswire.com/RssFeed/orgclass/1/feedTitle/GlobeNewswire%20-%20News%20about%20Public%20Companies", "wire", 0.8),
+    # GlobeNewswire retired 2026-10-06: timed out on EVERY run for three weeks,
+    # and twice more at a 40-second ceiling when tested by hand. Keeping a dead
+    # source alive costs a timeout per run and, worse, trains the watchdog's
+    # persistent-failure alarm to be ignored.
     ("PR Newswire",     "https://www.prnewswire.com/rss/news-releases-list.rss", "wire",      0.8),
 ]
 
@@ -2723,7 +2733,15 @@ def build_data():
     try:
         smallcap.record_filings([slim(f) for f in filings_fresh])
         sc_summary, sc_calls = smallcap.update()
-        sc_summary["news"] = smallcap.match_news([slim(i) for i in fresh[:400]])
+        # Wires are the analysis input matched against the small-cap band, and
+        # headlines are not. Taking a single top-400 slice across both let a
+        # high-volume wire crowd out headlines, or a burst of headlines crowd
+        # out the wires — either way the thing being cut was chosen by a sort
+        # order that knows nothing about which items can match a ticker.
+        wires = [i for i in fresh if i["category"] == "wire"]
+        rest = [i for i in fresh if i["category"] != "wire"][:400]
+        sc_summary["news"] = smallcap.match_news(
+            [slim(i) for i in wires + rest])
     except Exception as e:  # noqa: BLE001 — the page must render even if this fails
         sc_summary, sc_calls = None, 0
         market_errors.append(("Small-cap engine", _scrub(e)))

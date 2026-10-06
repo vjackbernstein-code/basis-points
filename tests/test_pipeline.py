@@ -574,6 +574,24 @@ class EquityChartTests(unittest.TestCase):
         self.assertIn("+0%", out)
 
 
+class FeedHealthTests(unittest.TestCase):
+    """Feeds die quietly. A 404 is not a slow server — it means the address is
+    gone — and a source that fails every run trains the alarm to be ignored."""
+
+    def test_no_feed_url_is_a_known_dead_address(self):
+        dead = ("finance.yahoo.com/news/rssindex",      # 404 since ~2026-10
+                "globenewswire.com/RssFeed")            # timed out for 3 weeks
+        for name, url, _cat, _w in pipeline.FEEDS:
+            for bad in dead:
+                self.assertNotIn(bad, url, f"{name} points at a retired feed")
+
+    def test_the_small_cap_wires_are_still_present(self):
+        # the wires are the only feeds whose text is matched against tickers;
+        # losing all of them would silently end news matching
+        wires = [f[0] for f in pipeline.FEEDS if f[2] == "wire"]
+        self.assertGreaterEqual(len(wires), 2, f"only {wires} left")
+
+
 class SiteNavigationTests(unittest.TestCase):
     """The site is now several pages with a tab bar. The failure that matters
     is a tab offering a page that was never written — a dead link is worse than

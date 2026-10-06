@@ -505,6 +505,29 @@ Now every published name contributes something:
   which is safe because the horizon window is several days wide and the reading
   is simply retried tomorrow.
 
+### Feeds die quietly (2026-10-06)
+
+Yahoo's news RSS returned a hard **404** — not a timeout; the address is gone —
+and their alternative rate-limits. Testing by hand then showed **GlobeNewswire
+had been dead for three weeks**, failing every run and twice more at a
+40-second ceiling. A source that fails on every run is worse than no source:
+it trains the watchdog's persistent-failure alarm to be ignored.
+
+Both retired. **Business Wire** replaces them — a press-release wire rather
+than another general-news feed, because CNBC and MarketWatch were already in
+the list twice over and for a *small-cap* screen the company wires are where
+the relevant text actually appears. News never enters a score, so this changed
+no model behaviour and needed no version bump.
+
+Fixed at the same time: news matching took a single top-400 slice across every
+feed, so a high-volume wire could crowd out headlines or a burst of headlines
+could crowd out the wires — and the thing being cut was chosen by a sort order
+that knows nothing about which items can match a ticker. The wires are the
+analysis input and now all of them are passed; headlines are capped separately.
+
+Result: items per run 359 → 1,110, feed failures 4 of 21 → 1 of 20 (the
+remaining one is Yahoo quotes rate-limiting, which already has fallbacks).
+
 ### Network timeouts: measured, not guessed
 
 `SLOW_TIMEOUT = 40` (was 15). The FRED release calendar answers in **16-22
