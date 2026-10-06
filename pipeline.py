@@ -2945,11 +2945,52 @@ def write_company_pages(data):
     return len(written)
 
 
+# A build with no key is worth protecting against precisely because it does
+# NOT fail. `smallcap.run` with no key returns a summary built from whatever
+# measurements the cache already held, noted "waiting-for-key", and the job
+# goes on to write pages and exit 0. On the scheduled runner, which has the
+# key, none of this arises. Somewhere without it — a cloud session, a fresh
+# clone, a laptop whose key file is missing — the run looks like a success and
+# produces a site that is quietly a day or a week behind. Committing that
+# replaces good published data with a degraded copy, and the only visible
+# trace is a freshness note most readers will not look for. So a full run
+# refuses, rather than relying on whoever is driving to notice.
+MIN_REAL_BUILD_BYTES = 1000
+
+
+def keyless_build_would_degrade(data_dir=None):
+    """Would a full run now overwrite a real build with a keyless one?"""
+    if smallcap.read_key("FINNHUB_API_KEY", "finnhub.key"):
+        return False
+    latest = (data_dir or DATA) / "latest.json"
+    try:
+        return latest.stat().st_size > MIN_REAL_BUILD_BYTES
+    except OSError:
+        # nothing to protect: a first run with no key is allowed to produce
+        # the empty site that honestly represents what it knows
+        return False
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--render-only", action="store_true",
                     help="re-render pages from data/latest.json without fetching")
+    ap.add_argument("--allow-no-key", action="store_true",
+                    help="permit a full run with no API key, overwriting "
+                         "data/latest.json with a 'waiting-for-key' build")
     args = ap.parse_args()
+
+    if not args.render_only and not args.allow_no_key \
+            and keyless_build_would_degrade():
+        print("REFUSED: no Finnhub key is available, and data/latest.json "
+              "already holds a real build.\n"
+              "  A keyless run does not fail — it rebuilds from the cached "
+              "measurements, labels itself 'waiting-for-key', and would "
+              "replace good published data with a degraded copy.\n"
+              "  Use --render-only to rebuild the pages from the data already "
+              "here, or set FINNHUB_API_KEY to fetch. --allow-no-key "
+              "overrides this.", file=sys.stderr)
+        sys.exit(2)
 
     DATA.mkdir(exist_ok=True)
     SITE.mkdir(exist_ok=True)

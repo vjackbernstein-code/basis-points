@@ -29,6 +29,39 @@ To re-render without re-fetching (e.g. after editing commentary):
 python3 pipeline.py --render-only
 ```
 
+A full run with **no Finnhub key is refused** rather than allowed to proceed.
+Without a key the model does not fail: it returns a summary assembled from the
+cached measurements, noted `waiting-for-key`, and the job writes its pages and
+exits 0. Anywhere the key is absent — a fresh clone, a cloud checkout, a laptop
+whose key file is missing — that looks like a success and produces a site
+quietly days behind, and committing it replaces good published data with a
+degraded copy. Use `--render-only`, set the key, or pass `--allow-no-key` if a
+degraded build is genuinely what you want.
+
+### Running it in a cloud environment
+
+Nothing outside the standard library is needed, so there is nothing to install.
+Point the environment's setup command at:
+
+```bash
+bash ops/cloud-setup.sh
+```
+
+It installs nothing. It checks the interpreter against the floor the suite
+asserts (`tests/test_portability.py`), runs the tests, and says whether a key
+is present — so an environment that cannot run the project says so in one line
+instead of in a hundred import errors. That has happened: a 3.12-only line of
+syntax met a default `python3` of 3.11 and every test errored on import.
+
+A cloud session can do everything except fetch: edit, run the tests, rebuild
+the pages with `--render-only`, commit and push. Supplying the API keys there
+would be a third place they live, so by default they are not.
+
+**`site/` is generated — do not commit a rebuild you made yourself.** Rendering
+anywhere but the runner stamps every page in local time rather than UTC, so a
+local rebuild rewrites all of them and misdates them. `git checkout -- site/`
+before committing.
+
 ## Data sources
 
 - **News & wires as signals** (RSS/Atom feeds — published for exactly this
@@ -181,7 +214,7 @@ market-context banner (the benchmark's own 13/26-week trend).
 No money is ever involved. Ledger in `data/portfolio.json`, rendered on the
 page under an unmistakable **SIMULATED** label.
 
-**Five books run side by side** over the same screen, the same prices and the
+**Six books run side by side** over the same screen, the same prices and the
 same frictions, differing only in construction rules — because a single clever
 portfolio can look good for reasons unrelated to its cleverness, and without a
 plain control there is no way to tell:
@@ -189,14 +222,15 @@ plain control there is no way to tell:
 | | Rules |
 |---|---|
 | **A Baseline** | equal weight, no stop, always fully invested — **the control** |
-| **B Conviction** | weighted by score, capped 0.5x-2x equal weight |
-| **C Risk-managed** | equal weight + sells a holding down `STOP_PCT` (20%) from entry |
+| **B Conviction** | weighted by **rank**, on a ramp from `CONVICTION_MAX` (1.5x) equal weight at rank 1 down to `CONVICTION_MIN` (0.6x) at rank 25 |
+| **C Risk-managed** | equal weight + a trailing stop at `STOP_SIGMA` (3x) the name's own weekly volatility, clamped to 10–40%, measured from the day's high against the day's low |
 | **D Regime-aware** | equal weight, exposure scaled by the small-cap tape (`REGIME_EXPOSURE`) |
 | **E Combined** | B + C + D together |
+| **F Slow** | the control again, trading every 4 weeks instead of weekly — isolates what the trading itself costs (see below) |
 
 Shared rules: hold the published top 25, rebalance weekly (Monday), charge
-`COST_BPS` (25 bps) per side, never trade a name whose price is missing or
-over 72h old, and restart every book when `MODEL_VERSION` changes.
+`COST_BPS` (40 bps) per side, never trade a name whose price is missing or
+over 72h old, bar a stopped name from re-entry for `STOP_COOLOFF_DAYS` (21 days), and restart every book when `MODEL_VERSION` changes.
 
 Implementation notes worth keeping:
 - **Marks before trades.** The book is valued at current prices *before* any
@@ -317,7 +351,7 @@ Portfolios comes before the screen that feeds it: the books are the subject of
 the experiment, the screen is one of its inputs.
 
 `equity_chart()` draws the headline return chart at the top of the progress
-panel — all five books plus the benchmark, each **rebased so its own start is
+panel — all six books plus the benchmark, each **rebased so its own start is
 0%**. Rebasing is what makes six lines comparable at a glance; plotting dollars
 would let a book that began later look like an outperformer purely because it
 started somewhere else. Three things it must keep doing:

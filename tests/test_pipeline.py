@@ -9,9 +9,12 @@ untested rather than mocked into a fake internet.
 Run:  python3 -m unittest discover tests
 """
 
+import contextlib
+import io
 import re
 import sys
 import tempfile
+import shutil
 import unittest
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
@@ -1098,6 +1101,135 @@ class MissingFigureProseTests(unittest.TestCase):
         txt = re.sub(r"<[^>]+>", " ", html)
         self.assertNotRegex(txt, r",\s*\u2014\s*a year",
                             "a missing figure is in the middle of a sentence")
+
+
+class KeylessBuildGuardTests(unittest.TestCase):
+    """A full run with no API key must not overwrite a real build.
+
+    The danger is that it does not look like a failure. With no key the model
+    returns a summary assembled from the cache, noted "waiting-for-key", and
+    the job writes its pages and exits 0. Run somewhere without the key — a
+    cloud session, a fresh clone — it produces a site quietly days behind and
+    reports success. This repository's hardest-won lesson is that the silent
+    partial success is the dangerous one.
+    """
+
+    def setUp(self):
+        self.tmp = tempfile.mkdtemp()
+        self.dir = Path(self.tmp)
+        self.real_read_key = pipeline.smallcap.read_key
+
+    def tearDown(self):
+        pipeline.smallcap.read_key = self.real_read_key
+        shutil.rmtree(self.tmp, ignore_errors=True)
+
+    def _no_key(self):
+        pipeline.smallcap.read_key = lambda *a, **k: None
+
+    def _has_key(self):
+        pipeline.smallcap.read_key = lambda *a, **k: "a-real-looking-key"
+
+    def _write_latest(self, nbytes):
+        (self.dir / "latest.json").write_text("x" * nbytes, encoding="utf-8")
+
+    def test_a_real_build_is_protected_when_no_key_is_available(self):
+        self._no_key()
+        self._write_latest(pipeline.MIN_REAL_BUILD_BYTES + 500)
+        self.assertTrue(pipeline.keyless_build_would_degrade(self.dir))
+
+    def test_a_key_means_no_objection(self):
+        self._has_key()
+        self._write_latest(pipeline.MIN_REAL_BUILD_BYTES + 500)
+        self.assertFalse(pipeline.keyless_build_would_degrade(self.dir))
+
+    def test_a_first_run_with_nothing_to_protect_is_allowed(self):
+        # refusing here would make the project impossible to bootstrap, and an
+        # empty site honestly represents what a keyless first run knows
+        self._no_key()
+        self.assertFalse(pipeline.keyless_build_would_degrade(self.dir))
+
+    def test_a_stub_file_is_not_mistaken_for_a_real_build(self):
+        self._no_key()
+        self._write_latest(10)
+        self.assertFalse(pipeline.keyless_build_would_degrade(self.dir))
+
+    def test_the_command_line_actually_refuses(self):
+        # the check existing is no use if main() does not consult it.
+        # stderr is captured rather than let through: the refusal is a loud
+        # block of text, and a passing test that prints it looks to anyone
+        # reading the output like a failure
+        argv, guard = sys.argv, pipeline.keyless_build_would_degrade
+        err = io.StringIO()
+        try:
+            pipeline.keyless_build_would_degrade = lambda *a, **k: True
+            sys.argv = ["pipeline.py"]
+            with contextlib.redirect_stderr(err):
+                with self.assertRaises(SystemExit) as caught:
+                    pipeline.main()
+            self.assertEqual(caught.exception.code, 2)
+        finally:
+            sys.argv, pipeline.keyless_build_would_degrade = argv, guard
+        said = err.getvalue()
+        # the message has to name the way out, or it is just an obstacle
+        self.assertIn("REFUSED", said)
+        self.assertIn("--render-only", said)
+        self.assertIn("FINNHUB_API_KEY", said)
+
+    def test_allow_no_key_overrides_the_refusal(self):
+        """The escape hatch must actually reach the fetch path.
+
+        A guard with an override nobody has tested is a guard that may simply
+        be a wall. build_data is replaced with a sentinel so the test proves
+        it got that far without making a single network call.
+        """
+        class Reached(Exception):
+            pass
+
+        argv = sys.argv
+        guard = pipeline.keyless_build_would_degrade
+        build = pipeline.build_data
+        data, site = pipeline.DATA, pipeline.SITE
+
+        def _sentinel():
+            raise Reached
+
+        try:
+            pipeline.keyless_build_would_degrade = lambda *a, **k: True
+            pipeline.build_data = _sentinel
+            pipeline.DATA = self.dir / "data"
+            pipeline.SITE = self.dir / "site"
+            sys.argv = ["pipeline.py", "--allow-no-key"]
+            with self.assertRaises(Reached):
+                pipeline.main()
+        finally:
+            sys.argv = argv
+            pipeline.keyless_build_would_degrade = guard
+            pipeline.build_data = build
+            pipeline.DATA, pipeline.SITE = data, site
+
+    def test_render_only_is_not_blocked_by_the_guard(self):
+        # --render-only touches no network and writes no data file, so the
+        # guard must not stand in the way of the one safe mode.
+        # DATA and SITE are pointed at a temp directory: an earlier version of
+        # this test let main() run against the real ones and rewrote all 39
+        # published pages as a side effect of running the suite, stamping them
+        # in local time instead of the runner's UTC.
+        argv = sys.argv
+        guard = pipeline.keyless_build_would_degrade
+        data, site = pipeline.DATA, pipeline.SITE
+        try:
+            pipeline.keyless_build_would_degrade = lambda *a, **k: True
+            pipeline.DATA = self.dir / "data"
+            pipeline.SITE = self.dir / "site"
+            sys.argv = ["pipeline.py", "--render-only"]
+            # it gets past the guard, then fails on the absent data file —
+            # which is the proof that the guard did not stop it
+            with self.assertRaises(FileNotFoundError):
+                pipeline.main()
+        finally:
+            sys.argv = argv
+            pipeline.keyless_build_would_degrade = guard
+            pipeline.DATA, pipeline.SITE = data, site
 
 
 if __name__ == "__main__":
