@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-06T20:15:09.406315+00:00",
+ "generated_at": "2026-10-06T20:48:33.381628+00:00",
  "market": [
   {
    "label": "S&P 500",
@@ -149,13 +149,12 @@
    "label": "10-yr Treasury",
    "symbol": "DGS10",
    "kind": "yield",
-   "value": 52.800000000000004,
-   "prev": 52.400000000000006,
-   "value_txt": "5.28%",
-   "delta": 0.7633587786259514,
-   "delta_txt": "+4 bp",
+   "value": 53.099999999999994,
+   "prev": 52.800000000000004,
+   "value_txt": "5.31%",
+   "delta": 0.5681818181817992,
+   "delta_txt": "+3 bp",
    "spark": [
-    47.9,
     47.9,
     47.699999999999996,
     47.800000000000004,
@@ -177,9 +176,10 @@
     52.599999999999994,
     52.9,
     52.400000000000006,
-    52.800000000000004
+    52.800000000000004,
+    53.099999999999994
    ],
-   "asof": "Oct 2"
+   "asof": "Oct 5"
   },
   {
    "label": "Dollar (broad)",
@@ -254,49 +254,14 @@
    "asof": "Sep 29"
   },
   {
-   "label": "EUR/USD",
-   "symbol": "EURUSD",
-   "kind": "fx",
-   "value": 1.1269,
-   "prev": 1.1204,
-   "value_txt": "1.1269",
-   "delta": 0.5801499464476928,
-   "delta_txt": "+0.58%",
-   "spark": [
-    1.1622,
-    1.1622,
-    1.1614,
-    1.1652,
-    1.1616,
-    1.1592,
-    1.1551,
-    1.1539,
-    1.1537,
-    1.1481,
-    1.146,
-    1.149,
-    1.1463,
-    1.1411,
-    1.1367,
-    1.1403,
-    1.1378,
-    1.1355,
-    1.1355,
-    1.1298,
-    1.1225,
-    1.1204,
-    1.1269
-   ]
-  },
-  {
    "label": "Bitcoin",
    "symbol": "bitcoin",
    "kind": "crypto",
-   "value": 85572.72690244304,
+   "value": 85645.83947225846,
    "prev": 85770.87224573967,
-   "value_txt": "$85,573",
-   "delta": -0.231017055217676,
-   "delta_txt": "-0.23%",
+   "value_txt": "$85,646",
+   "delta": -0.14577533165685191,
+   "delta_txt": "-0.15%",
    "spark": [
     78173.35158344489,
     75590.24471973324,
@@ -320,18 +285,18 @@
     84742.78638478836,
     86489.73482686514,
     85770.87224573967,
-    85572.72690244304
+    85645.83947225846
    ]
   },
   {
    "label": "Ethereum",
    "symbol": "ethereum",
    "kind": "crypto",
-   "value": 2691.4193864558347,
+   "value": 2698.005107783963,
    "prev": 2710.4181759245234,
-   "value_txt": "$2,691",
-   "delta": -0.7009541788587021,
-   "delta_txt": "-0.70%",
+   "value_txt": "$2,698",
+   "delta": -0.45797612526437287,
+   "delta_txt": "-0.46%",
    "spark": [
     2514.759550467769,
     2397.4972601650115,
@@ -355,12 +320,19 @@
     2686.891434728346,
     2725.9105379372454,
     2710.4181759245234,
-    2691.4193864558347
+    2698.005107783963
    ]
   }
  ],
- "tape_line": "S&P 500 +0.66%, Nasdaq +1.05%, Dow +0.18%; the 10-year Treasury at 5.28% (+4 bp); WTI crude $96.16 (-3.23%); bitcoin $85,573 (-0.23%).",
+ "tape_line": "S&P 500 +0.66%, Nasdaq +1.05%, Dow +0.18%; the 10-year Treasury at 5.31% (+3 bp); WTI crude $96.16 (-3.23%); bitcoin $85,646 (-0.15%).",
  "top": [
+  {
+   "title": "S&P 500 Hits Record High Amid Rising Interest Rates and Elevated Oil Prices",
+   "link": "https://www.nytimes.com/2026/10/06/business/stock-market-record.html",
+   "source": "NYT Business",
+   "published": "2026-10-06T20:26:22+00:00",
+   "summary": "The S&P 500 rose 0.6 percent on Tuesday, exceeding its previous peak set in August and taking its gain this year to more than 14 percent."
+  },
   {
    "title": "S&P 500 hits record high as AI stocks shrug off bond market slump",
    "link": "https://www.ft.com/content/1c1ee003-f041-4c66-a971-f08d488d11f7?syn-25a6b1a6=1",
@@ -383,46 +355,78 @@
    "summary": "Gold futures snapped a two-session losing streak as the U.S. dollar pulled back and yields eased."
   },
   {
+   "title": "U.S. Stocks Rise as AI Momentum Builds",
+   "link": "https://www.wsj.com/finance/stocks/u-s-stocks-rise-as-ai-momentum-builds-6f054e9f?mod=rss_markets_main",
+   "source": "WSJ Markets",
+   "published": "2026-10-06T20:41:00+00:00",
+   "summary": "U.S. stocks rose and the broad S&P 500 hit a record high as artificial-intelligence bets regained upward momentum."
+  },
+  {
+   "title": "S&P 500, Nasdaq reach record closing highs as focus pivots to earnings",
+   "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxPZ0p5VWxQQ0ZmUUI0Vk5wRUVjTUJhZjZGUlZjU2tWU1AtOEdqYjZ0OFRtRXNrUVdrTFlNZjVWdzluRjUyaWhHTlYxMG5Yc21pMHFubTdiX1RIRTRUSnB4UTZPckRMZTlzTHBEbkZKU1ROMTZpWE9lMXhPQkhyQmhBV3JNdkFrQVk?oc=5",
+   "source": "Reuters",
+   "published": "2026-10-06T20:07:29+00:00",
+   "summary": "S&P 500, Nasdaq reach record closing highs as focus pivots to earnings Reuters S&P 500 rises to record high as yields move lower: Live updates CNBC US stocks rise to a record on expectations for companies to make even fatter…"
+  },
+  {
    "title": "Boomers' dividend stocks take beating from bond yields, with retirement income on the line",
    "link": "https://www.cnbc.com/2026/10/06/dividend-stocks-bond-yields-retirement-income.html",
    "source": "CNBC",
    "published": "2026-10-06T20:06:42+00:00",
    "summary": "As bond yields sit at two-decade highs, dividend stocks many boomers rely on for income are taking a beating. There are ways to blunt the portfolio impact."
-  },
-  {
-   "title": "S&P 500, Nasdaq on track for record closing highs as focus turns to earnings",
-   "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxPZ0p5VWxQQ0ZmUUI0Vk5wRUVjTUJhZjZGUlZjU2tWU1AtOEdqYjZ0OFRtRXNrUVdrTFlNZjVWdzluRjUyaWhHTlYxMG5Yc21pMHFubTdiX1RIRTRUSnB4UTZPckRMZTlzTHBEbkZKU1ROMTZpWE9lMXhPQkhyQmhBV3JNdkFrQVk?oc=5",
-   "source": "Reuters",
-   "published": "2026-10-06T19:20:18+00:00",
-   "summary": "S&P 500, Nasdaq on track for record closing highs as focus turns to earnings Reuters Stock Market Today: S&P 500 Hits New Record High WSJ S&P 500 Breaks Out to Record High as AI Rally Broadens Beyond Tech Barron's US stocks hit…"
-  },
-  {
-   "title": "Global Bond Yields Turn Lower",
-   "link": "https://www.wsj.com/finance/investing/u-s-long-end-treasury-yields-remain-elevated-three-year-auction-awaited-bf72da8d?mod=rss_markets_main",
-   "source": "WSJ Markets",
-   "published": "2026-10-06T18:52:00+00:00",
-   "summary": "U.S. Treasury and eurozone yields fell as investors pondered whether the recent bonds selloff had gone too far and now offers attractive levels to start buying again."
-  },
-  {
-   "title": "Treasury yields slide as surge to multiyear highs cools",
-   "link": "https://www.cnbc.com/2026/10/06/treasury-yields-fed-fomc-minutes.html",
-   "source": "CNBC",
-   "published": "2026-10-06T20:04:22+00:00",
-   "summary": "U.S. Treasury yields were broadly lower on Tuesday morning after reaching fresh highs the previous day."
   }
  ],
  "smallcap": {
   "note": null,
-  "asof": "2026-10-06T20:16:06+00:00",
+  "asof": "2026-10-06T20:50:57+00:00",
   "coverage": {
    "universe": 9891,
    "profiled": 10060,
    "in_band": 1696,
    "measured": 1696,
-   "scored": 921,
+   "scored": 919,
    "below_floor": 68
   },
   "screen": [
+   {
+    "ticker": "SBET",
+    "name": "Sharplink Inc",
+    "ind": "Hotels, Restaurants & Leisur",
+    "group": "Consumer",
+    "mcap": 1809.4725315562841,
+    "rev_g": 1496.68,
+    "accel": 50.0,
+    "r13": 74.4403,
+    "momo": 0.64,
+    "from_high": -51.062196058356804,
+    "ev_rev": 39.338,
+    "px": 9.56,
+    "dp": -0.3128,
+    "score": 84.4,
+    "sub": {
+     "g": 99,
+     "m": 82,
+     "q": 58
+    },
+    "flags": [],
+    "growth_doubt": false,
+    "why": {
+     "vol": 78.67437,
+     "r26": 14.0244,
+     "rg3": 56.72,
+     "rev_gq": 1553.26,
+     "dte": 0,
+     "gm_t": 97.02,
+     "om_t": -3401.55,
+     "om_a": -2615.99,
+     "cashps": 0.259,
+     "rps": 0.2393,
+     "adv": 8.92861,
+     "hi52": 19.535,
+     "shares": 210.26,
+     "exch": "NASDAQ NMS - GLOBAL MARKET"
+    }
+   },
    {
     "ticker": "FRD",
     "name": "Friedman Industries Inc",
@@ -463,45 +467,6 @@
     }
    },
    {
-    "ticker": "SBET",
-    "name": "Sharplink Inc",
-    "ind": "Hotels, Restaurants & Leisur",
-    "group": "Consumer",
-    "mcap": 1809.4725315562841,
-    "rev_g": 1496.68,
-    "accel": 50.0,
-    "r13": 74.4403,
-    "momo": 0.64,
-    "from_high": -51.062196058356804,
-    "ev_rev": 39.338,
-    "px": 9.56,
-    "dp": -0.3128,
-    "score": 84.2,
-    "sub": {
-     "g": 99,
-     "m": 82,
-     "q": 58
-    },
-    "flags": [],
-    "growth_doubt": false,
-    "why": {
-     "vol": 78.67437,
-     "r26": 14.0244,
-     "rg3": 56.72,
-     "rev_gq": 1553.26,
-     "dte": 0,
-     "gm_t": 97.02,
-     "om_t": -3401.55,
-     "om_a": -2615.99,
-     "cashps": 0.259,
-     "rps": 0.2393,
-     "adv": 8.92861,
-     "hi52": 19.535,
-     "shares": 210.26,
-     "exch": "NASDAQ NMS - GLOBAL MARKET"
-    }
-   },
-   {
     "ticker": "GCT",
     "name": "GigaCloud Technology Inc",
     "ind": "Distributors",
@@ -515,7 +480,7 @@
     "ev_rev": 1.0768,
     "px": 54.89,
     "dp": 0.4208,
-    "score": 84.1,
+    "score": 84.0,
     "sub": {
      "g": 88,
      "m": 92,
@@ -554,7 +519,7 @@
     "ev_rev": 7.7337,
     "px": 14.57,
     "dp": -1.6205,
-    "score": 83.8,
+    "score": 83.9,
     "sub": {
      "g": 80,
      "m": 99,
@@ -710,7 +675,7 @@
     "ev_rev": null,
     "px": 53.32,
     "dp": 0.3765,
-    "score": 79.6,
+    "score": 79.5,
     "sub": {
      "g": 70,
      "m": 92,
@@ -831,10 +796,10 @@
     "ev_rev": 3.2466,
     "px": 17.33,
     "dp": -1.9242,
-    "score": 78.3,
+    "score": 78.4,
     "sub": {
      "g": 83,
-     "m": 89,
+     "m": 90,
      "q": 48
     },
     "flags": [],
@@ -987,10 +952,10 @@
     "ev_rev": 2.3953,
     "px": 42.86,
     "dp": -0.1631,
-    "score": 76.9,
+    "score": 77.2,
     "sub": {
      "g": 83,
-     "m": 78,
+     "m": 79,
      "q": 64
     },
     "flags": [],
@@ -1010,6 +975,48 @@
      "hi52": 45.31,
      "shares": 21.7,
      "exch": "NYSE MKT LLC"
+    }
+   },
+   {
+    "ticker": "ATLC",
+    "name": "Atlanticus Holdings Corp",
+    "ind": "Financial Services",
+    "group": "Financials",
+    "mcap": 1412.7856466631167,
+    "rev_g": 79.04,
+    "accel": 17.169999999999987,
+    "r13": -1.9567,
+    "momo": 0.61,
+    "from_high": -18.59359681091203,
+    "ev_rev": 6.0255,
+    "px": 93.08,
+    "dp": 0.2369,
+    "score": 76.8,
+    "sub": {
+     "g": 92,
+     "m": 80,
+     "q": 38
+    },
+    "flags": [
+     "new",
+     "8-K"
+    ],
+    "growth_doubt": false,
+    "why": {
+     "vol": 48.457596,
+     "r26": 76.6825,
+     "rg3": 22.58,
+     "rev_gq": 96.21,
+     "dte": 8.4529,
+     "gm_t": 45.55,
+     "om_t": 17.2,
+     "om_a": 18.46,
+     "cashps": 36.5993,
+     "rps": 61.727,
+     "adv": 0.12629,
+     "hi52": 114.3399,
+     "shares": 15.12,
+     "exch": "NASDAQ NMS - GLOBAL MARKET"
     }
    },
    {
@@ -1091,48 +1098,6 @@
     }
    },
    {
-    "ticker": "ATLC",
-    "name": "Atlanticus Holdings Corp",
-    "ind": "Financial Services",
-    "group": "Financials",
-    "mcap": 1412.7856466631167,
-    "rev_g": 79.04,
-    "accel": 17.169999999999987,
-    "r13": -1.9567,
-    "momo": 0.61,
-    "from_high": -18.59359681091203,
-    "ev_rev": 6.0255,
-    "px": 93.08,
-    "dp": 0.2369,
-    "score": 76.5,
-    "sub": {
-     "g": 92,
-     "m": 80,
-     "q": 38
-    },
-    "flags": [
-     "new",
-     "8-K"
-    ],
-    "growth_doubt": false,
-    "why": {
-     "vol": 48.457596,
-     "r26": 76.6825,
-     "rg3": 22.58,
-     "rev_gq": 96.21,
-     "dte": 8.4529,
-     "gm_t": 45.55,
-     "om_t": 17.2,
-     "om_a": 18.46,
-     "cashps": 36.5993,
-     "rps": 61.727,
-     "adv": 0.12629,
-     "hi52": 114.3399,
-     "shares": 15.12,
-     "exch": "NASDAQ NMS - GLOBAL MARKET"
-    }
-   },
-   {
     "ticker": "MGTX",
     "name": "MeiraGTx Holdings PLC",
     "ind": "Biotechnology",
@@ -1146,10 +1111,10 @@
     "ev_rev": 2.7452,
     "px": 10.6,
     "dp": -2.9304,
-    "score": 76.4,
+    "score": 76.6,
     "sub": {
      "g": 94,
-     "m": 79,
+     "m": 80,
      "q": 34
     },
     "flags": [],
@@ -1185,7 +1150,7 @@
     "ev_rev": 3.2623,
     "px": 2.44,
     "dp": -1.2146,
-    "score": 76.3,
+    "score": 76.4,
     "sub": {
      "g": 73,
      "m": 87,
@@ -1207,6 +1172,47 @@
      "adv": 2.34807,
      "hi52": 3.72,
      "shares": 381.39,
+     "exch": "NEW YORK STOCK EXCHANGE, INC."
+    }
+   },
+   {
+    "ticker": "GNE",
+    "name": "Genie Energy Ltd",
+    "ind": "Utilities",
+    "group": "Utilities",
+    "mcap": 408.21229943827564,
+    "rev_g": 10.01,
+    "accel": -14.620000000000001,
+    "r13": 15.6003,
+    "momo": 0.64,
+    "from_high": null,
+    "ev_rev": 0.479,
+    "px": 16.29,
+    "dp": 1.1173,
+    "score": 76.2,
+    "sub": {
+     "g": 74,
+     "m": 82,
+     "q": 67
+    },
+    "flags": [
+     "8-K"
+    ],
+    "growth_doubt": false,
+    "why": {
+     "vol": 22.354418,
+     "r26": 12.369,
+     "rg3": 16.74,
+     "rev_gq": -4.61,
+     "dte": 0.0262,
+     "gm_t": 25.33,
+     "om_t": 4.23,
+     "om_a": 5.52,
+     "cashps": 7.3651,
+     "rps": 19.2193,
+     "adv": 0.07405,
+     "hi52": 16.28,
+     "shares": 26.4,
      "exch": "NEW YORK STOCK EXCHANGE, INC."
     }
    },
@@ -1252,47 +1258,6 @@
     }
    },
    {
-    "ticker": "GNE",
-    "name": "Genie Energy Ltd",
-    "ind": "Utilities",
-    "group": "Utilities",
-    "mcap": 408.21229943827564,
-    "rev_g": 10.01,
-    "accel": -14.620000000000001,
-    "r13": 15.6003,
-    "momo": 0.64,
-    "from_high": null,
-    "ev_rev": 0.479,
-    "px": 16.29,
-    "dp": 1.1173,
-    "score": 76.0,
-    "sub": {
-     "g": 74,
-     "m": 82,
-     "q": 67
-    },
-    "flags": [
-     "8-K"
-    ],
-    "growth_doubt": false,
-    "why": {
-     "vol": 22.354418,
-     "r26": 12.369,
-     "rg3": 16.74,
-     "rev_gq": -4.61,
-     "dte": 0.0262,
-     "gm_t": 25.33,
-     "om_t": 4.23,
-     "om_a": 5.52,
-     "cashps": 7.3651,
-     "rps": 19.2193,
-     "adv": 0.07405,
-     "hi52": 16.28,
-     "shares": 26.4,
-     "exch": "NEW YORK STOCK EXCHANGE, INC."
-    }
-   },
-   {
     "ticker": "TK",
     "name": "Teekay Corp Ltd",
     "ind": "Energy",
@@ -1306,10 +1271,10 @@
     "ev_rev": 0.4346,
     "px": 14.7,
     "dp": -1.738,
-    "score": 75.4,
+    "score": 75.6,
     "sub": {
      "g": 60,
-     "m": 81,
+     "m": 82,
      "q": 94
     },
     "flags": [],
@@ -1329,6 +1294,45 @@
      "hi52": 14.93,
      "shares": 87.69,
      "exch": "NEW YORK STOCK EXCHANGE, INC."
+    }
+   },
+   {
+    "ticker": "SEPN",
+    "name": "Septerna Inc",
+    "ind": "Pharmaceuticals",
+    "group": "Health",
+    "mcap": 1813.866037748167,
+    "rev_g": 13520.11,
+    "accel": 50.0,
+    "r13": 8.0726,
+    "momo": 0.37,
+    "from_high": -28.923679060665364,
+    "ev_rev": 17.4073,
+    "px": 36.32,
+    "dp": -4.0929,
+    "score": 74.7,
+    "sub": {
+     "g": 82,
+     "m": 70,
+     "q": 70
+    },
+    "flags": [],
+    "growth_doubt": false,
+    "why": {
+     "vol": 71.859764,
+     "r26": 53.8982,
+     "rg3": null,
+     "rev_gq": 22375.63,
+     "dte": 0,
+     "gm_t": null,
+     "om_t": -44.04,
+     "om_a": -148.63,
+     "cashps": 8.1529,
+     "rps": 2.1954,
+     "adv": 0.3314,
+     "hi52": 51.1,
+     "shares": 45.08,
+     "exch": "NASDAQ NMS - GLOBAL MARKET"
     }
    },
    {
@@ -1369,54 +1373,15 @@
      "shares": 132.62,
      "exch": "NASDAQ NMS - GLOBAL MARKET"
     }
-   },
-   {
-    "ticker": "SEPN",
-    "name": "Septerna Inc",
-    "ind": "Pharmaceuticals",
-    "group": "Health",
-    "mcap": 1813.866037748167,
-    "rev_g": 13520.11,
-    "accel": 50.0,
-    "r13": 8.0726,
-    "momo": 0.37,
-    "from_high": -28.923679060665364,
-    "ev_rev": 17.4073,
-    "px": 36.32,
-    "dp": -4.0929,
-    "score": 74.5,
-    "sub": {
-     "g": 82,
-     "m": 69,
-     "q": 70
-    },
-    "flags": [],
-    "growth_doubt": false,
-    "why": {
-     "vol": 71.859764,
-     "r26": 53.8982,
-     "rg3": null,
-     "rev_gq": 22375.63,
-     "dte": 0,
-     "gm_t": null,
-     "om_t": -44.04,
-     "om_a": -148.63,
-     "cashps": 8.1529,
-     "rps": 2.1954,
-     "adv": 0.3314,
-     "hi52": 51.1,
-     "shares": 45.08,
-     "exch": "NASDAQ NMS - GLOBAL MARKET"
-    }
    }
   ],
   "freshness": {
-   "last_full_h": 0.0,
-   "quote_median_h": 3.1,
+   "last_full_h": 0.6,
+   "quote_median_h": 3.7,
    "quote_count": 1862,
    "bench_h": 0.0,
-   "universe_h": 93.4,
-   "earnings_h": 9.4,
+   "universe_h": 94.0,
+   "earnings_h": 10.0,
    "bench_gate_h": 72
   },
   "reach": {
@@ -1443,7 +1408,7 @@
     {
      "ticker": "ATLC",
      "name": "Atlanticus Holdings Corp",
-     "score": 76.5,
+     "score": 76.8,
      "ind": "Financial Services"
     },
     {
@@ -1747,6 +1712,20 @@
     "form": "SCHEDULE 13G"
    },
    {
+    "ticker": "XPER",
+    "name": "Xperi Inc",
+    "date": "2026-10-06",
+    "link": "https://www.sec.gov/Archives/edgar/data/1788999/000146510926000079/0001465109-26-000079-index.htm",
+    "form": "SCHEDULE 13G/A"
+   },
+   {
+    "ticker": "TTI",
+    "name": "Tetra Technologies Inc",
+    "date": "2026-10-06",
+    "link": "https://www.sec.gov/Archives/edgar/data/844965/000146510926000077/0001465109-26-000077-index.htm",
+    "form": "SCHEDULE 13G/A"
+   },
+   {
     "ticker": "TH",
     "name": "Target Hospitality Corp",
     "date": "2026-10-05",
@@ -1766,23 +1745,16 @@
     "date": "2026-10-05",
     "link": "https://www.sec.gov/Archives/edgar/data/2025416/000114036126038586/0001140361-26-038586-index.htm",
     "form": "SCHEDULE 13G"
-   },
-   {
-    "ticker": "POLE",
-    "name": "Andretti Acquisition Corp. II",
-    "date": "2026-10-05",
-    "link": "https://www.sec.gov/Archives/edgar/data/2025341/000114036126038584/0001140361-26-038584-index.htm",
-    "form": "SCHEDULE 13G/A"
-   },
-   {
-    "ticker": "SMA",
-    "name": "SmartStop Self Storage REIT Inc",
-    "date": "2026-10-05",
-    "link": "https://www.sec.gov/Archives/edgar/data/1585389/000201238326003327/0002012383-26-003327-index.htm",
-    "form": "SCHEDULE 13G/A"
    }
   ],
   "filings_offering": [
+   {
+    "ticker": "GFUZ",
+    "name": "Spring Valley Acquisition Corp III",
+    "date": "2026-10-06",
+    "link": "https://www.sec.gov/Archives/edgar/data/2074850/000110465926114061/0001104659-26-114061-index.htm",
+    "form": "424B3"
+   },
    {
     "ticker": "EMAT",
     "name": "Evolution Metals & Technologies Corp",
@@ -1850,6 +1822,22 @@
   "budget_mode": "trickle",
   "news": [
    {
+    "title": "AMTD IDEA Group Announces ADS Ratio Change",
+    "link": "https://www.prnewswire.com/news-releases/amtd-idea-group-announces-ads-ratio-change-302900177.html",
+    "source": "PR Newswire",
+    "published": "2026-10-06T20:30:00+00:00",
+    "summary": "PARIS and NEW YORK and SINGAPORE, Oct. 6, 2026 /PRNewswire/ -- AMTD IDEA Group (NYSE: AMTD; SGX: HKB) (\"AMTD IDEA\" or the \"Company\"), today announced that it will change the ratio of its American depositary shares (\"ADSs\") to its…",
+    "ticker": "AMTD"
+   },
+   {
+    "title": "Diversified Healthcare Trust Third Quarter 2026 Conference Call Scheduled for Tuesday, November 3rd",
+    "link": "http://www.businesswire.com/news/home/20261006771459/en/Diversified-Healthcare-Trust-Third-Quarter-2026-Conference-Call-Scheduled-for-Tuesday-November-3rd/?feedref=JjAwJuNHiystnCoBq_hl-YorNIXXeJUidDamMzBr2lVrRA1xRkqfEfrAVCWz-Z_wrCOi9QzgjCezTS3Nw_X6kJUrpSBm-Hav1w-UkdSlG3ne1zTTrM-woVxs6_pUhglHIbE9ZC1pD3bt6lQgRU5j6g==",
+    "source": "Business Wire",
+    "published": "2026-10-06T20:15:00+00:00",
+    "summary": "NEWTON, Mass.--(BUSINESS WIRE)--Diversified Healthcare Trust (Nasdaq: DHC) today announced that it will issue a press release containing its third quarter 2026 financial results after the Nasdaq closes on Monday, November 2…",
+    "ticker": "DHC"
+   },
+   {
     "title": "Law Offices of Frank R. Cruz Encourages Coastal Financial Corporation (CCB) Shareholders To Inquire About Securities Fraud Class Action",
     "link": "http://www.businesswire.com/news/home/20261006469441/en/Law-Offices-of-Frank-R.-Cruz-Encourages-Coastal-Financial-Corporation-CCB-Shareholders-To-Inquire-About-Securities-Fraud-Class-Action/?feedref=JjAwJuNHiystnCoBq_hl-YorNIXXeJUidDamMzBr2lVrRA1xRkqfEfrAVCWz-Z_wrCOi9QzgjCezTS3Nw_X6kJUrpSBm-Hav1w-UkdSlG3ne1zTTrM-woVxs6_pUhglHIbE9ZC1pD3bt6lQgRU5j6g==",
     "source": "Business Wire",
@@ -1858,44 +1846,12 @@
     "ticker": "CCB"
    },
    {
-    "title": "Morgan Stanley Direct Lending Fund Announces Third Quarter 2026 Earnings Release and Conference Call",
-    "link": "http://www.businesswire.com/news/home/20261005206747/en/Morgan-Stanley-Direct-Lending-Fund-Announces-Third-Quarter-2026-Earnings-Release-and-Conference-Call/?feedref=JjAwJuNHiystnCoBq_hl-YorNIXXeJUidDamMzBr2lVrRA1xRkqfEfrAVCWz-Z_wrCOi9QzgjCezTS3Nw_X6kJUrpSBm-Hav1w-UkdSlG3ne1zTTrM-woVxs6_pUhglHIbE9ZC1pD3bt6lQgRU5j6g==",
-    "source": "Business Wire",
-    "published": "2026-10-05T20:15:00+00:00",
-    "summary": "NEW YORK--(BUSINESS WIRE)--Morgan Stanley Direct Lending Fund (NYSE: MSDL) (\"MSDL”), a business development company externally managed by MS Capital Partners Adviser Inc., today announced it will release its financial results for…",
-    "ticker": "MSDL"
-   },
-   {
-    "title": "New Mountain Finance Corporation Schedules its Third Quarter 2026 Earnings Release and Conference Call",
-    "link": "http://www.businesswire.com/news/home/20261002213694/en/New-Mountain-Finance-Corporation-Schedules-its-Third-Quarter-2026-Earnings-Release-and-Conference-Call/?feedref=JjAwJuNHiystnCoBq_hl-YorNIXXeJUidDamMzBr2lVrRA1xRkqfEfrAVCWz-Z_wrCOi9QzgjCezTS3Nw_X6kJUrpSBm-Hav1w-UkdSlG3ne1zTTrM-woVxs6_pUhglHIbE9ZC1pD3bt6lQgRU5j6g==",
-    "source": "Business Wire",
-    "published": "2026-10-05T20:15:00+00:00",
-    "summary": "NEW YORK--(BUSINESS WIRE)--New Mountain Finance Corporation (NASDAQ: NMFC) (“New Mountain” or the “Company”) announced today that it will release its financial results for the quarter ended September 30, 2026, on Monday, November…",
-    "ticker": "NMFC"
-   },
-   {
-    "title": "Independent Bank Corp. Announces Schedule of Third Quarter 2026 Earnings Release and Conference Call",
-    "link": "http://www.businesswire.com/news/home/20261005770704/en/Independent-Bank-Corp.-Announces-Schedule-of-Third-Quarter-2026-Earnings-Release-and-Conference-Call/?feedref=JjAwJuNHiystnCoBq_hl-YorNIXXeJUidDamMzBr2lVrRA1xRkqfEfrAVCWz-Z_wrCOi9QzgjCezTS3Nw_X6kJUrpSBm-Hav1w-UkdSlG3ne1zTTrM-woVxs6_pUhglHIbE9ZC1pD3bt6lQgRU5j6g==",
-    "source": "Business Wire",
-    "published": "2026-10-05T20:10:00+00:00",
-    "summary": "ROCKLAND, Mass.--(BUSINESS WIRE)--Independent Bank Corp. (Nasdaq Global Select Market: INDB), parent of Rockland Trust Company, announced the following details for its third quarter 2026 earnings release and conference call…",
-    "ticker": "IBCP"
-   },
-   {
     "title": "Xtrackers (IE) plc UK Regulatory Announcement: Net Asset Value(s)",
     "link": "http://www.businesswire.com/news/home/20261007511755/en/Xtrackers-IE-plc-UK-Regulatory-Announcement-Net-Asset-Value-s/?feedref=JjAwJuNHiystnCoBq_hl-YorNIXXeJUidDamMzBr2lVrRA1xRkqfEfrAVCWz-Z_wrCOi9QzgjCezTS3Nw_X6kJUrpSBm-Hav1w-UkdSlG3ne1zTTrM-woVxs6_pUhglHIbE9ZC1pD3bt6lQgRU5j6g==",
     "source": "Business Wire",
     "published": "2026-10-06T14:42:00+00:00",
     "summary": "LONDON--(BUSINESS WIRE)-- Xtrackers (IE) plc Investment Company with Variable Capital Registered Office: 78 Sir John Rogerson's Quay, Dublin 2, Ireland Registration number: 393802 (the “Company”) NOTICE TO SHAREHOLDERS OF THE…",
     "ticker": "IE"
-   },
-   {
-    "title": "Rosen Law Firm Urges Coastal Financial Corporation (NASDAQ: CCB) Stockholders with Large Losses to Contact the Firm for Information About Their Rights",
-    "link": "http://www.businesswire.com/news/home/20261005891219/en/Rosen-Law-Firm-Urges-Coastal-Financial-Corporation-NASDAQ-CCB-Stockholders-with-Large-Losses-to-Contact-the-Firm-for-Information-About-Their-Rights/?feedref=JjAwJuNHiystnCoBq_hl-YorNIXXeJUidDamMzBr2lVrRA1xRkqfEfrAVCWz-Z_wrCOi9QzgjCezTS3Nw_X6kJUrpSBm-Hav1w-UkdSlG3ne1zTTrM-woVxs6_pUhglHIbE9ZC1pD3bt6lQgRU5j6g==",
-    "source": "Business Wire",
-    "published": "2026-10-05T20:29:00+00:00",
-    "summary": "NEW YORK--(BUSINESS WIRE)--Rosen Law Firm, a global investor rights law firm, announces a class action lawsuit on behalf of purchasers of common stock of Coastal Financial Corporation (NASDAQ: CCB) between October 28, 2024 and…",
-    "ticker": "CCB"
    },
    {
     "title": "Diversified Healthcare Trust Announces 15-Year Net Lease with The Ensign Group for Colorado Skilled Nursing Portfolio",
@@ -6978,14 +6934,18 @@
  ],
  "stats": {
   "feeds_total": 20,
-  "feeds_failed": 1,
-  "items": 1124,
+  "feeds_failed": 2,
+  "items": 1133,
   "smallcap_calls": 42,
   "feed_errors": [],
   "market_errors": [
    [
     "Yahoo",
     "rate-limited; using fallback sources"
+   ],
+   [
+    "Frankfurter EUR/USD",
+    "The read operation timed out"
    ]
   ]
  }
