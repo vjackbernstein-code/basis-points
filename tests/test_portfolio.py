@@ -753,5 +753,147 @@ class TrimReconciliationTests(unittest.TestCase):
                             "a trim below cost must reduce realised profit")
 
 
+class RealisedRepairTests(unittest.TestCase):
+    """Restoring profit the trim bug never booked.
+
+    Fixing the bug only stops it recurring. The profit already missing from
+    books B and E stays missing, and they would publish "these parts do not
+    add up" for the rest of their lives over trades made before the fix. The
+    trade history holds enough to rebuild the figure exactly — on the real
+    ledger it recovered $71.39 and $26.26, matching the published residuals to
+    the cent.
+    """
+
+    def setUp(self):
+        self.dir = tempfile.mkdtemp()
+        self._real = portfolio.LEDGER_PATH
+        portfolio.LEDGER_PATH = Path(self.dir) / "ledger.json"
+
+    def tearDown(self):
+        portfolio.LEDGER_PATH = self._real
+        shutil.rmtree(self.dir, ignore_errors=True)
+
+    def _book(self, trades, positions, realised, cash=None):
+        # cash consistent with the trades, so attribution can be checked:
+        # starting capital, minus what was spent, plus what came back
+        if cash is None:
+            cash = portfolio.START_CAPITAL
+            for t in trades:
+                flow = t["shares"] * t["px"]
+                cash += -flow if t["side"] == "buy" else flow
+        return {"cash": cash, "positions": positions,
+                "last_rebalance": None, "history": [], "trades": trades,
+                "costs_paid": 0.0, "stops_hit": 0, "started": "2026-10-01",
+                "start_bench": 100.0, "peak_value": 100000.0,
+                "max_drawdown": 0.0, "realised_pl": realised}
+
+    def _trimmed(self, realised=0.0):
+        # bought 200 at 10, sold 80 at 15 -> 80 * 5 = 400 of realised profit
+        return self._book(
+            [{"date": "2026-10-01", "ticker": "AAA", "side": "buy",
+              "shares": 200.0, "px": 10.0, "cost": 0.0, "why": "rebalance"},
+             {"date": "2026-10-05", "ticker": "AAA", "side": "sell",
+              "shares": 80.0, "px": 15.0, "cost": 0.0, "why": "rebalance"}],
+            {"AAA": {"shares": 120.0, "entry_px": 10.0, "peak_px": 15.0,
+                     "last_px": 15.0, "entry_date": "2026-10-01"}},
+            realised)
+
+    def test_the_missing_profit_is_restored(self):
+        led = {"books": {"B": self._trimmed(realised=0.0)}}
+        portfolio.repair_realised(led)
+        self.assertAlmostEqual(led["books"]["B"]["realised_pl"], 400.0, places=4)
+
+    def test_what_changed_is_recorded_not_applied_silently(self):
+        # the published residual is this system's detector for a breakdown
+        # that stops adding up; a repair nobody can see would absorb exactly
+        # what that residual exists to show
+        led = {"books": {"B": self._trimmed(realised=0.0)}}
+        portfolio.repair_realised(led)
+        self.assertEqual(led["realised_repairs"], [{"key": "B", "delta": 400.0}])
+
+    def test_a_book_that_was_already_right_is_left_alone(self):
+        led = {"books": {"A": self._trimmed(realised=400.0)}}
+        portfolio.repair_realised(led)
+        self.assertNotIn("realised_repairs", led)
+        self.assertAlmostEqual(led["books"]["A"]["realised_pl"], 400.0)
+
+    def test_it_runs_once(self):
+        led = {"books": {"B": self._trimmed(realised=0.0)}}
+        portfolio.repair_realised(led)
+        led["books"]["B"]["realised_pl"] = 0.0      # as if it drifted again
+        portfolio.repair_realised(led)
+        self.assertEqual(led["books"]["B"]["realised_pl"], 0.0,
+                         "a repair that re-runs forever would mask a new bug")
+
+    def test_an_incomplete_history_is_refused(self):
+        # the trade list is capped, so an older book's history cannot rebuild
+        # the figure — and a confident wrong number is worse than the gap
+        book = self._trimmed(realised=0.0)
+        book["trades"] = book["trades"][1:]          # the purchase is gone
+        led = {"books": {"B": book}}
+        portfolio.repair_realised(led)
+        self.assertEqual(led["books"]["B"]["realised_pl"], 0.0)
+        self.assertNotIn("realised_repairs", led)
+
+    def test_a_replay_that_contradicts_the_holdings_is_refused(self):
+        book = self._trimmed(realised=0.0)
+        book["positions"]["AAA"]["shares"] = 999.0   # not what the trades say
+        led = {"books": {"B": book}}
+        portfolio.repair_realised(led)
+        self.assertEqual(led["books"]["B"]["realised_pl"], 0.0)
+
+    def test_rounded_trade_shares_do_not_defeat_the_guard(self):
+        # shares are stored to 4 places, so the replay never matches exactly
+        book = self._trimmed(realised=0.0)
+        book["positions"]["AAA"]["shares"] = 120.00004
+        led = {"books": {"B": book}}
+        portfolio.repair_realised(led)
+        self.assertAlmostEqual(led["books"]["B"]["realised_pl"], 400.0, places=3)
+
+    def test_the_breakdown_reconciles_once_repaired(self):
+        book = self._trimmed(realised=0.0)
+        led = {"books": {"B": book}}
+        portfolio.repair_realised(led)
+        a = portfolio.attribution(led["books"]["B"])
+        self.assertTrue(a["reconciles"], a)
+
+    def test_repairing_does_not_retire_or_restart_anything(self):
+        # bumping the ledger format would have retired all six books, which is
+        # the opposite of repairing them
+        self.assertEqual(portfolio.LEDGER_FORMAT, 2)
+        led = {"format": 2, "v": smallcap.MODEL_VERSION,
+               "books": {"B": self._trimmed(realised=0.0)}, "retired": []}
+        portfolio.repair_realised(led)
+        self.assertEqual(led["format"], 2)
+        self.assertEqual(led["retired"], [])
+
+    def test_a_full_exit_is_replayed_too(self):
+        book = self._book(
+            [{"date": "2026-10-01", "ticker": "AAA", "side": "buy",
+              "shares": 100.0, "px": 10.0, "cost": 0.0, "why": "rebalance"},
+             {"date": "2026-10-05", "ticker": "AAA", "side": "sell",
+              "shares": 100.0, "px": 12.0, "cost": 0.0, "why": "rebalance"}],
+            {}, 0.0)
+        led = {"books": {"B": book}}
+        portfolio.repair_realised(led)
+        self.assertAlmostEqual(led["books"]["B"]["realised_pl"], 200.0, places=4)
+
+    def test_a_top_up_re_averages_the_basis_in_the_replay(self):
+        # buy 100 at 10 then 100 at 20 -> basis 15; selling 50 at 20 makes 250,
+        # not 500, and getting this wrong would invent profit
+        book = self._book(
+            [{"date": "2026-10-01", "ticker": "AAA", "side": "buy",
+              "shares": 100.0, "px": 10.0, "cost": 0.0, "why": "rebalance"},
+             {"date": "2026-10-02", "ticker": "AAA", "side": "buy",
+              "shares": 100.0, "px": 20.0, "cost": 0.0, "why": "rebalance"},
+             {"date": "2026-10-05", "ticker": "AAA", "side": "sell",
+              "shares": 50.0, "px": 20.0, "cost": 0.0, "why": "rebalance"}],
+            {"AAA": {"shares": 150.0, "entry_px": 15.0, "peak_px": 20.0,
+                     "last_px": 20.0, "entry_date": "2026-10-01"}}, 0.0)
+        led = {"books": {"B": book}}
+        portfolio.repair_realised(led)
+        self.assertAlmostEqual(led["books"]["B"]["realised_pl"], 250.0, places=4)
+
+
 if __name__ == "__main__":
     unittest.main()

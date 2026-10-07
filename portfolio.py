@@ -201,6 +201,89 @@ def load_ledger():
     led.setdefault("retired", [])
     for key in STRATEGIES:
         led["books"].setdefault(key, _blank_book())
+    return repair_realised(led)
+
+
+def _replay_realised(book):
+    """Recompute realised profit from the trade history alone.
+
+    Returns (realised, positions) or None when the replay cannot be trusted.
+
+    Needed because fixing the trim bug only stops it happening again; the
+    profit already lost from the ledger stays lost, and the affected books
+    would publish "these parts do not add up" for the rest of their lives
+    over trades made before the fix.
+
+    The trade list is capped, so a long-running book's history is incomplete
+    and a replay of it would be confidently wrong. The guard is that the
+    replay must also reproduce the book's CURRENT holdings: if it does, the
+    history it was built from is complete enough to trust, and if it does not,
+    this returns None and nothing is touched. Shares and prices are stored
+    rounded, so the comparison is relative rather than exact."""
+    pos, realised = {}, 0.0
+    for t in book.get("trades") or []:
+        tick, side = t.get("ticker"), t.get("side")
+        sh, px = t.get("shares"), t.get("px")
+        if not tick or sh is None or px is None or side not in ("buy", "sell"):
+            return None
+        held = pos.get(tick)
+        if side == "buy":
+            if held:
+                total = held["shares"] + sh
+                held["entry_px"] = ((held["shares"] * held["entry_px"]
+                                     + sh * px) / total) if total else px
+                held["shares"] = total
+            else:
+                pos[tick] = {"shares": sh, "entry_px": px}
+        else:
+            if not held:
+                return None
+            realised += sh * (px - held["entry_px"])
+            held["shares"] -= sh
+            if held["shares"] <= 1e-6:
+                pos.pop(tick)
+    return realised, pos
+
+
+REPLAY_SHARE_TOL = 1e-3     # stored trade shares are rounded to 4 places
+
+
+def _replay_matches(book, pos):
+    """Does a replay reproduce what the book actually holds?"""
+    actual = book.get("positions") or {}
+    if set(pos) != set(actual):
+        return False
+    for tick, p in actual.items():
+        a, e = p.get("shares") or 0.0, pos[tick]["shares"]
+        if a and abs(a - e) / a > REPLAY_SHARE_TOL:
+            return False
+    return True
+
+
+def repair_realised(led):
+    """One-off: restore realised profit that the trim bug never booked.
+
+    Recorded in the ledger rather than applied silently. The published
+    residual is this system's detector for the breakdown failing to add up,
+    and a repair that ran invisibly on every load would quietly absorb
+    exactly what that residual exists to show."""
+    if led.get("realised_repaired"):
+        return led
+    fixed = []
+    for key, book in (led.get("books") or {}).items():
+        out = _replay_realised(book)
+        if not out:
+            continue
+        realised, pos = out
+        if not _replay_matches(book, pos):
+            continue
+        stored = book.get("realised_pl", 0.0) or 0.0
+        if abs(realised - stored) > 0.01:
+            book["realised_pl"] = round(realised, 6)
+            fixed.append({"key": key, "delta": round(realised - stored, 2)})
+    led["realised_repaired"] = _today()
+    if fixed:
+        led["realised_repairs"] = fixed
     return led
 
 
