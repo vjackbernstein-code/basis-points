@@ -129,6 +129,23 @@ test asserts that, so a slow download cannot reach the published site.
   neither failure shows up in a result.
 - Results stay off the public site until the reviewer has audited them.
 
+## Historical replay (`backtest.py`)
+
+- It calls `smallcap.compute_screen`, the real function. **Never reimplement
+  the scoring here** — a reimplementation is a different model, and testing it
+  answers a different question.
+- **Every way a backtest can be wrong makes it look better.** Lookahead, a
+  dropped failure, a survivor-only universe: none crash, all flatter. Treat a
+  good-looking result as a reason to check the plumbing.
+- Fundamentals come from rows **filed on or before** the date being scored,
+  filtered in the query. Both ends of a growth comparison come from that same
+  visible set.
+- A company that stops trading mid-window is booked at the live system's
+  `DELIST_ASSUMED_LOSS`, never dropped. Dropping it is the flattery.
+- Input translations (exchange codes, the sector label) are legitimate;
+  widening a frozen rule to accept a vendor's vocabulary is not.
+- Results stay off the public site until the reviewer has audited them.
+
 ## The weekly reviewer
 
 A cloud routine reviews the system every Saturday and reports findings. Its

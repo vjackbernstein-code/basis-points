@@ -306,6 +306,89 @@ record then, in this priority order:
 Shipped early because it is display-only and score-neutral: the CAN SLIM-style
 market-context banner (the benchmark's own 13/26-week trend).
 
+## Historical replay (`backtest.py`)
+
+The published record is forward evidence, which is the honest way round and
+slow: the first real verdict is months away. This does not replace it and is
+not offered as a substitute. It answers a narrower, cheaper question — have
+these rules ever worked at all — before another year is spent finding out
+forward.
+
+```bash
+python3 backtest.py --one 2018-06-15     # one date's screen, to inspect
+python3 backtest.py --quick              # three years, to check it runs
+python3 backtest.py --from 2001-01-01 --to 2026-09-02 --out result.json
+```
+
+**It calls `smallcap.compute_screen`** — the function the site actually runs —
+on inputs rebuilt as of each historical Monday. The scoring is not
+reimplemented, because a reimplementation would be a different model and
+testing it would answer a different question. Everything in `backtest.py` is
+input plumbing and measurement.
+
+It is measured at the live record's horizons, against the live record's
+benchmark (IWO), using the live record's assumed loss for a company that
+vanishes — so a reading here and a reading on the site mean the same thing.
+
+### Two translations, neither of which touches a frozen rule
+
+Growth is ranked **within** an industry group, so these are not cosmetic: they
+decide who each company is compared against.
+
+- The vendor spells the venue "NYSE"; the live feed says
+  "NEW YORK STOCK EXCHANGE, INC.". Untranslated, the frozen rule rejects it
+  and 14,117 American companies silently vanish — which would not look like a
+  bug, just like a smaller universe.
+- The live feed labels industries at the level of "Banking" and
+  "Biotechnology", and **all 914** of its eligible companies map to a real
+  group. This vendor's `industry` is a level finer
+  ("Drug Manufacturers — Specialty & Generic") and 24.9% of it falls through
+  to "Other". Its `sector` is the matching level, so that is what is used,
+  with one word ("Basic Materials") translated into one the rule recognises.
+
+Widening the rule's keyword list instead would have been editing a frozen rule
+for the convenience of the thing testing it.
+
+### How it was checked
+
+Scoring a date the live system also published shares **10 of 25 names**,
+including six of the live screen's top seven. From ~1,400 eligible companies,
+chance would give about 0.2.
+
+That check also found something about the **live** system rather than this one:
+on the same date the replay finds 1,418 eligible companies where the live
+screen finds 914. The live one is still coverage-limited by its API budget and
+is choosing from roughly two thirds of its own eligible universe.
+
+### Why the tests look paranoid
+
+A backtest is the one part of this project that cannot be checked by reading
+its output, because **every way it can be wrong makes it look better**. A
+lookahead bug, a dropped failure, a survivor-only universe: none of them
+crash, none produce an implausible number, and all produce a flattering one.
+
+So the places that can happen are tested directly, and the tests state what
+the flattery would have been — dropping the failures from a two-name basket
+adds over 30 points, and that assertion exists so nobody later simplifies the
+delisting path away.
+
+### What a result from here is worth
+
+Quote these with any number it produces:
+
+- **A different data vendor from the live screen.** This tests the *rules* on
+  similar inputs, not the live system on its own inputs. The bank-growth
+  contradiction found on 2026-10-03 is a standing reminder that a vendor's
+  definition of a field is part of the result.
+- **Before trading costs**, exactly as the live `evaluation` block is. The
+  books measure after costs, and that is the number most likely to decide the
+  question. A ranking that works and cannot pay for its own trading is still
+  a no.
+- **The rules are frozen.** If any parameter is ever chosen using this, every
+  number here *and* in the live record becomes worthless.
+- A backtest is weaker evidence than the forward record however it comes out,
+  and it cannot authorise real money.
+
 ## Paper portfolios (`portfolio.py`) — SIMULATIONS
 
 No money is ever involved. Ledger in `data/portfolio.json`, rendered on the

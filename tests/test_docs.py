@@ -32,13 +32,15 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 
+import backtest  # noqa: E402
 import decision  # noqa: E402
 import pipeline  # noqa: E402
 import sharadar  # noqa: E402
 import portfolio  # noqa: E402
 import smallcap  # noqa: E402
 
-MODULES = (portfolio, smallcap, decision, pipeline, sharadar)
+MODULES = (portfolio, smallcap, decision, pipeline, sharadar,
+           backtest)
 
 # Names that are environment variables, not module constants. Anything else
 # the README puts in backticks in capitals is expected to be a real constant.
