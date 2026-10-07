@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-07T05:10:22.877343+00:00",
+ "generated_at": "2026-10-07T07:35:22.287504+00:00",
  "market": [
   {
    "label": "S&P 500",
@@ -293,11 +293,11 @@
    "label": "Bitcoin",
    "symbol": "bitcoin",
    "kind": "crypto",
-   "value": 84135.69984949366,
+   "value": 84253.42373290414,
    "prev": 85540.08713738805,
-   "value_txt": "$84,136",
-   "delta": -1.6417884700523786,
-   "delta_txt": "-1.64%",
+   "value_txt": "$84,253",
+   "delta": -1.5041642433884521,
+   "delta_txt": "-1.50%",
    "spark": [
     75590.24471973324,
     76146.81236783884,
@@ -321,18 +321,18 @@
     86489.73482686514,
     85770.87224573967,
     85540.08713738805,
-    84135.69984949366
+    84253.42373290414
    ]
   },
   {
    "label": "Ethereum",
    "symbol": "ethereum",
    "kind": "crypto",
-   "value": 2612.383070059203,
+   "value": 2620.499931447364,
    "prev": 2697.1723962480346,
-   "value_txt": "$2,612",
-   "delta": -3.143637622377414,
-   "delta_txt": "-3.14%",
+   "value_txt": "$2,620",
+   "delta": -2.8426979642579666,
+   "delta_txt": "-2.84%",
    "spark": [
     2397.4972601650115,
     2415.9596535242995,
@@ -356,12 +356,19 @@
     2725.9105379372454,
     2710.4181759245234,
     2697.1723962480346,
-    2612.383070059203
+    2620.499931447364
    ]
   }
  ],
- "tape_line": "S&P 500 +0.58%, Nasdaq +0.45%, Dow +0.49%; the 10-year Treasury at 5.31% (+3 bp); WTI crude $96.16 (-3.23%); bitcoin $84,136 (-1.64%).",
+ "tape_line": "S&P 500 +0.58%, Nasdaq +0.45%, Dow +0.49%; the 10-year Treasury at 5.31% (+3 bp); WTI crude $96.16 (-3.23%); bitcoin $84,253 (-1.50%).",
  "top": [
+  {
+   "title": "Euro Falls as Oil Prices, French Yields Rise",
+   "link": "https://www.wsj.com/finance/currencies/asian-currencies-consolidate-but-may-be-aided-by-appetite-for-risk-assets-ee0a9ce8?mod=rss_markets_main",
+   "source": "WSJ Markets",
+   "published": "2026-10-07T07:29:00+00:00",
+   "summary": "The euro fell, albeit staying above recent lows, as oil prices increased and French government bond yields resumed rising."
+  },
   {
    "title": "Robust AI spending sets investors up for another bumper US earnings season",
    "link": "https://www.ft.com/content/7c38e8e3-8035-4036-8bc0-5fba2fbf77cb?syn-25a6b1a6=1",
@@ -401,20 +408,13 @@
    "title": "India’s central bank hikes rates for the first time since 2023 as inflation risks build",
    "link": "https://www.cnbc.com/2026/10/07/india-rbi-interest-rates-inflation.html",
    "source": "CNBC",
-   "published": "2026-10-07T04:44:58+00:00",
+   "published": "2026-10-07T05:11:55+00:00",
    "summary": "HSBC and Goldman Sachs expect the RBI to raise interest rates in December as well."
-  },
-  {
-   "title": "How Trump’s Tariff War With Canada Ensnared the Can-Am Spyder",
-   "link": "https://www.nytimes.com/2026/10/06/business/canada-tariffs-can-am-spyder.html",
-   "source": "NYT Business",
-   "published": "2026-10-07T03:22:43+00:00",
-   "summary": "The Can-Am Spyder has a devoted fan base across the United States. Now it’s a casualty in the trade war with Canada."
   }
  ],
  "smallcap": {
   "note": null,
-  "asof": "2026-10-07T05:11:13+00:00",
+  "asof": "2026-10-07T07:45:35+00:00",
   "coverage": {
    "universe": 9891,
    "profiled": 10060,
@@ -1438,12 +1438,12 @@
    }
   ],
   "freshness": {
-   "last_full_h": 2.1,
-   "quote_median_h": 9.1,
+   "last_full_h": 0.0,
+   "quote_median_h": 8.0,
    "quote_count": 1862,
    "bench_h": 0.0,
-   "universe_h": 102.3,
-   "earnings_h": 5.3,
+   "universe_h": 104.9,
+   "earnings_h": 7.8,
    "bench_gate_h": 72
   },
   "reach": {
@@ -1546,22 +1546,16 @@
   ],
   "movers_up": [
    {
-    "ticker": "ITG",
-    "name": "ITG Inc",
-    "px": 8.41,
-    "dp": 20.4871
-   },
-   {
     "ticker": "HLTC",
     "name": "National Healthcare Properties Inc",
     "px": 13.05,
     "dp": 20.2765
    },
    {
-    "ticker": "HTZ",
-    "name": "Hertz Global Holdings Inc",
-    "px": 2.1,
-    "dp": 17.3184
+    "ticker": "ITG",
+    "name": "ITG Inc",
+    "px": 8.23,
+    "dp": 17.9083
    },
    {
     "ticker": "STDN",
@@ -1570,18 +1564,24 @@
     "dp": 16.7563
    },
    {
+    "ticker": "HTZ",
+    "name": "Hertz Global Holdings Inc",
+    "px": 2.06,
+    "dp": 15.0838
+   },
+   {
     "ticker": "FCEL",
     "name": "Fuelcell Energy Inc",
-    "px": 20.41,
-    "dp": 12.9496
+    "px": 20.65,
+    "dp": 14.2778
    }
   ],
   "movers_down": [
    {
     "ticker": "XRPN",
     "name": "Armada Acquisition Corp II",
-    "px": 17.95,
-    "dp": -53.5576
+    "px": 19.2,
+    "dp": -50.3234
    },
    {
     "ticker": "AVBP",
@@ -1891,16 +1891,8 @@
     "form": "424B5"
    }
   ],
-  "budget_mode": "trickle",
+  "budget_mode": "full",
   "news": [
-   {
-    "title": "Hagens Berman Alerts Fluence Energy (FLNC) Investors to Securities Fraud Class Action and Encourages Investors with Losses to Contact the Firm",
-    "link": "https://www.prnewswire.com/news-releases/hagens-berman-alerts-fluence-energy-flnc-investors-to-securities-fraud-class-action-and-encourages-investors-with-losses-to-contact-the-firm-302900449.html",
-    "source": "PR Newswire",
-    "published": "2026-10-07T02:30:00+00:00",
-    "summary": "SAN FRANCISCO, Oct. 6, 2026 /PRNewswire/ -- Fluence Energy (NASDAQ: FLNC) faces a securities class action, which seeks to represent investors who purchased or otherwise acquired Fluence securities between November 24, 2025 and…",
-    "ticker": "FLNC"
-   },
    {
     "title": "Diversified Healthcare Trust Third Quarter 2026 Conference Call Scheduled for Tuesday, November 3rd",
     "link": "http://www.businesswire.com/news/home/20261006771459/en/Diversified-Healthcare-Trust-Third-Quarter-2026-Conference-Call-Scheduled-for-Tuesday-November-3rd/?feedref=JjAwJuNHiystnCoBq_hl-YorNIXXeJUidDamMzBr2lVrRA1xRkqfEfrAVCWz-Z_wrCOi9QzgjCezTS3Nw_X6kJUrpSBm-Hav1w-UkdSlG3ne1zTTrM-woVxs6_pUhglHIbE9ZC1pD3bt6lQgRU5j6g==",
@@ -1932,14 +1924,6 @@
     "published": "2026-10-06T12:00:00+00:00",
     "summary": "NEWTON, Mass.--(BUSINESS WIRE)--Diversified Healthcare Trust (Nasdaq: DHC) today announced that it has entered into a new 15-year triple net lease with independent operating subsidiaries of The Ensign Group, Inc. (Nasdaq: ENSG)…",
     "ticker": "DHC"
-   },
-   {
-    "title": "Not Nvidia. Not Micron. If I Could Buy and Hold Only 1 Artificial Intelligence (AI) Chip Stock Through 2030, It Would be This One.",
-    "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxQNHkzQk8wX3dkc1ItZ1VvTGNzRndHSVhUVV9aVXI3bFktNHhHOWRLd2I1elg3am55M3cwV2NrTUhwOHgyeGpxdFBPVUs1ZUlyNC1CT0g4QjVsYjRIYVhaLWtEVWJwMFc5YWNFeV9NR3VUUHR0eVUzWjlieTZVMnAxNmowcjZPeml5bUwzaG9qTjZ0Vk9UN3V2OQ?oc=5",
-    "source": "The Motley Fool",
-    "published": "2026-10-06T16:15:00+00:00",
-    "summary": "Not Nvidia. Not Micron. If I Could Buy and Hold Only 1 Artificial Intelligence (AI) Chip Stock Through 2030, It Would be This One. The Motley Fool 321 Reasons to Buy AI Stocks Right Now Yahoo Finance Top 10 AI Stocks To Buy On…",
-    "ticker": "AI"
    }
   ]
  },
@@ -7030,7 +7014,7 @@
   "feeds_total": 20,
   "feeds_failed": 1,
   "items": 1154,
-  "smallcap_calls": 42,
+  "smallcap_calls": 552,
   "feed_errors": [],
   "market_errors": [
    [
