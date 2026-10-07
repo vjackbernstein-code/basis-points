@@ -91,6 +91,17 @@ EXCHANGE_NAMES = {
     "TXSE": "TXSE",
 }
 
+# Nano Labs Ltd trades on NASDAQ under the two letters N-A, and whatever
+# loaded the vendor's CSV into this database read that as "not a value": its
+# ticker is SQL NULL in every table. The source is read-only and belongs to
+# another project, so the repair happens here, by restoring the symbol rather
+# than skipping the rows. Skipping was the tempting option and it is the wrong
+# one — it would drop a real NASDAQ company from the universe from July 2022
+# onward, silently, which is the same class of error as survivorship bias and
+# arrives the same way: by discarding what would not parse.
+NULL_TICKER = "NA"
+
+
 # Measured at the same horizons the live record freezes, so the two sets of
 # numbers mean the same thing and can be put beside each other.
 HORIZONS = (("1w", 7), ("4w", 28))
@@ -126,9 +137,9 @@ def load_band(con, dates):
     for part in _chunks(dates, 400):
         ph = ",".join("?" * len(part))
         for d, tk, mc, ev in con.execute(
-                f"SELECT date, ticker, marketcap, ev FROM daily "
+                f"SELECT date, COALESCE(ticker, ?), marketcap, ev FROM daily "
                 f"WHERE date IN ({ph}) AND marketcap BETWEEN ? AND ?",
-                (*part, lo, hi)):
+                (NULL_TICKER, *part, lo, hi)):
             out[d][tk] = (mc, ev)
     return out
 
@@ -164,9 +175,9 @@ def load_spine(con, label_field=LABEL_FIELD):
     """Ticker metadata: industry label, exchange, name, category, delisting."""
     out = {}
     for r in con.execute(
-            "SELECT ticker, name, exchange, sector, industry, category, "
-            "isdelisted, lastpricedate FROM tickers "
-            "WHERE category LIKE '%Common Stock%'"):
+            "SELECT COALESCE(ticker, ?) AS ticker, name, exchange, sector, "
+            "industry, category, isdelisted, lastpricedate FROM tickers "
+            "WHERE category LIKE '%Common Stock%'", (NULL_TICKER,)):
         out[r["ticker"]] = {
             "name": r["name"], "exch": EXCHANGE_NAMES.get(r["exchange"],
                                                           r["exchange"]),
@@ -188,10 +199,12 @@ def load_prices(con, tickers, lo, hi):
     out = {}
     for part in _chunks(tickers):
         ph = ",".join("?" * len(part))
+        null_too = " OR ticker IS NULL" if NULL_TICKER in part else ""
         for tk, d, ca, cu, v in con.execute(
-                f"SELECT ticker, date, closeadj, closeunadj, volume "
-                f"FROM stocks WHERE ticker IN ({ph}) AND date BETWEEN ? AND ? "
-                f"ORDER BY ticker, date", (*part, lo, hi)):
+                f"SELECT COALESCE(ticker, ?), date, closeadj, closeunadj, "
+                f"volume FROM stocks "
+                f"WHERE (ticker IN ({ph}){null_too}) AND date BETWEEN ? AND ? "
+                f"ORDER BY ticker, date", (NULL_TICKER, *part, lo, hi)):
             out.setdefault(tk, []).append((d, ca, cu, v))
     return out
 
@@ -210,11 +223,14 @@ def load_fundamentals(con, tickers, filed_to, since, dimension):
     out = {}
     for part in _chunks(tickers):
         ph = ",".join("?" * len(part))
+        null_too = " OR ticker IS NULL" if NULL_TICKER in part else ""
         for r in con.execute(
-                f"SELECT ticker, reportperiod, date, {cols} FROM fundamentals "
-                f"WHERE dimension=? AND ticker IN ({ph}) "
+                f"SELECT COALESCE(ticker, ?) AS ticker, reportperiod, date, "
+                f"{cols} FROM fundamentals WHERE dimension=? "
+                f"AND (ticker IN ({ph}){null_too}) "
                 f"AND date <= ? AND reportperiod >= ? "
-                f"ORDER BY ticker, date", (dimension, *part, filed_to, since)):
+                f"ORDER BY ticker, date",
+                (NULL_TICKER, dimension, *part, filed_to, since)):
             out.setdefault(r["ticker"], []).append(dict(r))
     return out
 

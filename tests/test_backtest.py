@@ -81,6 +81,26 @@ class SectorTranslationTests(unittest.TestCase):
         self.assertNotIn("", B.SECTOR_NAMES)
 
 
+class NullTickerTests(unittest.TestCase):
+    """A ticker that reads as "no value" must be restored, not skipped.
+
+    Nano Labs trades on NASDAQ under the two letters N-A, and whatever loaded
+    the vendor's CSV into the database read that as SQL NULL. The first run
+    over the full history crashed on it after 21 years, which was the lucky
+    outcome: skipping the rows instead would have dropped a real NASDAQ
+    company from the universe from July 2022 onward without a word. That is
+    the same class of error as survivorship bias and it arrives the same way
+    — by discarding whatever would not parse.
+    """
+
+    def test_the_symbol_is_the_one_the_company_actually_trades_under(self):
+        self.assertEqual(B.NULL_TICKER, "NA")
+
+    def test_sorting_a_universe_containing_it_does_not_raise(self):
+        # the actual crash: a None mixed in with strings
+        self.assertEqual(sorted({B.NULL_TICKER, "AAA"}), ["AAA", "NA"])
+
+
 class SurvivorshipTests(unittest.TestCase):
     """Where survivorship bias comes back after being carefully excluded.
 
