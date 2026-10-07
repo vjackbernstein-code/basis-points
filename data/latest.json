@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-07T03:47:49.546647+00:00",
+ "generated_at": "2026-10-07T03:59:31.415841+00:00",
  "market": [
   {
    "label": "S&P 500",
@@ -41,13 +41,12 @@
    "label": "Nasdaq",
    "symbol": "NASDAQCOM",
    "kind": "index",
-   "value": 27477.31,
-   "prev": 27190.86,
-   "value_txt": "27,477.31",
-   "delta": 1.0534789999286551,
-   "delta_txt": "+1.05%",
+   "value": 27599.89,
+   "prev": 27477.31,
+   "value_txt": "27,599.89",
+   "delta": 0.4461135387707097,
+   "delta_txt": "+0.45%",
    "spark": [
-    26217.83,
     26584.06,
     26506.99,
     26421.41,
@@ -69,9 +68,10 @@
     26861.06,
     26871.6,
     27190.86,
-    27477.31
+    27477.31,
+    27599.89
    ],
-   "asof": "Oct 5"
+   "asof": "Oct 6"
   },
   {
    "label": "Dow",
@@ -293,11 +293,11 @@
    "label": "Bitcoin",
    "symbol": "bitcoin",
    "kind": "crypto",
-   "value": 84139.94490620361,
+   "value": 84157.36853307829,
    "prev": 85540.08713738805,
-   "value_txt": "$84,140",
-   "delta": -1.6368258182103943,
-   "delta_txt": "-1.64%",
+   "value_txt": "$84,157",
+   "delta": -1.6164568573433205,
+   "delta_txt": "-1.62%",
    "spark": [
     75590.24471973324,
     76146.81236783884,
@@ -321,18 +321,18 @@
     86489.73482686514,
     85770.87224573967,
     85540.08713738805,
-    84139.94490620361
+    84157.36853307829
    ]
   },
   {
    "label": "Ethereum",
    "symbol": "ethereum",
    "kind": "crypto",
-   "value": 2611.267345554617,
+   "value": 2611.752112623114,
    "prev": 2697.1723962480346,
-   "value_txt": "$2,611",
-   "delta": -3.185004073633482,
-   "delta_txt": "-3.19%",
+   "value_txt": "$2,612",
+   "delta": -3.1670309151816345,
+   "delta_txt": "-3.17%",
    "spark": [
     2397.4972601650115,
     2415.9596535242995,
@@ -356,11 +356,11 @@
     2725.9105379372454,
     2710.4181759245234,
     2697.1723962480346,
-    2611.267345554617
+    2611.752112623114
    ]
   }
  ],
- "tape_line": "S&P 500 +0.58%, Nasdaq +1.05%, Dow +0.49%; the 10-year Treasury at 5.31% (+3 bp); WTI crude $96.16 (-3.23%); bitcoin $84,140 (-1.64%).",
+ "tape_line": "S&P 500 +0.58%, Nasdaq +0.45%, Dow +0.49%; the 10-year Treasury at 5.31% (+3 bp); WTI crude $96.16 (-3.23%); bitcoin $84,157 (-1.62%).",
  "top": [
   {
    "title": "S&P 500 hits record high as AI stocks shrug off bond market slump",
@@ -414,7 +414,7 @@
  ],
  "smallcap": {
   "note": null,
-  "asof": "2026-10-07T03:48:42+00:00",
+  "asof": "2026-10-07T04:00:22+00:00",
   "coverage": {
    "universe": 9891,
    "profiled": 10060,
@@ -585,46 +585,6 @@
     }
    },
    {
-    "ticker": "ETON",
-    "name": "Eton Pharmaceuticals Inc",
-    "ind": "Pharmaceuticals",
-    "group": "Health",
-    "mcap": 1670.6843183255428,
-    "rev_g": 81.49,
-    "accel": 17.10000000000001,
-    "r13": 76.4142,
-    "momo": 1.05,
-    "from_high": -17.47777610366129,
-    "ev_rev": 15.4581,
-    "px": 54.77,
-    "dp": -1.5282,
-    "score": 81.3,
-    "sub": {
-     "g": 86,
-     "m": 95,
-     "q": 43
-    },
-    "flags": [],
-    "growth_doubt": false,
-    "unit_doubt": null,
-    "why": {
-     "vol": 101.03538,
-     "r26": 201.4791,
-     "rg3": 55.53,
-     "rev_gq": 98.59,
-     "dte": 0.599,
-     "gm_t": 57.87,
-     "om_t": 15.44,
-     "om_a": -1.06,
-     "cashps": 0.9489,
-     "rps": 3.2206,
-     "adv": 0.39409,
-     "hi52": 66.37,
-     "shares": 27.39,
-     "exch": "NASDAQ NMS - GLOBAL MARKET"
-    }
-   },
-   {
     "ticker": "REPX",
     "name": "Riley Exploration Permian Inc",
     "ind": "Energy",
@@ -638,7 +598,7 @@
     "ev_rev": 2.4573,
     "px": 42.87,
     "dp": -0.1398,
-    "score": 81.3,
+    "score": 81.4,
     "sub": {
      "g": 83,
      "m": 89,
@@ -665,6 +625,46 @@
     }
    },
    {
+    "ticker": "ETON",
+    "name": "Eton Pharmaceuticals Inc",
+    "ind": "Pharmaceuticals",
+    "group": "Health",
+    "mcap": 1670.6843183255428,
+    "rev_g": 81.49,
+    "accel": 17.10000000000001,
+    "r13": 76.4142,
+    "momo": 1.05,
+    "from_high": -17.47777610366129,
+    "ev_rev": 15.4581,
+    "px": 54.77,
+    "dp": -1.5282,
+    "score": 81.2,
+    "sub": {
+     "g": 86,
+     "m": 95,
+     "q": 43
+    },
+    "flags": [],
+    "growth_doubt": false,
+    "unit_doubt": null,
+    "why": {
+     "vol": 101.03538,
+     "r26": 201.4791,
+     "rg3": 55.53,
+     "rev_gq": 98.59,
+     "dte": 0.599,
+     "gm_t": 57.87,
+     "om_t": 15.44,
+     "om_a": -1.06,
+     "cashps": 0.9489,
+     "rps": 3.2206,
+     "adv": 0.39409,
+     "hi52": 66.37,
+     "shares": 27.39,
+     "exch": "NASDAQ NMS - GLOBAL MARKET"
+    }
+   },
+   {
     "ticker": "TK",
     "name": "Teekay Corp Ltd",
     "ind": "Energy",
@@ -678,7 +678,7 @@
     "ev_rev": 0.4338,
     "px": 14.7,
     "dp": -1.738,
-    "score": 80.1,
+    "score": 80.0,
     "sub": {
      "g": 60,
      "m": 93,
@@ -1438,12 +1438,12 @@
    }
   ],
   "freshness": {
-   "last_full_h": 0.7,
-   "quote_median_h": 7.7,
+   "last_full_h": 0.9,
+   "quote_median_h": 7.9,
    "quote_count": 1862,
    "bench_h": 0.0,
-   "universe_h": 100.9,
-   "earnings_h": 3.9,
+   "universe_h": 101.1,
+   "earnings_h": 4.1,
    "bench_gate_h": 72
   },
   "reach": {
@@ -1932,14 +1932,6 @@
     "published": "2026-10-06T12:00:00+00:00",
     "summary": "NEWTON, Mass.--(BUSINESS WIRE)--Diversified Healthcare Trust (Nasdaq: DHC) today announced that it has entered into a new 15-year triple net lease with independent operating subsidiaries of The Ensign Group, Inc. (Nasdaq: ENSG)…",
     "ticker": "DHC"
-   },
-   {
-    "title": "Not Nvidia. Not Micron. If I Could Buy and Hold Only 1 Artificial Intelligence (AI) Chip Stock Through 2030, It Would be This One.",
-    "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxQNHkzQk8wX3dkc1ItZ1VvTGNzRndHSVhUVV9aVXI3bFktNHhHOWRLd2I1elg3am55M3cwV2NrTUhwOHgyeGpxdFBPVUs1ZUlyNC1CT0g4QjVsYjRIYVhaLWtEVWJwMFc5YWNFeV9NR3VUUHR0eVUzWjlieTZVMnAxNmowcjZPeml5bUwzaG9qTjZ0Vk9UN3V2OQ?oc=5",
-    "source": "The Motley Fool",
-    "published": "2026-10-06T16:15:00+00:00",
-    "summary": "Not Nvidia. Not Micron. If I Could Buy and Hold Only 1 Artificial Intelligence (AI) Chip Stock Through 2030, It Would be This One. The Motley Fool Top 10 AI Stocks To Buy On The Seasonal Dip Seeking Alpha Down 50% and Climbing…",
-    "ticker": "AI"
    }
   ]
  },
@@ -7029,7 +7021,7 @@
  "stats": {
   "feeds_total": 20,
   "feeds_failed": 1,
-  "items": 1158,
+  "items": 1159,
   "smallcap_calls": 42,
   "feed_errors": [],
   "market_errors": [
