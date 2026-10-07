@@ -8,6 +8,7 @@ committed data files.
 Run:  python3 -m unittest discover tests
 """
 
+import shutil
 import sys
 import tempfile
 import unittest
@@ -633,6 +634,123 @@ class ProgressTrackingTests(PaperTestCase):
         self.assertTrue(retired, "a restart must not erase the run it replaced")
         self.assertTrue(any(r["key"] == "A" for r in retired))
         self.assertIsNotNone(retired[0]["ret"])
+
+
+class TrimReconciliationTests(unittest.TestCase):
+    """Trimming a position must book the profit on the shares that left.
+
+    Closing a position entirely goes through `_sell`, which books it. A trim —
+    what a conviction or regime book does on most rebalances — did not, so the
+    gain on the sold shares stayed in the book's cash but vanished from the
+    explanation of where the return came from. Values and returns were right
+    throughout; only the breakdown was wrong, and it said so itself: two of the
+    six books published "these parts do not add up" for exactly this reason.
+
+    Attribution is the system's one piece of published arithmetic that has to
+    close. It also feeds a pre-registered December gate, which reads how much
+    of a book's lead survives removing its best three holdings — computed from
+    the same breakdown. A residual there is not cosmetic.
+    """
+
+    def setUp(self):
+        # a directory rather than NamedTemporaryFile: an unclosed handle left
+        # a ResourceWarning in the suite's output, and the setup script this
+        # project runs in a fresh environment shows that output to whoever is
+        # trying to find out whether the environment works
+        self.dir = tempfile.mkdtemp()
+        self._real_path = portfolio.LEDGER_PATH
+        portfolio.LEDGER_PATH = Path(self.dir) / "ledger.json"
+        self._real_now = smallcap._now
+        smallcap._now = lambda: NOW
+
+    def tearDown(self):
+        portfolio.LEDGER_PATH = self._real_path
+        smallcap._now = self._real_now
+        shutil.rmtree(self.dir, ignore_errors=True)
+
+    def _trimmed_book(self):
+        """A book that buys two names, then trims one as its weight drifts."""
+        book = portfolio._blank_book()
+        spec = portfolio.STRATEGIES["A"]
+        screen = screen_of(["AAA", "BBB"])
+        day1 = NOW.date().isoformat()
+        # attribution reports nothing for a book that has not opened
+        book["started"] = day1
+        book["start_bench"] = 100.0
+
+        portfolio.rebalance(book, spec, cache_with({"AAA": 10.0, "BBB": 10.0}),
+                            screen, day1)
+        # AAA doubles, so its weight is now far above target and the next
+        # rebalance sells part of it to fund BBB
+        cache2 = cache_with({"AAA": 20.0, "BBB": 10.0})
+        portfolio.refresh_marks(book, cache2, day1)
+        portfolio.rebalance(book, spec, cache2, screen, day1)
+        return book
+
+    def test_a_trim_actually_happened(self):
+        # if the no-trade band swallowed the trim the test below proves nothing
+        book = self._trimmed_book()
+        sells = [t for t in book["trades"] if t["side"] == "sell"]
+        self.assertTrue(sells, "no trim occurred — the fixture stopped working")
+        self.assertIn("AAA", {t["ticker"] for t in sells})
+        self.assertIn("AAA", book["positions"],
+                      "this must be a PART sale, not a full exit")
+
+    def test_the_profit_on_trimmed_shares_is_booked(self):
+        book = self._trimmed_book()
+        self.assertGreater(
+            book["realised_pl"], 0.0,
+            "shares were sold at a profit and none of it was recorded")
+
+    def test_the_breakdown_reconciles_after_a_trim(self):
+        book = self._trimmed_book()
+        a = portfolio.attribution(book)
+        self.assertTrue(
+            a["reconciles"],
+            f"the parts do not add up: {a['total_pct']} vs actual "
+            f"{a['actual_pct']}, residual {a['residual_pct']}")
+        self.assertAlmostEqual(a["residual_pct"], 0.0, places=3)
+
+    def test_the_realised_amount_equals_shares_sold_times_their_gain(self):
+        # the figure has to be right, not merely non-zero
+        book = portfolio._blank_book()
+        book["cash"] = 1000.0
+        book["positions"]["AAA"] = {"shares": 100.0, "entry_px": 10.0,
+                                    "peak_px": 10.0, "last_px": 20.0,
+                                    "entry_date": NOW.date().isoformat()}
+        before = book["realised_pl"]
+        # sell 40 of the 100 shares at 20, bought at 10 -> 40 * 10 = 400
+        portfolio.rebalance(
+            book, portfolio.STRATEGIES["A"],
+            cache_with({"AAA": 20.0, "BBB": 20.0, "CCC": 20.0}),
+            screen_of(["AAA", "BBB", "CCC"]), NOW.date().isoformat())
+        sold = sum(t["shares"] for t in book["trades"]
+                   if t["ticker"] == "AAA" and t["side"] == "sell")
+        self.assertGreater(sold, 0)
+        self.assertAlmostEqual(book["realised_pl"] - before, sold * 10.0,
+                               places=4)
+
+    def test_every_book_carries_the_realised_figure_from_birth(self):
+        # book F had never sold anything, so it had no such key at all and the
+        # six books in the ledger were not the same shape as one another
+        self.assertIn("realised_pl", portfolio._blank_book())
+        self.assertEqual(portfolio._blank_book()["realised_pl"], 0.0)
+
+    def test_a_trim_at_a_loss_is_booked_as_a_loss(self):
+        book = portfolio._blank_book()
+        book["cash"] = 1000.0
+        book["positions"]["AAA"] = {"shares": 100.0, "entry_px": 20.0,
+                                    "peak_px": 20.0, "last_px": 10.0,
+                                    "entry_date": NOW.date().isoformat()}
+        portfolio.rebalance(
+            book, portfolio.STRATEGIES["A"],
+            cache_with({"AAA": 10.0, "BBB": 10.0, "CCC": 10.0}),
+            screen_of(["AAA", "BBB", "CCC"]), NOW.date().isoformat())
+        sold = sum(t["shares"] for t in book["trades"]
+                   if t["ticker"] == "AAA" and t["side"] == "sell")
+        if sold:
+            self.assertLess(book["realised_pl"], 0.0,
+                            "a trim below cost must reduce realised profit")
 
 
 if __name__ == "__main__":

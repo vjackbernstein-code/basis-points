@@ -1677,7 +1677,21 @@ def render_company_page(row, rank, screen, pf, sc, date_line):
         '<p class="cofoot">Assembled from the data feed — an industry label, a '
         'set of filed figures and a price history. It is not a description of '
         'what the business does, because nothing in this system reads about '
-        'the business.</p>')
+        'the business.</p>'
+        + (('<div class="note-box"><strong>These figures do not agree with '
+            'this company&rsquo;s own share price.</strong> '
+            + esc(row["unit_doubt"][0].upper() + row["unit_doubt"][1:])
+            + '. The likeliest reason is that it is a foreign issuer '
+              'reporting in its own currency, per ordinary share, while the '
+              'price above is dollars per depositary share — so anything here '
+              'divided by a share count is in units the price is not. That '
+              'includes the revenue figure the eligibility floor was tested '
+              'against, so this company may not belong on the screen at all. '
+              'It is shown rather than removed because which companies are '
+              'eligible is a rule, and changing a rule mid-record is a '
+              'decision taken deliberately, not a bug fixed quietly. Treat '
+              'every per-share number on this page as unreliable.</div>')
+           if row.get("unit_doubt") else ""))
 
     # ---- why it scores what it does ----
     score_rows = [
@@ -2546,10 +2560,13 @@ def build_sections(data):
             sub_t = (f'growth {sub.get("g", "?")} · momentum {sub.get("m", "?")} · '
                      f'quality {sub.get("q", "?")}')
             flag_cls = {"new": "new", "ins+": "ins", "act+": "act",
-                        "offer": "offer", "growth?": "doubt"}
+                        "offer": "offer", "growth?": "doubt",
+                        "units?": "doubt"}
             shown = list(r.get("flags") or [])
             if r.get("growth_doubt"):
                 shown.append("growth?")
+            if r.get("unit_doubt"):
+                shown.append("units?")
             flags = "".join(
                 f'<span class="flag {flag_cls.get(f, "")}">{esc(f)}</span>'
                 for f in shown)

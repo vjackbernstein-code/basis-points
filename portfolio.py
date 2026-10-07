@@ -166,7 +166,11 @@ def _blank_book():
             # a peak that scrolled out of the window used to be forgotten, so
             # the worst dip could only ever shrink toward zero with time — on
             # the single statistic a reader leans on hardest
-            "peak_value": START_CAPITAL, "max_drawdown": 0.0}
+            "peak_value": START_CAPITAL, "max_drawdown": 0.0,
+            # present from birth even at 0.0: it used to appear only on the
+            # first sale, so a book that had never sold lacked the key and the
+            # six books were not the same shape as one another
+            "realised_pl": 0.0}
 
 
 def load_ledger():
@@ -432,6 +436,18 @@ def rebalance(book, spec, cache, screen, today):
                 total = held["shares"] + shares
                 held["entry_px"] = ((held["shares"] * held["entry_px"]
                                      + shares * px) / total) if total else px
+            else:
+                # ...and book the profit on the shares that just left. Closing
+                # a position entirely goes through _sell, which does this; a
+                # TRIM did not, so the gain on the sold shares disappeared from
+                # the breakdown while remaining in the book's cash. The totals
+                # stayed right and the explanation of them did not, which the
+                # published residual duly reported as "these parts do not add
+                # up". Same basis as _sell uses: the average cost of the shares
+                # sold, which is what makes attribution reconcile rather than
+                # approximate.
+                book["realised_pl"] = (book.get("realised_pl", 0.0)
+                                       + (-shares) * (px - held["entry_px"]))
             held["shares"] += shares
             held["last_px"] = px
             if held["shares"] <= 1e-9:

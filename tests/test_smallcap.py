@@ -413,6 +413,89 @@ class ContradictedGrowthTests(unittest.TestCase):
         self.assertNotIn("growth_doubt", src)
 
 
+class ContradictedUnitsTests(unittest.TestCase):
+    """Per-share figures that cannot describe the same company as the price.
+
+    Gaotu Techedu reached the published 25 showing cash of $21.01 a share
+    against a $2.58 price and revenue of $5,067M at a $503M market value. It
+    is a foreign issuer reporting in its own currency per ordinary share while
+    the price is dollars per depositary share, so every figure divided by a
+    share count is in units the price is not — including the revenue the $50M
+    eligibility floor is tested against.
+
+    Like the growth flag, this discloses and does not exclude. Which companies
+    are eligible is a published rule, and changing one mid-record costs a
+    restart, so it is a decision to be taken rather than a bug to fix quietly.
+    """
+
+    def _co(self, px=10.0, shares=100.0, mcap=None, cashps=1.0):
+        # mcap defaults to agreeing with price x shares, so a test that varies
+        # the price does not accidentally trip the share-count check instead
+        return ({"shares": shares,
+                 "mcap": px * shares if mcap is None else mcap},
+                {"cashps": cashps}, {"px": px})
+
+    def test_cash_per_share_above_the_price_is_flagged(self):
+        p, m, q = self._co(px=2.58, cashps=21.01)
+        why = smallcap.figures_contradict_price(p, m, q)
+        self.assertIsNotNone(why)
+        self.assertIn("cash per share", why)
+        self.assertIn("8.1", why, "the reason should quote the actual ratio")
+
+    def test_a_share_count_that_contradicts_the_market_value_is_flagged(self):
+        # price x shares should reproduce the vendor's own market value
+        p, m, q = self._co(px=10.0, shares=100.0, mcap=200.0)   # ratio 5.0
+        why = smallcap.figures_contradict_price(p, m, q)
+        self.assertIsNotNone(why)
+        self.assertIn("share count", why)
+
+    def test_an_ordinary_company_is_not_flagged(self):
+        self.assertIsNone(smallcap.figures_contradict_price(*self._co()))
+
+    def test_a_company_near_its_cash_is_not_flagged(self):
+        # trading close to cash is a real situation and not a units problem;
+        # only a figure the price cannot be reconciled with at all counts
+        p, m, q = self._co(px=10.0, cashps=14.0)
+        self.assertIsNone(smallcap.figures_contradict_price(p, m, q))
+
+    def test_ordinary_drift_between_a_price_and_a_stale_market_value_passes(self):
+        # the market value carries its own timestamp and is often days old, so
+        # the two never agree exactly; the test must tolerate that
+        for ratio in (0.85, 0.95, 1.0, 1.15, 1.4):
+            p, m, q = self._co(px=10.0, shares=100.0, mcap=1000.0 / ratio)
+            self.assertIsNone(smallcap.figures_contradict_price(p, m, q),
+                              f"ratio {ratio} should pass")
+
+    def test_missing_figures_are_not_a_contradiction(self):
+        for p, m, q in (({}, {}, {}),
+                        ({"shares": 100.0}, {}, {"px": 10.0}),
+                        ({"shares": 100.0, "mcap": 1000.0}, {"cashps": None},
+                         {"px": None})):
+            self.assertIsNone(smallcap.figures_contradict_price(p, m, q),
+                              repr((p, m, q)))
+        self.assertIsNone(smallcap.figures_contradict_price(None, None, None))
+
+    def test_zero_cash_is_not_mistaken_for_missing(self):
+        p, m, q = self._co(cashps=0.0)
+        self.assertIsNone(smallcap.figures_contradict_price(p, m, q))
+
+    def test_the_flag_changes_no_score_and_no_eligibility(self):
+        # the same guard the growth flag has, for the same reason
+        import inspect
+        src = (inspect.getsource(smallcap._eligible)
+               + inspect.getsource(smallcap._base_eligible)
+               + inspect.getsource(smallcap._factors)
+               + inspect.getsource(smallcap.rev_ttm))
+        self.assertNotIn("figures_contradict_price", src)
+        self.assertNotIn("unit_doubt", src)
+
+    def test_the_reason_is_prose_a_reader_can_check(self):
+        # a boolean would tell a reader only that something is wrong
+        why = smallcap.figures_contradict_price(*self._co(px=1.0, cashps=50.0))
+        self.assertIsInstance(why, str)
+        self.assertGreater(len(why), 30)
+
+
 class UsListingTests(unittest.TestCase):
     """The published rule has always said "U.S. listed common stocks". The code
     only excluded OTC, so 149 foreign listings were eligible and four Toronto

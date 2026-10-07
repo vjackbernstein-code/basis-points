@@ -26,6 +26,19 @@ jobs:
         with:
           python-version: "3.12"
 
+      # The safeguards this project leans on are tests, and until now nothing
+      # ever ran them: the suite was green only on whichever machine last
+      # thought to check. A test that is never executed is documentation.
+      #
+      # It gates the pipeline deliberately. If the tests fail the data goes
+      # stale and the site keeps serving its previous version, which the
+      # freshness banner says plainly on every page — and that is the better
+      # failure. The alternative is publishing numbers from code that fails
+      # its own checks, which looks fine and is the whole thing this project
+      # is built to avoid.
+      - name: Run tests
+        run: python -m unittest discover tests
+
       - name: Run pipeline
         run: python pipeline.py
         env:

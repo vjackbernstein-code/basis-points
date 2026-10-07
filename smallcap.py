@@ -612,6 +612,56 @@ def growth_is_contradicted(m):
     return ttm > IMPLAUSIBLE_TTM and g3 < IMPLAUSIBLE_3Y
 
 
+# The same idea applied to the per-share figures, and for the same reason.
+# Gaotu Techedu reached the published 25 showing cash of $21.01 a share
+# against a $2.58 share price — which would mean the whole company could be
+# bought for an eighth of the money in its bank account — and revenue of
+# $5,067M for a company the vendor values at $503M. Neither is a surprising
+# valuation; both are arithmetic that cannot describe one company. It is a
+# foreign issuer whose per-share figures are reported in its own currency per
+# ordinary share while the price is dollars per depositary share, so every
+# figure divided by a share count is in units the price is not.
+#
+# This matters more than a wrong-looking page, because `rev_ttm` is built from
+# revenue per share and is an ELIGIBILITY input: the $50M revenue floor was
+# tested against a number that is not dollars. The floor still does that, and
+# saying so is where this stops — correcting WHICH companies are eligible
+# changes the screen, which means a model version and a restarted record, and
+# that is a decision with a cost attached rather than a bug to quietly fix.
+#
+# Both tests compare two figures from the same vendor for the same company
+# that are supposed to agree. Across the 919 eligible names price x shares
+# reproduces the vendor's own market value tightly — a quarter of them within
+# 9%, the median within 3% — so a factor of two either way is not a company
+# being unusual, and cash per share runs at an eighth of the price at the
+# median with a 95th percentile of 0.8x.
+MCAP_AGREE_LO, MCAP_AGREE_HI = 0.5, 2.0   # price x shares, over stated mcap
+CASH_OVER_PRICE_MAX = 2.0                 # cash per share, over the price
+
+
+def figures_contradict_price(p, m, q):
+    """Why this company's per-share figures cannot be taken at face value, in
+    a few words, or None when they are internally consistent.
+
+    Returns prose rather than a boolean because the page's job is to say what
+    is wrong, not merely that something is. A reader told "the figures below
+    are inconsistent" learns nothing they can check."""
+    p, m, q = p or {}, m or {}, q or {}
+    px, shares, mcap = q.get("px"), p.get("shares"), p.get("mcap")
+    cashps = m.get("cashps")
+    if px and shares and mcap:
+        ratio = (px * shares) / mcap
+        if ratio > MCAP_AGREE_HI or ratio < MCAP_AGREE_LO:
+            return (f"its share count times its price comes to "
+                    f"{ratio:.1f}\u00d7 the market value the same source "
+                    f"reports, so the two count different things")
+    if px and cashps is not None and cashps > px * CASH_OVER_PRICE_MAX:
+        return (f"cash per share is {cashps / px:.1f}\u00d7 the share price, "
+                f"which would price the company below the money in its "
+                f"own bank account")
+    return None
+
+
 def _factors(cache, ticker):
     m = cache["metrics"][ticker]
     q = cache["quotes"][ticker]
@@ -759,6 +809,9 @@ def compute_screen(cache, prev_candidates=None, prev_published=None):
             "flags": flags,
             # disclosure, not exclusion: see growth_is_contradicted
             "growth_doubt": growth_is_contradicted(m),
+            # likewise: the per-share figures against the price
+            "unit_doubt": figures_contradict_price(
+                p, m, cache["quotes"].get(t)),
             # the raw inputs behind the score, the position size and the stop.
             # Published so the per-company page can SHOW its arithmetic instead
             # of asserting a conclusion the reader has to take on trust.
