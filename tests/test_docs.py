@@ -34,14 +34,16 @@ sys.path.insert(0, str(ROOT))
 
 import decision  # noqa: E402
 import pipeline  # noqa: E402
+import sharadar  # noqa: E402
 import portfolio  # noqa: E402
 import smallcap  # noqa: E402
 
-MODULES = (portfolio, smallcap, decision, pipeline)
+MODULES = (portfolio, smallcap, decision, pipeline, sharadar)
 
 # Names that are environment variables, not module constants. Anything else
 # the README puts in backticks in capitals is expected to be a real constant.
-NOT_CONSTANTS = {"FINNHUB_API_KEY", "FRED_API_KEY"}
+NOT_CONSTANTS = {"FINNHUB_API_KEY", "FRED_API_KEY",
+                 "NASDAQ_DATA_LINK_API_KEY"}
 
 README = (ROOT / "README.md").read_text(encoding="utf-8")
 

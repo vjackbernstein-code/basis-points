@@ -165,14 +165,72 @@ is last in line — ever ran. Cataloguing collapsed to ~8 companies/day
 (>1 year to finish). Relaxing band quotes to 12h and reserving a discovery
 slice restored it to ~1–2 days.
 
-## API keys (both optional; features light up when present)
+## API keys (all optional; features light up when present)
 
 | Key | Enables | Cloud (GitHub secret name) | Local file |
 |---|---|---|---|
 | Finnhub | small-cap scorecard, earnings calendar | `FINNHUB_API_KEY` | `data/finnhub.key` |
 | FRED | economic calendar | `FRED_API_KEY` | `data/fred.key` |
+| Sharadar | backtesting only, never the live site | `NASDAQ_DATA_LINK_API_KEY` | `data/sharadar.key` |
 
-Local key files are git-ignored and contain only the raw key text.
+Local key files are git-ignored and contain only the raw key text. The Sharadar
+key is deliberately **not** a GitHub secret and **not** in the cloud
+environment: the live job has no use for it, and every extra place a
+credential lives is another place it can leak from. Two of this project's keys
+have already been committed to this public repository once and had to be
+rotated.
+
+## Backtesting (`sharadar.py`)
+
+The record is forward evidence and that is the honest way round, but it is
+slow: the first real verdict is months away. A backtest cannot replace it and
+is not meant to. What it can do is say whether these scoring rules have ever
+worked at all, before another year is spent finding out forward.
+
+Two things make that possible, and the absence of either makes it worthless:
+
+**Survivorship-free prices.** A price history containing only companies that
+still exist today is the most flattering dataset in finance — every firm that
+went to zero has been quietly removed, so any strategy tested on it appears to
+dodge disasters it in fact walked into. `SHARADAR/SEP` carries delisted
+companies and `SHARADAR/TICKERS` carries every ticker that ever existed with
+the date and reason it stopped. That is the entire reason this source was
+chosen over free ones, so it is checked rather than assumed: a download whose
+ticker spine contains no delisted names fails loudly and refuses to be
+trusted.
+
+**Point-in-time fundamentals.** A Q1 revenue figure is not knowable in Q1; it
+is knowable when it is filed, weeks later. Scoring a historical date with
+figures filed after it is lookahead, and it is the easiest way in existence to
+produce a backtest that looks wonderful and means nothing. `SHARADAR/SF1`
+carries `datekey`, the date each figure was actually filed. **Only rows whose
+`datekey` is on or before the date being scored may be used.** There is no
+shortcut and no version of this that is close enough.
+
+```bash
+python3 sharadar.py --probe      # does the key work, and are the fields there?
+python3 sharadar.py --tickers    # the survivorship spine (small)
+python3 sharadar.py --bulk SEP   # the whole price history (large)
+python3 sharadar.py --status      # what is cached, how old, how many delisted
+```
+
+Run `--probe` first and before trusting anything else. None of the request or
+response shapes in that module have been verified against the live service —
+that needs a paid key — so every assumption is asserted with a message naming
+what it expected, and `--probe` settles them in one cheap call per table. It
+also checks that the specific fields the backtest depends on (`datekey`,
+`isdelisted`, `closeadj`) are present and named as expected, because a probe
+that only proved the key works would miss the thing that matters.
+
+**The cache is licensed data in a public repository.** It lands in
+`data/sharadar/`, which the `data/` allowlist already ignores. Do not add an
+exception for it, do not move it out of `data/`, and do not commit anything
+derived from it that reproduces the underlying rows. A test asks git directly
+whether the ignore still holds.
+
+`sharadar.py` is never imported by the live pipeline — a test asserts that —
+so a slow download or a vendor outage cannot reach the published site.
+Backtesting is a separate activity on purpose.
 
 ## Model v4 candidates (specified now, built only after the v3 freeze lifts)
 
