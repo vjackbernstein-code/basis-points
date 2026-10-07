@@ -180,15 +180,20 @@ def key_waiting_to_be_filled_in():
     return False
 
 
-def scrub(msg):
+def scrub(msg, extra=None):
     """Remove the key from anything on its way to a terminal or a file.
 
     The key is a query-string parameter, so a urllib error that quotes the URL
-    quotes the key with it. Everything this module prints goes through here."""
+    quotes the key with it. Everything this module prints goes through here.
+
+    `extra` exists because reading the key back out of the environment only
+    covers the key that happens to be configured NOW. A client given a key
+    directly — a test, a one-off, a rotation in progress — would otherwise
+    have that one printed in full. A test catches exactly that."""
     out = str(msg)
-    key = read_key()
-    if key and len(key) >= 8:
-        out = out.replace(key, "***")
+    for secret in (read_key(), extra):
+        if secret and len(secret) >= 8:
+            out = out.replace(secret, "***")
     # belt and braces: catch any api_key=... that arrived another way
     import re
     return re.sub(r"(api_key=)[^&\s\"']+", r"\1***", out)[:400]
@@ -205,6 +210,19 @@ def _assert(cond, what):
 
 # --------------------------------------------------------------- client ------
 
+# The service says "exceeded the API speed limit and your account has
+# temporarily been disabled" under code QELx06. That is an account state, not
+# a property of this request, and it is the one 429 that must not be retried.
+ACCOUNT_DISABLED_CODE = "QELx06"
+
+
+def _account_disabled(body):
+    text = (body or "").lower()
+    return (ACCOUNT_DISABLED_CODE.lower() in text
+            or "account has temporarily been disabled" in text
+            or "account has been disabled" in text)
+
+
 class Client:
     """A deliberately small, polite datatables client."""
 
@@ -214,6 +232,10 @@ class Client:
         self._interval = interval
         self._last = 0.0
         self.calls = 0
+
+    def _scrub(self, msg):
+        """Scrub with this client's own key, not merely the configured one."""
+        return scrub(msg, self._key)
 
     def _get(self, url):
         wait = self._interval - (time.monotonic() - self._last)
@@ -234,22 +256,38 @@ class Client:
                     body = e.read().decode("utf-8", "replace")[:300]
                 except Exception:  # noqa: BLE001
                     pass
-                # 429 is a rate limit and worth waiting out. It is ALSO what a
-                # key being used by two things at once returns, with
-                # "temporarily disabled" in the body — which happened the
-                # first time this was set up, so the body is quoted.
+                finally:
+                    # an HTTPError is itself an open response; reading the
+                    # body without closing it leaks the connection
+                    e.close()
+                # 429 covers two different situations that must not be
+                # treated the same. A plain speed limit is transient and
+                # worth waiting out. But the service also returns 429 when
+                # the ACCOUNT itself has been disabled for past overuse, and
+                # retrying that is the single worst response available: the
+                # requests still count, so a retry loop is what keeps an
+                # account disabled. Observed here on 2026-10-07 — the first
+                # request of the session came back in 0.5s, so the block
+                # predated it entirely.
+                if e.code == 429 and _account_disabled(body):
+                    raise RuntimeError(
+                        "the data service has disabled this ACCOUNT, not "
+                        "merely rate-limited this request, so retrying will "
+                        "not help and may prolong it. A new API key does not "
+                        "clear an account-level block. "
+                        f"The service said: {self._scrub(body)}") from None
                 if e.code == 429 and attempt < 2:
                     time.sleep(20 * (attempt + 1))
                     continue
                 raise RuntimeError(
-                    f"HTTP {e.code} from the data service. {scrub(body)}"
+                    f"HTTP {e.code} from the data service. {self._scrub(body)}"
                 ) from None
             except urllib.error.URLError as e:
                 if attempt < 2:
                     time.sleep(3 * (attempt + 1))
                     continue
                 raise RuntimeError(
-                    f"could not reach the data service: {scrub(e)}") from None
+                    f"could not reach the data service: {self._scrub(e)}") from None
 
     def page(self, table, params=None, cursor=None):
         """One page of a table. Returns (rows, column_names, next_cursor)."""
@@ -414,7 +452,9 @@ def probe(client):
             out[table] = {"ok": not missing, "columns": len(cols),
                           "rows_seen": len(rows), "missing": missing}
         except Exception as e:  # noqa: BLE001 — a report, not a crash
-            out[table] = {"ok": False, "error": scrub(e)}
+            # the client's own scrubber, so a key passed in directly is
+            # stripped and not only the one configured in the environment
+            out[table] = {"ok": False, "error": client._scrub(e)}
     return out
 
 

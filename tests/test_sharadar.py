@@ -257,6 +257,93 @@ class PagingTests(unittest.TestCase):
         self.assertIn("api_key=", c.urls[0])
 
 
+class AccountDisabledTests(unittest.TestCase):
+    """A 429 means two different things and they need opposite responses.
+
+    A plain speed limit is transient and worth waiting out. But the service
+    also returns 429 when the ACCOUNT has been disabled for past overuse, and
+    retrying that is the worst available response: the requests still count,
+    so a retry loop is what keeps an account disabled.
+
+    Observed on 2026-10-07. The first request of the session came back 429 in
+    half a second — the block predated it entirely — and the old client would
+    have answered by sending six more requests over a minute.
+    """
+
+    def _raiser(self, code, body, log):
+        import io
+        import urllib.error
+
+        def _urlopen(req, timeout=None, context=None):
+            log.append("request")
+            raise urllib.error.HTTPError(
+                "https://example/x", code, "err", {},
+                io.BytesIO(body.encode("utf-8")))
+
+        return _urlopen
+
+    def _client_with(self, code, body):
+        log, slept = [], []
+        c = sharadar.Client("TESTKEY-0123456789", interval=0.0)
+        self._real_open = sharadar.urllib.request.urlopen
+        self._real_sleep = sharadar.time.sleep
+        sharadar.urllib.request.urlopen = self._raiser(code, body, log)
+        sharadar.time.sleep = lambda s: slept.append(s)
+        return c, log, slept
+
+    def tearDown(self):
+        if hasattr(self, "_real_open"):
+            sharadar.urllib.request.urlopen = self._real_open
+            sharadar.time.sleep = self._real_sleep
+
+    DISABLED = ('{"quandl_error":{"code":"QELx06","message":"You have '
+                'exceeded the API speed limit and your account has '
+                'temporarily been disabled."}}')
+    SPEED = ('{"quandl_error":{"code":"QELx04","message":"You have exceeded '
+             'the daily API speed limit."}}')
+
+    def test_a_disabled_account_is_not_retried(self):
+        c, log, slept = self._client_with(429, self.DISABLED)
+        with self.assertRaises(RuntimeError):
+            c.page("TICKERS")
+        self.assertEqual(len(log), 1, "it retried an account-level block")
+        self.assertEqual(slept, [], "it waited before giving up for no reason")
+
+    def test_the_message_says_a_new_key_will_not_help(self):
+        # the obvious next move is to rotate the key, and it does nothing for
+        # an account-level block — saying so saves a wasted round trip
+        c, _log, _slept = self._client_with(429, self.DISABLED)
+        with self.assertRaises(RuntimeError) as caught:
+            c.page("TICKERS")
+        msg = str(caught.exception)
+        self.assertIn("ACCOUNT", msg)
+        self.assertIn("new API key does not", msg)
+
+    def test_an_ordinary_speed_limit_is_still_retried(self):
+        c, log, slept = self._client_with(429, self.SPEED)
+        with self.assertRaises(RuntimeError):
+            c.page("TICKERS")
+        self.assertEqual(len(log), 3, "a transient limit should be waited out")
+        self.assertEqual(slept, [20, 40])
+
+    def test_the_predicate_reads_the_code_and_the_prose(self):
+        self.assertTrue(sharadar._account_disabled('{"code":"QELx06"}'))
+        self.assertTrue(sharadar._account_disabled(
+            "your account has temporarily been disabled"))
+        self.assertTrue(sharadar._account_disabled("ACCOUNT HAS BEEN DISABLED"))
+        self.assertFalse(sharadar._account_disabled("daily speed limit"))
+        self.assertFalse(sharadar._account_disabled(""))
+        self.assertFalse(sharadar._account_disabled(None))
+
+    def test_the_key_is_not_in_the_message(self):
+        c, _log, _slept = self._client_with(
+            429, self.DISABLED.replace("disabled",
+                                       "disabled TESTKEY-0123456789"))
+        with self.assertRaises(RuntimeError) as caught:
+            c.page("TICKERS")
+        self.assertNotIn("TESTKEY-0123456789", str(caught.exception))
+
+
 class AssumptionTests(unittest.TestCase):
     """Every assumption about the service is asserted, not hoped for.
 
