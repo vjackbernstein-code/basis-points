@@ -113,6 +113,97 @@ class LicenceAndSecrecyTests(unittest.TestCase):
                              f"{name} imports the backtest data module")
 
 
+class KeySourceTests(unittest.TestCase):
+    """Where the key comes from, and refusing the placeholder.
+
+    These never touch the project's real .env: they point the loader at a
+    temporary file. A test that read the live file would both depend on
+    whether a key happens to be pasted and risk putting it in output.
+    """
+
+    def setUp(self):
+        self.dir = Path(tempfile.mkdtemp())
+        self._real_env_file = sharadar.ENV_FILE
+        sharadar.ENV_FILE = self.dir / ".env"
+
+    def tearDown(self):
+        sharadar.ENV_FILE = self._real_env_file
+
+    def _write(self, text):
+        sharadar.ENV_FILE.write_text(text, encoding="utf-8")
+
+    def test_a_plain_assignment_is_read(self):
+        self._write("NASDAQ_DATA_LINK_API_KEY=abc123\n")
+        self.assertEqual(
+            sharadar._from_env_file("NASDAQ_DATA_LINK_API_KEY"), "abc123")
+
+    def test_comments_and_blank_lines_are_ignored(self):
+        self._write("# a comment\n\n  \nNASDAQ_DATA_LINK_API_KEY=abc123\n")
+        self.assertEqual(
+            sharadar._from_env_file("NASDAQ_DATA_LINK_API_KEY"), "abc123")
+
+    def test_quotes_and_surrounding_space_are_stripped(self):
+        for raw in ('"abc123"', "'abc123'", "  abc123  "):
+            self._write(f"NASDAQ_DATA_LINK_API_KEY={raw}\n")
+            self.assertEqual(
+                sharadar._from_env_file("NASDAQ_DATA_LINK_API_KEY"), "abc123",
+                f"{raw!r} was not read cleanly")
+
+    def test_another_key_in_the_same_file_is_not_confused_for_it(self):
+        self._write("FINNHUB_API_KEY=wrongone\n"
+                    "NASDAQ_DATA_LINK_API_KEY=rightone\n")
+        self.assertEqual(
+            sharadar._from_env_file("NASDAQ_DATA_LINK_API_KEY"), "rightone")
+
+    def test_an_absent_file_is_not_an_error(self):
+        self.assertIsNone(
+            sharadar._from_env_file("NASDAQ_DATA_LINK_API_KEY",
+                                    self.dir / "nope.env"))
+
+    def test_the_loader_does_not_alter_the_process_environment(self):
+        # reading a file for one key must not quietly reconfigure everything
+        # else running in this process
+        import os
+        self._write("SOME_OTHER_THING=xyz\n")
+        sharadar._from_env_file("SOME_OTHER_THING")
+        self.assertNotIn("SOME_OTHER_THING", os.environ)
+
+    def test_placeholder_text_counts_as_no_key(self):
+        # the shipped .env holds a placeholder; sending it to the service
+        # returns an authentication error, which reads like a broken
+        # subscription rather than like "you have not pasted it yet"
+        for ph in ("PASTE_YOUR_KEY_HERE", "your_key_here", "<your key here>",
+                   "changeme", "", "   ", "TODO"):
+            self.assertTrue(sharadar._is_placeholder(ph), repr(ph))
+
+    def test_a_real_looking_key_is_not_mistaken_for_a_placeholder(self):
+        for real in ("xY3k9QpLm2", "abc123def456", "A1b2C3d4E5f6G7h8"):
+            self.assertFalse(sharadar._is_placeholder(real), repr(real))
+
+    def test_a_still_unfilled_slot_is_distinguished_from_having_none(self):
+        self._write("NASDAQ_DATA_LINK_API_KEY=PASTE_YOUR_KEY_HERE\n")
+        real_file = sharadar._read_key_file
+        real_env = sharadar.os.environ.get
+        try:
+            sharadar._read_key_file = lambda: None
+            sharadar.os.environ = dict(sharadar.os.environ)
+            sharadar.os.environ.pop("NASDAQ_DATA_LINK_API_KEY", None)
+            self.assertIsNone(sharadar.read_key())
+            self.assertTrue(sharadar.key_waiting_to_be_filled_in())
+        finally:
+            sharadar._read_key_file = real_file
+            import os as _os
+            sharadar.os = _os
+
+    def test_the_env_file_sits_where_git_ignores_it(self):
+        import subprocess
+        r = subprocess.run(["git", "-C", str(ROOT), "check-ignore", ".env"],
+                           capture_output=True, text=True)
+        self.assertEqual(r.returncode, 0,
+                         ".env is NOT ignored — a key could be committed to a "
+                         "public repository")
+
+
 # ------------------------------------------------------------- the client ----
 
 class PagingTests(unittest.TestCase):

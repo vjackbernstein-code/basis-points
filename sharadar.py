@@ -104,15 +104,80 @@ TABLES = {
 
 # ------------------------------------------------------------------ key ------
 
-def read_key():
-    """The key, from the environment or a git-ignored file. Never printed."""
-    key = os.environ.get(KEY_ENV, "").strip()
-    if key:
-        return key
-    path = BASE / "data" / KEY_FILE
-    if path.exists():
-        return path.read_text(encoding="utf-8").strip()
+ENV_FILE = BASE / ".env"
+
+# Text that means "nobody has filled this in yet". The .env ships with a
+# placeholder, and sending one to the service would come back as an
+# authentication error — which reads like a broken subscription rather than
+# like the actual problem, so it is caught here instead.
+PLACEHOLDERS = {
+    "your_key_here", "paste_your_key_here", "paste-your-key-here",
+    "changeme", "change_me", "xxx", "xxxxx", "todo", "none", "null",
+}
+
+
+def _is_placeholder(value):
+    # separators are normalised because the same placeholder gets written
+    # "YOUR_KEY_HERE", "your key here" and "<your-key-here>" depending on who
+    # typed it, and all three mean the same thing
+    v = (value or "").strip().strip("<>").strip("\"'").strip().lower()
+    v = v.replace(" ", "_").replace("-", "_")
+    return (not v) or v in PLACEHOLDERS
+
+
+def _from_env_file(name, path=None):
+    """Read NAME=value out of the git-ignored .env at the project root.
+
+    A deliberately small parser: `KEY=value`, `#` comments, optional quotes,
+    nothing else. It does NOT put anything into os.environ — a file read for
+    one key should not quietly change the environment of everything else
+    running in this process."""
+    try:
+        text = (path or ENV_FILE).read_text(encoding="utf-8")
+    except OSError:
+        return None
+    for line in text.splitlines():
+        line = line.strip()
+        if not line or line.startswith("#") or "=" not in line:
+            continue
+        k, _, v = line.partition("=")
+        if k.strip() != name:
+            continue
+        return v.strip().strip('"').strip("'") or None
     return None
+
+
+def read_key():
+    """The key, from the environment, a .env, or a key file. Never printed.
+
+    Checked in that order so a value exported in a shell wins over a file, and
+    placeholder text counts as no key at all."""
+    for candidate in (os.environ.get(KEY_ENV, ""),
+                      _from_env_file(KEY_ENV),
+                      _read_key_file()):
+        if candidate and not _is_placeholder(candidate):
+            return candidate.strip()
+    return None
+
+
+def _read_key_file():
+    path = BASE / "data" / KEY_FILE
+    try:
+        return path.read_text(encoding="utf-8").strip()
+    except OSError:
+        return None
+
+
+def key_waiting_to_be_filled_in():
+    """True when a key slot exists but still holds placeholder text.
+
+    Worth distinguishing from "no key anywhere": one means you have not
+    subscribed, the other means you have not pasted."""
+    for candidate in (os.environ.get(KEY_ENV, ""),
+                      _from_env_file(KEY_ENV), _read_key_file()):
+        if candidate is not None and candidate != "" and _is_placeholder(candidate):
+            return True
+    return False
 
 
 def scrub(msg):
@@ -378,13 +443,19 @@ def survivorship_check(path=None):
 
 def _need_client():
     key = read_key()
-    if not key:
+    if key:
+        return Client(key)
+    if key_waiting_to_be_filled_in():
+        print(f"The key slot still holds placeholder text.\n"
+              f"  Open .env and replace the placeholder after "
+              f"{KEY_ENV}= with the real key, then run this again.\n"
+              f"  Nothing was sent to the service.", file=sys.stderr)
+    else:
         print(f"No Sharadar key found.\n"
-              f"  Put it in the environment as {KEY_ENV}, or in a file at "
-              f"data/{KEY_FILE} (git-ignored).\n"
+              f"  Put it in .env as {KEY_ENV}=..., export it in your shell, "
+              f"or write it to data/{KEY_FILE}. All three are git-ignored.\n"
               f"  Do not paste it into a chat or a commit.", file=sys.stderr)
-        sys.exit(2)
-    return Client(key)
+    sys.exit(2)
 
 
 def main(argv=None):
