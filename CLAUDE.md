@@ -115,10 +115,18 @@ test asserts that, so a slow download cannot reach the published site.
 - **Check survivorship rather than assuming it.** Not dropping failed
   companies is the whole reason this source was paid for, so a ticker spine
   with no delisted names is a reason to stop, not a detail.
-- Run `python3 sharadar.py --probe` first. Nothing in that module's request or
-  response shapes has been verified against the live service; the probe
-  settles it and every assumption is asserted with a message naming what it
-  expected.
+- **The API is not the way in. Use the local database.** The bulk tables are
+  already downloaded and loaded into SQLite; `SHARADAR_DB` in `.env` points at
+  it, it is opened READ-ONLY (the file belongs to another project, which may
+  be using it), and it is never copied. 45M price rows from 1997, 3.2M
+  fundamental rows with filing dates from 1990, daily market caps. The REST
+  API adds nothing a backtest needs, and the account is blocked anyway —
+  429 code QELx06, an account-level block that a new key does not clear.
+- **Run `python3 sharadar.py --verify-db` and believe it over any assumption.**
+  It proves the filing-date column really holds filing dates (the loader
+  renamed `datekey` to `date`) and that the spine keeps delisted companies.
+  Re-run it after any reload: both properties can be broken later, and
+  neither failure shows up in a result.
 - Results stay off the public site until the reviewer has audited them.
 
 ## The weekly reviewer

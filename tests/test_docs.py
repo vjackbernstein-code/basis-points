@@ -42,8 +42,11 @@ MODULES = (portfolio, smallcap, decision, pipeline, sharadar)
 
 # Names that are environment variables, not module constants. Anything else
 # the README puts in backticks in capitals is expected to be a real constant.
+# Environment variable names, not module constants. Each is the VALUE of a
+# constant (KEY_ENV, DB_ENV), so the name itself resolves to nothing — which
+# is correct, and this list is why the check does not trip over it.
 NOT_CONSTANTS = {"FINNHUB_API_KEY", "FRED_API_KEY",
-                 "NASDAQ_DATA_LINK_API_KEY"}
+                 "NASDAQ_DATA_LINK_API_KEY", "SHARADAR_DB"}
 
 README = (ROOT / "README.md").read_text(encoding="utf-8")
 

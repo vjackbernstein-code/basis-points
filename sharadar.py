@@ -479,6 +479,130 @@ def survivorship_check(path=None):
             "share_delisted": round(dead / total, 4) if total else None}
 
 
+# ------------------------------------------------------- local database -----
+#
+# The bulk tables, already downloaded and loaded into SQLite by another of the
+# owner's projects, are a complete substitute for the API: 45M daily price
+# rows from 1997, 3.2M fundamental rows with filing dates from 1990, and daily
+# market caps, which is what this screen's eligibility band needs. There is
+# nothing the REST endpoint could add that matters for a backtest, and the
+# account is blocked anyway.
+#
+# It is opened READ-ONLY and never copied. One licensed 16GB dataset in one
+# place is the whole of the licence story; a second copy inside a PUBLIC
+# repository is how that story ends badly.
+
+DB_ENV = "SHARADAR_DB"
+DEFAULT_DB = CACHE / "sharadar.db"
+
+# The column Sharadar calls `datekey` — the date a figure was actually filed,
+# and so the first date it could honestly be used. The loader that built this
+# database named it `date`, which is the sort of rename that quietly turns a
+# point-in-time dataset into a lookahead one, so the name is resolved rather
+# than assumed and `verify_store` proves whichever it finds really is a filing
+# date before anything trusts it.
+FILED_COLUMNS = ("datekey", "date")
+
+
+def db_path():
+    """Where the local database is, from .env, the environment, or default."""
+    for candidate in (os.environ.get(DB_ENV, ""), _from_env_file(DB_ENV)):
+        if candidate and candidate.strip():
+            return Path(candidate.strip()).expanduser()
+    return DEFAULT_DB
+
+
+def open_store(path=None):
+    """A read-only connection. Read-only is not a convention here: this file
+    belongs to another project, which may be using it."""
+    import sqlite3
+    path = Path(path) if path else db_path()
+    if not path.exists():
+        raise RuntimeError(
+            f"no local Sharadar database at {path}. Point {DB_ENV} at one in "
+            f".env, or download the tables with --bulk.")
+    con = sqlite3.connect(f"file:{path}?mode=ro", uri=True)
+    con.row_factory = sqlite3.Row
+    return con
+
+
+def filed_column(con, table="fundamentals"):
+    """Whichever column holds the filing date, by name."""
+    cols = {r[1] for r in con.execute(f'PRAGMA table_info("{table}")')}
+    for name in FILED_COLUMNS:
+        if name in cols:
+            return name
+    raise RuntimeError(
+        f"{table} has no filing-date column (looked for "
+        f"{', '.join(FILED_COLUMNS)}). Without one, every figure would be "
+        f"used from the period it describes rather than the date it became "
+        f"public, which is lookahead and makes a backtest worthless.")
+
+
+def verify_store(con, sample_from="2015-01-01"):
+    """Prove the two claims a backtest stands on, before it is built.
+
+    Neither is checked once and assumed forever, because both can be broken by
+    a reload, a schema change or a well-meaning rename, and neither failure is
+    visible in a result — a backtest on survivorship-biased or lookahead data
+    does not crash, it just looks good."""
+    out = {}
+    filed = filed_column(con)
+    out["filed_column"] = filed
+
+    # 1. is that column really a FILING date, or the period it describes?
+    row = con.execute(f"""
+        SELECT COUNT(*) AS n,
+               SUM(CASE WHEN {filed} = reportperiod THEN 1 ELSE 0 END) AS same,
+               AVG(julianday({filed}) - julianday(reportperiod)) AS mean_gap
+        FROM fundamentals
+        WHERE dimension='ARQ' AND reportperiod >= ?
+    """, (sample_from,)).fetchone()
+    n, same, gap = row["n"], row["same"] or 0, row["mean_gap"]
+    out["filing_rows"] = n
+    out["filed_equals_period"] = same
+    out["mean_filing_lag_days"] = round(gap, 1) if gap is not None else None
+    # a real filing lag is weeks; a column that merely copies the period end
+    # would sit at zero
+    out["point_in_time"] = bool(n and gap and gap > 5 and same < 0.01 * n)
+
+    # 2. does the spine keep companies that no longer exist?
+    t = con.execute(
+        "SELECT COUNT(*) AS n, SUM(CASE WHEN isdelisted='Y' THEN 1 ELSE 0 END)"
+        " AS dead FROM tickers WHERE category LIKE '%Common Stock%'"
+    ).fetchone()
+    out["common_stocks"] = t["n"]
+    out["delisted"] = t["dead"] or 0
+    out["survivorship_free"] = bool(t["n"] and (t["dead"] or 0) > 0.2 * t["n"])
+
+    cov = con.execute("SELECT MIN(date) AS lo, MAX(date) AS hi "
+                      "FROM stocks").fetchone()
+    out["prices_from"], out["prices_to"] = cov["lo"], cov["hi"]
+    out["ok"] = out["point_in_time"] and out["survivorship_free"]
+    return out
+
+
+def fundamentals_asof(con, ticker, asof, dimension="ARQ", filed=None):
+    """The most recent figures that were PUBLIC on `asof`. None if there were
+    none.
+
+    This is the function the whole backtest's honesty rests on, so what it
+    does is worth stating exactly: of the rows for this company whose FILING
+    date is on or before `asof`, take the one filed most recently. That is
+    what a person reading filings on that day would have had in front of them.
+
+    It handles restatements correctly as a consequence rather than as a
+    special case. A quarter that was filed and later refiled appears twice; on
+    a date between the two, only the original has been filed, so the original
+    is what comes back — which is the version anyone acting on that date would
+    have acted on, even though we now know it was wrong."""
+    filed = filed or filed_column(con)
+    return con.execute(
+        f"SELECT * FROM fundamentals WHERE ticker=? AND dimension=? "
+        f"AND {filed} <= ? ORDER BY {filed} DESC, reportperiod DESC LIMIT 1",
+        (ticker, dimension, asof)).fetchone()
+
+
 # ------------------------------------------------------------------ cli ------
 
 def _need_client():
@@ -508,6 +632,9 @@ def main(argv=None):
                     help=f"whole-table export; one of {', '.join(TABLES)}")
     ap.add_argument("--status", action="store_true",
                     help="what is cached and how old it is")
+    ap.add_argument("--verify-db", action="store_true",
+                    help="prove the local database is survivorship-free and "
+                         "point-in-time before trusting it")
     args = ap.parse_args(argv)
 
     if args.status:
@@ -527,6 +654,32 @@ def main(argv=None):
                   f"tickers are delisted "
                   f"({100 * (chk['share_delisted'] or 0):.1f}%)")
         return 0
+
+    if args.verify_db:
+        try:
+            con = open_store()
+        except RuntimeError as e:
+            print(f"  {e}", file=sys.stderr)
+            return 2
+        r = verify_store(con)
+        print(f"  database        {db_path()}")
+        print(f"  prices          {r['prices_from']} -> {r['prices_to']}")
+        print(f"  filing date in  '{r['filed_column']}' column")
+        print(f"  filing lag      mean {r['mean_filing_lag_days']} days over "
+              f"{r['filing_rows']:,} quarters "
+              f"({r['filed_equals_period']} equal to the period end)")
+        print(f"  common stocks   {r['common_stocks']:,}, of which "
+              f"{r['delisted']:,} delisted "
+              f"({100 * r['delisted'] / max(r['common_stocks'], 1):.0f}%)")
+        print()
+        print(f"  point-in-time     {'YES' if r['point_in_time'] else 'NO'}")
+        print(f"  survivorship-free {'YES' if r['survivorship_free'] else 'NO'}")
+        if not r["ok"]:
+            print("\n  NOT usable for a backtest. A backtest on data failing "
+                  "either test does not crash — it just looks good.",
+                  file=sys.stderr)
+        con.close()
+        return 0 if r["ok"] else 1
 
     if args.probe:
         rep = probe(_need_client())

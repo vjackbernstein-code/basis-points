@@ -11,6 +11,7 @@ Run:  python3 -m unittest discover tests
 """
 
 import json
+import shutil
 import sys
 import tempfile
 import unittest
@@ -464,6 +465,194 @@ class ProbeTests(unittest.TestCase):
         self.assertTrue(rep["TICKERS"]["ok"])
         self.assertFalse(rep["SEP"]["ok"])
         self.assertIn("error", rep["SEP"])
+
+
+class LocalStoreTests(unittest.TestCase):
+    """Reading the bulk tables out of SQLite instead of calling the API.
+
+    Built against a tiny synthetic database with the same shape as the real
+    one, so these run anywhere and do not depend on a 16GB file belonging to
+    another project.
+    """
+
+    def setUp(self):
+        import sqlite3
+        self.dir = Path(tempfile.mkdtemp())
+        self.path = self.dir / "s.db"
+        self.con = sqlite3.connect(self.path)
+        self.con.executescript("""
+            CREATE TABLE fundamentals (ticker TEXT, dimension TEXT,
+                reportperiod TEXT, calendardate TEXT, date TEXT,
+                revenue REAL);
+            CREATE TABLE tickers (ticker TEXT, category TEXT,
+                isdelisted TEXT, lastpricedate TEXT);
+            CREATE TABLE stocks (ticker TEXT, date TEXT, closeadj REAL);
+        """)
+        self.con.commit()
+
+    def tearDown(self):
+        self.con.close()
+        shutil.rmtree(self.dir, ignore_errors=True)
+
+    def _ro(self):
+        return sharadar.open_store(self.path)
+
+    def _fund(self, rows):
+        self.con.executemany(
+            "INSERT INTO fundamentals VALUES (?,?,?,?,?,?)", rows)
+        self.con.commit()
+
+    # ---- the point-in-time rule ----
+
+    QUARTERS = [
+        # ticker, dim, reportperiod, calendardate, FILED, revenue
+        ("AAA", "ARQ", "2024-03-31", "2024-03-31", "2024-05-13", 100.0),
+        ("AAA", "ARQ", "2024-03-31", "2024-03-31", "2024-07-03",  90.0),  # restated
+        ("AAA", "ARQ", "2024-06-30", "2024-06-30", "2024-08-13", 120.0),
+    ]
+
+    def test_nothing_is_known_before_the_first_filing(self):
+        self._fund(self.QUARTERS)
+        con = self._ro()
+        self.assertIsNone(
+            sharadar.fundamentals_asof(con, "AAA", "2024-04-30"))
+        con.close()
+
+    def test_a_figure_is_usable_from_the_day_it_was_filed(self):
+        self._fund(self.QUARTERS)
+        con = self._ro()
+        row = sharadar.fundamentals_asof(con, "AAA", "2024-05-13")
+        self.assertIsNotNone(row, "a filing is public on the day it is filed")
+        self.assertEqual(row["revenue"], 100.0)
+        con.close()
+
+    def test_a_figure_is_not_usable_the_day_before_it_was_filed(self):
+        # the whole defence against lookahead is this inequality
+        self._fund(self.QUARTERS)
+        con = self._ro()
+        self.assertIsNone(
+            sharadar.fundamentals_asof(con, "AAA", "2024-05-12"))
+        con.close()
+
+    def test_between_a_filing_and_its_restatement_the_ORIGINAL_is_returned(self):
+        # what someone acting that day would have acted on, even though we now
+        # know it was wrong. Returning the corrected figure here is lookahead
+        # wearing a very convincing disguise.
+        self._fund(self.QUARTERS)
+        con = self._ro()
+        row = sharadar.fundamentals_asof(con, "AAA", "2024-06-15")
+        self.assertEqual(row["revenue"], 100.0)
+        con.close()
+
+    def test_after_a_restatement_the_corrected_figure_is_returned(self):
+        self._fund(self.QUARTERS)
+        con = self._ro()
+        row = sharadar.fundamentals_asof(con, "AAA", "2024-07-20")
+        self.assertEqual(row["revenue"], 90.0)
+        con.close()
+
+    def test_the_latest_quarter_filed_wins_once_it_is_out(self):
+        self._fund(self.QUARTERS)
+        con = self._ro()
+        row = sharadar.fundamentals_asof(con, "AAA", "2024-09-01")
+        self.assertEqual(row["reportperiod"], "2024-06-30")
+        con.close()
+
+    def test_two_filings_on_one_day_prefer_the_later_quarter(self):
+        self._fund([
+            ("BBB", "ARQ", "2024-03-31", "2024-03-31", "2024-08-13", 1.0),
+            ("BBB", "ARQ", "2024-06-30", "2024-06-30", "2024-08-13", 2.0),
+        ])
+        con = self._ro()
+        row = sharadar.fundamentals_asof(con, "BBB", "2024-09-01")
+        self.assertEqual(row["reportperiod"], "2024-06-30")
+        con.close()
+
+    def test_another_company_is_never_mixed_in(self):
+        self._fund(self.QUARTERS + [
+            ("ZZZ", "ARQ", "2024-06-30", "2024-06-30", "2024-07-01", 999.0)])
+        con = self._ro()
+        row = sharadar.fundamentals_asof(con, "AAA", "2024-07-20")
+        self.assertEqual(row["ticker"], "AAA")
+        con.close()
+
+    # ---- the verification ----
+
+    def _spine(self, rows):
+        self.con.executemany("INSERT INTO tickers VALUES (?,?,?,?)", rows)
+        self.con.executemany("INSERT INTO stocks VALUES (?,?,?)",
+                             [("AAA", "2024-01-02", 10.0)])
+        self.con.commit()
+
+    def test_a_good_database_verifies(self):
+        self._fund(self.QUARTERS)
+        self._spine([("AAA", "Domestic Common Stock", "N", "2026-10-05"),
+                     ("DEAD1", "Domestic Common Stock", "Y", "2009-01-01"),
+                     ("DEAD2", "Domestic Common Stock", "Y", "2012-01-01")])
+        con = self._ro()
+        r = sharadar.verify_store(con, sample_from="2000-01-01")
+        self.assertTrue(r["point_in_time"], r)
+        self.assertTrue(r["survivorship_free"], r)
+        self.assertTrue(r["ok"])
+        con.close()
+
+    def test_a_filing_date_that_merely_copies_the_period_end_fails(self):
+        # the exact way a point-in-time dataset silently becomes a lookahead
+        # one: a loader that maps the wrong source column
+        self._fund([("AAA", "ARQ", "2024-03-31", "2024-03-31", "2024-03-31",
+                     100.0)])
+        self._spine([("AAA", "Domestic Common Stock", "N", "2026-10-05"),
+                     ("DEAD1", "Domestic Common Stock", "Y", "2009-01-01")])
+        con = self._ro()
+        r = sharadar.verify_store(con, sample_from="2000-01-01")
+        self.assertFalse(r["point_in_time"])
+        self.assertFalse(r["ok"])
+        con.close()
+
+    def test_a_spine_without_the_dead_fails(self):
+        self._fund(self.QUARTERS)
+        self._spine([("AAA", "Domestic Common Stock", "N", "2026-10-05"),
+                     ("BBB", "Domestic Common Stock", "N", "2026-10-05")])
+        con = self._ro()
+        r = sharadar.verify_store(con, sample_from="2000-01-01")
+        self.assertFalse(r["survivorship_free"])
+        self.assertFalse(r["ok"])
+        con.close()
+
+    def test_a_missing_filing_date_column_is_refused_by_name(self):
+        import sqlite3
+        other = self.dir / "bad.db"
+        c = sqlite3.connect(other)
+        c.executescript("CREATE TABLE fundamentals (ticker TEXT, "
+                        "reportperiod TEXT, revenue REAL);")
+        c.commit(); c.close()
+        con = sharadar.open_store(other)
+        with self.assertRaises(RuntimeError) as caught:
+            sharadar.filed_column(con)
+        self.assertIn("lookahead", str(caught.exception))
+        con.close()
+
+    def test_the_column_name_is_resolved_not_assumed(self):
+        # the real database calls it `date`; Sharadar calls it `datekey`
+        self._fund(self.QUARTERS)
+        con = self._ro()
+        self.assertEqual(sharadar.filed_column(con), "date")
+        con.close()
+
+    # ---- read-only, because the file belongs to another project ----
+
+    def test_the_connection_cannot_write(self):
+        import sqlite3
+        self._fund(self.QUARTERS)
+        con = self._ro()
+        with self.assertRaises(sqlite3.OperationalError):
+            con.execute("DELETE FROM fundamentals")
+        con.close()
+
+    def test_an_absent_database_says_where_to_point_it(self):
+        with self.assertRaises(RuntimeError) as caught:
+            sharadar.open_store(self.dir / "nope.db")
+        self.assertIn(sharadar.DB_ENV, str(caught.exception))
 
 
 class CliTests(unittest.TestCase):

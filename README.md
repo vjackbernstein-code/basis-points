@@ -208,11 +208,50 @@ carries `datekey`, the date each figure was actually filed. **Only rows whose
 shortcut and no version of this that is close enough.
 
 ```bash
-python3 sharadar.py --probe      # does the key work, and are the fields there?
-python3 sharadar.py --tickers    # the survivorship spine (small)
-python3 sharadar.py --bulk SEP   # the whole price history (large)
-python3 sharadar.py --status      # what is cached, how old, how many delisted
+python3 sharadar.py --verify-db  # prove a local database is usable (preferred)
+python3 sharadar.py --probe      # does the API key work, and are the fields there?
+python3 sharadar.py --tickers    # the survivorship spine, over the API
+python3 sharadar.py --bulk SEP   # the whole price history, over the API
+python3 sharadar.py --status     # what is cached, how old, how many delisted
 ```
+
+### Reading the bulk tables locally instead of calling the API
+
+The API is the slow way in and is not needed. The bulk tables, already
+downloaded and loaded into SQLite, are a complete substitute: 45M daily price
+rows from 1997, 3.2M fundamental rows with filing dates from 1990, and daily
+market caps — which is what this screen's eligibility band needs and what
+price history alone cannot give. Point `SHARADAR_DB` at the database in
+`.env`.
+
+It is opened **read-only**, and never copied. One licensed 16GB dataset in one
+place is the whole of the licence story; a second copy inside a public
+repository is how that story ends badly.
+
+`--verify-db` proves the two claims a backtest stands on, and it is not a
+one-off: both can be broken later by a reload, a schema change or a
+well-meaning rename, and **neither failure shows up in a result.** A backtest
+on survivorship-biased or lookahead data does not crash. It just looks good.
+
+- **Is the filing-date column really a filing date?** The loader that built
+  this database renamed Sharadar's `datekey` to `date`, which is exactly the
+  sort of rename that turns a point-in-time dataset into a lookahead one, so
+  the name is resolved rather than assumed and then tested: a real filing lag
+  is weeks (51.8 days mean over 253,298 quarters here, equal to the period end
+  in 5 of them), while a column that merely copies the period end sits at zero.
+- **Does the spine keep the dead?** 32,380 of 49,015 common stocks are
+  delisted, and they keep their prices — Admiralty Bancorp still has 1,090
+  daily rows running to its last day in January 2003.
+
+`fundamentals_asof()` is the function the whole exercise's honesty rests on.
+Of the rows for a company whose filing date is on or before the date being
+scored, it takes the one filed most recently — what someone reading filings
+that day would have had in front of them. Restatements fall out correctly as a
+consequence rather than as a special case: a quarter filed and later refiled
+appears twice, and on a date between the two it returns the **original**, which
+is what anyone acting then would have acted on, even though we now know it was
+wrong. Returning the corrected figure there is lookahead in a convincing
+disguise, and there is a test for it.
 
 Run `--probe` first and before trusting anything else. None of the request or
 response shapes in that module have been verified against the live service —
