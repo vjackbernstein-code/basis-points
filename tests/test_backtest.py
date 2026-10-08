@@ -110,6 +110,11 @@ class SurvivorshipTests(unittest.TestCase):
     price, and leaving it out of an average silently keeps the survivors and
     drops the disasters. That is the single most flattering bug available
     here, so it is tested from both sides.
+
+    The measurement now reports TWO treatments of a delisting, because the
+    choice between them decides the sign of the whole backtest — about five
+    and a half points a year, resting on 0.47% of the measurements. Picking
+    one quietly would be presenting an assumption as a finding.
     """
 
     def _prices(self, spec):
@@ -118,24 +123,62 @@ class SurvivorshipTests(unittest.TestCase):
 
     def test_a_normal_pair_of_prices_gives_the_return(self):
         px = self._prices({"AAA": [("2020-01-06", 10.0), ("2020-01-13", 11.0)]})
-        r, dropped, dl = B._basket_return(px, {}, ["AAA"],
-                                          "2020-01-06", "2020-01-13")
-        self.assertAlmostEqual(r, 10.0, places=6)
-        self.assertEqual((dropped, dl), (0, 0))
+        got = B._basket_return(px, {}, ["AAA"], "2020-01-06", "2020-01-13")
+        self.assertAlmostEqual(got["assumed"], 10.0, places=6)
+        self.assertAlmostEqual(got["last_px"], 10.0, places=6)
+        self.assertEqual((got["dropped"], got["delisted"]), (0, 0))
 
-    def test_a_company_that_was_delisted_is_booked_as_a_loss(self):
-        # it had a start price and then stopped existing. Dropping it is the
-        # flattery; booking it at the same assumed loss the live system uses
-        # keeps the two measurements comparable.
+    def test_both_treatments_are_always_reported(self):
+        # the whole point: neither is allowed to be the silent default
+        px = self._prices({"AAA": [("2020-01-06", 10.0), ("2020-01-13", 11.0)]})
+        got = B._basket_return(px, {}, ["AAA"], "2020-01-06", "2020-01-13")
+        for key in ("assumed", "last_px", "dropped", "delisted"):
+            self.assertIn(key, got)
+
+    def test_a_delisting_is_booked_at_the_loss_under_the_assumed_treatment(self):
+        """The ordering bug the audit found.
+
+        A company that stops trading still has a final print. Checking prices
+        before checking delisting meant the ordinary path found that print and
+        measured the name at its last quote — which is not an exit anyone
+        could have taken, and turns a two-day return into a four-week one.
+        """
         px = self._prices({"AAA": [("2020-01-06", 10.0), ("2020-01-13", 11.0)],
-                           "DEAD": [("2020-01-06", 10.0)]})
+                           "DEAD": [("2020-01-06", 10.0),
+                                    ("2020-01-08", 9.0)]})
         spine = {"DEAD": {"delisted": True, "last_price": "2020-01-08"}}
-        r, dropped, dl = B._basket_return(px, spine, ["AAA", "DEAD"],
-                                          "2020-01-06", "2020-01-13")
-        self.assertEqual(dl, 1)
-        self.assertEqual(dropped, 0)
+        got = B._basket_return(px, spine, ["AAA", "DEAD"],
+                               "2020-01-06", "2020-01-13")
+        self.assertEqual(got["delisted"], 1, "the delisting rule did not fire")
+        self.assertEqual(got["dropped"], 0)
         expected = (10.0 + -smallcap.DELIST_ASSUMED_LOSS * 100) / 2
-        self.assertAlmostEqual(r, expected, places=6)
+        self.assertAlmostEqual(got["assumed"], expected, places=6)
+
+    def test_the_other_treatment_uses_that_final_print(self):
+        px = self._prices({"AAA": [("2020-01-06", 10.0), ("2020-01-13", 11.0)],
+                           "DEAD": [("2020-01-06", 10.0),
+                                    ("2020-01-08", 9.0)]})
+        spine = {"DEAD": {"delisted": True, "last_price": "2020-01-08"}}
+        got = B._basket_return(px, spine, ["AAA", "DEAD"],
+                               "2020-01-06", "2020-01-13")
+        self.assertAlmostEqual(got["last_px"], (10.0 + -10.0) / 2, places=6)
+
+    def test_the_two_treatments_differ_and_the_assumption_is_the_harsher(self):
+        # states the direction, so a later reader knows which way the choice
+        # cuts without having to work it out
+        px = self._prices({"DEAD": [("2020-01-06", 10.0), ("2020-01-08", 9.0)]})
+        spine = {"DEAD": {"delisted": True, "last_price": "2020-01-08"}}
+        got = B._basket_return(px, spine, ["DEAD"], "2020-01-06", "2020-01-13")
+        self.assertLess(got["assumed"], got["last_px"])
+
+    def test_with_no_final_print_both_treatments_assume_the_loss(self):
+        # nothing else is available, so there is nothing to choose between
+        px = self._prices({"DEAD": [("2020-01-06", 10.0)]})
+        spine = {"DEAD": {"delisted": True, "last_price": "2020-01-06"}}
+        got = B._basket_return(px, spine, ["DEAD"], "2020-01-06", "2020-01-13")
+        loss = -smallcap.DELIST_ASSUMED_LOSS * 100
+        self.assertAlmostEqual(got["assumed"], loss, places=6)
+        self.assertAlmostEqual(got["last_px"], loss, places=6)
 
     def test_the_delisting_loss_is_the_live_systems_number(self):
         # if these two ever diverge, a backtest reading and a live reading
@@ -143,73 +186,50 @@ class SurvivorshipTests(unittest.TestCase):
         self.assertEqual(smallcap.DELIST_ASSUMED_LOSS, 0.60)
 
     def test_dropping_a_failure_would_have_flattered_the_result(self):
-        # states the size of the bug this guards against, so nobody later
+        # the size of the bug this guards against, so nobody later
         # "simplifies" it away
         px = self._prices({"AAA": [("2020-01-06", 10.0), ("2020-01-13", 11.0)],
                            "DEAD": [("2020-01-06", 10.0)]})
-        spine = {"DEAD": {"delisted": True, "last_price": "2020-01-08"}}
-        honest, _d, _l = B._basket_return(px, spine, ["AAA", "DEAD"],
-                                          "2020-01-06", "2020-01-13")
-        survivors_only, _d, _l = B._basket_return(px, spine, ["AAA"],
-                                                  "2020-01-06", "2020-01-13")
+        spine = {"DEAD": {"delisted": True, "last_price": "2020-01-06"}}
+        honest = B._basket_return(px, spine, ["AAA", "DEAD"],
+                                  "2020-01-06", "2020-01-13")["assumed"]
+        survivors_only = B._basket_return(px, spine, ["AAA"],
+                                          "2020-01-06",
+                                          "2020-01-13")["assumed"]
         self.assertGreater(survivors_only - honest, 30.0)
-
-    def test_a_delisted_name_is_booked_at_the_loss_even_though_it_has_a_print(self):
-        """The ordering bug the audit found.
-
-        A company that stops trading still has a final print. Checking prices
-        before checking delisting meant the ordinary path found that print and
-        measured the name at its last quoted price — which is not an exit
-        anyone could have taken, and turns a two-day return into a four-week
-        one. The live system books a vanished company at an assumed loss, so
-        this must too, or the two records stop being comparable.
-        """
-        px = self._prices({"AAA": [("2020-01-06", 10.0), ("2020-01-13", 11.0)],
-                           "DEAD": [("2020-01-06", 10.0),
-                                    ("2020-01-08", 9.5)]})
-        spine = {"DEAD": {"delisted": True, "last_price": "2020-01-08"}}
-        r, dropped, dl = B._basket_return(px, spine, ["AAA", "DEAD"],
-                                          "2020-01-06", "2020-01-13")
-        self.assertEqual(dl, 1, "the delisting rule did not fire")
-        self.assertEqual(dropped, 0)
-        expected = (10.0 + -smallcap.DELIST_ASSUMED_LOSS * 100) / 2
-        self.assertAlmostEqual(r, expected, places=6,
-                               msg="measured at its last print instead")
 
     def test_a_name_still_trading_at_the_end_is_not_booked_as_delisted(self):
         # delisted LATER than the window must not retroactively damn it
         px = self._prices({"AAA": [("2020-01-06", 10.0), ("2020-01-13", 11.0)]})
         spine = {"AAA": {"delisted": True, "last_price": "2021-06-01"}}
-        r, dropped, dl = B._basket_return(px, spine, ["AAA"],
-                                          "2020-01-06", "2020-01-13")
-        self.assertEqual((dropped, dl), (0, 0))
-        self.assertAlmostEqual(r, 10.0, places=6)
+        got = B._basket_return(px, spine, ["AAA"], "2020-01-06", "2020-01-13")
+        self.assertEqual((got["dropped"], got["delisted"]), (0, 0))
+        self.assertAlmostEqual(got["assumed"], 10.0, places=6)
 
     def test_a_name_merely_missing_a_print_is_counted_not_absorbed(self):
-        # still listed, no price: unknown rather than a 60% loss, but the
-        # count is reported so a quiet pile-up is visible
+        # still listed, no further price: unknown rather than a 60% loss, but
+        # counted so a quiet pile-up is visible
         px = self._prices({"AAA": [("2020-01-06", 10.0), ("2020-01-13", 11.0)],
                            "QUIET": [("2020-01-06", 10.0)]})
         spine = {"QUIET": {"delisted": False, "last_price": None}}
-        r, dropped, dl = B._basket_return(px, spine, ["AAA", "QUIET"],
-                                          "2020-01-06", "2020-01-13")
-        self.assertEqual((dropped, dl), (1, 0))
-        self.assertAlmostEqual(r, 10.0, places=6)
+        got = B._basket_return(px, spine, ["AAA", "QUIET"],
+                               "2020-01-06", "2020-01-13")
+        self.assertEqual((got["dropped"], got["delisted"]), (1, 0))
+        self.assertAlmostEqual(got["assumed"], 10.0, places=6)
 
     def test_a_basket_with_no_usable_names_returns_nothing(self):
-        r, _d, _l = B._basket_return({}, {}, ["AAA"], "2020-01-06",
-                                     "2020-01-13")
-        self.assertIsNone(r, "an empty basket must not read as 0%")
+        got = B._basket_return({}, {}, ["AAA"], "2020-01-06", "2020-01-13")
+        self.assertIsNone(got["assumed"], "an empty basket must not read as 0%")
+        self.assertIsNone(got["last_px"])
 
     def test_a_stale_start_price_is_not_reused_as_the_end_price(self):
-        # one print, used for both ends, would read as exactly 0% — a
-        # fabricated flat return rather than a missing one
+        # one print used for both ends would read as exactly 0% — a fabricated
+        # flat return rather than a missing one
         px = self._prices({"AAA": [("2020-01-06", 10.0)]})
         spine = {"AAA": {"delisted": False, "last_price": None}}
-        r, dropped, _l = B._basket_return(px, spine, ["AAA"],
-                                          "2020-01-06", "2020-01-13")
-        self.assertIsNone(r)
-        self.assertEqual(dropped, 1)
+        got = B._basket_return(px, spine, ["AAA"], "2020-01-06", "2020-01-13")
+        self.assertIsNone(got["assumed"])
+        self.assertEqual(got["dropped"], 1)
 
 
 class PointInTimeTests(unittest.TestCase):

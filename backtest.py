@@ -422,44 +422,58 @@ def _price_on_or_before(px, when):
 def _basket_return(prices, spine, tickers, start, end):
     """Equal-weighted return of a basket between two dates, in percent.
 
-    This is where survivorship bias comes back if it is going to. A name that
-    stops trading inside the window has no end price, and quietly leaving it
-    out of the average is exactly the flattery the whole exercise exists to
-    avoid — it removes the failures and keeps the survivors. A company that
-    was delisted and never traded again is booked at the same assumed loss the
-    live system books, so the two measurements mean the same thing. A name
-    merely missing a print is dropped, and dropped names are counted and
-    reported rather than absorbed."""
-    rets, dropped, delisted = [], 0, 0
+    Returns a dict with BOTH defensible treatments of a company that stops
+    trading inside the window, because the choice between them decides the
+    sign of the whole backtest and must not be hidden inside it:
+
+      "assumed"   a delisting is booked at the live system's
+                  DELIST_ASSUMED_LOSS, which is what the published record
+                  does with a company that disappears, so the two sets of
+                  numbers mean the same thing
+      "last_px"   a delisting is measured at the company's final traded
+                  price, which is real data rather than an assumption, but
+                  flatters the result: those shares halt and then vanish, so
+                  that print was not an exit anyone could have taken, and it
+                  measures a two-day return as though it were a four-week one
+
+    Over the full history the two differ by about five and a half points a
+    year on 0.47% of the measurements. Reporting only one of them would be
+    presenting an assumption as a finding, in whichever direction suited.
+
+    This is also where survivorship bias returns if it is going to. Quietly
+    leaving an unmeasurable name out of the average keeps the survivors and
+    drops the disasters, so dropped names are counted and reported."""
+    assumed, last_px, dropped, delisted = [], [], 0, 0
     for tk in tickers:
         px = prices.get(tk) or []
         a = _price_on_or_before(px, start)
         if not a:
             dropped += 1
             continue
-        # Delisting is checked FIRST, and that ordering is the whole point.
-        # Checking prices first meant this branch almost never ran: a company
-        # that stops trading still HAS a final print, so the ordinary path
-        # found it and measured the name at its last quoted price. That price
-        # is not an exit anyone could have taken — the shares halt, and then
-        # they are gone — and it measured a two-day return as though it were
-        # a four-week one. The live system books a company that vanishes at
-        # DELIST_ASSUMED_LOSS, so this does too, or a reading here and a
-        # reading on the site would not mean the same thing.
+        b = _price_on_or_before(px, end)
+        measured = (b[1] / a[1] - 1) * 100 if (b and b[0] > a[0]) else None
         meta = spine.get(tk) or {}
         last = meta.get("last_price") or ""
-        if meta.get("delisted") and last and last < end:
-            rets.append(-smallcap.DELIST_ASSUMED_LOSS * 100)
+        gone = bool(meta.get("delisted") and last and last < end)
+
+        if gone:
             delisted += 1
-            continue
-        b = _price_on_or_before(px, end)
-        if b and b[0] > a[0]:
-            rets.append((b[1] / a[1] - 1) * 100)
+            assumed.append(-smallcap.DELIST_ASSUMED_LOSS * 100)
+            # its final print if there is one, otherwise the same assumption:
+            # with no price at all there is nothing else to use
+            last_px.append(measured if measured is not None
+                           else -smallcap.DELIST_ASSUMED_LOSS * 100)
+        elif measured is not None:
+            assumed.append(measured)
+            last_px.append(measured)
         else:
             dropped += 1
-    if not rets:
-        return None, dropped, delisted
-    return sum(rets) / len(rets), dropped, delisted
+
+    def mean(xs):
+        return (sum(xs) / len(xs)) if xs else None
+
+    return {"assumed": mean(assumed), "last_px": mean(last_px),
+            "dropped": dropped, "delisted": delisted}
 
 
 def _bench_return(bench, start, end):
@@ -485,6 +499,7 @@ def run(con, start, end, verbose=True):
         raise RuntimeError("no dates in range")
 
     readings = {h: [] for h, _ in HORIZONS}
+    readings_alt = {h: [] for h, _ in HORIZONS}
     cohorts = []
     prev_cand = prev_pub = None
     t0 = time.monotonic()
@@ -528,21 +543,25 @@ def run(con, start, end, verbose=True):
                         + timedelta(days=days)).isoformat()
                 if endd > end:
                     continue
-                mine, dropped, dl = _basket_return(prices, spine, names,
-                                                   d, endd)
+                got = _basket_return(prices, spine, names, d, endd)
                 bm = _bench_return(bench, d, endd)
-                if mine is None or bm is None:
+                if got["assumed"] is None or bm is None:
                     continue
-                row[h] = {"screen": round(mine, 3), "bench": round(bm, 3),
-                          "excess": round(mine - bm, 3),
-                          "dropped": dropped, "delisted": dl}
-                readings[h].append((d, mine - bm))
+                row[h] = {"screen": round(got["assumed"], 3),
+                          "screen_last_px": round(got["last_px"], 3),
+                          "bench": round(bm, 3),
+                          "excess": round(got["assumed"] - bm, 3),
+                          "excess_last_px": round(got["last_px"] - bm, 3),
+                          "dropped": got["dropped"],
+                          "delisted": got["delisted"]}
+                readings[h].append((d, got["assumed"] - bm))
+                readings_alt[h].append((d, got["last_px"] - bm))
             cohorts.append(row)
         if verbose:
             print(f"  {year}: {len(chunk)} dates, "
                   f"{len(cohorts)} cohorts so far "
                   f"({time.monotonic() - t0:.0f}s)", flush=True)
-    return cohorts, readings
+    return cohorts, readings, readings_alt
 
 
 def turnover(cohorts, step=1):
@@ -610,7 +629,7 @@ def independent(pairs, min_gap_days):
     return out
 
 
-def summarise(cohorts, readings):
+def summarise(cohorts, readings, readings_alt=None):
     out = {"cohorts": len(cohorts), "horizons": {}}
     tv = {1: turnover(cohorts, 1), 4: turnover(cohorts, 4)}
     out["turnover"] = {f"{k}w": (round(v, 4) if v else None)
@@ -657,6 +676,26 @@ def summarise(cohorts, readings):
             row["break_even_bps_ci95"] = [
                 round(break_even_bps(lo, turn), 1),
                 round(break_even_bps(hi, turn), 1)] if lo is not None else None
+        # the same horizon measured the other way, so the choice that
+        # decides the sign of this backtest is visible beside the result
+        alt = (readings_alt or {}).get(h) or []
+        if alt:
+            ai = independent(alt, days)
+            am = statistics.fmean(ai) if ai else None
+            asd = statistics.stdev(ai) if len(ai) > 1 else None
+            alo, ahi = confidence(am, asd, len(ai))
+            row["if_delistings_measured_at_last_price"] = {
+                "mean_excess": round(am, 3) if am is not None else None,
+                "gross_per_year": round(am * per_yr, 2) if am is not None
+                else None,
+                "t": round(am / (asd / math.sqrt(len(ai))), 2)
+                if asd else None,
+                "ci95_per_year": [round(alo * per_yr, 2),
+                                  round(ahi * per_yr, 2)]
+                if alo is not None else None,
+                "net_per_year": round(am * per_yr - cost * per_yr, 2)
+                if (cost is not None and am is not None) else None,
+            }
         out["horizons"][h] = row
 
     # Names that could not be measured, summed rather than left scattered
@@ -743,9 +782,9 @@ def main(argv=None):
     print(f"  replaying {smallcap.MODEL_VERSION} from {start} to {args.end}")
     print(f"  database: {sharadar.db_path()}")
     print()
-    cohorts, readings = run(con, start, args.end)
+    cohorts, readings, readings_alt = run(con, start, args.end)
     con.close()
-    rep = summarise(cohorts, readings)
+    rep = summarise(cohorts, readings, readings_alt)
 
     print()
     print(f"  {rep.get('cohorts', 0)} cohorts, "
@@ -771,6 +810,14 @@ def main(argv=None):
                   f"{portfolio.COST_BPS:.0f}")
         print(f"      positive {100 * r['share_positive']:.0f}% of periods, "
               f"worst {r['worst']:+.1f}%, best {r['best']:+.1f}%")
+        alt = r.get("if_delistings_measured_at_last_price")
+        if alt:
+            print(f"      IF a delisting is measured at its last traded "
+                  f"price instead of the")
+            print(f"      assumed loss: gross {alt['gross_per_year']:+.2f}%/yr "
+                  f"(t {alt['t']}), net {alt['net_per_year']:+.2f}%/yr")
+            print(f"      -- that choice is an assumption, and it decides "
+                  f"the sign. Both are shown.")
         print()
     nm = rep.get("names_measured") or {}
     if nm.get("slots"):
