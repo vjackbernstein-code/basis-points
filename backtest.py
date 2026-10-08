@@ -68,6 +68,7 @@ from pathlib import Path
 BASE = Path(__file__).resolve().parent
 sys.path.insert(0, str(BASE))
 
+import portfolio  # noqa: E402
 import sharadar  # noqa: E402
 import smallcap  # noqa: E402
 
@@ -213,23 +214,32 @@ FUND_FIELDS = ("revenue", "cor", "opinc", "ncfo", "cashneq", "de",
                "sharesbas", "equity")
 
 
-def load_fundamentals(con, tickers, filed_to, since, dimension):
+def load_fundamentals(con, tickers, filed_to, since, dimension, filed=None):
     """{ticker: [row, ...]} filed on or before `filed_to`, oldest first.
 
     Filtering on the FILING date in the query, not afterwards, is what makes
     this point-in-time. Everything downstream can then only see rows that
-    were public."""
+    were public.
+
+    The filing-date column's NAME is resolved, never assumed. This database
+    calls it `date`; the vendor calls it `datekey`. An earlier version of this
+    function asked `sharadar.filed_column` which it was, ignored the answer,
+    and hardcoded `date` — so on a database using the other name the
+    verification would have passed while the query used a column that is not
+    a filing date at all, which is lookahead with a clean bill of health. It
+    is aliased to `filed_on` so nothing downstream has to know either name."""
+    filed = filed or sharadar.filed_column(con)
     cols = ", ".join(FUND_FIELDS)
     out = {}
     for part in _chunks(tickers):
         ph = ",".join("?" * len(part))
         null_too = " OR ticker IS NULL" if NULL_TICKER in part else ""
         for r in con.execute(
-                f"SELECT COALESCE(ticker, ?) AS ticker, reportperiod, date, "
-                f"{cols} FROM fundamentals WHERE dimension=? "
-                f"AND (ticker IN ({ph}){null_too}) "
-                f"AND date <= ? AND reportperiod >= ? "
-                f"ORDER BY ticker, date",
+                f"SELECT COALESCE(ticker, ?) AS ticker, reportperiod, "
+                f"{filed} AS filed_on, {cols} FROM fundamentals "
+                f"WHERE dimension=? AND (ticker IN ({ph}){null_too}) "
+                f"AND {filed} <= ? AND reportperiod >= ? "
+                f"ORDER BY ticker, {filed}",
                 (NULL_TICKER, dimension, *part, filed_to, since)):
             out.setdefault(r["ticker"], []).append(dict(r))
     return out
@@ -246,7 +256,7 @@ def load_benchmark(con, lo, hi):
 def _at_or_before(rows, asof):
     """Rows filed on or before `asof`, oldest first. Already filtered in SQL
     to a window; this narrows to the exact date being scored."""
-    return [r for r in rows if r["date"] <= asof]
+    return [r for r in rows if r["filed_on"] <= asof]
 
 
 def _growth(rows, years):
@@ -427,14 +437,24 @@ def _basket_return(prices, spine, tickers, start, end):
         if not a:
             dropped += 1
             continue
+        # Delisting is checked FIRST, and that ordering is the whole point.
+        # Checking prices first meant this branch almost never ran: a company
+        # that stops trading still HAS a final print, so the ordinary path
+        # found it and measured the name at its last quoted price. That price
+        # is not an exit anyone could have taken — the shares halt, and then
+        # they are gone — and it measured a two-day return as though it were
+        # a four-week one. The live system books a company that vanishes at
+        # DELIST_ASSUMED_LOSS, so this does too, or a reading here and a
+        # reading on the site would not mean the same thing.
+        meta = spine.get(tk) or {}
+        last = meta.get("last_price") or ""
+        if meta.get("delisted") and last and last < end:
+            rets.append(-smallcap.DELIST_ASSUMED_LOSS * 100)
+            delisted += 1
+            continue
         b = _price_on_or_before(px, end)
         if b and b[0] > a[0]:
             rets.append((b[1] / a[1] - 1) * 100)
-            continue
-        meta = spine.get(tk) or {}
-        if meta.get("delisted") and (meta.get("last_price") or "") <= end:
-            rets.append(-smallcap.DELIST_ASSUMED_LOSS * 100)
-            delisted += 1
         else:
             dropped += 1
     if not rets:
@@ -460,7 +480,6 @@ def run(con, start, end, verbose=True):
     """Walk forward, year by year, and collect a reading per cohort."""
     spine = load_spine(con)
     filed = sharadar.filed_column(con)
-    assert filed, "no filing-date column"
     dates = mondays(max(start, EARLIEST), end)
     if not dates:
         raise RuntimeError("no dates in range")
@@ -488,9 +507,9 @@ def run(con, start, end, verbose=True):
         bench = load_benchmark(con, px_lo, px_hi)
         since = (date.fromisoformat(chunk[0])
                  - timedelta(days=7 * 365)).isoformat()
-        art = load_fundamentals(con, universe, chunk[-1], since, "ART")
-        arq = load_fundamentals(con, universe, chunk[-1], since, "ARQ")
-        ary = load_fundamentals(con, universe, chunk[-1], since, "ARY")
+        art = load_fundamentals(con, universe, chunk[-1], since, "ART", filed)
+        arq = load_fundamentals(con, universe, chunk[-1], since, "ARQ", filed)
+        ary = load_fundamentals(con, universe, chunk[-1], since, "ARY", filed)
 
         for d in chunk:
             cache = build_cache(d, band[d], spine, prices, art, arq, ary)
@@ -526,6 +545,58 @@ def run(con, start, end, verbose=True):
     return cohorts, readings
 
 
+def turnover(cohorts, step=1):
+    """Share of the book that must be traded between consecutive rebalances.
+
+    Counted as names REPLACED over names held: four of twenty-five swapped is
+    16%, which means selling 16% of the book and buying 16% back.
+
+    This lives here, with a test, because it is the number the whole
+    conclusion rests on and it was previously computed in a throwaway script
+    that nobody could audit or reproduce. `step` samples every nth cohort, so
+    the same function answers for a slower cadence."""
+    picks = cohorts[::step]
+    shares = []
+    for a, b in zip(picks, picks[1:]):
+        sa, sb = set(a.get("tickers") or ()), set(b.get("tickers") or ())
+        if sa and sb:
+            shares.append(len(sa ^ sb) / 2 / len(sa))
+    return statistics.fmean(shares) if shares else None
+
+
+def cost_drag(turn, bps=None):
+    """Friction per rebalance, as a percent, for that much turnover.
+
+    Doubled because a replacement is two trades on that weight: the name
+    leaving is sold and the name arriving is bought, each charged. Checked
+    against the live ledger rather than argued: for book A's opening build
+    plus one rebalance that swapped 4 of 25 names, this predicts $528 where
+    the book was actually charged $525.86."""
+    bps = portfolio.COST_BPS if bps is None else bps
+    return turn * 2 * bps / 10_000 * 100
+
+
+def break_even_bps(gross_per_period, turn):
+    """The cost per side at which the edge exactly pays for its trading."""
+    if not turn:
+        return None
+    return gross_per_period / (turn * 2) * 10_000 / 100
+
+
+def confidence(mean, sd, n, z=1.96):
+    """The band the evidence actually supports.
+
+    Added because the first write-up of this backtest reported the point
+    estimate as though it settled the question. It does not: at a t of 1.2
+    the band on the gross edge spans zero, and the break-even cost it implies
+    runs from below nothing to close to what the books charge. A point
+    estimate quoted without this reads as a finding when it is a lean."""
+    if not sd or not n:
+        return None, None
+    se = sd / math.sqrt(n)
+    return mean - z * se, mean + z * se
+
+
 def independent(pairs, min_gap_days):
     """Non-overlapping readings only: a 4-week return measured every week is
     the same month counted four times, and averaging those pretends to four
@@ -541,28 +612,66 @@ def independent(pairs, min_gap_days):
 
 def summarise(cohorts, readings):
     out = {"cohorts": len(cohorts), "horizons": {}}
+    tv = {1: turnover(cohorts, 1), 4: turnover(cohorts, 4)}
+    out["turnover"] = {f"{k}w": (round(v, 4) if v else None)
+                       for k, v in tv.items()}
     for h, days in HORIZONS:
         pairs = readings[h]
         if not pairs:
             continue
         vals = [v for _d, v in pairs]
         indep = independent(pairs, days)
-        mean = statistics.fmean(vals)
+        mean = statistics.fmean(indep) if indep else None
         sd = statistics.stdev(indep) if len(indep) > 1 else None
         se = (sd / math.sqrt(len(indep))) if sd else None
-        out["horizons"][h] = {
+        lo, hi = confidence(mean, sd, len(indep)) if mean is not None \
+            else (None, None)
+        per_yr = 52 if h == "1w" else 13
+        turn = tv[1 if h == "1w" else 4]
+        cost = cost_drag(turn) if turn else None
+        row = {
             "overlapping": len(vals),
             "independent": len(indep),
-            "mean_excess": round(mean, 3),
-            "mean_excess_independent": (round(statistics.fmean(indep), 3)
-                                        if indep else None),
+            "mean_excess": round(statistics.fmean(vals), 3),
+            "mean_excess_independent": round(mean, 3) if mean is not None
+            else None,
             "sd_independent": round(sd, 3) if sd else None,
-            "t": (round(statistics.fmean(indep) / se, 2)
-                  if se else None),
+            "t": round(mean / se, 2) if se else None,
             "share_positive": round(
                 sum(1 for v in vals if v > 0) / len(vals), 3),
             "worst": round(min(vals), 2), "best": round(max(vals), 2),
+            # the band the evidence supports, not just the middle of it
+            "ci95_per_period": [round(lo, 4), round(hi, 4)]
+            if lo is not None else None,
+            "ci95_per_year": [round(lo * per_yr, 2), round(hi * per_yr, 2)]
+            if lo is not None else None,
+            "gross_per_year": round(mean * per_yr, 2) if mean is not None
+            else None,
         }
+        if cost is not None and mean is not None:
+            row["turnover"] = round(turn, 4)
+            row["cost_per_year"] = round(-cost * per_yr, 2)
+            row["net_per_year"] = round(mean * per_yr - cost * per_yr, 2)
+            row["break_even_bps"] = round(break_even_bps(mean, turn), 1)
+            # and the same question asked of the band rather than the point
+            row["break_even_bps_ci95"] = [
+                round(break_even_bps(lo, turn), 1),
+                round(break_even_bps(hi, turn), 1)] if lo is not None else None
+        out["horizons"][h] = row
+
+    # Names that could not be measured, summed rather than left scattered
+    # across 1,212 rows. A quiet pile-up of dropped names is how a
+    # survivorship-free universe turns into a survivor-only measurement, so
+    # the total is reported whether or not anyone asks.
+    drop = sum((c.get(h) or {}).get("dropped", 0)
+               for c in cohorts for h, _d in HORIZONS)
+    dele = sum((c.get(h) or {}).get("delisted", 0)
+               for c in cohorts for h, _d in HORIZONS)
+    slots = sum(len(c.get(h) or {}) and c["n_published"]
+                for c in cohorts for h, _d in HORIZONS)
+    out["names_measured"] = {
+        "slots": slots, "dropped": drop, "delisted_booked_at_loss": dele,
+        "dropped_share": round(drop / slots, 5) if slots else None}
     if cohorts:
         out["from"], out["to"] = cohorts[0]["date"], cohorts[-1]["date"]
         out["mean_eligible"] = round(
@@ -644,13 +753,31 @@ def main(argv=None):
           f"mean {rep.get('mean_eligible')} companies eligible")
     print()
     for h, r in rep["horizons"].items():
-        print(f"  {h}: mean excess {r['mean_excess']:+.3f}% over "
-              f"{r['overlapping']} overlapping readings")
-        print(f"      independent: {r['independent']} readings, mean "
-              f"{r['mean_excess_independent']:+.3f}%, "
+        print(f"  {h}: {r['independent']} independent readings, mean "
+              f"{r['mean_excess_independent']:+.3f}% per period, "
               f"sd {r['sd_independent']}, t {r['t']}")
-        print(f"      positive {100 * r['share_positive']:.0f}% of the time, "
+        if r.get("ci95_per_year"):
+            print(f"      gross a year {r['gross_per_year']:+.2f}%, and the "
+                  f"95% band the evidence supports is "
+                  f"{r['ci95_per_year'][0]:+.2f}% to "
+                  f"{r['ci95_per_year'][1]:+.2f}%")
+        if r.get("cost_per_year") is not None:
+            print(f"      turnover {100 * r['turnover']:.0f}% per rebalance "
+                  f"-> cost {r['cost_per_year']:+.2f}%/yr "
+                  f"-> NET {r['net_per_year']:+.2f}%/yr")
+            print(f"      break-even cost {r['break_even_bps']:.0f} bps/side "
+                  f"(band {r['break_even_bps_ci95'][0]:.0f} to "
+                  f"{r['break_even_bps_ci95'][1]:.0f}); the books charge "
+                  f"{portfolio.COST_BPS:.0f}")
+        print(f"      positive {100 * r['share_positive']:.0f}% of periods, "
               f"worst {r['worst']:+.1f}%, best {r['best']:+.1f}%")
+        print()
+    nm = rep.get("names_measured") or {}
+    if nm.get("slots"):
+        print(f"  names measured: {nm['slots']:,} holding-periods, "
+              f"{nm['dropped']:,} unmeasurable "
+              f"({100 * nm['dropped_share']:.2f}%), "
+              f"{nm['delisted_booked_at_loss']:,} booked at the delisting loss")
         print()
     print("  Read with these in mind:")
     for c in CAVEATS:

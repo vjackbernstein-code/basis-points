@@ -24,6 +24,7 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 
 import backtest as B  # noqa: E402
+import portfolio  # noqa: E402
 import smallcap  # noqa: E402
 
 
@@ -153,6 +154,37 @@ class SurvivorshipTests(unittest.TestCase):
                                                   "2020-01-06", "2020-01-13")
         self.assertGreater(survivors_only - honest, 30.0)
 
+    def test_a_delisted_name_is_booked_at_the_loss_even_though_it_has_a_print(self):
+        """The ordering bug the audit found.
+
+        A company that stops trading still has a final print. Checking prices
+        before checking delisting meant the ordinary path found that print and
+        measured the name at its last quoted price — which is not an exit
+        anyone could have taken, and turns a two-day return into a four-week
+        one. The live system books a vanished company at an assumed loss, so
+        this must too, or the two records stop being comparable.
+        """
+        px = self._prices({"AAA": [("2020-01-06", 10.0), ("2020-01-13", 11.0)],
+                           "DEAD": [("2020-01-06", 10.0),
+                                    ("2020-01-08", 9.5)]})
+        spine = {"DEAD": {"delisted": True, "last_price": "2020-01-08"}}
+        r, dropped, dl = B._basket_return(px, spine, ["AAA", "DEAD"],
+                                          "2020-01-06", "2020-01-13")
+        self.assertEqual(dl, 1, "the delisting rule did not fire")
+        self.assertEqual(dropped, 0)
+        expected = (10.0 + -smallcap.DELIST_ASSUMED_LOSS * 100) / 2
+        self.assertAlmostEqual(r, expected, places=6,
+                               msg="measured at its last print instead")
+
+    def test_a_name_still_trading_at_the_end_is_not_booked_as_delisted(self):
+        # delisted LATER than the window must not retroactively damn it
+        px = self._prices({"AAA": [("2020-01-06", 10.0), ("2020-01-13", 11.0)]})
+        spine = {"AAA": {"delisted": True, "last_price": "2021-06-01"}}
+        r, dropped, dl = B._basket_return(px, spine, ["AAA"],
+                                          "2020-01-06", "2020-01-13")
+        self.assertEqual((dropped, dl), (0, 0))
+        self.assertAlmostEqual(r, 10.0, places=6)
+
     def test_a_name_merely_missing_a_print_is_counted_not_absorbed(self):
         # still listed, no price: unknown rather than a 60% loss, but the
         # count is reported so a quiet pile-up is visible
@@ -184,7 +216,9 @@ class PointInTimeTests(unittest.TestCase):
     """Growth computed only from figures that had been filed."""
 
     def _rows(self, spec):
-        return [{"reportperiod": rp, "date": filed, "revenue": rev}
+        # `filed_on` is the alias the loader gives whichever column actually
+        # holds the filing date, so nothing downstream hardcodes a name
+        return [{"reportperiod": rp, "filed_on": filed, "revenue": rev}
                 for rp, filed, rev in spec]
 
     def test_one_year_growth_is_a_plain_percentage(self):
@@ -231,6 +265,89 @@ class PointInTimeTests(unittest.TestCase):
         self.assertEqual(len(visible), 1,
                          "a figure filed in August was used in July")
         self.assertIsNone(B._growth(visible, 1))
+
+
+class TurnoverAndCostTests(unittest.TestCase):
+    """The number the whole conclusion rests on.
+
+    It used to be computed in a throwaway script, which the audit on
+    2026-10-08 correctly called a defect: the decisive figure was not in the
+    repository and nobody could reproduce or attack it.
+    """
+
+    def _cohorts(self, lists):
+        return [{"tickers": l, "n_published": len(l)} for l in lists]
+
+    def test_no_change_is_no_turnover(self):
+        c = self._cohorts([["A", "B", "C", "D"]] * 3)
+        self.assertEqual(B.turnover(c), 0.0)
+
+    def test_replacing_one_of_four_is_a_quarter(self):
+        c = self._cohorts([["A", "B", "C", "D"], ["A", "B", "C", "E"]])
+        self.assertAlmostEqual(B.turnover(c), 0.25, places=6)
+
+    def test_replacing_everything_is_all_of_it(self):
+        c = self._cohorts([["A", "B"], ["C", "D"]])
+        self.assertAlmostEqual(B.turnover(c), 1.0, places=6)
+
+    def test_reordering_is_not_turnover(self):
+        # the screen is a set of holdings; rank changes alone trade nothing
+        c = self._cohorts([["A", "B", "C"], ["C", "A", "B"]])
+        self.assertEqual(B.turnover(c), 0.0)
+
+    def test_sampling_every_nth_cohort_answers_for_a_slower_cadence(self):
+        c = self._cohorts([["A", "B"], ["A", "C"], ["A", "B"], ["A", "C"]])
+        self.assertAlmostEqual(B.turnover(c, 1), 0.5, places=6)
+        self.assertEqual(B.turnover(c, 2), 0.0,
+                         "sampled every other week, nothing appears to change")
+
+    def test_cost_doubles_the_turnover_because_a_swap_is_two_trades(self):
+        # the name leaving is sold and the name arriving is bought
+        self.assertAlmostEqual(B.cost_drag(0.25, bps=40), 0.20, places=6)
+
+    def test_the_cost_model_reproduces_the_live_ledger(self):
+        # book A's first week: a 25-name opening build, then 4 of 25 swapped.
+        # Predicted $528 against $525.86 actually charged — 0.6%.
+        opening = 1.00 * portfolio.COST_BPS / 10_000 * portfolio.START_CAPITAL
+        swap = B.cost_drag(4 / 25) / 100 * portfolio.START_CAPITAL
+        self.assertAlmostEqual(opening + swap, 528.0, delta=1.0)
+
+    def test_break_even_is_where_the_edge_exactly_pays_for_itself(self):
+        turn, gross = 0.25, 0.20
+        be = B.break_even_bps(gross, turn)
+        self.assertAlmostEqual(B.cost_drag(turn, bps=be), gross, places=6)
+
+    def test_no_turnover_has_no_break_even(self):
+        self.assertIsNone(B.break_even_bps(0.1, 0.0))
+
+
+class ConfidenceTests(unittest.TestCase):
+    """Reporting the band, not just the middle of it.
+
+    The first write-up of this backtest gave the point estimate as though it
+    settled the question. The audit's first finding was that it does not: at
+    a t of 1.2 the band spans zero, and the break-even cost it implies runs
+    from below nothing to near what the books charge.
+    """
+
+    def test_the_band_straddles_zero_when_t_is_small(self):
+        lo, hi = B.confidence(0.068, 1.952, 1211)
+        self.assertLess(lo, 0.0)
+        self.assertGreater(hi, 0.0)
+
+    def test_it_matches_the_audited_figures(self):
+        lo, hi = B.confidence(0.068, 1.952, 1211)
+        self.assertAlmostEqual(lo * 52, -2.18, places=1)
+        self.assertAlmostEqual(hi * 52, +9.25, places=1)
+
+    def test_the_band_narrows_with_more_readings(self):
+        n_lo = B.confidence(0.07, 2.0, 100)
+        n_hi = B.confidence(0.07, 2.0, 10_000)
+        self.assertLess(n_hi[1] - n_hi[0], n_lo[1] - n_lo[0])
+
+    def test_missing_spread_gives_no_band(self):
+        self.assertEqual(B.confidence(0.07, None, 10), (None, None))
+        self.assertEqual(B.confidence(0.07, 2.0, 0), (None, None))
 
 
 class ClockTests(unittest.TestCase):
