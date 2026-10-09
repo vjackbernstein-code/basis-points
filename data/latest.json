@@ -1,17 +1,16 @@
 {
- "generated_at": "2026-10-08T20:33:23.036214+00:00",
+ "generated_at": "2026-10-09T01:02:33.865106+00:00",
  "market": [
   {
    "label": "S&P 500",
    "symbol": "SP500",
    "kind": "index",
-   "value": 7801.77,
-   "prev": 7818.93,
-   "value_txt": "7,801.77",
-   "delta": -0.21946736957614218,
-   "delta_txt": "-0.22%",
+   "value": 7765.36,
+   "prev": 7801.77,
+   "value_txt": "7,765.36",
+   "delta": -0.46668896929800235,
+   "delta_txt": "-0.47%",
    "spark": [
-    7718.6,
     7673.52,
     7636.36,
     7591.7,
@@ -33,9 +32,10 @@
     7722.72,
     7773.95,
     7818.93,
-    7801.77
+    7801.77,
+    7765.36
    ],
-   "asof": "Oct 7"
+   "asof": "Oct 8"
   },
   {
    "label": "Nasdaq",
@@ -77,13 +77,12 @@
    "label": "Dow",
    "symbol": "DJIA",
    "kind": "index",
-   "value": 51179.87,
-   "prev": 51521.28,
-   "value_txt": "51,179.87",
-   "delta": -0.6626582258825795,
-   "delta_txt": "-0.66%",
+   "value": 51231.64,
+   "prev": 51179.87,
+   "value_txt": "51,231.64",
+   "delta": 0.101153050994457,
+   "delta_txt": "+0.10%",
    "spark": [
-    53414.25,
     52786.07,
     52380.66,
     52064.1,
@@ -105,9 +104,10 @@
     51176.96,
     51267.9,
     51521.28,
-    51179.87
+    51179.87,
+    51231.64
    ],
-   "asof": "Oct 7"
+   "asof": "Oct 8"
   },
   {
    "label": "VIX",
@@ -286,20 +286,19 @@
     1.1269,
     1.1177,
     1.1186
-   ]
+   ],
+   "asof": "Oct 8"
   },
   {
    "label": "Bitcoin",
    "symbol": "bitcoin",
    "kind": "crypto",
-   "value": 81754.28504317981,
-   "prev": 85540.08713738805,
-   "value_txt": "$81,754",
-   "delta": -4.4257636634479525,
-   "delta_txt": "-4.43%",
+   "value": 81742.71189889757,
+   "prev": 81685.88692243936,
+   "value_txt": "$81,743",
+   "delta": 0.06956523164420002,
+   "delta_txt": "+0.07%",
    "spark": [
-    75590.24471973324,
-    76146.81236783884,
     76371.3617203135,
     80873.58287659245,
     81236.41383660372,
@@ -320,21 +319,21 @@
     86489.73482686514,
     85770.87224573967,
     85540.08713738805,
-    81754.28504317981
+    83282.04538340426,
+    81685.88692243936,
+    81742.71189889757
    ]
   },
   {
    "label": "Ethereum",
    "symbol": "ethereum",
    "kind": "crypto",
-   "value": 2468.316045409882,
-   "prev": 2697.1723962480346,
-   "value_txt": "$2,468",
-   "delta": -8.485047198188319,
-   "delta_txt": "-8.49%",
+   "value": 2475.6385871289804,
+   "prev": 2472.7266584392723,
+   "value_txt": "$2,476",
+   "delta": 0.11776185126527337,
+   "delta_txt": "+0.12%",
    "spark": [
-    2397.4972601650115,
-    2415.9596535242995,
     2446.143252227872,
     2611.5555571198493,
     2632.0095970320526,
@@ -355,12 +354,21 @@
     2725.9105379372454,
     2710.4181759245234,
     2697.1723962480346,
-    2468.316045409882
+    2573.2309278741104,
+    2472.7266584392723,
+    2475.6385871289804
    ]
   }
  ],
- "tape_line": "S&P 500 -0.22%, Nasdaq -0.22%, Dow -0.66%; the 10-year Treasury at 5.28% (+1 bp); WTI crude $96.24 (+0.11%); bitcoin $81,754 (-4.43%).",
+ "tape_line": "S&P 500 -0.47%, Nasdaq -0.22%, Dow +0.10%; the 10-year Treasury at 5.28% (+1 bp); WTI crude $96.24 (+0.11%); bitcoin $81,743 (+0.07%).",
  "top": [
+  {
+   "title": "Nvidia-Backed Firmus Scraps Australian IPO, Citing Market Conditions",
+   "link": "https://www.wsj.com/tech/nvidia-backed-firmus-scraps-australian-ipo-citing-market-conditions-4793fe60?mod=pls_whats_news_us_business_f",
+   "source": "WSJ Business",
+   "published": "2026-10-08T22:57:00+00:00",
+   "summary": "The cloud-computing company scrapped plans for what would have been Australia’s largest initial public offering in almost 30 years."
+  },
   {
    "title": "Inflation on many everyday items was entirely due to tariffs, NY Fed says",
    "link": "https://www.cnbc.com/2026/10/08/inflation-tariffs-trump-fed-consumer-goods.html",
@@ -372,8 +380,15 @@
    "title": "U.S. Stocks Mixed as Oil Spikes, AI Profit Doubts Hit Tech",
    "link": "https://www.wsj.com/finance/stocks/u-s-stocks-mixed-as-oil-spikes-ai-profit-doubts-hit-tech-79e35aaa?mod=rss_markets_main",
    "source": "WSJ Markets",
-   "published": "2026-10-08T20:26:00+00:00",
-   "summary": "U.S. stocks ended mixed as oil futures jumped, volatility continued in bond markets and doubts surfaced about artificial-intelligence profits."
+   "published": "2026-10-08T20:42:00+00:00",
+   "summary": "U.S. stocks ended mixed after oil futures jumped, volatility continued in bond markets and doubts surfaced about artificial-intelligence profits."
+  },
+  {
+   "title": "Micron, Nvidia and AI chip stocks fall as report on OpenAI’s revenue causes ‘undue concern’",
+   "link": "https://www.marketwatch.com/story/micron-nvidia-and-ai-chip-stocks-fall-as-report-on-openais-revenue-causes-undue-concern-2a2bcf53?mod=mw_rss_topstories",
+   "source": "MarketWatch",
+   "published": "2026-10-08T22:08:00+00:00",
+   "summary": "OpenAI’s annualized revenue reportedly fell short of expectations — but analysts say that reflects differences in how the figure is reported, not weakness in AI demand."
   },
   {
    "title": "Federal Reserve Board announces enforcement action against American Express Company to address, among other things, the firm’s failure to sufficiently detect and report certain suspicious activity related to money laundering",
@@ -383,37 +398,23 @@
    "summary": "Federal Reserve Board announces enforcement action against American Express Company to address, among other things, the firm’s failure to sufficiently detect and report certain suspicious activity related to money laundering"
   },
   {
-   "title": "Treasury yields are 'really, really high' but can come down soon, Bessent's new advisor says",
-   "link": "https://www.cnbc.com/2026/10/08/treasury-yields-david-zervos.html",
-   "source": "CNBC",
-   "published": "2026-10-08T20:06:31+00:00",
-   "summary": "The comments from David Zervos come after the 10-year and 30-year yields marched to 24-year highs in recent days."
+   "title": "S&P 500, Nasdaq end lower as crude prices jump, chip stocks weigh",
+   "link": "https://news.google.com/rss/articles/CBMid0FVX3lxTE80ZFlDS25nMDgxRll4M1J2TU5aZ1lVV1JZY1JsUjRJdWJoWHQydVpva2VjSU1uOFZMdHl6ZldiMUtSekU3ckxrVDRnRTJJdUtkNWpBcTlnM1NsLTdxcnF0UlFwMFlTWXd3WEtnM0lMQVRrWEtleFMw?oc=5",
+   "source": "Yahoo Finance",
+   "published": "2026-10-08T20:32:27+00:00",
+   "summary": "S&P 500, Nasdaq end lower as crude prices jump, chip stocks weigh Yahoo Finance See more headlines & perspectives on Google News"
   },
   {
-   "title": "U.S. Treasury Yields Retreat From Early Highs; Eurozone Yields Remain Elevated",
-   "link": "https://www.wsj.com/finance/investing/u-s-treasury-yields-eurozone-bond-yields-rise-relentlessly-b7d3ba07?mod=rss_markets_main",
+   "title": "Nikkei Falls 1.1%, Dragged by Chip, Metals Stocks",
+   "link": "https://www.wsj.com/finance/stocks/nikkei-falls-1-1-dragged-by-chip-metals-stocks-c8be4ccd?mod=rss_markets_main",
    "source": "WSJ Markets",
-   "published": "2026-10-08T20:20:00+00:00",
-   "summary": "U.S. Treasury yields retreated from session highs following a steady auction of longer-dated securities and a Treasury buyback operation."
-  },
-  {
-   "title": "Treasury yields are lower after reaching multiyear highs, traders weigh latest bond auction",
-   "link": "https://www.cnbc.com/2026/10/08/us-treasury-yields-30-year-bond-auction.html",
-   "source": "CNBC",
-   "published": "2026-10-08T20:06:52+00:00",
-   "summary": "Traders digested comments from a top Federal Reserve official while awaiting another long-dated bond auction."
-  },
-  {
-   "title": "Nvidia, Oracle, CoreWeave and other AI stocks sink on OpenAI revenue report",
-   "link": "https://www.cnbc.com/2026/10/08/open-ai-revenue-nvidia-oracle-coreweave.html",
-   "source": "CNBC",
-   "published": "2026-10-08T19:49:23+00:00",
-   "summary": "OpenAI has told investors that it hit roughly $50 billion in annualized revenue at the end of September, CNBC confirmed."
+   "published": "2026-10-09T00:48:00+00:00",
+   "summary": "Japanese stocks were lower as concerns about higher energy costs continue following overnight gains in crude oil prices."
   }
  ],
  "smallcap": {
   "note": null,
-  "asof": "2026-10-08T20:43:36+00:00",
+  "asof": "2026-10-09T01:12:48+00:00",
   "coverage": {
    "universe": 9891,
    "profiled": 10060,
@@ -1334,9 +1335,7 @@
      "m": 96,
      "q": 27
     },
-    "flags": [
-     "new"
-    ],
+    "flags": [],
     "growth_doubt": false,
     "unit_doubt": null,
     "why": {
@@ -1416,9 +1415,7 @@
      "m": 79,
      "q": 67
     },
-    "flags": [
-     "8-K"
-    ],
+    "flags": [],
     "growth_doubt": false,
     "unit_doubt": null,
     "why": {
@@ -1441,11 +1438,11 @@
   ],
   "freshness": {
    "last_full_h": 0.0,
-   "quote_median_h": 5.9,
+   "quote_median_h": 4.6,
    "quote_count": 1862,
    "bench_h": 0.0,
-   "universe_h": 141.9,
-   "earnings_h": 0.0,
+   "universe_h": 146.3,
+   "earnings_h": 4.5,
    "bench_gate_h": 72
   },
   "reach": {
@@ -1453,7 +1450,7 @@
     "have": 1,
     "target": 12,
     "possible": 11,
-    "next_due": "2026-10-08",
+    "next_due": "2026-10-09",
     "reachable": false,
     "slack": -1
    },
@@ -1467,19 +1464,10 @@
    }
   },
   "changes": {
-   "prev_day": "2026-10-07",
-   "entered": [
-    {
-     "ticker": "VSTM",
-     "name": "Verastem Inc",
-     "score": 74.9,
-     "ind": "Biotechnology"
-    }
-   ],
-   "left": [
-    "SEPN"
-   ],
-   "held": 24
+   "prev_day": "2026-10-08",
+   "entered": [],
+   "left": [],
+   "held": 25
   },
   "below_floor": [
    {
@@ -1547,36 +1535,48 @@
     "dp": 44.127
    },
    {
-    "ticker": "CD",
-    "name": "Chaince Digital Holdings Inc",
-    "px": 10.15,
-    "dp": 21.9952
-   },
-   {
     "ticker": "HLTC",
     "name": "National Healthcare Properties Inc",
     "px": 13.05,
     "dp": 20.2765
    },
    {
-    "ticker": "PRME",
-    "name": "Prime Medicine Inc",
-    "px": 3.9,
-    "dp": 11.4286
+    "ticker": "GFUZ",
+    "name": "Spring Valley Acquisition Corp III",
+    "px": 8.71,
+    "dp": 14.6053
    },
    {
-    "ticker": "PRE",
-    "name": "Prenetics Global Ltd",
-    "px": 22.47,
-    "dp": 10.1471
+    "ticker": "CLVT",
+    "name": "Clarivate PLC",
+    "px": 1.63,
+    "dp": 10.8844
+   },
+   {
+    "ticker": "CATX",
+    "name": "Perspective Therapeutics Inc",
+    "px": 2.71,
+    "dp": 10.1626
    }
   ],
   "movers_down": [
+   {
+    "ticker": "ANGO",
+    "name": "AngioDynamics Inc",
+    "px": 11.23,
+    "dp": -20.8598
+   },
    {
     "ticker": "AMTD",
     "name": "AMTD IDEA Group",
     "px": 0.5516,
     "dp": -16.4242
+   },
+   {
+    "ticker": "PACB",
+    "name": "Pacific Biosciences of California Inc",
+    "px": 2.3,
+    "dp": -15.4412
    },
    {
     "ticker": "AIAI",
@@ -1589,18 +1589,6 @@
     "name": "SharonAI Holdings Inc",
     "px": 39.05,
     "dp": -13.453
-   },
-   {
-    "ticker": "INDP",
-    "name": "Indaptus Therapeutics Inc",
-    "px": 2.26,
-    "dp": -12.7413
-   },
-   {
-    "ticker": "NUAI",
-    "name": "New Era Energy & Digital Inc",
-    "px": 4.83,
-    "dp": -12.6582
    }
   ],
   "earnings": [
@@ -1711,6 +1699,20 @@
     "form": "8-K"
    },
    {
+    "ticker": "TRIN",
+    "name": "Trinity Capital Inc",
+    "date": "2026-10-08",
+    "link": "https://www.sec.gov/Archives/edgar/data/1786108/000119312526418097/0001193125-26-418097-index.htm",
+    "form": "8-K"
+   },
+   {
+    "ticker": "BY",
+    "name": "Byline Bancorp Inc",
+    "date": "2026-10-08",
+    "link": "https://www.sec.gov/Archives/edgar/data/1702750/000119312526418064/0001193125-26-418064-index.htm",
+    "form": "8-K"
+   },
+   {
     "ticker": "MSIF",
     "name": "MSC Income Fund Inc",
     "date": "2026-10-08",
@@ -1757,20 +1759,6 @@
     "name": "AngioDynamics Inc",
     "date": "2026-10-08",
     "link": "https://www.sec.gov/Archives/edgar/data/1275187/000114036126039020/0001140361-26-039020-index.htm",
-    "form": "8-K"
-   },
-   {
-    "ticker": "SI",
-    "name": "Shoulder Innovations Inc",
-    "date": "2026-10-08",
-    "link": "https://www.sec.gov/Archives/edgar/data/1699350/000169935026000058/0001699350-26-000058-index.htm",
-    "form": "8-K"
-   },
-   {
-    "ticker": "EDIT",
-    "name": "Editas Medicine Inc",
-    "date": "2026-10-08",
-    "link": "https://www.sec.gov/Archives/edgar/data/1650664/000165066426000093/0001650664-26-000093-index.htm",
     "form": "8-K"
    }
   ],
@@ -1869,6 +1857,13 @@
     "form": "424B3"
    },
    {
+    "ticker": "TOP",
+    "name": "TOP Financial Group Ltd",
+    "date": "2026-10-08",
+    "link": "https://www.sec.gov/Archives/edgar/data/1848275/000121390026108043/0001213900-26-108043-index.htm",
+    "form": "424B3"
+   },
+   {
     "ticker": "CURR",
     "name": "CURRENC Group Inc",
     "date": "2026-10-07",
@@ -1895,31 +1890,18 @@
     "date": "2026-10-05",
     "link": "https://www.sec.gov/Archives/edgar/data/1866226/000121390026106895/0001213900-26-106895-index.htm",
     "form": "S-1"
-   },
-   {
-    "ticker": "APPS",
-    "name": "Digital Turbine Inc",
-    "date": "2026-10-01",
-    "link": "https://www.sec.gov/Archives/edgar/data/317788/000162828026064262/0001628280-26-064262-index.htm",
-    "form": "424B7"
-   },
-   {
-    "ticker": "AIIR",
-    "name": "Air Global PLC",
-    "date": "2026-10-01",
-    "link": "https://www.sec.gov/Archives/edgar/data/2097725/000119312526410648/0001193125-26-410648-index.htm",
-    "form": "424B3"
-   },
-   {
-    "ticker": "ENRD",
-    "name": "Einride AB (publ)",
-    "date": "2026-10-01",
-    "link": "https://www.sec.gov/Archives/edgar/data/2095096/000149315226045383/0001493152-26-045383-index.htm",
-    "form": "424B3"
    }
   ],
   "budget_mode": "full",
   "news": [
+   {
+    "title": "Amalgamated Financial Corp. Announces Third Quarter 2026 Earnings Conference Call",
+    "link": "http://www.businesswire.com/news/home/20261007597943/en/Amalgamated-Financial-Corp.-Announces-Third-Quarter-2026-Earnings-Conference-Call/?feedref=JjAwJuNHiystnCoBq_hl-YorNIXXeJUidDamMzBr2lVrRA1xRkqfEfrAVCWz-Z_wrCOi9QzgjCezTS3Nw_X6kJUrpSBm-Hav1w-UkdSlG3ne1zTTrM-woVxs6_pUhglHIbE9ZC1pD3bt6lQgRU5j6g==",
+    "source": "Business Wire",
+    "published": "2026-10-08T20:30:00+00:00",
+    "summary": "NEW YORK--(BUSINESS WIRE)--Amalgamated Financial Corp. (“Amalgamated” or the “Company”) (Nasdaq: AMAL) today announced that its third quarter 2026 financial results will be released before market open on Thursday, October 22…",
+    "ticker": "AMAL"
+   },
    {
     "title": "Lindsay Corporation Announces Fourth Quarter Fiscal 2026 Earnings Conference Call and Webcast",
     "link": "http://www.businesswire.com/news/home/20261008182493/en/Lindsay-Corporation-Announces-Fourth-Quarter-Fiscal-2026-Earnings-Conference-Call-and-Webcast/?feedref=JjAwJuNHiystnCoBq_hl-YorNIXXeJUidDamMzBr2lVrRA1xRkqfEfrAVCWz-Z_wrCOi9QzgjCezTS3Nw_X6kJUrpSBm-Hav1w-UkdSlG3ne1zTTrM-woVxs6_pUhglHIbE9ZC1pD3bt6lQgRU5j6g==",
@@ -1937,20 +1919,12 @@
     "ticker": "PMTV"
    },
    {
-    "title": "Kirby McInerney LLP Alerts Investors Who Acquired Lincoln Educational Services Corporation LINC Securities Between May 11, 2026 and August 9, 2026 of Pending Lawsuit",
-    "link": "http://www.businesswire.com/news/home/20261007536486/en/Kirby-McInerney-LLP-Alerts-Investors-Who-Acquired-Lincoln-Educational-Services-Corporation-LINC-Securities-Between-May-11-2026-and-August-9-2026-of-Pending-Lawsuit/?feedref=JjAwJuNHiystnCoBq_hl-YorNIXXeJUidDamMzBr2lVrRA1xRkqfEfrAVCWz-Z_wrCOi9QzgjCezTS3Nw_X6kJUrpSBm-Hav1w-UkdSlG3ne1zTTrM-woVxs6_pUhglHIbE9ZC1pD3bt6lQgRU5j6g==",
+    "title": "Republic Airways Holdings Inc. Announces Webcast of Third Quarter 2026 Financial Results",
+    "link": "http://www.businesswire.com/news/home/20261008548972/en/Republic-Airways-Holdings-Inc.-Announces-Webcast-of-Third-Quarter-2026-Financial-Results/?feedref=JjAwJuNHiystnCoBq_hl-YorNIXXeJUidDamMzBr2lVrRA1xRkqfEfrAVCWz-Z_wrCOi9QzgjCezTS3Nw_X6kJUrpSBm-Hav1w-UkdSlG3ne1zTTrM-woVxs6_pUhglHIbE9ZC1pD3bt6lQgRU5j6g==",
     "source": "Business Wire",
-    "published": "2026-10-07T22:17:00+00:00",
-    "summary": "NEW YORK--(BUSINESS WIRE)---- $LINC #ClassActionLawsuit--Kirby McInerney LLP reminds Lincoln Educational Services Corporation (“Lincoln” or the “Company”) (NASDAQ: LINC) investors of the November 10, 2026 deadline to seek the…",
-    "ticker": "LINC"
-   },
-   {
-    "title": "The Wendy's Company to Report Third Quarter 2026 Results on November 5",
-    "link": "https://www.prnewswire.com/news-releases/the-wendys-company-to-report-third-quarter-2026-results-on-november-5-302901499.html",
-    "source": "PR Newswire",
-    "published": "2026-10-08T20:30:00+00:00",
-    "summary": "DUBLIN, Ohio, Oct. 8, 2026 /PRNewswire/ -- The Wendy's Company (Nasdaq: WEN) will release its third quarter 2026 results before the market opens on Thursday, November 5. The Company will host a conference call that same day at…",
-    "ticker": "WEN"
+    "published": "2026-10-08T21:00:00+00:00",
+    "summary": "CARMEL, Ind.--(BUSINESS WIRE)--Republic Airways Holdings Inc. (NASDAQ: RJET) will host a live conference call and webcast on Thursday, October 29, 2026 at 8:30 a.m. EDT to discuss third quarter 2026 financial results. A live…",
+    "ticker": "RJET"
    },
    {
     "title": "Xtrackers (IE) plc UK Regulatory Announcement: Net Asset Value(s)",
@@ -6292,18 +6266,18 @@
     "ret_common": 1.29,
     "excess_common": 2.48,
     "common_from": "2026-10-01",
-    "common_days": 8,
+    "common_days": 9,
     "value": 102342.33,
     "ret": 2.34,
     "bench_ret": -1.36,
     "excess": 3.76,
-    "friction_yr": 24.0,
+    "friction_yr": 21.3,
     "max_drawdown": -1.05,
     "positions": 25,
     "cash": 2.01,
     "costs_paid": 525.86,
     "stops_hit": 0,
-    "days": 8,
+    "days": 9,
     "started": "2026-10-01",
     "curve": [
      101.04,
@@ -6313,6 +6287,7 @@
      102.555,
      101.629,
      101.579,
+     102.342,
      102.342
     ],
     "curve_dates": [
@@ -6323,7 +6298,8 @@
      "2026-10-05",
      "2026-10-06",
      "2026-10-07",
-     "2026-10-08"
+     "2026-10-08",
+     "2026-10-09"
     ]
    },
    {
@@ -6333,18 +6309,18 @@
     "ret_common": 1.58,
     "excess_common": 2.78,
     "common_from": "2026-10-01",
-    "common_days": 8,
+    "common_days": 9,
     "value": 102835.42,
     "ret": 2.84,
     "bench_ret": -1.36,
     "excess": 4.26,
-    "friction_yr": 23.1,
+    "friction_yr": 20.6,
     "max_drawdown": -0.88,
     "positions": 25,
     "cash": 1906.91,
     "costs_paid": 506.98,
     "stops_hit": 0,
-    "days": 8,
+    "days": 9,
     "started": "2026-10-01",
     "curve": [
      101.238,
@@ -6354,6 +6330,7 @@
      102.977,
      102.161,
      102.158,
+     102.835,
      102.835
     ],
     "curve_dates": [
@@ -6364,7 +6341,8 @@
      "2026-10-05",
      "2026-10-06",
      "2026-10-07",
-     "2026-10-08"
+     "2026-10-08",
+     "2026-10-09"
     ]
    },
    {
@@ -6374,18 +6352,18 @@
     "ret_common": 1.29,
     "excess_common": 2.48,
     "common_from": "2026-10-01",
-    "common_days": 8,
+    "common_days": 9,
     "value": 102342.33,
     "ret": 2.34,
     "bench_ret": -1.36,
     "excess": 3.76,
-    "friction_yr": 24.0,
+    "friction_yr": 21.3,
     "max_drawdown": -1.05,
     "positions": 25,
     "cash": 2.01,
     "costs_paid": 525.86,
     "stops_hit": 0,
-    "days": 8,
+    "days": 9,
     "started": "2026-10-01",
     "curve": [
      101.04,
@@ -6395,6 +6373,7 @@
      102.555,
      101.629,
      101.579,
+     102.342,
      102.342
     ],
     "curve_dates": [
@@ -6405,7 +6384,8 @@
      "2026-10-05",
      "2026-10-06",
      "2026-10-07",
-     "2026-10-08"
+     "2026-10-08",
+     "2026-10-09"
     ]
    },
    {
@@ -6415,18 +6395,18 @@
     "ret_common": 0.79,
     "excess_common": 1.98,
     "common_from": "2026-10-01",
-    "common_days": 8,
+    "common_days": 9,
     "value": 101470.59,
     "ret": 1.47,
     "bench_ret": -1.36,
     "excess": 2.87,
-    "friction_yr": 19.5,
+    "friction_yr": 17.3,
     "max_drawdown": -0.91,
     "positions": 25,
     "cash": 13522.51,
     "costs_paid": 427.38,
     "stops_hit": 0,
-    "days": 8,
+    "days": 9,
     "started": "2026-10-01",
     "curve": [
      100.676,
@@ -6436,6 +6416,7 @@
      101.576,
      100.751,
      100.757,
+     101.471,
      101.471
     ],
     "curve_dates": [
@@ -6446,7 +6427,8 @@
      "2026-10-05",
      "2026-10-06",
      "2026-10-07",
-     "2026-10-08"
+     "2026-10-08",
+     "2026-10-09"
     ]
    },
    {
@@ -6456,18 +6438,18 @@
     "ret_common": 0.82,
     "excess_common": 2.01,
     "common_from": "2026-10-01",
-    "common_days": 8,
+    "common_days": 9,
     "value": 101629.75,
     "ret": 1.63,
     "bench_ret": -1.36,
     "excess": 3.04,
-    "friction_yr": 18.9,
+    "friction_yr": 16.8,
     "max_drawdown": -0.84,
     "positions": 25,
     "cash": 13975.67,
     "costs_paid": 413.35,
     "stops_hit": 0,
-    "days": 8,
+    "days": 9,
     "started": "2026-10-01",
     "curve": [
      100.805,
@@ -6477,6 +6459,7 @@
      101.846,
      101.095,
      101.065,
+     101.63,
      101.63
     ],
     "curve_dates": [
@@ -6487,7 +6470,8 @@
      "2026-10-05",
      "2026-10-06",
      "2026-10-07",
-     "2026-10-08"
+     "2026-10-08",
+     "2026-10-09"
     ]
    },
    {
@@ -6497,18 +6481,18 @@
     "ret_common": 0.71,
     "excess_common": 1.9,
     "common_from": "2026-10-01",
-    "common_days": 8,
+    "common_days": 9,
     "value": 101762.26,
     "ret": 1.76,
     "bench_ret": -1.36,
     "excess": 3.17,
-    "friction_yr": 18.2,
+    "friction_yr": 16.2,
     "max_drawdown": -1.76,
     "positions": 25,
     "cash": 0.0,
     "costs_paid": 398.41,
     "stops_hit": 0,
-    "days": 8,
+    "days": 9,
     "started": "2026-10-01",
     "curve": [
      101.04,
@@ -6518,6 +6502,7 @@
      102.657,
      101.457,
      100.976,
+     101.762,
      101.762
     ],
     "curve_dates": [
@@ -6528,7 +6513,8 @@
      "2026-10-05",
      "2026-10-06",
      "2026-10-07",
-     "2026-10-08"
+     "2026-10-08",
+     "2026-10-09"
     ]
    }
   ],
@@ -6540,6 +6526,7 @@
    101.518,
    100.606,
    99.166,
+   98.635,
    98.635
   ],
   "bench_dates": [
@@ -6550,11 +6537,12 @@
    "2026-10-05",
    "2026-10-06",
    "2026-10-07",
-   "2026-10-08"
+   "2026-10-08",
+   "2026-10-09"
   ],
   "span": [
    "2026-10-01",
-   "2026-10-08"
+   "2026-10-09"
   ],
   "retired": [
    {
@@ -7085,10 +7073,15 @@
  ],
  "stats": {
   "feeds_total": 20,
-  "feeds_failed": 1,
-  "items": 1115,
-  "smallcap_calls": 554,
-  "feed_errors": [],
+  "feeds_failed": 2,
+  "items": 1104,
+  "smallcap_calls": 552,
+  "feed_errors": [
+   [
+    "PR Newswire",
+    "HTTP Error 404: Not Found"
+   ]
+  ],
   "market_errors": [
    [
     "Yahoo",
