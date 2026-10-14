@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-14T20:06:05.643984+00:00",
+ "generated_at": "2026-10-14T23:22:06.543505+00:00",
  "market": [
   {
    "label": "S&P 500",
@@ -77,13 +77,12 @@
    "label": "Dow",
    "symbol": "DJIA",
    "kind": "index",
-   "value": 51670.1,
-   "prev": 51850.55,
-   "value_txt": "51,670.10",
-   "delta": -0.3480194520598226,
-   "delta_txt": "-0.35%",
+   "value": 51621.48,
+   "prev": 51670.1,
+   "value_txt": "51,621.48",
+   "delta": -0.09409697291082336,
+   "delta_txt": "-0.09%",
    "spark": [
-    52573.29,
     52421.2,
     52093.11,
     51461.9,
@@ -105,9 +104,9 @@
     51231.64,
     51654.95,
     51850.55,
-    51670.1
-   ],
-   "asof": "Oct 13"
+    51670.1,
+    51621.48
+   ]
   },
   {
    "label": "VIX",
@@ -149,13 +148,12 @@
    "label": "10-yr Treasury",
    "symbol": "DGS10",
    "kind": "yield",
-   "value": 52.400000000000006,
-   "prev": 52.199999999999996,
-   "value_txt": "5.24%",
-   "delta": 0.3831417624521264,
-   "delta_txt": "+2 bp",
+   "value": 52.1,
+   "prev": 52.400000000000006,
+   "value_txt": "5.21%",
+   "delta": -0.5725190839694737,
+   "delta_txt": "-3 bp",
    "spark": [
-    48.3,
     49.5,
     49.6,
     49.699999999999996,
@@ -177,9 +175,10 @@
     52.699999999999996,
     52.800000000000004,
     52.199999999999996,
-    52.400000000000006
+    52.400000000000006,
+    52.1
    ],
-   "asof": "Oct 9"
+   "asof": "Oct 13"
   },
   {
    "label": "Dollar (broad)",
@@ -292,11 +291,11 @@
    "label": "Bitcoin",
    "symbol": "bitcoin",
    "kind": "crypto",
-   "value": 81798.0920379854,
+   "value": 81501.18356372172,
    "prev": 83115.10159603784,
-   "value_txt": "$81,798",
-   "delta": -1.5845610878916603,
-   "delta_txt": "-1.58%",
+   "value_txt": "$81,501",
+   "delta": -1.94178675273744,
+   "delta_txt": "-1.94%",
    "spark": [
     86183.29442787907,
     84382.39990356649,
@@ -320,18 +319,18 @@
     83690.86923174463,
     81794.84881711744,
     83115.10159603784,
-    81798.0920379854
+    81501.18356372172
    ]
   },
   {
    "label": "Ethereum",
    "symbol": "ethereum",
    "kind": "crypto",
-   "value": 2430.583060143233,
+   "value": 2416.5183483802516,
    "prev": 2496.5900876439555,
-   "value_txt": "$2,431",
-   "delta": -2.6438872695763034,
-   "delta_txt": "-2.64%",
+   "value_txt": "$2,417",
+   "delta": -3.2072441391156836,
+   "delta_txt": "-3.21%",
    "spark": [
     2752.629093198004,
     2684.342871490596,
@@ -355,18 +354,25 @@
     2534.632372231471,
     2445.8883615502414,
     2496.5900876439555,
-    2430.583060143233
+    2416.5183483802516
    ]
   }
  ],
- "tape_line": "S&P 500 -0.02%, Nasdaq -0.15%, Dow -0.35%; the 10-year Treasury at 5.24% (+2 bp); WTI crude $96.24 (+0.11%); bitcoin $81,798 (-1.58%).",
+ "tape_line": "S&P 500 -0.02%, Nasdaq -0.15%, Dow -0.09%; the 10-year Treasury at 5.21% (-3 bp); WTI crude $96.24 (+0.11%); bitcoin $81,501 (-1.94%).",
  "top": [
   {
    "title": "US chip stocks slide as inflation and AI debt fears unsettle investors",
    "link": "https://www.ft.com/content/fb258413-e88d-47fe-98c8-f645adaea1e1?syn-25a6b1a6=1",
    "source": "Financial Times",
-   "published": "2026-10-14T20:01:43+00:00",
-   "summary": "Nvidia, Oracle and CoreWeave fall as fervour around the technology cools"
+   "published": "2026-10-14T20:36:40+00:00",
+   "summary": "Investors rush into Treasuries as sell-off triggers demand for haven assets"
+  },
+  {
+   "title": "U.S. Stocks Fall on Hot Inflation Report, AI Sell-Off",
+   "link": "https://www.wsj.com/finance/stocks/u-s-stocks-fall-on-hot-inflation-report-ai-sell-off-6c98113d?mod=rss_markets_main",
+   "source": "WSJ Markets",
+   "published": "2026-10-14T21:32:00+00:00",
+   "summary": "U.S. stocks slid as rising inflation bolstered the case for another rate increase this year."
   },
   {
    "title": "Dollar Strengthens on Hot Inflation Data, Higher Treasury Yields",
@@ -376,11 +382,18 @@
    "summary": "The U.S. dollar strengthened as higher-than-expected September inflation sent bond yields up amid expectations of an increase in interest rates."
   },
   {
-   "title": "Rising bond yields and higher inflation leave the Fed trapped in a rate-hike dilemma",
-   "link": "https://www.marketwatch.com/story/rising-bond-yields-and-higher-inflation-leave-the-fed-trapped-in-a-rate-hike-dilemma-d34ba326?mod=mw_rss_topstories",
-   "source": "MarketWatch",
-   "published": "2026-10-14T18:27:00+00:00",
-   "summary": "‘I don’t think you should jack up rates into this environment right now,’ says head of fixed-income at Aptus Capital Advisors"
+   "title": "Inflation Runs Hot, Stocks Go Cold",
+   "link": "https://www.wsj.com/finance/stocks/inflation-runs-hot-stocks-go-cold-eb83d91a?mod=rss_markets_main",
+   "source": "WSJ Markets",
+   "published": "2026-10-14T20:21:00+00:00",
+   "summary": "Plus, Bank of America posts disappointing results, and investment banks rake in AI-boom cash"
+  },
+  {
+   "title": "Oil Prices Rise as Traders Weigh Saudi Aramco Attack Report, Hormuz Shipping Risks",
+   "link": "https://www.wsj.com/business/energy-oil/oil-prices-rise-as-traders-weigh-saudi-aramco-attack-report-hormuz-shipping-risks-0f09ed61?mod=pls_whats_news_us_business_f",
+   "source": "WSJ Business",
+   "published": "2026-10-14T20:12:00+00:00",
+   "summary": "Regional tensions remained elevated after Saudi Arabia’s Energy Ministry said a building belonging to Saudi Aramco in Dhahran was targeted Tuesday evening."
   },
   {
    "title": "Precious Metals Sink As U.S. CPI Numbers Give Dollar A Lift",
@@ -393,33 +406,19 @@
    "title": "CoreWeave shares tumble as bond yields near 15% on concern about AI borrowing binge",
    "link": "https://www.cnbc.com/2026/10/14/coreweave-stock-bond-yields-ai-debt.html",
    "source": "CNBC",
-   "published": "2026-10-14T19:54:01+00:00",
+   "published": "2026-10-14T20:46:32+00:00",
    "summary": "Shares of CoreWeave sank 15%, while yields in its bonds blew out further."
-  },
-  {
-   "title": "Democrats Blame Trump After CPI Report Shows Energy Prices Drove Up Inflation",
-   "link": "https://www.nytimes.com/2026/10/14/business/economy/inflation-trump-democrats-midterms-energy.html",
-   "source": "NYT Business",
-   "published": "2026-10-14T15:25:31+00:00",
-   "summary": "Inflation and economic frustrations have expanded the map of competitive midterm election districts deep into Republican territory."
-  },
-  {
-   "title": "Bitcoin price dips below $82K as high oil prices spike US CPI inflation",
-   "link": "https://cointelegraph.com/markets/bitcoin-price-dips-yields-surge-as-high-oil-prices-spike-us-cpi-inflation?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
-   "source": "Cointelegraph",
-   "published": "2026-10-14T14:21:15+00:00",
-   "summary": "Bitcoin fell below $82,000 while bond yields targeted new 24-year highs on the back of hot US CPI inflation."
   }
  ],
  "smallcap": {
   "note": null,
-  "asof": "2026-10-14T20:16:24+00:00",
+  "asof": "2026-10-14T23:32:19+00:00",
   "coverage": {
    "universe": 9892,
    "profiled": 10099,
    "in_band": 1696,
    "measured": 1696,
-   "scored": 910,
+   "scored": 911,
    "below_floor": 66
   },
   "screen": [
@@ -473,13 +472,13 @@
     "mcap": 696.7429896199678,
     "rev_g": 46.84,
     "accel": 1.2399999999999949,
-    "r13": 69.6468,
-    "momo": 1.4,
-    "from_high": -1.8452573648429893,
-    "ev_rev": 8.3509,
+    "r13": 77.931,
+    "momo": 1.47,
+    "from_high": -2.944321026383012,
+    "ev_rev": 8.4406,
     "px": 15.16,
     "dp": -2.0672,
-    "score": 83.8,
+    "score": 84.0,
     "sub": {
      "g": 80,
      "m": 99,
@@ -489,8 +488,8 @@
     "growth_doubt": false,
     "unit_doubt": null,
     "why": {
-     "vol": 72.55654,
-     "r26": 161.8399,
+     "vol": 72.58557,
+     "r26": 179.9277,
      "rg3": 29.2,
      "rev_gq": 48.08,
      "dte": 0,
@@ -499,8 +498,8 @@
      "om_a": 8.98,
      "cashps": 0.485,
      "rps": 1.6239,
-     "adv": 0.9343,
-     "hi52": 15.445,
+     "adv": 0.98004,
+     "hi52": 15.6199,
      "shares": 55.91,
      "exch": "NASDAQ NMS - GLOBAL MARKET"
     }
@@ -519,7 +518,7 @@
     "ev_rev": 11.8454,
     "px": 75.96,
     "dp": -3.3096,
-    "score": 83.5,
+    "score": 83.4,
     "sub": {
      "g": 76,
      "m": 97,
@@ -599,7 +598,7 @@
     "ev_rev": 1.0768,
     "px": 57.75,
     "dp": 1.2625,
-    "score": 81.2,
+    "score": 81.1,
     "sub": {
      "g": 88,
      "m": 91,
@@ -641,7 +640,7 @@
     "ev_rev": 15.4581,
     "px": 52.88,
     "dp": -0.8438,
-    "score": 81.1,
+    "score": 81.0,
     "sub": {
      "g": 86,
      "m": 95,
@@ -683,10 +682,10 @@
     "ev_rev": 7.7327,
     "px": 8.21,
     "dp": -6.5984,
-    "score": 79.8,
+    "score": 79.9,
     "sub": {
      "g": 68,
-     "m": 97,
+     "m": 98,
      "q": 69
     },
     "flags": [],
@@ -723,7 +722,7 @@
     "ev_rev": 0.4338,
     "px": 14.51,
     "dp": -6.1449,
-    "score": 79.8,
+    "score": 79.7,
     "sub": {
      "g": 60,
      "m": 92,
@@ -763,7 +762,7 @@
     "ev_rev": null,
     "px": 51.94,
     "dp": 0.135,
-    "score": 79.4,
+    "score": 79.3,
     "sub": {
      "g": 70,
      "m": 91,
@@ -805,7 +804,7 @@
     "ev_rev": null,
     "px": 24.63,
     "dp": -0.6855,
-    "score": 79.1,
+    "score": 79.0,
     "sub": {
      "g": 71,
      "m": 91,
@@ -835,6 +834,86 @@
     }
    },
    {
+    "ticker": "TEN",
+    "name": "Tsakos Energy Navigation Ltd",
+    "ind": "Energy",
+    "group": "Energy",
+    "mcap": 1288.1180526363216,
+    "rev_g": 23.23,
+    "accel": 31.139999999999997,
+    "r13": 41.8868,
+    "momo": 1.17,
+    "from_high": -4.820131135920603,
+    "ev_rev": 3.4048,
+    "px": 53.71,
+    "dp": -4.7695,
+    "score": 78.3,
+    "sub": {
+     "g": 72,
+     "m": 97,
+     "q": 54
+    },
+    "flags": [],
+    "growth_doubt": false,
+    "unit_doubt": null,
+    "why": {
+     "vol": 37.576122,
+     "r26": 47.0665,
+     "rg3": -2.45,
+     "rev_gq": 54.37,
+     "dte": 1.0231,
+     "gm_t": 61.58,
+     "om_t": 43.17,
+     "om_a": 31.59,
+     "cashps": 15.4723,
+     "rps": 32.0197,
+     "adv": 0.47304,
+     "hi52": 56.43,
+     "shares": 30.13,
+     "exch": "NEW YORK STOCK EXCHANGE, INC."
+    }
+   },
+   {
+    "ticker": "GOTU",
+    "name": "Gaotu Techedu Inc",
+    "ind": "Diversified Consumer Services",
+    "group": "Consumer",
+    "mcap": 503.016943,
+    "rev_g": 53.79,
+    "accel": -32.42,
+    "r13": 53.5912,
+    "momo": 0.95,
+    "from_high": -19.090909090909093,
+    "ev_rev": 0.8001,
+    "px": 2.67,
+    "dp": -3.9568,
+    "score": 78.2,
+    "sub": {
+     "g": 76,
+     "m": 92,
+     "q": 55
+    },
+    "flags": [],
+    "growth_doubt": false,
+    "unit_doubt": "cash per share is 7.9× the share price, which would price the company below the money in its own bank account",
+    "why": {
+     "vol": 50.77512,
+     "r26": 40.404,
+     "rg3": 35,
+     "rev_gq": 21.37,
+     "dte": 0.5115,
+     "gm_t": 67.99,
+     "om_t": -5.17,
+     "om_a": -8.19,
+     "cashps": 21.0135,
+     "rps": 31.9276,
+     "adv": 0.57932,
+     "hi52": 3.3,
+     "shares": 158.7,
+     "exch": "NEW YORK STOCK EXCHANGE, INC."
+    }
+   },
+   {
     "ticker": "SHIP",
     "name": "Seanergy Maritime Holdings Corp",
     "ind": "Marine",
@@ -848,7 +927,7 @@
     "ev_rev": 3.2466,
     "px": 16.6,
     "dp": -4.4329,
-    "score": 78.3,
+    "score": 78.2,
     "sub": {
      "g": 83,
      "m": 89,
@@ -875,86 +954,6 @@
     }
    },
    {
-    "ticker": "BWFG",
-    "name": "Bankwell Financial Group Inc",
-    "ind": "Banking",
-    "group": "Financials",
-    "mcap": 537.2312044899471,
-    "rev_g": 78.21637,
-    "accel": -15.63805,
-    "r13": 13.193,
-    "momo": 1.06,
-    "from_high": -6.638884897255359,
-    "ev_rev": null,
-    "px": 64.97,
-    "dp": -1.0056,
-    "score": 78.1,
-    "sub": {
-     "g": 71,
-     "m": 95,
-     "q": 59
-    },
-    "flags": [],
-    "growth_doubt": true,
-    "unit_doubt": null,
-    "why": {
-     "vol": 21.251358,
-     "r26": 36.3355,
-     "rg3": 12.44958,
-     "rev_gq": 62.57832,
-     "dte": 0.2158,
-     "gm_t": null,
-     "om_t": 45.67215,
-     "om_a": 49.0709,
-     "cashps": 32.7704,
-     "rps": 13.57916,
-     "adv": 0.07307,
-     "hi52": 69.59,
-     "shares": 7.97,
-     "exch": "NASDAQ NMS - GLOBAL MARKET"
-    }
-   },
-   {
-    "ticker": "GOTU",
-    "name": "Gaotu Techedu Inc",
-    "ind": "Diversified Consumer Services",
-    "group": "Consumer",
-    "mcap": 503.016943,
-    "rev_g": 53.79,
-    "accel": -32.42,
-    "r13": 48.6486,
-    "momo": 0.9,
-    "from_high": -19.090909090909093,
-    "ev_rev": 0.7782,
-    "px": 2.67,
-    "dp": -3.9568,
-    "score": 78.1,
-    "sub": {
-     "g": 76,
-     "m": 92,
-     "q": 55
-    },
-    "flags": [],
-    "growth_doubt": false,
-    "unit_doubt": "cash per share is 7.9× the share price, which would price the company below the money in its own bank account",
-    "why": {
-     "vol": 50.331245,
-     "r26": 40.3061,
-     "rg3": 35,
-     "rev_gq": 21.37,
-     "dte": 0.5115,
-     "gm_t": 67.99,
-     "om_t": -5.17,
-     "om_a": -8.19,
-     "cashps": 21.0135,
-     "rps": 31.9276,
-     "adv": 0.58278,
-     "hi52": 3.3,
-     "shares": 158.7,
-     "exch": "NEW YORK STOCK EXCHANGE, INC."
-    }
-   },
-   {
     "ticker": "ATLC",
     "name": "Atlanticus Holdings Corp",
     "ind": "Financial Services",
@@ -968,7 +967,7 @@
     "ev_rev": 6.0345,
     "px": 91.07,
     "dp": -3.8839,
-    "score": 77.9,
+    "score": 78.0,
     "sub": {
      "g": 93,
      "m": 83,
@@ -991,6 +990,46 @@
      "adv": 0.09865,
      "hi52": 114.3399,
      "shares": 15.12,
+     "exch": "NASDAQ NMS - GLOBAL MARKET"
+    }
+   },
+   {
+    "ticker": "BWFG",
+    "name": "Bankwell Financial Group Inc",
+    "ind": "Banking",
+    "group": "Financials",
+    "mcap": 537.2312044899471,
+    "rev_g": 78.21637,
+    "accel": -15.63805,
+    "r13": 13.193,
+    "momo": 1.06,
+    "from_high": -6.638884897255359,
+    "ev_rev": null,
+    "px": 64.97,
+    "dp": -1.0056,
+    "score": 78.0,
+    "sub": {
+     "g": 71,
+     "m": 95,
+     "q": 59
+    },
+    "flags": [],
+    "growth_doubt": true,
+    "unit_doubt": null,
+    "why": {
+     "vol": 21.251358,
+     "r26": 36.3355,
+     "rg3": 12.44958,
+     "rev_gq": 62.57832,
+     "dte": 0.2158,
+     "gm_t": null,
+     "om_t": 45.67215,
+     "om_a": 49.0709,
+     "cashps": 32.7704,
+     "rps": 13.57916,
+     "adv": 0.07307,
+     "hi52": 69.59,
+     "shares": 7.97,
      "exch": "NASDAQ NMS - GLOBAL MARKET"
     }
    },
@@ -1075,42 +1114,42 @@
     }
    },
    {
-    "ticker": "LIND",
-    "name": "Lindblad Expeditions Holdings Inc",
-    "ind": "Hotels, Restaurants & Leisure",
-    "group": "Consumer",
-    "mcap": 1807.166216103896,
-    "rev_g": 18.27,
-    "accel": 0.370000000000001,
-    "r13": 35.0679,
-    "momo": 1.28,
-    "from_high": -3.0253025302530268,
-    "ev_rev": 3.2452,
-    "px": 35.26,
-    "dp": -3.052,
-    "score": 76.9,
+    "ticker": "IBEX",
+    "name": "Ibex Ltd",
+    "ind": "Professional Services",
+    "group": "Industrials",
+    "mcap": 524.45166,
+    "rev_g": 15.37,
+    "accel": -3.7299999999999986,
+    "r13": 33.7371,
+    "momo": 1.33,
+    "from_high": -2.249890782000874,
+    "ev_rev": 0.889,
+    "px": 44.75,
+    "dp": -1.1487,
+    "score": 77.0,
     "sub": {
-     "g": 79,
+     "g": 62,
      "m": 98,
-     "q": 31
+     "q": 65
     },
     "flags": [],
     "growth_doubt": false,
     "unit_doubt": null,
     "why": {
-     "vol": 50.78498,
-     "r26": 109.4737,
-     "rg3": 22.3,
-     "rev_gq": 18.64,
-     "dte": 102.4293,
-     "gm_t": 46.65,
-     "om_t": 4.16,
-     "om_a": 2.85,
-     "cashps": 4.8673,
-     "rps": 12.6863,
-     "adv": 1.10103,
-     "hi52": 36.36,
-     "shares": 65.6,
+     "vol": 34.07094,
+     "r26": 62.9003,
+     "rg3": 7.18,
+     "rev_gq": 11.64,
+     "dte": 0.0097,
+     "gm_t": 29.17,
+     "om_t": 8.53,
+     "om_a": 8.53,
+     "cashps": 2.4468,
+     "rps": 43.2498,
+     "adv": 0.07512,
+     "hi52": 45.78,
+     "shares": 13.39,
      "exch": "NASDAQ NMS - GLOBAL MARKET"
     }
    },
@@ -1128,7 +1167,7 @@
     "ev_rev": 3.1778,
     "px": 2.5,
     "dp": -6.015,
-    "score": 76.9,
+    "score": 76.8,
     "sub": {
      "g": 73,
      "m": 89,
@@ -1155,42 +1194,42 @@
     }
    },
    {
-    "ticker": "IBEX",
-    "name": "Ibex Ltd",
-    "ind": "Professional Services",
-    "group": "Industrials",
-    "mcap": 524.45166,
-    "rev_g": 15.37,
-    "accel": -3.7299999999999986,
-    "r13": 34.5422,
-    "momo": 1.29,
-    "from_high": -1.1704946996466403,
-    "ev_rev": 0.8699,
-    "px": 44.75,
-    "dp": -1.1487,
+    "ticker": "LIND",
+    "name": "Lindblad Expeditions Holdings Inc",
+    "ind": "Hotels, Restaurants & Leisure",
+    "group": "Consumer",
+    "mcap": 1807.166216103896,
+    "rev_g": 18.27,
+    "accel": 0.370000000000001,
+    "r13": 38.9228,
+    "momo": 1.18,
+    "from_high": -4.625371923180966,
+    "ev_rev": 3.2712,
+    "px": 35.26,
+    "dp": -3.052,
     "score": 76.7,
     "sub": {
-     "g": 62,
-     "m": 98,
-     "q": 65
+     "g": 79,
+     "m": 97,
+     "q": 31
     },
     "flags": [],
     "growth_doubt": false,
     "unit_doubt": null,
     "why": {
-     "vol": 34.74052,
-     "r26": 60.2592,
-     "rg3": 7.18,
-     "rev_gq": 11.64,
-     "dte": 0.0097,
-     "gm_t": 29.17,
-     "om_t": 8.53,
-     "om_a": 8.53,
-     "cashps": 2.4468,
-     "rps": 43.2498,
-     "adv": 0.07995,
-     "hi52": 45.28,
-     "shares": 13.39,
+     "vol": 50.751194,
+     "r26": 91.2198,
+     "rg3": 22.3,
+     "rev_gq": 18.64,
+     "dte": 102.4293,
+     "gm_t": 46.65,
+     "om_t": 4.16,
+     "om_a": 2.85,
+     "cashps": 4.8673,
+     "rps": 12.6863,
+     "adv": 1.05294,
+     "hi52": 36.97,
+     "shares": 65.6,
      "exch": "NASDAQ NMS - GLOBAL MARKET"
     }
    },
@@ -1202,24 +1241,24 @@
     "mcap": 1711.703509,
     "rev_g": 5.4,
     "accel": 1.67,
-    "r13": 33.3715,
-    "momo": 1.7,
-    "from_high": -1.4883664418929743,
-    "ev_rev": 1.496,
+    "r13": 32.5425,
+    "momo": 1.66,
+    "from_high": -2.207212640212275,
+    "ev_rev": 1.5019,
     "px": 81.08,
     "dp": -1.9352,
     "score": 76.5,
     "sub": {
      "g": 61,
-     "m": 100,
+     "m": 99,
      "q": 62
     },
     "flags": [],
     "growth_doubt": false,
     "unit_doubt": null,
     "why": {
-     "vol": 27.61112,
-     "r26": 67.0904,
+     "vol": 27.571745,
+     "r26": 65.3269,
      "rg3": 1.56,
      "rev_gq": 7.07,
      "dte": 0,
@@ -1228,49 +1267,9 @@
      "om_a": 9.34,
      "cashps": 10.9485,
      "rps": 52.0642,
-     "adv": 0.45728,
-     "hi52": 82.305,
+     "adv": 0.39561,
+     "hi52": 82.91,
      "shares": 24.87,
-     "exch": "NEW YORK STOCK EXCHANGE, INC."
-    }
-   },
-   {
-    "ticker": "TEN",
-    "name": "Tsakos Energy Navigation Ltd",
-    "ind": "Energy",
-    "group": "Energy",
-    "mcap": 1288.1180526363216,
-    "rev_g": 23.23,
-    "accel": 31.139999999999997,
-    "r13": 29.6016,
-    "momo": 0.85,
-    "from_high": -0.24145616641902956,
-    "ev_rev": 3.282,
-    "px": 53.71,
-    "dp": -4.7695,
-    "score": 75.5,
-    "sub": {
-     "g": 72,
-     "m": 90,
-     "q": 54
-    },
-    "flags": [],
-    "growth_doubt": false,
-    "unit_doubt": null,
-    "why": {
-     "vol": 36.389004,
-     "r26": 32.8165,
-     "rg3": -2.45,
-     "rev_gq": 54.37,
-     "dte": 1.0231,
-     "gm_t": 61.58,
-     "om_t": 43.17,
-     "om_a": 31.59,
-     "cashps": 15.4723,
-     "rps": 32.0197,
-     "adv": 0.40876,
-     "hi52": 53.84,
-     "shares": 30.13,
      "exch": "NEW YORK STOCK EXCHANGE, INC."
     }
    },
@@ -1288,7 +1287,7 @@
     "ev_rev": 8.2218,
     "px": 16.87,
     "dp": -4.6354,
-    "score": 75.1,
+    "score": 75.2,
     "sub": {
      "g": 74,
      "m": 80,
@@ -1317,48 +1316,6 @@
     }
    },
    {
-    "ticker": "VSTM",
-    "name": "Verastem Inc",
-    "ind": "Biotechnology",
-    "group": "Health",
-    "mcap": 528.999316747541,
-    "rev_g": 3995.74,
-    "accel": -50.0,
-    "r13": 79.3722,
-    "momo": 1.12,
-    "from_high": -28.74306839186691,
-    "ev_rev": 7.5142,
-    "px": 7.71,
-    "dp": 3.4899,
-    "score": 75.0,
-    "sub": {
-     "g": 78,
-     "m": 96,
-     "q": 27
-    },
-    "flags": [
-     "8-K"
-    ],
-    "growth_doubt": false,
-    "unit_doubt": null,
-    "why": {
-     "vol": 60.70759,
-     "r26": 50.9434,
-     "rg3": 128.24,
-     "rev_gq": 1775.43,
-     "dte": 1.6348,
-     "gm_t": 87.64,
-     "om_t": -182.57,
-     "om_a": -556.24,
-     "cashps": 1.507,
-     "rps": 0.8742,
-     "adv": 2.14567,
-     "hi52": 10.82,
-     "shares": 87.87,
-     "exch": "NASDAQ NMS - GLOBAL MARKET"
-    }
-   },
-   {
     "ticker": "AMPL",
     "name": "Amplitude Inc",
     "ind": "Technology",
@@ -1366,24 +1323,24 @@
     "mcap": 1626.4014886671587,
     "rev_g": 18.26,
     "accel": 2.8999999999999986,
-    "r13": 70.6972,
-    "momo": 1.64,
-    "from_high": -3.6540872973364724,
-    "ev_rev": 5.0315,
+    "r13": 61.0939,
+    "momo": 1.66,
+    "from_high": -5.471406491499231,
+    "ev_rev": 5.0115,
     "px": 15.29,
     "dp": -2.05,
     "score": 74.9,
     "sub": {
      "g": 70,
-     "m": 99,
+     "m": 100,
      "q": 36
     },
     "flags": [],
     "growth_doubt": false,
     "unit_doubt": null,
     "why": {
-     "vol": 58.488064,
-     "r26": 133.8806,
+     "vol": 58.252884,
+     "r26": 159.7338,
      "rg3": 12.96,
      "rev_gq": 21.16,
      "dte": 0,
@@ -1392,9 +1349,49 @@
      "om_a": -27.97,
      "cashps": 1.126,
      "rps": 2.8936,
-     "adv": 2.07798,
-     "hi52": 15.8699,
+     "adv": 2.08938,
+     "hi52": 16.175,
      "shares": 132.62,
+     "exch": "NASDAQ NMS - GLOBAL MARKET"
+    }
+   },
+   {
+    "ticker": "CBLL",
+    "name": "Ceribell Inc",
+    "ind": "Health Care",
+    "group": "Health",
+    "mcap": 948.7066531282051,
+    "rev_g": 31.7,
+    "accel": 0.8399999999999999,
+    "r13": 21.1765,
+    "momo": 0.59,
+    "from_high": null,
+    "ev_rev": 8.7923,
+    "px": 26.37,
+    "dp": 0.8799,
+    "score": 74.9,
+    "sub": {
+     "g": 77,
+     "m": 81,
+     "q": 58
+    },
+    "flags": [],
+    "growth_doubt": false,
+    "unit_doubt": null,
+    "why": {
+     "vol": 43.80339,
+     "r26": 33.3896,
+     "rg3": 50.9,
+     "rev_gq": 32.54,
+     "dte": 0.1557,
+     "gm_t": 88.9,
+     "om_t": -68.62,
+     "om_a": -65.57,
+     "cashps": 3.3817,
+     "rps": 2.681,
+     "adv": 0.29775,
+     "hi52": 25.6269,
+     "shares": 37.94,
      "exch": "NASDAQ NMS - GLOBAL MARKET"
     }
    },
@@ -1441,11 +1438,11 @@
   ],
   "freshness": {
    "last_full_h": 0.0,
-   "quote_median_h": 4.3,
+   "quote_median_h": 7.5,
    "quote_count": 1862,
    "bench_h": 0.0,
-   "universe_h": 116.0,
-   "earnings_h": 8.7,
+   "universe_h": 119.3,
+   "earnings_h": 11.9,
    "bench_gate_h": 72
   },
   "reach": {
@@ -1472,12 +1469,12 @@
     {
      "ticker": "GCT",
      "name": "GigaCloud Technology Inc",
-     "score": 81.2,
+     "score": 81.1,
      "ind": "Distributors"
     }
    ],
    "left": [
-    "CBLL"
+    "VSTM"
    ],
    "held": 24
   },
@@ -1504,18 +1501,18 @@
     "r13": 120.197
    },
    {
-    "ticker": "FWDI",
-    "name": "Forward Industries Inc",
-    "rev_ttm": 45.186625,
-    "rev_g": 171.58,
-    "r13": 71.0956
-   },
-   {
     "ticker": "SENS",
     "name": "Senseonics Holdings Inc",
     "rev_ttm": 35.08274,
     "rev_g": 90.63,
-    "r13": 66.9145
+    "r13": 77.336
+   },
+   {
+    "ticker": "FWDI",
+    "name": "Forward Industries Inc",
+    "rev_ttm": 45.186625,
+    "rev_g": 171.58,
+    "r13": 58.37
    },
    {
     "ticker": "TKNO",
@@ -1559,16 +1556,16 @@
     "dp": 11.6632
    },
    {
-    "ticker": "EVH",
-    "name": "Evolent Health Inc",
-    "px": 4.6,
-    "dp": 8.2353
-   },
-   {
     "ticker": "TRAX",
     "name": "First Tracks Biotherapeutics Inc",
     "px": 34.13,
     "dp": 7.7336
+   },
+   {
+    "ticker": "DAO",
+    "name": "Youdao Inc",
+    "px": 19.5,
+    "dp": 7.6159
    }
   ],
   "movers_down": [
@@ -1733,7 +1730,7 @@
     "ticker": "VSTM",
     "name": "Verastem Inc",
     "date": "2026-10-14",
-    "link": "https://www.sec.gov/Archives/edgar/data/1526119/000110465926115687/0001104659-26-115687-index.htm",
+    "link": "https://www.sec.gov/Archives/edgar/data/1526119/000110465926115880/0001104659-26-115880-index.htm",
     "form": "8-K"
    },
    {
@@ -1844,14 +1841,42 @@
     "form": "SCHEDULE 13D/A"
    },
    {
-    "ticker": "AHCO",
-    "name": "Adapthealth Corp",
-    "date": "2026-10-13",
-    "link": "https://www.sec.gov/Archives/edgar/data/1725255/000108029826000011/0001080298-26-000011-index.htm",
-    "form": "SCHEDULE 13G/A"
+    "ticker": "BMBL",
+    "name": "Bumble Inc",
+    "date": "2026-10-14",
+    "link": "https://www.sec.gov/Archives/edgar/data/1830043/000119312526421973/0001193125-26-421973-index.htm",
+    "form": "SCHEDULE 13D/A"
    }
   ],
   "filings_offering": [
+   {
+    "ticker": "TRON",
+    "name": "TRON Inc",
+    "date": "2026-10-14",
+    "link": "https://www.sec.gov/Archives/edgar/data/1956744/000149315226047066/0001493152-26-047066-index.htm",
+    "form": "424B5"
+   },
+   {
+    "ticker": "OPTT",
+    "name": "Ocean Power Technologies Inc",
+    "date": "2026-10-14",
+    "link": "https://www.sec.gov/Archives/edgar/data/1378140/000149315226047060/0001493152-26-047060-index.htm",
+    "form": "424B5"
+   },
+   {
+    "ticker": "VSTM",
+    "name": "Verastem Inc",
+    "date": "2026-10-14",
+    "link": "https://www.sec.gov/Archives/edgar/data/1526119/000110465926115875/0001104659-26-115875-index.htm",
+    "form": "424B5"
+   },
+   {
+    "ticker": "MOVE",
+    "name": "Corvex, Inc",
+    "date": "2026-10-14",
+    "link": "https://www.sec.gov/Archives/edgar/data/1734750/000121390026109460/0001213900-26-109460-index.htm",
+    "form": "424B5"
+   },
    {
     "ticker": "GFUZ",
     "name": "Spring Valley Acquisition Corp III",
@@ -1893,38 +1918,18 @@
     "date": "2026-10-09",
     "link": "https://www.sec.gov/Archives/edgar/data/2049662/000110465926115072/0001104659-26-115072-index.htm",
     "form": "424B3"
-   },
-   {
-    "ticker": "PWRL",
-    "name": "PowerLaw10 LLC",
-    "date": "2026-10-08",
-    "link": "https://www.sec.gov/Archives/edgar/data/2052053/000121390026107700/0001213900-26-107700-index.htm",
-    "form": "424B3"
-   },
-   {
-    "ticker": "NKLR",
-    "name": "Terra Innovatum Global NV",
-    "date": "2026-10-08",
-    "link": "https://www.sec.gov/Archives/edgar/data/2067627/000121390026107993/0001213900-26-107993-index.htm",
-    "form": "424B3"
-   },
-   {
-    "ticker": "TOP",
-    "name": "TOP Financial Group Ltd",
-    "date": "2026-10-08",
-    "link": "https://www.sec.gov/Archives/edgar/data/1848275/000121390026108043/0001213900-26-108043-index.htm",
-    "form": "424B3"
-   },
-   {
-    "ticker": "CURR",
-    "name": "CURRENC Group Inc",
-    "date": "2026-10-07",
-    "link": "https://www.sec.gov/Archives/edgar/data/1862935/000149315226046171/0001493152-26-046171-index.htm",
-    "form": "424B3"
    }
   ],
   "budget_mode": "full",
   "news": [
+   {
+    "title": "Scott+Scott Attorneys at Law LLP Alerts Investors of Its Investigation Into Cardinal Infrastructure Group Inc. (NASDAQ: CDNL)",
+    "link": "http://www.businesswire.com/news/home/20261014182391/en/ScottScott-Attorneys-at-Law-LLP-Alerts-Investors-of-Its-Investigation-Into-Cardinal-Infrastructure-Group-Inc.-NASDAQ-CDNL/?feedref=JjAwJuNHiystnCoBq_hl-YorNIXXeJUidDamMzBr2lVrRA1xRkqfEfrAVCWz-Z_wrCOi9QzgjCezTS3Nw_X6kJUrpSBm-Hav1w-UkdSlG3ne1zTTrM-woVxs6_pUhglHIbE9ZC1pD3bt6lQgRU5j6g==",
+    "source": "Business Wire",
+    "published": "2026-10-14T21:37:00+00:00",
+    "summary": "NEW YORK--(BUSINESS WIRE)---- $CDNL #CardinalInfastructure--Scott+Scott Attorneys at Law LLP (“Scott+Scott”), a shareholder and consumer rights litigation firm, alerts investors that it is investigating potential violations of…",
+    "ticker": "CDNL"
+   },
    {
     "title": "CDNL ALERT: Investigation Launched into Cardinal Infrastructure Group Inc., Robbins Geller Rudman & Dowd LLP Attorneys Encourage Investors and Potential Witnesses to Contact Law Firm",
     "link": "http://www.businesswire.com/news/home/20261014993587/en/CDNL-ALERT-Investigation-Launched-into-Cardinal-Infrastructure-Group-Inc.-Robbins-Geller-Rudman-Dowd-LLP-Attorneys-Encourage-Investors-and-Potential-Witnesses-to-Contact-Law-Firm/?feedref=JjAwJuNHiystnCoBq_hl-YorNIXXeJUidDamMzBr2lVrRA1xRkqfEfrAVCWz-Z_wrCOi9QzgjCezTS3Nw_X6kJUrpSBm-Hav1w-UkdSlG3ne1zTTrM-woVxs6_pUhglHIbE9ZC1pD3bt6lQgRU5j6g==",
@@ -1950,44 +1955,36 @@
     "ticker": "ASIC"
    },
    {
-    "title": "$BMBL Stock Notification: Bumble Inc. Is Being Investigated After the $6.05 Per Share Merger Deal Announced – Investors Are Alerted to Contact BFA Law",
-    "link": "http://www.businesswire.com/news/home/20261013382495/en/BMBL-Stock-Notification-Bumble-Inc.-Is-Being-Investigated-After-the-6.05-Per-Share-Merger-Deal-Announced-%E2%80%93-Investors-Are-Alerted-to-Contact-BFA-Law/?feedref=JjAwJuNHiystnCoBq_hl-YorNIXXeJUidDamMzBr2lVrRA1xRkqfEfrAVCWz-Z_wrCOi9QzgjCezTS3Nw_X6kJUrpSBm-Hav1w-UkdSlG3ne1zTTrM-woVxs6_pUhglHIbE9ZC1pD3bt6lQgRU5j6g==",
-    "source": "Business Wire",
-    "published": "2026-10-13T21:40:00+00:00",
-    "summary": "NEW YORK--(BUSINESS WIRE)---- $BMBL #Acquisition--Bumble Inc. is being Investigated after the $6.05 per share Merger Deal Announced – Investors are Alerted to Contact BFA Law",
-    "ticker": "BMBL"
+    "title": "INVESTOR ALERT: Fluence Energy, Inc. (FLNC) Investors: November 27, 2026, Filing Deadline in Securities Fraud Class Action - Contact Kessler Topaz Meltzer & Check, LLP",
+    "link": "https://www.prnewswire.com/news-releases/investor-alert-fluence-energy-inc-flnc-investors-november-27-2026-filing-deadline-in-securities-fraud-class-action---contact-kessler-topaz-meltzer--check-llp-302909093.html",
+    "source": "PR Newswire",
+    "published": "2026-10-14T22:43:00+00:00",
+    "summary": "Did you buy FLNC securities between November 24, 2025 and September 16, 2026? Affected FLNC Investor Summary Who: Fluence Energy, Inc. (NASDAQ: FLNC) What: Securities fraud class action lawsuit filed Class Period: November 24…",
+    "ticker": "FLNC"
    },
    {
-    "title": "GMR Solutions Inc. Sets Third Quarter 2026 Earnings Call",
-    "link": "http://www.businesswire.com/news/home/20261013835713/en/GMR-Solutions-Inc.-Sets-Third-Quarter-2026-Earnings-Call/?feedref=JjAwJuNHiystnCoBq_hl-YorNIXXeJUidDamMzBr2lVrRA1xRkqfEfrAVCWz-Z_wrCOi9QzgjCezTS3Nw_X6kJUrpSBm-Hav1w-UkdSlG3ne1zTTrM-woVxs6_pUhglHIbE9ZC1pD3bt6lQgRU5j6g==",
+    "title": "Flowco Holdings Inc. to Announce Third Quarter 2026 Results on November 4, 2026",
+    "link": "http://www.businesswire.com/news/home/20261014114305/en/Flowco-Holdings-Inc.-to-Announce-Third-Quarter-2026-Results-on-November-4-2026/?feedref=JjAwJuNHiystnCoBq_hl-YorNIXXeJUidDamMzBr2lVrRA1xRkqfEfrAVCWz-Z_wrCOi9QzgjCezTS3Nw_X6kJUrpSBm-Hav1w-UkdSlG3ne1zTTrM-woVxs6_pUhglHIbE9ZC1pD3bt6lQgRU5j6g==",
     "source": "Business Wire",
-    "published": "2026-10-13T21:08:00+00:00",
-    "summary": "LEWISVILLE, Texas--(BUSINESS WIRE)--GMR Solutions Inc. (NYSE: GMRS) plans to release its third quarter 2026 financial results after market close on Nov 9, 2026. The company will host a live earnings call on Nov 10, 2026 at 8:00…",
-    "ticker": "GMRS"
+    "published": "2026-10-14T21:30:00+00:00",
+    "summary": "HOUSTON--(BUSINESS WIRE)--Flowco Holdings Inc. (NYSE: FLOC) (“Flowco” or the “Company”), a leading provider of production optimization, artificial lift and emissions management and monetization solutions for the oil and natural…",
+    "ticker": "FLOC"
    },
    {
-    "title": "Winmark Corporation Announces Quarterly Cash Dividend and Special Dividend",
-    "link": "http://www.businesswire.com/news/home/20261014366167/en/Winmark-Corporation-Announces-Quarterly-Cash-Dividend-and-Special-Dividend/?feedref=JjAwJuNHiystnCoBq_hl-YorNIXXeJUidDamMzBr2lVrRA1xRkqfEfrAVCWz-Z_wrCOi9QzgjCezTS3Nw_X6kJUrpSBm-Hav1w-UkdSlG3ne1zTTrM-woVxs6_pUhglHIbE9ZC1pD3bt6lQgRU5j6g==",
+    "title": "Ladder Capital Corp to Report Third Quarter 2026 Results",
+    "link": "http://www.businesswire.com/news/home/20261014721634/en/Ladder-Capital-Corp-to-Report-Third-Quarter-2026-Results/?feedref=JjAwJuNHiystnCoBq_hl-YorNIXXeJUidDamMzBr2lVrRA1xRkqfEfrAVCWz-Z_wrCOi9QzgjCezTS3Nw_X6kJUrpSBm-Hav1w-UkdSlG3ne1zTTrM-woVxs6_pUhglHIbE9ZC1pD3bt6lQgRU5j6g==",
     "source": "Business Wire",
-    "published": "2026-10-14T15:32:00+00:00",
-    "summary": "MINNEAPOLIS--(BUSINESS WIRE)--Winmark Corporation (Nasdaq: WINA) announced today that its Board of Directors approved the payment of a quarterly cash dividend to shareholders. The quarterly dividend of $1.02 per share will be…",
-    "ticker": "WINA"
+    "published": "2026-10-14T20:37:00+00:00",
+    "summary": "NEW YORK--(BUSINESS WIRE)--Ladder Capital Corp (NYSE: LADR) (“we,” “Ladder,” or the “Company”) will release its third quarter 2026 results on Friday, October 16, 2026 before the open of markets that day. The Company will host a…",
+    "ticker": "LADR"
    },
    {
-    "title": "Winmark Corporation Announces Third Quarter Results",
-    "link": "http://www.businesswire.com/news/home/20261014697520/en/Winmark-Corporation-Announces-Third-Quarter-Results/?feedref=JjAwJuNHiystnCoBq_hl-YorNIXXeJUidDamMzBr2lVrRA1xRkqfEfrAVCWz-Z_wrCOi9QzgjCezTS3Nw_X6kJUrpSBm-Hav1w-UkdSlG3ne1zTTrM-woVxs6_pUhglHIbE9ZC1pD3bt6lQgRU5j6g==",
+    "title": "Cerus Corporation Announces Workshop and Abstracts at the 2026 AABB Annual Meeting",
+    "link": "http://www.businesswire.com/news/home/20261014682249/en/Cerus-Corporation-Announces-Workshop-and-Abstracts-at-the-2026-AABB-Annual-Meeting/?feedref=JjAwJuNHiystnCoBq_hl-YorNIXXeJUidDamMzBr2lVrRA1xRkqfEfrAVCWz-Z_wrCOi9QzgjCezTS3Nw_X6kJUrpSBm-Hav1w-UkdSlG3ne1zTTrM-woVxs6_pUhglHIbE9ZC1pD3bt6lQgRU5j6g==",
     "source": "Business Wire",
-    "published": "2026-10-14T15:24:00+00:00",
-    "summary": "MINNEAPOLIS--(BUSINESS WIRE)--Winmark Corporation (Nasdaq: WINA) announced today net income for the quarter ended September 26, 2026 of $11,818,100 or $3.21 per share diluted compared to net income of $11,136,500 or $3.02 per…",
-    "ticker": "WINA"
-   },
-   {
-    "title": "Xtrackers (IE) plc UK Regulatory Announcement: Net Asset Value(s)",
-    "link": "http://www.businesswire.com/news/home/20261015446294/en/Xtrackers-IE-plc-UK-Regulatory-Announcement-Net-Asset-Value-s/?feedref=JjAwJuNHiystnCoBq_hl-YorNIXXeJUidDamMzBr2lVrRA1xRkqfEfrAVCWz-Z_wrCOi9QzgjCezTS3Nw_X6kJUrpSBm-Hav1w-UkdSlG3ne1zTTrM-woVxs6_pUhglHIbE9ZC1pD3bt6lQgRU5j6g==",
-    "source": "Business Wire",
-    "published": "2026-10-14T15:18:00+00:00",
-    "summary": "LONDON--(BUSINESS WIRE)-- Xtrackers (IE) plc Investment Company with Variable Capital Registered Office: 78 Sir John Rogerson's Quay, Dublin 2, Ireland Registration number: 393802 (the “Company”) NOTICE TO SHAREHOLDERS OF THE…",
-    "ticker": "IE"
+    "published": "2026-10-14T20:30:00+00:00",
+    "summary": "CONCORD, Calif.--(BUSINESS WIRE)--Cerus Corporation (Nasdaq: CERS) announced today that it will host an industry workshop on the implementation and real-world experience with INTERCEPT Platelets and INTERCEPT Fibrinogen Complex…",
+    "ticker": "CERS"
    }
   ]
  },
@@ -3572,9 +3569,9 @@
       "weight": 4.32,
       "ret": 8.59,
       "peak_px": 16.19,
-      "stop_pct": 24.3,
-      "stop_px": 12.25,
-      "room_pct": 24.8
+      "stop_pct": 24.2,
+      "stop_px": 12.26,
+      "room_pct": 24.7
      },
      {
       "ticker": "GOTU",
@@ -3586,9 +3583,9 @@
       "weight": 4.25,
       "ret": 3.89,
       "peak_px": 2.87,
-      "stop_pct": 20.9,
-      "stop_px": 2.27,
-      "room_pct": 17.7
+      "stop_pct": 21.1,
+      "stop_px": 2.26,
+      "room_pct": 17.9
      },
      {
       "ticker": "ETON",
@@ -3656,9 +3653,9 @@
       "weight": 4.12,
       "ret": 3.56,
       "peak_px": 45.85,
-      "stop_pct": 14.5,
-      "stop_px": 39.22,
-      "room_pct": 14.1
+      "stop_pct": 14.2,
+      "stop_px": 39.35,
+      "room_pct": 13.7
      },
      {
       "ticker": "CLMB",
@@ -3685,7 +3682,7 @@
       "ret": 0.38,
       "peak_px": 82.91,
       "stop_pct": 11.5,
-      "stop_px": 73.39,
+      "stop_px": 73.4,
       "room_pct": 10.5
      },
      {
@@ -3824,9 +3821,9 @@
       "weight": 3.8,
       "ret": 6.0,
       "peak_px": 56.73,
-      "stop_pct": 15.1,
-      "stop_px": 48.14,
-      "room_pct": 11.6
+      "stop_pct": 15.6,
+      "stop_px": 47.86,
+      "room_pct": 12.2
      },
      {
       "ticker": "RDVT",
@@ -5088,9 +5085,9 @@
       "weight": 3.94,
       "ret": 3.89,
       "peak_px": 2.87,
-      "stop_pct": 20.9,
-      "stop_px": 2.27,
-      "room_pct": 17.7
+      "stop_pct": 21.1,
+      "stop_px": 2.26,
+      "room_pct": 17.9
      },
      {
       "ticker": "BWFG",
@@ -5214,9 +5211,9 @@
       "weight": 2.83,
       "ret": 3.31,
       "peak_px": 45.85,
-      "stop_pct": 14.5,
-      "stop_px": 39.22,
-      "room_pct": 14.1
+      "stop_pct": 14.2,
+      "stop_px": 39.35,
+      "room_pct": 13.7
      },
      {
       "ticker": "AMPL",
@@ -5228,9 +5225,9 @@
       "weight": 2.67,
       "ret": 7.23,
       "peak_px": 16.19,
-      "stop_pct": 24.3,
-      "stop_px": 12.25,
-      "room_pct": 24.8
+      "stop_pct": 24.2,
+      "stop_px": 12.26,
+      "room_pct": 24.7
      },
      {
       "ticker": "SHIP",
@@ -5257,7 +5254,7 @@
       "ret": 0.38,
       "peak_px": 82.91,
       "stop_pct": 11.5,
-      "stop_px": 73.39,
+      "stop_px": 73.4,
       "room_pct": 10.5
      },
      {
@@ -5270,9 +5267,9 @@
       "weight": 2.33,
       "ret": 6.0,
       "peak_px": 56.73,
-      "stop_pct": 15.1,
-      "stop_px": 48.14,
-      "room_pct": 11.6
+      "stop_pct": 15.6,
+      "stop_px": 47.86,
+      "room_pct": 12.2
      },
      {
       "ticker": "GNE",
@@ -7153,7 +7150,7 @@
  "stats": {
   "feeds_total": 20,
   "feeds_failed": 1,
-  "items": 1109,
+  "items": 1143,
   "smallcap_calls": 552,
   "feed_errors": [],
   "market_errors": [
