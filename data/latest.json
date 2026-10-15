@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-15T17:40:07.123750+00:00",
+ "generated_at": "2026-10-15T21:04:51.020529+00:00",
  "market": [
   {
    "label": "S&P 500",
@@ -149,13 +149,12 @@
    "label": "10-yr Treasury",
    "symbol": "DGS10",
    "kind": "yield",
-   "value": 52.1,
-   "prev": 52.400000000000006,
-   "value_txt": "5.21%",
-   "delta": -0.5725190839694737,
-   "delta_txt": "-3 bp",
+   "value": 51.900000000000006,
+   "prev": 52.1,
+   "value_txt": "5.19%",
+   "delta": -0.3838771593090129,
+   "delta_txt": "-2 bp",
    "spark": [
-    49.5,
     49.6,
     49.699999999999996,
     50.0,
@@ -177,9 +176,10 @@
     52.800000000000004,
     52.199999999999996,
     52.400000000000006,
-    52.1
+    52.1,
+    51.900000000000006
    ],
-   "asof": "Oct 13"
+   "asof": "Oct 14"
   },
   {
    "label": "Dollar (broad)",
@@ -221,18 +221,12 @@
    "label": "WTI crude",
    "symbol": "DCOILWTICO",
    "kind": "dollar",
-   "value": 96.24,
-   "prev": 96.13,
-   "value_txt": "$96.24",
-   "delta": 0.1144283782378024,
-   "delta_txt": "+0.11%",
+   "value": 101.91,
+   "prev": 100.86,
+   "value_txt": "$101.91",
+   "delta": 1.0410469958358093,
+   "delta_txt": "+1.04%",
    "spark": [
-    92.55,
-    92.69,
-    94.21,
-    97.26,
-    103.57,
-    101.27,
     102.42,
     107.02,
     103.62,
@@ -249,9 +243,15 @@
     99.77,
     97.89,
     96.13,
-    96.24
+    96.24,
+    95.02,
+    98.26,
+    98.73,
+    98.73,
+    100.86,
+    101.91
    ],
-   "asof": "Oct 6"
+   "asof": "Oct 14"
   },
   {
    "label": "EUR/USD",
@@ -292,11 +292,11 @@
    "label": "Bitcoin",
    "symbol": "bitcoin",
    "kind": "crypto",
-   "value": 82316.92385916806,
+   "value": 81971.57888886359,
    "prev": 81603.65464601685,
-   "value_txt": "$82,317",
-   "delta": 0.8740652808324084,
-   "delta_txt": "+0.87%",
+   "value_txt": "$81,972",
+   "delta": 0.45086735936366457,
+   "delta_txt": "+0.45%",
    "spark": [
     84382.39990356649,
     84377.96508359577,
@@ -320,18 +320,18 @@
     81794.84881711744,
     83115.10159603784,
     81603.65464601685,
-    82316.92385916806
+    81971.57888886359
    ]
   },
   {
    "label": "Ethereum",
    "symbol": "ethereum",
    "kind": "crypto",
-   "value": 2443.277327361774,
+   "value": 2449.8873629402387,
    "prev": 2419.689613608177,
-   "value_txt": "$2,443",
-   "delta": 0.9748239452259262,
-   "delta_txt": "+0.97%",
+   "value_txt": "$2,450",
+   "delta": 1.2480009486436496,
+   "delta_txt": "+1.25%",
    "spark": [
     2684.342871490596,
     2687.1259839506374,
@@ -355,71 +355,71 @@
     2445.8883615502414,
     2496.5900876439555,
     2419.689613608177,
-    2443.277327361774
+    2449.8873629402387
    ]
   }
  ],
- "tape_line": "S&P 500 -1.11%, Nasdaq -1.88%, Dow -0.09%; the 10-year Treasury at 5.21% (-3 bp); WTI crude $96.24 (+0.11%); bitcoin $82,317 (+0.87%).",
+ "tape_line": "S&P 500 -1.11%, Nasdaq -1.88%, Dow -0.09%; the 10-year Treasury at 5.19% (-2 bp); WTI crude $101.91 (+1.04%); bitcoin $81,972 (+0.45%).",
  "top": [
   {
-   "title": "Worries About AI Borrowing Push Investors Toward Dow Industrials, Treasurys",
-   "link": "https://www.wsj.com/finance/stocks/nasdaq-futures-slide-as-global-ai-selloff-gathers-pace-da79ad4d?mod=rss_markets_main",
+   "title": "Treasury, Eurozone Bond Yields Fall as Risk Aversion Beats Inflation Fears",
+   "link": "https://www.wsj.com/finance/investing/treasury-eurozone-bond-yields-fall-to-multiweek-lows-as-u-s-inflation-shock-fades-29c7b1c1?mod=rss_markets_main",
    "source": "WSJ Markets",
-   "published": "2026-10-15T16:38:00+00:00",
-   "summary": "Fears around the AI trade caused the Nasdaq to slump for its fourth-straight day as investors turned away from tech and toward government bonds for safety."
+   "published": "2026-10-15T16:02:00+00:00",
+   "summary": "U.S. Treasury and German Bund yields slid to multiweek lows as investors’ focus seemed to shift away from inflation to concerns over the impact of high-borrowing costs on the economic outlook."
   },
   {
-   "title": "Nvidia and other chip stocks face renewed pressure as AI fears swell",
-   "link": "https://www.marketwatch.com/story/micron-nvidia-and-other-chip-stocks-face-renewed-pressure-as-ai-fears-swell-4e0dc989?mod=mw_rss_topstories",
-   "source": "MarketWatch",
-   "published": "2026-10-15T16:55:00+00:00",
-   "summary": "Reported details about Anthropic’s financial progress are adding to concerns about the health of the AI ecosystem."
-  },
-  {
-   "title": "Gold Futures Extend Gains As U.S. Yields, Dollar Decline",
-   "link": "https://www.wsj.com/opinion/gold-rises-on-possible-technical-correction-28090dcd?mod=rss_markets_main",
+   "title": "Stocks Gain as Treasury Yields Give Back Some Recent Gains",
+   "link": "https://www.wsj.com/finance/stocks/stocks-gain-as-treasury-yields-give-back-some-recent-gains-abd77be3?mod=rss_markets_main",
    "source": "WSJ Markets",
-   "published": "2026-10-15T16:10:00+00:00",
-   "summary": "Gold futures rose as Treasury yields declined and the dollar weakened despite strong retail sales and an above-estimate PPI reading for September that followed a hot CPI report."
+   "published": "2026-10-15T21:03:00+00:00",
+   "summary": "U.S. stocks rose despite tech sector volatility and a hot wholesale inflation reading."
   },
   {
-   "title": "University Endowments Land Biggest Returns Since 2021 on SpaceX, AI Gains",
-   "link": "https://www.wsj.com/finance/investing/university-endowments-land-biggest-returns-since-2021-on-spacex-ai-gains-e315c0e4?mod=rss_markets_main",
-   "source": "WSJ Markets",
-   "published": "2026-10-15T17:10:00+00:00",
-   "summary": "Harvard, WashU and the UNC system were among those that benefited from investments in the Elon Musk company."
-  },
-  {
-   "title": "U.S. Crude Oil Stockpiles Post Large Weekly Drop",
-   "link": "https://www.wsj.com/business/energy-oil/u-s-crude-oil-stockpiles-post-large-weekly-drop-0a988c08?mod=rss_markets_main",
-   "source": "WSJ Markets",
-   "published": "2026-10-15T16:53:00+00:00",
-   "summary": "Commercial crude oil stocks fell by 8.6 million barrels last week as production and imports fell while refineries stepped up their capacity use, the EIA said."
-  },
-  {
-   "title": "Treasury yields slide as investors flee to safety of bonds amid tech rout",
-   "link": "https://www.cnbc.com/2026/10/15/us-treasury-yields-investors-economic-data-.html",
-   "source": "CNBC",
-   "published": "2026-10-15T16:14:05+00:00",
-   "summary": "Investors rotated into bonds amid a broader flight to safety."
-  },
-  {
-   "title": "Oil Prices Mixed as Traders Weigh Demand Outlook, Hormuz Shipping Risks",
+   "title": "Oil Prices End Mixed as Traders Weigh Demand Outlook, Hormuz Shipping Risks",
    "link": "https://www.wsj.com/business/energy-oil/oil-prices-fall-as-traders-weigh-gulf-supply-recovery-hormuz-attacks-f0337002?mod=pls_whats_news_us_business_f",
    "source": "WSJ Business",
-   "published": "2026-10-15T13:49:00+00:00",
-   "summary": "Oil prices traded mixed as investors weighed a weaker global demand outlook and signs of recovering Middle East crude supplies against persistent shipping risks around the Strait of Hormuz."
+   "published": "2026-10-15T19:37:00+00:00",
+   "summary": "Oil futures settled mixed as traders weighed a weaker global demand outlook and signs of recovering Middle East crude supplies against persistent shipping risks around the Strait of Hormuz."
+  },
+  {
+   "title": "Gold Futures Settle Higher As U.S. Yields, Dollar Fall",
+   "link": "https://www.wsj.com/finance/commodities-futures/gold-rises-on-possible-technical-correction-28090dcd?mod=rss_markets_main",
+   "source": "WSJ Markets",
+   "published": "2026-10-15T18:48:00+00:00",
+   "summary": "Gold futures snapped a three-session losing streak with support from a drop in U.S. yields and a weaker dollar."
+  },
+  {
+   "title": "Harvard’s endowment returns surge on back of AI and SpaceX investments",
+   "link": "https://www.ft.com/content/50c694da-c485-4176-853b-daf643eabb5c?syn-25a6b1a6=1",
+   "source": "Financial Times",
+   "published": "2026-10-15T20:06:22+00:00",
+   "summary": "Ivy League university’s fund gains 27.1%, boosting total assets to $68bn as private capital holdings rebound"
+  },
+  {
+   "title": "CoreWeave credit default swaps hit distress levels as investors sour on AI debt",
+   "link": "https://www.cnbc.com/2026/10/15/coreweave-credit-default-swaps-hit-distress-levels-as-investors-sour-on-ai-debt.html",
+   "source": "CNBC",
+   "published": "2026-10-15T20:18:02+00:00",
+   "summary": "Signs of distressed deepened in CoreWeave on Thursday."
+  },
+  {
+   "title": "Dow Industrials, Treasurys Rise as Investors Rotate Out of Tech",
+   "link": "https://www.wsj.com/finance/stocks/nasdaq-futures-slide-as-global-ai-selloff-gathers-pace-da79ad4d?mod=rss_markets_main",
+   "source": "WSJ Markets",
+   "published": "2026-10-15T18:17:00+00:00",
+   "summary": "Fears around the AI trade are sending the Nasdaq slumping for its fourth-straight day, with investors turning away from tech and toward government bonds for safety. The Dow industrials are in the green."
   }
  ],
  "smallcap": {
   "note": null,
-  "asof": "2026-10-15T17:50:24+00:00",
+  "asof": "2026-10-15T21:15:05+00:00",
   "coverage": {
    "universe": 9892,
    "profiled": 10099,
    "in_band": 1696,
    "measured": 1696,
-   "scored": 910,
+   "scored": 911,
    "below_floor": 66
   },
   "screen": [
@@ -1332,7 +1332,9 @@
      "m": 100,
      "q": 36
     },
-    "flags": [],
+    "flags": [
+     "8-K"
+    ],
     "growth_doubt": false,
     "unit_doubt": null,
     "why": {
@@ -1437,11 +1439,11 @@
   ],
   "freshness": {
    "last_full_h": 0.0,
-   "quote_median_h": 5.0,
+   "quote_median_h": 3.5,
    "quote_count": 1862,
    "bench_h": 0.0,
-   "universe_h": 137.6,
-   "earnings_h": 0.0,
+   "universe_h": 141.0,
+   "earnings_h": 3.4,
    "bench_gate_h": 72
   },
   "reach": {
@@ -1543,36 +1545,36 @@
     "dp": 51.436
    },
    {
+    "ticker": "INDP",
+    "name": "Indaptus Therapeutics Inc",
+    "px": 2.85,
+    "dp": 28.9593
+   },
+   {
     "ticker": "VSTM",
     "name": "Verastem Inc",
     "px": 9.53,
     "dp": 23.6057
    },
    {
-    "ticker": "NGNE",
-    "name": "Neurogene Inc",
-    "px": 24.38,
-    "dp": 9.9188
+    "ticker": "CDZI",
+    "name": "Cadiz Inc",
+    "px": 3.81,
+    "dp": 18.323
    },
    {
-    "ticker": "MAX",
-    "name": "Mediaalpha Inc",
-    "px": 11.68,
-    "dp": 9.7744
-   },
-   {
-    "ticker": "IBTA",
-    "name": "Ibotta Inc",
-    "px": 48.54,
-    "dp": 9.2751
+    "ticker": "EVEX",
+    "name": "Eve Holding Inc",
+    "px": 1.67,
+    "dp": 16.7832
    }
   ],
   "movers_down": [
    {
-    "ticker": "ITG",
-    "name": "ITG Inc",
-    "px": 5.98,
-    "dp": -20.2667
+    "ticker": "FMC",
+    "name": "FMC Corp",
+    "px": 5.62,
+    "dp": -30.5315
    },
    {
     "ticker": "DFH",
@@ -1581,22 +1583,22 @@
     "dp": -19.5228
    },
    {
-    "ticker": "PWP",
-    "name": "Perella Weinberg Partners",
-    "px": 13.02,
-    "dp": -19.1304
+    "ticker": "QMCO",
+    "name": "Quantum Corp",
+    "px": 20.68,
+    "dp": -13.3277
    },
    {
-    "ticker": "BRUN",
-    "name": "Boost Run Inc",
-    "px": 9.65,
-    "dp": -15.8675
+    "ticker": "GRRR",
+    "name": "Gorilla Technology Group Inc",
+    "px": 8.2,
+    "dp": -13.3192
    },
    {
-    "ticker": "MRLN",
-    "name": "Merlin Inc",
-    "px": 1.1,
-    "dp": -14.7287
+    "ticker": "WYFI",
+    "name": "WhiteFiber Inc",
+    "px": 12.73,
+    "dp": -12.4484
    }
   ],
   "earnings": [
@@ -1706,6 +1708,13 @@
   },
   "filings_material": [
    {
+    "ticker": "TRAX",
+    "name": "First Tracks Biotherapeutics Inc",
+    "date": "2026-10-15",
+    "link": "https://www.sec.gov/Archives/edgar/data/2091349/000119312526422929/0001193125-26-422929-index.htm",
+    "form": "8-K"
+   },
+   {
     "ticker": "AQST",
     "name": "Aquestive Therapeutics Inc",
     "date": "2026-10-15",
@@ -1767,13 +1776,6 @@
     "date": "2026-10-15",
     "link": "https://www.sec.gov/Archives/edgar/data/1372299/000110465926115921/0001104659-26-115921-index.htm",
     "form": "8-K"
-   },
-   {
-    "ticker": "BSVN",
-    "name": "Bank7 Corp",
-    "date": "2026-10-15",
-    "link": "https://www.sec.gov/Archives/edgar/data/1746129/000114036126039667/0001140361-26-039667-index.htm",
-    "form": "8-K"
    }
   ],
   "filings_activist": [
@@ -1790,6 +1792,27 @@
     "date": "2026-10-15",
     "link": "https://www.sec.gov/Archives/edgar/data/1576942/000180787826000007/0001807878-26-000007-index.htm",
     "form": "SCHEDULE 13G/A"
+   },
+   {
+    "ticker": "FCEL",
+    "name": "Fuelcell Energy Inc",
+    "date": "2026-10-15",
+    "link": "https://www.sec.gov/Archives/edgar/data/886128/000149315226047266/0001493152-26-047266-index.htm",
+    "form": "SCHEDULE 13G"
+   },
+   {
+    "ticker": "RSKD",
+    "name": "Riskified Ltd",
+    "date": "2026-10-15",
+    "link": "https://www.sec.gov/Archives/edgar/data/1851112/000190773526000020/0001907735-26-000020-index.htm",
+    "form": "SCHEDULE 13G/A"
+   },
+   {
+    "ticker": "SRTA",
+    "name": "Strata Critical Medical Inc",
+    "date": "2026-10-15",
+    "link": "https://www.sec.gov/Archives/edgar/data/1779128/000089914026001108/0000899140-26-001108-index.htm",
+    "form": "SCHEDULE 13D"
    },
    {
     "ticker": "RMIX",
@@ -1825,27 +1848,6 @@
     "date": "2026-10-14",
     "link": "https://www.sec.gov/Archives/edgar/data/846676/000144554626007608/0001445546-26-007608-index.htm",
     "form": "SCHEDULE 13G/A"
-   },
-   {
-    "ticker": "ACP",
-    "name": "abrdn Income Credit Strategies Fund",
-    "date": "2026-10-14",
-    "link": "https://www.sec.gov/Archives/edgar/data/1503290/000144554626007607/0001445546-26-007607-index.htm",
-    "form": "SCHEDULE 13G/A"
-   },
-   {
-    "ticker": "TCPC",
-    "name": "BlackRock TCP Capital Corp",
-    "date": "2026-10-14",
-    "link": "https://www.sec.gov/Archives/edgar/data/1370755/000106299326005324/0001062993-26-005324-index.htm",
-    "form": "SCHEDULE 13D"
-   },
-   {
-    "ticker": "NFJ",
-    "name": "Virtus Dividend Interest & Premium Strategy Fund",
-    "date": "2026-10-14",
-    "link": "https://www.sec.gov/Archives/edgar/data/1260563/000106299326005348/0001062993-26-005348-index.htm",
-    "form": "SCHEDULE 13D/A"
    }
   ],
   "filings_offering": [
@@ -1862,6 +1864,13 @@
     "date": "2026-10-15",
     "link": "https://www.sec.gov/Archives/edgar/data/2097725/000119312526422213/0001193125-26-422213-index.htm",
     "form": "424B3"
+   },
+   {
+    "ticker": "GRRR",
+    "name": "Gorilla Technology Group Inc",
+    "date": "2026-10-15",
+    "link": "https://www.sec.gov/Archives/edgar/data/1903145/000121390026109879/0001213900-26-109879-index.htm",
+    "form": "424B7"
    },
    {
     "ticker": "TRON",
@@ -1911,24 +1920,33 @@
     "date": "2026-10-09",
     "link": "https://www.sec.gov/Archives/edgar/data/1866226/000121390026108471/0001213900-26-108471-index.htm",
     "form": "424B3"
-   },
-   {
-    "ticker": "SSII",
-    "name": "SS Innovations International Inc",
-    "date": "2026-10-09",
-    "link": "https://www.sec.gov/Archives/edgar/data/1676163/000121390026108566/0001213900-26-108566-index.htm",
-    "form": "424B5"
    }
   ],
   "budget_mode": "full",
   "news": [
    {
-    "title": "Aevex Corp. (AVEX) Shareholders Who Lost Money Have Opportunity to Lead Securities Fraud Lawsuit",
-    "link": "https://www.prnewswire.com/news-releases/aevex-corp-avex-shareholders-who-lost-money-have-opportunity-to-lead-securities-fraud-lawsuit-302909716.html",
-    "source": "PR Newswire",
-    "published": "2026-10-15T17:25:00+00:00",
-    "summary": "BENSALEM TOWNSHIP, Pa., Oct. 15, 2026 /PRNewswire/ -- The Law Offices of Howard G. Smith announces that investors with substantial losses have opportunity to lead the securities fraud class action lawsuit against Aevex Corp. IF…",
-    "ticker": "AVEX"
+    "title": "Nuveen Churchill Direct Lending Corp. Schedules Third Quarter 2026 Earnings Release and Conference Call",
+    "link": "http://www.businesswire.com/news/home/20261015693631/en/Nuveen-Churchill-Direct-Lending-Corp.-Schedules-Third-Quarter-2026-Earnings-Release-and-Conference-Call/?feedref=JjAwJuNHiystnCoBq_hl-YorNIXXeJUidDamMzBr2lVrRA1xRkqfEfrAVCWz-Z_wrCOi9QzgjCezTS3Nw_X6kJUrpSBm-Hav1w-UkdSlG3ne1zTTrM-woVxs6_pUhglHIbE9ZC1pD3bt6lQgRU5j6g==",
+    "source": "Business Wire",
+    "published": "2026-10-15T20:15:00+00:00",
+    "summary": "NEW YORK--(BUSINESS WIRE)--Nuveen Churchill Direct Lending Corp. (NYSE: NCDL) (“NCDL” or “the Company”), today announced it will report its financial results for the third quarter ended September 30, 2026, on Tuesday, November 3…",
+    "ticker": "NCDL"
+   },
+   {
+    "title": "VOYA GLOBAL EQUITY DIVIDEND AND PREMIUM OPPORTUNITY FUND, VOYA GLOBAL ADVANTAGE AND PREMIUM OPPORTUNITY FUND & VOYA INFRASTRUCTURE, INDUSTRIALS AND MATERIALS FUND ANNOUNCES PAYMENT OF MONTHLY DISTRIBUTION",
+    "link": "http://www.businesswire.com/news/home/20261015080952/en/VOYA-GLOBAL-EQUITY-DIVIDEND-AND-PREMIUM-OPPORTUNITY-FUND-VOYA-GLOBAL-ADVANTAGE-AND-PREMIUM-OPPORTUNITY-FUND-VOYA-INFRASTRUCTURE-INDUSTRIALS-AND-MATERIALS-FUND-ANNOUNCES-PAYMENT-OF-MONTHLY-DISTRIBUTION/?feedref=JjAwJuNHiystnCoBq_hl-YorNIXXeJUidDamMzBr2lVrRA1xRkqfEfrAVCWz-Z_wrCOi9QzgjCezTS3Nw_X6kJUrpSBm-Hav1w-UkdSlG3ne1zTTrM-woVxs6_pUhglHIbE9ZC1pD3bt6lQgRU5j6g==",
+    "source": "Business Wire",
+    "published": "2026-10-15T20:44:00+00:00",
+    "summary": "SCOTTSDALE, Ariz.--(BUSINESS WIRE)--Voya Global Advantage and Premium Opportunity Fund (NYSE: IGA), Voya Global Equity Dividend and Premium Opportunity Fund (NYSE: IGD) and Voya Infrastructure, Industrials and Materials Fund…",
+    "ticker": "IGD"
+   },
+   {
+    "title": "Independent Bank Corp. Reports Third Quarter Net Income of $89.7 Million",
+    "link": "http://www.businesswire.com/news/home/20261014247987/en/Independent-Bank-Corp.-Reports-Third-Quarter-Net-Income-of-89.7-Million/?feedref=JjAwJuNHiystnCoBq_hl-YorNIXXeJUidDamMzBr2lVrRA1xRkqfEfrAVCWz-Z_wrCOi9QzgjCezTS3Nw_X6kJUrpSBm-Hav1w-UkdSlG3ne1zTTrM-woVxs6_pUhglHIbE9ZC1pD3bt6lQgRU5j6g==",
+    "source": "Business Wire",
+    "published": "2026-10-15T20:10:00+00:00",
+    "summary": "ROCKLAND, Mass.--(BUSINESS WIRE)--Independent Bank Corp. (Nasdaq Global Select Market: INDB), parent of Rockland Trust Company, today announced 2026 third quarter net income of $89.7 million, or $1.90 per diluted share, as…",
+    "ticker": "IBCP"
    },
    {
     "title": "Xtrackers (IE) plc UK Regulatory Announcement: Net Asset Value(s)",
@@ -1961,30 +1979,6 @@
     "published": "2026-10-14T21:30:00+00:00",
     "summary": "HOUSTON--(BUSINESS WIRE)--Flowco Holdings Inc. (NYSE: FLOC) (“Flowco” or the “Company”), a leading provider of production optimization, artificial lift and emissions management and monetization solutions for the oil and natural…",
     "ticker": "FLOC"
-   },
-   {
-    "title": "Ladder Capital Corp to Report Third Quarter 2026 Results",
-    "link": "http://www.businesswire.com/news/home/20261014721634/en/Ladder-Capital-Corp-to-Report-Third-Quarter-2026-Results/?feedref=JjAwJuNHiystnCoBq_hl-YorNIXXeJUidDamMzBr2lVrRA1xRkqfEfrAVCWz-Z_wrCOi9QzgjCezTS3Nw_X6kJUrpSBm-Hav1w-UkdSlG3ne1zTTrM-woVxs6_pUhglHIbE9ZC1pD3bt6lQgRU5j6g==",
-    "source": "Business Wire",
-    "published": "2026-10-14T20:37:00+00:00",
-    "summary": "NEW YORK--(BUSINESS WIRE)--Ladder Capital Corp (NYSE: LADR) (“we,” “Ladder,” or the “Company”) will release its third quarter 2026 results on Friday, October 16, 2026 before the open of markets that day. The Company will host a…",
-    "ticker": "LADR"
-   },
-   {
-    "title": "Cerus Corporation Announces Workshop and Abstracts at the 2026 AABB Annual Meeting",
-    "link": "http://www.businesswire.com/news/home/20261014682249/en/Cerus-Corporation-Announces-Workshop-and-Abstracts-at-the-2026-AABB-Annual-Meeting/?feedref=JjAwJuNHiystnCoBq_hl-YorNIXXeJUidDamMzBr2lVrRA1xRkqfEfrAVCWz-Z_wrCOi9QzgjCezTS3Nw_X6kJUrpSBm-Hav1w-UkdSlG3ne1zTTrM-woVxs6_pUhglHIbE9ZC1pD3bt6lQgRU5j6g==",
-    "source": "Business Wire",
-    "published": "2026-10-14T20:30:00+00:00",
-    "summary": "CONCORD, Calif.--(BUSINESS WIRE)--Cerus Corporation (Nasdaq: CERS) announced today that it will host an industry workshop on the implementation and real-world experience with INTERCEPT Platelets and INTERCEPT Fibrinogen Complex…",
-    "ticker": "CERS"
-   },
-   {
-    "title": "KKR Real Estate Finance Trust Inc. to Announce Third Quarter 2026 Results",
-    "link": "http://www.businesswire.com/news/home/20261014132565/en/KKR-Real-Estate-Finance-Trust-Inc.-to-Announce-Third-Quarter-2026-Results/?feedref=JjAwJuNHiystnCoBq_hl-YorNIXXeJUidDamMzBr2lVrRA1xRkqfEfrAVCWz-Z_wrCOi9QzgjCezTS3Nw_X6kJUrpSBm-Hav1w-UkdSlG3ne1zTTrM-woVxs6_pUhglHIbE9ZC1pD3bt6lQgRU5j6g==",
-    "source": "Business Wire",
-    "published": "2026-10-14T20:15:00+00:00",
-    "summary": "NEW YORK--(BUSINESS WIRE)--KKR Real Estate Finance Trust Inc. (“KREF”) (NYSE: KREF) announced today that it plans to release its financial results for the third quarter 2026 on Wednesday, October 28, 2026, after the close of…",
-    "ticker": "KREF"
    }
   ]
  },
@@ -5591,11 +5585,6 @@
        "pct": 0.618
       },
       {
-       "ticker": "FRD",
-       "pl": 496.41,
-       "pct": 0.496
-      },
-      {
        "ticker": "AMPL",
        "pl": 492.35,
        "pct": 0.492
@@ -5604,6 +5593,11 @@
        "ticker": "GCT",
        "pl": 477.97,
        "pct": 0.478
+      },
+      {
+       "ticker": "FRD",
+       "pl": 420.61,
+       "pct": 0.421
       },
       {
        "ticker": "NXDR",
@@ -5644,8 +5638,8 @@
       },
       {
        "ticker": "MGTX",
-       "pl": -544.61,
-       "pct": -0.545
+       "pl": -369.17,
+       "pct": -0.369
       },
       {
        "ticker": "BBNX",
@@ -5658,16 +5652,16 @@
        "pct": -0.178
       }
      ],
-     "unrealised_pct": 1.22,
+     "unrealised_pct": 1.32,
      "realised_pct": 0.0,
      "cost_pct": -0.4,
-     "total_pct": 0.83,
-     "actual_pct": 0.83,
+     "total_pct": 0.93,
+     "actual_pct": 0.93,
      "residual_pct": 0.0,
      "reconciles": true,
      "top_n": 3,
-     "top_pct": 1.74,
-     "ex_top_pct": -0.91,
+     "top_pct": 1.73,
+     "ex_top_pct": -0.81,
      "winners": 14,
      "losers": 11
     },
@@ -5679,7 +5673,7 @@
       "px": 27.75,
       "entry_date": "2026-10-01",
       "value": 4606.57,
-      "weight": 4.57,
+      "weight": 4.56,
       "ret": 15.62,
       "peak_px": 27.78,
       "stop_pct": null,
@@ -5696,20 +5690,6 @@
       "weight": 4.56,
       "ret": 15.52,
       "peak_px": 48.02,
-      "stop_pct": null,
-      "stop_px": null,
-      "room_pct": null
-     },
-     {
-      "ticker": "FRD",
-      "shares": 106.75,
-      "entry_px": 37.32,
-      "px": 41.97,
-      "entry_date": "2026-10-01",
-      "value": 4480.47,
-      "weight": 4.44,
-      "ret": 12.46,
-      "peak_px": 43.76,
       "stop_pct": null,
       "stop_px": null,
       "room_pct": null
@@ -5735,9 +5715,23 @@
       "px": 59.28,
       "entry_date": "2026-10-01",
       "value": 4462.03,
-      "weight": 4.43,
+      "weight": 4.42,
       "ret": 12.0,
       "peak_px": 60.46,
+      "stop_pct": null,
+      "stop_px": null,
+      "room_pct": null
+     },
+     {
+      "ticker": "FRD",
+      "shares": 106.75,
+      "entry_px": 37.32,
+      "px": 41.26,
+      "entry_date": "2026-10-01",
+      "value": 4404.67,
+      "weight": 4.36,
+      "ret": 10.56,
+      "peak_px": 43.76,
       "stop_pct": null,
       "stop_px": null,
       "room_pct": null
@@ -5805,7 +5799,7 @@
       "px": 24.95,
       "entry_date": "2026-10-01",
       "value": 4112.64,
-      "weight": 4.08,
+      "weight": 4.07,
       "ret": 3.23,
       "peak_px": 25.33,
       "stop_pct": null,
@@ -5861,7 +5855,7 @@
       "px": 64.86,
       "entry_date": "2026-10-01",
       "value": 4030.04,
-      "weight": 4.0,
+      "weight": 3.99,
       "ret": 1.15,
       "peak_px": 66.7,
       "stop_pct": null,
@@ -5903,7 +5897,7 @@
       "px": 25.4,
       "entry_date": "2026-10-01",
       "value": 3889.13,
-      "weight": 3.86,
+      "weight": 3.85,
       "ret": -2.38,
       "peak_px": 29.23,
       "stop_pct": null,
@@ -5931,7 +5925,7 @@
       "px": 14.07,
       "entry_date": "2026-10-01",
       "value": 3847.34,
-      "weight": 3.82,
+      "weight": 3.81,
       "ret": -3.43,
       "peak_px": 15.9,
       "stop_pct": null,
@@ -5945,7 +5939,7 @@
       "px": 76.33,
       "entry_date": "2026-10-01",
       "value": 3809.39,
-      "weight": 3.78,
+      "weight": 3.77,
       "ret": -4.38,
       "peak_px": 81.8,
       "stop_pct": null,
@@ -5973,7 +5967,7 @@
       "px": 17.06,
       "entry_date": "2026-10-01",
       "value": 3668.0,
-      "weight": 3.64,
+      "weight": 3.63,
       "ret": -7.93,
       "peak_px": 19.44,
       "stop_pct": null,
@@ -5984,11 +5978,11 @@
       "ticker": "MGTX",
       "shares": 365.51,
       "entry_px": 10.9,
-      "px": 9.41,
+      "px": 9.89,
       "entry_date": "2026-10-01",
-      "value": 3439.45,
-      "weight": 3.41,
-      "ret": -13.67,
+      "value": 3614.9,
+      "weight": 3.58,
+      "ret": -9.27,
       "peak_px": 11.37,
       "stop_pct": null,
       "stop_px": null,
@@ -6264,13 +6258,13 @@
     "label": "Baseline",
     "note": "the control — equal weight, no stop, always fully invested",
     "ret_common": 0.41,
-    "excess_common": 4.01,
+    "excess_common": 3.3,
     "common_from": "2026-10-01",
     "common_days": 15,
     "value": 101459.15,
     "ret": 1.46,
-    "bench_ret": -3.65,
-    "excess": 5.3,
+    "bench_ret": -2.99,
+    "excess": 4.58,
     "friction_yr": 15.9,
     "max_drawdown": -3.13,
     "positions": 25,
@@ -6319,13 +6313,13 @@
     "label": "Conviction",
     "note": "weighted by rank, 1.5x down to 0.6x equal weight",
     "ret_common": 0.44,
-    "excess_common": 4.04,
+    "excess_common": 3.33,
     "common_from": "2026-10-01",
     "common_days": 15,
     "value": 101687.47,
     "ret": 1.69,
-    "bench_ret": -3.65,
-    "excess": 5.54,
+    "bench_ret": -2.99,
+    "excess": 4.82,
     "friction_yr": 15.7,
     "max_drawdown": -3.06,
     "positions": 25,
@@ -6374,13 +6368,13 @@
     "label": "Risk-managed",
     "note": "equal weight, trailing stop at 3x the name's own weekly volatility",
     "ret_common": -0.88,
-    "excess_common": 2.67,
+    "excess_common": 1.97,
     "common_from": "2026-10-01",
     "common_days": 15,
     "value": 100154.21,
     "ret": 0.15,
-    "bench_ret": -3.65,
-    "excess": 3.95,
+    "bench_ret": -2.99,
+    "excess": 3.24,
     "friction_yr": 16.8,
     "max_drawdown": -3.6,
     "positions": 24,
@@ -6429,13 +6423,13 @@
     "label": "Regime-aware",
     "note": "equal weight, exposure cut when the small-cap tape falls",
     "ret_common": -0.0,
-    "excess_common": 3.58,
+    "excess_common": 2.87,
     "common_from": "2026-10-01",
     "common_days": 15,
     "value": 100675.2,
     "ret": 0.68,
-    "bench_ret": -3.65,
-    "excess": 4.49,
+    "bench_ret": -2.99,
+    "excess": 3.78,
     "friction_yr": 13.3,
     "max_drawdown": -2.79,
     "positions": 25,
@@ -6484,13 +6478,13 @@
     "label": "Combined",
     "note": "conviction + stop + regime together",
     "ret_common": -1.11,
-    "excess_common": 2.43,
+    "excess_common": 1.73,
     "common_from": "2026-10-01",
     "common_days": 15,
     "value": 99687.03,
     "ret": -0.31,
-    "bench_ret": -3.65,
-    "excess": 3.46,
+    "bench_ret": -2.99,
+    "excess": 2.76,
     "friction_yr": 13.6,
     "max_drawdown": -3.04,
     "positions": 24,
@@ -6538,14 +6532,14 @@
     "key": "F",
     "label": "Slow",
     "note": "the control again, but trading every 4 weeks instead of weekly — isolates what the trading itself costs",
-    "ret_common": -0.21,
-    "excess_common": 3.36,
+    "ret_common": -0.11,
+    "excess_common": 2.76,
     "common_from": "2026-10-01",
     "common_days": 15,
-    "value": 100826.49,
-    "ret": 0.83,
-    "bench_ret": -3.65,
-    "excess": 4.65,
+    "value": 100926.14,
+    "ret": 0.93,
+    "bench_ret": -2.99,
+    "excess": 4.04,
     "friction_yr": 9.7,
     "max_drawdown": -3.04,
     "positions": 25,
@@ -6569,7 +6563,7 @@
      103.307,
      103.182,
      100.827,
-     100.826
+     100.926
     ],
     "curve_dates": [
      "2026-10-01",
@@ -6605,7 +6599,7 @@
    98.697,
    97.974,
    95.666,
-   96.35
+   97.011
   ],
   "bench_dates": [
    "2026-10-01",
@@ -6685,7 +6679,7 @@
     "C": 4.46,
     "D": 3.95,
     "E": 5.48,
-    "F": 4.43
+    "F": 4.42
    },
    "PAYS": {
     "A": 4.18,
@@ -6709,7 +6703,7 @@
     "C": 3.8,
     "D": 3.44,
     "E": 4.51,
-    "F": 3.78
+    "F": 3.77
    },
    "ETON": {
     "A": 4.19,
@@ -6725,7 +6719,7 @@
     "C": 4.11,
     "D": 3.63,
     "E": 3.17,
-    "F": 4.08
+    "F": 4.07
    },
    "BBNX": {
     "A": 3.62,
@@ -6733,7 +6727,7 @@
     "C": 3.66,
     "D": 3.23,
     "E": 2.02,
-    "F": 3.64
+    "F": 3.63
    },
    "NAT": {
     "A": 3.81,
@@ -6749,7 +6743,7 @@
     "C": 4.02,
     "D": 3.55,
     "E": 3.84,
-    "F": 4.0
+    "F": 3.99
    },
    "OBK": {
     "A": 3.9,
@@ -6797,7 +6791,7 @@
     "C": 3.88,
     "D": 3.49,
     "E": 3.19,
-    "F": 3.86
+    "F": 3.85
    },
    "TK": {
     "A": 3.79,
@@ -6805,7 +6799,7 @@
     "C": 3.84,
     "D": 3.42,
     "E": 3.93,
-    "F": 3.82
+    "F": 3.81
    },
    "AMPL": {
     "A": 4.41,
@@ -6870,7 +6864,7 @@
     "D": 4.23
    },
    "FRD": {
-    "F": 4.44
+    "F": 4.36
    },
    "BSVN": {
     "F": 4.05
@@ -6882,13 +6876,13 @@
     "F": 3.89
    },
    "MGTX": {
-    "F": 3.41
+    "F": 3.58
    },
    "TH": {
     "F": 3.11
    },
    "CBLL": {
-    "F": 4.57
+    "F": 4.56
    },
    "SEPN": {
     "F": 3.77
@@ -7160,8 +7154,8 @@
  "stats": {
   "feeds_total": 20,
   "feeds_failed": 1,
-  "items": 1147,
-  "smallcap_calls": 554,
+  "items": 1178,
+  "smallcap_calls": 552,
   "feed_errors": [],
   "market_errors": [
    [
