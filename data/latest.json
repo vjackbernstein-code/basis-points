@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-15T21:04:51.020529+00:00",
+ "generated_at": "2026-10-15T23:45:57.119340+00:00",
  "market": [
   {
    "label": "S&P 500",
@@ -77,13 +77,12 @@
    "label": "Dow",
    "symbol": "DJIA",
    "kind": "index",
-   "value": 51621.48,
-   "prev": 51670.1,
-   "value_txt": "51,621.48",
-   "delta": -0.09409697291082336,
-   "delta_txt": "-0.09%",
+   "value": 52177.69,
+   "prev": 51621.48,
+   "value_txt": "52,177.69",
+   "delta": 1.0774778251224086,
+   "delta_txt": "+1.08%",
    "spark": [
-    52421.2,
     52093.11,
     51461.9,
     51778.04,
@@ -105,9 +104,9 @@
     51654.95,
     51850.55,
     51670.1,
-    51621.48
-   ],
-   "asof": "Oct 14"
+    51621.48,
+    52177.69
+   ]
   },
   {
    "label": "VIX",
@@ -292,11 +291,11 @@
    "label": "Bitcoin",
    "symbol": "bitcoin",
    "kind": "crypto",
-   "value": 81971.57888886359,
+   "value": 82106.05066618258,
    "prev": 81603.65464601685,
-   "value_txt": "$81,972",
-   "delta": 0.45086735936366457,
-   "delta_txt": "+0.45%",
+   "value_txt": "$82,106",
+   "delta": 0.615653823771794,
+   "delta_txt": "+0.62%",
    "spark": [
     84382.39990356649,
     84377.96508359577,
@@ -320,18 +319,18 @@
     81794.84881711744,
     83115.10159603784,
     81603.65464601685,
-    81971.57888886359
+    82106.05066618258
    ]
   },
   {
    "label": "Ethereum",
    "symbol": "ethereum",
    "kind": "crypto",
-   "value": 2449.8873629402387,
+   "value": 2438.3157887604334,
    "prev": 2419.689613608177,
-   "value_txt": "$2,450",
-   "delta": 1.2480009486436496,
-   "delta_txt": "+1.25%",
+   "value_txt": "$2,438",
+   "delta": 0.7697753896823861,
+   "delta_txt": "+0.77%",
    "spark": [
     2684.342871490596,
     2687.1259839506374,
@@ -355,11 +354,11 @@
     2445.8883615502414,
     2496.5900876439555,
     2419.689613608177,
-    2449.8873629402387
+    2438.3157887604334
    ]
   }
  ],
- "tape_line": "S&P 500 -1.11%, Nasdaq -1.88%, Dow -0.09%; the 10-year Treasury at 5.19% (-2 bp); WTI crude $101.91 (+1.04%); bitcoin $81,972 (+0.45%).",
+ "tape_line": "S&P 500 -1.11%, Nasdaq -1.88%, Dow +1.08%; the 10-year Treasury at 5.19% (-2 bp); WTI crude $101.91 (+1.04%); bitcoin $82,106 (+0.62%).",
  "top": [
   {
    "title": "Treasury, Eurozone Bond Yields Fall as Risk Aversion Beats Inflation Fears",
@@ -374,6 +373,20 @@
    "source": "WSJ Markets",
    "published": "2026-10-15T21:03:00+00:00",
    "summary": "U.S. stocks rose despite tech sector volatility and a hot wholesale inflation reading."
+  },
+  {
+   "title": "Opinion | Slapping Down an Insubordinate Court",
+   "link": "https://www.wsj.com/opinion/fcc-supreme-court-fourth-circuit-election-advertising-628b4a82?mod=pls_whats_news_us_business_f",
+   "source": "WSJ Business",
+   "published": "2026-10-15T21:38:00+00:00",
+   "summary": "The Justices rebuke the Fourth Circuit for its election gamesmanship."
+  },
+  {
+   "title": "Nvidia and other chip stocks face renewed pressure as AI fears swell",
+   "link": "https://www.marketwatch.com/story/micron-nvidia-and-other-chip-stocks-face-renewed-pressure-as-ai-fears-swell-4e0dc989?mod=mw_rss_topstories",
+   "source": "MarketWatch",
+   "published": "2026-10-15T21:23:00+00:00",
+   "summary": "Reported details about Anthropic’s financial progress are adding to concerns about the health of the AI ecosystem."
   },
   {
    "title": "Oil Prices End Mixed as Traders Weigh Demand Outlook, Hormuz Shipping Risks",
@@ -395,31 +408,17 @@
    "source": "Financial Times",
    "published": "2026-10-15T20:06:22+00:00",
    "summary": "Ivy League university’s fund gains 27.1%, boosting total assets to $68bn as private capital holdings rebound"
-  },
-  {
-   "title": "CoreWeave credit default swaps hit distress levels as investors sour on AI debt",
-   "link": "https://www.cnbc.com/2026/10/15/coreweave-credit-default-swaps-hit-distress-levels-as-investors-sour-on-ai-debt.html",
-   "source": "CNBC",
-   "published": "2026-10-15T20:18:02+00:00",
-   "summary": "Signs of distressed deepened in CoreWeave on Thursday."
-  },
-  {
-   "title": "Dow Industrials, Treasurys Rise as Investors Rotate Out of Tech",
-   "link": "https://www.wsj.com/finance/stocks/nasdaq-futures-slide-as-global-ai-selloff-gathers-pace-da79ad4d?mod=rss_markets_main",
-   "source": "WSJ Markets",
-   "published": "2026-10-15T18:17:00+00:00",
-   "summary": "Fears around the AI trade are sending the Nasdaq slumping for its fourth-straight day, with investors turning away from tech and toward government bonds for safety. The Dow industrials are in the green."
   }
  ],
  "smallcap": {
   "note": null,
-  "asof": "2026-10-15T21:15:05+00:00",
+  "asof": "2026-10-15T23:56:08+00:00",
   "coverage": {
    "universe": 9892,
    "profiled": 10099,
    "in_band": 1696,
    "measured": 1696,
-   "scored": 911,
+   "scored": 914,
    "below_floor": 66
   },
   "screen": [
@@ -433,14 +432,14 @@
     "accel": 50.0,
     "r13": 74.4403,
     "momo": 0.64,
-    "from_high": -58.89429229587919,
+    "from_high": -58.12643972357308,
     "ev_rev": 39.338,
-    "px": 8.03,
-    "dp": 1.6456,
-    "score": 84.7,
+    "px": 8.18,
+    "dp": 3.5443,
+    "score": 85.3,
     "sub": {
      "g": 99,
-     "m": 83,
+     "m": 85,
      "q": 58
     },
     "flags": [
@@ -466,6 +465,46 @@
     }
    },
    {
+    "ticker": "GCT",
+    "name": "GigaCloud Technology Inc",
+    "ind": "Distributors",
+    "group": "Consumer",
+    "mcap": 1848.0047452280323,
+    "rev_g": 22.86,
+    "accel": 4.740000000000002,
+    "r13": 57.7619,
+    "momo": 0.88,
+    "from_high": null,
+    "ev_rev": 1.0768,
+    "px": 59.34,
+    "dp": 2.7532,
+    "score": 83.9,
+    "sub": {
+     "g": 88,
+     "m": 92,
+     "q": 60
+    },
+    "flags": [],
+    "growth_doubt": false,
+    "unit_doubt": null,
+    "why": {
+     "vol": 52.68924,
+     "r26": 29.7924,
+     "rg3": 38.07,
+     "rev_gq": 27.6,
+     "dte": 0.0026,
+     "gm_t": 23.96,
+     "om_t": 11.65,
+     "om_a": 11.24,
+     "cashps": 10.4367,
+     "rps": 40.1275,
+     "adv": 0.54199,
+     "hi52": 56.27,
+     "shares": 36.79,
+     "exch": "NASDAQ NMS - GLOBAL MARKET"
+    }
+   },
+   {
     "ticker": "PAYS",
     "name": "Paysign Inc",
     "ind": "Financial Services",
@@ -475,13 +514,13 @@
     "accel": 1.2399999999999949,
     "r13": 77.931,
     "momo": 1.47,
-    "from_high": -1.7279239943917668,
+    "from_high": -0.12740158387697376,
     "ev_rev": 8.4406,
-    "px": 15.35,
-    "dp": 1.2533,
-    "score": 84.0,
+    "px": 15.6,
+    "dp": 2.9024,
+    "score": 83.8,
     "sub": {
-     "g": 80,
+     "g": 79,
      "m": 99,
      "q": 63
     },
@@ -506,46 +545,6 @@
     }
    },
    {
-    "ticker": "GCT",
-    "name": "GigaCloud Technology Inc",
-    "ind": "Distributors",
-    "group": "Consumer",
-    "mcap": 1848.0047452280323,
-    "rev_g": 22.86,
-    "accel": 4.740000000000002,
-    "r13": 57.7619,
-    "momo": 0.88,
-    "from_high": null,
-    "ev_rev": 1.0768,
-    "px": 59.28,
-    "dp": 2.6494,
-    "score": 83.6,
-    "sub": {
-     "g": 88,
-     "m": 91,
-     "q": 60
-    },
-    "flags": [],
-    "growth_doubt": false,
-    "unit_doubt": null,
-    "why": {
-     "vol": 52.68924,
-     "r26": 29.7924,
-     "rg3": 38.07,
-     "rev_gq": 27.6,
-     "dte": 0.0026,
-     "gm_t": 23.96,
-     "om_t": 11.65,
-     "om_a": 11.24,
-     "cashps": 10.4367,
-     "rps": 40.1275,
-     "adv": 0.54199,
-     "hi52": 56.27,
-     "shares": 36.79,
-     "exch": "NASDAQ NMS - GLOBAL MARKET"
-    }
-   },
-   {
     "ticker": "RDVT",
     "name": "Red Violet Inc",
     "ind": "Technology",
@@ -555,11 +554,11 @@
     "accel": 2.530000000000001,
     "r13": 38.5636,
     "momo": 1.15,
-    "from_high": -3.1345177664974577,
+    "from_high": -2.068527918781715,
     "ev_rev": 11.8454,
-    "px": 76.33,
-    "dp": 0.4871,
-    "score": 83.5,
+    "px": 77.17,
+    "dp": 1.5929,
+    "score": 83.7,
     "sub": {
      "g": 77,
      "m": 97,
@@ -597,9 +596,9 @@
     "momo": 0.81,
     "from_high": null,
     "ev_rev": 2.4573,
-    "px": 46.6,
-    "dp": 0.3661,
-    "score": 81.3,
+    "px": 47,
+    "dp": 1.2277,
+    "score": 81.5,
     "sub": {
      "g": 83,
      "m": 89,
@@ -635,11 +634,11 @@
     "accel": 17.10000000000001,
     "r13": 76.4142,
     "momo": 1.05,
-    "from_high": -19.843302697001665,
+    "from_high": -22.66084074129878,
     "ev_rev": 15.4581,
-    "px": 53.2,
-    "dp": 0.6051,
-    "score": 80.9,
+    "px": 51.33,
+    "dp": -2.9312,
+    "score": 81.0,
     "sub": {
      "g": 86,
      "m": 95,
@@ -677,11 +676,11 @@
     "accel": 49.489999999999995,
     "r13": 48.1149,
     "momo": 1.23,
-    "from_high": -5.40216086434574,
+    "from_high": -6.122448979591832,
     "ev_rev": 7.7327,
-    "px": 7.88,
-    "dp": -4.0195,
-    "score": 79.9,
+    "px": 7.82,
+    "dp": -4.7503,
+    "score": 80.0,
     "sub": {
      "g": 68,
      "m": 98,
@@ -717,14 +716,14 @@
     "accel": 27.080000000000002,
     "r13": 43.5701,
     "momo": 0.94,
-    "from_high": -7.737704918032784,
+    "from_high": -8.262295081967208,
     "ev_rev": 0.4338,
-    "px": 14.07,
-    "dp": -3.0324,
-    "score": 79.7,
+    "px": 13.99,
+    "dp": -3.5837,
+    "score": 79.9,
     "sub": {
      "g": 60,
-     "m": 92,
+     "m": 93,
      "q": 94
     },
     "flags": [],
@@ -748,88 +747,123 @@
     }
    },
    {
-    "ticker": "OBK",
-    "name": "Origin Bancorp Inc",
-    "ind": "Banking",
-    "group": "Financials",
-    "mcap": 1654.4682336344188,
-    "rev_g": 81.23934,
-    "accel": -32.77874,
-    "r13": 4.38,
-    "momo": 0.89,
-    "from_high": -8.061903904984701,
-    "ev_rev": null,
-    "px": 51.09,
-    "dp": -1.6365,
-    "score": 79.3,
+    "ticker": "CBLL",
+    "name": "Ceribell Inc",
+    "ind": "Health Care",
+    "group": "Health",
+    "mcap": 948.7066531282051,
+    "rev_g": 31.7,
+    "accel": 0.8399999999999999,
+    "r13": 35.9278,
+    "momo": 0.84,
+    "from_high": null,
+    "ev_rev": 9.801,
+    "px": 27.64,
+    "dp": 4.8161,
+    "score": 78.6,
     "sub": {
-     "g": 70,
+     "g": 77,
      "m": 91,
-     "q": 74
+     "q": 58
     },
-    "flags": [
-     "act+"
-    ],
-    "growth_doubt": true,
-    "unit_doubt": null,
-    "why": {
-     "vol": 17.228275,
-     "r26": 31.5505,
-     "rg3": 12.87893,
-     "rev_gq": 48.4606,
-     "dte": 0.013,
-     "gm_t": null,
-     "om_t": 33.25793,
-     "om_a": 32.30833,
-     "cashps": 4.58493,
-     "rps": 12.1282,
-     "adv": 0.17404,
-     "hi52": 55.57,
-     "shares": 30.85,
-     "exch": "NEW YORK STOCK EXCHANGE, INC."
-    }
-   },
-   {
-    "ticker": "OSBC",
-    "name": "Old Second Bancorp Inc",
-    "ind": "Banking",
-    "group": "Financials",
-    "mcap": 1297.839444075059,
-    "rev_g": 59.28261,
-    "accel": -31.319229999999997,
-    "r13": 7.4042,
-    "momo": 0.89,
-    "from_high": -4.2410285933601966,
-    "ev_rev": null,
-    "px": 24.95,
-    "dp": 1.2992,
-    "score": 79.0,
-    "sub": {
-     "g": 71,
-     "m": 91,
-     "q": 71
-    },
-    "flags": [
-     "E-6d",
-     "act+"
-    ],
+    "flags": [],
     "growth_doubt": false,
     "unit_doubt": null,
     "why": {
-     "vol": 16.595926,
-     "r26": 25.6927,
-     "rg3": 23.26016,
-     "rev_gq": 27.96338,
-     "dte": 0.1037,
-     "gm_t": null,
-     "om_t": 45.41173,
-     "om_a": 36.72655,
-     "cashps": 1.2431,
-     "rps": 6.37677,
-     "adv": 0.54304,
-     "hi52": 26.055,
-     "shares": 50.94,
+     "vol": 47.156406,
+     "r26": 45.2893,
+     "rg3": 50.9,
+     "rev_gq": 32.54,
+     "dte": 0.1557,
+     "gm_t": 88.9,
+     "om_t": -68.62,
+     "om_a": -65.57,
+     "cashps": 3.3817,
+     "rps": 2.681,
+     "adv": 0.41069,
+     "hi52": 26.72,
+     "shares": 37.94,
      "exch": "NASDAQ NMS - GLOBAL MARKET"
+    }
+   },
+   {
+    "ticker": "ATLC",
+    "name": "Atlanticus Holdings Corp",
+    "ind": "Financial Services",
+    "group": "Financials",
+    "mcap": 1412.7856466631167,
+    "rev_g": 79.04,
+    "accel": 17.169999999999987,
+    "r13": -3.0992,
+    "momo": 0.64,
+    "from_high": -18.191287555787603,
+    "ev_rev": 6.0345,
+    "px": 93.54,
+    "dp": 2.7122,
+    "score": 78.5,
+    "sub": {
+     "g": 92,
+     "m": 85,
+     "q": 38
+    },
+    "flags": [],
+    "growth_doubt": false,
+    "unit_doubt": null,
+    "why": {
+     "vol": 45.032494,
+     "r26": 76.9773,
+     "rg3": 22.58,
+     "rev_gq": 96.21,
+     "dte": 8.4529,
+     "gm_t": 45.55,
+     "om_t": 17.2,
+     "om_a": 18.46,
+     "cashps": 36.5993,
+     "rps": 61.727,
+     "adv": 0.09865,
+     "hi52": 114.3399,
+     "shares": 15.12,
+     "exch": "NASDAQ NMS - GLOBAL MARKET"
+    }
+   },
+   {
+    "ticker": "GOTU",
+    "name": "Gaotu Techedu Inc",
+    "ind": "Diversified Consumer Services",
+    "group": "Consumer",
+    "mcap": 503.016943,
+    "rev_g": 53.79,
+    "accel": -32.42,
+    "r13": 53.5912,
+    "momo": 0.95,
+    "from_high": -19.090909090909093,
+    "ev_rev": 0.8001,
+    "px": 2.67,
+    "dp": 0,
+    "score": 78.5,
+    "sub": {
+     "g": 76,
+     "m": 93,
+     "q": 55
+    },
+    "flags": [],
+    "growth_doubt": false,
+    "unit_doubt": "cash per share is 7.9× the share price, which would price the company below the money in its own bank account",
+    "why": {
+     "vol": 50.77512,
+     "r26": 40.404,
+     "rg3": 35,
+     "rev_gq": 21.37,
+     "dte": 0.5115,
+     "gm_t": 67.99,
+     "om_t": -5.17,
+     "om_a": -8.19,
+     "cashps": 21.0135,
+     "rps": 31.9276,
+     "adv": 0.57932,
+     "hi52": 3.3,
+     "shares": 158.7,
+     "exch": "NEW YORK STOCK EXCHANGE, INC."
     }
    },
    {
@@ -842,10 +876,10 @@
     "accel": 31.139999999999997,
     "r13": 41.8868,
     "momo": 1.17,
-    "from_high": -8.116250221513377,
+    "from_high": -8.771929824561408,
     "ev_rev": 3.4048,
-    "px": 51.85,
-    "dp": -3.463,
+    "px": 51.48,
+    "dp": -4.1519,
     "score": 78.3,
     "sub": {
      "g": 72,
@@ -873,126 +907,6 @@
     }
    },
    {
-    "ticker": "GOTU",
-    "name": "Gaotu Techedu Inc",
-    "ind": "Diversified Consumer Services",
-    "group": "Consumer",
-    "mcap": 503.016943,
-    "rev_g": 53.79,
-    "accel": -32.42,
-    "r13": 53.5912,
-    "momo": 0.95,
-    "from_high": -17.575757575757567,
-    "ev_rev": 0.8001,
-    "px": 2.72,
-    "dp": 1.8727,
-    "score": 78.2,
-    "sub": {
-     "g": 76,
-     "m": 92,
-     "q": 55
-    },
-    "flags": [],
-    "growth_doubt": false,
-    "unit_doubt": "cash per share is 7.7× the share price, which would price the company below the money in its own bank account",
-    "why": {
-     "vol": 50.77512,
-     "r26": 40.404,
-     "rg3": 35,
-     "rev_gq": 21.37,
-     "dte": 0.5115,
-     "gm_t": 67.99,
-     "om_t": -5.17,
-     "om_a": -8.19,
-     "cashps": 21.0135,
-     "rps": 31.9276,
-     "adv": 0.57932,
-     "hi52": 3.3,
-     "shares": 158.7,
-     "exch": "NEW YORK STOCK EXCHANGE, INC."
-    }
-   },
-   {
-    "ticker": "SHIP",
-    "name": "Seanergy Maritime Holdings Corp",
-    "ind": "Marine",
-    "group": "Industrials",
-    "mcap": 398.9115135526316,
-    "rev_g": 31.98,
-    "accel": 16.599999999999998,
-    "r13": 32.688,
-    "momo": 0.81,
-    "from_high": -18.418314255983347,
-    "ev_rev": 3.2466,
-    "px": 15.68,
-    "dp": -5.5422,
-    "score": 78.1,
-    "sub": {
-     "g": 82,
-     "m": 89,
-     "q": 47
-    },
-    "flags": [],
-    "growth_doubt": true,
-    "unit_doubt": null,
-    "why": {
-     "vol": 48.134174,
-     "r26": 48.3764,
-     "rg3": 8.14,
-     "rev_gq": 48.58,
-     "dte": 0.9417,
-     "gm_t": 69.98,
-     "om_t": 40.68,
-     "om_a": 26.36,
-     "cashps": 2.3456,
-     "rps": 9.236,
-     "adv": 0.53114,
-     "hi52": 19.22,
-     "shares": 21.67,
-     "exch": "NASDAQ NMS - GLOBAL MARKET"
-    }
-   },
-   {
-    "ticker": "ATLC",
-    "name": "Atlanticus Holdings Corp",
-    "ind": "Financial Services",
-    "group": "Financials",
-    "mcap": 1412.7856466631167,
-    "rev_g": 79.04,
-    "accel": 17.169999999999987,
-    "r13": -3.0992,
-    "momo": 0.64,
-    "from_high": -19.363231907671775,
-    "ev_rev": 6.0345,
-    "px": 92.2,
-    "dp": 1.2408,
-    "score": 78.0,
-    "sub": {
-     "g": 93,
-     "m": 83,
-     "q": 38
-    },
-    "flags": [],
-    "growth_doubt": false,
-    "unit_doubt": null,
-    "why": {
-     "vol": 45.032494,
-     "r26": 76.9773,
-     "rg3": 22.58,
-     "rev_gq": 96.21,
-     "dte": 8.4529,
-     "gm_t": 45.55,
-     "om_t": 17.2,
-     "om_a": 18.46,
-     "cashps": 36.5993,
-     "rps": 61.727,
-     "adv": 0.09865,
-     "hi52": 114.3399,
-     "shares": 15.12,
-     "exch": "NASDAQ NMS - GLOBAL MARKET"
-    }
-   },
-   {
     "ticker": "BWFG",
     "name": "Bankwell Financial Group Inc",
     "ind": "Banking",
@@ -1002,10 +916,10 @@
     "accel": -15.63805,
     "r13": 13.193,
     "momo": 1.06,
-    "from_high": -6.796953585285248,
+    "from_high": -6.351487282655555,
     "ev_rev": null,
-    "px": 64.86,
-    "dp": -0.1693,
+    "px": 65.17,
+    "dp": 0.3078,
     "score": 78.0,
     "sub": {
      "g": 71,
@@ -1042,11 +956,11 @@
     "accel": -13.680000000000001,
     "r13": 39.3226,
     "momo": 1.3,
-    "from_high": -8.65968008825152,
+    "from_high": -9.156094870380581,
     "ev_rev": 0.8105,
-    "px": 33.12,
-    "dp": 0.3028,
-    "score": 77.7,
+    "px": 32.94,
+    "dp": -0.2423,
+    "score": 77.8,
     "sub": {
      "g": 71,
      "m": 98,
@@ -1073,86 +987,6 @@
     }
    },
    {
-    "ticker": "TWIN",
-    "name": "Twin Disc Inc",
-    "ind": "Machinery",
-    "group": "Industrials",
-    "mcap": 350.3878798818257,
-    "rev_g": 11.9,
-    "accel": 6.429999999999998,
-    "r13": 24.6938,
-    "momo": 1.31,
-    "from_high": -11.652173913043484,
-    "ev_rev": 1.1376,
-    "px": 25.4,
-    "dp": -2.4952,
-    "score": 77.5,
-    "sub": {
-     "g": 70,
-     "m": 98,
-     "q": 52
-    },
-    "flags": [],
-    "growth_doubt": false,
-    "unit_doubt": null,
-    "why": {
-     "vol": 39.891666,
-     "r26": 93.3853,
-     "rg3": 11.24,
-     "rev_gq": 18.33,
-     "dte": 0.1609,
-     "gm_t": 26.9,
-     "om_t": 4.71,
-     "om_a": 4.71,
-     "cashps": 1.1113,
-     "rps": 24.7498,
-     "adv": 0.08613,
-     "hi52": 28.75,
-     "shares": 14.42,
-     "exch": "NASDAQ NMS - GLOBAL MARKET"
-    }
-   },
-   {
-    "ticker": "IBEX",
-    "name": "Ibex Ltd",
-    "ind": "Professional Services",
-    "group": "Industrials",
-    "mcap": 524.45166,
-    "rev_g": 15.37,
-    "accel": -3.7299999999999986,
-    "r13": 33.7371,
-    "momo": 1.33,
-    "from_high": -0.1529051987767538,
-    "ev_rev": 0.889,
-    "px": 45.71,
-    "dp": 2.1453,
-    "score": 76.9,
-    "sub": {
-     "g": 61,
-     "m": 98,
-     "q": 65
-    },
-    "flags": [],
-    "growth_doubt": false,
-    "unit_doubt": null,
-    "why": {
-     "vol": 34.07094,
-     "r26": 62.9003,
-     "rg3": 7.18,
-     "rev_gq": 11.64,
-     "dte": 0.0097,
-     "gm_t": 29.17,
-     "om_t": 8.53,
-     "om_a": 8.53,
-     "cashps": 2.4468,
-     "rps": 43.2498,
-     "adv": 0.07512,
-     "hi52": 45.78,
-     "shares": 13.39,
-     "exch": "NASDAQ NMS - GLOBAL MARKET"
-    }
-   },
-   {
     "ticker": "NXDR",
     "name": "Nextdoor Holdings Inc",
     "ind": "Media",
@@ -1162,11 +996,11 @@
     "accel": 4.74,
     "r13": 7.3913,
     "momo": 0.79,
-    "from_high": -30.913978494623663,
+    "from_high": -30.107526881720435,
     "ev_rev": 3.1778,
-    "px": 2.57,
-    "dp": 2.8,
-    "score": 76.9,
+    "px": 2.6,
+    "dp": 4,
+    "score": 77.1,
     "sub": {
      "g": 73,
      "m": 89,
@@ -1193,6 +1027,46 @@
     }
    },
    {
+    "ticker": "IBEX",
+    "name": "Ibex Ltd",
+    "ind": "Professional Services",
+    "group": "Industrials",
+    "mcap": 524.45166,
+    "rev_g": 15.37,
+    "accel": -3.7299999999999986,
+    "r13": 33.7371,
+    "momo": 1.33,
+    "from_high": null,
+    "ev_rev": 0.889,
+    "px": 45.91,
+    "dp": 2.5922,
+    "score": 77.0,
+    "sub": {
+     "g": 62,
+     "m": 99,
+     "q": 65
+    },
+    "flags": [],
+    "growth_doubt": false,
+    "unit_doubt": null,
+    "why": {
+     "vol": 34.07094,
+     "r26": 62.9003,
+     "rg3": 7.18,
+     "rev_gq": 11.64,
+     "dte": 0.0097,
+     "gm_t": 29.17,
+     "om_t": 8.53,
+     "om_a": 8.53,
+     "cashps": 2.4468,
+     "rps": 43.2498,
+     "adv": 0.07512,
+     "hi52": 45.78,
+     "shares": 13.39,
+     "exch": "NASDAQ NMS - GLOBAL MARKET"
+    }
+   },
+   {
     "ticker": "LIND",
     "name": "Lindblad Expeditions Holdings Inc",
     "ind": "Hotels, Restaurants & Leisure",
@@ -1202,10 +1076,10 @@
     "accel": 0.370000000000001,
     "r13": 38.9228,
     "momo": 1.18,
-    "from_high": -4.78766567487151,
+    "from_high": -4.057343792264001,
     "ev_rev": 3.2712,
-    "px": 35.2,
-    "dp": -0.1702,
+    "px": 35.47,
+    "dp": 0.5956,
     "score": 76.7,
     "sub": {
      "g": 79,
@@ -1233,6 +1107,48 @@
     }
    },
    {
+    "ticker": "TXO",
+    "name": "TXO Partners LP",
+    "ind": "Energy",
+    "group": "Energy",
+    "mcap": 856.0925270791367,
+    "rev_g": 22.18,
+    "accel": 45.68,
+    "r13": 8.7786,
+    "momo": 0.45,
+    "from_high": -8.916432913326188,
+    "ev_rev": 2.3469,
+    "px": 14.19,
+    "dp": -0.4211,
+    "score": 76.6,
+    "sub": {
+     "g": 84,
+     "m": 76,
+     "q": 62
+    },
+    "flags": [
+     "new"
+    ],
+    "growth_doubt": false,
+    "unit_doubt": null,
+    "why": {
+     "vol": 26.477196,
+     "r26": 16.8033,
+     "rg3": 17.63,
+     "rev_gq": 67.86,
+     "dte": 0.4168,
+     "gm_t": 53.24,
+     "om_t": -10.63,
+     "om_a": -7.63,
+     "cashps": 1.9384,
+     "rps": 7.162,
+     "adv": 0.10715,
+     "hi52": 15.5791,
+     "shares": 55.24,
+     "exch": "NEW YORK STOCK EXCHANGE, INC."
+    }
+   },
+   {
     "ticker": "IDT",
     "name": "IDT Corp",
     "ind": "Telecommunication",
@@ -1242,10 +1158,10 @@
     "accel": 1.67,
     "r13": 32.5425,
     "momo": 1.66,
-    "from_high": -2.062477385116379,
+    "from_high": -0.8081051742853673,
     "ev_rev": 1.5019,
-    "px": 81.2,
-    "dp": 0.148,
+    "px": 82.24,
+    "dp": 1.4307,
     "score": 76.4,
     "sub": {
      "g": 61,
@@ -1273,88 +1189,6 @@
     }
    },
    {
-    "ticker": "BBNX",
-    "name": "Beta Bionics Inc",
-    "ind": "Health Care",
-    "group": "Health",
-    "mcap": 873.6997614718875,
-    "rev_g": 94.09,
-    "accel": -50.0,
-    "r13": 13.1265,
-    "momo": 0.59,
-    "from_high": -47.84469581167839,
-    "ev_rev": 8.2218,
-    "px": 17.06,
-    "dp": 1.1263,
-    "score": 75.2,
-    "sub": {
-     "g": 74,
-     "m": 80,
-     "q": 68
-    },
-    "flags": [],
-    "growth_doubt": false,
-    "unit_doubt": null,
-    "why": {
-     "vol": 76.497314,
-     "r26": 92.2921,
-     "rg3": 724.29,
-     "rev_gq": 37.76,
-     "dte": 0,
-     "gm_t": 58.31,
-     "om_t": -69.75,
-     "om_a": -71.5,
-     "cashps": 4.0125,
-     "rps": 2.6717,
-     "adv": 1.07247,
-     "hi52": 32.71,
-     "shares": 44.99,
-     "exch": "NASDAQ NMS - GLOBAL MARKET"
-    }
-   },
-   {
-    "ticker": "AMPL",
-    "name": "Amplitude Inc",
-    "ind": "Technology",
-    "group": "Technology",
-    "mcap": 1626.4014886671587,
-    "rev_g": 18.26,
-    "accel": 2.8999999999999986,
-    "r13": 61.0939,
-    "momo": 1.66,
-    "from_high": -2.1947449768160765,
-    "ev_rev": 5.0115,
-    "px": 15.82,
-    "dp": 3.4663,
-    "score": 75.0,
-    "sub": {
-     "g": 70,
-     "m": 100,
-     "q": 36
-    },
-    "flags": [
-     "8-K"
-    ],
-    "growth_doubt": false,
-    "unit_doubt": null,
-    "why": {
-     "vol": 58.252884,
-     "r26": 159.7338,
-     "rg3": 12.96,
-     "rev_gq": 21.16,
-     "dte": 0,
-     "gm_t": 72.42,
-     "om_t": -27.79,
-     "om_a": -27.97,
-     "cashps": 1.126,
-     "rps": 2.8936,
-     "adv": 2.08938,
-     "hi52": 16.175,
-     "shares": 132.62,
-     "exch": "NASDAQ NMS - GLOBAL MARKET"
-    }
-   },
-   {
     "ticker": "GNE",
     "name": "Genie Energy Ltd",
     "ind": "Utilities",
@@ -1364,14 +1198,14 @@
     "accel": -14.620000000000001,
     "r13": 11.3338,
     "momo": 0.57,
-    "from_high": -0.11883541295305555,
+    "from_high": -0.7724301841948833,
     "ev_rev": 0.4895,
-    "px": 16.81,
-    "dp": -0.7088,
-    "score": 74.9,
+    "px": 16.7,
+    "dp": -1.3585,
+    "score": 75.9,
     "sub": {
      "g": 74,
-     "m": 79,
+     "m": 82,
      "q": 67
     },
     "flags": [],
@@ -1395,6 +1229,91 @@
     }
    },
    {
+    "ticker": "INOD",
+    "name": "Innodata Inc",
+    "ind": "Professional Services",
+    "group": "Industrials",
+    "mcap": 1869.3848616020998,
+    "rev_g": 39.02,
+    "accel": 18.779999999999994,
+    "r13": -8.4108,
+    "momo": 0.35,
+    "from_high": -54.79463001438389,
+    "ev_rev": 6.7994,
+    "px": 56.57,
+    "dp": 6.4546,
+    "score": 75.7,
+    "sub": {
+     "g": 91,
+     "m": 71,
+     "q": 54
+    },
+    "flags": [
+     "new"
+    ],
+    "growth_doubt": false,
+    "unit_doubt": null,
+    "why": {
+     "vol": 69.24216,
+     "r26": 73.4076,
+     "rg3": 47.14,
+     "rev_gq": 57.8,
+     "dte": 0,
+     "gm_t": 42.39,
+     "om_t": 18.42,
+     "om_a": 16.46,
+     "cashps": 7.2833,
+     "rps": 9.1215,
+     "adv": 2.26154,
+     "hi52": 125.14,
+     "shares": 32.66,
+     "exch": "NASDAQ NMS - GLOBAL MARKET"
+    }
+   },
+   {
+    "ticker": "OSBC",
+    "name": "Old Second Bancorp Inc",
+    "ind": "Banking",
+    "group": "Financials",
+    "mcap": 1297.839444075059,
+    "rev_g": 59.28261,
+    "accel": -31.319229999999997,
+    "r13": 6.2096,
+    "momo": 0.6,
+    "from_high": -4.624832085971975,
+    "ev_rev": null,
+    "px": 24.85,
+    "dp": 0.8932,
+    "score": 75.7,
+    "sub": {
+     "g": 70,
+     "m": 83,
+     "q": 71
+    },
+    "flags": [
+     "E-6d",
+     "act+"
+    ],
+    "growth_doubt": false,
+    "unit_doubt": null,
+    "why": {
+     "vol": 16.551067,
+     "r26": 15.5795,
+     "rg3": 23.26016,
+     "rev_gq": 27.96338,
+     "dte": 0.1037,
+     "gm_t": null,
+     "om_t": 45.41173,
+     "om_a": 36.72655,
+     "cashps": 1.2431,
+     "rps": 6.37677,
+     "adv": 0.65298,
+     "hi52": 26.055,
+     "shares": 50.94,
+     "exch": "NASDAQ NMS - GLOBAL MARKET"
+    }
+   },
+   {
     "ticker": "SEPN",
     "name": "Septerna Inc",
     "ind": "Pharmaceuticals",
@@ -1404,14 +1323,14 @@
     "accel": 50.0,
     "r13": 8.0726,
     "momo": 0.37,
-    "from_high": -26.829745596868882,
+    "from_high": -26.71232876712328,
     "ev_rev": 17.4073,
-    "px": 37.39,
-    "dp": 2.946,
-    "score": 74.9,
+    "px": 37.45,
+    "dp": 3.1112,
+    "score": 75.7,
     "sub": {
      "g": 82,
-     "m": 70,
+     "m": 72,
      "q": 70
     },
     "flags": [
@@ -1435,15 +1354,99 @@
      "shares": 45.08,
      "exch": "NASDAQ NMS - GLOBAL MARKET"
     }
+   },
+   {
+    "ticker": "OBT",
+    "name": "Orange County Bancorp Inc",
+    "ind": "Banking",
+    "group": "Financials",
+    "mcap": 519.9608122735799,
+    "rev_g": 47.64338,
+    "accel": -15.86719,
+    "r13": 6.8573,
+    "momo": 0.63,
+    "from_high": -8.403761605390535,
+    "ev_rev": null,
+    "px": 36.73,
+    "dp": 1.0732,
+    "score": 75.6,
+    "sub": {
+     "g": 67,
+     "m": 84,
+     "q": 76
+    },
+    "flags": [
+     "new"
+    ],
+    "growth_doubt": false,
+    "unit_doubt": null,
+    "why": {
+     "vol": 21.254679,
+     "r26": 23.0105,
+     "rg3": 20.51246,
+     "rev_gq": 31.77619,
+     "dte": 0.0802,
+     "gm_t": null,
+     "om_t": 37.29082,
+     "om_a": 33.60974,
+     "cashps": 28.08762,
+     "rps": 18.09307,
+     "adv": 0.05953,
+     "hi52": 40.0999,
+     "shares": 13.41,
+     "exch": "NASDAQ NMS - GLOBAL MARKET"
+    }
+   },
+   {
+    "ticker": "AMPL",
+    "name": "Amplitude Inc",
+    "ind": "Technology",
+    "group": "Technology",
+    "mcap": 1626.4014886671587,
+    "rev_g": 18.26,
+    "accel": 2.8999999999999986,
+    "r13": 61.0939,
+    "momo": 1.66,
+    "from_high": -2.132921174652247,
+    "ev_rev": 5.0115,
+    "px": 15.83,
+    "dp": 3.5317,
+    "score": 75.2,
+    "sub": {
+     "g": 71,
+     "m": 99,
+     "q": 36
+    },
+    "flags": [
+     "8-K"
+    ],
+    "growth_doubt": false,
+    "unit_doubt": null,
+    "why": {
+     "vol": 58.252884,
+     "r26": 159.7338,
+     "rg3": 12.96,
+     "rev_gq": 21.16,
+     "dte": 0,
+     "gm_t": 72.42,
+     "om_t": -27.79,
+     "om_a": -27.97,
+     "cashps": 1.126,
+     "rps": 2.8936,
+     "adv": 2.08938,
+     "hi52": 16.175,
+     "shares": 132.62,
+     "exch": "NASDAQ NMS - GLOBAL MARKET"
+    }
    }
   ],
   "freshness": {
    "last_full_h": 0.0,
-   "quote_median_h": 3.5,
+   "quote_median_h": 6.2,
    "quote_count": 1862,
    "bench_h": 0.0,
-   "universe_h": 141.0,
-   "earnings_h": 3.4,
+   "universe_h": 143.7,
+   "earnings_h": 6.1,
    "bench_gate_h": 72
   },
   "reach": {
@@ -1468,16 +1471,37 @@
    "prev_day": "2026-10-14",
    "entered": [
     {
+     "ticker": "TXO",
+     "name": "TXO Partners LP",
+     "score": 76.6,
+     "ind": "Energy"
+    },
+    {
+     "ticker": "INOD",
+     "name": "Innodata Inc",
+     "score": 75.7,
+     "ind": "Professional Services"
+    },
+    {
      "ticker": "SEPN",
      "name": "Septerna Inc",
-     "score": 74.9,
+     "score": 75.7,
      "ind": "Pharmaceuticals"
+    },
+    {
+     "ticker": "OBT",
+     "name": "Orange County Bancorp Inc",
+     "score": 75.6,
+     "ind": "Banking"
     }
    ],
    "left": [
-    "CBLL"
+    "BBNX",
+    "OBK",
+    "SHIP",
+    "TWIN"
    ],
-   "held": 24
+   "held": 21
   },
   "below_floor": [
    {
@@ -1502,6 +1526,13 @@
     "r13": 120.197
    },
    {
+    "ticker": "CD",
+    "name": "Chaince Digital Holdings Inc",
+    "rev_ttm": 1.898616,
+    "rev_g": 94.74,
+    "r13": 104.0625
+   },
+   {
     "ticker": "SENS",
     "name": "Senseonics Holdings Inc",
     "rev_ttm": 35.08274,
@@ -1521,13 +1552,6 @@
     "rev_ttm": 43.681428,
     "rev_g": 12.27,
     "r13": 57.3737
-   },
-   {
-    "ticker": "CD",
-    "name": "Chaince Digital Holdings Inc",
-    "rev_ttm": 1.898616,
-    "rev_g": 94.74,
-    "r13": 57.1096
    },
    {
     "ticker": "OBIO",
@@ -1553,8 +1577,8 @@
    {
     "ticker": "VSTM",
     "name": "Verastem Inc",
-    "px": 9.53,
-    "dp": 23.6057
+    "px": 9.23,
+    "dp": 19.7147
    },
    {
     "ticker": "CDZI",
@@ -1589,16 +1613,16 @@
     "dp": -13.3277
    },
    {
-    "ticker": "GRRR",
-    "name": "Gorilla Technology Group Inc",
-    "px": 8.2,
-    "dp": -13.3192
-   },
-   {
     "ticker": "WYFI",
     "name": "WhiteFiber Inc",
     "px": 12.73,
     "dp": -12.4484
+   },
+   {
+    "ticker": "TMCR",
+    "name": "Metals Royalty Company Inc",
+    "px": 2.35,
+    "dp": -11.8199
    }
   ],
   "earnings": [
@@ -1780,6 +1804,13 @@
   ],
   "filings_activist": [
    {
+    "ticker": "BORR",
+    "name": "Borr Drilling Ltd",
+    "date": "2026-10-15",
+    "link": "https://www.sec.gov/Archives/edgar/data/1715497/000119312526423089/0001193125-26-423089-index.htm",
+    "form": "SCHEDULE 13D/A"
+   },
+   {
     "ticker": "BMBL",
     "name": "Bumble Inc",
     "date": "2026-10-15",
@@ -1841,13 +1872,6 @@
     "date": "2026-10-14",
     "link": "https://www.sec.gov/Archives/edgar/data/884121/000144554626007613/0001445546-26-007613-index.htm",
     "form": "SCHEDULE 13G/A"
-   },
-   {
-    "ticker": "AEF",
-    "name": "abrdn Emerging Markets Ex-China Fund Inc",
-    "date": "2026-10-14",
-    "link": "https://www.sec.gov/Archives/edgar/data/846676/000144554626007608/0001445546-26-007608-index.htm",
-    "form": "SCHEDULE 13G/A"
    }
   ],
   "filings_offering": [
@@ -1855,7 +1879,7 @@
     "ticker": "RXRX",
     "name": "Recursion Pharmaceuticals Inc",
     "date": "2026-10-15",
-    "link": "https://www.sec.gov/Archives/edgar/data/1601830/000160183026000126/0001601830-26-000126-index.htm",
+    "link": "https://www.sec.gov/Archives/edgar/data/1601830/000160183026000134/0001601830-26-000134-index.htm",
     "form": "424B5"
    },
    {
@@ -1933,6 +1957,14 @@
     "ticker": "NCDL"
    },
    {
+    "title": "Marcus Corporation Announces Third Quarter 2026 Release Date and Conference Call",
+    "link": "http://www.businesswire.com/news/home/20261015422993/en/Marcus-Corporation-Announces-Third-Quarter-2026-Release-Date-and-Conference-Call/?feedref=JjAwJuNHiystnCoBq_hl-YorNIXXeJUidDamMzBr2lVrRA1xRkqfEfrAVCWz-Z_wrCOi9QzgjCezTS3Nw_X6kJUrpSBm-Hav1w-UkdSlG3ne1zTTrM-woVxs6_pUhglHIbE9ZC1pD3bt6lQgRU5j6g==",
+    "source": "Business Wire",
+    "published": "2026-10-15T21:15:00+00:00",
+    "summary": "MILWAUKEE--(BUSINESS WIRE)--Marcus Corporation (NYSE: MCS) today announced it will report results for the third quarter of 2026 prior to the stock market open on Thursday, October 29, 2026. The release will be followed by a…",
+    "ticker": "MCS"
+   },
+   {
     "title": "VOYA GLOBAL EQUITY DIVIDEND AND PREMIUM OPPORTUNITY FUND, VOYA GLOBAL ADVANTAGE AND PREMIUM OPPORTUNITY FUND & VOYA INFRASTRUCTURE, INDUSTRIALS AND MATERIALS FUND ANNOUNCES PAYMENT OF MONTHLY DISTRIBUTION",
     "link": "http://www.businesswire.com/news/home/20261015080952/en/VOYA-GLOBAL-EQUITY-DIVIDEND-AND-PREMIUM-OPPORTUNITY-FUND-VOYA-GLOBAL-ADVANTAGE-AND-PREMIUM-OPPORTUNITY-FUND-VOYA-INFRASTRUCTURE-INDUSTRIALS-AND-MATERIALS-FUND-ANNOUNCES-PAYMENT-OF-MONTHLY-DISTRIBUTION/?feedref=JjAwJuNHiystnCoBq_hl-YorNIXXeJUidDamMzBr2lVrRA1xRkqfEfrAVCWz-Z_wrCOi9QzgjCezTS3Nw_X6kJUrpSBm-Hav1w-UkdSlG3ne1zTTrM-woVxs6_pUhglHIbE9ZC1pD3bt6lQgRU5j6g==",
     "source": "Business Wire",
@@ -1957,28 +1989,12 @@
     "ticker": "IE"
    },
    {
-    "title": "Scott+Scott Attorneys at Law LLP Alerts Investors of Its Investigation Into Cardinal Infrastructure Group Inc. (NASDAQ: CDNL)",
-    "link": "http://www.businesswire.com/news/home/20261014182391/en/ScottScott-Attorneys-at-Law-LLP-Alerts-Investors-of-Its-Investigation-Into-Cardinal-Infrastructure-Group-Inc.-NASDAQ-CDNL/?feedref=JjAwJuNHiystnCoBq_hl-YorNIXXeJUidDamMzBr2lVrRA1xRkqfEfrAVCWz-Z_wrCOi9QzgjCezTS3Nw_X6kJUrpSBm-Hav1w-UkdSlG3ne1zTTrM-woVxs6_pUhglHIbE9ZC1pD3bt6lQgRU5j6g==",
-    "source": "Business Wire",
-    "published": "2026-10-14T21:37:00+00:00",
-    "summary": "NEW YORK--(BUSINESS WIRE)---- $CDNL #CardinalInfastructure--Scott+Scott Attorneys at Law LLP (“Scott+Scott”), a shareholder and consumer rights litigation firm, alerts investors that it is investigating potential violations of…",
-    "ticker": "CDNL"
-   },
-   {
     "title": "Xerox Holdings Corporation Plans Webcast to Discuss 2026 Third-Quarter Results",
     "link": "http://www.businesswire.com/news/home/20261015229864/en/Xerox-Holdings-Corporation-Plans-Webcast-to-Discuss-2026-Third-Quarter-Results/?feedref=JjAwJuNHiystnCoBq_hl-YorNIXXeJUidDamMzBr2lVrRA1xRkqfEfrAVCWz-Z_wrCOi9QzgjCezTS3Nw_X6kJUrpSBm-Hav1w-UkdSlG3ne1zTTrM-woVxs6_pUhglHIbE9ZC1pD3bt6lQgRU5j6g==",
     "source": "Business Wire",
     "published": "2026-10-15T12:00:00+00:00",
     "summary": "NORWALK, Conn.--(BUSINESS WIRE)--Xerox Holdings Corporation (NASDAQ: XRX) will host a live webcast at 8:00 a.m. ET on Thursday, October 29th, to discuss the company’s 2026 third-quarter results. A news release containing this…",
     "ticker": "XRX"
-   },
-   {
-    "title": "Flowco Holdings Inc. to Announce Third Quarter 2026 Results on November 4, 2026",
-    "link": "http://www.businesswire.com/news/home/20261014114305/en/Flowco-Holdings-Inc.-to-Announce-Third-Quarter-2026-Results-on-November-4-2026/?feedref=JjAwJuNHiystnCoBq_hl-YorNIXXeJUidDamMzBr2lVrRA1xRkqfEfrAVCWz-Z_wrCOi9QzgjCezTS3Nw_X6kJUrpSBm-Hav1w-UkdSlG3ne1zTTrM-woVxs6_pUhglHIbE9ZC1pD3bt6lQgRU5j6g==",
-    "source": "Business Wire",
-    "published": "2026-10-14T21:30:00+00:00",
-    "summary": "HOUSTON--(BUSINESS WIRE)--Flowco Holdings Inc. (NYSE: FLOC) (“Flowco” or the “Company”), a leading provider of production optimization, artificial lift and emissions management and monetization solutions for the oil and natural…",
-    "ticker": "FLOC"
    }
   ]
  },
@@ -1989,92 +2005,92 @@
      "contributors": [
       {
        "ticker": "REPX",
-       "pl": 618.25,
-       "pct": 0.618
-      },
-      {
-       "ticker": "VSTM",
-       "pl": 574.74,
-       "pct": 0.575
+       "pl": 657.76,
+       "pct": 0.658
       },
       {
        "ticker": "AMPL",
-       "pl": 492.35,
-       "pct": 0.492
+       "pl": 495.18,
+       "pct": 0.495
       },
       {
        "ticker": "GCT",
-       "pl": 477.97,
-       "pct": 0.478
+       "pl": 482.48,
+       "pct": 0.482
+      },
+      {
+       "ticker": "VSTM",
+       "pl": 440.03,
+       "pct": 0.44
       },
       {
        "ticker": "NXDR",
-       "pl": 354.51,
-       "pct": 0.355
-      },
-      {
-       "ticker": "ETON",
-       "pl": 264.33,
-       "pct": 0.264
+       "pl": 405.16,
+       "pct": 0.405
       },
       {
        "ticker": "PAYS",
-       "pl": 259.89,
-       "pct": 0.26
-      },
-      {
-       "ticker": "GOTU",
-       "pl": 238.86,
-       "pct": 0.239
+       "pl": 329.01,
+       "pct": 0.329
       },
       {
        "ticker": "IBEX",
-       "pl": 230.51,
-       "pct": 0.231
+       "pl": 248.95,
+       "pct": 0.249
+      },
+      {
+       "ticker": "GOTU",
+       "pl": 159.24,
+       "pct": 0.159
+      },
+      {
+       "ticker": "ETON",
+       "pl": 114.99,
+       "pct": 0.115
       },
       {
        "ticker": "OSBC",
-       "pl": 128.57,
-       "pct": 0.129
+       "pl": 112.09,
+       "pct": 0.112
       }
      ],
      "detractors": [
       {
        "ticker": "SBET",
-       "pl": -577.03,
-       "pct": -0.577
+       "pl": -513.39,
+       "pct": -0.513
       },
       {
        "ticker": "SHIP",
-       "pl": -458.84,
-       "pct": -0.459
+       "pl": -456.53,
+       "pct": -0.457
       },
       {
        "ticker": "BBNX",
-       "pl": -316.06,
-       "pct": -0.316
+       "pl": -262.31,
+       "pct": -0.262
       },
       {
-       "ticker": "RDVT",
-       "pl": -174.67,
-       "pct": -0.175
+       "ticker": "TK",
+       "pl": -158.6,
+       "pct": -0.159
       },
       {
-       "ticker": "LIND",
-       "pl": -142.97,
-       "pct": -0.143
+       "ticker": "NAT",
+       "pl": -147.19,
+       "pct": -0.147
       }
      ],
-     "unrealised_pct": 1.75,
+     "unrealised_pct": 1.74,
      "realised_pct": 0.37,
      "cost_pct": -0.66,
-     "total_pct": 1.46,
-     "actual_pct": 1.46,
-     "residual_pct": 0.0,
+     "total_pct": 1.45,
+     "actual_pct": 1.45,
+     "residual_pct": -0.0,
      "reconciles": true,
      "top_n": 3,
-     "top_pct": 1.69,
-     "ex_top_pct": -0.23,
+     "top_pct": 1.64,
+     "ex_top_pct": -0.18,
      "winners": 14,
      "losers": 11
     },
@@ -2083,11 +2099,11 @@
       "ticker": "REPX",
       "shares": 98.76,
       "entry_px": 40.34,
-      "px": 46.6,
+      "px": 47.0,
       "entry_date": "2026-10-01",
-      "value": 4602.31,
-      "weight": 4.54,
-      "ret": 15.52,
+      "value": 4641.82,
+      "weight": 4.58,
+      "ret": 16.51,
       "peak_px": 48.02,
       "stop_pct": null,
       "stop_px": null,
@@ -2097,11 +2113,11 @@
       "ticker": "AMPL",
       "shares": 282.96,
       "entry_px": 14.08,
-      "px": 15.82,
+      "px": 15.83,
       "entry_date": "2026-10-01",
-      "value": 4476.41,
-      "weight": 4.41,
-      "ret": 12.36,
+      "value": 4479.24,
+      "weight": 4.42,
+      "ret": 12.43,
       "peak_px": 16.19,
       "stop_pct": null,
       "stop_px": null,
@@ -2111,11 +2127,11 @@
       "ticker": "GCT",
       "shares": 75.27,
       "entry_px": 52.93,
-      "px": 59.28,
+      "px": 59.34,
       "entry_date": "2026-10-01",
-      "value": 4462.03,
+      "value": 4466.55,
       "weight": 4.4,
-      "ret": 12.0,
+      "ret": 12.11,
       "peak_px": 60.46,
       "stop_pct": null,
       "stop_px": null,
@@ -2125,54 +2141,12 @@
       "ticker": "NXDR",
       "shares": 1688.16,
       "entry_px": 2.36,
-      "px": 2.57,
+      "px": 2.6,
       "entry_date": "2026-10-01",
-      "value": 4338.58,
-      "weight": 4.28,
-      "ret": 8.9,
+      "value": 4389.22,
+      "weight": 4.33,
+      "ret": 10.17,
       "peak_px": 2.73,
-      "stop_pct": null,
-      "stop_px": null,
-      "room_pct": null
-     },
-     {
-      "ticker": "GOTU",
-      "shares": 1592.42,
-      "entry_px": 2.57,
-      "px": 2.72,
-      "entry_date": "2026-10-05",
-      "value": 4331.37,
-      "weight": 4.27,
-      "ret": 5.84,
-      "peak_px": 2.87,
-      "stop_pct": null,
-      "stop_px": null,
-      "room_pct": null
-     },
-     {
-      "ticker": "VSTM",
-      "shares": 449.01,
-      "entry_px": 8.25,
-      "px": 9.53,
-      "entry_date": "2026-10-12",
-      "value": 4279.09,
-      "weight": 4.22,
-      "ret": 15.52,
-      "peak_px": 9.63,
-      "stop_pct": null,
-      "stop_px": null,
-      "room_pct": null
-     },
-     {
-      "ticker": "ETON",
-      "shares": 79.86,
-      "entry_px": 49.89,
-      "px": 53.2,
-      "entry_date": "2026-10-01",
-      "value": 4248.39,
-      "weight": 4.19,
-      "ret": 6.63,
-      "peak_px": 57.01,
       "stop_pct": null,
       "stop_px": null,
       "room_pct": null
@@ -2181,12 +2155,26 @@
       "ticker": "PAYS",
       "shares": 276.48,
       "entry_px": 14.41,
-      "px": 15.35,
+      "px": 15.6,
       "entry_date": "2026-10-01",
-      "value": 4243.95,
-      "weight": 4.18,
-      "ret": 6.52,
-      "peak_px": 15.62,
+      "value": 4313.07,
+      "weight": 4.25,
+      "ret": 8.26,
+      "peak_px": 15.63,
+      "stop_pct": null,
+      "stop_px": null,
+      "room_pct": null
+     },
+     {
+      "ticker": "GOTU",
+      "shares": 1592.42,
+      "entry_px": 2.57,
+      "px": 2.67,
+      "entry_date": "2026-10-05",
+      "value": 4251.75,
+      "weight": 4.19,
+      "ret": 3.89,
+      "peak_px": 2.87,
       "stop_pct": null,
       "stop_px": null,
       "room_pct": null
@@ -2195,26 +2183,12 @@
       "ticker": "IBEX",
       "shares": 92.2,
       "entry_px": 43.21,
-      "px": 45.71,
+      "px": 45.91,
       "entry_date": "2026-10-01",
-      "value": 4214.57,
-      "weight": 4.15,
-      "ret": 5.79,
+      "value": 4233.01,
+      "weight": 4.17,
+      "ret": 6.25,
       "peak_px": 46.22,
-      "stop_pct": null,
-      "stop_px": null,
-      "room_pct": null
-     },
-     {
-      "ticker": "CLMB",
-      "shares": 124.61,
-      "entry_px": 33.2,
-      "px": 33.12,
-      "entry_date": "2026-10-12",
-      "value": 4127.01,
-      "weight": 4.07,
-      "ret": -0.24,
-      "peak_px": 34.13,
       "stop_pct": null,
       "stop_px": null,
       "room_pct": null
@@ -2223,12 +2197,54 @@
       "ticker": "IDT",
       "shares": 50.67,
       "entry_px": 80.77,
-      "px": 81.2,
+      "px": 82.24,
       "entry_date": "2026-10-05",
-      "value": 4114.3,
-      "weight": 4.06,
-      "ret": 0.53,
+      "value": 4166.99,
+      "weight": 4.11,
+      "ret": 1.82,
       "peak_px": 82.91,
+      "stop_pct": null,
+      "stop_px": null,
+      "room_pct": null
+     },
+     {
+      "ticker": "VSTM",
+      "shares": 449.01,
+      "entry_px": 8.25,
+      "px": 9.23,
+      "entry_date": "2026-10-12",
+      "value": 4144.38,
+      "weight": 4.09,
+      "ret": 11.88,
+      "peak_px": 9.73,
+      "stop_pct": null,
+      "stop_px": null,
+      "room_pct": null
+     },
+     {
+      "ticker": "CLMB",
+      "shares": 124.61,
+      "entry_px": 33.2,
+      "px": 32.94,
+      "entry_date": "2026-10-12",
+      "value": 4104.58,
+      "weight": 4.05,
+      "ret": -0.78,
+      "peak_px": 34.13,
+      "stop_pct": null,
+      "stop_px": null,
+      "room_pct": null
+     },
+     {
+      "ticker": "ETON",
+      "shares": 79.86,
+      "entry_px": 49.89,
+      "px": 51.33,
+      "entry_date": "2026-10-01",
+      "value": 4099.06,
+      "weight": 4.04,
+      "ret": 2.89,
+      "peak_px": 57.01,
       "stop_pct": null,
       "stop_px": null,
       "room_pct": null
@@ -2237,12 +2253,26 @@
       "ticker": "OSBC",
       "shares": 164.84,
       "entry_px": 24.17,
-      "px": 24.95,
+      "px": 24.85,
       "entry_date": "2026-10-01",
-      "value": 4112.64,
-      "weight": 4.05,
-      "ret": 3.23,
+      "value": 4096.15,
+      "weight": 4.04,
+      "ret": 2.81,
       "peak_px": 25.33,
+      "stop_pct": null,
+      "stop_px": null,
+      "room_pct": null
+     },
+     {
+      "ticker": "ATLC",
+      "shares": 43.68,
+      "entry_px": 94.72,
+      "px": 93.54,
+      "entry_date": "2026-10-12",
+      "value": 4085.44,
+      "weight": 4.03,
+      "ret": -1.25,
+      "peak_px": 95.69,
       "stop_pct": null,
       "stop_px": null,
       "room_pct": null
@@ -2251,11 +2281,11 @@
       "ticker": "GNE",
       "shares": 244.27,
       "entry_px": 16.31,
-      "px": 16.81,
+      "px": 16.7,
       "entry_date": "2026-10-01",
-      "value": 4106.2,
-      "weight": 4.05,
-      "ret": 3.07,
+      "value": 4079.33,
+      "weight": 4.02,
+      "ret": 2.39,
       "peak_px": 17.11,
       "stop_pct": null,
       "stop_px": null,
@@ -2265,26 +2295,12 @@
       "ticker": "BWFG",
       "shares": 62.13,
       "entry_px": 64.12,
-      "px": 64.86,
+      "px": 65.17,
       "entry_date": "2026-10-01",
-      "value": 4030.04,
-      "weight": 3.97,
-      "ret": 1.15,
+      "value": 4049.3,
+      "weight": 3.99,
+      "ret": 1.64,
       "peak_px": 66.7,
-      "stop_pct": null,
-      "stop_px": null,
-      "room_pct": null
-     },
-     {
-      "ticker": "ATLC",
-      "shares": 43.68,
-      "entry_px": 94.72,
-      "px": 92.2,
-      "entry_date": "2026-10-12",
-      "value": 4026.91,
-      "weight": 3.97,
-      "ret": -2.66,
-      "peak_px": 95.69,
       "stop_pct": null,
       "stop_px": null,
       "room_pct": null
@@ -2293,11 +2309,11 @@
       "ticker": "LIND",
       "shares": 113.47,
       "entry_px": 36.46,
-      "px": 35.2,
+      "px": 35.47,
       "entry_date": "2026-10-12",
-      "value": 3994.01,
-      "weight": 3.94,
-      "ret": -3.46,
+      "value": 4024.64,
+      "weight": 3.97,
+      "ret": -2.72,
       "peak_px": 36.98,
       "stop_pct": null,
       "stop_px": null,
@@ -2321,12 +2337,26 @@
       "ticker": "TWIN",
       "shares": 153.12,
       "entry_px": 26.02,
-      "px": 25.4,
+      "px": 25.35,
       "entry_date": "2026-10-01",
-      "value": 3889.13,
+      "value": 3881.48,
       "weight": 3.83,
-      "ret": -2.38,
+      "ret": -2.57,
       "peak_px": 29.23,
+      "stop_pct": null,
+      "stop_px": null,
+      "room_pct": null
+     },
+     {
+      "ticker": "RDVT",
+      "shares": 49.91,
+      "entry_px": 79.83,
+      "px": 77.17,
+      "entry_date": "2026-10-01",
+      "value": 3851.31,
+      "weight": 3.8,
+      "ret": -3.33,
+      "peak_px": 81.8,
       "stop_pct": null,
       "stop_px": null,
       "room_pct": null
@@ -2335,11 +2365,11 @@
       "ticker": "NAT",
       "shares": 490.65,
       "entry_px": 8.12,
-      "px": 7.88,
+      "px": 7.82,
       "entry_date": "2026-10-01",
-      "value": 3866.31,
-      "weight": 3.81,
-      "ret": -2.96,
+      "value": 3836.87,
+      "weight": 3.78,
+      "ret": -3.69,
       "peak_px": 8.88,
       "stop_pct": null,
       "stop_px": null,
@@ -2349,40 +2379,12 @@
       "ticker": "TK",
       "shares": 273.44,
       "entry_px": 14.57,
-      "px": 14.07,
+      "px": 13.99,
       "entry_date": "2026-10-01",
-      "value": 3847.34,
-      "weight": 3.79,
-      "ret": -3.43,
+      "value": 3825.47,
+      "weight": 3.77,
+      "ret": -3.98,
       "peak_px": 15.9,
-      "stop_pct": null,
-      "stop_px": null,
-      "room_pct": null
-     },
-     {
-      "ticker": "RDVT",
-      "shares": 49.91,
-      "entry_px": 79.83,
-      "px": 76.33,
-      "entry_date": "2026-10-01",
-      "value": 3809.39,
-      "weight": 3.75,
-      "ret": -4.38,
-      "peak_px": 81.8,
-      "stop_pct": null,
-      "stop_px": null,
-      "room_pct": null
-     },
-     {
-      "ticker": "TEN",
-      "shares": 70.83,
-      "entry_px": 50.67,
-      "px": 51.85,
-      "entry_date": "2026-10-05",
-      "value": 3672.55,
-      "weight": 3.62,
-      "ret": 2.33,
-      "peak_px": 56.73,
       "stop_pct": null,
       "stop_px": null,
       "room_pct": null
@@ -2391,12 +2393,26 @@
       "ticker": "BBNX",
       "shares": 215.01,
       "entry_px": 18.53,
-      "px": 17.06,
+      "px": 17.31,
       "entry_date": "2026-10-01",
-      "value": 3668.0,
-      "weight": 3.62,
-      "ret": -7.93,
+      "value": 3721.76,
+      "weight": 3.67,
+      "ret": -6.58,
       "peak_px": 19.44,
+      "stop_pct": null,
+      "stop_px": null,
+      "room_pct": null
+     },
+     {
+      "ticker": "TEN",
+      "shares": 70.83,
+      "entry_px": 50.67,
+      "px": 51.48,
+      "entry_date": "2026-10-05",
+      "value": 3646.34,
+      "weight": 3.59,
+      "ret": 1.6,
+      "peak_px": 56.73,
       "stop_pct": null,
       "stop_px": null,
       "room_pct": null
@@ -2405,11 +2421,11 @@
       "ticker": "SHIP",
       "shares": 231.74,
       "entry_px": 17.66,
-      "px": 15.68,
+      "px": 15.69,
       "entry_date": "2026-10-05",
-      "value": 3633.67,
+      "value": 3635.98,
       "weight": 3.58,
-      "ret": -11.21,
+      "ret": -11.16,
       "peak_px": 17.95,
       "stop_pct": null,
       "stop_px": null,
@@ -2419,11 +2435,11 @@
       "ticker": "SBET",
       "shares": 424.29,
       "entry_px": 9.39,
-      "px": 8.03,
+      "px": 8.18,
       "entry_date": "2026-10-01",
-      "value": 3407.03,
-      "weight": 3.36,
-      "ret": -14.48,
+      "value": 3470.68,
+      "weight": 3.42,
+      "ret": -12.89,
       "peak_px": 10.24,
       "stop_pct": null,
       "stop_px": null,
@@ -2712,92 +2728,92 @@
      "contributors": [
       {
        "ticker": "GCT",
-       "pl": 672.68,
-       "pct": 0.673
+       "pl": 679.04,
+       "pct": 0.679
       },
       {
        "ticker": "REPX",
-       "pl": 615.09,
-       "pct": 0.615
-      },
-      {
-       "ticker": "VSTM",
-       "pl": 399.14,
-       "pct": 0.399
+       "pl": 654.39,
+       "pct": 0.654
       },
       {
        "ticker": "PAYS",
-       "pl": 356.02,
-       "pct": 0.356
-      },
-      {
-       "ticker": "ETON",
-       "pl": 322.45,
-       "pct": 0.322
-      },
-      {
-       "ticker": "AMPL",
-       "pl": 305.2,
-       "pct": 0.305
+       "pl": 450.71,
+       "pct": 0.451
       },
       {
        "ticker": "NXDR",
-       "pl": 286.23,
-       "pct": 0.286
+       "pl": 327.12,
+       "pct": 0.327
       },
       {
-       "ticker": "GOTU",
-       "pl": 247.42,
-       "pct": 0.247
+       "ticker": "AMPL",
+       "pl": 306.95,
+       "pct": 0.307
+      },
+      {
+       "ticker": "VSTM",
+       "pl": 305.59,
+       "pct": 0.306
       },
       {
        "ticker": "IBEX",
-       "pl": 220.68,
-       "pct": 0.221
+       "pl": 238.34,
+       "pct": 0.238
+      },
+      {
+       "ticker": "GOTU",
+       "pl": 164.95,
+       "pct": 0.165
+      },
+      {
+       "ticker": "ETON",
+       "pl": 140.28,
+       "pct": 0.14
       },
       {
        "ticker": "OSBC",
-       "pl": 152.02,
-       "pct": 0.152
+       "pl": 132.53,
+       "pct": 0.133
       }
      ],
      "detractors": [
       {
        "ticker": "SBET",
-       "pl": -768.83,
-       "pct": -0.769
+       "pl": -684.03,
+       "pct": -0.684
       },
       {
        "ticker": "SHIP",
-       "pl": -354.43,
-       "pct": -0.354
+       "pl": -352.64,
+       "pct": -0.353
       },
       {
        "ticker": "TK",
-       "pl": -300.24,
-       "pct": -0.3
+       "pl": -325.34,
+       "pct": -0.325
       },
       {
        "ticker": "RDVT",
-       "pl": -226.18,
-       "pct": -0.226
+       "pl": -171.9,
+       "pct": -0.172
       },
       {
-       "ticker": "BBNX",
-       "pl": -195.28,
-       "pct": -0.195
+       "ticker": "NAT",
+       "pl": -163.0,
+       "pct": -0.163
       }
      ],
-     "unrealised_pct": 1.46,
+     "unrealised_pct": 1.48,
      "realised_pct": 0.87,
      "cost_pct": -0.64,
-     "total_pct": 1.69,
-     "actual_pct": 1.69,
-     "residual_pct": -0.0,
+     "total_pct": 1.7,
+     "actual_pct": 1.7,
+     "residual_pct": 0.0,
      "reconciles": true,
      "top_n": 3,
-     "top_pct": 1.69,
-     "ex_top_pct": 0.0,
+     "top_pct": 1.78,
+     "ex_top_pct": -0.08,
      "winners": 14,
      "losers": 11
     },
@@ -2806,11 +2822,11 @@
       "ticker": "GCT",
       "shares": 105.93,
       "entry_px": 52.93,
-      "px": 59.28,
+      "px": 59.34,
       "entry_date": "2026-10-01",
-      "value": 6279.8,
+      "value": 6286.16,
       "weight": 6.18,
-      "ret": 12.0,
+      "ret": 12.11,
       "peak_px": 60.46,
       "stop_pct": null,
       "stop_px": null,
@@ -2820,12 +2836,12 @@
       "ticker": "PAYS",
       "shares": 378.74,
       "entry_px": 14.41,
-      "px": 15.35,
+      "px": 15.6,
       "entry_date": "2026-10-01",
-      "value": 5813.73,
-      "weight": 5.72,
-      "ret": 6.52,
-      "peak_px": 15.62,
+      "value": 5908.42,
+      "weight": 5.81,
+      "ret": 8.26,
+      "peak_px": 15.63,
       "stop_pct": null,
       "stop_px": null,
       "room_pct": null
@@ -2834,11 +2850,11 @@
       "ticker": "ETON",
       "shares": 97.42,
       "entry_px": 49.89,
-      "px": 53.2,
+      "px": 51.33,
       "entry_date": "2026-10-01",
-      "value": 5182.55,
-      "weight": 5.1,
-      "ret": 6.63,
+      "value": 5000.38,
+      "weight": 4.92,
+      "ret": 2.89,
       "peak_px": 57.01,
       "stop_pct": null,
       "stop_px": null,
@@ -2848,11 +2864,11 @@
       "ticker": "RDVT",
       "shares": 64.62,
       "entry_px": 79.83,
-      "px": 76.33,
+      "px": 77.17,
       "entry_date": "2026-10-01",
-      "value": 4932.73,
-      "weight": 4.85,
-      "ret": -4.38,
+      "value": 4987.01,
+      "weight": 4.9,
+      "ret": -3.33,
       "peak_px": 81.8,
       "stop_pct": null,
       "stop_px": null,
@@ -2862,26 +2878,12 @@
       "ticker": "OSBC",
       "shares": 194.9,
       "entry_px": 24.17,
-      "px": 24.95,
+      "px": 24.85,
       "entry_date": "2026-10-01",
-      "value": 4862.72,
-      "weight": 4.78,
-      "ret": 3.23,
+      "value": 4843.23,
+      "weight": 4.76,
+      "ret": 2.81,
       "peak_px": 25.33,
-      "stop_pct": null,
-      "stop_px": null,
-      "room_pct": null
-     },
-     {
-      "ticker": "REPX",
-      "shares": 98.26,
-      "entry_px": 40.34,
-      "px": 46.6,
-      "entry_date": "2026-10-01",
-      "value": 4578.78,
-      "weight": 4.5,
-      "ret": 15.52,
-      "peak_px": 48.02,
       "stop_pct": null,
       "stop_px": null,
       "room_pct": null
@@ -2890,12 +2892,26 @@
       "ticker": "SBET",
       "shares": 565.32,
       "entry_px": 9.39,
-      "px": 8.03,
+      "px": 8.18,
       "entry_date": "2026-10-01",
-      "value": 4539.48,
-      "weight": 4.46,
-      "ret": -14.48,
+      "value": 4624.28,
+      "weight": 4.55,
+      "ret": -12.89,
       "peak_px": 10.24,
+      "stop_pct": null,
+      "stop_px": null,
+      "room_pct": null
+     },
+     {
+      "ticker": "REPX",
+      "shares": 98.26,
+      "entry_px": 40.34,
+      "px": 47.0,
+      "entry_date": "2026-10-01",
+      "value": 4618.08,
+      "weight": 4.54,
+      "ret": 16.51,
+      "peak_px": 48.02,
       "stop_pct": null,
       "stop_px": null,
       "room_pct": null
@@ -2904,11 +2920,11 @@
       "ticker": "GOTU",
       "shares": 1649.46,
       "entry_px": 2.57,
-      "px": 2.72,
+      "px": 2.67,
       "entry_date": "2026-10-05",
-      "value": 4486.54,
-      "weight": 4.41,
-      "ret": 5.84,
+      "value": 4404.07,
+      "weight": 4.33,
+      "ret": 3.89,
       "peak_px": 2.87,
       "stop_pct": null,
       "stop_px": null,
@@ -2918,11 +2934,11 @@
       "ticker": "TK",
       "shares": 313.75,
       "entry_px": 15.03,
-      "px": 14.07,
+      "px": 13.99,
       "entry_date": "2026-10-01",
-      "value": 4414.39,
-      "weight": 4.34,
-      "ret": -6.37,
+      "value": 4389.29,
+      "weight": 4.32,
+      "ret": -6.9,
       "peak_px": 15.9,
       "stop_pct": null,
       "stop_px": null,
@@ -2932,11 +2948,11 @@
       "ticker": "BWFG",
       "shares": 66.48,
       "entry_px": 64.12,
-      "px": 64.86,
+      "px": 65.17,
       "entry_date": "2026-10-01",
-      "value": 4311.69,
-      "weight": 4.24,
-      "ret": 1.15,
+      "value": 4332.3,
+      "weight": 4.26,
+      "ret": 1.64,
       "peak_px": 66.7,
       "stop_pct": null,
       "stop_px": null,
@@ -2946,11 +2962,11 @@
       "ticker": "NAT",
       "shares": 543.34,
       "entry_px": 8.12,
-      "px": 7.88,
+      "px": 7.82,
       "entry_date": "2026-10-01",
-      "value": 4281.5,
-      "weight": 4.21,
-      "ret": -2.96,
+      "value": 4248.9,
+      "weight": 4.18,
+      "ret": -3.69,
       "peak_px": 8.88,
       "stop_pct": null,
       "stop_px": null,
@@ -2974,11 +2990,11 @@
       "ticker": "IBEX",
       "shares": 88.27,
       "entry_px": 43.21,
-      "px": 45.71,
+      "px": 45.91,
       "entry_date": "2026-10-01",
-      "value": 4034.97,
-      "weight": 3.97,
-      "ret": 5.79,
+      "value": 4052.63,
+      "weight": 3.98,
+      "ret": 6.25,
       "peak_px": 46.22,
       "stop_pct": null,
       "stop_px": null,
@@ -2988,11 +3004,11 @@
       "ticker": "ATLC",
       "shares": 41.95,
       "entry_px": 94.72,
-      "px": 92.2,
+      "px": 93.54,
       "entry_date": "2026-10-12",
-      "value": 3867.5,
-      "weight": 3.8,
-      "ret": -2.66,
+      "value": 3923.71,
+      "weight": 3.86,
+      "ret": -1.25,
       "peak_px": 95.69,
       "stop_pct": null,
       "stop_px": null,
@@ -3002,11 +3018,11 @@
       "ticker": "CLMB",
       "shares": 114.99,
       "entry_px": 33.2,
-      "px": 33.12,
+      "px": 32.94,
       "entry_date": "2026-10-12",
-      "value": 3808.38,
-      "weight": 3.75,
-      "ret": -0.24,
+      "value": 3787.69,
+      "weight": 3.72,
+      "ret": -0.78,
       "peak_px": 34.13,
       "stop_pct": null,
       "stop_px": null,
@@ -3016,11 +3032,11 @@
       "ticker": "NXDR",
       "shares": 1363.0,
       "entry_px": 2.36,
-      "px": 2.57,
+      "px": 2.6,
       "entry_date": "2026-10-01",
-      "value": 3502.91,
-      "weight": 3.44,
-      "ret": 8.9,
+      "value": 3543.8,
+      "weight": 3.48,
+      "ret": 10.17,
       "peak_px": 2.73,
       "stop_pct": null,
       "stop_px": null,
@@ -3030,11 +3046,11 @@
       "ticker": "LIND",
       "shares": 96.17,
       "entry_px": 36.46,
-      "px": 35.2,
+      "px": 35.47,
       "entry_date": "2026-10-12",
-      "value": 3385.15,
-      "weight": 3.33,
-      "ret": -3.46,
+      "value": 3411.12,
+      "weight": 3.35,
+      "ret": -2.72,
       "peak_px": 36.98,
       "stop_pct": null,
       "stop_px": null,
@@ -3044,12 +3060,12 @@
       "ticker": "VSTM",
       "shares": 311.83,
       "entry_px": 8.25,
-      "px": 9.53,
+      "px": 9.23,
       "entry_date": "2026-10-12",
-      "value": 2971.7,
-      "weight": 2.92,
-      "ret": 15.52,
-      "peak_px": 9.63,
+      "value": 2878.15,
+      "weight": 2.83,
+      "ret": 11.88,
+      "peak_px": 9.73,
       "stop_pct": null,
       "stop_px": null,
       "room_pct": null
@@ -3058,11 +3074,11 @@
       "ticker": "TWIN",
       "shares": 112.14,
       "entry_px": 26.02,
-      "px": 25.4,
+      "px": 25.35,
       "entry_date": "2026-10-01",
-      "value": 2848.35,
+      "value": 2842.74,
       "weight": 2.8,
-      "ret": -2.38,
+      "ret": -2.57,
       "peak_px": 29.23,
       "stop_pct": null,
       "stop_px": null,
@@ -3072,11 +3088,11 @@
       "ticker": "SHIP",
       "shares": 179.01,
       "entry_px": 17.66,
-      "px": 15.68,
+      "px": 15.69,
       "entry_date": "2026-10-05",
-      "value": 2806.83,
+      "value": 2808.62,
       "weight": 2.76,
-      "ret": -11.21,
+      "ret": -11.16,
       "peak_px": 17.95,
       "stop_pct": null,
       "stop_px": null,
@@ -3086,11 +3102,11 @@
       "ticker": "AMPL",
       "shares": 175.4,
       "entry_px": 14.08,
-      "px": 15.82,
+      "px": 15.83,
       "entry_date": "2026-10-01",
-      "value": 2774.87,
+      "value": 2776.62,
       "weight": 2.73,
-      "ret": 12.36,
+      "ret": 12.43,
       "peak_px": 16.19,
       "stop_pct": null,
       "stop_px": null,
@@ -3100,11 +3116,11 @@
       "ticker": "IDT",
       "shares": 33.42,
       "entry_px": 80.77,
-      "px": 81.2,
+      "px": 82.24,
       "entry_date": "2026-10-05",
-      "value": 2713.69,
-      "weight": 2.67,
-      "ret": 0.53,
+      "value": 2748.45,
+      "weight": 2.7,
+      "ret": 1.82,
       "peak_px": 82.91,
       "stop_pct": null,
       "stop_px": null,
@@ -3114,11 +3130,11 @@
       "ticker": "TEN",
       "shares": 48.62,
       "entry_px": 50.67,
-      "px": 51.85,
+      "px": 51.48,
       "entry_date": "2026-10-05",
-      "value": 2521.06,
-      "weight": 2.48,
-      "ret": 2.33,
+      "value": 2503.07,
+      "weight": 2.46,
+      "ret": 1.6,
       "peak_px": 56.73,
       "stop_pct": null,
       "stop_px": null,
@@ -3128,11 +3144,11 @@
       "ticker": "GNE",
       "shares": 147.25,
       "entry_px": 16.31,
-      "px": 16.81,
+      "px": 16.7,
       "entry_date": "2026-10-01",
-      "value": 2475.31,
-      "weight": 2.43,
-      "ret": 3.07,
+      "value": 2459.11,
+      "weight": 2.42,
+      "ret": 2.39,
       "peak_px": 17.11,
       "stop_pct": null,
       "stop_px": null,
@@ -3142,11 +3158,11 @@
       "ticker": "BBNX",
       "shares": 132.85,
       "entry_px": 18.53,
-      "px": 17.06,
+      "px": 17.31,
       "entry_date": "2026-10-01",
-      "value": 2266.36,
-      "weight": 2.23,
-      "ret": -7.93,
+      "value": 2299.58,
+      "weight": 2.26,
+      "ret": -6.58,
       "peak_px": 19.44,
       "stop_pct": null,
       "stop_px": null,
@@ -3435,92 +3451,92 @@
      "contributors": [
       {
        "ticker": "REPX",
-       "pl": 618.25,
-       "pct": 0.618
+       "pl": 657.76,
+       "pct": 0.658
       },
       {
        "ticker": "AMPL",
-       "pl": 492.35,
-       "pct": 0.492
+       "pl": 495.18,
+       "pct": 0.495
       },
       {
        "ticker": "GCT",
-       "pl": 477.97,
-       "pct": 0.478
+       "pl": 482.48,
+       "pct": 0.482
       },
       {
        "ticker": "NXDR",
-       "pl": 354.51,
-       "pct": 0.355
-      },
-      {
-       "ticker": "ETON",
-       "pl": 264.33,
-       "pct": 0.264
+       "pl": 405.16,
+       "pct": 0.405
       },
       {
        "ticker": "PAYS",
-       "pl": 259.89,
-       "pct": 0.26
-      },
-      {
-       "ticker": "GOTU",
-       "pl": 238.86,
-       "pct": 0.239
+       "pl": 329.01,
+       "pct": 0.329
       },
       {
        "ticker": "IBEX",
-       "pl": 230.51,
-       "pct": 0.231
+       "pl": 248.95,
+       "pct": 0.249
+      },
+      {
+       "ticker": "GOTU",
+       "pl": 159.24,
+       "pct": 0.159
+      },
+      {
+       "ticker": "ETON",
+       "pl": 114.99,
+       "pct": 0.115
       },
       {
        "ticker": "OSBC",
-       "pl": 128.57,
-       "pct": 0.129
+       "pl": 112.09,
+       "pct": 0.112
       },
       {
        "ticker": "GNE",
-       "pl": 122.14,
-       "pct": 0.122
+       "pl": 95.27,
+       "pct": 0.095
       }
      ],
      "detractors": [
       {
        "ticker": "SBET",
-       "pl": -577.03,
-       "pct": -0.577
+       "pl": -513.39,
+       "pct": -0.513
       },
       {
        "ticker": "SHIP",
-       "pl": -458.84,
-       "pct": -0.459
+       "pl": -456.53,
+       "pct": -0.457
       },
       {
        "ticker": "BBNX",
-       "pl": -316.06,
-       "pct": -0.316
+       "pl": -262.31,
+       "pct": -0.262
       },
       {
-       "ticker": "RDVT",
-       "pl": -174.67,
-       "pct": -0.175
+       "ticker": "TK",
+       "pl": -158.6,
+       "pct": -0.159
       },
       {
-       "ticker": "LIND",
-       "pl": -142.97,
-       "pct": -0.143
+       "ticker": "NAT",
+       "pl": -147.19,
+       "pct": -0.147
       }
      ],
-     "unrealised_pct": 1.17,
+     "unrealised_pct": 1.3,
      "realised_pct": -0.33,
      "cost_pct": -0.69,
-     "total_pct": 0.15,
-     "actual_pct": 0.15,
-     "residual_pct": 0.0,
+     "total_pct": 0.28,
+     "actual_pct": 0.28,
+     "residual_pct": -0.0,
      "reconciles": true,
      "top_n": 3,
-     "top_pct": 1.59,
-     "ex_top_pct": -1.43,
+     "top_pct": 1.64,
+     "ex_top_pct": -1.35,
      "winners": 13,
      "losers": 11
     },
@@ -3529,211 +3545,211 @@
       "ticker": "REPX",
       "shares": 98.76,
       "entry_px": 40.34,
-      "px": 46.6,
+      "px": 47.0,
       "entry_date": "2026-10-01",
-      "value": 4602.31,
-      "weight": 4.6,
-      "ret": 15.52,
+      "value": 4641.82,
+      "weight": 4.63,
+      "ret": 16.51,
       "peak_px": 48.02,
       "stop_pct": 14.6,
       "stop_px": 41.02,
-      "room_pct": 13.6
+      "room_pct": 14.6
      },
      {
       "ticker": "AMPL",
       "shares": 282.96,
       "entry_px": 14.08,
-      "px": 15.82,
+      "px": 15.83,
       "entry_date": "2026-10-01",
-      "value": 4476.41,
+      "value": 4479.24,
       "weight": 4.47,
-      "ret": 12.36,
+      "ret": 12.43,
       "peak_px": 16.19,
       "stop_pct": 24.2,
       "stop_px": 12.26,
-      "room_pct": 29.0
+      "room_pct": 29.1
      },
      {
       "ticker": "GCT",
       "shares": 75.27,
       "entry_px": 52.93,
-      "px": 59.28,
+      "px": 59.34,
       "entry_date": "2026-10-01",
-      "value": 4462.03,
-      "weight": 4.46,
-      "ret": 12.0,
+      "value": 4466.55,
+      "weight": 4.45,
+      "ret": 12.11,
       "peak_px": 60.46,
       "stop_pct": 21.9,
       "stop_px": 47.21,
-      "room_pct": 25.6
+      "room_pct": 25.7
      },
      {
       "ticker": "NXDR",
       "shares": 1688.16,
       "entry_px": 2.36,
-      "px": 2.57,
+      "px": 2.6,
       "entry_date": "2026-10-01",
-      "value": 4338.58,
-      "weight": 4.33,
-      "ret": 8.9,
+      "value": 4389.22,
+      "weight": 4.38,
+      "ret": 10.17,
       "peak_px": 2.73,
       "stop_pct": 18.5,
       "stop_px": 2.23,
-      "room_pct": 15.5
-     },
-     {
-      "ticker": "GOTU",
-      "shares": 1592.42,
-      "entry_px": 2.57,
-      "px": 2.72,
-      "entry_date": "2026-10-05",
-      "value": 4331.37,
-      "weight": 4.32,
-      "ret": 5.84,
-      "peak_px": 2.87,
-      "stop_pct": 21.1,
-      "stop_px": 2.26,
-      "room_pct": 20.2
-     },
-     {
-      "ticker": "ETON",
-      "shares": 79.86,
-      "entry_px": 49.89,
-      "px": 53.2,
-      "entry_date": "2026-10-01",
-      "value": 4248.39,
-      "weight": 4.24,
-      "ret": 6.63,
-      "peak_px": 57.01,
-      "stop_pct": 40.0,
-      "stop_px": 34.21,
-      "room_pct": 55.5
+      "room_pct": 16.8
      },
      {
       "ticker": "PAYS",
       "shares": 276.48,
       "entry_px": 14.41,
-      "px": 15.35,
+      "px": 15.6,
       "entry_date": "2026-10-01",
-      "value": 4243.95,
-      "weight": 4.24,
-      "ret": 6.52,
-      "peak_px": 15.62,
+      "value": 4313.07,
+      "weight": 4.3,
+      "ret": 8.26,
+      "peak_px": 15.63,
       "stop_pct": 30.2,
-      "stop_px": 10.9,
-      "room_pct": 40.8
+      "stop_px": 10.91,
+      "room_pct": 43.0
+     },
+     {
+      "ticker": "GOTU",
+      "shares": 1592.42,
+      "entry_px": 2.57,
+      "px": 2.67,
+      "entry_date": "2026-10-05",
+      "value": 4251.75,
+      "weight": 4.24,
+      "ret": 3.89,
+      "peak_px": 2.87,
+      "stop_pct": 21.1,
+      "stop_px": 2.26,
+      "room_pct": 17.9
      },
      {
       "ticker": "IBEX",
       "shares": 92.2,
       "entry_px": 43.21,
-      "px": 45.71,
+      "px": 45.91,
       "entry_date": "2026-10-01",
-      "value": 4214.57,
-      "weight": 4.21,
-      "ret": 5.79,
+      "value": 4233.01,
+      "weight": 4.22,
+      "ret": 6.25,
       "peak_px": 46.22,
       "stop_pct": 14.2,
       "stop_px": 39.67,
-      "room_pct": 15.2
-     },
-     {
-      "ticker": "CLMB",
-      "shares": 124.61,
-      "entry_px": 33.2,
-      "px": 33.12,
-      "entry_date": "2026-10-12",
-      "value": 4127.01,
-      "weight": 4.12,
-      "ret": -0.24,
-      "peak_px": 34.13,
-      "stop_pct": 16.6,
-      "stop_px": 28.47,
-      "room_pct": 16.3
+      "room_pct": 15.7
      },
      {
       "ticker": "IDT",
       "shares": 50.67,
       "entry_px": 80.77,
-      "px": 81.2,
+      "px": 82.24,
       "entry_date": "2026-10-05",
-      "value": 4114.3,
-      "weight": 4.11,
-      "ret": 0.53,
+      "value": 4166.99,
+      "weight": 4.16,
+      "ret": 1.82,
       "peak_px": 82.91,
       "stop_pct": 11.5,
       "stop_px": 73.4,
-      "room_pct": 10.6
+      "room_pct": 12.0
+     },
+     {
+      "ticker": "CLMB",
+      "shares": 124.61,
+      "entry_px": 33.2,
+      "px": 32.94,
+      "entry_date": "2026-10-12",
+      "value": 4104.58,
+      "weight": 4.09,
+      "ret": -0.78,
+      "peak_px": 34.13,
+      "stop_pct": 16.6,
+      "stop_px": 28.47,
+      "room_pct": 15.7
+     },
+     {
+      "ticker": "ETON",
+      "shares": 79.86,
+      "entry_px": 49.89,
+      "px": 51.33,
+      "entry_date": "2026-10-01",
+      "value": 4099.06,
+      "weight": 4.09,
+      "ret": 2.89,
+      "peak_px": 57.01,
+      "stop_pct": 40.0,
+      "stop_px": 34.21,
+      "room_pct": 50.1
      },
      {
       "ticker": "OSBC",
       "shares": 164.84,
       "entry_px": 24.17,
-      "px": 24.95,
+      "px": 24.85,
       "entry_date": "2026-10-01",
-      "value": 4112.64,
-      "weight": 4.11,
-      "ret": 3.23,
+      "value": 4096.15,
+      "weight": 4.08,
+      "ret": 2.81,
       "peak_px": 25.33,
       "stop_pct": 10.0,
       "stop_px": 22.8,
-      "room_pct": 9.4
-     },
-     {
-      "ticker": "GNE",
-      "shares": 244.27,
-      "entry_px": 16.31,
-      "px": 16.81,
-      "entry_date": "2026-10-01",
-      "value": 4106.2,
-      "weight": 4.1,
-      "ret": 3.07,
-      "peak_px": 17.11,
-      "stop_pct": 10.0,
-      "stop_px": 15.4,
-      "room_pct": 9.2
-     },
-     {
-      "ticker": "BWFG",
-      "shares": 62.13,
-      "entry_px": 64.12,
-      "px": 64.86,
-      "entry_date": "2026-10-01",
-      "value": 4030.04,
-      "weight": 4.02,
-      "ret": 1.15,
-      "peak_px": 66.7,
-      "stop_pct": 10.0,
-      "stop_px": 60.03,
-      "room_pct": 8.0
+      "room_pct": 9.0
      },
      {
       "ticker": "ATLC",
       "shares": 43.68,
       "entry_px": 94.72,
-      "px": 92.2,
+      "px": 93.54,
       "entry_date": "2026-10-12",
-      "value": 4026.91,
-      "weight": 4.02,
-      "ret": -2.66,
+      "value": 4085.44,
+      "weight": 4.07,
+      "ret": -1.25,
       "peak_px": 95.69,
       "stop_pct": 18.7,
       "stop_px": 77.76,
-      "room_pct": 18.6
+      "room_pct": 20.3
+     },
+     {
+      "ticker": "GNE",
+      "shares": 244.27,
+      "entry_px": 16.31,
+      "px": 16.7,
+      "entry_date": "2026-10-01",
+      "value": 4079.33,
+      "weight": 4.07,
+      "ret": 2.39,
+      "peak_px": 17.11,
+      "stop_pct": 10.0,
+      "stop_px": 15.4,
+      "room_pct": 8.4
+     },
+     {
+      "ticker": "BWFG",
+      "shares": 62.13,
+      "entry_px": 64.12,
+      "px": 65.17,
+      "entry_date": "2026-10-01",
+      "value": 4049.3,
+      "weight": 4.04,
+      "ret": 1.64,
+      "peak_px": 66.7,
+      "stop_pct": 10.0,
+      "stop_px": 60.03,
+      "room_pct": 8.6
      },
      {
       "ticker": "LIND",
       "shares": 113.47,
       "entry_px": 36.46,
-      "px": 35.2,
+      "px": 35.47,
       "entry_date": "2026-10-12",
-      "value": 3994.01,
-      "weight": 3.99,
-      "ret": -3.46,
+      "value": 4024.64,
+      "weight": 4.01,
+      "ret": -2.72,
       "peak_px": 36.98,
       "stop_pct": 21.1,
       "stop_px": 29.17,
-      "room_pct": 20.7
+      "room_pct": 21.6
      },
      {
       "ticker": "OBK",
@@ -3753,113 +3769,113 @@
       "ticker": "TWIN",
       "shares": 153.12,
       "entry_px": 26.02,
-      "px": 25.4,
+      "px": 25.35,
       "entry_date": "2026-10-01",
-      "value": 3889.13,
-      "weight": 3.88,
-      "ret": -2.38,
+      "value": 3881.48,
+      "weight": 3.87,
+      "ret": -2.57,
       "peak_px": 29.23,
-      "stop_pct": 16.6,
-      "stop_px": 24.38,
-      "room_pct": 4.2
-     },
-     {
-      "ticker": "NAT",
-      "shares": 490.65,
-      "entry_px": 8.12,
-      "px": 7.88,
-      "entry_date": "2026-10-01",
-      "value": 3866.31,
-      "weight": 3.86,
-      "ret": -2.96,
-      "peak_px": 8.88,
-      "stop_pct": 17.3,
-      "stop_px": 7.35,
-      "room_pct": 7.3
-     },
-     {
-      "ticker": "TK",
-      "shares": 273.44,
-      "entry_px": 14.57,
-      "px": 14.07,
-      "entry_date": "2026-10-01",
-      "value": 3847.34,
-      "weight": 3.84,
-      "ret": -3.43,
-      "peak_px": 15.9,
-      "stop_pct": 15.6,
-      "stop_px": 13.43,
-      "room_pct": 4.8
+      "stop_pct": 15.5,
+      "stop_px": 24.71,
+      "room_pct": 2.6
      },
      {
       "ticker": "RDVT",
       "shares": 49.91,
       "entry_px": 79.83,
-      "px": 76.33,
+      "px": 77.17,
       "entry_date": "2026-10-01",
-      "value": 3809.39,
-      "weight": 3.8,
-      "ret": -4.38,
+      "value": 3851.31,
+      "weight": 3.84,
+      "ret": -3.33,
       "peak_px": 81.8,
       "stop_pct": 19.4,
       "stop_px": 65.94,
-      "room_pct": 15.8
+      "room_pct": 17.0
      },
      {
-      "ticker": "TEN",
-      "shares": 70.83,
-      "entry_px": 50.67,
-      "px": 51.85,
-      "entry_date": "2026-10-05",
-      "value": 3672.55,
-      "weight": 3.67,
-      "ret": 2.33,
-      "peak_px": 56.73,
+      "ticker": "NAT",
+      "shares": 490.65,
+      "entry_px": 8.12,
+      "px": 7.82,
+      "entry_date": "2026-10-01",
+      "value": 3836.87,
+      "weight": 3.83,
+      "ret": -3.69,
+      "peak_px": 8.88,
+      "stop_pct": 17.3,
+      "stop_px": 7.35,
+      "room_pct": 6.4
+     },
+     {
+      "ticker": "TK",
+      "shares": 273.44,
+      "entry_px": 14.57,
+      "px": 13.99,
+      "entry_date": "2026-10-01",
+      "value": 3825.47,
+      "weight": 3.81,
+      "ret": -3.98,
+      "peak_px": 15.9,
       "stop_pct": 15.6,
-      "stop_px": 47.86,
-      "room_pct": 8.3
+      "stop_px": 13.43,
+      "room_pct": 4.2
      },
      {
       "ticker": "BBNX",
       "shares": 215.01,
       "entry_px": 18.53,
-      "px": 17.06,
+      "px": 17.31,
       "entry_date": "2026-10-01",
-      "value": 3668.0,
-      "weight": 3.66,
-      "ret": -7.93,
+      "value": 3721.76,
+      "weight": 3.71,
+      "ret": -6.58,
       "peak_px": 19.44,
-      "stop_pct": 31.8,
-      "stop_px": 13.25,
-      "room_pct": 28.7
+      "stop_pct": 32.0,
+      "stop_px": 13.23,
+      "room_pct": 30.9
+     },
+     {
+      "ticker": "TEN",
+      "shares": 70.83,
+      "entry_px": 50.67,
+      "px": 51.48,
+      "entry_date": "2026-10-05",
+      "value": 3646.34,
+      "weight": 3.64,
+      "ret": 1.6,
+      "peak_px": 56.73,
+      "stop_pct": 15.6,
+      "stop_px": 47.86,
+      "room_pct": 7.6
      },
      {
       "ticker": "SHIP",
       "shares": 231.74,
       "entry_px": 17.66,
-      "px": 15.68,
+      "px": 15.69,
       "entry_date": "2026-10-05",
-      "value": 3633.67,
+      "value": 3635.98,
       "weight": 3.63,
-      "ret": -11.21,
+      "ret": -11.16,
       "peak_px": 17.95,
-      "stop_pct": 20.0,
-      "stop_px": 14.36,
-      "room_pct": 9.2
+      "stop_pct": 19.8,
+      "stop_px": 14.4,
+      "room_pct": 9.0
      },
      {
       "ticker": "SBET",
       "shares": 424.29,
       "entry_px": 9.39,
-      "px": 8.03,
+      "px": 8.18,
       "entry_date": "2026-10-01",
-      "value": 3407.03,
-      "weight": 3.4,
-      "ret": -14.48,
+      "value": 3470.68,
+      "weight": 3.46,
+      "ret": -12.89,
       "peak_px": 10.24,
       "stop_pct": 32.7,
       "stop_px": 6.89,
-      "room_pct": 16.6
+      "room_pct": 18.8
      }
     ],
     "trades": [
@@ -4144,92 +4160,92 @@
      "contributors": [
       {
        "ticker": "VSTM",
-       "pl": 571.46,
-       "pct": 0.571
+       "pl": 437.53,
+       "pct": 0.438
       },
       {
        "ticker": "REPX",
-       "pl": 401.86,
-       "pct": 0.402
-      },
-      {
-       "ticker": "AMPL",
-       "pl": 400.56,
-       "pct": 0.401
+       "pl": 427.54,
+       "pct": 0.428
       },
       {
        "ticker": "GCT",
-       "pl": 399.75,
-       "pct": 0.4
+       "pl": 403.78,
+       "pct": 0.404
+      },
+      {
+       "ticker": "AMPL",
+       "pl": 403.06,
+       "pct": 0.403
       },
       {
        "ticker": "NXDR",
-       "pl": 268.44,
-       "pct": 0.268
+       "pl": 312.76,
+       "pct": 0.313
       },
       {
        "ticker": "PAYS",
-       "pl": 225.8,
-       "pct": 0.226
-      },
-      {
-       "ticker": "GOTU",
-       "pl": 212.98,
-       "pct": 0.213
+       "pl": 288.5,
+       "pct": 0.288
       },
       {
        "ticker": "IBEX",
-       "pl": 200.53,
-       "pct": 0.201
+       "pl": 217.27,
+       "pct": 0.217
       },
       {
-       "ticker": "ETON",
-       "pl": 171.81,
-       "pct": 0.172
+       "ticker": "GOTU",
+       "pl": 141.99,
+       "pct": 0.142
       },
       {
        "ticker": "GNE",
-       "pl": 111.15,
-       "pct": 0.111
+       "pl": 86.55,
+       "pct": 0.087
+      },
+      {
+       "ticker": "ETON",
+       "pl": 74.75,
+       "pct": 0.075
       }
      ],
      "detractors": [
       {
        "ticker": "SBET",
-       "pl": -532.3,
-       "pct": -0.532
+       "pl": -474.44,
+       "pct": -0.474
       },
       {
        "ticker": "SHIP",
-       "pl": -409.13,
-       "pct": -0.409
+       "pl": -407.06,
+       "pct": -0.407
       },
       {
        "ticker": "BBNX",
-       "pl": -311.91,
-       "pct": -0.312
-      },
-      {
-       "ticker": "RDVT",
-       "pl": -166.45,
-       "pct": -0.166
+       "pl": -264.29,
+       "pct": -0.264
       },
       {
        "ticker": "TK",
-       "pl": -145.15,
-       "pct": -0.145
+       "pl": -164.73,
+       "pct": -0.165
+      },
+      {
+       "ticker": "NAT",
+       "pl": -155.51,
+       "pct": -0.156
       }
      ],
-     "unrealised_pct": 1.06,
+     "unrealised_pct": 1.07,
      "realised_pct": 0.16,
      "cost_pct": -0.54,
      "total_pct": 0.68,
      "actual_pct": 0.68,
-     "residual_pct": -0.0,
+     "residual_pct": 0.0,
      "reconciles": true,
      "top_n": 3,
-     "top_pct": 1.37,
-     "ex_top_pct": -0.7,
+     "top_pct": 1.27,
+     "ex_top_pct": -0.59,
      "winners": 14,
      "losers": 11
     },
@@ -4238,12 +4254,12 @@
       "ticker": "VSTM",
       "shares": 446.46,
       "entry_px": 8.25,
-      "px": 9.53,
+      "px": 9.23,
       "entry_date": "2026-10-12",
-      "value": 4254.72,
-      "weight": 4.23,
-      "ret": 15.52,
-      "peak_px": 9.63,
+      "value": 4120.78,
+      "weight": 4.09,
+      "ret": 11.88,
+      "peak_px": 9.73,
       "stop_pct": null,
       "stop_px": null,
       "room_pct": null
@@ -4252,11 +4268,11 @@
       "ticker": "GCT",
       "shares": 67.1,
       "entry_px": 53.32,
-      "px": 59.28,
+      "px": 59.34,
       "entry_date": "2026-10-01",
-      "value": 3977.91,
-      "weight": 3.95,
-      "ret": 11.17,
+      "value": 3981.93,
+      "weight": 3.96,
+      "ret": 11.28,
       "peak_px": 60.46,
       "stop_pct": null,
       "stop_px": null,
@@ -4266,26 +4282,12 @@
       "ticker": "AMPL",
       "shares": 249.94,
       "entry_px": 14.22,
-      "px": 15.82,
+      "px": 15.83,
       "entry_date": "2026-10-01",
-      "value": 3954.02,
+      "value": 3956.52,
       "weight": 3.93,
-      "ret": 11.27,
+      "ret": 11.34,
       "peak_px": 16.19,
-      "stop_pct": null,
-      "stop_px": null,
-      "room_pct": null
-     },
-     {
-      "ticker": "GOTU",
-      "shares": 1419.88,
-      "entry_px": 2.57,
-      "px": 2.72,
-      "entry_date": "2026-10-05",
-      "value": 3862.08,
-      "weight": 3.84,
-      "ret": 5.84,
-      "peak_px": 2.87,
       "stop_pct": null,
       "stop_px": null,
       "room_pct": null
@@ -4294,12 +4296,12 @@
       "ticker": "PAYS",
       "shares": 250.8,
       "entry_px": 14.45,
-      "px": 15.35,
+      "px": 15.6,
       "entry_date": "2026-10-01",
-      "value": 3849.73,
-      "weight": 3.82,
-      "ret": 6.23,
-      "peak_px": 15.62,
+      "value": 3912.43,
+      "weight": 3.89,
+      "ret": 7.96,
+      "peak_px": 15.63,
       "stop_pct": null,
       "stop_px": null,
       "room_pct": null
@@ -4308,11 +4310,11 @@
       "ticker": "IBEX",
       "shares": 83.73,
       "entry_px": 43.32,
-      "px": 45.71,
+      "px": 45.91,
       "entry_date": "2026-10-01",
-      "value": 3827.45,
-      "weight": 3.8,
-      "ret": 5.53,
+      "value": 3844.2,
+      "weight": 3.82,
+      "ret": 5.99,
       "peak_px": 46.22,
       "stop_pct": null,
       "stop_px": null,
@@ -4322,12 +4324,26 @@
       "ticker": "NXDR",
       "shares": 1477.37,
       "entry_px": 2.39,
-      "px": 2.57,
+      "px": 2.6,
       "entry_date": "2026-10-01",
-      "value": 3796.83,
-      "weight": 3.77,
-      "ret": 7.61,
+      "value": 3841.16,
+      "weight": 3.82,
+      "ret": 8.86,
       "peak_px": 2.73,
+      "stop_pct": null,
+      "stop_px": null,
+      "room_pct": null
+     },
+     {
+      "ticker": "GOTU",
+      "shares": 1419.88,
+      "entry_px": 2.57,
+      "px": 2.67,
+      "entry_date": "2026-10-05",
+      "value": 3791.09,
+      "weight": 3.77,
+      "ret": 3.89,
+      "peak_px": 2.87,
       "stop_pct": null,
       "stop_px": null,
       "room_pct": null
@@ -4336,12 +4352,26 @@
       "ticker": "GNE",
       "shares": 223.6,
       "entry_px": 16.31,
-      "px": 16.81,
+      "px": 16.7,
       "entry_date": "2026-10-01",
-      "value": 3758.66,
-      "weight": 3.73,
-      "ret": 3.05,
+      "value": 3734.06,
+      "weight": 3.71,
+      "ret": 2.37,
       "peak_px": 17.11,
+      "stop_pct": null,
+      "stop_px": null,
+      "room_pct": null
+     },
+     {
+      "ticker": "IDT",
+      "shares": 45.18,
+      "entry_px": 80.77,
+      "px": 82.24,
+      "entry_date": "2026-10-05",
+      "value": 3715.51,
+      "weight": 3.69,
+      "ret": 1.82,
+      "peak_px": 82.91,
       "stop_pct": null,
       "stop_px": null,
       "room_pct": null
@@ -4350,11 +4380,11 @@
       "ticker": "TEN",
       "shares": 72.02,
       "entry_px": 50.67,
-      "px": 51.85,
+      "px": 51.48,
       "entry_date": "2026-10-05",
-      "value": 3734.08,
-      "weight": 3.71,
-      "ret": 2.33,
+      "value": 3707.43,
+      "weight": 3.68,
+      "ret": 1.6,
       "peak_px": 56.73,
       "stop_pct": null,
       "stop_px": null,
@@ -4364,26 +4394,12 @@
       "ticker": "CLMB",
       "shares": 110.94,
       "entry_px": 33.2,
-      "px": 33.12,
+      "px": 32.94,
       "entry_date": "2026-10-12",
-      "value": 3674.38,
-      "weight": 3.65,
-      "ret": -0.24,
+      "value": 3654.41,
+      "weight": 3.63,
+      "ret": -0.78,
       "peak_px": 34.13,
-      "stop_pct": null,
-      "stop_px": null,
-      "room_pct": null
-     },
-     {
-      "ticker": "IDT",
-      "shares": 45.18,
-      "entry_px": 80.77,
-      "px": 81.2,
-      "entry_date": "2026-10-05",
-      "value": 3668.52,
-      "weight": 3.64,
-      "ret": 0.53,
-      "peak_px": 82.91,
       "stop_pct": null,
       "stop_px": null,
       "room_pct": null
@@ -4392,11 +4408,11 @@
       "ticker": "OSBC",
       "shares": 146.49,
       "entry_px": 24.37,
-      "px": 24.95,
+      "px": 24.85,
       "entry_date": "2026-10-01",
-      "value": 3654.96,
-      "weight": 3.63,
-      "ret": 2.39,
+      "value": 3640.31,
+      "weight": 3.62,
+      "ret": 1.97,
       "peak_px": 25.33,
       "stop_pct": null,
       "stop_px": null,
@@ -4406,11 +4422,11 @@
       "ticker": "ATLC",
       "shares": 38.89,
       "entry_px": 94.72,
-      "px": 92.2,
+      "px": 93.54,
       "entry_date": "2026-10-12",
-      "value": 3585.26,
-      "weight": 3.56,
-      "ret": -2.66,
+      "value": 3637.37,
+      "weight": 3.61,
+      "ret": -1.25,
       "peak_px": 95.69,
       "stop_pct": null,
       "stop_px": null,
@@ -4420,11 +4436,11 @@
       "ticker": "BWFG",
       "shares": 55.11,
       "entry_px": 64.68,
-      "px": 64.86,
+      "px": 65.17,
       "entry_date": "2026-10-01",
-      "value": 3574.69,
-      "weight": 3.55,
-      "ret": 0.28,
+      "value": 3591.78,
+      "weight": 3.57,
+      "ret": 0.76,
       "peak_px": 66.7,
       "stop_pct": null,
       "stop_px": null,
@@ -4434,11 +4450,11 @@
       "ticker": "LIND",
       "shares": 101.02,
       "entry_px": 36.46,
-      "px": 35.2,
+      "px": 35.47,
       "entry_date": "2026-10-12",
-      "value": 3555.97,
-      "weight": 3.53,
-      "ret": -3.46,
+      "value": 3583.24,
+      "weight": 3.56,
+      "ret": -2.72,
       "peak_px": 36.98,
       "stop_pct": null,
       "stop_px": null,
@@ -4448,12 +4464,26 @@
       "ticker": "TWIN",
       "shares": 138.47,
       "entry_px": 26.18,
-      "px": 25.4,
+      "px": 25.35,
       "entry_date": "2026-10-01",
-      "value": 3517.09,
+      "value": 3510.17,
       "weight": 3.49,
-      "ret": -2.99,
+      "ret": -3.18,
       "peak_px": 29.23,
+      "stop_pct": null,
+      "stop_px": null,
+      "room_pct": null
+     },
+     {
+      "ticker": "RDVT",
+      "shares": 45.38,
+      "entry_px": 80.0,
+      "px": 77.17,
+      "entry_date": "2026-10-01",
+      "value": 3501.63,
+      "weight": 3.48,
+      "ret": -3.54,
+      "peak_px": 81.8,
       "stop_pct": null,
       "stop_px": null,
       "room_pct": null
@@ -4473,28 +4503,14 @@
       "room_pct": null
      },
      {
-      "ticker": "RDVT",
-      "shares": 45.38,
-      "entry_px": 80.0,
-      "px": 76.33,
-      "entry_date": "2026-10-01",
-      "value": 3463.51,
-      "weight": 3.44,
-      "ret": -4.59,
-      "peak_px": 81.8,
-      "stop_pct": null,
-      "stop_px": null,
-      "room_pct": null
-     },
-     {
       "ticker": "NAT",
       "shares": 438.59,
       "entry_px": 8.17,
-      "px": 7.88,
+      "px": 7.82,
       "entry_date": "2026-10-01",
-      "value": 3456.12,
-      "weight": 3.43,
-      "ret": -3.6,
+      "value": 3429.8,
+      "weight": 3.41,
+      "ret": -4.34,
       "peak_px": 8.88,
       "stop_pct": null,
       "stop_px": null,
@@ -4504,11 +4520,11 @@
       "ticker": "TK",
       "shares": 244.74,
       "entry_px": 14.66,
-      "px": 14.07,
+      "px": 13.99,
       "entry_date": "2026-10-01",
-      "value": 3443.51,
-      "weight": 3.42,
-      "ret": -4.04,
+      "value": 3423.93,
+      "weight": 3.4,
+      "ret": -4.59,
       "peak_px": 15.9,
       "stop_pct": null,
       "stop_px": null,
@@ -4518,11 +4534,11 @@
       "ticker": "BBNX",
       "shares": 190.45,
       "entry_px": 18.7,
-      "px": 17.06,
+      "px": 17.31,
       "entry_date": "2026-10-01",
-      "value": 3249.14,
-      "weight": 3.23,
-      "ret": -8.76,
+      "value": 3296.76,
+      "weight": 3.27,
+      "ret": -7.42,
       "peak_px": 19.44,
       "stop_pct": null,
       "stop_px": null,
@@ -4532,11 +4548,11 @@
       "ticker": "SHIP",
       "shares": 206.63,
       "entry_px": 17.66,
-      "px": 15.68,
+      "px": 15.69,
       "entry_date": "2026-10-05",
-      "value": 3239.97,
+      "value": 3242.03,
       "weight": 3.22,
-      "ret": -11.21,
+      "ret": -11.16,
       "peak_px": 17.95,
       "stop_pct": null,
       "stop_px": null,
@@ -4546,11 +4562,11 @@
       "ticker": "SBET",
       "shares": 385.74,
       "entry_px": 9.41,
-      "px": 8.03,
+      "px": 8.18,
       "entry_date": "2026-10-01",
-      "value": 3097.49,
-      "weight": 3.08,
-      "ret": -14.66,
+      "value": 3155.35,
+      "weight": 3.13,
+      "ret": -13.07,
       "peak_px": 10.24,
       "stop_pct": null,
       "stop_px": null,
@@ -4560,11 +4576,11 @@
       "ticker": "REPX",
       "shares": 64.2,
       "entry_px": 40.34,
-      "px": 46.6,
+      "px": 47.0,
       "entry_date": "2026-10-01",
-      "value": 2991.5,
-      "weight": 2.97,
-      "ret": 15.52,
+      "value": 3017.18,
+      "weight": 3.0,
+      "ret": 16.51,
       "peak_px": 48.02,
       "stop_pct": null,
       "stop_px": null,
@@ -4574,11 +4590,11 @@
       "ticker": "ETON",
       "shares": 51.91,
       "entry_px": 49.89,
-      "px": 53.2,
+      "px": 51.33,
       "entry_date": "2026-10-01",
-      "value": 2761.45,
-      "weight": 2.74,
-      "ret": 6.63,
+      "value": 2664.39,
+      "weight": 2.65,
+      "ret": 2.89,
       "peak_px": 57.01,
       "stop_pct": null,
       "stop_px": null,
@@ -4867,92 +4883,92 @@
      "contributors": [
       {
        "ticker": "GCT",
-       "pl": 551.26,
-       "pct": 0.551
+       "pl": 556.78,
+       "pct": 0.557
       },
       {
        "ticker": "REPX",
-       "pl": 413.95,
-       "pct": 0.414
+       "pl": 455.21,
+       "pct": 0.455
       },
       {
        "ticker": "PAYS",
-       "pl": 302.38,
-       "pct": 0.302
+       "pl": 386.1,
+       "pct": 0.386
       },
       {
        "ticker": "AMPL",
-       "pl": 271.64,
-       "pct": 0.272
+       "pl": 273.38,
+       "pct": 0.273
       },
       {
        "ticker": "NXDR",
-       "pl": 222.55,
-       "pct": 0.223
-      },
-      {
-       "ticker": "GOTU",
-       "pl": 220.36,
-       "pct": 0.22
-      },
-      {
-       "ticker": "ETON",
-       "pl": 209.59,
-       "pct": 0.21
+       "pl": 260.08,
+       "pct": 0.26
       },
       {
        "ticker": "IBEX",
-       "pl": 150.72,
-       "pct": 0.151
+       "pl": 163.31,
+       "pct": 0.163
+      },
+      {
+       "ticker": "GOTU",
+       "pl": 146.91,
+       "pct": 0.147
+      },
+      {
+       "ticker": "ETON",
+       "pl": 91.18,
+       "pct": 0.091
       },
       {
        "ticker": "OSBC",
-       "pl": 98.81,
-       "pct": 0.099
+       "pl": 86.15,
+       "pct": 0.086
       },
       {
        "ticker": "GNE",
-       "pl": 64.93,
-       "pct": 0.065
+       "pl": 50.55,
+       "pct": 0.051
       }
      ],
      "detractors": [
       {
        "ticker": "SBET",
-       "pl": -752.3,
-       "pct": -0.752
+       "pl": -670.69,
+       "pct": -0.671
       },
       {
        "ticker": "SHIP",
-       "pl": -315.67,
-       "pct": -0.316
+       "pl": -314.08,
+       "pct": -0.314
       },
       {
        "ticker": "TK",
-       "pl": -266.36,
-       "pct": -0.266
+       "pl": -288.63,
+       "pct": -0.289
       },
       {
        "ticker": "TWIN",
-       "pl": -237.38,
-       "pct": -0.237
+       "pl": -243.64,
+       "pct": -0.244
       },
       {
-       "ticker": "RDVT",
-       "pl": -216.05,
-       "pct": -0.216
+       "ticker": "NAT",
+       "pl": -189.23,
+       "pct": -0.189
       }
      ],
-     "unrealised_pct": 0.17,
+     "unrealised_pct": 0.32,
      "realised_pct": 0.08,
      "cost_pct": -0.56,
-     "total_pct": -0.31,
-     "actual_pct": -0.31,
+     "total_pct": -0.16,
+     "actual_pct": -0.16,
      "residual_pct": -0.0,
      "reconciles": true,
      "top_n": 3,
-     "top_pct": 1.27,
-     "ex_top_pct": -1.58,
+     "top_pct": 1.4,
+     "ex_top_pct": -1.56,
      "winners": 13,
      "losers": 11
     },
@@ -4961,99 +4977,85 @@
       "ticker": "GCT",
       "shares": 92.13,
       "entry_px": 53.3,
-      "px": 59.28,
+      "px": 59.34,
       "entry_date": "2026-10-01",
-      "value": 5461.19,
+      "value": 5466.72,
       "weight": 5.48,
-      "ret": 11.23,
+      "ret": 11.34,
       "peak_px": 60.46,
       "stop_pct": 21.9,
       "stop_px": 47.21,
-      "room_pct": 25.6
+      "room_pct": 25.7
      },
      {
       "ticker": "PAYS",
       "shares": 334.89,
       "entry_px": 14.45,
-      "px": 15.35,
+      "px": 15.6,
       "entry_date": "2026-10-01",
-      "value": 5140.55,
-      "weight": 5.16,
-      "ret": 6.25,
-      "peak_px": 15.62,
+      "value": 5224.27,
+      "weight": 5.23,
+      "ret": 7.98,
+      "peak_px": 15.63,
       "stop_pct": 30.2,
-      "stop_px": 10.9,
-      "room_pct": 40.8
+      "stop_px": 10.91,
+      "room_pct": 43.0
      },
      {
       "ticker": "REPX",
       "shares": 103.15,
       "entry_px": 42.59,
-      "px": 46.6,
+      "px": 47.0,
       "entry_date": "2026-10-01",
-      "value": 4807.01,
-      "weight": 4.82,
-      "ret": 9.42,
+      "value": 4848.27,
+      "weight": 4.86,
+      "ret": 10.36,
       "peak_px": 48.02,
       "stop_pct": 14.6,
       "stop_px": 41.02,
-      "room_pct": 13.6
+      "room_pct": 14.6
      },
      {
       "ticker": "RDVT",
       "shares": 58.88,
       "entry_px": 80.0,
-      "px": 76.33,
+      "px": 77.17,
       "entry_date": "2026-10-01",
-      "value": 4494.66,
-      "weight": 4.51,
-      "ret": -4.59,
+      "value": 4544.12,
+      "weight": 4.55,
+      "ret": -3.54,
       "peak_px": 81.8,
       "stop_pct": 19.4,
       "stop_px": 65.94,
-      "room_pct": 15.8
+      "room_pct": 17.0
      },
      {
       "ticker": "SBET",
       "shares": 544.07,
       "entry_px": 9.41,
-      "px": 8.03,
+      "px": 8.18,
       "entry_date": "2026-10-01",
-      "value": 4368.89,
-      "weight": 4.38,
-      "ret": -14.69,
+      "value": 4450.5,
+      "weight": 4.46,
+      "ret": -13.1,
       "peak_px": 10.24,
       "stop_pct": 32.7,
       "stop_px": 6.89,
-      "room_pct": 16.6
+      "room_pct": 18.8
      },
      {
       "ticker": "NAT",
       "shares": 519.72,
       "entry_px": 8.18,
-      "px": 7.88,
+      "px": 7.82,
       "entry_date": "2026-10-01",
-      "value": 4095.4,
-      "weight": 4.11,
-      "ret": -3.72,
+      "value": 4064.21,
+      "weight": 4.07,
+      "ret": -4.45,
       "peak_px": 8.88,
       "stop_pct": 17.3,
       "stop_px": 7.35,
-      "room_pct": 7.3
-     },
-     {
-      "ticker": "GOTU",
-      "shares": 1469.07,
-      "entry_px": 2.57,
-      "px": 2.72,
-      "entry_date": "2026-10-05",
-      "value": 3995.87,
-      "weight": 4.01,
-      "ret": 5.84,
-      "peak_px": 2.87,
-      "stop_pct": 21.1,
-      "stop_px": 2.26,
-      "room_pct": 20.2
+      "room_pct": 6.4
      },
      {
       "ticker": "OBK",
@@ -5070,228 +5072,242 @@
       "room_pct": 5.7
      },
      {
+      "ticker": "GOTU",
+      "shares": 1469.07,
+      "entry_px": 2.57,
+      "px": 2.67,
+      "entry_date": "2026-10-05",
+      "value": 3922.42,
+      "weight": 3.93,
+      "ret": 3.89,
+      "peak_px": 2.87,
+      "stop_pct": 21.1,
+      "stop_px": 2.26,
+      "room_pct": 17.9
+     },
+     {
       "ticker": "TK",
       "shares": 278.48,
       "entry_px": 15.03,
-      "px": 14.07,
+      "px": 13.99,
       "entry_date": "2026-10-01",
-      "value": 3918.25,
-      "weight": 3.93,
-      "ret": -6.37,
+      "value": 3895.97,
+      "weight": 3.9,
+      "ret": -6.9,
       "peak_px": 15.9,
       "stop_pct": 15.6,
       "stop_px": 13.43,
-      "room_pct": 4.8
+      "room_pct": 4.2
      },
      {
       "ticker": "BWFG",
       "shares": 59.09,
       "entry_px": 64.68,
-      "px": 64.86,
+      "px": 65.17,
       "entry_date": "2026-10-01",
-      "value": 3832.88,
-      "weight": 3.84,
-      "ret": 0.28,
+      "value": 3851.19,
+      "weight": 3.86,
+      "ret": 0.75,
       "peak_px": 66.7,
       "stop_pct": 10.0,
       "stop_px": 60.03,
-      "room_pct": 8.0
+      "room_pct": 8.6
      },
      {
       "ticker": "ATLC",
       "shares": 37.23,
       "entry_px": 94.72,
-      "px": 92.2,
+      "px": 93.54,
       "entry_date": "2026-10-12",
-      "value": 3432.82,
-      "weight": 3.44,
-      "ret": -2.66,
+      "value": 3482.71,
+      "weight": 3.49,
+      "ret": -1.25,
       "peak_px": 95.69,
       "stop_pct": 18.7,
       "stop_px": 77.76,
-      "room_pct": 18.6
+      "room_pct": 20.3
      },
      {
       "ticker": "CLMB",
       "shares": 102.06,
       "entry_px": 33.2,
-      "px": 33.12,
+      "px": 32.94,
       "entry_date": "2026-10-12",
-      "value": 3380.35,
-      "weight": 3.39,
-      "ret": -0.24,
+      "value": 3361.98,
+      "weight": 3.37,
+      "ret": -0.78,
       "peak_px": 34.13,
       "stop_pct": 16.6,
       "stop_px": 28.47,
-      "room_pct": 16.3
-     },
-     {
-      "ticker": "ETON",
-      "shares": 63.32,
-      "entry_px": 49.89,
-      "px": 53.2,
-      "entry_date": "2026-10-01",
-      "value": 3368.66,
-      "weight": 3.38,
-      "ret": 6.63,
-      "peak_px": 57.01,
-      "stop_pct": 40.0,
-      "stop_px": 34.21,
-      "room_pct": 55.5
+      "room_pct": 15.7
      },
      {
       "ticker": "NXDR",
       "shares": 1250.94,
       "entry_px": 2.39,
-      "px": 2.57,
+      "px": 2.6,
       "entry_date": "2026-10-01",
-      "value": 3214.9,
-      "weight": 3.22,
-      "ret": 7.44,
+      "value": 3252.43,
+      "weight": 3.26,
+      "ret": 8.69,
       "peak_px": 2.73,
       "stop_pct": 18.5,
       "stop_px": 2.23,
-      "room_pct": 15.5
+      "room_pct": 16.8
+     },
+     {
+      "ticker": "ETON",
+      "shares": 63.32,
+      "entry_px": 49.89,
+      "px": 51.33,
+      "entry_date": "2026-10-01",
+      "value": 3250.25,
+      "weight": 3.26,
+      "ret": 2.89,
+      "peak_px": 57.01,
+      "stop_pct": 40.0,
+      "stop_px": 34.21,
+      "room_pct": 50.1
      },
      {
       "ticker": "TWIN",
       "shares": 125.12,
       "entry_px": 27.3,
-      "px": 25.4,
+      "px": 25.35,
       "entry_date": "2026-10-01",
-      "value": 3177.95,
-      "weight": 3.19,
-      "ret": -6.95,
+      "value": 3171.69,
+      "weight": 3.18,
+      "ret": -7.13,
       "peak_px": 29.23,
-      "stop_pct": 16.6,
-      "stop_px": 24.38,
-      "room_pct": 4.2
+      "stop_pct": 15.5,
+      "stop_px": 24.71,
+      "room_pct": 2.6
      },
      {
       "ticker": "OSBC",
       "shares": 126.68,
       "entry_px": 24.17,
-      "px": 24.95,
+      "px": 24.85,
       "entry_date": "2026-10-01",
-      "value": 3160.77,
-      "weight": 3.17,
-      "ret": 3.23,
+      "value": 3148.1,
+      "weight": 3.15,
+      "ret": 2.81,
       "peak_px": 25.33,
       "stop_pct": 10.0,
       "stop_px": 22.8,
-      "room_pct": 9.4
+      "room_pct": 9.0
      },
      {
       "ticker": "LIND",
       "shares": 85.36,
       "entry_px": 36.46,
-      "px": 35.2,
+      "px": 35.47,
       "entry_date": "2026-10-12",
-      "value": 3004.69,
-      "weight": 3.01,
-      "ret": -3.46,
+      "value": 3027.73,
+      "weight": 3.03,
+      "ret": -2.72,
       "peak_px": 36.98,
       "stop_pct": 21.1,
       "stop_px": 29.17,
-      "room_pct": 20.7
+      "room_pct": 21.6
      },
      {
       "ticker": "IBEX",
       "shares": 62.95,
       "entry_px": 43.32,
-      "px": 45.71,
+      "px": 45.91,
       "entry_date": "2026-10-01",
-      "value": 2877.52,
+      "value": 2890.11,
       "weight": 2.89,
-      "ret": 5.53,
+      "ret": 5.99,
       "peak_px": 46.22,
       "stop_pct": 14.2,
       "stop_px": 39.67,
-      "room_pct": 15.2
+      "room_pct": 15.7
      },
      {
       "ticker": "AMPL",
       "shares": 174.06,
       "entry_px": 14.26,
-      "px": 15.82,
+      "px": 15.83,
       "entry_date": "2026-10-01",
-      "value": 2753.6,
+      "value": 2755.34,
       "weight": 2.76,
-      "ret": 10.94,
+      "ret": 11.01,
       "peak_px": 16.19,
       "stop_pct": 24.2,
       "stop_px": 12.26,
-      "room_pct": 29.0
+      "room_pct": 29.1
      },
      {
       "ticker": "SHIP",
       "shares": 159.43,
       "entry_px": 17.66,
-      "px": 15.68,
+      "px": 15.69,
       "entry_date": "2026-10-05",
-      "value": 2499.86,
+      "value": 2501.45,
       "weight": 2.51,
-      "ret": -11.21,
+      "ret": -11.16,
       "peak_px": 17.95,
-      "stop_pct": 20.0,
-      "stop_px": 14.36,
-      "room_pct": 9.2
+      "stop_pct": 19.8,
+      "stop_px": 14.4,
+      "room_pct": 9.0
      },
      {
       "ticker": "IDT",
       "shares": 29.76,
       "entry_px": 80.77,
-      "px": 81.2,
+      "px": 82.24,
       "entry_date": "2026-10-05",
-      "value": 2416.91,
-      "weight": 2.42,
-      "ret": 0.53,
+      "value": 2447.86,
+      "weight": 2.45,
+      "ret": 1.82,
       "peak_px": 82.91,
       "stop_pct": 11.5,
       "stop_px": 73.4,
-      "room_pct": 10.6
+      "room_pct": 12.0
      },
      {
       "ticker": "TEN",
       "shares": 43.3,
       "entry_px": 50.67,
-      "px": 51.85,
+      "px": 51.48,
       "entry_date": "2026-10-05",
-      "value": 2245.34,
-      "weight": 2.25,
-      "ret": 2.33,
+      "value": 2229.32,
+      "weight": 2.23,
+      "ret": 1.6,
       "peak_px": 56.73,
       "stop_pct": 15.6,
       "stop_px": 47.86,
-      "room_pct": 8.3
+      "room_pct": 7.6
      },
      {
       "ticker": "GNE",
       "shares": 130.7,
       "entry_px": 16.31,
-      "px": 16.81,
+      "px": 16.7,
       "entry_date": "2026-10-01",
-      "value": 2197.1,
-      "weight": 2.2,
-      "ret": 3.05,
+      "value": 2182.73,
+      "weight": 2.19,
+      "ret": 2.37,
       "peak_px": 17.11,
       "stop_pct": 10.0,
       "stop_px": 15.4,
-      "room_pct": 9.2
+      "room_pct": 8.4
      },
      {
       "ticker": "BBNX",
       "shares": 118.32,
       "entry_px": 18.53,
-      "px": 17.06,
+      "px": 17.31,
       "entry_date": "2026-10-01",
-      "value": 2018.5,
-      "weight": 2.02,
-      "ret": -7.93,
+      "value": 2048.08,
+      "weight": 2.05,
+      "ret": -6.58,
       "peak_px": 19.44,
-      "stop_pct": 31.8,
-      "stop_px": 13.25,
-      "room_pct": 28.7
+      "stop_pct": 32.0,
+      "stop_px": 13.23,
+      "room_pct": 30.9
      }
     ],
     "trades": [
@@ -5575,24 +5591,24 @@
     "attribution": {
      "contributors": [
       {
-       "ticker": "CBLL",
-       "pl": 622.51,
-       "pct": 0.623
+       "ticker": "REPX",
+       "pl": 657.76,
+       "pct": 0.658
       },
       {
-       "ticker": "REPX",
-       "pl": 618.25,
-       "pct": 0.618
+       "ticker": "CBLL",
+       "pl": 604.25,
+       "pct": 0.604
       },
       {
        "ticker": "AMPL",
-       "pl": 492.35,
-       "pct": 0.492
+       "pl": 495.18,
+       "pct": 0.495
       },
       {
        "ticker": "GCT",
-       "pl": 477.97,
-       "pct": 0.478
+       "pl": 482.48,
+       "pct": 0.482
       },
       {
        "ticker": "FRD",
@@ -5601,40 +5617,40 @@
       },
       {
        "ticker": "NXDR",
-       "pl": 354.51,
-       "pct": 0.355
-      },
-      {
-       "ticker": "ETON",
-       "pl": 264.33,
-       "pct": 0.264
+       "pl": 405.16,
+       "pct": 0.405
       },
       {
        "ticker": "PAYS",
-       "pl": 259.89,
-       "pct": 0.26
+       "pl": 329.01,
+       "pct": 0.329
       },
       {
        "ticker": "IBEX",
-       "pl": 230.51,
-       "pct": 0.231
+       "pl": 248.95,
+       "pct": 0.249
+      },
+      {
+       "ticker": "ETON",
+       "pl": 114.99,
+       "pct": 0.115
       },
       {
        "ticker": "OSBC",
-       "pl": 128.57,
-       "pct": 0.129
+       "pl": 112.09,
+       "pct": 0.112
       }
      ],
      "detractors": [
       {
        "ticker": "TH",
-       "pl": -848.48,
-       "pct": -0.848
+       "pl": -800.79,
+       "pct": -0.801
       },
       {
        "ticker": "SBET",
-       "pl": -577.03,
-       "pct": -0.577
+       "pl": -513.39,
+       "pct": -0.513
       },
       {
        "ticker": "MGTX",
@@ -5643,53 +5659,53 @@
       },
       {
        "ticker": "BBNX",
-       "pl": -316.06,
-       "pct": -0.316
+       "pl": -262.31,
+       "pct": -0.262
       },
       {
        "ticker": "SEPN",
-       "pl": -178.13,
-       "pct": -0.178
+       "pl": -172.03,
+       "pct": -0.172
       }
      ],
-     "unrealised_pct": 1.32,
+     "unrealised_pct": 1.51,
      "realised_pct": 0.0,
      "cost_pct": -0.4,
-     "total_pct": 0.93,
-     "actual_pct": 0.93,
-     "residual_pct": 0.0,
+     "total_pct": 1.11,
+     "actual_pct": 1.11,
+     "residual_pct": -0.0,
      "reconciles": true,
      "top_n": 3,
-     "top_pct": 1.73,
-     "ex_top_pct": -0.81,
+     "top_pct": 1.76,
+     "ex_top_pct": -0.65,
      "winners": 14,
      "losers": 11
     },
     "holdings": [
      {
-      "ticker": "CBLL",
-      "shares": 166.0,
-      "entry_px": 24.0,
-      "px": 27.75,
+      "ticker": "REPX",
+      "shares": 98.76,
+      "entry_px": 40.34,
+      "px": 47.0,
       "entry_date": "2026-10-01",
-      "value": 4606.57,
-      "weight": 4.56,
-      "ret": 15.62,
-      "peak_px": 27.78,
+      "value": 4641.82,
+      "weight": 4.59,
+      "ret": 16.51,
+      "peak_px": 48.02,
       "stop_pct": null,
       "stop_px": null,
       "room_pct": null
      },
      {
-      "ticker": "REPX",
-      "shares": 98.76,
-      "entry_px": 40.34,
-      "px": 46.6,
+      "ticker": "CBLL",
+      "shares": 166.0,
+      "entry_px": 24.0,
+      "px": 27.64,
       "entry_date": "2026-10-01",
-      "value": 4602.31,
-      "weight": 4.56,
-      "ret": 15.52,
-      "peak_px": 48.02,
+      "value": 4588.31,
+      "weight": 4.54,
+      "ret": 15.17,
+      "peak_px": 27.94,
       "stop_pct": null,
       "stop_px": null,
       "room_pct": null
@@ -5698,11 +5714,11 @@
       "ticker": "AMPL",
       "shares": 282.96,
       "entry_px": 14.08,
-      "px": 15.82,
+      "px": 15.83,
       "entry_date": "2026-10-01",
-      "value": 4476.41,
-      "weight": 4.44,
-      "ret": 12.36,
+      "value": 4479.24,
+      "weight": 4.43,
+      "ret": 12.43,
       "peak_px": 16.19,
       "stop_pct": null,
       "stop_px": null,
@@ -5712,11 +5728,11 @@
       "ticker": "GCT",
       "shares": 75.27,
       "entry_px": 52.93,
-      "px": 59.28,
+      "px": 59.34,
       "entry_date": "2026-10-01",
-      "value": 4462.03,
+      "value": 4466.55,
       "weight": 4.42,
-      "ret": 12.0,
+      "ret": 12.11,
       "peak_px": 60.46,
       "stop_pct": null,
       "stop_px": null,
@@ -5740,26 +5756,12 @@
       "ticker": "NXDR",
       "shares": 1688.16,
       "entry_px": 2.36,
-      "px": 2.57,
+      "px": 2.6,
       "entry_date": "2026-10-01",
-      "value": 4338.58,
-      "weight": 4.3,
-      "ret": 8.9,
+      "value": 4389.22,
+      "weight": 4.34,
+      "ret": 10.17,
       "peak_px": 2.73,
-      "stop_pct": null,
-      "stop_px": null,
-      "room_pct": null
-     },
-     {
-      "ticker": "ETON",
-      "shares": 79.86,
-      "entry_px": 49.89,
-      "px": 53.2,
-      "entry_date": "2026-10-01",
-      "value": 4248.39,
-      "weight": 4.21,
-      "ret": 6.63,
-      "peak_px": 57.01,
       "stop_pct": null,
       "stop_px": null,
       "room_pct": null
@@ -5768,12 +5770,12 @@
       "ticker": "PAYS",
       "shares": 276.48,
       "entry_px": 14.41,
-      "px": 15.35,
+      "px": 15.6,
       "entry_date": "2026-10-01",
-      "value": 4243.95,
-      "weight": 4.21,
-      "ret": 6.52,
-      "peak_px": 15.62,
+      "value": 4313.07,
+      "weight": 4.27,
+      "ret": 8.26,
+      "peak_px": 15.63,
       "stop_pct": null,
       "stop_px": null,
       "room_pct": null
@@ -5782,12 +5784,26 @@
       "ticker": "IBEX",
       "shares": 92.2,
       "entry_px": 43.21,
-      "px": 45.71,
+      "px": 45.91,
       "entry_date": "2026-10-01",
-      "value": 4214.57,
-      "weight": 4.18,
-      "ret": 5.79,
+      "value": 4233.01,
+      "weight": 4.19,
+      "ret": 6.25,
       "peak_px": 46.22,
+      "stop_pct": null,
+      "stop_px": null,
+      "room_pct": null
+     },
+     {
+      "ticker": "ETON",
+      "shares": 79.86,
+      "entry_px": 49.89,
+      "px": 51.33,
+      "entry_date": "2026-10-01",
+      "value": 4099.06,
+      "weight": 4.05,
+      "ret": 2.89,
+      "peak_px": 57.01,
       "stop_pct": null,
       "stop_px": null,
       "room_pct": null
@@ -5796,26 +5812,12 @@
       "ticker": "OSBC",
       "shares": 164.84,
       "entry_px": 24.17,
-      "px": 24.95,
+      "px": 24.85,
       "entry_date": "2026-10-01",
-      "value": 4112.64,
-      "weight": 4.07,
-      "ret": 3.23,
+      "value": 4096.15,
+      "weight": 4.05,
+      "ret": 2.81,
       "peak_px": 25.33,
-      "stop_pct": null,
-      "stop_px": null,
-      "room_pct": null
-     },
-     {
-      "ticker": "GNE",
-      "shares": 244.27,
-      "entry_px": 16.31,
-      "px": 16.81,
-      "entry_date": "2026-10-01",
-      "value": 4106.2,
-      "weight": 4.07,
-      "ret": 3.07,
-      "peak_px": 17.11,
       "stop_pct": null,
       "stop_px": null,
       "room_pct": null
@@ -5827,9 +5829,23 @@
       "px": 55.02,
       "entry_date": "2026-10-01",
       "value": 4082.76,
-      "weight": 4.05,
+      "weight": 4.04,
       "ret": 2.48,
       "peak_px": 56.48,
+      "stop_pct": null,
+      "stop_px": null,
+      "room_pct": null
+     },
+     {
+      "ticker": "GNE",
+      "shares": 244.27,
+      "entry_px": 16.31,
+      "px": 16.7,
+      "entry_date": "2026-10-01",
+      "value": 4079.33,
+      "weight": 4.03,
+      "ret": 2.39,
+      "peak_px": 17.11,
       "stop_pct": null,
       "stop_px": null,
       "room_pct": null
@@ -5841,7 +5857,7 @@
       "px": 14.19,
       "entry_date": "2026-10-01",
       "value": 4075.98,
-      "weight": 4.04,
+      "weight": 4.03,
       "ret": 2.31,
       "peak_px": 14.73,
       "stop_pct": null,
@@ -5852,12 +5868,26 @@
       "ticker": "BWFG",
       "shares": 62.13,
       "entry_px": 64.12,
-      "px": 64.86,
+      "px": 65.17,
       "entry_date": "2026-10-01",
-      "value": 4030.04,
-      "weight": 3.99,
-      "ret": 1.15,
+      "value": 4049.3,
+      "weight": 4.0,
+      "ret": 1.64,
       "peak_px": 66.7,
+      "stop_pct": null,
+      "stop_px": null,
+      "room_pct": null
+     },
+     {
+      "ticker": "DJCO",
+      "shares": 6.2,
+      "entry_px": 642.77,
+      "px": 638.6,
+      "entry_date": "2026-10-01",
+      "value": 3958.22,
+      "weight": 3.91,
+      "ret": -0.65,
+      "peak_px": 675.76,
       "stop_pct": null,
       "stop_px": null,
       "room_pct": null
@@ -5869,23 +5899,9 @@
       "px": 51.09,
       "entry_date": "2026-10-01",
       "value": 3956.19,
-      "weight": 3.92,
+      "weight": 3.91,
       "ret": -0.7,
       "peak_px": 53.7,
-      "stop_pct": null,
-      "stop_px": null,
-      "room_pct": null
-     },
-     {
-      "ticker": "DJCO",
-      "shares": 6.2,
-      "entry_px": 642.77,
-      "px": 632.63,
-      "entry_date": "2026-10-01",
-      "value": 3921.21,
-      "weight": 3.89,
-      "ret": -1.58,
-      "peak_px": 675.76,
       "stop_pct": null,
       "stop_px": null,
       "room_pct": null
@@ -5894,12 +5910,26 @@
       "ticker": "TWIN",
       "shares": 153.12,
       "entry_px": 26.02,
-      "px": 25.4,
+      "px": 25.35,
       "entry_date": "2026-10-01",
-      "value": 3889.13,
-      "weight": 3.85,
-      "ret": -2.38,
+      "value": 3881.48,
+      "weight": 3.84,
+      "ret": -2.57,
       "peak_px": 29.23,
+      "stop_pct": null,
+      "stop_px": null,
+      "room_pct": null
+     },
+     {
+      "ticker": "RDVT",
+      "shares": 49.91,
+      "entry_px": 79.83,
+      "px": 77.17,
+      "entry_date": "2026-10-01",
+      "value": 3851.31,
+      "weight": 3.81,
+      "ret": -3.33,
+      "peak_px": 81.8,
       "stop_pct": null,
       "stop_px": null,
       "room_pct": null
@@ -5908,11 +5938,11 @@
       "ticker": "NAT",
       "shares": 490.65,
       "entry_px": 8.12,
-      "px": 7.88,
+      "px": 7.82,
       "entry_date": "2026-10-01",
-      "value": 3866.31,
-      "weight": 3.83,
-      "ret": -2.96,
+      "value": 3836.87,
+      "weight": 3.79,
+      "ret": -3.69,
       "peak_px": 8.88,
       "stop_pct": null,
       "stop_px": null,
@@ -5922,26 +5952,12 @@
       "ticker": "TK",
       "shares": 273.44,
       "entry_px": 14.57,
-      "px": 14.07,
+      "px": 13.99,
       "entry_date": "2026-10-01",
-      "value": 3847.34,
-      "weight": 3.81,
-      "ret": -3.43,
+      "value": 3825.47,
+      "weight": 3.78,
+      "ret": -3.98,
       "peak_px": 15.9,
-      "stop_pct": null,
-      "stop_px": null,
-      "room_pct": null
-     },
-     {
-      "ticker": "RDVT",
-      "shares": 49.91,
-      "entry_px": 79.83,
-      "px": 76.33,
-      "entry_date": "2026-10-01",
-      "value": 3809.39,
-      "weight": 3.77,
-      "ret": -4.38,
-      "peak_px": 81.8,
       "stop_pct": null,
       "stop_px": null,
       "room_pct": null
@@ -5950,11 +5966,11 @@
       "ticker": "SEPN",
       "shares": 101.79,
       "entry_px": 39.14,
-      "px": 37.39,
+      "px": 37.45,
       "entry_date": "2026-10-01",
-      "value": 3805.93,
+      "value": 3812.04,
       "weight": 3.77,
-      "ret": -4.47,
+      "ret": -4.32,
       "peak_px": 39.53,
       "stop_pct": null,
       "stop_px": null,
@@ -5964,11 +5980,11 @@
       "ticker": "BBNX",
       "shares": 215.01,
       "entry_px": 18.53,
-      "px": 17.06,
+      "px": 17.31,
       "entry_date": "2026-10-01",
-      "value": 3668.0,
-      "weight": 3.63,
-      "ret": -7.93,
+      "value": 3721.76,
+      "weight": 3.68,
+      "ret": -6.58,
       "peak_px": 19.44,
       "stop_pct": null,
       "stop_px": null,
@@ -5992,11 +6008,11 @@
       "ticker": "SBET",
       "shares": 424.29,
       "entry_px": 9.39,
-      "px": 8.03,
+      "px": 8.18,
       "entry_date": "2026-10-01",
-      "value": 3407.03,
-      "weight": 3.38,
-      "ret": -14.48,
+      "value": 3470.68,
+      "weight": 3.43,
+      "ret": -12.89,
       "peak_px": 10.24,
       "stop_pct": null,
       "stop_px": null,
@@ -6006,11 +6022,11 @@
       "ticker": "TH",
       "shares": 198.71,
       "entry_px": 20.05,
-      "px": 15.78,
+      "px": 16.02,
       "entry_date": "2026-10-01",
-      "value": 3135.59,
-      "weight": 3.11,
-      "ret": -21.3,
+      "value": 3183.28,
+      "weight": 3.15,
+      "ret": -20.1,
       "peak_px": 20.93,
       "stop_pct": null,
       "stop_px": null,
@@ -6258,11 +6274,11 @@
     "label": "Baseline",
     "note": "the control — equal weight, no stop, always fully invested",
     "ret_common": 0.41,
-    "excess_common": 3.3,
+    "excess_common": 3.29,
     "common_from": "2026-10-01",
     "common_days": 15,
-    "value": 101459.15,
-    "ret": 1.46,
+    "value": 101452.34,
+    "ret": 1.45,
     "bench_ret": -2.99,
     "excess": 4.58,
     "friction_yr": 15.9,
@@ -6288,7 +6304,7 @@
      103.774,
      103.379,
      100.596,
-     101.459
+     101.452
     ],
     "curve_dates": [
      "2026-10-01",
@@ -6312,14 +6328,14 @@
     "key": "B",
     "label": "Conviction",
     "note": "weighted by rank, 1.5x down to 0.6x equal weight",
-    "ret_common": 0.44,
-    "excess_common": 3.33,
+    "ret_common": 0.46,
+    "excess_common": 3.35,
     "common_from": "2026-10-01",
     "common_days": 15,
-    "value": 101687.47,
-    "ret": 1.69,
+    "value": 101703.87,
+    "ret": 1.7,
     "bench_ret": -2.99,
-    "excess": 4.82,
+    "excess": 4.84,
     "friction_yr": 15.7,
     "max_drawdown": -3.06,
     "positions": 25,
@@ -6343,7 +6359,7 @@
      104.1,
      103.687,
      100.979,
-     101.687
+     101.704
     ],
     "curve_dates": [
      "2026-10-01",
@@ -6367,14 +6383,14 @@
     "key": "C",
     "label": "Risk-managed",
     "note": "equal weight, trailing stop at 3x the name's own weekly volatility",
-    "ret_common": -0.88,
-    "excess_common": 1.97,
+    "ret_common": -0.75,
+    "excess_common": 2.1,
     "common_from": "2026-10-01",
     "common_days": 15,
-    "value": 100154.21,
-    "ret": 0.15,
+    "value": 100282.1,
+    "ret": 0.28,
     "bench_ret": -2.99,
-    "excess": 3.24,
+    "excess": 3.37,
     "friction_yr": 16.8,
     "max_drawdown": -3.6,
     "positions": 24,
@@ -6398,7 +6414,7 @@
      103.774,
      103.379,
      100.108,
-     100.154
+     100.282
     ],
     "curve_dates": [
      "2026-10-01",
@@ -6422,11 +6438,11 @@
     "key": "D",
     "label": "Regime-aware",
     "note": "equal weight, exposure cut when the small-cap tape falls",
-    "ret_common": -0.0,
-    "excess_common": 2.87,
+    "ret_common": 0.0,
+    "excess_common": 2.88,
     "common_from": "2026-10-01",
     "common_days": 15,
-    "value": 100675.2,
+    "value": 100679.6,
     "ret": 0.68,
     "bench_ret": -2.99,
     "excess": 3.78,
@@ -6453,7 +6469,7 @@
      102.659,
      102.307,
      99.85,
-     100.675
+     100.68
     ],
     "curve_dates": [
      "2026-10-01",
@@ -6477,14 +6493,14 @@
     "key": "E",
     "label": "Combined",
     "note": "conviction + stop + regime together",
-    "ret_common": -1.11,
-    "excess_common": 1.73,
+    "ret_common": -0.96,
+    "excess_common": 1.89,
     "common_from": "2026-10-01",
     "common_days": 15,
-    "value": 99687.03,
-    "ret": -0.31,
+    "value": 99840.84,
+    "ret": -0.16,
     "bench_ret": -2.99,
-    "excess": 2.76,
+    "excess": 2.92,
     "friction_yr": 13.6,
     "max_drawdown": -3.04,
     "positions": 24,
@@ -6508,7 +6524,7 @@
      102.663,
      102.395,
      99.616,
-     99.687
+     99.841
     ],
     "curve_dates": [
      "2026-10-01",
@@ -6532,14 +6548,14 @@
     "key": "F",
     "label": "Slow",
     "note": "the control again, but trading every 4 weeks instead of weekly — isolates what the trading itself costs",
-    "ret_common": -0.11,
-    "excess_common": 2.76,
+    "ret_common": 0.07,
+    "excess_common": 2.95,
     "common_from": "2026-10-01",
     "common_days": 15,
-    "value": 100926.14,
-    "ret": 0.93,
+    "value": 101110.66,
+    "ret": 1.11,
     "bench_ret": -2.99,
-    "excess": 4.04,
+    "excess": 4.23,
     "friction_yr": 9.7,
     "max_drawdown": -3.04,
     "positions": 25,
@@ -6563,7 +6579,7 @@
      103.307,
      103.182,
      100.827,
-     100.926
+     101.111
     ],
     "curve_dates": [
      "2026-10-01",
@@ -6676,74 +6692,74 @@
    "GCT": {
     "A": 4.4,
     "B": 6.18,
-    "C": 4.46,
-    "D": 3.95,
+    "C": 4.45,
+    "D": 3.96,
     "E": 5.48,
     "F": 4.42
    },
    "PAYS": {
-    "A": 4.18,
-    "B": 5.72,
-    "C": 4.24,
-    "D": 3.82,
-    "E": 5.16,
-    "F": 4.21
+    "A": 4.25,
+    "B": 5.81,
+    "C": 4.3,
+    "D": 3.89,
+    "E": 5.23,
+    "F": 4.27
    },
    "SBET": {
-    "A": 3.36,
-    "B": 4.46,
-    "C": 3.4,
-    "D": 3.08,
-    "E": 4.38,
-    "F": 3.38
+    "A": 3.42,
+    "B": 4.55,
+    "C": 3.46,
+    "D": 3.13,
+    "E": 4.46,
+    "F": 3.43
    },
    "RDVT": {
-    "A": 3.75,
-    "B": 4.85,
-    "C": 3.8,
-    "D": 3.44,
-    "E": 4.51,
-    "F": 3.77
+    "A": 3.8,
+    "B": 4.9,
+    "C": 3.84,
+    "D": 3.48,
+    "E": 4.55,
+    "F": 3.81
    },
    "ETON": {
-    "A": 4.19,
-    "B": 5.1,
-    "C": 4.24,
-    "D": 2.74,
-    "E": 3.38,
-    "F": 4.21
+    "A": 4.04,
+    "B": 4.92,
+    "C": 4.09,
+    "D": 2.65,
+    "E": 3.26,
+    "F": 4.05
    },
    "OSBC": {
-    "A": 4.05,
-    "B": 4.78,
-    "C": 4.11,
-    "D": 3.63,
-    "E": 3.17,
-    "F": 4.07
+    "A": 4.04,
+    "B": 4.76,
+    "C": 4.08,
+    "D": 3.62,
+    "E": 3.15,
+    "F": 4.05
    },
    "BBNX": {
-    "A": 3.62,
-    "B": 2.23,
-    "C": 3.66,
-    "D": 3.23,
-    "E": 2.02,
-    "F": 3.63
+    "A": 3.67,
+    "B": 2.26,
+    "C": 3.71,
+    "D": 3.27,
+    "E": 2.05,
+    "F": 3.68
    },
    "NAT": {
-    "A": 3.81,
-    "B": 4.21,
-    "C": 3.86,
-    "D": 3.43,
-    "E": 4.11,
-    "F": 3.83
+    "A": 3.78,
+    "B": 4.18,
+    "C": 3.83,
+    "D": 3.41,
+    "E": 4.07,
+    "F": 3.79
    },
    "BWFG": {
-    "A": 3.97,
-    "B": 4.24,
-    "C": 4.02,
-    "D": 3.55,
-    "E": 3.84,
-    "F": 3.99
+    "A": 3.99,
+    "B": 4.26,
+    "C": 4.04,
+    "D": 3.57,
+    "E": 3.86,
+    "F": 4.0
    },
    "OBK": {
     "A": 3.9,
@@ -6751,70 +6767,70 @@
     "C": 3.95,
     "D": 3.46,
     "E": 4.0,
-    "F": 3.92
+    "F": 3.91
    },
    "REPX": {
-    "A": 4.54,
-    "B": 4.5,
-    "C": 4.6,
-    "D": 2.97,
-    "E": 4.82,
-    "F": 4.56
+    "A": 4.58,
+    "B": 4.54,
+    "C": 4.63,
+    "D": 3.0,
+    "E": 4.86,
+    "F": 4.59
    },
    "IBEX": {
-    "A": 4.15,
-    "B": 3.97,
-    "C": 4.21,
-    "D": 3.8,
+    "A": 4.17,
+    "B": 3.98,
+    "C": 4.22,
+    "D": 3.82,
     "E": 2.89,
-    "F": 4.18
+    "F": 4.19
    },
    "NXDR": {
-    "A": 4.28,
-    "B": 3.44,
-    "C": 4.33,
-    "D": 3.77,
-    "E": 3.22,
-    "F": 4.3
+    "A": 4.33,
+    "B": 3.48,
+    "C": 4.38,
+    "D": 3.82,
+    "E": 3.26,
+    "F": 4.34
    },
    "GNE": {
-    "A": 4.05,
-    "B": 2.43,
-    "C": 4.1,
-    "D": 3.73,
-    "E": 2.2,
-    "F": 4.07
+    "A": 4.02,
+    "B": 2.42,
+    "C": 4.07,
+    "D": 3.71,
+    "E": 2.19,
+    "F": 4.03
    },
    "TWIN": {
     "A": 3.83,
     "B": 2.8,
-    "C": 3.88,
+    "C": 3.87,
     "D": 3.49,
-    "E": 3.19,
-    "F": 3.85
+    "E": 3.18,
+    "F": 3.84
    },
    "TK": {
-    "A": 3.79,
-    "B": 4.34,
-    "C": 3.84,
-    "D": 3.42,
-    "E": 3.93,
-    "F": 3.81
+    "A": 3.77,
+    "B": 4.32,
+    "C": 3.81,
+    "D": 3.4,
+    "E": 3.9,
+    "F": 3.78
    },
    "AMPL": {
-    "A": 4.41,
+    "A": 4.42,
     "B": 2.73,
     "C": 4.47,
     "D": 3.93,
     "E": 2.76,
-    "F": 4.44
+    "F": 4.43
    },
    "GOTU": {
-    "A": 4.27,
-    "B": 4.41,
-    "C": 4.32,
-    "D": 3.84,
-    "E": 4.01
+    "A": 4.19,
+    "B": 4.33,
+    "C": 4.24,
+    "D": 3.77,
+    "E": 3.93
    },
    "SHIP": {
     "A": 3.58,
@@ -6824,65 +6840,65 @@
     "E": 2.51
    },
    "IDT": {
-    "A": 4.06,
-    "B": 2.67,
-    "C": 4.11,
-    "D": 3.64,
-    "E": 2.42
+    "A": 4.11,
+    "B": 2.7,
+    "C": 4.16,
+    "D": 3.69,
+    "E": 2.45
    },
    "TEN": {
-    "A": 3.62,
-    "B": 2.48,
-    "C": 3.67,
-    "D": 3.71,
-    "E": 2.25
+    "A": 3.59,
+    "B": 2.46,
+    "C": 3.64,
+    "D": 3.68,
+    "E": 2.23
    },
    "ATLC": {
-    "A": 3.97,
-    "B": 3.8,
-    "C": 4.02,
-    "D": 3.56,
-    "E": 3.44
+    "A": 4.03,
+    "B": 3.86,
+    "C": 4.07,
+    "D": 3.61,
+    "E": 3.49
    },
    "CLMB": {
-    "A": 4.07,
-    "B": 3.75,
-    "C": 4.12,
-    "D": 3.65,
-    "E": 3.39
+    "A": 4.05,
+    "B": 3.72,
+    "C": 4.09,
+    "D": 3.63,
+    "E": 3.37
    },
    "LIND": {
-    "A": 3.94,
-    "B": 3.33,
-    "C": 3.99,
-    "D": 3.53,
-    "E": 3.01
+    "A": 3.97,
+    "B": 3.35,
+    "C": 4.01,
+    "D": 3.56,
+    "E": 3.03
    },
    "VSTM": {
-    "A": 4.22,
-    "B": 2.92,
-    "D": 4.23
+    "A": 4.09,
+    "B": 2.83,
+    "D": 4.09
    },
    "FRD": {
     "F": 4.36
    },
    "BSVN": {
-    "F": 4.05
-   },
-   "TXO": {
     "F": 4.04
    },
+   "TXO": {
+    "F": 4.03
+   },
    "DJCO": {
-    "F": 3.89
+    "F": 3.91
    },
    "MGTX": {
     "F": 3.58
    },
    "TH": {
-    "F": 3.11
+    "F": 3.15
    },
    "CBLL": {
-    "F": 4.56
+    "F": 4.54
    },
    "SEPN": {
     "F": 3.77
@@ -6891,75 +6907,75 @@
   "holdings": [
    {
     "ticker": "REPX",
-    "value": 4602.31,
+    "value": 4641.82,
     "entry_date": "2026-10-01",
-    "ret": 15.51809618244917
+    "ret": 16.50966782350023
    },
    {
     "ticker": "AMPL",
-    "value": 4476.41,
+    "value": 4479.24,
     "entry_date": "2026-10-01",
-    "ret": 12.357954545454541
+    "ret": 12.42897727272727
    },
    {
     "ticker": "GCT",
-    "value": 4462.03,
+    "value": 4466.55,
     "entry_date": "2026-10-01",
-    "ret": 11.996977139618359
+    "ret": 12.110334403929723
    },
    {
     "ticker": "NXDR",
-    "value": 4338.58,
+    "value": 4389.22,
     "entry_date": "2026-10-01",
-    "ret": 8.898305084745761
-   },
-   {
-    "ticker": "GOTU",
-    "value": 4331.37,
-    "entry_date": "2026-10-05",
-    "ret": 5.836575875486405
-   },
-   {
-    "ticker": "VSTM",
-    "value": 4279.09,
-    "entry_date": "2026-10-12",
-    "ret": 15.515151515151505
-   },
-   {
-    "ticker": "ETON",
-    "value": 4248.39,
-    "entry_date": "2026-10-01",
-    "ret": 6.63459611144519
+    "ret": 10.169491525423746
    },
    {
     "ticker": "PAYS",
-    "value": 4243.95,
+    "value": 4313.07,
     "entry_date": "2026-10-01",
-    "ret": 6.523247744621785
+    "ret": 8.258154059680777
+   },
+   {
+    "ticker": "GOTU",
+    "value": 4251.75,
+    "entry_date": "2026-10-05",
+    "ret": 3.891050583657596
    },
    {
     "ticker": "IBEX",
-    "value": 4214.57,
+    "value": 4233.01,
     "entry_date": "2026-10-01",
-    "ret": 5.785697755149277
-   },
-   {
-    "ticker": "CLMB",
-    "value": 4127.01,
-    "entry_date": "2026-10-12",
-    "ret": -0.2409638554217053
+    "ret": 6.2485535755612
    },
    {
     "ticker": "IDT",
-    "value": 4114.3,
+    "value": 4166.99,
     "entry_date": "2026-10-05",
-    "ret": 0.5323758821344615
+    "ret": 1.8199826668317431
+   },
+   {
+    "ticker": "VSTM",
+    "value": 4144.38,
+    "entry_date": "2026-10-12",
+    "ret": 11.87878787878789
+   },
+   {
+    "ticker": "CLMB",
+    "value": 4104.58,
+    "entry_date": "2026-10-12",
+    "ret": -0.7831325301205005
+   },
+   {
+    "ticker": "ETON",
+    "value": 4099.06,
+    "entry_date": "2026-10-01",
+    "ret": 2.8863499699338435
    },
    {
     "ticker": "OSBC",
-    "value": 4112.64,
+    "value": 4096.15,
     "entry_date": "2026-10-01",
-    "ret": 3.227141083988405
+    "ret": 2.8134050475796535
    }
   ],
   "trades": [
@@ -7154,7 +7170,7 @@
  "stats": {
   "feeds_total": 20,
   "feeds_failed": 1,
-  "items": 1178,
+  "items": 1159,
   "smallcap_calls": 552,
   "feed_errors": [],
   "market_errors": [
