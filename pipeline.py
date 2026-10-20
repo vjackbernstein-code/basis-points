@@ -1342,8 +1342,10 @@ def render_progress(data):
     # printing it next to the control rather than on its own
     # like-for-like: over the window every book shares, not since each opened.
     # A book added mid-flight also missed whatever happened before it opened.
+    _basis, _basis_label = book_basis(pf)
+
     def _cmp(b):
-        return b.get("ret_common") if b.get("ret_common") is not None else b["ret"]
+        return book_return(b, _basis)
     gaps = ([(_cmp(by_key[k]) - _cmp(ctrl), by_key[k])
              for k in by_key if k != "A"] if ctrl else [])
     if gaps:
@@ -1444,6 +1446,33 @@ def trade_list(trades, prefix="co/", known=None):
             f'{esc(side)}</strong> {co_link(t["ticker"], prefix, known)}'
             f'<div class="meta">{esc(t["date"])} · {esc(bits)}</div></div>')
     return "".join(out)
+
+
+def book_basis(pf):
+    """Which return figure every page must compare books on, and its label.
+
+    Books that opened on DIFFERENT dates can only be compared over the window
+    they all share: a book added mid-flight also missed whatever the index did
+    before it existed, so its since-inception figure credits or blames it for
+    nothing it did. When they all opened together there is no such window to
+    carve out, and the shared-window figure merely discards the opening day,
+    so the full one is the honest figure.
+
+    This exists because the choice was being made twice, independently. Book A
+    was published as -0.90% on its own page and as -1.92% in the sentence
+    every other book used to describe it, with nothing on either page saying
+    which was which, so neither figure could be checked against the other and
+    no stated gap added up."""
+    ages = {b.get("days") for b in (pf.get("books") or [])}
+    if len(ages) > 1:
+        return "ret_common", "over the window every book shares"
+    return "ret", "since it opened"
+
+
+def book_return(b, basis="ret"):
+    """A book's return on the agreed basis, falling back when absent."""
+    v = b.get(basis)
+    return v if v is not None else b.get("ret")
 
 
 def render_portfolio(pf, known=None):
@@ -1621,6 +1650,28 @@ def _sentence(parts, nothing, tail=""):
     return body + (f" {tail}" if tail else "")
 
 
+def _accel_phrase(row, why):
+    """The acceleration figure, saying so when it has been clamped.
+
+    The row carries the CLAMPED value because that is what gets ranked, and
+    the page was printing it as though it were measured: Septerna's page read
+    "the latest quarter running +50.0 points against that trend" where the
+    data says +8,855.5. A clamp presented as a measurement is worse than
+    either the clamp or the measurement alone, because a reader who checks it
+    against the filing finds a number that matches nothing."""
+    shown, raw = row.get("accel"), (why or {}).get("accel_raw")
+    cap = (why or {}).get("accel_cap")
+    txt = (f'the latest quarter running {_n(shown, "{:+,.1f}", " points")} '
+           f'against that trend')
+    if shown is None or raw is None or cap is None:
+        return txt
+    if abs(raw) > cap + 1e-9:
+        return (f'{txt} \u2014 measured at '
+                f'{_n(raw, "{:+,.1f}", " points")}, and held at '
+                f'{_n(cap, "{:,.0f}")} before it is ranked')
+    return txt
+
+
 def render_company_page(row, rank, screen, pf, sc, date_line):
     """One company, explained: what it is, why it scores what it does, what
     size the rules give it and where its stop would sit — each shown as the
@@ -1691,7 +1742,18 @@ def render_company_page(row, rank, screen, pf, sc, date_line):
               'eligible is a rule, and changing a rule mid-record is a '
               'decision taken deliberately, not a bug fixed quietly. Treat '
               'every per-share number on this page as unreliable.</div>')
-           if row.get("unit_doubt") else ""))
+           if row.get("unit_doubt") else "")
+        + (('<div class="note-box"><strong>This company&rsquo;s revenue growth '
+            'is not supported by its own longer record.</strong> The figures '
+            'below come from one source, for one company, and are supposed to '
+            'describe the same thing \u2014 and they do not. Growth is ranked '
+            'inside an industry group, so a figure the company&rsquo;s own '
+            'three-year record contradicts does not merely look odd: it lifts '
+            'this company above its peers on the strength of it. It is '
+            'disclosed rather than excluded because which companies are '
+            'eligible is a rule, and the rules are frozen until the record is '
+            'judged.</div>')
+           if row.get("growth_doubt") else ""))
 
     # ---- why it scores what it does ----
     score_rows = [
@@ -1703,10 +1765,7 @@ def render_company_page(row, rank, screen, pf, sc, date_line):
              (w.get("rg3"),
               f'{_n(w.get("rg3"), "{:+,.1f}", "%")} a year over three years',
               'three-year growth'),
-             (row.get("accel"),
-              'the latest quarter running '
-              f'{_n(row.get("accel"), "{:+,.1f}", " points")} against that '
-              'trend', 'the latest quarter'),
+             (row.get("accel"), _accel_phrase(row, w), 'the latest quarter'),
          ], 'no revenue growth figures were reported',
              'Ranked against its own industry group '
              f'({esc(row.get("group") or "unclassified")}), not against the '
@@ -1813,10 +1872,21 @@ def render_company_page(row, rank, screen, pf, sc, date_line):
         f'with the price and never falls, though the distance itself moves with '
         f'the name&rsquo;s volatility. Books A, B and D hold it '
         f'through anything, on purpose: they are the control that shows whether '
-        f'stopping out helped or simply sold the dips. A simulated stop is '
-        f'optimistic — real ones gap through in stocks this thin, which is why an '
-        f'extra {portfolio.STOP_SLIPPAGE_BPS:.0f} basis points is charged on every '
-        f'stop exit and books C and E should still be read as a best case.</p>')
+        f'stopping out helped or simply sold the dips. '
+        f'<strong>The error here runs both ways.</strong> A simulated stop is '
+        f'optimistic about the FILL — real ones gap through in stocks this '
+        f'thin, which is why an extra '
+        f'{portfolio.STOP_SLIPPAGE_BPS:.0f} basis points is charged on every '
+        f'stop exit. But it can also invent an exit that never happened, '
+        f'because the same day&rsquo;s high is used to raise the mark and the '
+        f'same day&rsquo;s low to test against it, and we do not know which '
+        f'came first. Verastem on 14 October is exactly that: its peak was '
+        f'lifted to $8.97 by that day&rsquo;s high, which moved the trigger to '
+        f'$6.70, which that day&rsquo;s low touched. Against the previous '
+        f'peak the trigger was $6.44 and it would not have fired. Both books '
+        f'sold. The mechanism is disclosed rather than changed, because '
+        f'changing how a stop works mid-record would destroy the only thing '
+        f'books C and E exist to measure.</p>')
 
     # ---- how it fits ----
     fit = (
@@ -2060,7 +2130,12 @@ def render_book_page(key, pf, date_line, sections, known=None):
         rules.append('<strong>rebalances weekly</strong>, on a Monday')
     if det.get("uses_regime"):
         rules.append("<strong>exposure cut</strong> when the small-cap tape "
-                     "falls, down to 65% invested in a correction")
+                     "falls, down to 65% invested in a correction — but the "
+                     "target is only applied at a rebalance, so a tape that "
+                     "turns mid-week is not acted on until the next one. "
+                     "Between those two days this book is still at its old "
+                     "exposure, which is why it can read 88% invested while "
+                     "the tape says it should be at 65%")
     else:
         rules.append("<strong>always fully invested</strong>, whatever the tape "
                      "is doing")
@@ -2076,9 +2151,14 @@ def render_book_page(key, pf, date_line, sections, known=None):
             '</ul>')
 
     exc = b.get("excess")
+    basis, basis_label = book_basis(pf)
+    ret_here = book_return(b, basis)
     facts = [
         ("Value", f'${b["value"]:,.0f}'),
-        ("Return", f'{b["ret"]:+.2f}%'),
+        # labelled, because the figure changes basis when a book is added
+        # mid-flight and an unlabelled percentage cannot be checked against
+        # the one every other page quotes for the same book
+        (f"Return, {basis_label}", f'{ret_here:+.2f}%'),
         ("vs the index", f'{exc:+.2f}%' if exc is not None else "—"),
         ("Worst dip", f'{b["max_drawdown"]:+.1f}%'),
         ("Cost of trading", fmt_friction(b)[0]),
@@ -2094,14 +2174,15 @@ def render_book_page(key, pf, date_line, sections, known=None):
 
     # how it differs from the control, stated as the only question that matters
     if ctrl and key != "A":
-        _c = lambda x: x.get("ret_common") if x.get("ret_common") is not None else x["ret"]
+        _c = lambda x: book_return(x, basis)
         gap = _c(b) - _c(ctrl)
         cost_gap = ((b.get("costs_paid") or 0) - (ctrl.get("costs_paid") or 0))
         verdict = (
             f'<div class="note-box"><strong>Against the control: '
             f'{gap:+.2f}%.</strong> Book A runs the same screen with none of '
-            f'this book&rsquo;s rules, and is {_c(ctrl):+.2f}% over the same '
-            f'period. This book has '
+            f'this book&rsquo;s rules, and is {_c(ctrl):+.2f}% '
+            f'{basis_label}. Both figures on this page are measured the same '
+            f'way, so the gap above is their difference. This book has '
             f'spent ${b.get("costs_paid", 0):,.0f} on trading against the '
             f'control&rsquo;s ${ctrl.get("costs_paid", 0):,.0f} — '
             f'${abs(cost_gap):,.0f} {"more" if cost_gap > 0 else "less"}. '
@@ -2703,7 +2784,21 @@ def build_sections(data):
         'consistent. Which of the three figures is wrong has not been '
         'established, and dropping an industry or changing how growth is '
         'measured would be a scoring change, which is frozen. Saying so is '
-        'not, and four of the names below reached this screen on that number. These filing flags are matched '
+        'not. The same flag now also fires when a single year claims more '
+        'growth than the company&rsquo;s own three-year rate produced in all '
+        'three, and when a figure above the scoring cap has no three-year '
+        'record to check it against at all \u2014 the first version caught the '
+        'moderate bank case it was written for and let the extreme ones '
+        'through unmarked, which made the page most reassuring about the '
+        'names that deserved it least. '
+        '<em>units?</em> = this company&rsquo;s per-share figures cannot be '
+        'reconciled with its own share price, usually a foreign issuer '
+        'reporting in its own currency per ordinary share while the price is '
+        'dollars per depositary share. Everything divided by a share count is '
+        'then in units the price is not \u2014 including the revenue figure the '
+        'eligibility floor was tested against, so such a company may not '
+        'belong on the screen at all. Also a disclosure, not an exclusion. '
+        'These filing flags are matched '
         'from SEC EDGAR and, like all news signals, inform context only — they are '
         'never scored. '
         '<strong>Freeze:</strong> scoring rules do not change until the live record '
@@ -2880,7 +2975,12 @@ def build_data():
         market_errors.append(("FRED calendar", _scrub(e)))
 
     data = {
-        "generated_at": now.isoformat(),
+        # Stamped when the build FINISHES, not when it started. `now` is set
+        # before roughly ten minutes of fetching and is still what the news
+        # freshness window is measured against, but using it here made every
+        # page claim to be older than the data on it — the screen's own
+        # timestamp read ten minutes later than the "updated" line above it.
+        "generated_at": datetime.now(timezone.utc).isoformat(),
         "market": tiles,
         "tape_line": tape_line(tiles),
         "top": [slim(i) for i in top],

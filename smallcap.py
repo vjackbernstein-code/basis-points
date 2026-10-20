@@ -600,16 +600,44 @@ def _percentile_ranks(values):
 # arithmetic, and four of its holdings reached it on this number.
 IMPLAUSIBLE_TTM = 25.0      # trailing growth above this...
 IMPLAUSIBLE_3Y = 15.0       # ...while the three-year figure is below this
+# ...and a trailing figure this large with no three-year figure to check it
+# against. Set at the scoring cap: above it the number is being clamped before
+# it is ranked, so the page is printing a figure the model itself will not take
+# at face value.
+IMPLAUSIBLE_UNCHECKED = 150.0
+
+# The clamps the factors apply before ranking. Named so the pages can state
+# what was clamped rather than printing the clamp as though it were measured.
+GROWTH_TTM_CAP = 150.0
+ACCEL_CAP = 50.0
 
 
 def growth_is_contradicted(m):
     """True when a company's trailing growth is not supported by its own
     three-year growth. Both figures come from the same vendor, for the same
-    company, and are supposed to describe the same thing."""
-    ttm, g3 = (m or {}).get("rev_g"), (m or {}).get("rg3")
-    if ttm is None or g3 is None:
+    company, and are supposed to describe the same thing.
+
+    Three ways that can fail, and the first version of this only caught one.
+    It tested for a MODEST-looking year that the three-year record denies —
+    which is the bank case it was written for — and so let through exactly the
+    figures a reader would most want flagged: Septerna at +13,520%, Verastem
+    at +3,996%, SharpLink at +1,497%, none of them marked, while Friedman
+    Industries at +61.8% was. Absence of a chip reads as "checked and fine",
+    so the page was most reassuring about the names that deserved it least."""
+    m = m or {}
+    ttm, g3 = m.get("rev_g"), m.get("rg3")
+    if ttm is None or ttm <= IMPLAUSIBLE_TTM:
         return False
-    return ttm > IMPLAUSIBLE_TTM and g3 < IMPLAUSIBLE_3Y
+    if g3 is None:
+        # nothing to check it against, and a year this big needs checking
+        return ttm > IMPLAUSIBLE_UNCHECKED
+    if g3 < IMPLAUSIBLE_3Y:
+        return True                     # the original case
+    # a single year claiming more growth than the whole three-year period
+    # produced: 56.7% a year compounds to +285% over three, so +1,497% in one
+    # of them cannot describe the same series
+    implied_total = ((1 + g3 / 100.0) ** 3 - 1) * 100
+    return ttm > implied_total
 
 
 # The same idea applied to the per-share figures, and for the same reason.
@@ -667,11 +695,11 @@ def _factors(cache, ticker):
     q = cache["quotes"][ticker]
     p = cache["profiles"][ticker]
     # growth trio: trailing year, three-year persistence, acceleration
-    g_ttm = max(-20.0, min(150.0, m["rev_g"]))
+    g_ttm = max(-20.0, min(GROWTH_TTM_CAP, m["rev_g"]))
     g_3y = max(-20.0, min(100.0, m["rg3"])) if m.get("rg3") is not None else None
     accel = None
     if m.get("rev_gq") is not None:
-        accel = max(-50.0, min(50.0, m["rev_gq"] - m["rev_g"]))
+        accel = max(-ACCEL_CAP, min(ACCEL_CAP, m["rev_gq"] - m["rev_g"]))
     # momentum, volatility-scaled
     r13 = max(-50.0, min(150.0, m["r13"]))
     r26 = m.get("r26")
@@ -816,6 +844,17 @@ def compute_screen(cache, prev_candidates=None, prev_published=None):
             # Published so the per-company page can SHOW its arithmetic instead
             # of asserting a conclusion the reader has to take on trust.
             "why": {"vol": m.get("vol"), "r26": m.get("r26"),
+                    # the acceleration BEFORE the +/-50 clamp. The row's
+                    # `accel` is the clamped figure, and the company page was
+                    # printing it as though it were measured: Septerna showed
+                    # "+50.0 points" where the data says +8,855.5. The raw
+                    # number is published so the page can show the clamp
+                    # instead of hiding inside it.
+                    "accel_raw": ((m["rev_gq"] - m["rev_g"])
+                                  if (m.get("rev_gq") is not None
+                                      and m.get("rev_g") is not None)
+                                  else None),
+                    "growth_cap": GROWTH_TTM_CAP, "accel_cap": ACCEL_CAP,
                     "rg3": m.get("rg3"), "rev_gq": m.get("rev_gq"),
                     "dte": m.get("dte"), "gm_t": m.get("gm_t"),
                     "om_t": m.get("om_t"), "om_a": m.get("om_a"),
@@ -1155,6 +1194,13 @@ def reachability(log, review_date):
             nxt = datetime.fromisoformat(pub[0]).date() + timedelta(days=lo)
         else:
             nxt = today + timedelta(days=lo)
+        # An UPPER BOUND, not a count. It treats today's slot as still open,
+        # which it may not be: the runs that have already happened today can
+        # have passed without freezing a reading, and no later run can
+        # recover a cohort that has aged out of its window. So `possible` can
+        # be one high. That is the safe direction for this particular claim —
+        # "reachable" only turns false when even the optimistic count falls
+        # short — but the pages must say "at most", never "possible".
         spare, t = 0, max(nxt, today)
         while t <= review:
             spare += 1

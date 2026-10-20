@@ -403,6 +403,45 @@ class ContradictedGrowthTests(unittest.TestCase):
         for m in ({"rev_g": 80.0}, {"rg3": 5.0}, {}, None):
             self.assertFalse(smallcap.growth_is_contradicted(m), repr(m))
 
+    def test_a_year_claiming_more_than_three_years_produced_is_flagged(self):
+        # 56.7% a year compounds to +285% over three, so +1,497% in one of
+        # them cannot describe the same series. SharpLink sat unflagged on
+        # exactly this for two weeks.
+        self.assertTrue(smallcap.growth_is_contradicted(
+            {"rev_g": 1496.68, "rg3": 56.72}))
+
+    def test_an_extreme_year_with_no_three_year_record_is_flagged(self):
+        # Septerna at +13,520% with no three-year figure: nothing to check it
+        # against is not a reason to present it as checked
+        self.assertTrue(smallcap.growth_is_contradicted(
+            {"rev_g": 13520.11, "rg3": None}))
+
+    def test_a_moderate_year_with_no_three_year_record_is_not_flagged(self):
+        # a missing figure is not itself evidence of anything; only a figure
+        # above the scoring cap, which the model already refuses to take at
+        # face value, earns the flag on its own
+        self.assertFalse(smallcap.growth_is_contradicted(
+            {"rev_g": 40.0, "rg3": None}))
+
+    def test_fast_growth_its_own_record_supports_is_not_flagged(self):
+        # 55.5% a year compounds to +276%, so +81.5% in one year fits
+        self.assertFalse(smallcap.growth_is_contradicted(
+            {"rev_g": 81.49, "rg3": 55.53}))
+
+    def test_the_flag_catches_the_names_it_used_to_miss(self):
+        # the first version caught the moderate bank case it was written for
+        # and let the extreme ones through, so the page was most reassuring
+        # about the names that deserved it least
+        for name, m in (("Septerna", {"rev_g": 13520.11, "rg3": None}),
+                        ("Verastem", {"rev_g": 3996.0, "rg3": 12.0}),
+                        ("SharpLink", {"rev_g": 1496.68, "rg3": 56.72})):
+            self.assertTrue(smallcap.growth_is_contradicted(m), name)
+
+    def test_the_caps_are_named_not_buried_as_literals(self):
+        # the pages have to be able to say what was clamped
+        self.assertEqual(smallcap.GROWTH_TTM_CAP, 150.0)
+        self.assertEqual(smallcap.ACCEL_CAP, 50.0)
+
     def test_the_flag_changes_no_score_and_no_eligibility(self):
         # the whole point: it is a label. If this ever starts excluding names
         # it has become a scoring change made during the freeze.

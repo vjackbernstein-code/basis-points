@@ -19,7 +19,8 @@ import unittest
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT))
 
 import pipeline  # noqa: E402
 import portfolio  # noqa: E402
@@ -1230,6 +1231,205 @@ class KeylessBuildGuardTests(unittest.TestCase):
             sys.argv = argv
             pipeline.keyless_build_would_degrade = guard
             pipeline.DATA, pipeline.SITE = data, site
+
+
+class OneReturnPerBookTests(unittest.TestCase):
+    """A book's return must be the same number everywhere it appears.
+
+    Book A was published as -0.90% on its own page and as -1.92% in the
+    sentence every other book used to describe it, with nothing on either page
+    saying which was which. Both were honestly computed — one since the book
+    opened, one over the window every book shares — but a reader could check
+    neither against the other, and no stated gap added up.
+    """
+
+    def _pf(self, days_a=20, days_b=20):
+        return {"books": [
+            {"key": "A", "label": "Baseline", "ret": -0.90,
+             "ret_common": -1.92, "days": days_a, "value": 99095.0,
+             "excess": 2.4, "max_drawdown": -4.5, "stops_hit": 0,
+             "positions": 25, "costs_paid": 811.0, "curve": [100.0, 99.1],
+             "note": "the control", "started": "2026-10-01"},
+            {"key": "B", "label": "Conviction", "ret": -0.62,
+             "ret_common": -1.84, "days": days_b, "value": 99380.0,
+             "excess": 2.5, "max_drawdown": -4.5, "stops_hit": 0,
+             "positions": 25, "costs_paid": 822.0, "curve": [100.0, 99.4],
+             "note": "weighted by rank", "started": "2026-10-01"}]}
+
+    def test_books_opened_together_are_compared_since_they_opened(self):
+        basis, label = pipeline.book_basis(self._pf())
+        self.assertEqual(basis, "ret")
+        self.assertIn("since it opened", label)
+
+    def test_a_book_added_mid_flight_forces_the_shared_window(self):
+        # it also missed whatever the index did before it existed, so its
+        # since-inception figure credits it for nothing it did
+        basis, label = pipeline.book_basis(self._pf(days_b=5))
+        self.assertEqual(basis, "ret_common")
+        self.assertIn("shares", label)
+
+    def test_the_gap_between_two_books_is_their_difference(self):
+        pf = self._pf()
+        basis, _ = pipeline.book_basis(pf)
+        a, b = pf["books"]
+        self.assertAlmostEqual(
+            pipeline.book_return(b, basis) - pipeline.book_return(a, basis),
+            0.28, places=6)
+
+    def test_a_missing_figure_falls_back_rather_than_crashing(self):
+        self.assertEqual(
+            pipeline.book_return({"ret": -1.0}, "ret_common"), -1.0)
+
+    def test_the_page_states_which_window_it_measured(self):
+        # an unlabelled percentage cannot be checked against the one another
+        # page quotes for the same book
+        pf = self._pf()
+        html = pipeline.render_book_page("A", pf, "today", {})
+        self.assertIsNotNone(html)
+        self.assertIn("since it opened", html)
+
+    def test_both_figures_on_a_page_use_the_same_basis(self):
+        pf = self._pf()
+        html = pipeline.render_book_page("B", pf, "today", {})
+        import re
+        txt = re.sub(r"<[^>]+>", " ", html)
+        # the control's figure in B's sentence must be A's own headline figure
+        self.assertIn("-0.90%", txt)
+        self.assertNotIn("-1.92%", txt)
+
+
+class ClampedFigureDisclosureTests(unittest.TestCase):
+    """A clamp must not be printed as though it were a measurement."""
+
+    def _row(self, accel, raw):
+        return {"accel": accel}, {"accel_raw": raw, "accel_cap": 50.0}
+
+    def test_a_clamped_figure_says_what_was_measured(self):
+        # Septerna's page read "+50.0 points" where the data says +8,855.5
+        row, why = self._row(50.0, 8855.5)
+        out = pipeline._accel_phrase(row, why)
+        self.assertIn("+50.0 points", out)
+        self.assertIn("8,855.5", out)
+        self.assertIn("held at", out)
+
+    def test_an_unclamped_figure_is_left_alone(self):
+        row, why = self._row(2.9, 2.9)
+        out = pipeline._accel_phrase(row, why)
+        self.assertIn("+2.9 points", out)
+        self.assertNotIn("held at", out)
+
+    def test_a_negative_clamp_is_also_disclosed(self):
+        row, why = self._row(-50.0, -56.3)
+        self.assertIn("held at", pipeline._accel_phrase(row, why))
+
+    def test_a_missing_raw_figure_does_not_invent_a_clamp(self):
+        row, why = self._row(2.9, None)
+        self.assertNotIn("held at", pipeline._accel_phrase(row, why))
+
+    def test_the_clause_still_reads_as_a_sentence(self):
+        row, why = self._row(50.0, 8855.5)
+        out = pipeline._accel_phrase(row, why)
+        self.assertTrue(out.startswith("the latest quarter running"))
+        self.assertIn("against that trend", out)
+
+
+class DoubtReachesThePageTests(unittest.TestCase):
+    """A flag on the screen table has to reach the company's own page.
+
+    Preferred Bank and Nordic American were stating the doubted growth figure
+    on their pages with no caveat at all, while the screen table beside them
+    carried a chip saying it was not to be trusted.
+    """
+
+    def _row(self, **kw):
+        row = {"ticker": "ZZ", "name": "Example Inc", "score": 70.0,
+               "rev_g": 1496.7, "accel": 50.0, "r13": 8.1, "px": 10.0,
+               "group": "Health", "ind": "Biotechnology", "exch": "NASDAQ",
+               "mcap": 500.0, "rev_ttm": 60.0,
+               "sub": {"g": 99, "m": 67, "q": 55},
+               "why": {"rg3": 56.7, "r26": 12.0, "vol": 60.0, "dte": 0.3,
+                       "om_a": -5.0, "om_t": -2.0, "cashps": 1.2,
+                       "adv": 200000.0, "accel_raw": 56.6, "accel_cap": 50.0}}
+        row.update(kw)
+        return row
+
+    def _text(self, row):
+        import re
+        h = pipeline.render_company_page(row, 1, [row], {}, {}, "today")
+        return re.sub(r"<[^>]+>", " ", h)
+
+    def test_a_doubted_company_says_so_on_its_own_page(self):
+        txt = self._text(self._row(growth_doubt=True))
+        self.assertIn("not supported by its own longer record", txt)
+
+    def test_an_undoubted_company_carries_no_such_note(self):
+        txt = self._text(self._row(growth_doubt=False))
+        self.assertNotIn("not supported by its own longer record", txt)
+
+    def test_the_note_says_why_it_matters_rather_than_only_that_it_is_odd(self):
+        # growth is ranked INSIDE an industry group, so a contradicted figure
+        # lifts the company above its peers on the strength of it
+        txt = self._text(self._row(growth_doubt=True))
+        self.assertIn("industry group", txt)
+
+    def test_the_note_says_it_is_disclosed_not_excluded(self):
+        txt = self._text(self._row(growth_doubt=True))
+        self.assertIn("frozen", txt)
+
+
+class StopHonestyTests(unittest.TestCase):
+
+    def test_the_stop_error_is_disclosed_in_both_directions(self):
+        """It was described as only optimistic.
+
+        It can also invent an exit that never happened: the same day's high
+        raises the mark and the same day's low is tested against it, and we do
+        not know which came first. Verastem on 14 October fired for exactly
+        that reason and would not have against the previous day's peak.
+        """
+        src = (ROOT / "pipeline.py").read_text(encoding="utf-8")
+        self.assertIn("error here runs both ways", src)
+        self.assertIn("came first", src)
+        self.assertIn("invent an exit", src)
+
+
+class FlagLegendTests(unittest.TestCase):
+
+    def test_every_flag_shown_on_the_screen_is_explained(self):
+        # "units?" was appearing on the screen with nothing anywhere saying
+        # what it meant
+        src = (ROOT / "pipeline.py").read_text(encoding="utf-8")
+        shown = ("growth?", "units?")
+        for flag in shown:
+            self.assertIn(f"<em>{flag}</em> = ", src,
+                          f"the {flag} chip is never explained")
+
+
+class StampedWhenFinishedTests(unittest.TestCase):
+
+    def test_the_page_is_not_stamped_before_the_data_it_shows(self):
+        """Pages read "updated 11:04" while carrying screen data from 11:18.
+
+        The stamp was taken before roughly ten minutes of fetching, so every
+        page claimed to be older than its own contents."""
+        src = (ROOT / "pipeline.py").read_text(encoding="utf-8")
+        self.assertNotIn('"generated_at": now.isoformat()', src)
+        self.assertIn('"generated_at": datetime.now(timezone.utc)', src)
+
+
+class ReachabilityIsABoundTests(unittest.TestCase):
+
+    def test_the_count_is_described_as_a_ceiling(self):
+        """It treats today's slot as still open, which it may not be.
+
+        Runs that already happened today can have passed without freezing a
+        reading, and no later run recovers a cohort that has aged out. So the
+        figure can be one high — safe for a claim of impossibility, but the
+        pages must say "at most", never "possible"."""
+        src = (ROOT / "pipeline.py").read_text(encoding="utf-8")
+        self.assertIn("at most", src)
+        sm = (ROOT / "smallcap.py").read_text(encoding="utf-8")
+        self.assertIn("UPPER BOUND", sm)
 
 
 if __name__ == "__main__":
