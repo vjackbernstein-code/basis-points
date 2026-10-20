@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-20T20:04:13.829051+00:00",
+ "generated_at": "2026-10-20T23:11:29.853281+00:00",
  "market": [
   {
    "label": "S&P 500",
@@ -77,13 +77,12 @@
    "label": "Dow",
    "symbol": "DJIA",
    "kind": "index",
-   "value": 51966.03,
-   "prev": 52002.41,
-   "value_txt": "51,966.03",
-   "delta": -0.0699582961635906,
-   "delta_txt": "-0.07%",
+   "value": 52495.88,
+   "prev": 51966.03,
+   "value_txt": "52,495.88",
+   "delta": 1.0196083864786256,
+   "delta_txt": "+1.02%",
    "spark": [
-    51778.04,
     51682.64,
     52048.83,
     51863.69,
@@ -105,9 +104,9 @@
     51621.48,
     52177.69,
     52002.41,
-    51966.03
-   ],
-   "asof": "Oct 19"
+    51966.03,
+    52495.88
+   ]
   },
   {
    "label": "VIX",
@@ -149,13 +148,12 @@
    "label": "10-yr Treasury",
    "symbol": "DGS10",
    "kind": "yield",
-   "value": 50.9,
-   "prev": 51.0,
-   "value_txt": "5.09%",
-   "delta": -0.1960784313725518,
-   "delta_txt": "-1 bp",
+   "value": 51.5,
+   "prev": 50.9,
+   "value_txt": "5.15%",
+   "delta": 1.178781925343814,
+   "delta_txt": "+6 bp",
    "spark": [
-    50.0,
     50.099999999999994,
     49.400000000000006,
     50.099999999999994,
@@ -177,9 +175,10 @@
     52.1,
     51.900000000000006,
     51.0,
-    50.9
+    50.9,
+    51.5
    ],
-   "asof": "Oct 16"
+   "asof": "Oct 19"
   },
   {
    "label": "Dollar (broad)",
@@ -292,11 +291,11 @@
    "label": "Bitcoin",
    "symbol": "bitcoin",
    "kind": "crypto",
-   "value": 82559.78482158318,
+   "value": 83032.54441956079,
    "prev": 81875.26391574314,
-   "value_txt": "$82,560",
-   "delta": 0.8360533732684737,
-   "delta_txt": "+0.84%",
+   "value_txt": "$83,033",
+   "delta": 1.4134678149051079,
+   "delta_txt": "+1.41%",
    "spark": [
     83479.2543356063,
     83640.10160067653,
@@ -320,18 +319,18 @@
     81408.34521320867,
     82019.58291286718,
     81875.26391574314,
-    82559.78482158318
+    83032.54441956079
    ]
   },
   {
    "label": "Ethereum",
    "symbol": "ethereum",
    "kind": "crypto",
-   "value": 2437.8525557445028,
+   "value": 2453.5709283204865,
    "prev": 2405.9183757810897,
-   "value_txt": "$2,438",
-   "delta": 1.3273176798047233,
-   "delta_txt": "+1.33%",
+   "value_txt": "$2,454",
+   "delta": 1.9806387872126459,
+   "delta_txt": "+1.98%",
    "spark": [
     2687.921688219616,
     2677.3845041515556,
@@ -355,18 +354,32 @@
     2400.3079201066294,
     2407.8423723702235,
     2405.9183757810897,
-    2437.8525557445028
+    2453.5709283204865
    ]
   }
  ],
- "tape_line": "S&P 500 +0.41%, Nasdaq +1.11%, Dow -0.07%; the 10-year Treasury at 5.09% (-1 bp); WTI crude $101.91 (+1.04%); bitcoin $82,560 (+0.84%).",
+ "tape_line": "S&P 500 +0.41%, Nasdaq +1.11%, Dow +1.02%; the 10-year Treasury at 5.15% (+6 bp); WTI crude $101.91 (+1.04%); bitcoin $83,033 (+1.41%).",
  "top": [
   {
    "title": "Housing is flashing warning signs just as the Fed weighs more interest rate hikes",
    "link": "https://www.cnbc.com/2026/10/20/housing-mortgage-rates-real-estate-federal-reserve.html",
-   "source": "CNBC",
+   "source": "CNBC Economy",
    "published": "2026-10-20T19:28:43+00:00",
    "summary": "Housing data deteriorated further in September, according to separate reports Tuesday."
+  },
+  {
+   "title": "U.S. Stocks Mixed as Strong Earnings Offset AI Credit Fears",
+   "link": "https://www.wsj.com/finance/stocks/u-s-stocks-mixed-as-strong-earnings-offset-ai-credit-fears-d55414c3?mod=rss_markets_main",
+   "source": "WSJ Markets",
+   "published": "2026-10-20T21:06:00+00:00",
+   "summary": "U.S. stocks ended mixed, as generally strong earnings offset worries about the sustainability of the debt-fuelled artificial-intelligence boom."
+  },
+  {
+   "title": "Netflix posts third-quarter earnings beat, but shares fall on advertising and revenue guidance",
+   "link": "https://www.cnbc.com/2026/10/20/netflix-nflx-earnings-q3-2026.html",
+   "source": "CNBC",
+   "published": "2026-10-20T22:29:45+00:00",
+   "summary": "Wall Street and investors will be looking for Netflix to provide additional details about the company's strategy following recent organizational changes"
   },
   {
    "title": "Treasury Yields Fall on String of Weak Housing Data",
@@ -376,50 +389,36 @@
    "summary": "Treasury yields edged lower after a string of weaker-than-expected housing reports highlighted the strain of elevated mortgage rates."
   },
   {
+   "title": "Tesla and SpaceX Formed Committees to Discuss Potential Merger, Elon Musk Says",
+   "link": "https://www.wsj.com/business/earnings/spacex-spcx-q3-earnings-report-2026-stock-4138193d?mod=pls_whats_news_us_business_f",
+   "source": "WSJ Business",
+   "published": "2026-10-20T22:47:00+00:00",
+   "summary": "The CEO running both companies said “there is a lot of merit” in combining them."
+  },
+  {
    "title": "General Motors beats Wall Street's Q3 earnings expectations, narrows full-year guidance",
    "link": "https://www.cnbc.com/2026/10/20/general-motors-gm-earnings-q3-2026.html",
    "source": "CNBC",
-   "published": "2026-10-20T19:07:15+00:00",
+   "published": "2026-10-20T20:08:44+00:00",
    "summary": "GM narrowed its 2026 earnings guidance and raised its adjusted automotive free cash flow outlook after beating Wall Street’s third-quarter estimates."
   },
   {
-   "title": "Adidas Lifts Profit View After U.S. Tariff Refunds, Record Quarterly Performance",
-   "link": "https://www.wsj.com/business/retail/adidas-lifts-profit-view-after-u-s-tariff-refunds-record-quarterly-performance-b9e91360?mod=pls_whats_news_us_business_f",
-   "source": "WSJ Business",
-   "published": "2026-10-20T17:37:00+00:00",
-   "summary": "Adidas lifted its profit guidance for the year after receiving a windfall of around $220 million from U.S. tariff refunds and after third-quarter revenue jumped 9% on year."
-  },
-  {
-   "title": "Bitcoin price spikes to $83.3K as US stocks rise on Q3 earnings, oil falls",
-   "link": "https://cointelegraph.com/markets/bitcoin-price-spikes-to-833k-as-us-stocks-rise-on-q3-earnings-oil-falls?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
-   "source": "Cointelegraph",
-   "published": "2026-10-20T16:14:09+00:00",
-   "summary": "High US corporate earnings reports boosted stock markets and saw BTC price hit $83,300 before reversing at a 21-day trend line."
-  },
-  {
-   "title": "U.S. Stocks Turn Higher, Setting Aside AI Jitters",
-   "link": "https://www.wsj.com/finance/stocks/ai-selloff-returns-oil-tops-110-a-barrel-b8400c70?mod=rss_markets_main",
-   "source": "WSJ Markets",
-   "published": "2026-10-20T16:23:00+00:00",
-   "summary": "U.S. stocks abruptly reversed course to trade higher on hopes that progress has been made in U.S.-Iran diplomacy."
-  },
-  {
-   "title": "Here's what to expect when Netflix reports earnings after the bell",
-   "link": "https://www.cnbc.com/2026/10/20/netflix-nflx-earnings-q3-2026.html",
-   "source": "CNBC",
-   "published": "2026-10-20T16:00:01+00:00",
-   "summary": "Investors will be looking for updates on Netflix's ad-supported business, engagement metrics and how the streaming giant continues to view potential M&A."
+   "title": "Netflix stock sinks after announcing Q3 earnings, Q4 revenue forecast falls short of estimates",
+   "link": "https://news.google.com/rss/articles/CBMi7gFBVV95cUxQNEJkYUJaMXNVbEhiRTVINEhQZEptTkdWWFpkQkhDc2hDMkREQVRteGxITEZGVlYwcnZzSUdmd1ltclFkM2hBTnp2OGVWSVJEaWlub29QdHVMVC15eTRISWRPUGZLT3NaS2FiZHhwNGxtOExtUDBQUUpHejhDOFRmQ2pFQXhKRUNuN1JnM3RiR281VjlfT1ZvS1IxX2FWZ0tZQ3VjMTAzRERHQnowczhMNGJRUU1YeUFPdGNxVDNOWFFrZ0FOckdkNDdZNDFwaXhtaF81VXhJSzRLb1hVVW5JVks2Q09vVVViQ3dVN21n?oc=5",
+   "source": "Yahoo Finance",
+   "published": "2026-10-20T21:07:30+00:00",
+   "summary": "Netflix stock sinks after announcing Q3 earnings, Q4 revenue forecast falls short of estimates Yahoo Finance Netflix posts third-quarter earnings beat, but shares fall on advertising and revenue guidance CNBC Netflix Is Great at…"
   }
  ],
  "smallcap": {
   "note": null,
-  "asof": "2026-10-20T20:04:12+00:00",
+  "asof": "2026-10-20T23:11:23+00:00",
   "coverage": {
    "universe": 9909,
    "profiled": 10153,
    "in_band": 1697,
    "measured": 1697,
-   "scored": 911,
+   "scored": 909,
    "below_floor": 65
   },
   "screen": [
@@ -437,7 +436,7 @@
     "ev_rev": 1.2178,
     "px": 59.03,
     "dp": 1.8461,
-    "score": 85.4,
+    "score": 85.5,
     "sub": {
      "g": 88,
      "m": 96,
@@ -480,7 +479,7 @@
     "ev_rev": 11.8114,
     "px": 76.38,
     "dp": 2.5373,
-    "score": 84.2,
+    "score": 84.1,
     "sub": {
      "g": 77,
      "m": 98,
@@ -506,51 +505,6 @@
      "adv": 0.14288,
      "hi52": 81.795,
      "shares": 14.11,
-     "exch": "NASDAQ NMS - GLOBAL MARKET"
-    }
-   },
-   {
-    "ticker": "SBET",
-    "name": "Sharplink Inc",
-    "ind": "Hotels, Restaurants & Leisur",
-    "group": "Consumer",
-    "mcap": 1809.4725315562841,
-    "rev_g": 1496.68,
-    "accel": 50.0,
-    "r13": 42.5087,
-    "momo": 0.46,
-    "from_high": -51.11111111111111,
-    "ev_rev": 34.2754,
-    "px": 7.92,
-    "dp": 6.1662,
-    "score": 84.0,
-    "sub": {
-     "g": 99,
-     "m": 81,
-     "q": 58
-    },
-    "flags": [
-     "act+"
-    ],
-    "growth_doubt": true,
-    "unit_doubt": null,
-    "why": {
-     "vol": 74.91217,
-     "r26": 22.0896,
-     "accel_raw": 56.57999999999993,
-     "growth_cap": 150.0,
-     "accel_cap": 50.0,
-     "rg3": 56.72,
-     "rev_gq": 1553.26,
-     "dte": 0,
-     "gm_t": 97.02,
-     "om_t": -3401.55,
-     "om_a": -2615.99,
-     "cashps": 0.259,
-     "rps": 0.2393,
-     "adv": 7.66289,
-     "hi52": 16.2,
-     "shares": 210.26,
      "exch": "NASDAQ NMS - GLOBAL MARKET"
     }
    },
@@ -598,6 +552,51 @@
     }
    },
    {
+    "ticker": "SBET",
+    "name": "Sharplink Inc",
+    "ind": "Hotels, Restaurants & Leisur",
+    "group": "Consumer",
+    "mcap": 1809.4725315562841,
+    "rev_g": 1496.68,
+    "accel": 50.0,
+    "r13": 42.5087,
+    "momo": 0.46,
+    "from_high": -51.11111111111111,
+    "ev_rev": 34.2754,
+    "px": 7.92,
+    "dp": 6.1662,
+    "score": 83.8,
+    "sub": {
+     "g": 99,
+     "m": 81,
+     "q": 58
+    },
+    "flags": [
+     "act+"
+    ],
+    "growth_doubt": true,
+    "unit_doubt": null,
+    "why": {
+     "vol": 74.91217,
+     "r26": 22.0896,
+     "accel_raw": 56.57999999999993,
+     "growth_cap": 150.0,
+     "accel_cap": 50.0,
+     "rg3": 56.72,
+     "rev_gq": 1553.26,
+     "dte": 0,
+     "gm_t": 97.02,
+     "om_t": -3401.55,
+     "om_a": -2615.99,
+     "cashps": 0.259,
+     "rps": 0.2393,
+     "adv": 7.66289,
+     "hi52": 16.2,
+     "shares": 210.26,
+     "exch": "NASDAQ NMS - GLOBAL MARKET"
+    }
+   },
+   {
     "ticker": "REPX",
     "name": "Riley Exploration Permian Inc",
     "ind": "Energy",
@@ -611,10 +610,10 @@
     "ev_rev": 2.6352,
     "px": 48.95,
     "dp": -0.6696,
-    "score": 82.5,
+    "score": 82.7,
     "sub": {
      "g": 82,
-     "m": 92,
+     "m": 93,
      "q": 64
     },
     "flags": [],
@@ -638,49 +637,6 @@
      "hi52": 48.01,
      "shares": 21.7,
      "exch": "NYSE MKT LLC"
-    }
-   },
-   {
-    "ticker": "SEPN",
-    "name": "Septerna Inc",
-    "ind": "Pharmaceuticals",
-    "group": "Health",
-    "mcap": 1813.866037748167,
-    "rev_g": 13520.11,
-    "accel": 50.0,
-    "r13": 18.6629,
-    "momo": 0.52,
-    "from_high": -23.033268101761262,
-    "ev_rev": 16.822,
-    "px": 39.33,
-    "dp": 8.1089,
-    "score": 80.9,
-    "sub": {
-     "g": 82,
-     "m": 85,
-     "q": 70
-    },
-    "flags": [],
-    "growth_doubt": true,
-    "unit_doubt": null,
-    "why": {
-     "vol": 67.51865,
-     "r26": 60.4542,
-     "accel_raw": 8855.52,
-     "growth_cap": 150.0,
-     "accel_cap": 50.0,
-     "rg3": null,
-     "rev_gq": 22375.63,
-     "dte": 0,
-     "gm_t": null,
-     "om_t": -44.04,
-     "om_a": -148.63,
-     "cashps": 8.1529,
-     "rps": 2.1954,
-     "adv": 0.46174,
-     "hi52": 51.1,
-     "shares": 45.08,
-     "exch": "NASDAQ NMS - GLOBAL MARKET"
     }
    },
    {
@@ -727,46 +683,89 @@
     }
    },
    {
-    "ticker": "CBLL",
-    "name": "Ceribell Inc",
-    "ind": "Health Care",
+    "ticker": "SEPN",
+    "name": "Septerna Inc",
+    "ind": "Pharmaceuticals",
     "group": "Health",
-    "mcap": 948.7066531282051,
-    "rev_g": 31.7,
-    "accel": 0.8399999999999999,
-    "r13": 35.9278,
-    "momo": 0.84,
-    "from_high": null,
-    "ev_rev": 9.801,
-    "px": 27.73,
-    "dp": 6.6538,
-    "score": 79.7,
+    "mcap": 1813.866037748167,
+    "rev_g": 13520.11,
+    "accel": 50.0,
+    "r13": 18.6629,
+    "momo": 0.52,
+    "from_high": -23.033268101761262,
+    "ev_rev": 16.822,
+    "px": 39.33,
+    "dp": 8.1089,
+    "score": 80.7,
     "sub": {
-     "g": 77,
-     "m": 93,
-     "q": 58
+     "g": 82,
+     "m": 84,
+     "q": 70
+    },
+    "flags": [],
+    "growth_doubt": true,
+    "unit_doubt": null,
+    "why": {
+     "vol": 67.51865,
+     "r26": 60.4542,
+     "accel_raw": 8855.52,
+     "growth_cap": 150.0,
+     "accel_cap": 50.0,
+     "rg3": null,
+     "rev_gq": 22375.63,
+     "dte": 0,
+     "gm_t": null,
+     "om_t": -44.04,
+     "om_a": -148.63,
+     "cashps": 8.1529,
+     "rps": 2.1954,
+     "adv": 0.46174,
+     "hi52": 51.1,
+     "shares": 45.08,
+     "exch": "NASDAQ NMS - GLOBAL MARKET"
+    }
+   },
+   {
+    "ticker": "TXO",
+    "name": "TXO Partners LP",
+    "ind": "Energy",
+    "group": "Energy",
+    "mcap": 856.0925270791367,
+    "rev_g": 22.18,
+    "accel": 45.68,
+    "r13": 11.0938,
+    "momo": 0.54,
+    "from_high": -9.429941395844443,
+    "ev_rev": 2.3346,
+    "px": 14.11,
+    "dp": -0.3531,
+    "score": 80.4,
+    "sub": {
+     "g": 85,
+     "m": 85,
+     "q": 62
     },
     "flags": [],
     "growth_doubt": false,
     "unit_doubt": null,
     "why": {
-     "vol": 47.156406,
-     "r26": 45.2893,
-     "accel_raw": 0.8399999999999999,
+     "vol": 26.430529,
+     "r26": 19.2953,
+     "accel_raw": 45.68,
      "growth_cap": 150.0,
      "accel_cap": 50.0,
-     "rg3": 50.9,
-     "rev_gq": 32.54,
-     "dte": 0.1557,
-     "gm_t": 88.9,
-     "om_t": -68.62,
-     "om_a": -65.57,
-     "cashps": 3.3817,
-     "rps": 2.681,
-     "adv": 0.41069,
-     "hi52": 26.72,
-     "shares": 37.94,
-     "exch": "NASDAQ NMS - GLOBAL MARKET"
+     "rg3": 17.63,
+     "rev_gq": 67.86,
+     "dte": 0.4168,
+     "gm_t": 53.24,
+     "om_t": -10.63,
+     "om_a": -7.63,
+     "cashps": 1.9384,
+     "rps": 7.162,
+     "adv": 0.09831,
+     "hi52": 15.5791,
+     "shares": 55.24,
+     "exch": "NEW YORK STOCK EXCHANGE, INC."
     }
    },
    {
@@ -783,10 +782,10 @@
     "ev_rev": 0.765,
     "px": 2.63,
     "dp": 0.3817,
-    "score": 79.5,
+    "score": 79.6,
     "sub": {
      "g": 76,
-     "m": 95,
+     "m": 96,
      "q": 55
     },
     "flags": [],
@@ -813,49 +812,6 @@
     }
    },
    {
-    "ticker": "TXO",
-    "name": "TXO Partners LP",
-    "ind": "Energy",
-    "group": "Energy",
-    "mcap": 856.0925270791367,
-    "rev_g": 22.18,
-    "accel": 45.68,
-    "r13": 8.7786,
-    "momo": 0.45,
-    "from_high": -9.429941395844443,
-    "ev_rev": 2.3469,
-    "px": 14.11,
-    "dp": -0.3531,
-    "score": 78.8,
-    "sub": {
-     "g": 85,
-     "m": 81,
-     "q": 62
-    },
-    "flags": [],
-    "growth_doubt": false,
-    "unit_doubt": null,
-    "why": {
-     "vol": 26.477196,
-     "r26": 16.8033,
-     "accel_raw": 45.68,
-     "growth_cap": 150.0,
-     "accel_cap": 50.0,
-     "rg3": 17.63,
-     "rev_gq": 67.86,
-     "dte": 0.4168,
-     "gm_t": 53.24,
-     "om_t": -10.63,
-     "om_a": -7.63,
-     "cashps": 1.9384,
-     "rps": 7.162,
-     "adv": 0.10715,
-     "hi52": 15.5791,
-     "shares": 55.24,
-     "exch": "NEW YORK STOCK EXCHANGE, INC."
-    }
-   },
-   {
     "ticker": "NXDR",
     "name": "Nextdoor Holdings Inc",
     "ind": "Media",
@@ -869,7 +825,7 @@
     "ev_rev": 3.4314,
     "px": 2.58,
     "dp": 3.2,
-    "score": 78.4,
+    "score": 78.6,
     "sub": {
      "g": 73,
      "m": 93,
@@ -912,7 +868,7 @@
     "ev_rev": 13.991,
     "px": 50.23,
     "dp": 2.052,
-    "score": 77.6,
+    "score": 77.7,
     "sub": {
      "g": 86,
      "m": 86,
@@ -942,6 +898,135 @@
     }
    },
    {
+    "ticker": "CBLL",
+    "name": "Ceribell Inc",
+    "ind": "Health Care",
+    "group": "Health",
+    "mcap": 948.7066531282051,
+    "rev_g": 31.7,
+    "accel": 0.8399999999999999,
+    "r13": 33.7607,
+    "momo": 0.61,
+    "from_high": -0.7516105941302809,
+    "ev_rev": 9.6617,
+    "px": 27.73,
+    "dp": 6.6538,
+    "score": 77.5,
+    "sub": {
+     "g": 77,
+     "m": 88,
+     "q": 58
+    },
+    "flags": [],
+    "growth_doubt": false,
+    "unit_doubt": null,
+    "why": {
+     "vol": 51.642708,
+     "r26": 28.0818,
+     "accel_raw": 0.8399999999999999,
+     "growth_cap": 150.0,
+     "accel_cap": 50.0,
+     "rg3": 50.9,
+     "rev_gq": 32.54,
+     "dte": 0.1557,
+     "gm_t": 88.9,
+     "om_t": -68.62,
+     "om_a": -65.57,
+     "cashps": 3.3817,
+     "rps": 2.681,
+     "adv": 0.48019,
+     "hi52": 27.94,
+     "shares": 37.94,
+     "exch": "NASDAQ NMS - GLOBAL MARKET"
+    }
+   },
+   {
+    "ticker": "NAT",
+    "name": "Nordic American Tankers Ltd",
+    "ind": "Energy",
+    "group": "Energy",
+    "mcap": 1662.2426750327652,
+    "rev_g": 48,
+    "accel": 49.489999999999995,
+    "r13": 26.129,
+    "momo": 0.74,
+    "from_high": -16.216216216216218,
+    "ev_rev": 7.4491,
+    "px": 7.44,
+    "dp": -1.0638,
+    "score": 77.4,
+    "sub": {
+     "g": 68,
+     "m": 91,
+     "q": 69
+    },
+    "flags": [],
+    "growth_doubt": true,
+    "unit_doubt": null,
+    "why": {
+     "vol": 39.251534,
+     "r26": 33.9041,
+     "accel_raw": 49.489999999999995,
+     "growth_cap": 150.0,
+     "accel_cap": 50.0,
+     "rg3": -18.67,
+     "rev_gq": 97.49,
+     "dte": 0.8512,
+     "gm_t": 75.35,
+     "om_t": 61.11,
+     "om_a": 25.39,
+     "cashps": 0.6295,
+     "rps": 1.2338,
+     "adv": 6.24956,
+     "hi52": 8.88,
+     "shares": 211.75,
+     "exch": "NEW YORK STOCK EXCHANGE, INC."
+    }
+   },
+   {
+    "ticker": "TEN",
+    "name": "Tsakos Energy Navigation Ltd",
+    "ind": "Energy",
+    "group": "Energy",
+    "mcap": 1288.1180526363216,
+    "rev_g": 23.23,
+    "accel": 31.139999999999997,
+    "r13": 36.0447,
+    "momo": 0.88,
+    "from_high": -11.158117398202005,
+    "ev_rev": 3.2753,
+    "px": 50.4,
+    "dp": 0.6993,
+    "score": 77.4,
+    "sub": {
+     "g": 72,
+     "m": 95,
+     "q": 54
+    },
+    "flags": [],
+    "growth_doubt": false,
+    "unit_doubt": null,
+    "why": {
+     "vol": 39.892807,
+     "r26": 33.3507,
+     "accel_raw": 31.139999999999997,
+     "growth_cap": 150.0,
+     "accel_cap": 50.0,
+     "rg3": -2.45,
+     "rev_gq": 54.37,
+     "dte": 1.0231,
+     "gm_t": 61.58,
+     "om_t": 43.17,
+     "om_a": 31.59,
+     "cashps": 15.4723,
+     "rps": 32.0197,
+     "adv": 0.49864,
+     "hi52": 56.73,
+     "shares": 30.13,
+     "exch": "NEW YORK STOCK EXCHANGE, INC."
+    }
+   },
+   {
     "ticker": "FENC",
     "name": "Fennec Pharmaceuticals Inc",
     "ind": "Biotechnology",
@@ -955,7 +1040,7 @@
     "ev_rev": 5.3907,
     "px": 10.5,
     "dp": 2.2395,
-    "score": 77.5,
+    "score": 77.3,
     "sub": {
      "g": 87,
      "m": 83,
@@ -985,49 +1070,6 @@
     }
    },
    {
-    "ticker": "TEN",
-    "name": "Tsakos Energy Navigation Ltd",
-    "ind": "Energy",
-    "group": "Energy",
-    "mcap": 1288.1180526363216,
-    "rev_g": 23.23,
-    "accel": 31.139999999999997,
-    "r13": 36.0447,
-    "momo": 0.88,
-    "from_high": -11.158117398202005,
-    "ev_rev": 3.2753,
-    "px": 50.4,
-    "dp": 0.6993,
-    "score": 77.4,
-    "sub": {
-     "g": 72,
-     "m": 94,
-     "q": 54
-    },
-    "flags": [],
-    "growth_doubt": false,
-    "unit_doubt": null,
-    "why": {
-     "vol": 39.892807,
-     "r26": 33.3507,
-     "accel_raw": 31.139999999999997,
-     "growth_cap": 150.0,
-     "accel_cap": 50.0,
-     "rg3": -2.45,
-     "rev_gq": 54.37,
-     "dte": 1.0231,
-     "gm_t": 61.58,
-     "om_t": 43.17,
-     "om_a": 31.59,
-     "cashps": 15.4723,
-     "rps": 32.0197,
-     "adv": 0.49864,
-     "hi52": 56.73,
-     "shares": 30.13,
-     "exch": "NEW YORK STOCK EXCHANGE, INC."
-    }
-   },
-   {
     "ticker": "TK",
     "name": "Teekay Corp Ltd",
     "ind": "Energy",
@@ -1041,10 +1083,10 @@
     "ev_rev": 0.3795,
     "px": 13.87,
     "dp": -0.072,
-    "score": 77.2,
+    "score": 77.1,
     "sub": {
      "g": 60,
-     "m": 86,
+     "m": 85,
      "q": 94
     },
     "flags": [
@@ -1073,49 +1115,6 @@
     }
    },
    {
-    "ticker": "NAT",
-    "name": "Nordic American Tankers Ltd",
-    "ind": "Energy",
-    "group": "Energy",
-    "mcap": 1662.2426750327652,
-    "rev_g": 48,
-    "accel": 49.489999999999995,
-    "r13": 26.129,
-    "momo": 0.74,
-    "from_high": -16.216216216216218,
-    "ev_rev": 7.4491,
-    "px": 7.44,
-    "dp": -1.0638,
-    "score": 77.1,
-    "sub": {
-     "g": 68,
-     "m": 90,
-     "q": 69
-    },
-    "flags": [],
-    "growth_doubt": true,
-    "unit_doubt": null,
-    "why": {
-     "vol": 39.251534,
-     "r26": 33.9041,
-     "accel_raw": 49.489999999999995,
-     "growth_cap": 150.0,
-     "accel_cap": 50.0,
-     "rg3": -18.67,
-     "rev_gq": 97.49,
-     "dte": 0.8512,
-     "gm_t": 75.35,
-     "om_t": 61.11,
-     "om_a": 25.39,
-     "cashps": 0.6295,
-     "rps": 1.2338,
-     "adv": 6.24956,
-     "hi52": 8.88,
-     "shares": 211.75,
-     "exch": "NEW YORK STOCK EXCHANGE, INC."
-    }
-   },
-   {
     "ticker": "OSBC",
     "name": "Old Second Bancorp Inc",
     "ind": "Banking",
@@ -1123,8 +1122,8 @@
     "mcap": 1297.839444075059,
     "rev_g": 59.28261,
     "accel": -31.319229999999997,
-    "r13": 6.2096,
-    "momo": 0.6,
+    "r13": 5.2453,
+    "momo": 0.59,
     "from_high": -3.550182306658989,
     "ev_rev": null,
     "px": 25.13,
@@ -1132,7 +1131,7 @@
     "score": 77.0,
     "sub": {
      "g": 70,
-     "m": 87,
+     "m": 86,
      "q": 71
     },
     "flags": [
@@ -1142,8 +1141,8 @@
     "growth_doubt": false,
     "unit_doubt": null,
     "why": {
-     "vol": 16.551067,
-     "r26": 15.5795,
+     "vol": 15.549597,
+     "r26": 15.1319,
      "accel_raw": -31.319229999999997,
      "growth_cap": 150.0,
      "accel_cap": 50.0,
@@ -1155,7 +1154,7 @@
      "om_a": 36.72655,
      "cashps": 1.2431,
      "rps": 6.37677,
-     "adv": 0.65298,
+     "adv": 0.64072,
      "hi52": 26.055,
      "shares": 50.94,
      "exch": "NASDAQ NMS - GLOBAL MARKET"
@@ -1175,7 +1174,7 @@
     "ev_rev": 0.8931,
     "px": 46.07,
     "dp": 0.8317,
-    "score": 76.9,
+    "score": 76.8,
     "sub": {
      "g": 62,
      "m": 98,
@@ -1248,6 +1247,51 @@
     }
    },
    {
+    "ticker": "NECB",
+    "name": "Northeast Community Bancorp Inc",
+    "ind": "Banking",
+    "group": "Financials",
+    "mcap": 370.4446354399254,
+    "rev_g": 98.74981,
+    "accel": -17.48174999999999,
+    "r13": 4.2248,
+    "momo": 0.4,
+    "from_high": -2.107809260539062,
+    "ev_rev": null,
+    "px": 28.33,
+    "dp": 3.6211,
+    "score": 76.2,
+    "sub": {
+     "g": 69,
+     "m": 79,
+     "q": 85
+    },
+    "flags": [
+     "E-3d"
+    ],
+    "growth_doubt": true,
+    "unit_doubt": null,
+    "why": {
+     "vol": 16.793705,
+     "r26": 10.4758,
+     "accel_raw": -17.48174999999999,
+     "growth_cap": 150.0,
+     "accel_cap": 50.0,
+     "rg3": 10.19055,
+     "rev_gq": 81.26806,
+     "dte": 0.0013,
+     "gm_t": null,
+     "om_t": 62.70103,
+     "om_a": 52.51686,
+     "cashps": 1.086,
+     "rps": 6.47036,
+     "adv": 0.05459,
+     "hi52": 28.94,
+     "shares": 13.77,
+     "exch": "NASDAQ NMS - GLOBAL MARKET"
+    }
+   },
+   {
     "ticker": "IDT",
     "name": "IDT Corp",
     "ind": "Telecommunication",
@@ -1261,7 +1305,7 @@
     "ev_rev": 1.4792,
     "px": 84.14,
     "dp": 2.8355,
-    "score": 76.2,
+    "score": 76.1,
     "sub": {
      "g": 61,
      "m": 99,
@@ -1288,51 +1332,6 @@
      "hi52": 83.185,
      "shares": 24.87,
      "exch": "NEW YORK STOCK EXCHANGE, INC."
-    }
-   },
-   {
-    "ticker": "BBNX",
-    "name": "Beta Bionics Inc",
-    "ind": "Health Care",
-    "group": "Health",
-    "mcap": 873.6997614718875,
-    "rev_g": 94.09,
-    "accel": -50.0,
-    "r13": 0.0593,
-    "momo": 0.47,
-    "from_high": -45.765820849893004,
-    "ev_rev": 7.2745,
-    "px": 17.74,
-    "dp": 5.3444,
-    "score": 76.0,
-    "sub": {
-     "g": 74,
-     "m": 83,
-     "q": 67
-    },
-    "flags": [
-     "E-7d"
-    ],
-    "growth_doubt": false,
-    "unit_doubt": null,
-    "why": {
-     "vol": 76.82367,
-     "r26": 90.4063,
-     "accel_raw": -56.330000000000005,
-     "growth_cap": 150.0,
-     "accel_cap": 50.0,
-     "rg3": 724.29,
-     "rev_gq": 37.76,
-     "dte": 0,
-     "gm_t": 58.31,
-     "om_t": -69.75,
-     "om_a": -71.5,
-     "cashps": 4.0125,
-     "rps": 2.6717,
-     "adv": 0.9106,
-     "hi52": 32.71,
-     "shares": 44.99,
-     "exch": "NASDAQ NMS - GLOBAL MARKET"
     }
    },
    {
@@ -1375,6 +1374,51 @@
      "adv": 0.89155,
      "hi52": 36.97,
      "shares": 65.6,
+     "exch": "NASDAQ NMS - GLOBAL MARKET"
+    }
+   },
+   {
+    "ticker": "KMTS",
+    "name": "Kestra Medical Technologies Ltd",
+    "ind": "Health Care",
+    "group": "Health",
+    "mcap": 1475.6265969734,
+    "rev_g": 60.72,
+    "accel": -0.8399999999999963,
+    "r13": 3.4735,
+    "momo": 0.35,
+    "from_high": -5.4333333333333345,
+    "ev_rev": 16.0427,
+    "px": 28.37,
+    "dp": -3.4048,
+    "score": 75.4,
+    "sub": {
+     "g": 82,
+     "m": 77,
+     "q": 58
+    },
+    "flags": [
+     "new"
+    ],
+    "growth_doubt": false,
+    "unit_doubt": null,
+    "why": {
+     "vol": 54.67673,
+     "r26": 42.5294,
+     "accel_raw": -0.8399999999999963,
+     "growth_cap": 150.0,
+     "accel_cap": 50.0,
+     "rg3": 131.88,
+     "rev_gq": 59.88,
+     "dte": 0.326,
+     "gm_t": 53.89,
+     "om_t": -140.38,
+     "om_a": -141.64,
+     "cashps": 3.3559,
+     "rps": 1.8223,
+     "adv": 0.27076,
+     "hi52": 30,
+     "shares": 58.6,
      "exch": "NASDAQ NMS - GLOBAL MARKET"
     }
    },
@@ -1422,101 +1466,58 @@
     }
    },
    {
-    "ticker": "NECB",
-    "name": "Northeast Community Bancorp Inc",
-    "ind": "Banking",
-    "group": "Financials",
-    "mcap": 370.4446354399254,
-    "rev_g": 98.74981,
-    "accel": -17.48174999999999,
-    "r13": 3.2873,
-    "momo": 0.32,
-    "from_high": -2.107809260539062,
-    "ev_rev": null,
-    "px": 28.33,
-    "dp": 3.6211,
-    "score": 75.0,
+    "ticker": "ABTC",
+    "name": "American Bitcoin Corp",
+    "ind": "Technology",
+    "group": "Technology",
+    "mcap": 581.8295912012849,
+    "rev_g": 2495.03,
+    "accel": 50.0,
+    "r13": 35.3982,
+    "momo": 0.02,
+    "from_high": -92.00617283950618,
+    "ev_rev": 2.1116,
+    "px": 7.77,
+    "dp": 1.8349,
+    "score": 74.0,
     "sub": {
-     "g": 69,
-     "m": 76,
-     "q": 85
+     "g": 100,
+     "m": 57,
+     "q": 56
     },
     "flags": [
-     "E-3d"
+     "new"
     ],
     "growth_doubt": true,
     "unit_doubt": null,
     "why": {
-     "vol": 17.585556,
-     "r26": 9.2454,
-     "accel_raw": -17.48174999999999,
+     "vol": 108.03109,
+     "r26": -46.4286,
+     "accel_raw": 2271.7099999999996,
      "growth_cap": 150.0,
      "accel_cap": 50.0,
-     "rg3": 10.19055,
-     "rev_gq": 81.26806,
-     "dte": 0.0013,
-     "gm_t": null,
-     "om_t": 62.70103,
-     "om_a": 52.51686,
-     "cashps": 1.086,
-     "rps": 6.47036,
-     "adv": 0.05071,
-     "hi52": 28.94,
-     "shares": 13.77,
-     "exch": "NASDAQ NMS - GLOBAL MARKET"
-    }
-   },
-   {
-    "ticker": "TWIN",
-    "name": "Twin Disc Inc",
-    "ind": "Machinery",
-    "group": "Industrials",
-    "mcap": 350.3878798818257,
-    "rev_g": 11.9,
-    "accel": 6.429999999999998,
-    "r13": 15.6236,
-    "momo": 0.75,
-    "from_high": -14.34923892594493,
-    "ev_rev": 1.0551,
-    "px": 25.04,
-    "dp": 2.2876,
-    "score": 74.7,
-    "sub": {
-     "g": 70,
-     "m": 90,
-     "q": 52
-    },
-    "flags": [],
-    "growth_doubt": false,
-    "unit_doubt": null,
-    "why": {
-     "vol": 37.223724,
-     "r26": 46.6779,
-     "accel_raw": 6.429999999999998,
-     "growth_cap": 150.0,
-     "accel_cap": 50.0,
-     "rg3": 11.24,
-     "rev_gq": 18.33,
-     "dte": 0.1609,
-     "gm_t": 26.9,
-     "om_t": 4.71,
-     "om_a": 4.71,
-     "cashps": 1.1113,
-     "rps": 24.7498,
-     "adv": 0.07654,
-     "hi52": 29.235,
-     "shares": 14.42,
+     "rg3": 138.52,
+     "rev_gq": 4766.74,
+     "dte": 0,
+     "gm_t": 52.66,
+     "om_t": -106.64,
+     "om_a": -123.13,
+     "cashps": 0.26,
+     "rps": 3.8006,
+     "adv": 1.06824,
+     "hi52": 97.2,
+     "shares": 72.82,
      "exch": "NASDAQ NMS - GLOBAL MARKET"
     }
    }
   ],
   "freshness": {
    "last_full_h": 0.0,
-   "quote_median_h": 4.7,
+   "quote_median_h": 7.8,
    "quote_count": 1863,
    "bench_h": 0.0,
-   "universe_h": 90.6,
-   "earnings_h": 4.6,
+   "universe_h": 93.7,
+   "earnings_h": 7.7,
    "bench_gate_h": 72
   },
   "reach": {
@@ -1539,9 +1540,25 @@
   },
   "changes": {
    "prev_day": "2026-10-19",
-   "entered": [],
-   "left": [],
-   "held": 25
+   "entered": [
+    {
+     "ticker": "KMTS",
+     "name": "Kestra Medical Technologies Ltd",
+     "score": 75.4,
+     "ind": "Health Care"
+    },
+    {
+     "ticker": "ABTC",
+     "name": "American Bitcoin Corp",
+     "score": 74.0,
+     "ind": "Technology"
+    }
+   ],
+   "left": [
+    "BBNX",
+    "TWIN"
+   ],
+   "held": 23
   },
   "below_floor": [
    {
@@ -1563,7 +1580,7 @@
     "name": "Chaince Digital Holdings Inc",
     "rev_ttm": 1.898616,
     "rev_g": 94.74,
-    "r13": 104.0625
+    "r13": 123.5484
    },
    {
     "ticker": "ARCT",
@@ -1775,6 +1792,13 @@
   },
   "filings_material": [
    {
+    "ticker": "MCB",
+    "name": "Metropolitan Bank Holding Corp",
+    "date": "2026-10-20",
+    "link": "https://www.sec.gov/Archives/edgar/data/1476034/000110465926117424/0001104659-26-117424-index.htm",
+    "form": "8-K"
+   },
+   {
     "ticker": "OSBC",
     "name": "Old Second Bancorp Inc",
     "date": "2026-10-20",
@@ -1836,16 +1860,16 @@
     "date": "2026-10-20",
     "link": "https://www.sec.gov/Archives/edgar/data/915840/000110465926117198/0001104659-26-117198-index.htm",
     "form": "8-K"
-   },
-   {
-    "ticker": "FRNM",
-    "name": "Perceptive Capital Solutions Corp",
-    "date": "2026-10-20",
-    "link": "https://www.sec.gov/Archives/edgar/data/2017526/000114036126040186/0001140361-26-040186-index.htm",
-    "form": "8-K"
    }
   ],
   "filings_activist": [
+   {
+    "ticker": "BMBL",
+    "name": "Bumble Inc",
+    "date": "2026-10-20",
+    "link": "https://www.sec.gov/Archives/edgar/data/1830043/000107680926000124/0001076809-26-000124-index.htm",
+    "form": "SCHEDULE 13G"
+   },
    {
     "ticker": "SG",
     "name": "Sweetgreen Inc",
@@ -1903,21 +1927,21 @@
     "form": "SCHEDULE 13G"
    },
    {
-    "ticker": "NVGS",
-    "name": "Navigator Holdings Ltd",
-    "date": "2026-10-19",
-    "link": "https://www.sec.gov/Archives/edgar/data/1581804/000121390026110664/0001213900-26-110664-index.htm",
+    "ticker": "XPOF",
+    "name": "Xponential Fitness Inc",
+    "date": "2026-10-20",
+    "link": "https://www.sec.gov/Archives/edgar/data/1802156/000092189526002831/0000921895-26-002831-index.htm",
     "form": "SCHEDULE 13D/A"
-   },
-   {
-    "ticker": "BMBL",
-    "name": "Bumble Inc",
-    "date": "2026-10-19",
-    "link": "https://www.sec.gov/Archives/edgar/data/1830043/000147793226006325/0001477932-26-006325-index.htm",
-    "form": "SCHEDULE 13G"
    }
   ],
   "filings_offering": [
+   {
+    "ticker": "EQBK",
+    "name": "Equity Bancshares Inc",
+    "date": "2026-10-20",
+    "link": "https://www.sec.gov/Archives/edgar/data/1227500/000119312526426820/0001193125-26-426820-index.htm",
+    "form": "424B3"
+   },
    {
     "ticker": "AIAI",
     "name": "AIAI Holdings Corp",
@@ -1980,17 +2004,18 @@
     "date": "2026-10-14",
     "link": "https://www.sec.gov/Archives/edgar/data/1956744/000149315226047066/0001493152-26-047066-index.htm",
     "form": "424B5"
-   },
-   {
-    "ticker": "OPTT",
-    "name": "Ocean Power Technologies Inc",
-    "date": "2026-10-14",
-    "link": "https://www.sec.gov/Archives/edgar/data/1378140/000149315226047060/0001493152-26-047060-index.htm",
-    "form": "424B5"
    }
   ],
   "budget_mode": "full",
   "news": [
+   {
+    "title": "First Trust High Yield Opportunities 2027 Term Fund Declares its Monthly Common Share Distribution of $0.125 Per Share for November",
+    "link": "http://www.businesswire.com/news/home/20261020128260/en/First-Trust-High-Yield-Opportunities-2027-Term-Fund-Declares-its-Monthly-Common-Share-Distribution-of-0.125-Per-Share-for-November/?feedref=JjAwJuNHiystnCoBq_hl-YorNIXXeJUidDamMzBr2lVrRA1xRkqfEfrAVCWz-Z_wrCOi9QzgjCezTS3Nw_X6kJUrpSBm-Hav1w-UkdSlG3ne1zTTrM-woVxs6_pUhglHIbE9ZC1pD3bt6lQgRU5j6g==",
+    "source": "Business Wire",
+    "published": "2026-10-20T20:10:00+00:00",
+    "summary": "WHEATON, Ill.--(BUSINESS WIRE)--First Trust High Yield Opportunities 2027 Term Fund (the \"Fund\") (NYSE: FTHY) has declared the Fund’s regularly scheduled monthly common share distribution in the amount of $0.125 per share payable…",
+    "ticker": "FTHY"
+   },
    {
     "title": "TBLA CLASS ACTION DEADLINE TONIGHT: Faruqi & Faruqi, LLP Reminds Taboola.com (NASDAQ: TBLA) Investors of Securities Class Action Lawsuit Deadline on October 20, 2026",
     "link": "http://www.businesswire.com/news/home/20261020474726/en/TBLA-CLASS-ACTION-DEADLINE-TONIGHT-Faruqi-Faruqi-LLP-Reminds-Taboola.com-NASDAQ-TBLA-Investors-of-Securities-Class-Action-Lawsuit-Deadline-on-October-20-2026/?feedref=JjAwJuNHiystnCoBq_hl-YorNIXXeJUidDamMzBr2lVrRA1xRkqfEfrAVCWz-Z_wrCOi9QzgjCezTS3Nw_X6kJUrpSBm-Hav1w-UkdSlG3ne1zTTrM-woVxs6_pUhglHIbE9ZC1pD3bt6lQgRU5j6g==",
@@ -2024,36 +2049,28 @@
     "ticker": "TBLA"
    },
    {
-    "title": "INVESTOR ACTION NOTICE: Moore Law PLLC Encourages Investors in AEVEX Corp. to Contact Law Firm",
-    "link": "https://www.prnewswire.com/news-releases/investor-action-notice-moore-law-pllc-encourages-investors-in-aevex-corp-to-contact-law-firm-302914572.html",
-    "source": "PR Newswire",
-    "published": "2026-10-20T19:47:00+00:00",
-    "summary": "AEVEX Corp. (NYSE: AVEX) shareholders should email fletcher@fmoorelaw.com NEW YORK, Oct. 20, 2026 /PRNewswire/ -- What is the Investigation About? On June 1, 2026, after the market closed, AEVEX Corp. filed a registration…",
-    "ticker": "AVEX"
+    "title": "Amalgamated Financial Corp. Declares Regular Quarterly Dividend",
+    "link": "http://www.businesswire.com/news/home/20261020570144/en/Amalgamated-Financial-Corp.-Declares-Regular-Quarterly-Dividend/?feedref=JjAwJuNHiystnCoBq_hl-YorNIXXeJUidDamMzBr2lVrRA1xRkqfEfrAVCWz-Z_wrCOi9QzgjCezTS3Nw_X6kJUrpSBm-Hav1w-UkdSlG3ne1zTTrM-woVxs6_pUhglHIbE9ZC1pD3bt6lQgRU5j6g==",
+    "source": "Business Wire",
+    "published": "2026-10-20T20:30:00+00:00",
+    "summary": "NEW YORK--(BUSINESS WIRE)--Amalgamated Financial Corp. (“Amalgamated” or the “Company”) (Nasdaq: AMAL) today announced that its Board of Directors has declared a regular dividend to common stockholders of $0.17 per share, payable…",
+    "ticker": "AMAL"
    },
    {
-    "title": "Novanta to Present at the Baird 2026 Global Industrial Conference on Wednesday, November 11, 2026",
-    "link": "http://www.businesswire.com/news/home/20261020898092/en/Novanta-to-Present-at-the-Baird-2026-Global-Industrial-Conference-on-Wednesday-November-11-2026/?feedref=JjAwJuNHiystnCoBq_hl-YorNIXXeJUidDamMzBr2lVrRA1xRkqfEfrAVCWz-Z_wrCOi9QzgjCezTS3Nw_X6kJUrpSBm-Hav1w-UkdSlG3ne1zTTrM-woVxs6_pUhglHIbE9ZC1pD3bt6lQgRU5j6g==",
+    "title": "KKR Real Estate Finance Trust Inc. Declares Preferred Stock Dividend",
+    "link": "http://www.businesswire.com/news/home/20261020255659/en/KKR-Real-Estate-Finance-Trust-Inc.-Declares-Preferred-Stock-Dividend/?feedref=JjAwJuNHiystnCoBq_hl-YorNIXXeJUidDamMzBr2lVrRA1xRkqfEfrAVCWz-Z_wrCOi9QzgjCezTS3Nw_X6kJUrpSBm-Hav1w-UkdSlG3ne1zTTrM-woVxs6_pUhglHIbE9ZC1pD3bt6lQgRU5j6g==",
     "source": "Business Wire",
-    "published": "2026-10-20T19:02:00+00:00",
-    "summary": "BOSTON--(BUSINESS WIRE)--Novanta Inc. (Nasdaq: NOVT) (the \"Company\"), a trusted technology partner to medical and advanced technology equipment manufacturers, announced today that Robert Buckley, Chief Financial Officer, and John…",
-    "ticker": "GIC"
+    "published": "2026-10-20T20:15:00+00:00",
+    "summary": "NEW YORK--(BUSINESS WIRE)--KKR Real Estate Finance Trust Inc. (the “Company” or “KREF”) (NYSE: KREF) announced that the Board of Directors has declared a dividend of $0.40625 per each issued and outstanding share of the Company’s…",
+    "ticker": "KREF"
    },
    {
-    "title": "Xtrackers (IE) plc UK Regulatory Announcement: Net Asset Value(s)",
-    "link": "http://www.businesswire.com/news/home/20261021607019/en/Xtrackers-IE-plc-UK-Regulatory-Announcement-Net-Asset-Value-s/?feedref=JjAwJuNHiystnCoBq_hl-YorNIXXeJUidDamMzBr2lVrRA1xRkqfEfrAVCWz-Z_wrCOi9QzgjCezTS3Nw_X6kJUrpSBm-Hav1w-UkdSlG3ne1zTTrM-woVxs6_pUhglHIbE9ZC1pD3bt6lQgRU5j6g==",
+    "title": "Tennant Company to Report Third Quarter 2026 Results on November 2, 2026",
+    "link": "http://www.businesswire.com/news/home/20261020851080/en/Tennant-Company-to-Report-Third-Quarter-2026-Results-on-November-2-2026/?feedref=JjAwJuNHiystnCoBq_hl-YorNIXXeJUidDamMzBr2lVrRA1xRkqfEfrAVCWz-Z_wrCOi9QzgjCezTS3Nw_X6kJUrpSBm-Hav1w-UkdSlG3ne1zTTrM-woVxs6_pUhglHIbE9ZC1pD3bt6lQgRU5j6g==",
     "source": "Business Wire",
-    "published": "2026-10-20T16:14:00+00:00",
-    "summary": "LONDON--(BUSINESS WIRE)-- Xtrackers (IE) plc Investment Company with Variable Capital Registered Office: 78 Sir John Rogerson's Quay, Dublin 2, Ireland Registration number: 393802 (the “Company”) NOTICE TO SHAREHOLDERS OF THE…",
-    "ticker": "IE"
-   },
-   {
-    "title": "Oaktree Specialty Lending Corporation Schedules Fourth Fiscal Quarter and Full Year 2026 Earnings Conference Call for November 17, 2026",
-    "link": "http://www.businesswire.com/news/home/20261019798463/en/Oaktree-Specialty-Lending-Corporation-Schedules-Fourth-Fiscal-Quarter-and-Full-Year-2026-Earnings-Conference-Call-for-November-17-2026/?feedref=JjAwJuNHiystnCoBq_hl-YorNIXXeJUidDamMzBr2lVrRA1xRkqfEfrAVCWz-Z_wrCOi9QzgjCezTS3Nw_X6kJUrpSBm-Hav1w-UkdSlG3ne1zTTrM-woVxs6_pUhglHIbE9ZC1pD3bt6lQgRU5j6g==",
-    "source": "Business Wire",
-    "published": "2026-10-19T20:30:00+00:00",
-    "summary": "LOS ANGELES--(BUSINESS WIRE)--Oaktree Specialty Lending Corporation (NASDAQ:OCSL) (“Oaktree Specialty Lending” or the “Company”) today announced that it will report its financial results for the fourth fiscal quarter and full…",
-    "ticker": "OCSL"
+    "published": "2026-10-20T20:15:00+00:00",
+    "summary": "MINNEAPOLIS--(BUSINESS WIRE)--Tennant Company (NYSE: TNC) today announced that the company will report its third quarter 2026 financial results after the market closes on Monday, November 2, 2026, with a conference call to follow…",
+    "ticker": "TNC"
    }
   ]
  },
@@ -3652,9 +3669,9 @@
       "weight": 4.37,
       "ret": 7.19,
       "peak_px": 27.92,
-      "stop_pct": 19.6,
-      "stop_px": 22.44,
-      "room_pct": 23.6
+      "stop_pct": 21.5,
+      "stop_px": 21.92,
+      "room_pct": 26.5
      },
      {
       "ticker": "NXDR",
@@ -3862,9 +3879,9 @@
       "weight": 3.81,
       "ret": -4.26,
       "peak_px": 19.44,
-      "stop_pct": 32.0,
-      "stop_px": 13.23,
-      "room_pct": 34.1
+      "stop_pct": 32.4,
+      "stop_px": 13.15,
+      "room_pct": 34.9
      },
      {
       "ticker": "RDVT",
@@ -5112,9 +5129,9 @@
       "weight": 3.34,
       "ret": 7.19,
       "peak_px": 27.92,
-      "stop_pct": 19.6,
-      "stop_px": 22.44,
-      "room_pct": 23.6
+      "stop_pct": 21.5,
+      "stop_px": 21.92,
+      "room_pct": 26.5
      },
      {
       "ticker": "GNE",
@@ -5252,9 +5269,9 @@
       "weight": 2.11,
       "ret": -4.26,
       "peak_px": 19.44,
-      "stop_pct": 32.0,
-      "stop_px": 13.23,
-      "room_pct": 34.1
+      "stop_pct": 32.4,
+      "stop_px": 13.15,
+      "room_pct": 34.9
      },
      {
       "ticker": "IBEX",
@@ -7279,7 +7296,7 @@
  "stats": {
   "feeds_total": 20,
   "feeds_failed": 1,
-  "items": 1129,
+  "items": 1189,
   "smallcap_calls": 552,
   "feed_errors": [],
   "market_errors": [
