@@ -51,7 +51,7 @@ Excluding them would be a scoring change, so they stay and are disclosed.
 
 ```bash
 python3 pipeline.py --render-only      # rebuild the site from committed data
-python3 -m unittest discover tests     # 283 tests, must stay green
+python3 -m unittest discover tests     # must stay green
 python3 pipeline.py                    # FULL run — fetches live data, needs keys
 ```
 
