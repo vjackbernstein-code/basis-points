@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-21T02:02:11.163894+00:00",
+ "generated_at": "2026-10-21T07:26:27.030270+00:00",
  "market": [
   {
    "label": "S&P 500",
@@ -41,13 +41,12 @@
    "label": "Nasdaq",
    "symbol": "NASDAQCOM",
    "kind": "index",
-   "value": 26430.89,
-   "prev": 26140.03,
-   "value_txt": "26,430.89",
-   "delta": 1.112699564614121,
-   "delta_txt": "+1.11%",
+   "value": 26424.82,
+   "prev": 26430.89,
+   "value_txt": "26,424.82",
+   "delta": -0.02296555280582572,
+   "delta_txt": "-0.02%",
    "spark": [
-    26418.3,
     26522.55,
     27122.09,
     27244.28,
@@ -69,9 +68,10 @@
     26692.87,
     26713.03,
     26140.03,
-    26430.89
+    26430.89,
+    26424.82
    ],
-   "asof": "Oct 19"
+   "asof": "Oct 20"
   },
   {
    "label": "Dow",
@@ -293,11 +293,11 @@
    "label": "Bitcoin",
    "symbol": "bitcoin",
    "kind": "crypto",
-   "value": 83107.34233177052,
+   "value": 82751.63093940578,
    "prev": 82943.83149973174,
-   "value_txt": "$83,107",
-   "delta": 0.19713440901184992,
-   "delta_txt": "+0.20%",
+   "value_txt": "$82,752",
+   "delta": -0.23172375431750103,
+   "delta_txt": "-0.23%",
    "spark": [
     83640.10160067653,
     83576.13460018387,
@@ -321,18 +321,18 @@
     82019.58291286718,
     81875.26391574314,
     82943.83149973174,
-    83107.34233177052
+    82751.63093940578
    ]
   },
   {
    "label": "Ethereum",
    "symbol": "ethereum",
    "kind": "crypto",
-   "value": 2460.4824848125163,
+   "value": 2441.3610547378166,
    "prev": 2446.4878553971676,
-   "value_txt": "$2,460",
-   "delta": 0.5720293842650954,
-   "delta_txt": "+0.57%",
+   "value_txt": "$2,441",
+   "delta": -0.20955757650873869,
+   "delta_txt": "-0.21%",
    "spark": [
     2677.3845041515556,
     2684.708553282074,
@@ -356,12 +356,40 @@
     2407.8423723702235,
     2405.9183757810897,
     2446.4878553971676,
-    2460.4824848125163
+    2441.3610547378166
    ]
   }
  ],
- "tape_line": "S&P 500 +0.28%, Nasdaq +1.11%, Dow +1.02%; the 10-year Treasury at 5.15% (+6 bp); WTI crude $101.91 (+1.04%); bitcoin $83,107 (+0.20%).",
+ "tape_line": "S&P 500 +0.28%, Nasdaq -0.02%, Dow +1.02%; the 10-year Treasury at 5.15% (+6 bp); WTI crude $101.91 (+1.04%); bitcoin $82,752 (-0.23%).",
  "top": [
+  {
+   "title": "Dollar Recovers as Treasury Yields, Oil Prices Rise",
+   "link": "https://www.wsj.com/finance/currencies/asian-currencies-consolidate-but-may-be-supported-by-mild-risk-appetite-1384b72e?mod=rss_markets_main",
+   "source": "WSJ Markets",
+   "published": "2026-10-21T07:12:00+00:00",
+   "summary": "The dollar recovered as Treasury yields rose and oil prices pushed higher on worries over supply disruptions due to the Middle East conflict."
+  },
+  {
+   "title": "UK inflation jumps to 3.5% — cementing rate hike expectations",
+   "link": "https://www.cnbc.com/2026/10/21/inflation-uk-cpi-interest-rates.html",
+   "source": "CNBC",
+   "published": "2026-10-21T07:08:25+00:00",
+   "summary": "U.K. inflation rose by a hotter-than-expected 3.5% in the 12 months to September, driven by the surging cost of motor fuels."
+  },
+  {
+   "title": "Oil Prices Rise as Hormuz Shipping Risks Persist",
+   "link": "https://www.wsj.com/business/energy-oil/oil-prices-rise-as-hormuz-shipping-risks-persist-7df58bc8?mod=pls_whats_news_us_business_f",
+   "source": "WSJ Business",
+   "published": "2026-10-21T06:52:00+00:00",
+   "summary": "Oil prices rebounded from the previous session’s losses as traders weighed renewed threats to shipping through the Hormuz Strait and attacks targeting Saudi Arabia against a recovery in Middle East oil exports."
+  },
+  {
+   "title": "U.S. Treasury Yields Edge Higher in Asian Trade",
+   "link": "https://www.wsj.com/finance/investing/u-s-treasury-yields-edge-higher-in-asian-trade-0c544484?mod=rss_markets_main",
+   "source": "WSJ Markets",
+   "published": "2026-10-21T06:28:00+00:00",
+   "summary": "U.S. Treasury yields edged higher, reversing the decline in long-end yields the previous day, prompted by weak housing data."
+  },
   {
    "title": "Housing is flashing warning signs just as the Fed weighs more interest rate hikes",
    "link": "https://www.cnbc.com/2026/10/20/housing-mortgage-rates-real-estate-federal-reserve.html",
@@ -370,57 +398,29 @@
    "summary": "Housing data deteriorated further in September, according to separate reports Tuesday."
   },
   {
-   "title": "U.S. Stocks Mixed as Strong Earnings Offset AI Credit Fears",
-   "link": "https://www.wsj.com/finance/stocks/u-s-stocks-mixed-as-strong-earnings-offset-ai-credit-fears-d55414c3?mod=rss_markets_main",
+   "title": "Asian Stocks Mixed as AI Spending Concerns Linger",
+   "link": "https://www.wsj.com/finance/stocks/asian-equities-rebound-as-risk-sentiment-improves-70443e4d?mod=rss_markets_main",
    "source": "WSJ Markets",
-   "published": "2026-10-20T21:06:00+00:00",
-   "summary": "U.S. stocks ended mixed, as generally strong earnings offset worries about the sustainability of the debt-fuelled artificial-intelligence boom."
+   "published": "2026-10-21T05:22:00+00:00",
+   "summary": "Asian equities were mixed after rebounding on improved risk sentiment, as concerns about aggressive artificial-intelligence spending continued to linger."
   },
   {
-   "title": "Netflix posts third-quarter earnings beat, but shares fall on advertising and revenue guidance",
-   "link": "https://www.cnbc.com/2026/10/20/netflix-nflx-earnings-q3-2026.html",
-   "source": "CNBC",
-   "published": "2026-10-20T22:29:45+00:00",
-   "summary": "Wall Street and investors will be looking for Netflix to provide additional details about the company's strategy following recent organizational changes"
-  },
-  {
-   "title": "Gold Falls Amid Pressure From Rising Crude Prices",
-   "link": "https://www.wsj.com/finance/commodities-futures/gold-falls-amid-pressure-from-rising-crude-prices-ea4a6f71?mod=rss_markets_main",
-   "source": "WSJ Markets",
-   "published": "2026-10-21T01:15:00+00:00",
-   "summary": "Gold declined in early Asian trade. The precious metal is likely to remain weighed down by higher crude oil prices keeping inflationary pressures in places, said DHF Capital."
-  },
-  {
-   "title": "Treasury Yields Fall on String of Weak Housing Data",
-   "link": "https://www.wsj.com/finance/french-government-bonds-recover-as-yields-on-eurozone-u-s-peers-fall-cf473ce6?mod=rss_markets_main",
-   "source": "WSJ Markets",
-   "published": "2026-10-20T18:51:00+00:00",
-   "summary": "Treasury yields edged lower after a string of weaker-than-expected housing reports highlighted the strain of elevated mortgage rates."
-  },
-  {
-   "title": "Australian data center operator NextDC's shares plunge 40% after it slashes earnings forecast",
-   "link": "https://www.cnbc.com/2026/10/21/australia-data-center-operator-nexdc-datacenter.html",
-   "source": "CNBC",
-   "published": "2026-10-21T01:44:42+00:00",
-   "summary": "The company cited power supply delays at its Melbourne facility amid local community and stakeholder opposition for lowering earnings forecast."
-  },
-  {
-   "title": "Five Takeaways From SpaceX’s Earnings Call",
-   "link": "https://www.wsj.com/business/five-takeaways-from-spacexs-earnings-call-b91bcaf2?mod=pls_whats_news_us_business_f",
-   "source": "WSJ Business",
-   "published": "2026-10-20T23:42:00+00:00",
-   "summary": "A possible SpaceX-Tesla merger, a Louisiana launchpad and projected revenue of $500 billion a year, plus more from CEO Elon Musk."
+   "title": "Bitcoin hovers around $83,000 as AI earnings revive tech, ZEC jumps 11%",
+   "link": "https://www.coindesk.com/markets/2026/10/21/bitcoin-hovers-around-usd83-000-as-ai-earnings-revive-tech-zec-jumps-11",
+   "source": "CoinDesk",
+   "published": "2026-10-21T04:07:07+00:00",
+   "summary": "Strong results from SpaceX and Super Micro sent Asian chip stocks surging, and ZEC led crypto higher after developers set a date for its next network upgrade."
   }
  ],
  "smallcap": {
   "note": null,
-  "asof": "2026-10-21T02:02:04+00:00",
+  "asof": "2026-10-21T07:26:21+00:00",
   "coverage": {
    "universe": 9909,
    "profiled": 10153,
    "in_band": 1697,
    "measured": 1697,
-   "scored": 909,
+   "scored": 908,
    "below_floor": 66
   },
   "screen": [
@@ -567,7 +567,7 @@
     "ev_rev": 34.2754,
     "px": 7.87,
     "dp": 5.496,
-    "score": 83.8,
+    "score": 83.7,
     "sub": {
      "g": 99,
      "m": 81,
@@ -868,7 +868,7 @@
     "ev_rev": 13.991,
     "px": 50.19,
     "dp": 1.9707,
-    "score": 77.7,
+    "score": 77.6,
     "sub": {
      "g": 86,
      "m": 86,
@@ -1070,51 +1070,6 @@
     }
    },
    {
-    "ticker": "TK",
-    "name": "Teekay Corp Ltd",
-    "ind": "Energy",
-    "group": "Energy",
-    "mcap": 1244.3405037195469,
-    "rev_g": 15.59,
-    "accel": 27.080000000000002,
-    "r13": 27.8793,
-    "momo": 0.54,
-    "from_high": -12.94721481406934,
-    "ev_rev": 0.3795,
-    "px": 13.84,
-    "dp": -0.2882,
-    "score": 77.1,
-    "sub": {
-     "g": 60,
-     "m": 85,
-     "q": 94
-    },
-    "flags": [
-     "E-6d"
-    ],
-    "growth_doubt": false,
-    "unit_doubt": null,
-    "why": {
-     "vol": 39.881454,
-     "r26": 12.2793,
-     "accel_raw": 27.080000000000002,
-     "growth_cap": 150.0,
-     "accel_cap": 50.0,
-     "rg3": -7.25,
-     "rev_gq": 42.67,
-     "dte": 0,
-     "gm_t": 50.23,
-     "om_t": 47.8,
-     "om_a": 31.89,
-     "cashps": 14.4597,
-     "rps": 13.0305,
-     "adv": 0.512,
-     "hi52": 15.8984,
-     "shares": 87.69,
-     "exch": "NEW YORK STOCK EXCHANGE, INC."
-    }
-   },
-   {
     "ticker": "OSBC",
     "name": "Old Second Bancorp Inc",
     "ind": "Banking",
@@ -1161,6 +1116,51 @@
     }
    },
    {
+    "ticker": "TK",
+    "name": "Teekay Corp Ltd",
+    "ind": "Energy",
+    "group": "Energy",
+    "mcap": 1244.3405037195469,
+    "rev_g": 15.59,
+    "accel": 27.080000000000002,
+    "r13": 27.8793,
+    "momo": 0.54,
+    "from_high": -12.94721481406934,
+    "ev_rev": 0.3795,
+    "px": 13.84,
+    "dp": -0.2882,
+    "score": 77.0,
+    "sub": {
+     "g": 60,
+     "m": 85,
+     "q": 94
+    },
+    "flags": [
+     "E-6d"
+    ],
+    "growth_doubt": false,
+    "unit_doubt": null,
+    "why": {
+     "vol": 39.881454,
+     "r26": 12.2793,
+     "accel_raw": 27.080000000000002,
+     "growth_cap": 150.0,
+     "accel_cap": 50.0,
+     "rg3": -7.25,
+     "rev_gq": 42.67,
+     "dte": 0,
+     "gm_t": 50.23,
+     "om_t": 47.8,
+     "om_a": 31.89,
+     "cashps": 14.4597,
+     "rps": 13.0305,
+     "adv": 0.512,
+     "hi52": 15.8984,
+     "shares": 87.69,
+     "exch": "NEW YORK STOCK EXCHANGE, INC."
+    }
+   },
+   {
     "ticker": "IBEX",
     "name": "Ibex Ltd",
     "ind": "Professional Services",
@@ -1174,7 +1174,7 @@
     "ev_rev": 0.8931,
     "px": 46,
     "dp": 0.6785,
-    "score": 76.8,
+    "score": 76.7,
     "sub": {
      "g": 62,
      "m": 98,
@@ -1217,13 +1217,15 @@
     "ev_rev": 0.7919,
     "px": 31.25,
     "dp": -1.9454,
-    "score": 76.7,
+    "score": 76.6,
     "sub": {
      "g": 71,
      "m": 95,
      "q": 50
     },
-    "flags": [],
+    "flags": [
+     "E-7d"
+    ],
     "growth_doubt": false,
     "unit_doubt": null,
     "why": {
@@ -1509,11 +1511,11 @@
   ],
   "freshness": {
    "last_full_h": 0.0,
-   "quote_median_h": 6.1,
+   "quote_median_h": 5.5,
    "quote_count": 1863,
    "bench_h": 0.0,
-   "universe_h": 96.6,
-   "earnings_h": 10.6,
+   "universe_h": 102.0,
+   "earnings_h": 0.0,
    "bench_gate_h": 72
   },
   "reach": {
@@ -1638,6 +1640,12 @@
     "dp": -27.6063
    },
    {
+    "ticker": "FISN",
+    "name": "Deep Fission, Inc",
+    "px": 2.81,
+    "dp": -23.224
+   },
+   {
     "ticker": "AIAI",
     "name": "AIAI Holdings Corp",
     "px": 2.28,
@@ -1652,77 +1660,11 @@
    {
     "ticker": "ROMA",
     "name": "Roma Green Finance Ltd",
-    "px": 7.45,
-    "dp": -10.6715
-   },
-   {
-    "ticker": "MSC",
-    "name": "Studio City International Holdings Ltd",
-    "px": 0.83745,
-    "dp": -10.1256
+    "px": 7.4288,
+    "dp": -10.9257
    }
   ],
   "earnings": [
-   {
-    "date": "2026-10-20",
-    "ticker": "BFC",
-    "name": "Bank First Corp",
-    "hour": ""
-   },
-   {
-    "date": "2026-10-20",
-    "ticker": "BWB",
-    "name": "Bridgewater Bancshares Inc",
-    "hour": "amc"
-   },
-   {
-    "date": "2026-10-20",
-    "ticker": "CCBG",
-    "name": "Capital City Bank Group Inc",
-    "hour": "bmo"
-   },
-   {
-    "date": "2026-10-20",
-    "ticker": "DCOM",
-    "name": "Dime Community Bancshares Inc",
-    "hour": "bmo"
-   },
-   {
-    "date": "2026-10-20",
-    "ticker": "MBWM",
-    "name": "Mercantile Bank Corp",
-    "hour": "bmo"
-   },
-   {
-    "date": "2026-10-20",
-    "ticker": "MCB",
-    "name": "Metropolitan Bank Holding Corp",
-    "hour": "amc"
-   },
-   {
-    "date": "2026-10-20",
-    "ticker": "NPB",
-    "name": "Northpointe Bancshares Inc",
-    "hour": "amc"
-   },
-   {
-    "date": "2026-10-20",
-    "ticker": "ORRF",
-    "name": "Orrstown Financial Services Inc",
-    "hour": "amc"
-   },
-   {
-    "date": "2026-10-20",
-    "ticker": "PEBO",
-    "name": "Peoples Bancorp Inc",
-    "hour": "bmo"
-   },
-   {
-    "date": "2026-10-20",
-    "ticker": "QCRH",
-    "name": "QCR Holdings Inc",
-    "hour": "amc"
-   },
    {
     "date": "2026-10-21",
     "ticker": "ASIC",
@@ -1734,6 +1676,66 @@
     "ticker": "BCML",
     "name": "BayCom Corp",
     "hour": ""
+   },
+   {
+    "date": "2026-10-21",
+    "ticker": "BDN",
+    "name": "Brandywine Realty Trust",
+    "hour": "amc"
+   },
+   {
+    "date": "2026-10-21",
+    "ticker": "BHB",
+    "name": "Bar Harbor Bankshares",
+    "hour": ""
+   },
+   {
+    "date": "2026-10-21",
+    "ticker": "BHRB",
+    "name": "Burke & Herbert Financial Services Corp",
+    "hour": ""
+   },
+   {
+    "date": "2026-10-21",
+    "ticker": "CASH",
+    "name": "Pathward Financial Inc",
+    "hour": "amc"
+   },
+   {
+    "date": "2026-10-21",
+    "ticker": "CTBI",
+    "name": "Community Trust Bancorp Inc",
+    "hour": ""
+   },
+   {
+    "date": "2026-10-21",
+    "ticker": "EGBN",
+    "name": "Eagle Bancorp Inc",
+    "hour": "amc"
+   },
+   {
+    "date": "2026-10-21",
+    "ticker": "FCCO",
+    "name": "First Community Corp (South Carolina)",
+    "hour": "bmo"
+   },
+   {
+    "date": "2026-10-21",
+    "ticker": "FNLC",
+    "name": "First Bancorp Inc",
+    "hour": ""
+   },
+   {
+    "date": "2026-10-21",
+    "ticker": "GSBC",
+    "name": "Great Southern Bancorp Inc",
+    "hour": "amc"
+   },
+   {
+    "date": "2026-10-21",
+    "ticker": "HBNC",
+    "name": "Horizon Bancorp Inc",
+    "hour": "amc"
    }
   ],
   "evaluation": {
@@ -1767,10 +1769,10 @@
    }
   },
   "regime": {
-   "r13": -10.0579,
-   "r26": -2.0383,
+   "r13": -8.4659,
+   "r26": -1.5978,
    "label": "correction",
-   "t": "2026-10-20T15:26:29+00:00"
+   "t": "2026-10-21T07:26:21+00:00"
   },
   "filings_material": [
    {
@@ -2031,14 +2033,6 @@
     "ticker": "TBLA"
    },
    {
-    "title": "Lincoln Educational Services Corporation Sued for Securities Law Violations - Contact the DJS Law Group to Discuss Your Rights - LINC",
-    "link": "https://www.prnewswire.com/news-releases/lincoln-educational-services-corporation-sued-for-securities-law-violations---contact-the-djs-law-group-to-discuss-your-rights--linc-302914699.html",
-    "source": "PR Newswire",
-    "published": "2026-10-21T00:26:00+00:00",
-    "summary": "NEW YORK, Oct. 20, 2026 /PRNewswire/ -- The DJS Law Group reminds investors of a class action lawsuit against Lincoln Educational Services Corporation (\"Lincoln Educational\" or \"the Company\") (NASDAQ: LINC) for violations of…",
-    "ticker": "LINC"
-   },
-   {
     "title": "Amalgamated Financial Corp. Declares Regular Quarterly Dividend",
     "link": "http://www.businesswire.com/news/home/20261020570144/en/Amalgamated-Financial-Corp.-Declares-Regular-Quarterly-Dividend/?feedref=JjAwJuNHiystnCoBq_hl-YorNIXXeJUidDamMzBr2lVrRA1xRkqfEfrAVCWz-Z_wrCOi9QzgjCezTS3Nw_X6kJUrpSBm-Hav1w-UkdSlG3ne1zTTrM-woVxs6_pUhglHIbE9ZC1pD3bt6lQgRU5j6g==",
     "source": "Business Wire",
@@ -2053,6 +2047,14 @@
     "published": "2026-10-20T20:15:00+00:00",
     "summary": "NEW YORK--(BUSINESS WIRE)--KKR Real Estate Finance Trust Inc. (the “Company” or “KREF”) (NYSE: KREF) announced that the Board of Directors has declared a dividend of $0.40625 per each issued and outstanding share of the Company’s…",
     "ticker": "KREF"
+   },
+   {
+    "title": "Tennant Company to Report Third Quarter 2026 Results on November 2, 2026",
+    "link": "http://www.businesswire.com/news/home/20261020851080/en/Tennant-Company-to-Report-Third-Quarter-2026-Results-on-November-2-2026/?feedref=JjAwJuNHiystnCoBq_hl-YorNIXXeJUidDamMzBr2lVrRA1xRkqfEfrAVCWz-Z_wrCOi9QzgjCezTS3Nw_X6kJUrpSBm-Hav1w-UkdSlG3ne1zTTrM-woVxs6_pUhglHIbE9ZC1pD3bt6lQgRU5j6g==",
+    "source": "Business Wire",
+    "published": "2026-10-20T20:15:00+00:00",
+    "summary": "MINNEAPOLIS--(BUSINESS WIRE)--Tennant Company (NYSE: TNC) today announced that the company will report its third quarter 2026 financial results after the market closes on Monday, November 2, 2026, with a conference call to follow…",
+    "ticker": "TNC"
    }
   ]
  },
@@ -5632,8 +5634,8 @@
       },
       {
        "ticker": "FRD",
-       "pl": 540.18,
-       "pct": 0.54
+       "pl": 552.99,
+       "pct": 0.553
       },
       {
        "ticker": "AMPL",
@@ -5652,8 +5654,8 @@
       },
       {
        "ticker": "BSVN",
-       "pl": 305.72,
-       "pct": 0.306
+       "pl": 281.98,
+       "pct": 0.282
       },
       {
        "ticker": "IBEX",
@@ -5674,8 +5676,8 @@
      "detractors": [
       {
        "ticker": "TH",
-       "pl": -922.0,
-       "pct": -0.922
+       "pl": -910.08,
+       "pct": -0.91
       },
       {
        "ticker": "SBET",
@@ -5683,31 +5685,31 @@
        "pct": -0.645
       },
       {
+       "ticker": "DJCO",
+       "pl": -368.61,
+       "pct": -0.369
+      },
+      {
        "ticker": "MGTX",
-       "pl": -350.89,
-       "pct": -0.351
+       "pl": -339.92,
+       "pct": -0.34
       },
       {
        "ticker": "NAT",
        "pl": -338.55,
        "pct": -0.339
-      },
-      {
-       "ticker": "DJCO",
-       "pl": -262.74,
-       "pct": -0.263
       }
      ],
-     "unrealised_pct": 1.25,
+     "unrealised_pct": 1.16,
      "realised_pct": 0.0,
      "cost_pct": -0.4,
-     "total_pct": 0.86,
-     "actual_pct": 0.86,
+     "total_pct": 0.77,
+     "actual_pct": 0.77,
      "residual_pct": -0.0,
      "reconciles": true,
      "top_n": 3,
-     "top_pct": 2.0,
-     "ex_top_pct": -1.15,
+     "top_pct": 2.01,
+     "ex_top_pct": -1.25,
      "winners": 15,
      "losers": 10
     },
@@ -5719,7 +5721,7 @@
       "px": 48.94,
       "entry_date": "2026-10-01",
       "value": 4833.42,
-      "weight": 4.79,
+      "weight": 4.8,
       "ret": 21.32,
       "peak_px": 50.01,
       "stop_pct": null,
@@ -5744,11 +5746,11 @@
       "ticker": "FRD",
       "shares": 106.75,
       "entry_px": 37.32,
-      "px": 42.38,
+      "px": 42.5,
       "entry_date": "2026-10-01",
-      "value": 4524.24,
-      "weight": 4.49,
-      "ret": 13.56,
+      "value": 4537.05,
+      "weight": 4.5,
+      "ret": 13.88,
       "peak_px": 43.82,
       "stop_pct": null,
       "stop_px": null,
@@ -5761,7 +5763,7 @@
       "px": 15.7,
       "entry_date": "2026-10-01",
       "value": 4442.46,
-      "weight": 4.4,
+      "weight": 4.41,
       "ret": 11.51,
       "peak_px": 16.19,
       "stop_pct": null,
@@ -5800,11 +5802,11 @@
       "ticker": "BSVN",
       "shares": 74.2,
       "entry_px": 53.69,
-      "px": 57.81,
+      "px": 57.49,
       "entry_date": "2026-10-01",
-      "value": 4289.79,
-      "weight": 4.25,
-      "ret": 7.67,
+      "value": 4266.04,
+      "weight": 4.23,
+      "ret": 7.08,
       "peak_px": 58.88,
       "stop_pct": null,
       "stop_px": null,
@@ -5845,7 +5847,7 @@
       "px": 25.1,
       "entry_date": "2026-10-01",
       "value": 4137.36,
-      "weight": 4.1,
+      "weight": 4.11,
       "ret": 3.85,
       "peak_px": 25.51,
       "stop_pct": null,
@@ -5856,11 +5858,11 @@
       "ticker": "BWFG",
       "shares": 62.13,
       "entry_px": 64.12,
-      "px": 66.23,
+      "px": 66.31,
       "entry_date": "2026-10-01",
-      "value": 4115.17,
-      "weight": 4.08,
-      "ret": 3.29,
+      "value": 4120.14,
+      "weight": 4.09,
+      "ret": 3.42,
       "peak_px": 66.7,
       "stop_pct": null,
       "stop_px": null,
@@ -5887,7 +5889,7 @@
       "px": 14.05,
       "entry_date": "2026-10-01",
       "value": 4035.77,
-      "weight": 4.0,
+      "weight": 4.01,
       "ret": 1.3,
       "peak_px": 14.73,
       "stop_pct": null,
@@ -5901,7 +5903,7 @@
       "px": 50.19,
       "entry_date": "2026-10-01",
       "value": 4008.02,
-      "weight": 3.97,
+      "weight": 3.98,
       "ret": 0.6,
       "peak_px": 57.01,
       "stop_pct": null,
@@ -5929,7 +5931,7 @@
       "px": 51.08,
       "entry_date": "2026-10-01",
       "value": 3955.41,
-      "weight": 3.92,
+      "weight": 3.93,
       "ret": -0.72,
       "peak_px": 53.7,
       "stop_pct": null,
@@ -5957,7 +5959,7 @@
       "px": 17.74,
       "entry_date": "2026-10-01",
       "value": 3814.21,
-      "weight": 3.78,
+      "weight": 3.79,
       "ret": -4.26,
       "peak_px": 19.44,
       "stop_pct": null,
@@ -5971,7 +5973,7 @@
       "px": 76.25,
       "entry_date": "2026-10-01",
       "value": 3805.65,
-      "weight": 3.77,
+      "weight": 3.78,
       "ret": -4.48,
       "peak_px": 81.8,
       "stop_pct": null,
@@ -5985,23 +5987,9 @@
       "px": 13.84,
       "entry_date": "2026-10-01",
       "value": 3784.45,
-      "weight": 3.75,
+      "weight": 3.76,
       "ret": -5.01,
       "peak_px": 15.9,
-      "stop_pct": null,
-      "stop_px": null,
-      "room_pct": null
-     },
-     {
-      "ticker": "DJCO",
-      "shares": 6.2,
-      "entry_px": 642.77,
-      "px": 600.38,
-      "entry_date": "2026-10-01",
-      "value": 3721.32,
-      "weight": 3.69,
-      "ret": -6.59,
-      "peak_px": 675.76,
       "stop_pct": null,
       "stop_px": null,
       "room_pct": null
@@ -6013,7 +6001,7 @@
       "px": 7.43,
       "entry_date": "2026-10-01",
       "value": 3645.52,
-      "weight": 3.61,
+      "weight": 3.62,
       "ret": -8.5,
       "peak_px": 8.88,
       "stop_pct": null,
@@ -6024,12 +6012,26 @@
       "ticker": "MGTX",
       "shares": 365.51,
       "entry_px": 10.9,
-      "px": 9.94,
+      "px": 9.97,
       "entry_date": "2026-10-01",
-      "value": 3633.17,
-      "weight": 3.6,
-      "ret": -8.81,
+      "value": 3644.14,
+      "weight": 3.62,
+      "ret": -8.53,
       "peak_px": 11.37,
+      "stop_pct": null,
+      "stop_px": null,
+      "room_pct": null
+     },
+     {
+      "ticker": "DJCO",
+      "shares": 6.2,
+      "entry_px": 642.77,
+      "px": 583.3,
+      "entry_date": "2026-10-01",
+      "value": 3615.45,
+      "weight": 3.59,
+      "ret": -9.25,
+      "peak_px": 675.76,
       "stop_pct": null,
       "stop_px": null,
       "room_pct": null
@@ -6052,11 +6054,11 @@
       "ticker": "TH",
       "shares": 198.71,
       "entry_px": 20.05,
-      "px": 15.41,
+      "px": 15.47,
       "entry_date": "2026-10-01",
-      "value": 3062.07,
-      "weight": 3.04,
-      "ret": -23.14,
+      "value": 3073.99,
+      "weight": 3.05,
+      "ret": -22.84,
       "peak_px": 20.93,
       "stop_pct": null,
       "stop_px": null,
@@ -6638,14 +6640,14 @@
     "key": "F",
     "label": "Slow",
     "note": "the control again, but trading every 4 weeks instead of weekly — isolates what the trading itself costs",
-    "ret_common": -0.18,
-    "excess_common": 2.42,
+    "ret_common": -0.27,
+    "excess_common": 2.33,
     "common_from": "2026-10-01",
     "common_days": 21,
-    "value": 100855.39,
-    "ret": 0.86,
+    "value": 100766.44,
+    "ret": 0.77,
     "bench_ret": -2.74,
-    "excess": 3.7,
+    "excess": 3.61,
     "friction_yr": 6.9,
     "max_drawdown": -4.88,
     "positions": 25,
@@ -6675,7 +6677,7 @@
      98.559,
      99.015,
      101.05,
-     100.855
+     100.766
     ],
     "curve_dates": [
      "2026-10-01",
@@ -6833,7 +6835,7 @@
     "C": 3.81,
     "D": 2.66,
     "E": 4.53,
-    "F": 3.77
+    "F": 3.78
    },
    "ETON": {
     "A": 3.97,
@@ -6841,7 +6843,7 @@
     "C": 4.01,
     "D": 2.61,
     "E": 3.21,
-    "F": 3.97
+    "F": 3.98
    },
    "OSBC": {
     "A": 4.1,
@@ -6849,7 +6851,7 @@
     "C": 4.14,
     "D": 2.58,
     "E": 2.2,
-    "F": 4.1
+    "F": 4.11
    },
    "BBNX": {
     "A": 3.78,
@@ -6857,13 +6859,13 @@
     "C": 3.82,
     "D": 2.65,
     "E": 2.12,
-    "F": 3.78
+    "F": 3.79
    },
    "NAT": {
     "A": 3.61,
     "B": 3.99,
     "D": 2.54,
-    "F": 3.61
+    "F": 3.62
    },
    "REPX": {
     "A": 4.79,
@@ -6871,7 +6873,7 @@
     "C": 4.84,
     "D": 3.15,
     "E": 3.4,
-    "F": 4.79
+    "F": 4.8
    },
    "IBEX": {
     "A": 4.2,
@@ -6909,7 +6911,7 @@
     "C": 3.79,
     "D": 2.55,
     "E": 2.38,
-    "F": 3.75
+    "F": 3.76
    },
    "AMPL": {
     "A": 4.4,
@@ -6917,7 +6919,7 @@
     "C": 4.45,
     "D": 2.67,
     "E": 1.67,
-    "F": 4.4
+    "F": 4.41
    },
    "GOTU": {
     "A": 4.12,
@@ -6976,7 +6978,7 @@
     "C": 4.07,
     "D": 2.55,
     "E": 2.9,
-    "F": 4.0
+    "F": 4.01
    },
    "FENC": {
     "A": 4.0,
@@ -6993,25 +6995,25 @@
     "E": 1.65
    },
    "FRD": {
-    "F": 4.49
+    "F": 4.5
    },
    "BSVN": {
-    "F": 4.25
+    "F": 4.23
    },
    "BWFG": {
-    "F": 4.08
+    "F": 4.09
    },
    "OBK": {
-    "F": 3.92
+    "F": 3.93
    },
    "DJCO": {
-    "F": 3.69
+    "F": 3.59
    },
    "MGTX": {
-    "F": 3.6
+    "F": 3.62
    },
    "TH": {
-    "F": 3.04
+    "F": 3.05
    }
   },
   "holdings": [
@@ -7289,7 +7291,7 @@
   "feeds_total": 20,
   "feeds_failed": 1,
   "items": 1212,
-  "smallcap_calls": 552,
+  "smallcap_calls": 554,
   "feed_errors": [],
   "market_errors": [
    [
