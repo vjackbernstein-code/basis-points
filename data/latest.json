@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-24T04:15:37.979970+00:00",
+ "generated_at": "2026-10-24T09:11:46.807442+00:00",
  "market": [
   {
    "label": "S&P 500",
@@ -293,11 +293,11 @@
    "label": "Bitcoin",
    "symbol": "bitcoin",
    "kind": "crypto",
-   "value": 80981.47952029355,
+   "value": 80635.39419079246,
    "prev": 81102.31316582682,
-   "value_txt": "$80,981",
-   "delta": -0.14898914817165768,
-   "delta_txt": "-0.15%",
+   "value_txt": "$80,635",
+   "delta": -0.575715977520485,
+   "delta_txt": "-0.58%",
    "spark": [
     84506.46895963937,
     84742.78638478836,
@@ -321,18 +321,18 @@
     84082.26646319703,
     81328.20561459455,
     81102.31316582682,
-    80981.47952029355
+    80635.39419079246
    ]
   },
   {
    "label": "Ethereum",
    "symbol": "ethereum",
    "kind": "crypto",
-   "value": 2381.9978841257953,
+   "value": 2366.9707914169735,
    "prev": 2384.7498314209515,
-   "value_txt": "$2,382",
-   "delta": -0.11539773517947986,
-   "delta_txt": "-0.12%",
+   "value_txt": "$2,367",
+   "delta": -0.7455306116274845,
+   "delta_txt": "-0.75%",
    "spark": [
     2667.9504418816,
     2686.891434728346,
@@ -356,18 +356,25 @@
     2472.6790339173845,
     2386.4827807254364,
     2384.7498314209515,
-    2381.9978841257953
+    2366.9707914169735
    ]
   }
  ],
- "tape_line": "S&P 500 +0.58%, Nasdaq -0.21%, Dow -1.23%; the 10-year Treasury at 4.96% (-17 bp); WTI crude $107.89 (-1.93%); bitcoin $80,981 (-0.15%).",
+ "tape_line": "S&P 500 +0.58%, Nasdaq -0.21%, Dow -1.23%; the 10-year Treasury at 4.96% (-17 bp); WTI crude $107.89 (-1.93%); bitcoin $80,635 (-0.58%).",
  "top": [
   {
    "title": "Turmoil hits AI buildout as neoclouds face pressure, credit risks mount and Solidigm pulls IPO",
    "link": "https://www.cnbc.com/2026/10/23/ai-turmoil-neoclouds-struggle-credit-risks-jump-solidigm-pulls-ipo.html",
    "source": "CNBC",
-   "published": "2026-10-24T01:57:24+00:00",
+   "published": "2026-10-24T06:41:14+00:00",
    "summary": "Stock slumps, pulled IPOs and rising spreads on credit default swaps this week sets stage for hyperscaler earnings."
+  },
+  {
+   "title": "‘Disrupter’ exchanges battle for ETFs in challenge to NYSE and Nasdaq",
+   "link": "https://www.ft.com/content/8dd8e115-c45e-4b66-8390-b5eeea4671d5?syn-25a6b1a6=1",
+   "source": "Financial Times",
+   "published": "2026-10-24T04:00:04+00:00",
+   "summary": "Cboe captures nearly half of US listings as intensifying competition reflects rapid growth in derivative-heavy funds"
   },
   {
    "title": "Global X 3-10 Year U.S. Treasury Bond Index ETF declares CAD 0.201 dividend",
@@ -403,18 +410,11 @@
    "source": "WSJ Markets",
    "published": "2026-10-23T18:11:00+00:00",
    "summary": "U.S. Treasury yields rose as investors sought safety from the turmoil in French government bonds ahead of a closely watched interest-rate decision."
-  },
-  {
-   "title": "Some Republicans are opposing Trump on tariffs. Maine’s Susan Collins just got him to back down on Canadian levies.",
-   "link": "https://www.marketwatch.com/story/some-republicans-are-opposing-trump-on-tariffs-maines-susan-collins-just-got-him-to-back-down-on-canadian-levies-02b202ae?mod=mw_rss_topstories",
-   "source": "MarketWatch",
-   "published": "2026-10-23T20:50:00+00:00",
-   "summary": "As she faces a tough midterm race, the five-term GOP senator is touting her successful lobbying effort against certain tariffs on Canada"
   }
  ],
  "smallcap": {
   "note": null,
-  "asof": "2026-10-24T04:15:33+00:00",
+  "asof": "2026-10-24T09:11:42+00:00",
   "coverage": {
    "universe": 9889,
    "profiled": 10182,
@@ -1511,11 +1511,11 @@
   ],
   "freshness": {
    "last_full_h": 0.0,
-   "quote_median_h": 7.0,
+   "quote_median_h": 5.1,
    "quote_count": 1863,
    "bench_h": 0.0,
-   "universe_h": 0.2,
-   "earnings_h": 0.0,
+   "universe_h": 5.1,
+   "earnings_h": 4.9,
    "bench_gate_h": 72
   },
   "reach": {
@@ -1613,8 +1613,14 @@
    {
     "ticker": "IMC",
     "name": "IMC Rare Earths Ltd",
-    "px": 8.12,
-    "dp": 16
+    "px": 8.99,
+    "dp": 28.4286
+   },
+   {
+    "ticker": "CNDT",
+    "name": "Conduent Inc",
+    "px": 1.79,
+    "dp": 20.1342
    },
    {
     "ticker": "LZM",
@@ -1633,12 +1639,6 @@
     "name": "Bed Bath & Beyond Inc",
     "px": 1.64,
     "dp": 10.8108
-   },
-   {
-    "ticker": "OPTU",
-    "name": "Optimum Communications Inc",
-    "px": 0.6596,
-    "dp": 9.8967
    }
   ],
   "movers_down": [
@@ -1667,10 +1667,10 @@
     "dp": -18.117
    },
    {
-    "ticker": "FXHO",
-    "name": "UTime Ltd",
-    "px": 6.5975,
-    "dp": -15.0901
+    "ticker": "FTH",
+    "name": "Faeth Therapeutics, Inc",
+    "px": 17.08,
+    "dp": -15.0249
    }
   ],
   "earnings": [
@@ -2000,7 +2000,7 @@
     "form": "S-1"
    }
   ],
-  "budget_mode": "bootstrap",
+  "budget_mode": "full",
   "news": [
    {
     "title": "PennyMac Mortgage Investment Trust Reschedules Third Quarter 2026 Earnings Call to 6:30 PM ET on Thursday, October 29",
@@ -7346,8 +7346,8 @@
  "stats": {
   "feeds_total": 20,
   "feeds_failed": 1,
-  "items": 703,
-  "smallcap_calls": 554,
+  "items": 689,
+  "smallcap_calls": 552,
   "feed_errors": [],
   "market_errors": [
    [
