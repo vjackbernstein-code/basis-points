@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-24T21:56:41.869370+00:00",
+ "generated_at": "2026-10-25T00:06:07.930236+00:00",
  "market": [
   {
    "label": "S&P 500",
@@ -293,11 +293,11 @@
    "label": "Bitcoin",
    "symbol": "bitcoin",
    "kind": "crypto",
-   "value": 80321.28286683139,
+   "value": 80731.08113244246,
    "prev": 81102.31316582682,
-   "value_txt": "$80,321",
-   "delta": -0.9630185237731668,
-   "delta_txt": "-0.96%",
+   "value_txt": "$80,731",
+   "delta": -0.4577329781276684,
+   "delta_txt": "-0.46%",
    "spark": [
     84506.46895963937,
     84742.78638478836,
@@ -321,18 +321,18 @@
     84082.26646319703,
     81328.20561459455,
     81102.31316582682,
-    80321.28286683139
+    80731.08113244246
    ]
   },
   {
    "label": "Ethereum",
    "symbol": "ethereum",
    "kind": "crypto",
-   "value": 2337.171105870652,
+   "value": 2353.6608415154183,
    "prev": 2384.7498314209515,
-   "value_txt": "$2,337",
-   "delta": -1.9951243909701786,
-   "delta_txt": "-2.00%",
+   "value_txt": "$2,354",
+   "delta": -1.303658333293975,
+   "delta_txt": "-1.30%",
    "spark": [
     2667.9504418816,
     2686.891434728346,
@@ -356,11 +356,11 @@
     2472.6790339173845,
     2386.4827807254364,
     2384.7498314209515,
-    2337.171105870652
+    2353.6608415154183
    ]
   }
  ],
- "tape_line": "S&P 500 +0.58%, Nasdaq -0.21%, Dow -1.23%; the 10-year Treasury at 4.96% (-17 bp); WTI crude $107.89 (-1.93%); bitcoin $80,321 (-0.96%).",
+ "tape_line": "S&P 500 +0.58%, Nasdaq -0.21%, Dow -1.23%; the 10-year Treasury at 4.96% (-17 bp); WTI crude $107.89 (-1.93%); bitcoin $80,731 (-0.46%).",
  "top": [
   {
    "title": "America by the numbers: How voters feel about the economy, inflation, AI and Trump",
@@ -414,7 +414,7 @@
  ],
  "smallcap": {
   "note": null,
-  "asof": "2026-10-24T21:56:36+00:00",
+  "asof": "2026-10-25T00:06:02+00:00",
   "coverage": {
    "universe": 9889,
    "profiled": 10182,
@@ -1221,7 +1221,7 @@
      "q": 94
     },
     "flags": [
-     "E-3d"
+     "E-2d"
     ],
     "growth_doubt": false,
     "unit_doubt": null,
@@ -1266,7 +1266,7 @@
      "q": 50
     },
     "flags": [
-     "E-4d",
+     "E-3d",
      "8-K"
     ],
     "growth_doubt": false,
@@ -1510,12 +1510,12 @@
    }
   ],
   "freshness": {
-   "last_full_h": 0.0,
-   "quote_median_h": 5.0,
+   "last_full_h": 2.2,
+   "quote_median_h": 7.1,
    "quote_count": 1863,
    "bench_h": 0.0,
-   "universe_h": 17.9,
-   "earnings_h": 4.9,
+   "universe_h": 20.0,
+   "earnings_h": 7.0,
    "bench_gate_h": 72
   },
   "reach": {
@@ -1523,7 +1523,7 @@
     "have": 3,
     "target": 12,
     "possible": 11,
-    "next_due": "2026-10-24",
+    "next_due": "2026-10-25",
     "reachable": false,
     "slack": -1
    },
@@ -1749,8 +1749,8 @@
   ],
   "evaluation": {
    "1w": {
-    "excess": 0.41,
-    "days": 12,
+    "excess": 0.56,
+    "days": 13,
     "indep": 3,
     "dropped": 0,
     "carried": 0,
@@ -1767,15 +1767,16 @@
      -0.75,
      -1.85,
      -0.98,
-     -0.34
+     -0.34,
+     2.35
     ],
     "indep_values": [
      -0.42,
      -0.46,
      -0.98
     ],
-    "vs_peers": -0.07,
-    "peer_readings": 12
+    "vs_peers": -0.02,
+    "peer_readings": 13
    }
   },
   "regime": {
@@ -2000,8 +2001,16 @@
     "form": "S-1"
    }
   ],
-  "budget_mode": "full",
+  "budget_mode": "trickle",
   "news": [
+   {
+    "title": "HYLN Deadline: HYLN Investors Have Opportunity to Lead Hyliion Holdings Corp. Securities Fraud Lawsuit",
+    "link": "https://www.prnewswire.com/news-releases/hyln-deadline-hyln-investors-have-opportunity-to-lead-hyliion-holdings-corp-securities-fraud-lawsuit-302918546.html",
+    "source": "PR Newswire",
+    "published": "2026-10-24T23:21:00+00:00",
+    "summary": "NEW YORK, Oct. 24, 2026 /PRNewswire/ -- Why: Rosen Law Firm, a global investor rights law firm, reminds purchasers of securities of Hyliion Holdings Corp. (NYSE American: HYLN) between May 12, 2026 and June 23, 2026, both dates…",
+    "ticker": "HYLN"
+   },
    {
     "title": "PZZA Deadline: Rosen Law Firm Urges Papa John’s International, Inc. (NASDAQ: PZZA) Stockholders to Contact the Firm for Information About Their Rights",
     "link": "http://www.businesswire.com/news/home/20261024922059/en/PZZA-Deadline-Rosen-Law-Firm-Urges-Papa-John%E2%80%99s-International-Inc.-NASDAQ-PZZA-Stockholders-to-Contact-the-Firm-for-Information-About-Their-Rights/?feedref=JjAwJuNHiystnCoBq_hl-YorNIXXeJUidDamMzBr2lVrRA1xRkqfEfrAVCWz-Z_wrCOi9QzgjCezTS3Nw_X6kJUrpSBm-Hav1w-UkdSlG3ne1zTTrM-woVxs6_pUhglHIbE9ZC1pD3bt6lQgRU5j6g==",
@@ -6278,18 +6287,18 @@
     "ret_common": 1.22,
     "excess_common": 4.8,
     "common_from": "2026-10-01",
-    "common_days": 24,
+    "common_days": 25,
     "value": 102273.47,
     "ret": 2.27,
     "bench_ret": -3.61,
     "excess": 6.1,
-    "friction_yr": 12.3,
+    "friction_yr": 11.8,
     "max_drawdown": -4.57,
     "positions": 25,
     "cash": 1.66,
     "costs_paid": 810.91,
     "stops_hit": 0,
-    "days": 24,
+    "days": 25,
     "started": "2026-10-01",
     "curve": [
      101.04,
@@ -6315,6 +6324,7 @@
      102.332,
      101.723,
      102.041,
+     102.273,
      102.273
     ],
     "curve_dates": [
@@ -6341,7 +6351,8 @@
      "2026-10-21",
      "2026-10-22",
      "2026-10-23",
-     "2026-10-24"
+     "2026-10-24",
+     "2026-10-25"
     ]
    },
    {
@@ -6351,18 +6362,18 @@
     "ret_common": 1.12,
     "excess_common": 4.7,
     "common_from": "2026-10-01",
-    "common_days": 24,
+    "common_days": 25,
     "value": 102370.2,
     "ret": 2.37,
     "bench_ret": -3.61,
     "excess": 6.21,
-    "friction_yr": 12.5,
+    "friction_yr": 12.0,
     "max_drawdown": -4.54,
     "positions": 25,
     "cash": 631.39,
     "costs_paid": 822.36,
     "stops_hit": 0,
-    "days": 24,
+    "days": 25,
     "started": "2026-10-01",
     "curve": [
      101.238,
@@ -6388,6 +6399,7 @@
      102.661,
      101.717,
      102.082,
+     102.37,
      102.37
     ],
     "curve_dates": [
@@ -6414,7 +6426,8 @@
      "2026-10-21",
      "2026-10-22",
      "2026-10-23",
-     "2026-10-24"
+     "2026-10-24",
+     "2026-10-25"
     ]
    },
    {
@@ -6424,18 +6437,18 @@
     "ret_common": 0.05,
     "excess_common": 3.58,
     "common_from": "2026-10-01",
-    "common_days": 24,
+    "common_days": 25,
     "value": 101085.95,
     "ret": 1.09,
     "bench_ret": -3.61,
     "excess": 4.87,
-    "friction_yr": 14.0,
+    "friction_yr": 13.4,
     "max_drawdown": -5.54,
     "positions": 23,
     "cash": 5336.85,
     "costs_paid": 919.26,
     "stops_hit": 3,
-    "days": 24,
+    "days": 25,
     "started": "2026-10-01",
     "curve": [
      101.04,
@@ -6461,6 +6474,7 @@
      101.034,
      100.781,
      100.937,
+     101.086,
      101.086
     ],
     "curve_dates": [
@@ -6487,7 +6501,8 @@
      "2026-10-21",
      "2026-10-22",
      "2026-10-23",
-     "2026-10-24"
+     "2026-10-24",
+     "2026-10-25"
     ]
    },
    {
@@ -6497,18 +6512,18 @@
     "ret_common": -0.04,
     "excess_common": 3.5,
     "common_from": "2026-10-01",
-    "common_days": 24,
+    "common_days": 25,
     "value": 100635.32,
     "ret": 0.64,
     "bench_ret": -3.61,
     "excess": 4.41,
-    "friction_yr": 11.2,
+    "friction_yr": 10.8,
     "max_drawdown": -4.08,
     "positions": 25,
     "cash": 33755.63,
     "costs_paid": 737.99,
     "stops_hit": 0,
-    "days": 24,
+    "days": 25,
     "started": "2026-10-01",
     "curve": [
      100.676,
@@ -6534,6 +6549,7 @@
      100.731,
      100.282,
      100.477,
+     100.635,
      100.635
     ],
     "curve_dates": [
@@ -6560,7 +6576,8 @@
      "2026-10-21",
      "2026-10-22",
      "2026-10-23",
-     "2026-10-24"
+     "2026-10-24",
+     "2026-10-25"
     ]
    },
    {
@@ -6570,18 +6587,18 @@
     "ret_common": -0.94,
     "excess_common": 2.57,
     "common_from": "2026-10-01",
-    "common_days": 24,
+    "common_days": 25,
     "value": 99860.89,
     "ret": -0.14,
     "bench_ret": -3.61,
     "excess": 3.6,
-    "friction_yr": 12.1,
+    "friction_yr": 11.6,
     "max_drawdown": -4.67,
     "positions": 23,
     "cash": 34944.53,
     "costs_paid": 793.98,
     "stops_hit": 3,
-    "days": 24,
+    "days": 25,
     "started": "2026-10-01",
     "curve": [
      100.805,
@@ -6607,6 +6624,7 @@
      100.165,
      99.63,
      99.797,
+     99.861,
      99.861
     ],
     "curve_dates": [
@@ -6633,7 +6651,8 @@
      "2026-10-21",
      "2026-10-22",
      "2026-10-23",
-     "2026-10-24"
+     "2026-10-24",
+     "2026-10-25"
     ]
    },
    {
@@ -6643,18 +6662,18 @@
     "ret_common": 0.82,
     "excess_common": 4.39,
     "common_from": "2026-10-01",
-    "common_days": 24,
+    "common_days": 25,
     "value": 101867.86,
     "ret": 1.87,
     "bench_ret": -3.61,
     "excess": 5.68,
-    "friction_yr": 6.1,
+    "friction_yr": 5.8,
     "max_drawdown": -4.88,
     "positions": 25,
     "cash": 0.0,
     "costs_paid": 398.41,
     "stops_hit": 0,
-    "days": 24,
+    "days": 25,
     "started": "2026-10-01",
     "curve": [
      101.04,
@@ -6680,6 +6699,7 @@
      101.938,
      101.129,
      101.817,
+     101.868,
      101.868
     ],
     "curve_dates": [
@@ -6706,7 +6726,8 @@
      "2026-10-21",
      "2026-10-22",
      "2026-10-23",
-     "2026-10-24"
+     "2026-10-24",
+     "2026-10-25"
     ]
    }
   ],
@@ -6734,6 +6755,7 @@
    97.809,
    96.855,
    96.389,
+   96.389,
    96.389
   ],
   "bench_dates": [
@@ -6760,11 +6782,12 @@
    "2026-10-21",
    "2026-10-22",
    "2026-10-23",
-   "2026-10-24"
+   "2026-10-24",
+   "2026-10-25"
   ],
   "span": [
    "2026-10-01",
-   "2026-10-24"
+   "2026-10-25"
   ],
   "retired": [
    {
@@ -7306,8 +7329,8 @@
  "stats": {
   "feeds_total": 20,
   "feeds_failed": 1,
-  "items": 400,
-  "smallcap_calls": 552,
+  "items": 396,
+  "smallcap_calls": 42,
   "feed_errors": [],
   "market_errors": [
    [
