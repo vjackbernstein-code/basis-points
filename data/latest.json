@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-30T20:10:23.967925+00:00",
+ "generated_at": "2026-10-30T23:49:01.606875+00:00",
  "market": [
   {
    "label": "S&P 500",
@@ -77,13 +77,12 @@
    "label": "Dow",
    "symbol": "DJIA",
    "kind": "index",
-   "value": 52342.56,
-   "prev": 52475.1,
-   "value_txt": "52,342.56",
-   "delta": -0.2525769364898797,
-   "delta_txt": "-0.25%",
+   "value": 51770.31,
+   "prev": 52342.56,
+   "value_txt": "51,770.31",
+   "delta": -1.0932785862976515,
+   "delta_txt": "-1.09%",
    "spark": [
-    51349.92,
     50906.05,
     50926.56,
     51176.96,
@@ -105,9 +104,9 @@
     52361.58,
     52377.57,
     52475.1,
-    52342.56
-   ],
-   "asof": "Oct 29"
+    52342.56,
+    51770.31
+   ]
   },
   {
    "label": "VIX",
@@ -149,13 +148,12 @@
    "label": "10-yr Treasury",
    "symbol": "DGS10",
    "kind": "yield",
-   "value": 50.5,
-   "prev": 49.900000000000006,
-   "value_txt": "5.05%",
-   "delta": 1.202404809619227,
-   "delta_txt": "+6 bp",
+   "value": 49.800000000000004,
+   "prev": 50.5,
+   "value_txt": "4.98%",
+   "delta": -1.3861386138613776,
+   "delta_txt": "-7 bp",
    "spark": [
-    51.7,
     52.400000000000006,
     52.599999999999994,
     52.9,
@@ -177,9 +175,10 @@
     50.0,
     50.0,
     49.900000000000006,
-    50.5
+    50.5,
+    49.800000000000004
    ],
-   "asof": "Oct 28"
+   "asof": "Oct 29"
   },
   {
    "label": "Dollar (broad)",
@@ -292,11 +291,11 @@
    "label": "Bitcoin",
    "symbol": "bitcoin",
    "kind": "crypto",
-   "value": 76831.4219068075,
+   "value": 77185.00974419805,
    "prev": 77838.81456587692,
-   "value_txt": "$76,831",
-   "delta": -1.2942034956311363,
-   "delta_txt": "-1.29%",
+   "value_txt": "$77,185",
+   "delta": -0.8399470435479752,
+   "delta_txt": "-0.84%",
    "spark": [
     81685.88692243936,
     82564.29409505568,
@@ -320,18 +319,18 @@
     80800.83208028424,
     81274.37414359077,
     77838.81456587692,
-    76831.4219068075
+    77185.00974419805
    ]
   },
   {
    "label": "Ethereum",
    "symbol": "ethereum",
    "kind": "crypto",
-   "value": 2235.98862321379,
+   "value": 2243.8799934598774,
    "prev": 2249.4767252054453,
-   "value_txt": "$2,236",
-   "delta": -0.5996106490243109,
-   "delta_txt": "-0.60%",
+   "value_txt": "$2,244",
+   "delta": -0.24880149604823187,
+   "delta_txt": "-0.25%",
    "spark": [
     2472.7266584392723,
     2485.704908841487,
@@ -355,25 +354,32 @@
     2347.3230902884375,
     2357.4725682647236,
     2249.4767252054453,
-    2235.98862321379
+    2243.8799934598774
    ]
   }
  ],
- "tape_line": "S&P 500 -0.30%, Nasdaq -1.38%, Dow -0.25%; the 10-year Treasury at 5.05% (+6 bp); WTI crude $103.37 (-1.79%); bitcoin $76,831 (-1.29%).",
+ "tape_line": "S&P 500 -0.30%, Nasdaq -1.38%, Dow -1.09%; the 10-year Treasury at 4.98% (-7 bp); WTI crude $103.37 (-1.79%); bitcoin $77,185 (-0.84%).",
  "top": [
   {
-   "title": "The Fed held interest rates steady, but these officials see more hikes coming soon",
-   "link": "https://www.marketwatch.com/story/the-fed-held-interest-rates-steady-but-these-officials-see-more-hikes-coming-soon-2098bbd8?mod=mw_rss_topstories",
-   "source": "MarketWatch",
-   "published": "2026-10-30T19:44:00+00:00",
-   "summary": "Dallas Fed’s Lorie Logan sees “at least” 50 basis points in additional hikes."
+   "title": "U.S. Stocks Slide as Amazon, Intel Earnings Spark More AI Selling",
+   "link": "https://www.wsj.com/finance/stocks/u-s-stocks-slide-as-amazon-intel-earnings-spark-more-ai-selling-5670f50d?mod=rss_markets_main",
+   "source": "WSJ Markets",
+   "published": "2026-10-30T22:04:00+00:00",
+   "summary": "U.S. stocks fell as the AI selloff began to feed on itself following more disappointing earnings reports from Amazon and Intel, leaving investors to wonder if the tech correction could become a speculative bust."
   },
   {
-   "title": "Nasdaq 100 tumbles into correction territory as AI sell-off intensifies",
+   "title": "US tech stocks tumble as concerns over AI spending intensify",
    "link": "https://www.ft.com/content/3ba953ae-84bb-4de4-959e-baec3e908fb3?syn-25a6b1a6=1",
    "source": "Financial Times",
-   "published": "2026-10-30T19:02:14+00:00",
-   "summary": "Revelations that Anthropic could receive junk rating after IPO add to concerns over Big Tech borrowing spree"
+   "published": "2026-10-30T21:13:50+00:00",
+   "summary": "Revelations that Anthropic could receive junk rating after IPO add to concerns over industry borrowing spree"
+  },
+  {
+   "title": "Can Shopping Ever Be Fun Again? At Trunk Shows, the Answer Is Yes",
+   "link": "https://www.wsj.com/style/fashion/can-shopping-ever-be-fun-again-at-trunk-shows-the-answer-is-yes-96fc3e8e?mod=pls_whats_news_us_business_f",
+   "source": "WSJ Business",
+   "published": "2026-10-30T23:00:00+00:00",
+   "summary": "No longer just occasions where trunks of samples are used to sell preorders, trunk shows now combine the instant gratification of off-the-rack shopping with exclusive locations and free perks"
   },
   {
    "title": "Global Bond Yields Fall Sharply in October Amid Flight to Safety",
@@ -383,43 +389,36 @@
    "summary": "Global bond yields were poised to end October sharply lower as a flight to safety revived demand for government debt, even as markets braced for higher short-term borrowing from the U.S. Treasury."
   },
   {
-   "title": "Tankers defy sharp escalation of Iranian attacks to keep crude oil flowing through Strait of Hormuz",
-   "link": "https://www.cnbc.com/2026/10/30/tanker-attack-strait-hormuz-iran-war-oil.html",
-   "source": "CNBC",
-   "published": "2026-10-30T18:28:09+00:00",
-   "summary": "Soaring freight rates are giving tankers a big financial incentive to run the gauntlet through the Strait of Hormuz."
-  },
-  {
-   "title": "Anthropic may not secure investment-grade rating after IPO, Blackstone says",
-   "link": "https://www.ft.com/content/59383c7f-8d82-493f-bf01-d2e862a1018f?syn-25a6b1a6=1",
-   "source": "Financial Times",
-   "published": "2026-10-30T18:19:08+00:00",
-   "summary": "Private capital giant says AI group is expected to receive ‘high’ junk rating in shift from previous guidance"
-  },
-  {
-   "title": "Musk and Zuckerberg echo Trump's push to rebrand AI as 'super intelligence' on earnings calls. Others do not",
-   "link": "https://www.cnbc.com/2026/10/30/trump-tech-allies-swap-ai-for-super-intelligence-in-earnings-calls.html",
-   "source": "CNBC",
-   "published": "2026-10-30T15:14:27+00:00",
-   "summary": "Meta's Mark Zuckerberg and Elon Musk of Tesla and SpaceX adopted President Trump's preferred \"super intelligence\" term on their third-quarter earnings calls."
-  },
-  {
    "title": "Fed officials are already saying they’ll need to get back to hiking rates",
    "link": "https://www.cnbc.com/2026/10/30/musalem-fed-monetary-policy-tightening.html",
    "source": "CNBC",
-   "published": "2026-10-30T18:18:17+00:00",
+   "published": "2026-10-30T21:53:10+00:00",
    "summary": "The comments from Federal Reserve Presidents Alberto Musalem and Lorie Logan offer the first morsels of insight into what leaders at the Fed see happening next."
+  },
+  {
+   "title": "Federal Realty signals $7.54-$7.58 core FFO per share guidance while integrating $508M The Summit acquisition",
+   "link": "https://seekingalpha.com/news/4661799-federal-realty-signals-7_54-7_58-core-ffo-per-share-guidance-while-integrating-508m-the?utm_source=feed_news_all&utm_medium=referral&feed_item_type=news",
+   "source": "Seeking Alpha",
+   "published": "2026-10-30T22:49:33+00:00",
+   "summary": ""
+  },
+  {
+   "title": "Jim Cramer says it's time to look beyond tech. Here are 4 consumer stocks he likes",
+   "link": "https://www.cnbc.com/2026/10/30/jim-cramer-consumer-staples-stocks.html",
+   "source": "CNBC",
+   "published": "2026-10-30T22:52:04+00:00",
+   "summary": "Cramer said investors looking to diversify beyond the struggling AI trade should consider consumer staples."
   }
  ],
  "smallcap": {
   "note": null,
-  "asof": "2026-10-30T20:10:19+00:00",
+  "asof": "2026-10-30T23:48:57+00:00",
   "coverage": {
    "universe": 9889,
    "profiled": 10182,
    "in_band": 1697,
    "measured": 1697,
-   "scored": 910,
+   "scored": 909,
    "below_floor": 64
   },
   "screen": [
@@ -1313,11 +1312,11 @@
     "ev_rev": 3.1919,
     "px": 2.24,
     "dp": -2.6087,
-    "score": 75.8,
+    "score": 75.7,
     "sub": {
-     "g": 73,
+     "g": 72,
      "m": 86,
-     "q": 61
+     "q": 62
     },
     "flags": [
      "E-6d"
@@ -1525,11 +1524,11 @@
   ],
   "freshness": {
    "last_full_h": 0.0,
-   "quote_median_h": 4.9,
+   "quote_median_h": 3.8,
    "quote_count": 1863,
    "bench_h": 0.0,
-   "universe_h": 160.1,
-   "earnings_h": 11.7,
+   "universe_h": 163.7,
+   "earnings_h": 0.0,
    "bench_gate_h": 72
   },
   "reach": {
@@ -1622,28 +1621,28 @@
     "dp": 31.6122
    },
    {
+    "ticker": "FMC",
+    "name": "FMC Corp",
+    "px": 6.2,
+    "dp": 30.5263
+   },
+   {
+    "ticker": "ULH",
+    "name": "Universal Logistics Holdings Inc",
+    "px": 22.59,
+    "dp": 29.6785
+   },
+   {
     "ticker": "RMNI",
     "name": "Rimini Street Inc",
     "px": 5.13,
     "dp": 28.5714
    },
    {
-    "ticker": "TDOC",
-    "name": "Teladoc Health Inc",
-    "px": 8.73,
-    "dp": 26.8895
-   },
-   {
     "ticker": "OSPN",
     "name": "OneSpan Inc",
     "px": 25.42,
     "dp": 26.1538
-   },
-   {
-    "ticker": "ACCO",
-    "name": "ACCO Brands Corp",
-    "px": 5.5,
-    "dp": 26.1468
    }
   ],
   "movers_down": [
@@ -1660,12 +1659,6 @@
     "dp": -47.5676
    },
    {
-    "ticker": "OPTT",
-    "name": "Ocean Power Technologies Inc",
-    "px": 0.4189,
-    "dp": -38.3063
-   },
-   {
     "ticker": "ATEC",
     "name": "Alphatec Holdings Inc",
     "px": 7.04,
@@ -1676,6 +1669,12 @@
     "name": "Arbor Realty Trust Inc",
     "px": 2.14,
     "dp": -29.1391
+   },
+   {
+    "ticker": "ENHA",
+    "name": "Enhanced Group Inc.",
+    "px": 9.43,
+    "dp": -26.9558
    }
   ],
   "earnings": [
@@ -1811,9 +1810,23 @@
    "r13": -2.0566,
    "r26": -0.5528,
    "label": "flat/choppy",
-   "t": "2026-10-30T08:28:05+00:00"
+   "t": "2026-10-30T23:48:56+00:00"
   },
   "filings_material": [
+   {
+    "ticker": "PLPC",
+    "name": "Preformed Line Products Co",
+    "date": "2026-10-30",
+    "link": "https://www.sec.gov/Archives/edgar/data/80035/000008003526000039/0000080035-26-000039-index.htm",
+    "form": "8-K"
+   },
+   {
+    "ticker": "NPKI",
+    "name": "NPK International Inc",
+    "date": "2026-10-30",
+    "link": "https://www.sec.gov/Archives/edgar/data/71829/000007182926000061/0000071829-26-000061-index.htm",
+    "form": "8-K"
+   },
    {
     "ticker": "SMP",
     "name": "Standard Motor Products Inc",
@@ -1868,20 +1881,6 @@
     "name": "Oppenheimer Holdings Inc",
     "date": "2026-10-30",
     "link": "https://www.sec.gov/Archives/edgar/data/791963/000162828026068451/0001628280-26-068451-index.htm",
-    "form": "8-K"
-   },
-   {
-    "ticker": "AZTA",
-    "name": "Azenta Inc",
-    "date": "2026-10-30",
-    "link": "https://www.sec.gov/Archives/edgar/data/933974/000162828026068443/0001628280-26-068443-index.htm",
-    "form": "8-K"
-   },
-   {
-    "ticker": "GRC",
-    "name": "Gorman- Rupp Co",
-    "date": "2026-10-30",
-    "link": "https://www.sec.gov/Archives/edgar/data/42682/000119312526439904/0001193125-26-439904-index.htm",
     "form": "8-K"
    }
   ],
@@ -1959,6 +1958,13 @@
   ],
   "filings_offering": [
    {
+    "ticker": "XRPN",
+    "name": "Armada Acquisition Corp II",
+    "date": "2026-10-30",
+    "link": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068609/0001628280-26-068609-index.htm",
+    "form": "S-1"
+   },
+   {
     "ticker": "FMBH",
     "name": "First Mid Bancshares Inc",
     "date": "2026-10-30",
@@ -1971,6 +1977,20 @@
     "date": "2026-10-30",
     "link": "https://www.sec.gov/Archives/edgar/data/2016072/000121390026114335/0001213900-26-114335-index.htm",
     "form": "S-1/A"
+   },
+   {
+    "ticker": "PRCH",
+    "name": "Porch Group Inc",
+    "date": "2026-10-30",
+    "link": "https://www.sec.gov/Archives/edgar/data/1784535/000162828026068621/0001628280-26-068621-index.htm",
+    "form": "424B5"
+   },
+   {
+    "ticker": "TE",
+    "name": "T1 Energy Inc",
+    "date": "2026-10-30",
+    "link": "https://www.sec.gov/Archives/edgar/data/1992243/000121390026114461/0001213900-26-114461-index.htm",
+    "form": "424B7"
    },
    {
     "ticker": "OPTT",
@@ -2006,37 +2026,40 @@
     "date": "2026-10-26",
     "link": "https://www.sec.gov/Archives/edgar/data/2091349/000119312526431033/0001193125-26-431033-index.htm",
     "form": "S-1"
-   },
-   {
-    "ticker": "ALOY",
-    "name": "REalloys Inc",
-    "date": "2026-10-26",
-    "link": "https://www.sec.gov/Archives/edgar/data/1567900/000118518526004996/0001185185-26-004996-index.htm",
-    "form": "424B7"
-   },
-   {
-    "ticker": "WHK",
-    "name": "Whitehawk Minerals Corp",
-    "date": "2026-10-23",
-    "link": "https://www.sec.gov/Archives/edgar/data/1921603/000119312526430491/0001193125-26-430491-index.htm",
-    "form": "424B3"
-   },
-   {
-    "ticker": "XRPN",
-    "name": "Armada Acquisition Corp II",
-    "date": "2026-10-23",
-    "link": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026067081/0001628280-26-067081-index.htm",
-    "form": "S-1"
    }
   ],
   "budget_mode": "full",
   "news": [
+   {
+    "title": "Peoples Financial Services Corp. Reports Unaudited Third Quarter and Year to Date 2026 Earnings",
+    "link": "http://www.businesswire.com/news/home/20261030159623/en/Peoples-Financial-Services-Corp.-Reports-Unaudited-Third-Quarter-and-Year-to-Date-2026-Earnings/?feedref=JjAwJuNHiystnCoBq_hl-YorNIXXeJUidDamMzBr2lVrRA1xRkqfEfrAVCWz-Z_wrCOi9QzgjCezTS3Nw_X6kJUrpSBm-Hav1w-UkdSlG3ne1zTTrM-woVxs6_pUhglHIbE9ZC1pD3bt6lQgRU5j6g==",
+    "source": "Business Wire",
+    "published": "2026-10-30T20:05:00+00:00",
+    "summary": "MOOSIC, Pa.--(BUSINESS WIRE)--Peoples Financial Services Corp. (“Peoples” or the “Company”) (NASDAQ: PFIS), the bank holding company for Peoples Security Bank and Trust Company (the “Bank”), today reported unaudited financial…",
+    "ticker": "PFIS"
+   },
    {
     "title": "OI Investors Have Opportunity to Lead O-I Glass, Inc. Securities Fraud Lawsuit with SBS Law",
     "link": "http://www.businesswire.com/news/home/20261030398023/en/OI-Investors-Have-Opportunity-to-Lead-O-I-Glass-Inc.-Securities-Fraud-Lawsuit-with-SBS-Law/?feedref=JjAwJuNHiystnCoBq_hl-YorNIXXeJUidDamMzBr2lVrRA1xRkqfEfrAVCWz-Z_wrCOi9QzgjCezTS3Nw_X6kJUrpSBm-Hav1w-UkdSlG3ne1zTTrM-woVxs6_pUhglHIbE9ZC1pD3bt6lQgRU5j6g==",
     "source": "Business Wire",
     "published": "2026-10-30T18:34:00+00:00",
     "summary": "LOS ANGELES--(BUSINESS WIRE)---- $OI--OI Investors Have Opportunity to Lead O-I Glass, Inc. Securities Fraud Lawsuit with SBS Law",
+    "ticker": "OI"
+   },
+   {
+    "title": "Securities Class Action Filed Against O-I Glass, Inc. – OI Investors Encouraged to Contact Kirby McInerney LLP",
+    "link": "http://www.businesswire.com/news/home/20261030704551/en/Securities-Class-Action-Filed-Against-O-I-Glass-Inc.-%E2%80%93-OI-Investors-Encouraged-to-Contact-Kirby-McInerney-LLP/?feedref=JjAwJuNHiystnCoBq_hl-YorNIXXeJUidDamMzBr2lVrRA1xRkqfEfrAVCWz-Z_wrCOi9QzgjCezTS3Nw_X6kJUrpSBm-Hav1w-UkdSlG3ne1zTTrM-woVxs6_pUhglHIbE9ZC1pD3bt6lQgRU5j6g==",
+    "source": "Business Wire",
+    "published": "2026-10-30T21:54:00+00:00",
+    "summary": "NEW YORK--(BUSINESS WIRE)---- $OI #ClassActionLawsuit--The law firm of Kirby McInerney LLP announces that a class action lawsuit has been filed on behalf of investors who acquired OI-Glass, Inc. (“OI-Glass” or the “Company”)…",
+    "ticker": "OI"
+   },
+   {
+    "title": "Lost Money on O-I Glass, Inc. Shares? The Law Offices of Frank R. Cruz Investigates Potential Securities Fraud After 15.01% Stock Decline",
+    "link": "http://www.businesswire.com/news/home/20261030041959/en/Lost-Money-on-O-I-Glass-Inc.-Shares-The-Law-Offices-of-Frank-R.-Cruz-Investigates-Potential-Securities-Fraud-After-15.01-Stock-Decline/?feedref=JjAwJuNHiystnCoBq_hl-YorNIXXeJUidDamMzBr2lVrRA1xRkqfEfrAVCWz-Z_wrCOi9QzgjCezTS3Nw_X6kJUrpSBm-Hav1w-UkdSlG3ne1zTTrM-woVxs6_pUhglHIbE9ZC1pD3bt6lQgRU5j6g==",
+    "source": "Business Wire",
+    "published": "2026-10-30T21:47:00+00:00",
+    "summary": "LOS ANGELES--(BUSINESS WIRE)--O-I Glass, Inc. (\"O-I Glass\" or the \"Company\") investors who lost money may have claims to recover their losses. The Law Offices of Frank R. Cruz today announced it is investigating potential…",
     "ticker": "OI"
    },
    {
@@ -2056,14 +2079,6 @@
     "ticker": "IE"
    },
    {
-    "title": "PCB Bancorp Reports Record Earnings for Q3 2026",
-    "link": "http://www.businesswire.com/news/home/20261029488802/en/PCB-Bancorp-Reports-Record-Earnings-for-Q3-2026/?feedref=JjAwJuNHiystnCoBq_hl-YorNIXXeJUidDamMzBr2lVrRA1xRkqfEfrAVCWz-Z_wrCOi9QzgjCezTS3Nw_X6kJUrpSBm-Hav1w-UkdSlG3ne1zTTrM-woVxs6_pUhglHIbE9ZC1pD3bt6lQgRU5j6g==",
-    "source": "Business Wire",
-    "published": "2026-10-29T20:05:00+00:00",
-    "summary": "LOS ANGELES--(BUSINESS WIRE)--PCB Bancorp (the “Company”) (NASDAQ: PCB), the holding company of PCB Bank (the “Bank”), today reported net income available to common shareholders of $12.1 million, or $0.85 per diluted common…",
-    "ticker": "PCB"
-   },
-   {
     "title": "Investor Alert: Robbins LLP Informs Investors of the O-I Glass, Inc. Class Action Lawsuit",
     "link": "http://www.businesswire.com/news/home/20261029426368/en/Investor-Alert-Robbins-LLP-Informs-Investors-of-the-O-I-Glass-Inc.-Class-Action-Lawsuit/?feedref=JjAwJuNHiystnCoBq_hl-YorNIXXeJUidDamMzBr2lVrRA1xRkqfEfrAVCWz-Z_wrCOi9QzgjCezTS3Nw_X6kJUrpSBm-Hav1w-UkdSlG3ne1zTTrM-woVxs6_pUhglHIbE9ZC1pD3bt6lQgRU5j6g==",
     "source": "Business Wire",
@@ -2072,28 +2087,12 @@
     "ticker": "OI"
    },
    {
-    "title": "PennyMac Mortgage Investment Trust Reports Third Quarter 2026 Results and Announces Changes to its Leadership Team",
-    "link": "http://www.businesswire.com/news/home/20261029347653/en/PennyMac-Mortgage-Investment-Trust-Reports-Third-Quarter-2026-Results-and-Announces-Changes-to-its-Leadership-Team/?feedref=JjAwJuNHiystnCoBq_hl-YorNIXXeJUidDamMzBr2lVrRA1xRkqfEfrAVCWz-Z_wrCOi9QzgjCezTS3Nw_X6kJUrpSBm-Hav1w-UkdSlG3ne1zTTrM-woVxs6_pUhglHIbE9ZC1pD3bt6lQgRU5j6g==",
-    "source": "Business Wire",
-    "published": "2026-10-29T20:15:00+00:00",
-    "summary": "WESTLAKE VILLAGE, Calif.--(BUSINESS WIRE)--PennyMac Mortgage Investment Trust (NYSE: PMT) today reported net loss attributable to common shareholders of $36 million, or $(0.41) per common share on net investment income of $36…",
-    "ticker": "PMTV"
-   },
-   {
     "title": "Flowco Holdings Inc. Announces Quarterly Cash Dividend",
     "link": "http://www.businesswire.com/news/home/20261030880466/en/Flowco-Holdings-Inc.-Announces-Quarterly-Cash-Dividend/?feedref=JjAwJuNHiystnCoBq_hl-YorNIXXeJUidDamMzBr2lVrRA1xRkqfEfrAVCWz-Z_wrCOi9QzgjCezTS3Nw_X6kJUrpSBm-Hav1w-UkdSlG3ne1zTTrM-woVxs6_pUhglHIbE9ZC1pD3bt6lQgRU5j6g==",
     "source": "Business Wire",
     "published": "2026-10-30T11:00:00+00:00",
     "summary": "HOUSTON--(BUSINESS WIRE)--Flowco Holdings Inc. (NYSE: FLOC) (“Flowco” or the “Company”), a provider of production optimization, artificial lift and emissions management and monetization solutions for the oil and natural gas…",
     "ticker": "FLOC"
-   },
-   {
-    "title": "Riassunto: Murata lancia i connettori coassiali per microonde / RF più piccoli al mondo con un interruttore, riducendo di circa il 40% l'area di assemblaggio di un circuito stampato (PCB)",
-    "link": "http://www.businesswire.com/news/home/20261028599236/it/?feedref=JjAwJuNHiystnCoBq_hl-YorNIXXeJUidDamMzBr2lVrRA1xRkqfEfrAVCWz-Z_wrCOi9QzgjCezTS3Nw_X6kJUrpSBm-Hav1w-UkdSlG3ne1zTTrM-woVxs6_pUhglHIbE9ZC1pD3bt6lQgRU5j6g==",
-    "source": "Business Wire",
-    "published": "2026-10-29T20:25:00+00:00",
-    "summary": "KYOTO, Giappone--(BUSINESS WIRE)--Murata Manufacturing Co., Ltd. (TOKYO: 6981) (ISIN: JP3914400001) ha avviato la produzione su larga scala del SWL serie MM8330-2600RJ5 e MM8330-2600RK20, i connettori coassiali per microonde / RF…",
-    "ticker": "PCB"
    }
   ]
  },
@@ -7387,8 +7386,8 @@
  "stats": {
   "feeds_total": 20,
   "feeds_failed": 1,
-  "items": 954,
-  "smallcap_calls": 552,
+  "items": 817,
+  "smallcap_calls": 554,
   "feed_errors": [],
   "market_errors": [
    [
