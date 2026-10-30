@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-29T21:49:20.752677+00:00",
+ "generated_at": "2026-10-30T01:52:22.161279+00:00",
  "market": [
   {
    "label": "S&P 500",
@@ -77,13 +77,12 @@
    "label": "Dow",
    "symbol": "DJIA",
    "kind": "index",
-   "value": 52475.1,
-   "prev": 52377.57,
-   "value_txt": "52,475.10",
-   "delta": 0.186205660170945,
-   "delta_txt": "+0.19%",
+   "value": 52342.56,
+   "prev": 52475.1,
+   "value_txt": "52,342.56",
+   "delta": -0.2525769364898797,
+   "delta_txt": "-0.25%",
    "spark": [
-    51481.51,
     51349.92,
     50906.05,
     50926.56,
@@ -105,9 +104,10 @@
     52215.16,
     52361.58,
     52377.57,
-    52475.1
+    52475.1,
+    52342.56
    ],
-   "asof": "Oct 28"
+   "asof": "Oct 29"
   },
   {
    "label": "VIX",
@@ -286,19 +286,19 @@
     1.115,
     1.1133,
     1.113
-   ]
+   ],
+   "asof": "Oct 29"
   },
   {
    "label": "Bitcoin",
    "symbol": "bitcoin",
    "kind": "crypto",
-   "value": 79511.48443451029,
-   "prev": 81274.37414359077,
-   "value_txt": "$79,511",
-   "delta": -2.169059716123944,
-   "delta_txt": "-2.17%",
+   "value": 77013.78479511791,
+   "prev": 77838.81456587692,
+   "value_txt": "$77,014",
+   "delta": -1.0599207803463706,
+   "delta_txt": "-1.06%",
    "spark": [
-    83282.04538340426,
     81685.88692243936,
     82564.29409505568,
     82917.90341169997,
@@ -320,20 +320,20 @@
     80029.43383898729,
     80800.83208028424,
     81274.37414359077,
-    79511.48443451029
+    77838.81456587692,
+    77013.78479511791
    ]
   },
   {
    "label": "Ethereum",
    "symbol": "ethereum",
    "kind": "crypto",
-   "value": 2289.7584708307545,
-   "prev": 2357.4725682647236,
-   "value_txt": "$2,290",
-   "delta": -2.87231751264074,
-   "delta_txt": "-2.87%",
+   "value": 2205.757613657324,
+   "prev": 2249.4767252054453,
+   "value_txt": "$2,206",
+   "delta": -1.9435236229940784,
+   "delta_txt": "-1.94%",
    "spark": [
-    2573.2309278741104,
     2472.7266584392723,
     2485.704908841487,
     2504.3139870176874,
@@ -355,11 +355,12 @@
     2320.672448636286,
     2347.3230902884375,
     2357.4725682647236,
-    2289.7584708307545
+    2249.4767252054453,
+    2205.757613657324
    ]
   }
  ],
- "tape_line": "S&P 500 +0.28%, Nasdaq +0.27%, Dow +0.19%; the 10-year Treasury at 5.05% (+6 bp); WTI crude $103.37 (-1.79%); bitcoin $79,511 (-2.17%).",
+ "tape_line": "S&P 500 +0.28%, Nasdaq +0.27%, Dow -0.25%; the 10-year Treasury at 5.05% (+6 bp); WTI crude $103.37 (-1.79%); bitcoin $77,014 (-1.06%).",
  "top": [
   {
    "title": "US tech stocks fall after earnings fuel AI spending concerns",
@@ -369,11 +370,18 @@
    "summary": "Nasdaq 100 drops 1.4% after Google parent Alphabet and Microsoft report lower than expected capex"
   },
   {
-   "title": "Stock Market Today: Dow, S&P 500 and Nasdaq fall as Alphabet, Caterpillar earnings disappoint, but most stocks rise",
+   "title": "Intel stock plunges 21% as chipmaker blames PC slowdown for weak guidance",
+   "link": "https://www.cnbc.com/2026/10/29/intel-intc-q3-earnings-report-2026-.html",
+   "source": "CNBC",
+   "published": "2026-10-30T00:39:52+00:00",
+   "summary": "Intel has been a Wall Street darling this year due to its emergence as a player in AI, but the company is being weighed down by a struggling PC market."
+  },
+  {
+   "title": "Stock Market Today: Dow, S&P 500 and Nasdaq close lower for first time in 4 days, but most stocks rise",
    "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxNTnhRUXZJSkhiOTc5RWpkbF9kOElXRi1Ha2tLMkVUMVZSZGpjQW9MZG42S0RnUEI0TmpJM25VOUY2ODc2b1BpUzdjRFpvbEhMM0h5QTNhbHdwT3oyN2hoVjRFZUkxTzdEWlk3WHNOVG5UdEk4cE5fZG1CaUh6ZHZoQ09lek5FWXhVWjR5c3RBUnJiRVpHWW5Qamw5NUVrVDduaVFfX3VGWVA1WGoweGJLeDNSQU51ZWx2?oc=5",
    "source": "MarketWatch",
-   "published": "2026-10-29T21:14:39+00:00",
-   "summary": "Stock Market Today: Dow, S&P 500 and Nasdaq fall as Alphabet, Caterpillar earnings disappoint, but most stocks rise MarketWatch Stock Market Today: Nasdaq Sinks 350 Points; Google Stock's Tumble in Focus — Live Updates WSJ Stocks…"
+   "published": "2026-10-29T22:36:00+00:00",
+   "summary": "Stock Market Today: Dow, S&P 500 and Nasdaq close lower for first time in 4 days, but most stocks rise MarketWatch A Tech Rotation Roils the Markets, Again The New York Times Wall Street closes lower to end rocky week Reuters…"
   },
   {
    "title": "Federal Reserve Board announces approval of application by The Bank of Nova Scotia",
@@ -381,13 +389,6 @@
    "source": "Federal Reserve",
    "published": "2026-10-29T20:30:00+00:00",
    "summary": "Federal Reserve Board announces approval of application by The Bank of Nova Scotia"
-  },
-  {
-   "title": "Intel stock plunges 16% as chipmaker blames PC slowdown for weak guidance",
-   "link": "https://www.cnbc.com/2026/10/29/intel-intc-q3-earnings-report-2026-.html",
-   "source": "CNBC",
-   "published": "2026-10-29T21:36:35+00:00",
-   "summary": "Intel has been a Wall Street darling this year due to its emergence as a player in AI, but the company is being weighed down by a struggling PC market."
   },
   {
    "title": "In Moving Gradually, Fed Risks Having to Play Catch-Up to Quell Inflation",
@@ -404,23 +405,23 @@
    "summary": "Treasury yields fell after both the Fed and the ECB kept interest rates unchanged, while U.S. indicators showed growth and inflation still hot."
   },
   {
-   "title": "U.S. Stocks Fall as Alphabet Slide Weighs on AI Optimism",
-   "link": "https://www.wsj.com/finance/stocks/u-s-stocks-fall-as-alphabet-slide-weighs-on-ai-optimism-1a8d67b7?mod=rss_markets_main",
-   "source": "WSJ Markets",
-   "published": "2026-10-29T20:43:00+00:00",
-   "summary": "Stocks declined as a revenue shortfall from the Google parent caused one of the largest one-session market capitalization drops for a single company on record, feeding doubts about the payoff from artificial-intelligence…"
+   "title": "Asian Private-Equity Firm to Buy Beleaguered China Evergrande’s Property-Management Arm",
+   "link": "https://www.wsj.com/business/deals/asian-private-equity-firm-to-buy-beleaguered-china-evergrandes-property-management-arm-0d0d5259?mod=pls_whats_news_us_business_f",
+   "source": "WSJ Business",
+   "published": "2026-10-30T01:34:00+00:00",
+   "summary": "PAG agreed to buy a 51.02% stake in Evergrande Property Services for about US$513 million.."
   }
  ],
  "smallcap": {
   "note": null,
-  "asof": "2026-10-29T21:49:15+00:00",
+  "asof": "2026-10-30T01:52:16+00:00",
   "coverage": {
    "universe": 9889,
    "profiled": 10182,
    "in_band": 1697,
    "measured": 1697,
-   "scored": 912,
-   "below_floor": 65
+   "scored": 911,
+   "below_floor": 66
   },
   "screen": [
    {
@@ -444,7 +445,7 @@
      "q": 63
     },
     "flags": [
-     "E-6d"
+     "E-5d"
     ],
     "growth_doubt": false,
     "unit_doubt": null,
@@ -525,14 +526,14 @@
     "ev_rev": 11.8114,
     "px": 80.46,
     "dp": -2.3544,
-    "score": 83.7,
+    "score": 83.9,
     "sub": {
-     "g": 77,
+     "g": 78,
      "m": 97,
      "q": 71
     },
     "flags": [
-     "E-6d"
+     "E-5d"
     ],
     "growth_doubt": false,
     "unit_doubt": null,
@@ -616,7 +617,7 @@
     "score": 83.2,
     "sub": {
      "g": 99,
-     "m": 79,
+     "m": 80,
      "q": 58
     },
     "flags": [],
@@ -663,7 +664,7 @@
      "q": 67
     },
     "flags": [
-     "E-4d"
+     "E-3d"
     ],
     "growth_doubt": false,
     "unit_doubt": null,
@@ -708,7 +709,7 @@
      "q": 58
     },
     "flags": [
-     "E-5d"
+     "E-4d"
     ],
     "growth_doubt": false,
     "unit_doubt": null,
@@ -968,7 +969,7 @@
      "q": 53
     },
     "flags": [
-     "E-7d"
+     "E-6d"
     ],
     "growth_doubt": false,
     "unit_doubt": null,
@@ -1013,7 +1014,7 @@
      "q": 43
     },
     "flags": [
-     "E-7d"
+     "E-6d"
     ],
     "growth_doubt": false,
     "unit_doubt": null,
@@ -1058,7 +1059,7 @@
      "q": 65
     },
     "flags": [
-     "E-7d"
+     "E-6d"
     ],
     "growth_doubt": false,
     "unit_doubt": null,
@@ -1169,6 +1170,51 @@
     }
    },
    {
+    "ticker": "TXO",
+    "name": "TXO Partners LP",
+    "ind": "Energy",
+    "group": "Energy",
+    "mcap": 856.0925270791367,
+    "rev_g": 22.18,
+    "accel": 45.68,
+    "r13": 4.9094,
+    "momo": 0.4,
+    "from_high": -9.301564275214869,
+    "ev_rev": 2.2977,
+    "px": 14.13,
+    "dp": -2.2822,
+    "score": 76.3,
+    "sub": {
+     "g": 84,
+     "m": 75,
+     "q": 62
+    },
+    "flags": [
+     "E-4d"
+    ],
+    "growth_doubt": false,
+    "unit_doubt": null,
+    "why": {
+     "vol": 26.163498,
+     "r26": 18.5154,
+     "accel_raw": 45.68,
+     "growth_cap": 150.0,
+     "accel_cap": 50.0,
+     "rg3": 17.63,
+     "rev_gq": 67.86,
+     "dte": 0.4168,
+     "gm_t": 53.24,
+     "om_t": -10.63,
+     "om_a": -7.63,
+     "cashps": 1.9384,
+     "rps": 7.162,
+     "adv": 0.08744,
+     "hi52": 15.5791,
+     "shares": 55.24,
+     "exch": "NEW YORK STOCK EXCHANGE, INC."
+    }
+   },
+   {
     "ticker": "IDT",
     "name": "IDT Corp",
     "ind": "Telecommunication",
@@ -1208,51 +1254,6 @@
      "adv": 0.24298,
      "hi52": 84.56,
      "shares": 24.87,
-     "exch": "NEW YORK STOCK EXCHANGE, INC."
-    }
-   },
-   {
-    "ticker": "TXO",
-    "name": "TXO Partners LP",
-    "ind": "Energy",
-    "group": "Energy",
-    "mcap": 856.0925270791367,
-    "rev_g": 22.18,
-    "accel": 45.68,
-    "r13": 4.9094,
-    "momo": 0.4,
-    "from_high": -9.301564275214869,
-    "ev_rev": 2.2977,
-    "px": 14.13,
-    "dp": -2.2822,
-    "score": 76.2,
-    "sub": {
-     "g": 84,
-     "m": 75,
-     "q": 62
-    },
-    "flags": [
-     "E-5d"
-    ],
-    "growth_doubt": false,
-    "unit_doubt": null,
-    "why": {
-     "vol": 26.163498,
-     "r26": 18.5154,
-     "accel_raw": 45.68,
-     "growth_cap": 150.0,
-     "accel_cap": 50.0,
-     "rg3": 17.63,
-     "rev_gq": 67.86,
-     "dte": 0.4168,
-     "gm_t": 53.24,
-     "om_t": -10.63,
-     "om_a": -7.63,
-     "cashps": 1.9384,
-     "rps": 7.162,
-     "adv": 0.08744,
-     "hi52": 15.5791,
-     "shares": 55.24,
      "exch": "NEW YORK STOCK EXCHANGE, INC."
     }
    },
@@ -1320,7 +1321,7 @@
      "q": 61
     },
     "flags": [
-     "E-7d"
+     "E-6d"
     ],
     "growth_doubt": false,
     "unit_doubt": null,
@@ -1388,51 +1389,6 @@
     }
    },
    {
-    "ticker": "LIND",
-    "name": "Lindblad Expeditions Holdings Inc",
-    "ind": "Hotels, Restaurants & Leisure",
-    "group": "Consumer",
-    "mcap": 1807.166216103896,
-    "rev_g": 18.27,
-    "accel": 0.370000000000001,
-    "r13": 30.1799,
-    "momo": 0.93,
-    "from_high": null,
-    "ev_rev": 3.2531,
-    "px": 37.38,
-    "dp": 4.3551,
-    "score": 75.3,
-    "sub": {
-     "g": 79,
-     "m": 94,
-     "q": 31
-    },
-    "flags": [
-     "E-5d"
-    ],
-    "growth_doubt": false,
-    "unit_doubt": null,
-    "why": {
-     "vol": 50.87851,
-     "r26": 72.6622,
-     "accel_raw": 0.370000000000001,
-     "growth_cap": 150.0,
-     "accel_cap": 50.0,
-     "rg3": 22.3,
-     "rev_gq": 18.64,
-     "dte": 102.4293,
-     "gm_t": 46.65,
-     "om_t": 4.16,
-     "om_a": 2.85,
-     "cashps": 4.8673,
-     "rps": 12.6863,
-     "adv": 0.77987,
-     "hi52": 36.97,
-     "shares": 65.6,
-     "exch": "NASDAQ NMS - GLOBAL MARKET"
-    }
-   },
-   {
     "ticker": "AMPL",
     "name": "Amplitude Inc",
     "ind": "Technology",
@@ -1446,14 +1402,14 @@
     "ev_rev": 5.4987,
     "px": 17.1,
     "dp": -1.9495,
-    "score": 75.2,
+    "score": 75.3,
     "sub": {
      "g": 71,
      "m": 99,
      "q": 36
     },
     "flags": [
-     "E-6d"
+     "E-5d"
     ],
     "growth_doubt": false,
     "unit_doubt": null,
@@ -1478,6 +1434,51 @@
     }
    },
    {
+    "ticker": "LIND",
+    "name": "Lindblad Expeditions Holdings Inc",
+    "ind": "Hotels, Restaurants & Leisure",
+    "group": "Consumer",
+    "mcap": 1807.166216103896,
+    "rev_g": 18.27,
+    "accel": 0.370000000000001,
+    "r13": 30.1799,
+    "momo": 0.93,
+    "from_high": null,
+    "ev_rev": 3.2531,
+    "px": 37.38,
+    "dp": 4.3551,
+    "score": 75.3,
+    "sub": {
+     "g": 79,
+     "m": 94,
+     "q": 31
+    },
+    "flags": [
+     "E-4d"
+    ],
+    "growth_doubt": false,
+    "unit_doubt": null,
+    "why": {
+     "vol": 50.87851,
+     "r26": 72.6622,
+     "accel_raw": 0.370000000000001,
+     "growth_cap": 150.0,
+     "accel_cap": 50.0,
+     "rg3": 22.3,
+     "rev_gq": 18.64,
+     "dte": 102.4293,
+     "gm_t": 46.65,
+     "om_t": 4.16,
+     "om_a": 2.85,
+     "cashps": 4.8673,
+     "rps": 12.6863,
+     "adv": 0.77987,
+     "hi52": 36.97,
+     "shares": 65.6,
+     "exch": "NASDAQ NMS - GLOBAL MARKET"
+    }
+   },
+   {
     "ticker": "TWFG",
     "name": "TWFG Inc",
     "ind": "Insurance",
@@ -1498,7 +1499,7 @@
      "q": 65
     },
     "flags": [
-     "E-6d"
+     "E-5d"
     ],
     "growth_doubt": false,
     "unit_doubt": "its share count times its price comes to 0.2× the market value the same source reports, so the two count different things",
@@ -1525,11 +1526,11 @@
   ],
   "freshness": {
    "last_full_h": 0.0,
-   "quote_median_h": 5.0,
+   "quote_median_h": 4.2,
    "quote_count": 1863,
    "bench_h": 0.0,
-   "universe_h": 137.7,
-   "earnings_h": 4.9,
+   "universe_h": 141.8,
+   "earnings_h": 9.0,
    "bench_gate_h": 72
   },
   "reach": {
@@ -1537,7 +1538,7 @@
     "have": 4,
     "target": 12,
     "possible": 11,
-    "next_due": "2026-10-29",
+    "next_due": "2026-10-30",
     "reachable": false,
     "slack": -1
    },
@@ -1545,13 +1546,13 @@
     "have": 1,
     "target": 3,
     "possible": 3,
-    "next_due": "2026-10-29",
+    "next_due": "2026-10-30",
     "reachable": true,
     "slack": 0
    }
   },
   "changes": {
-   "prev_day": "2026-10-28",
+   "prev_day": "2026-10-29",
    "entered": [],
    "left": [],
    "held": 25
@@ -1628,16 +1629,16 @@
     "dp": 26.2904
    },
    {
-    "ticker": "REPL",
-    "name": "Replimune Group Inc",
-    "px": 16.06,
-    "dp": 23.0651
-   },
-   {
     "ticker": "ITG",
     "name": "ITG Inc",
     "px": 5.68,
     "dp": 20.5945
+   },
+   {
+    "ticker": "UPBD",
+    "name": "Upbound Group Inc",
+    "px": 19.98,
+    "dp": 18.1549
    },
    {
     "ticker": "EMAT",
@@ -1648,10 +1649,10 @@
   ],
   "movers_down": [
    {
-    "ticker": "BCAX",
-    "name": "Bicara Therapeutics Inc",
-    "px": 9.76,
-    "dp": -44.1648
+    "ticker": "XRX",
+    "name": "Xerox Holdings Corp",
+    "px": 1.665,
+    "dp": -40.3226
    },
    {
     "ticker": "OPTT",
@@ -1662,8 +1663,8 @@
    {
     "ticker": "AXG",
     "name": "Solowin Holdings Ltd",
-    "px": 0.0284,
-    "dp": -29
+    "px": 3.7,
+    "dp": -34.8592
    },
    {
     "ticker": "OTLY",
@@ -1789,21 +1790,22 @@
     "peer_readings": 17
    },
    "4w": {
-    "excess": 3.74,
-    "days": 2,
+    "excess": 2.89,
+    "days": 3,
     "indep": 1,
     "dropped": 0,
     "carried": 0,
     "gone": 0,
     "values": [
      3.61,
-     3.87
+     3.87,
+     1.19
     ],
     "indep_values": [
      3.61
     ],
-    "vs_peers": 1.96,
-    "peer_readings": 2
+    "vs_peers": 1.24,
+    "peer_readings": 3
    }
   },
   "regime": {
@@ -2039,6 +2041,14 @@
     "ticker": "PCB"
    },
    {
+    "title": "Investor Alert: Robbins LLP Informs Investors of the O-I Glass, Inc. Class Action Lawsuit",
+    "link": "http://www.businesswire.com/news/home/20261029426368/en/Investor-Alert-Robbins-LLP-Informs-Investors-of-the-O-I-Glass-Inc.-Class-Action-Lawsuit/?feedref=JjAwJuNHiystnCoBq_hl-YorNIXXeJUidDamMzBr2lVrRA1xRkqfEfrAVCWz-Z_wrCOi9QzgjCezTS3Nw_X6kJUrpSBm-Hav1w-UkdSlG3ne1zTTrM-woVxs6_pUhglHIbE9ZC1pD3bt6lQgRU5j6g==",
+    "source": "Business Wire",
+    "published": "2026-10-30T00:15:00+00:00",
+    "summary": "SAN DIEGO--(BUSINESS WIRE)---- $OI #OI--The complaint alleges that O-I Glass, Inc. misled investors regarding its 2026 expected financial outlook.",
+    "ticker": "OI"
+   },
+   {
     "title": "PennyMac Mortgage Investment Trust Reports Third Quarter 2026 Results and Announces Changes to its Leadership Team",
     "link": "http://www.businesswire.com/news/home/20261029347653/en/PennyMac-Mortgage-Investment-Trust-Reports-Third-Quarter-2026-Results-and-Announces-Changes-to-its-Leadership-Team/?feedref=JjAwJuNHiystnCoBq_hl-YorNIXXeJUidDamMzBr2lVrRA1xRkqfEfrAVCWz-Z_wrCOi9QzgjCezTS3Nw_X6kJUrpSBm-Hav1w-UkdSlG3ne1zTTrM-woVxs6_pUhglHIbE9ZC1pD3bt6lQgRU5j6g==",
     "source": "Business Wire",
@@ -2085,14 +2095,6 @@
     "published": "2026-10-29T20:00:00+00:00",
     "summary": "FAIRMONT, W. Va.--(BUSINESS WIRE)-- #banking--MVB Financial Corp. Announces Third Quarter 2026 Results; Company to Host a Conference Call and Webcast at 5:00 PM ET",
     "ticker": "MVBF"
-   },
-   {
-    "title": "Murata lança os menores conectores coaxiais de RF/micro-ondas do mundo com chave, reduzindo em aproximadamente 40% a área de montagem na placa de circuito impresso (PCB)",
-    "link": "http://www.businesswire.com/news/home/20261028740298/pt/?feedref=JjAwJuNHiystnCoBq_hl-YorNIXXeJUidDamMzBr2lVrRA1xRkqfEfrAVCWz-Z_wrCOi9QzgjCezTS3Nw_X6kJUrpSBm-Hav1w-UkdSlG3ne1zTTrM-woVxs6_pUhglHIbE9ZC1pD3bt6lQgRU5j6g==",
-    "source": "Business Wire",
-    "published": "2026-10-29T19:47:00+00:00",
-    "summary": "KYOTO, Japão--(BUSINESS WIRE)--A Murata Manufacturing Co., Ltd. (TOKYO: 6981) (ISIN: JP3914400001) iniciou a produção em massa dos modelos MM8330-2600RJ5 e MM8330-2600RK20, da série SWL, os menores conectores coaxiais de…",
-    "ticker": "PCB"
    }
   ]
  },
@@ -6419,18 +6421,18 @@
     "ret_common": 2.39,
     "excess_common": 1.78,
     "common_from": "2026-10-01",
-    "common_days": 29,
+    "common_days": 30,
     "value": 103452.34,
     "ret": 3.45,
     "bench_ret": 0.39,
     "excess": 3.05,
-    "friction_yr": 11.1,
+    "friction_yr": 10.7,
     "max_drawdown": -4.57,
     "positions": 25,
     "cash": 854.53,
     "costs_paid": 880.44,
     "stops_hit": 0,
-    "days": 29,
+    "days": 30,
     "started": "2026-10-01",
     "curve": [
      101.04,
@@ -6461,6 +6463,7 @@
      102.655,
      101.855,
      102.095,
+     103.452,
      103.452
     ],
     "curve_dates": [
@@ -6492,7 +6495,8 @@
      "2026-10-26",
      "2026-10-27",
      "2026-10-28",
-     "2026-10-29"
+     "2026-10-29",
+     "2026-10-30"
     ]
    },
    {
@@ -6502,18 +6506,18 @@
     "ret_common": 2.87,
     "excess_common": 2.26,
     "common_from": "2026-10-01",
-    "common_days": 29,
+    "common_days": 30,
     "value": 104140.54,
     "ret": 4.14,
     "bench_ret": 0.39,
     "excess": 3.73,
-    "friction_yr": 11.0,
+    "friction_yr": 10.7,
     "max_drawdown": -4.54,
     "positions": 25,
     "cash": 5.82,
     "costs_paid": 876.18,
     "stops_hit": 0,
-    "days": 29,
+    "days": 30,
     "started": "2026-10-01",
     "curve": [
      101.238,
@@ -6544,6 +6548,7 @@
      102.508,
      102.694,
      102.705,
+     104.141,
      104.141
     ],
     "curve_dates": [
@@ -6575,7 +6580,8 @@
      "2026-10-26",
      "2026-10-27",
      "2026-10-28",
-     "2026-10-29"
+     "2026-10-29",
+     "2026-10-30"
     ]
    },
    {
@@ -6585,18 +6591,18 @@
     "ret_common": 1.05,
     "excess_common": 0.45,
     "common_from": "2026-10-01",
-    "common_days": 29,
+    "common_days": 30,
     "value": 102096.82,
     "ret": 2.1,
     "bench_ret": 0.39,
     "excess": 1.7,
-    "friction_yr": 12.3,
+    "friction_yr": 11.9,
     "max_drawdown": -5.54,
     "positions": 24,
     "cash": 1.44,
     "costs_paid": 974.65,
     "stops_hit": 3,
-    "days": 29,
+    "days": 30,
     "started": "2026-10-01",
     "curve": [
      101.04,
@@ -6627,6 +6633,7 @@
      101.394,
      100.672,
      100.827,
+     102.097,
      102.097
     ],
     "curve_dates": [
@@ -6658,7 +6665,8 @@
      "2026-10-26",
      "2026-10-27",
      "2026-10-28",
-     "2026-10-29"
+     "2026-10-29",
+     "2026-10-30"
     ]
    },
    {
@@ -6668,18 +6676,18 @@
     "ret_common": 0.65,
     "excess_common": 0.05,
     "common_from": "2026-10-01",
-    "common_days": 29,
+    "common_days": 30,
     "value": 101327.32,
     "ret": 1.33,
     "bench_ret": 0.39,
     "excess": 0.93,
-    "friction_yr": 10.8,
+    "friction_yr": 10.4,
     "max_drawdown": -4.08,
     "positions": 25,
     "cash": 15417.17,
     "costs_paid": 855.3,
     "stops_hit": 0,
-    "days": 29,
+    "days": 30,
     "started": "2026-10-01",
     "curve": [
      100.676,
@@ -6710,6 +6718,7 @@
      100.679,
      99.954,
      100.137,
+     101.327,
      101.327
     ],
     "curve_dates": [
@@ -6741,7 +6750,8 @@
      "2026-10-26",
      "2026-10-27",
      "2026-10-28",
-     "2026-10-29"
+     "2026-10-29",
+     "2026-10-30"
     ]
    },
    {
@@ -6751,18 +6761,18 @@
     "ret_common": -0.48,
     "excess_common": -1.07,
     "common_from": "2026-10-01",
-    "common_days": 29,
+    "common_days": 30,
     "value": 100320.08,
     "ret": 0.32,
     "bench_ret": 0.39,
     "excess": -0.07,
-    "friction_yr": 11.3,
+    "friction_yr": 10.9,
     "max_drawdown": -4.67,
     "positions": 24,
     "cash": 14439.12,
     "costs_paid": 894.45,
     "stops_hit": 3,
-    "days": 29,
+    "days": 30,
     "started": "2026-10-01",
     "curve": [
      100.805,
@@ -6793,6 +6803,7 @@
      99.671,
      99.471,
      99.366,
+     100.32,
      100.32
     ],
     "curve_dates": [
@@ -6824,7 +6835,8 @@
      "2026-10-26",
      "2026-10-27",
      "2026-10-28",
-     "2026-10-29"
+     "2026-10-29",
+     "2026-10-30"
     ]
    },
    {
@@ -6834,18 +6846,18 @@
     "ret_common": 1.27,
     "excess_common": 0.67,
     "common_from": "2026-10-01",
-    "common_days": 29,
+    "common_days": 30,
     "value": 102322.72,
     "ret": 2.32,
     "bench_ret": 0.39,
     "excess": 1.92,
-    "friction_yr": 8.7,
+    "friction_yr": 8.4,
     "max_drawdown": -4.88,
     "positions": 25,
     "cash": 2.96,
     "costs_paid": 687.76,
     "stops_hit": 0,
-    "days": 29,
+    "days": 30,
     "started": "2026-10-01",
     "curve": [
      101.04,
@@ -6876,6 +6888,7 @@
      102.089,
      102.596,
      102.052,
+     102.323,
      102.323
     ],
     "curve_dates": [
@@ -6907,7 +6920,8 @@
      "2026-10-26",
      "2026-10-27",
      "2026-10-28",
-     "2026-10-29"
+     "2026-10-29",
+     "2026-10-30"
     ]
    }
   ],
@@ -6940,6 +6954,7 @@
    97.048,
    98.702,
    99.403,
+   100.393,
    100.393
   ],
   "bench_dates": [
@@ -6971,11 +6986,12 @@
    "2026-10-26",
    "2026-10-27",
    "2026-10-28",
-   "2026-10-29"
+   "2026-10-29",
+   "2026-10-30"
   ],
   "span": [
    "2026-10-01",
-   "2026-10-29"
+   "2026-10-30"
   ],
   "retired": [
    {
@@ -7448,14 +7464,6 @@
  },
  "econ_calendar": [
   {
-   "date": "2026-10-29",
-   "label": "GDP"
-  },
-  {
-   "date": "2026-10-29",
-   "label": "PCE inflation & spending"
-  },
-  {
    "date": "2026-11-03",
    "label": "JOLTS job openings"
   },
@@ -7467,7 +7475,7 @@
  "stats": {
   "feeds_total": 20,
   "feeds_failed": 1,
-  "items": 1286,
+  "items": 1287,
   "smallcap_calls": 552,
   "feed_errors": [],
   "market_errors": [
