@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-04T22:14:36.895277+00:00",
+ "generated_at": "2026-11-05T02:51:14.626537+00:00",
  "market": [
   {
    "label": "S&P 500",
@@ -77,13 +77,12 @@
    "label": "Dow",
    "symbol": "DJIA",
    "kind": "index",
-   "value": 51786.72,
-   "prev": 51983.98,
-   "value_txt": "51,786.72",
-   "delta": -0.3794630576573822,
-   "delta_txt": "-0.38%",
+   "value": 53356.12,
+   "prev": 51786.72,
+   "value_txt": "53,356.12",
+   "delta": 3.0305066627119874,
+   "delta_txt": "+3.03%",
    "spark": [
-    51176.96,
     51267.9,
     51521.28,
     51179.87,
@@ -105,9 +104,10 @@
     52342.56,
     51770.31,
     51983.98,
-    51786.72
+    51786.72,
+    53356.12
    ],
-   "asof": "Nov 3"
+   "asof": "Nov 4"
   },
   {
    "label": "VIX",
@@ -286,19 +286,19 @@
     1.1216,
     1.1179,
     1.1267
-   ]
+   ],
+   "asof": "Nov 4"
   },
   {
    "label": "Bitcoin",
    "symbol": "bitcoin",
    "kind": "crypto",
-   "value": 80223.08129807537,
-   "prev": 77384.58950168235,
-   "value_txt": "$80,223",
-   "delta": 3.668032375271967,
-   "delta_txt": "+3.67%",
+   "value": 80579.16420465872,
+   "prev": 80442.71214714671,
+   "value_txt": "$80,579",
+   "delta": 0.1696263761749004,
+   "delta_txt": "+0.17%",
    "spark": [
-    83115.10159603784,
     81603.65464601685,
     82155.53979682797,
     81523.6580235906,
@@ -320,20 +320,20 @@
     78293.83909746421,
     76709.40534304293,
     77384.58950168235,
-    80223.08129807537
+    80442.71214714671,
+    80579.16420465872
    ]
   },
   {
    "label": "Ethereum",
    "symbol": "ethereum",
    "kind": "crypto",
-   "value": 2417.7699530346968,
-   "prev": 2273.6272778684292,
-   "value_txt": "$2,418",
-   "delta": 6.339767145185034,
-   "delta_txt": "+6.34%",
+   "value": 2427.2950975822937,
+   "prev": 2423.081896592348,
+   "value_txt": "$2,427",
+   "delta": 0.1738777791980829,
+   "delta_txt": "+0.17%",
    "spark": [
-    2496.5900876439555,
     2419.689613608177,
     2439.96187745067,
     2420.559805997806,
@@ -355,18 +355,40 @@
     2273.9240928619997,
     2250.2201287695407,
     2273.6272778684292,
-    2417.7699530346968
+    2423.081896592348,
+    2427.2950975822937
    ]
   }
  ],
- "tape_line": "S&P 500 +0.36%, Nasdaq +0.83%, Dow -0.38%; the 10-year Treasury at 4.95% (+4 bp); WTI crude $99.64 (-0.42%); bitcoin $80,223 (+3.67%).",
+ "tape_line": "S&P 500 +0.36%, Nasdaq +0.83%, Dow +3.03%; the 10-year Treasury at 4.95% (+4 bp); WTI crude $99.64 (-0.42%); bitcoin $80,579 (+0.17%).",
  "top": [
   {
-   "title": "Treasury Yields Down Following Democrats Midterm Win",
-   "link": "https://www.wsj.com/finance/investing/two-year-treasury-yield-falls-to-two-month-low-as-democrats-sweep-midterm-elections-79fb1f8e?mod=rss_markets_main",
+   "title": "Gold Rises on Falling Treasury Yields Post-Midterms",
+   "link": "https://www.wsj.com/finance/commodities-futures/gold-flat-after-midterm-linked-rebound-2d7cca6a?mod=rss_markets_main",
    "source": "WSJ Markets",
-   "published": "2026-11-04T20:18:00+00:00",
-   "summary": "Treasury yields fell after the Democratic party’s overwhelming win in the U.S. midterm elections."
+   "published": "2026-11-05T02:25:00+00:00",
+   "summary": "Gold gained. The U.S. midterm election results sent Treasury yields lower, boosting the appeal of the precious metal, ANZ said."
+  },
+  {
+   "title": "Zillow Traffic Slides as High Mortgage Rates Freeze Housing Market",
+   "link": "https://www.wsj.com/business/earnings/zillow-revenue-rises-as-rentals-help-offset-weak-market-for-home-sales-02fc9d5e?mod=pls_whats_news_us_business_f",
+   "source": "WSJ Business",
+   "published": "2026-11-04T22:47:00+00:00",
+   "summary": "Zillow reported a decline in traffic to its apps and sites in the midst of what it called “one of the toughest housing markets in a generation.”"
+  },
+  {
+   "title": "Figma sinks after earnings beat as company prioritizes long-term growth with AI changes",
+   "link": "https://www.cnbc.com/2026/11/04/figma-fig-q3-earnings-report-2026.html",
+   "source": "CNBC Earnings",
+   "published": "2026-11-04T23:02:39+00:00",
+   "summary": "Figma is letting clients use more artificial intelligence features for the same price. The company would like the move to boost results in the long term."
+  },
+  {
+   "title": "Qualcomm stock drops 7% on weak earnings forecast as memory shortage weighs on smartphone sales",
+   "link": "https://www.cnbc.com/2026/11/04/qualcomm-qcom-earnings-report-q4-2026.html",
+   "source": "CNBC Earnings",
+   "published": "2026-11-04T23:38:11+00:00",
+   "summary": "Qualcomm delivered better-than-expected results but issued a weak earnings forecast."
   },
   {
    "title": "U.S. Stocks Rally on Divided Government as AI Wobbles Continue",
@@ -376,13 +398,6 @@
    "summary": "Stocks surged as oil prices tumbled and traders bet a divided government would be good for business, offsetting ongoing unease about artificial-intelligence bets."
   },
   {
-   "title": "Figma sinks after earnings beat as company prioritizes long-term growth with AI changes",
-   "link": "https://www.cnbc.com/2026/11/04/figma-fig-q3-earnings-report-2026.html",
-   "source": "CNBC",
-   "published": "2026-11-04T21:38:33+00:00",
-   "summary": "Figma is letting clients use more artificial intelligence features for the same price. The company would like the move to boost results in the long term."
-  },
-  {
    "title": "Stocks Surge, Oil Plummets on Democrat Victory",
    "link": "https://www.wsj.com/finance/stocks/stocks-surge-oil-plummets-on-democrat-victory-d4f606b5?mod=rss_markets_main",
    "source": "WSJ Markets",
@@ -390,37 +405,23 @@
    "summary": "Plus, CVS decides to break itself up."
   },
   {
-   "title": "Qualcomm stock drops 6% on weak earnings forecast as memory shortage weighs on smartphone sales",
-   "link": "https://www.cnbc.com/2026/11/04/qualcomm-qcom-earnings-report-q4-2026.html",
-   "source": "CNBC",
-   "published": "2026-11-04T22:03:43+00:00",
-   "summary": "Qualcomm delivered better-than-expected results but issued a weak earnings forecast."
-  },
-  {
-   "title": "Gold Recovers $4,000 Level as Oil Prices Fall",
-   "link": "https://www.wsj.com/finance/commodities-futures/gold-edges-higher-amid-cooling-oil-prices-c805a544?mod=rss_markets_main",
+   "title": "Oil Continues to Fall Amid Rising Hopes to End Iran War",
+   "link": "https://www.wsj.com/finance/commodities-futures/oil-continues-to-fall-amid-rising-hopes-to-end-iran-war-7e9ba2fb?mod=rss_markets_main",
    "source": "WSJ Markets",
-   "published": "2026-11-04T19:47:00+00:00",
-   "summary": "Gold futures rose with support from the slide in oil after Democrats took control of the U.S. Congress in the midterm elections, raising hopes for an end to the Middle East conflict."
-  },
-  {
-   "title": "Stock market today: Dow rallies 1,500 points, S&P 500 and Nasdaq gain after Democrats win control of Congress",
-   "link": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxOVk1FS3BzdHJTaGpXZ0RUNjRmcFczWmFBZ2xiU2ZrM0tKM0w5VzhNWUFsbk5ENzBCdDg3Y1M3MWM5OWJLb3U4UjRxODg0U2xIUTZhT1ZLNDNZeWNhU3lndWlBUW9BVGlGQUZqMHN3cjk4QTQ1d0pmVkNyTldqWWdmYmtGR2wtd1ZrLVoxcWNaM1o2WHFuZlc0MUIzUGZJOF91SVJFMjVhYXl4VVBwOGlnbll6dUNjd2ppa09hTkU5TldxZ1hFM2s3YkRVV3l4Q20tZFU5bnRxS0lWWnZl?oc=5",
-   "source": "Yahoo Finance",
-   "published": "2026-11-04T20:36:27+00:00",
-   "summary": "Stock market today: Dow rallies 1,500 points, S&P 500 and Nasdaq gain after Democrats win control of Congress Yahoo Finance Why the stock market is unexpectedly rallying in the wake of the Democratic blue wave Yahoo Finance What…"
+   "published": "2026-11-05T02:12:00+00:00",
+   "summary": "Oil continued to fall in early Asian trade after declining over 8% overnight on rising hopes for an end to the Middle East conflict following the Democrats’ sweep in the U.S. midterm elections."
   }
  ],
  "smallcap": {
   "note": null,
-  "asof": "2026-11-04T22:14:31+00:00",
+  "asof": "2026-11-05T02:51:09+00:00",
   "coverage": {
    "universe": 9897,
    "profiled": 10213,
    "in_band": 1697,
    "measured": 1697,
    "scored": 914,
-   "below_floor": 66
+   "below_floor": 65
   },
   "screen": [
    {
@@ -489,7 +490,7 @@
      "q": 60
     },
     "flags": [
-     "E-1d"
+     "E-0d"
     ],
     "growth_doubt": false,
     "unit_doubt": null,
@@ -577,7 +578,7 @@
      "q": 58
     },
     "flags": [
-     "E-6d"
+     "E-5d"
     ],
     "growth_doubt": true,
     "unit_doubt": null,
@@ -622,7 +623,7 @@
      "q": 63
     },
     "flags": [
-     "E-5d"
+     "E-4d"
     ],
     "growth_doubt": false,
     "unit_doubt": null,
@@ -929,7 +930,7 @@
      "q": 43
     },
     "flags": [
-     "E-1d",
+     "E-0d",
      "8-K"
     ],
     "growth_doubt": false,
@@ -975,7 +976,7 @@
      "q": 53
     },
     "flags": [
-     "E-1d"
+     "E-0d"
     ],
     "growth_doubt": false,
     "unit_doubt": null,
@@ -1020,7 +1021,7 @@
      "q": 65
     },
     "flags": [
-     "E-1d"
+     "E-0d"
     ],
     "growth_doubt": false,
     "unit_doubt": null,
@@ -1368,7 +1369,7 @@
      "q": 61
     },
     "flags": [
-     "E-1d"
+     "E-0d"
     ],
     "growth_doubt": false,
     "unit_doubt": null,
@@ -1413,7 +1414,7 @@
      "q": 67
     },
     "flags": [
-     "E-1d"
+     "E-0d"
     ],
     "growth_doubt": false,
     "unit_doubt": null,
@@ -1500,9 +1501,7 @@
      "m": 100,
      "q": 36
     },
-    "flags": [
-     "E-0d"
-    ],
+    "flags": [],
     "growth_doubt": false,
     "unit_doubt": null,
     "why": {
@@ -1528,11 +1527,11 @@
   ],
   "freshness": {
    "last_full_h": 0.0,
-   "quote_median_h": 6.1,
+   "quote_median_h": 4.7,
    "quote_count": 1863,
    "bench_h": 0.0,
-   "universe_h": 113.5,
-   "earnings_h": 6.0,
+   "universe_h": 118.1,
+   "earnings_h": 10.6,
    "bench_gate_h": 72
   },
   "reach": {
@@ -1548,13 +1547,13 @@
     "have": 1,
     "target": 3,
     "possible": 3,
-    "next_due": "2026-11-04",
+    "next_due": "2026-11-05",
     "reachable": true,
     "slack": 0
    }
   },
   "changes": {
-   "prev_day": "2026-11-03",
+   "prev_day": "2026-11-04",
    "entered": [],
    "left": [],
    "held": 25
@@ -1631,10 +1630,10 @@
     "dp": 45.8498
    },
    {
-    "ticker": "BUUU",
-    "name": "BUUU Group Ltd",
-    "px": 7.38,
-    "dp": 28.3478
+    "ticker": "OPRT",
+    "name": "Oportun Financial Corp",
+    "px": 13.01,
+    "dp": 29.5817
    },
    {
     "ticker": "ADV",
@@ -1650,12 +1649,6 @@
    }
   ],
   "movers_down": [
-   {
-    "ticker": "LOT",
-    "name": "Lotus Technology Inc",
-    "px": 0.2899,
-    "dp": -27.525
-   },
    {
     "ticker": "SNDX",
     "name": "Syndax Pharmaceuticals Inc",
@@ -1673,6 +1666,12 @@
     "name": "Ecarx Holdings Inc.",
     "px": 0.7033,
     "dp": -20.9953
+   },
+   {
+    "ticker": "CGEM",
+    "name": "Cullinan Therapeutics Inc",
+    "px": 12.49,
+    "dp": -20.6984
    },
    {
     "ticker": "SOC",
@@ -1757,8 +1756,8 @@
   ],
   "evaluation": {
    "1w": {
-    "excess": 0.07,
-    "days": 21,
+    "excess": 0.01,
+    "days": 22,
     "indep": 5,
     "dropped": 0,
     "carried": 0,
@@ -1784,7 +1783,8 @@
      -2.31,
      -0.46,
      -0.5,
-     -1.34
+     -1.34,
+     -1.31
     ],
     "indep_values": [
      -0.42,
@@ -1793,8 +1793,8 @@
      -0.95,
      -1.34
     ],
-    "vs_peers": -0.28,
-    "peer_readings": 21
+    "vs_peers": -0.36,
+    "peer_readings": 22
    },
    "4w": {
     "excess": 1.94,
@@ -1848,6 +1848,13 @@
     "form": "8-K"
    },
    {
+    "ticker": "ATNI",
+    "name": "ATN International Inc",
+    "date": "2026-11-04",
+    "link": "https://www.sec.gov/Archives/edgar/data/879585/000162828026070291/0001628280-26-070291-index.htm",
+    "form": "8-K"
+   },
+   {
     "ticker": "ARRY",
     "name": "Array Technologies Inc",
     "date": "2026-11-04",
@@ -1888,28 +1895,21 @@
     "date": "2026-11-04",
     "link": "https://www.sec.gov/Archives/edgar/data/1096056/000207709626000300/0002077096-26-000300-index.htm",
     "form": "8-K"
-   },
-   {
-    "ticker": "BSRR",
-    "name": "Sierra Bancorp",
-    "date": "2026-11-04",
-    "link": "https://www.sec.gov/Archives/edgar/data/1130144/000143774926034779/0001437749-26-034779-index.htm",
-    "form": "8-K"
    }
   ],
   "filings_activist": [
+   {
+    "ticker": "CCXI",
+    "name": "Churchill Capital Corp XI",
+    "date": "2026-11-05",
+    "link": "https://www.sec.gov/Archives/edgar/data/2074973/000121390026116089/0001213900-26-116089-index.htm",
+    "form": "SCHEDULE 13D/A"
+   },
    {
     "ticker": "YB",
     "name": "Yuanbao Inc",
     "date": "2026-11-04",
     "link": "https://www.sec.gov/Archives/edgar/data/1995520/000180738426000009/0001807384-26-000009-index.htm",
-    "form": "SCHEDULE 13G/A"
-   },
-   {
-    "ticker": "CCXI",
-    "name": "Churchill Capital Corp XI",
-    "date": "2026-11-04",
-    "link": "https://www.sec.gov/Archives/edgar/data/2074973/000092189526002924/0000921895-26-002924-index.htm",
     "form": "SCHEDULE 13G/A"
    },
    {
@@ -1962,14 +1962,21 @@
     "form": "SCHEDULE 13G/A"
    },
    {
-    "ticker": "DIN",
-    "name": "Dine Brands Global Inc",
-    "date": "2026-11-03",
-    "link": "https://www.sec.gov/Archives/edgar/data/49754/000110465926121599/0001104659-26-121599-index.htm",
+    "ticker": "MSIF",
+    "name": "MSC Income Fund Inc",
+    "date": "2026-11-04",
+    "link": "https://www.sec.gov/Archives/edgar/data/1535778/000139644026000153/0001396440-26-000153-index.htm",
     "form": "SCHEDULE 13D"
    }
   ],
   "filings_offering": [
+   {
+    "ticker": "EVMN",
+    "name": "Evommune Inc",
+    "date": "2026-11-04",
+    "link": "https://www.sec.gov/Archives/edgar/data/2044725/000119312526447627/0001193125-26-447627-index.htm",
+    "form": "424B3"
+   },
    {
     "ticker": "CSWC",
     "name": "Capital Southwest Corp",
@@ -2030,6 +2037,14 @@
   "budget_mode": "full",
   "news": [
    {
+    "title": "OI Investors Have Opportunity to Lead O-I Glass, Inc. Securities Fraud Lawsuit",
+    "link": "https://www.prnewswire.com/news-releases/oi-investors-have-opportunity-to-lead-o-i-glass-inc-securities-fraud-lawsuit-302929848.html",
+    "source": "PR Newswire",
+    "published": "2026-11-05T01:10:00+00:00",
+    "summary": "NEW YORK, Nov. 4, 2026 /PRNewswire/ -- Why: Rosen Law Firm, a global investor rights law firm, announces a class action lawsuit on behalf of purchasers of common stock of O-I Glass, Inc. (NYSE: OI) between March 14, 2025 and July…",
+    "ticker": "OI"
+   },
+   {
     "title": "Phibro Animal Health Corporation Reports First Quarter Results, Maintains Financial Guidance",
     "link": "http://www.businesswire.com/news/home/20261102016605/en/Phibro-Animal-Health-Corporation-Reports-First-Quarter-Results-Maintains-Financial-Guidance/?feedref=JjAwJuNHiystnCoBq_hl-YorNIXXeJUidDamMzBr2lVrRA1xRkqfEfrAVCWz-Z_wrCOi9QzgjCezTS3Nw_X6kJUrpSBm-Hav1w-UkdSlG3ne1zTTrM-woVxs6_pUhglHIbE9ZC1pD3bt6lQgRU5j6g==",
     "source": "Business Wire",
@@ -2062,6 +2077,14 @@
     "ticker": "OI"
    },
    {
+    "title": "Rosen Law Firm Encourages Xerox Holdings Corporation Investors to Inquire About Securities Class Action Investigation - XRX",
+    "link": "https://www.prnewswire.com/news-releases/rosen-law-firm-encourages-xerox-holdings-corporation-investors-to-inquire-about-securities-class-action-investigation--xrx-302929904.html",
+    "source": "PR Newswire",
+    "published": "2026-11-05T02:34:00+00:00",
+    "summary": "NEW YORK, Nov. 4, 2026 /PRNewswire/ -- Why: Rosen Law Firm, a global investor rights law firm, announces an investigation of potential securities claims on behalf of shareholders of Xerox Holdings Corporation (NASDAQ: XRX)…",
+    "ticker": "XRX"
+   },
+   {
     "title": "Ellington Financial Inc. Reports Third Quarter 2026 Results",
     "link": "http://www.businesswire.com/news/home/20261104986304/en/Ellington-Financial-Inc.-Reports-Third-Quarter-2026-Results/?feedref=JjAwJuNHiystnCoBq_hl-YorNIXXeJUidDamMzBr2lVrRA1xRkqfEfrAVCWz-Z_wrCOi9QzgjCezTS3Nw_X6kJUrpSBm-Hav1w-UkdSlG3ne1zTTrM-woVxs6_pUhglHIbE9ZC1pD3bt6lQgRU5j6g==",
     "source": "Business Wire",
@@ -2076,22 +2099,6 @@
     "published": "2026-11-04T21:30:00+00:00",
     "summary": "BETHESDA, Md.--(BUSINESS WIRE)--RLJ Lodging Trust (the “Company”) (NYSE: RLJ) today reported results for the three and nine months ended September 30, 2026. Third Quarter Highlights Comparable RevPAR of $153.36, an increase of…",
     "ticker": "RLJ"
-   },
-   {
-    "title": "Universal Corporation Reports Second Quarter Fiscal Year 2027 Results",
-    "link": "http://www.businesswire.com/news/home/20261104172245/en/Universal-Corporation-Reports-Second-Quarter-Fiscal-Year-2027-Results/?feedref=JjAwJuNHiystnCoBq_hl-YorNIXXeJUidDamMzBr2lVrRA1xRkqfEfrAVCWz-Z_wrCOi9QzgjCezTS3Nw_X6kJUrpSBm-Hav1w-UkdSlG3ne1zTTrM-woVxs6_pUhglHIbE9ZC1pD3bt6lQgRU5j6g==",
-    "source": "Business Wire",
-    "published": "2026-11-04T21:16:00+00:00",
-    "summary": "RICHMOND, Va.--(BUSINESS WIRE)--Universal Corporation (NYSE:UVV) (“Universal” or the “Company”), a global business-to-business agriproducts company, today announced financial results for the quarter ended September 30, 2026…",
-    "ticker": "UVV"
-   },
-   {
-    "title": "Deluxe Corporation Third Quarter 2026 Financial Results Available on Company’s Website",
-    "link": "http://www.businesswire.com/news/home/20261104979231/en/Deluxe-Corporation-Third-Quarter-2026-Financial-Results-Available-on-Company%E2%80%99s-Website/?feedref=JjAwJuNHiystnCoBq_hl-YorNIXXeJUidDamMzBr2lVrRA1xRkqfEfrAVCWz-Z_wrCOi9QzgjCezTS3Nw_X6kJUrpSBm-Hav1w-UkdSlG3ne1zTTrM-woVxs6_pUhglHIbE9ZC1pD3bt6lQgRU5j6g==",
-    "source": "Business Wire",
-    "published": "2026-11-04T21:15:00+00:00",
-    "summary": "MINNEAPOLIS--(BUSINESS WIRE)--Deluxe (NYSE: DLX), a trusted Payments and Data company, today announced its third quarter 2026 financial results through an earnings release available on the company Investor Relations site at…",
-    "ticker": "DLX"
    }
   ]
  },
@@ -6194,18 +6201,18 @@
     "ret_common": -0.12,
     "excess_common": 0.14,
     "common_from": "2026-10-01",
-    "common_days": 35,
+    "common_days": 36,
     "value": 100919.17,
     "ret": 0.92,
     "bench_ret": -0.45,
     "excess": 1.38,
-    "friction_yr": 10.2,
+    "friction_yr": 9.9,
     "max_drawdown": -4.57,
     "positions": 25,
     "cash": 3.15,
     "costs_paid": 977.25,
     "stops_hit": 0,
-    "days": 35,
+    "days": 36,
     "started": "2026-10-01",
     "curve": [
      101.04,
@@ -6242,6 +6249,7 @@
      101.48,
      100.891,
      100.075,
+     100.919,
      100.919
     ],
     "curve_dates": [
@@ -6279,7 +6287,8 @@
      "2026-11-01",
      "2026-11-02",
      "2026-11-03",
-     "2026-11-04"
+     "2026-11-04",
+     "2026-11-05"
     ]
    },
    {
@@ -6289,18 +6298,18 @@
     "ret_common": 0.4,
     "excess_common": 0.66,
     "common_from": "2026-10-01",
-    "common_days": 35,
+    "common_days": 36,
     "value": 101644.88,
     "ret": 1.64,
     "bench_ret": -0.45,
     "excess": 2.11,
-    "friction_yr": 10.1,
+    "friction_yr": 9.8,
     "max_drawdown": -4.54,
     "positions": 25,
     "cash": 256.13,
     "costs_paid": 963.97,
     "stops_hit": 0,
-    "days": 35,
+    "days": 36,
     "started": "2026-10-01",
     "curve": [
      101.238,
@@ -6337,6 +6346,7 @@
      102.096,
      101.393,
      100.804,
+     101.645,
      101.645
     ],
     "curve_dates": [
@@ -6374,7 +6384,8 @@
      "2026-11-01",
      "2026-11-02",
      "2026-11-03",
-     "2026-11-04"
+     "2026-11-04",
+     "2026-11-05"
     ]
    },
    {
@@ -6384,18 +6395,18 @@
     "ret_common": -3.06,
     "excess_common": -2.82,
     "common_from": "2026-10-01",
-    "common_days": 35,
+    "common_days": 36,
     "value": 97944.85,
     "ret": -2.06,
     "bench_ret": -0.45,
     "excess": -1.61,
-    "friction_yr": 15.0,
+    "friction_yr": 14.6,
     "max_drawdown": -5.62,
     "positions": 16,
     "cash": 26542.69,
     "costs_paid": 1441.41,
     "stops_hit": 12,
-    "days": 35,
+    "days": 36,
     "started": "2026-10-01",
     "curve": [
      101.04,
@@ -6432,6 +6443,7 @@
      100.0,
      99.545,
      98.629,
+     97.945,
      97.945
     ],
     "curve_dates": [
@@ -6469,7 +6481,8 @@
      "2026-11-01",
      "2026-11-02",
      "2026-11-03",
-     "2026-11-04"
+     "2026-11-04",
+     "2026-11-05"
     ]
    },
    {
@@ -6479,18 +6492,18 @@
     "ret_common": -1.58,
     "excess_common": -1.33,
     "common_from": "2026-10-01",
-    "common_days": 35,
+    "common_days": 36,
     "value": 99081.72,
     "ret": -0.92,
     "bench_ret": -0.45,
     "excess": -0.47,
-    "friction_yr": 9.9,
+    "friction_yr": 9.6,
     "max_drawdown": -4.59,
     "positions": 25,
     "cash": 12107.58,
     "costs_paid": 951.22,
     "stops_hit": 0,
-    "days": 35,
+    "days": 36,
     "started": "2026-10-01",
     "curve": [
      100.676,
@@ -6527,6 +6540,7 @@
      99.62,
      99.207,
      98.49,
+     99.082,
      99.082
     ],
     "curve_dates": [
@@ -6564,7 +6578,8 @@
      "2026-11-01",
      "2026-11-02",
      "2026-11-03",
-     "2026-11-04"
+     "2026-11-04",
+     "2026-11-05"
     ]
    },
    {
@@ -6574,18 +6589,18 @@
     "ret_common": -3.91,
     "excess_common": -3.67,
     "common_from": "2026-10-01",
-    "common_days": 35,
+    "common_days": 36,
     "value": 96861.69,
     "ret": -3.14,
     "bench_ret": -0.45,
     "excess": -2.7,
-    "friction_yr": 13.6,
+    "friction_yr": 13.2,
     "max_drawdown": -5.66,
     "positions": 16,
     "cash": 36827.51,
     "costs_paid": 1304.92,
     "stops_hit": 12,
-    "days": 35,
+    "days": 36,
     "started": "2026-10-01",
     "curve": [
      100.805,
@@ -6622,6 +6637,7 @@
      98.558,
      98.103,
      97.497,
+     96.862,
      96.862
     ],
     "curve_dates": [
@@ -6659,7 +6675,8 @@
      "2026-11-01",
      "2026-11-02",
      "2026-11-03",
-     "2026-11-04"
+     "2026-11-04",
+     "2026-11-05"
     ]
    },
    {
@@ -6669,18 +6686,18 @@
     "ret_common": -1.09,
     "excess_common": -0.84,
     "common_from": "2026-10-01",
-    "common_days": 35,
+    "common_days": 36,
     "value": 99939.71,
     "ret": -0.06,
     "bench_ret": -0.45,
     "excess": 0.4,
-    "friction_yr": 7.2,
+    "friction_yr": 7.0,
     "max_drawdown": -5.14,
     "positions": 25,
     "cash": 2.96,
     "costs_paid": 687.76,
     "stops_hit": 0,
-    "days": 35,
+    "days": 36,
     "started": "2026-10-01",
     "curve": [
      101.04,
@@ -6717,6 +6734,7 @@
      100.062,
      99.641,
      99.074,
+     99.94,
      99.94
     ],
     "curve_dates": [
@@ -6754,7 +6772,8 @@
      "2026-11-01",
      "2026-11-02",
      "2026-11-03",
-     "2026-11-04"
+     "2026-11-04",
+     "2026-11-05"
     ]
    }
   ],
@@ -6793,6 +6812,7 @@
    98.155,
    98.566,
    98.175,
+   99.545,
    99.545
   ],
   "bench_dates": [
@@ -6830,11 +6850,12 @@
    "2026-11-01",
    "2026-11-02",
    "2026-11-03",
-   "2026-11-04"
+   "2026-11-04",
+   "2026-11-05"
   ],
   "span": [
    "2026-10-01",
-   "2026-11-04"
+   "2026-11-05"
   ],
   "retired": [
    {
