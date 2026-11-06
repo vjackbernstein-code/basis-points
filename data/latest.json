@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-06T00:07:58.346416+00:00",
+ "generated_at": "2026-11-06T06:31:04.506503+00:00",
  "market": [
   {
    "label": "S&P 500",
@@ -41,13 +41,12 @@
    "label": "Nasdaq",
    "symbol": "NASDAQCOM",
    "kind": "index",
-   "value": 25736.51,
-   "prev": 25372.01,
-   "value_txt": "25,736.51",
-   "delta": 1.436622482806841,
-   "delta_txt": "+1.44%",
+   "value": 24315.0,
+   "prev": 25736.51,
+   "value_txt": "24,315.00",
+   "delta": -5.5233207610511235,
+   "delta_txt": "-5.52%",
    "spark": [
-    27477.31,
     27599.89,
     27538.69,
     27193.34,
@@ -69,9 +68,10 @@
     25437.0,
     25164.36,
     25372.01,
-    25736.51
+    25736.51,
+    24315.0
    ],
-   "asof": "Nov 4"
+   "asof": "Nov 5"
   },
   {
    "label": "Dow",
@@ -106,7 +106,8 @@
     51786.72,
     53356.12,
     51523.06
-   ]
+   ],
+   "asof": "Nov 5"
   },
   {
    "label": "VIX",
@@ -285,19 +286,19 @@
     1.1179,
     1.1267,
     1.1224
-   ]
+   ],
+   "asof": "Nov 5"
   },
   {
    "label": "Bitcoin",
    "symbol": "bitcoin",
    "kind": "crypto",
-   "value": 75895.43321705112,
-   "prev": 80442.71214714671,
-   "value_txt": "$75,895",
-   "delta": -5.6528165308221565,
-   "delta_txt": "-5.65%",
+   "value": 75481.60910356879,
+   "prev": 76005.50915811297,
+   "value_txt": "$75,482",
+   "delta": -0.6892922109821289,
+   "delta_txt": "-0.69%",
    "spark": [
-    81603.65464601685,
     82155.53979682797,
     81523.6580235906,
     81408.34521320867,
@@ -319,20 +320,20 @@
     76709.40534304293,
     77384.58950168235,
     80442.71214714671,
-    75895.43321705112
+    76005.50915811297,
+    75481.60910356879
    ]
   },
   {
    "label": "Ethereum",
    "symbol": "ethereum",
    "kind": "crypto",
-   "value": 2232.7504586470563,
-   "prev": 2423.081896592348,
-   "value_txt": "$2,233",
-   "delta": -7.85493210992829,
-   "delta_txt": "-7.85%",
+   "value": 2218.898904901378,
+   "prev": 2235.7745744284666,
+   "value_txt": "$2,219",
+   "delta": -0.7548019250287128,
+   "delta_txt": "-0.75%",
    "spark": [
-    2419.689613608177,
     2439.96187745067,
     2420.559805997806,
     2400.3079201066294,
@@ -354,12 +355,20 @@
     2250.2201287695407,
     2273.6272778684292,
     2423.081896592348,
-    2232.7504586470563
+    2235.7745744284666,
+    2218.898904901378
    ]
   }
  ],
- "tape_line": "S&P 500 +1.58%, Nasdaq +1.44%, Dow -3.44%; the 10-year Treasury at 4.90% (-5 bp); WTI crude $99.64 (-0.42%); bitcoin $75,895 (-5.65%).",
+ "tape_line": "S&P 500 +1.58%, Nasdaq -5.52%, Dow -3.44%; the 10-year Treasury at 4.90% (-5 bp); WTI crude $99.64 (-0.42%); bitcoin $75,482 (-0.69%).",
  "top": [
+  {
+   "title": "Taiwan Dollar Weakens on AI Selloff, Foreign Equity Outflows",
+   "link": "https://www.wsj.com/finance/currencies/asian-currencies-mixed-diminishing-risk-appetite-might-weigh-84b91434?mod=rss_markets_main",
+   "source": "WSJ Markets",
+   "published": "2026-11-06T03:36:00+00:00",
+   "summary": "The Taiwan dollar briefly weakened past the key level of 33 per U.S. dollar early Friday for the first time since April 2025, weighed down by the AI selloff and foreign equity outflows."
+  },
   {
    "title": "AI meltdown: Nvidia and Qualcomm drop more than 9%, pushing Nasdaq to worst day since April 2025",
    "link": "https://www.cnbc.com/2026/11/05/qualcomm-earnings-chip-stocks-election.html",
@@ -368,57 +377,50 @@
    "summary": "Companies tied to the AI buildout are all selling off as concerns mount about a slowdown following the midterm elections."
   },
   {
-   "title": "Gold Settles Higher As Yields, U.S. Dollar Weaken",
-   "link": "https://www.wsj.com/finance/commodities-futures/gold-flat-after-midterm-linked-rebound-2d7cca6a?mod=rss_markets_main",
-   "source": "WSJ Markets",
-   "published": "2026-11-05T19:17:00+00:00",
-   "summary": "Gold futures added to the previous session’s gains as yields and the U.S. dollar lost ground."
-  },
-  {
-   "title": "U.S. Stocks Slide as AI Rally Hits a Wall",
-   "link": "https://www.wsj.com/finance/stocks/u-s-stocks-slide-as-ai-rally-hits-a-wall-ec689f1e?mod=rss_markets_main",
-   "source": "WSJ Markets",
-   "published": "2026-11-05T21:51:00+00:00",
-   "summary": "Stocks plunged as disappointment in two major chip designers’ earnings and post-election fears about curbed data-center development caused a rout in artificial-intelligence companies."
-  },
-  {
-   "title": "Wall Street Gets $2.5 Trillion AI Reality Check With Historic Rout of Tech Stocks",
-   "link": "https://www.wsj.com/finance/stocks/wall-street-gets-2-5-trillion-ai-reality-check-with-historic-rout-of-tech-stocks-93985d7c?mod=rss_markets_main",
-   "source": "WSJ Markets",
-   "published": "2026-11-05T21:41:00+00:00",
-   "summary": "The Nasdaq composite closes in correction territory in the stock market’s worst day since last April’s tariff turmoil."
-  },
-  {
-   "title": "AI Panic Grips Stocks",
-   "link": "https://www.wsj.com/finance/investing/ai-panic-grips-stocks-60a59518?mod=rss_markets_main",
-   "source": "WSJ Markets",
-   "published": "2026-11-05T21:17:00+00:00",
-   "summary": "Plus, bonds rally and General Mills considers a divestiture"
-  },
-  {
-   "title": "Barkin sees interest rate hikes ahead, but at a gradual pace",
-   "link": "https://www.cnbc.com/2026/11/05/barkin-sees-interest-rate-hikes-ahead-but-at-a-gradual-pace.html",
+   "title": "India as an AI hedge? The country's stocks could see robust inflows as markets globally tank",
+   "link": "https://www.cnbc.com/2026/11/06/india-ai-tech-hedge-nifty50.html",
    "source": "CNBC",
-   "published": "2026-11-05T16:34:33+00:00",
-   "summary": "In a CNBC interview, the policymaker expressed concern over inflation and said monetary policy will need to adjust."
+   "published": "2026-11-06T06:02:36+00:00",
+   "summary": "Over the last month, India's Nifty 50 has gained nearly 9%, while markets with heavy AI exposure, including the U.S., Japan, South Korea and Taiwan are deep in the red."
+  },
+  {
+   "title": "Nasdaq sell-off batters Asian chip stocks as SK Hynix, Samsung, Softbank, TSMC tumble",
+   "link": "https://www.cnbc.com/2026/11/06/tech-stocks-sk-hynix-samsung-softbank.html",
+   "source": "CNBC",
+   "published": "2026-11-06T02:40:15+00:00",
+   "summary": "Asian technology stocks tumbled Friday, tracking a sharp sell-off on Wall Street overnight that sent the tech-heavy Nasdaq Composite into correction territory."
   },
   {
    "title": "Major Investors Are Skeptical Anthropic IPO Can Achieve $1.5 Trillion Valuation",
    "link": "https://www.wsj.com/finance/major-investors-are-skeptical-anthropic-ipo-can-achieve-1-5-trillion-valuation-ca965d8b?mod=rss_markets_main",
    "source": "WSJ Markets",
-   "published": "2026-11-05T23:17:00+00:00",
-   "summary": "The artificial-intelligence giant could need to set a significantly lower-than-expected valuation, investors say."
+   "published": "2026-11-06T04:36:00+00:00",
+   "summary": "Other investors say October financial results could lessen the blow of the market rout."
+  },
+  {
+   "title": "The JPMorgan Alums Whose Big Bet on AI Stocks Is Being Put to the Test",
+   "link": "https://www.wsj.com/finance/investing/the-jpmorgan-alums-whose-big-bet-on-ai-stocks-is-being-put-to-the-test-df105aa1?mod=rss_markets_main",
+   "source": "WSJ Markets",
+   "published": "2026-11-06T02:00:00+00:00",
+   "summary": "Phil Scott and Jim Atwood struck out on their own in October in an effort to keep their wealth clients’ concentrated portfolios intact."
+  },
+  {
+   "title": "The AI gamble strains for more cash",
+   "link": "https://www.ft.com/content/4e0dbca4-5917-483f-b524-8b8a2b4c54b2?syn-25a6b1a6=1",
+   "source": "Financial Times",
+   "published": "2026-11-06T05:00:14+00:00",
+   "summary": "But true believers in the technology are still angling to spend tens or hundreds of billions of dollars"
   }
  ],
  "smallcap": {
   "note": null,
-  "asof": "2026-11-06T00:07:53+00:00",
+  "asof": "2026-11-06T06:30:58+00:00",
   "coverage": {
    "universe": 9897,
    "profiled": 10213,
    "in_band": 1697,
    "measured": 1697,
-   "scored": 911,
+   "scored": 909,
    "below_floor": 65
   },
   "screen": [
@@ -569,7 +571,7 @@
     "ev_rev": 34.2754,
     "px": 6.42,
     "dp": -10.2098,
-    "score": 83.1,
+    "score": 83.0,
     "sub": {
      "g": 99,
      "m": 79,
@@ -704,7 +706,7 @@
     "dp": -1.1069,
     "score": 79.9,
     "sub": {
-     "g": 82,
+     "g": 83,
      "m": 82,
      "q": 70
     },
@@ -878,7 +880,7 @@
     "ev_rev": 16.0873,
     "px": 28.53,
     "dp": -6.459,
-    "score": 77.4,
+    "score": 77.5,
     "sub": {
      "g": 82,
      "m": 82,
@@ -921,9 +923,9 @@
     "ev_rev": 13.991,
     "px": 47.15,
     "dp": -7.0386,
-    "score": 76.9,
+    "score": 77.0,
     "sub": {
-     "g": 86,
+     "g": 87,
      "m": 84,
      "q": 43
     },
@@ -964,7 +966,7 @@
     "ev_rev": 21.5651,
     "px": 28.27,
     "dp": -9.9108,
-    "score": 76.6,
+    "score": 76.7,
     "sub": {
      "g": 92,
      "m": 74,
@@ -1011,7 +1013,7 @@
     "sub": {
      "g": 61,
      "m": 98,
-     "q": 65
+     "q": 64
     },
     "flags": [],
     "growth_doubt": false,
@@ -1185,7 +1187,7 @@
     "sub": {
      "g": 79,
      "m": 96,
-     "q": 31
+     "q": 30
     },
     "flags": [
      "8-K"
@@ -1385,6 +1387,49 @@
     }
    },
    {
+    "ticker": "ARHS",
+    "name": "Arhaus Inc",
+    "ind": "Retail",
+    "group": "Consumer",
+    "mcap": 1237.4925582107142,
+    "rev_g": 5.44,
+    "accel": 1.9399999999999995,
+    "r13": 73.1608,
+    "momo": 1.04,
+    "from_high": null,
+    "ev_rev": 1.1297,
+    "px": 12.94,
+    "dp": -1.597,
+    "score": 75.6,
+    "sub": {
+     "g": 61,
+     "m": 95,
+     "q": 66
+    },
+    "flags": [],
+    "growth_doubt": false,
+    "unit_doubt": null,
+    "why": {
+     "vol": 68.870445,
+     "r26": 68.7915,
+     "accel_raw": 1.9399999999999995,
+     "growth_cap": 150.0,
+     "accel_cap": 50.0,
+     "rg3": 3.92,
+     "rev_gq": 7.38,
+     "dte": 0.1275,
+     "gm_t": 39.69,
+     "om_t": 6.61,
+     "om_a": 6.44,
+     "cashps": 1.5975,
+     "rps": 9.933,
+     "adv": 2.03399,
+     "hi52": 12.73,
+     "shares": 141.54,
+     "exch": "NASDAQ NMS - GLOBAL MARKET"
+    }
+   },
+   {
     "ticker": "OSBC",
     "name": "Old Second Bancorp Inc",
     "ind": "Banking",
@@ -1398,7 +1443,7 @@
     "ev_rev": null,
     "px": 24.35,
     "dp": -3.3347,
-    "score": 75.7,
+    "score": 75.6,
     "sub": {
      "g": 70,
      "m": 83,
@@ -1441,7 +1486,7 @@
     "ev_rev": 5.502,
     "px": 16.1,
     "dp": -6.3409,
-    "score": 75.6,
+    "score": 75.5,
     "sub": {
      "g": 71,
      "m": 100,
@@ -1469,58 +1514,15 @@
      "shares": 132.62,
      "exch": "NASDAQ NMS - GLOBAL MARKET"
     }
-   },
-   {
-    "ticker": "ARHS",
-    "name": "Arhaus Inc",
-    "ind": "Retail",
-    "group": "Consumer",
-    "mcap": 1237.4925582107142,
-    "rev_g": 5.44,
-    "accel": 1.9399999999999995,
-    "r13": 73.1608,
-    "momo": 1.04,
-    "from_high": null,
-    "ev_rev": 1.1297,
-    "px": 12.94,
-    "dp": -1.597,
-    "score": 75.6,
-    "sub": {
-     "g": 61,
-     "m": 95,
-     "q": 67
-    },
-    "flags": [],
-    "growth_doubt": false,
-    "unit_doubt": null,
-    "why": {
-     "vol": 68.870445,
-     "r26": 68.7915,
-     "accel_raw": 1.9399999999999995,
-     "growth_cap": 150.0,
-     "accel_cap": 50.0,
-     "rg3": 3.92,
-     "rev_gq": 7.38,
-     "dte": 0.1275,
-     "gm_t": 39.69,
-     "om_t": 6.61,
-     "om_a": 6.44,
-     "cashps": 1.5975,
-     "rps": 9.933,
-     "adv": 2.03399,
-     "hi52": 12.73,
-     "shares": 141.54,
-     "exch": "NASDAQ NMS - GLOBAL MARKET"
-    }
    }
   ],
   "freshness": {
    "last_full_h": 0.0,
-   "quote_median_h": 5.5,
+   "quote_median_h": 6.5,
    "quote_count": 1863,
    "bench_h": 0.0,
-   "universe_h": 139.4,
-   "earnings_h": 0.0,
+   "universe_h": 145.8,
+   "earnings_h": 6.4,
    "bench_gate_h": 72
   },
   "reach": {
@@ -1607,34 +1609,34 @@
   ],
   "movers_up": [
    {
-    "ticker": "CRCT",
-    "name": "Cricut Inc",
-    "px": 8.88,
-    "dp": 48.7437
+    "ticker": "DNUT",
+    "name": "Krispy Kreme Inc",
+    "px": 4.6,
+    "dp": 30.6818
    },
    {
-    "ticker": "ADV",
-    "name": "Advantage Solutions Inc",
-    "px": 39.67,
-    "dp": 36.0892
+    "ticker": "PTLO",
+    "name": "Portillos Inc",
+    "px": 7.02,
+    "dp": 28.8073
    },
    {
-    "ticker": "TREE",
-    "name": "Lendingtree Inc",
-    "px": 38.35,
-    "dp": 32.8369
+    "ticker": "XERS",
+    "name": "Xeris Biopharma Holdings Inc",
+    "px": 13.08,
+    "dp": 25.0478
    },
    {
-    "ticker": "DFH",
-    "name": "Dream Finders Homes Inc",
-    "px": 12.81,
-    "dp": 26.8317
+    "ticker": "ONT",
+    "name": "Onterris Inc",
+    "px": 19.42,
+    "dp": 20.3968
    },
    {
-    "ticker": "ALIT",
-    "name": "Alight Inc",
-    "px": 12.75,
-    "dp": 25.9881
+    "ticker": "DLX",
+    "name": "Deluxe Corp",
+    "px": 27.7,
+    "dp": 18.275
    }
   ],
   "movers_down": [
@@ -1645,28 +1647,28 @@
     "dp": -54.0019
    },
    {
+    "ticker": "DDD",
+    "name": "3D Systems Corp",
+    "px": 1.67,
+    "dp": -36.7424
+   },
+   {
     "ticker": "TDUP",
     "name": "ThredUp Inc",
     "px": 1.45,
     "dp": -33.79
    },
    {
+    "ticker": "PCT",
+    "name": "Purecycle Technologies Inc",
+    "px": 1.88,
+    "dp": -32.6165
+   },
+   {
     "ticker": "FISN",
     "name": "Deep Fission, Inc",
     "px": 1.5,
     "dp": -32.1267
-   },
-   {
-    "ticker": "CCOI",
-    "name": "Cogent Communications Holdings Inc",
-    "px": 4.69,
-    "dp": -30.9278
-   },
-   {
-    "ticker": "TRIP",
-    "name": "Tripadvisor Inc",
-    "px": 7.38,
-    "dp": -27.6471
    }
   ],
   "earnings": [
@@ -1889,6 +1891,13 @@
   ],
   "filings_activist": [
    {
+    "ticker": "MAX",
+    "name": "Mediaalpha Inc",
+    "date": "2026-11-06",
+    "link": "https://www.sec.gov/Archives/edgar/data/1818383/000095015726001220/0000950157-26-001220-index.htm",
+    "form": "SCHEDULE 13D/A"
+   },
+   {
     "ticker": "VRTS",
     "name": "Virtus Investment Partners Inc",
     "date": "2026-11-05",
@@ -1950,13 +1959,6 @@
     "date": "2026-11-05",
     "link": "https://www.sec.gov/Archives/edgar/data/2084396/000110465926123498/0001104659-26-123498-index.htm",
     "form": "SCHEDULE 13G/A"
-   },
-   {
-    "ticker": "HQ",
-    "name": "Horizon Quantum Holdings Ltd",
-    "date": "2026-11-05",
-    "link": "https://www.sec.gov/Archives/edgar/data/2088256/000121390026116500/0001213900-26-116500-index.htm",
-    "form": "SCHEDULE 13D/A"
    }
   ],
   "filings_offering": [
@@ -2050,22 +2052,6 @@
     "ticker": "OI"
    },
    {
-    "title": "3D Systems Investigation Notice: SueWallSt Notifies Investors of Pending Investigation Into 3D Systems (DDD)",
-    "link": "https://www.prnewswire.com/news-releases/3d-systems-investigation-notice-suewallst-notifies-investors-of-pending-investigation-into-3d-systems-ddd-302931218.html",
-    "source": "PR Newswire",
-    "published": "2026-11-05T23:54:00+00:00",
-    "summary": "3D Systems reported positive adjusted EBITDA of approximately $3.1 million for the third quarter, while its GAAP net loss widened to $33.5 million from $18.1 million in the prior-year period. SueWallSt is investigating potential…",
-    "ticker": "DDD"
-   },
-   {
-    "title": "Tripadvisor Investigation Notice: SueWallSt Notifies Investors of Pending Investigation Into Tripadvisor (TRIP)",
-    "link": "https://www.prnewswire.com/news-releases/tripadvisor-investigation-notice-suewallst-notifies-investors-of-pending-investigation-into-tripadvisor-trip-302931278.html",
-    "source": "PR Newswire",
-    "published": "2026-11-05T22:45:00+00:00",
-    "summary": "An investigation into potential securities law violations is underway after Tripadvisor's third-quarter revenue and earnings miss triggered a sharp selloff by market open. NEW YORK, Nov. 5, 2026 /PRNewswire/ -- Tripadvisor, Inc…",
-    "ticker": "TRIP"
-   },
-   {
     "title": "ITT Announces Participation at Baird’s 2026 Global Industrial Conference on Nov. 10",
     "link": "http://www.businesswire.com/news/home/20261105272500/en/ITT-Announces-Participation-at-Baird%E2%80%99s-2026-Global-Industrial-Conference-on-Nov.-10/?feedref=JjAwJuNHiystnCoBq_hl-YorNIXXeJUidDamMzBr2lVrRA1xRkqfEfrAVCWz-Z_wrCOi9QzgjCezTS3Nw_X6kJUrpSBm-Hav1w-UkdSlG3ne1zTTrM-woVxs6_pUhglHIbE9ZC1pD3bt6lQgRU5j6g==",
     "source": "Business Wire",
@@ -2096,6 +2082,22 @@
     "published": "2026-11-05T21:16:00+00:00",
     "summary": "NEW YORK--(BUSINESS WIRE)--Morgan Stanley Direct Lending Fund (NYSE: MSDL) (“MSDL” or the “Company”), a business development company externally managed by MS Capital Partners Adviser Inc. (the “Adviser”), today announced its…",
     "ticker": "MSDL"
+   },
+   {
+    "title": "Lindsay Corporation Announces Intention to Nominate Marvin Washington to Board of Directors at 2027 Annual Meeting",
+    "link": "http://www.businesswire.com/news/home/20261105974734/en/Lindsay-Corporation-Announces-Intention-to-Nominate-Marvin-Washington-to-Board-of-Directors-at-2027-Annual-Meeting/?feedref=JjAwJuNHiystnCoBq_hl-YorNIXXeJUidDamMzBr2lVrRA1xRkqfEfrAVCWz-Z_wrCOi9QzgjCezTS3Nw_X6kJUrpSBm-Hav1w-UkdSlG3ne1zTTrM-woVxs6_pUhglHIbE9ZC1pD3bt6lQgRU5j6g==",
+    "source": "Business Wire",
+    "published": "2026-11-05T21:15:00+00:00",
+    "summary": "OMAHA, Neb.--(BUSINESS WIRE)--Lindsay Corporation (NYSE: LNN) (“Lindsay” or the “Company”), a leading global manufacturer and distributor of irrigation and infrastructure equipment and technology, today announced its intent to…",
+    "ticker": "LNN"
+   },
+   {
+    "title": "Global Industrial Company to Participate in Upcoming Investor Conferences",
+    "link": "http://www.businesswire.com/news/home/20261105848956/en/Global-Industrial-Company-to-Participate-in-Upcoming-Investor-Conferences/?feedref=JjAwJuNHiystnCoBq_hl-YorNIXXeJUidDamMzBr2lVrRA1xRkqfEfrAVCWz-Z_wrCOi9QzgjCezTS3Nw_X6kJUrpSBm-Hav1w-UkdSlG3ne1zTTrM-woVxs6_pUhglHIbE9ZC1pD3bt6lQgRU5j6g==",
+    "source": "Business Wire",
+    "published": "2026-11-05T21:15:00+00:00",
+    "summary": "PORT WASHINGTON, N.Y.--(BUSINESS WIRE)---- $GIC #GIC--Global Industrial Company (NYSE: GIC), a value-added national distributor and source for industrial equipment and supplies, today announced that Tex Clark, Senior Vice…",
+    "ticker": "GIC"
    }
   ]
  },
@@ -7328,15 +7330,10 @@
  ],
  "stats": {
   "feeds_total": 20,
-  "feeds_failed": 2,
-  "items": 1405,
-  "smallcap_calls": 554,
-  "feed_errors": [
-   [
-    "Federal Reserve",
-    "HTTP Error 404: Not Found"
-   ]
-  ],
+  "feeds_failed": 1,
+  "items": 1442,
+  "smallcap_calls": 552,
+  "feed_errors": [],
   "market_errors": [
    [
     "Yahoo",
