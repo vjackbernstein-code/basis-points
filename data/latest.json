@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-06T20:54:30.332590+00:00",
+ "generated_at": "2026-11-07T00:52:18.643062+00:00",
  "market": [
   {
    "label": "S&P 500",
@@ -77,13 +77,12 @@
    "label": "Dow",
    "symbol": "DJIA",
    "kind": "index",
-   "value": 51523.06,
-   "prev": 53356.12,
-   "value_txt": "51,523.06",
-   "delta": -3.4355196742191993,
-   "delta_txt": "-3.44%",
+   "value": 51285.73,
+   "prev": 51523.06,
+   "value_txt": "51,285.73",
+   "delta": -0.46062869713094384,
+   "delta_txt": "-0.46%",
    "spark": [
-    51521.28,
     51179.87,
     51231.64,
     51654.95,
@@ -105,9 +104,10 @@
     51983.98,
     51786.72,
     53356.12,
-    51523.06
+    51523.06,
+    51285.73
    ],
-   "asof": "Nov 5"
+   "asof": "Nov 6"
   },
   {
    "label": "VIX",
@@ -149,13 +149,12 @@
    "label": "10-yr Treasury",
    "symbol": "DGS10",
    "kind": "yield",
-   "value": 49.0,
-   "prev": 49.5,
-   "value_txt": "4.90%",
-   "delta": -1.0101010101010102,
-   "delta_txt": "-5 bp",
+   "value": 48.4,
+   "prev": 49.0,
+   "value_txt": "4.84%",
+   "delta": -1.2244897959183703,
+   "delta_txt": "-6 bp",
    "spark": [
-    52.800000000000004,
     53.099999999999994,
     52.699999999999996,
     52.800000000000004,
@@ -177,9 +176,10 @@
     49.400000000000006,
     49.1,
     49.5,
-    49.0
+    49.0,
+    48.4
    ],
-   "asof": "Nov 4"
+   "asof": "Nov 5"
   },
   {
    "label": "Dollar (broad)",
@@ -286,19 +286,19 @@
     1.1267,
     1.1224,
     1.1165
-   ]
+   ],
+   "asof": "Nov 6"
   },
   {
    "label": "Bitcoin",
    "symbol": "bitcoin",
    "kind": "crypto",
-   "value": 75811.85843645183,
-   "prev": 76005.50915811297,
-   "value_txt": "$75,812",
-   "delta": -0.2547851120348224,
-   "delta_txt": "-0.25%",
+   "value": 75874.62686314265,
+   "prev": 75775.28148740849,
+   "value_txt": "$75,875",
+   "delta": 0.13110525462141798,
+   "delta_txt": "+0.13%",
    "spark": [
-    82155.53979682797,
     81523.6580235906,
     81408.34521320867,
     82019.58291286718,
@@ -320,20 +320,20 @@
     77384.58950168235,
     80442.71214714671,
     76005.50915811297,
-    75811.85843645183
+    75775.28148740849,
+    75874.62686314265
    ]
   },
   {
    "label": "Ethereum",
    "symbol": "ethereum",
    "kind": "crypto",
-   "value": 2230.940389235272,
-   "prev": 2235.7745744284666,
-   "value_txt": "$2,231",
-   "delta": -0.21621970517445116,
-   "delta_txt": "-0.22%",
+   "value": 2239.768811023386,
+   "prev": 2236.2815321686544,
+   "value_txt": "$2,240",
+   "delta": 0.15594095844229378,
+   "delta_txt": "+0.16%",
    "spark": [
-    2439.96187745067,
     2420.559805997806,
     2400.3079201066294,
     2407.8423723702235,
@@ -355,12 +355,41 @@
     2273.6272778684292,
     2423.081896592348,
     2235.7745744284666,
-    2230.940389235272
+    2236.2815321686544,
+    2239.768811023386
    ]
   }
  ],
- "tape_line": "S&P 500 -4.36%, Nasdaq -5.52%, Dow -3.44%; the 10-year Treasury at 4.90% (-5 bp); WTI crude $99.64 (-0.42%); bitcoin $75,812 (-0.25%).",
+ "tape_line": "S&P 500 -4.36%, Nasdaq -5.52%, Dow -0.46%; the 10-year Treasury at 4.84% (-6 bp); WTI crude $99.64 (-0.42%); bitcoin $75,875 (+0.13%).",
  "top": [
+  {
+   "title": "Cramer’s week ahead: AI data center stocks face another hurdle and so does the Fed",
+   "link": "https://www.cnbc.com/2026/11/06/cramer-coreweave-nebius-earnings.html",
+   "source": "CNBC Earnings",
+   "published": "2026-11-06T23:13:10+00:00",
+   "summary": "CoreWeave and Nebius earnings, alongside key inflation reports that could shape the Fed's next interest rate decision, are the focus."
+  },
+  {
+   "title": "US warns China it must ‘immediately’ meet terms of Busan trade deal",
+   "link": "https://www.ft.com/content/391bb785-0247-4c39-b53b-35007187d603?syn-25a6b1a6=1",
+   "source": "Financial Times",
+   "published": "2026-11-06T22:53:51+00:00",
+   "summary": "Washington says Beijing is not fulfilling commitments to increase supply of rare earths and other critical products"
+  },
+  {
+   "title": "A Berkshire Hathaway Electric Utility Wants a Historic Rate Hike in California",
+   "link": "https://www.wsj.com/business/energy-oil/a-berkshire-hathaway-electric-utility-wants-a-historic-rate-hike-in-california-b7a0cc70?mod=rss_markets_main",
+   "source": "WSJ Markets",
+   "published": "2026-11-06T23:33:00+00:00",
+   "summary": "Pacific Power is asking state regulators to approve a 57% rate increase that would boost the typical residential power bill by $120 a month."
+  },
+  {
+   "title": "Stock Market Today: Nasdaq, S&P 500 and AI Stocks Rebound After Brutal Week",
+   "link": "https://news.google.com/rss/articles/CBMiggFBVV95cUxNWG5FZ0htcmQ4Z2Z1SlJHYUVDR2pyUFBzdWZ3OXFQUWFyTHJoTUN3SjQ5MXRNUHZhWGFkc3VzZFE3TXdjZGNNNHZfT2p2dm5PbEwzUjQ1MExmT093bW1oZ0VxLUZiTk5YaTh0QU90aXNxcUpfVld1UXJRbUM1TGpxZFNR?oc=5",
+   "source": "WSJ",
+   "published": "2026-11-07T00:00:00+00:00",
+   "summary": "Stock Market Today: Nasdaq, S&P 500 and AI Stocks Rebound After Brutal Week WSJ Nasdaq gains ground after tech selloff, with losses still outweighing rebound Fox News U.S. stock market trims losses for week after AI sell-off…"
+  },
   {
    "title": "AI Stocks Rebound After Brutal Week for Nasdaq",
    "link": "https://www.wsj.com/finance/stocks/nasdaq-futures-steady-after-asian-ai-rout-as-investors-brace-for-jobs-day-83415c52?mod=rss_markets_main",
@@ -369,57 +398,29 @@
    "summary": "The tech-heavy Nasdaq is reversing some of Thursday’s historic losses. The Dow, on the other hand, is about flat on the day after paring morning losses."
   },
   {
-   "title": "Americans are on a 'treadmill of high inflation' and more rate hikes are likely, Fed's Daly says",
-   "link": "https://www.cnbc.com/2026/11/06/fed-daly-interest-rates-inflation.html",
-   "source": "CNBC",
-   "published": "2026-11-06T19:05:00+00:00",
-   "summary": "San Francisco Fed President Mary Daly called Friday's jobs report \"good news for American workers,\" but noted the pressure inflation is exerting on household finances"
-  },
-  {
-   "title": "US warns China it must ‘immediately’ meet terms of Busan trade deal",
-   "link": "https://www.ft.com/content/391bb785-0247-4c39-b53b-35007187d603?syn-25a6b1a6=1",
-   "source": "Financial Times",
-   "published": "2026-11-06T17:20:21+00:00",
-   "summary": "Washington says Beijing is not fulfilling commitments to increase supply of rare earths and other critical products"
-  },
-  {
-   "title": "Mississippi Senate: Longshot Ty Pinkins says he aimed to spoil Hyde-Smith, boost Colom vote",
-   "link": "https://www.cnbc.com/2026/11/06/mississippi-senate-ty-pinkins-colom-hyde-smith.html",
-   "source": "CNBC",
-   "published": "2026-11-06T19:44:33+00:00",
-   "summary": "Ty Pinkins said he avoided campaigning in heavily Black areas of Mississippi to avoid harming chances for Democrat Scott Colom, who, like him, is Black."
-  },
-  {
-   "title": "Treasury Yields Rise on Strong Jobs Data",
-   "link": "https://www.wsj.com/finance/investing/u-s-treasurys-little-changed-markets-await-employment-data-88f3f2b6?mod=rss_markets_main",
+   "title": "U.S. Stocks Mixed After Jobs Data, Muted AI Rebound",
+   "link": "https://www.wsj.com/finance/stocks/u-s-stocks-mixed-after-jobs-data-muted-ai-rebound-945344f6?mod=rss_markets_main",
    "source": "WSJ Markets",
-   "published": "2026-11-06T17:36:00+00:00",
-   "summary": "Treasury yields rose on robust U.S. labor data and ahead of next week’s inflation reports, while safe-haven buying kept borrowing costs near recent lows in Germany."
+   "published": "2026-11-06T22:01:00+00:00",
+   "summary": "U.S. stocks ended mixed after strong jobs data and a modest rebound for AI companies failed to quell investor nerves about the sustainability of the AI boom."
   },
   {
-   "title": "Nvidia, AMD and other chip stocks rebound — but is relief from the ‘violent’ selloff only temporary?",
-   "link": "https://www.marketwatch.com/story/nvidia-amd-and-other-chip-stocks-rebound-is-the-violent-ai-selloff-over-8f7df533?mod=mw_rss_topstories",
-   "source": "MarketWatch",
-   "published": "2026-11-06T19:52:00+00:00",
-   "summary": "Analysts warn of further volatility ahead, although there are several new factors that work in the AI trade’s favor."
-  },
-  {
-   "title": "The AI ‘credit card’ is getting costlier as CoreWeave bond yield tops 16%",
-   "link": "https://www.cnbc.com/2026/11/06/coreweave-bond-yield-tops-16percent-as-ai-credit-stress-rises.html",
-   "source": "CNBC",
-   "published": "2026-11-06T17:09:53+00:00",
-   "summary": "Coreweave's steep yields reflect stress in the AI debt markets as investors worry about a data center slowdown. What comes next."
+   "title": "US stocks stage tepid recovery after $3.2tn rout fuelled by AI fears",
+   "link": "https://www.ft.com/content/088ed252-ea9c-4b61-b2d1-37295fd0f7c2?syn-25a6b1a6=1",
+   "source": "Financial Times",
+   "published": "2026-11-06T22:00:56+00:00",
+   "summary": "Magnitude of rebound was feeble compared with historic recoveries from severe sell-offs"
   }
  ],
  "smallcap": {
   "note": null,
-  "asof": "2026-11-06T20:54:25+00:00",
+  "asof": "2026-11-07T00:52:13+00:00",
   "coverage": {
    "universe": 9897,
    "profiled": 10213,
    "in_band": 1697,
    "measured": 1697,
-   "scored": 907,
+   "scored": 908,
    "below_floor": 64
   },
   "screen": [
@@ -577,7 +578,7 @@
      "q": 58
     },
     "flags": [
-     "E-4d"
+     "E-3d"
     ],
     "growth_doubt": true,
     "unit_doubt": null,
@@ -622,7 +623,7 @@
      "q": 62
     },
     "flags": [
-     "E-3d"
+     "E-2d"
     ],
     "growth_doubt": false,
     "unit_doubt": null,
@@ -703,9 +704,9 @@
     "ev_rev": 16.822,
     "px": 48.86,
     "dp": 3.189,
-    "score": 80.0,
+    "score": 79.9,
     "sub": {
-     "g": 83,
+     "g": 82,
      "m": 83,
      "q": 70
     },
@@ -797,9 +798,7 @@
      "m": 92,
      "q": 58
     },
-    "flags": [
-     "8-K"
-    ],
+    "flags": [],
     "growth_doubt": false,
     "unit_doubt": null,
     "why": {
@@ -879,7 +878,7 @@
     "ev_rev": 16.0873,
     "px": 29.12,
     "dp": 2.068,
-    "score": 77.6,
+    "score": 77.5,
     "sub": {
      "g": 82,
      "m": 82,
@@ -922,9 +921,9 @@
     "ev_rev": 13.991,
     "px": 57.11,
     "dp": 21.1241,
-    "score": 77.0,
+    "score": 76.9,
     "sub": {
-     "g": 87,
+     "g": 86,
      "m": 85,
      "q": 43
     },
@@ -965,11 +964,11 @@
     "ev_rev": 21.5651,
     "px": 29.58,
     "dp": 4.6339,
-    "score": 76.8,
+    "score": 76.6,
     "sub": {
      "g": 92,
      "m": 74,
-     "q": 52
+     "q": 53
     },
     "flags": [],
     "growth_doubt": false,
@@ -1038,6 +1037,49 @@
     }
    },
    {
+    "ticker": "TEN",
+    "name": "Tsakos Energy Navigation Ltd",
+    "ind": "Energy",
+    "group": "Energy",
+    "mcap": 1288.1180526363216,
+    "rev_g": 23.23,
+    "accel": 31.139999999999997,
+    "r13": 34.2223,
+    "momo": 0.86,
+    "from_high": -20.92367354133615,
+    "ev_rev": 3.3572,
+    "px": 44.86,
+    "dp": 1.7234,
+    "score": 76.5,
+    "sub": {
+     "g": 72,
+     "m": 92,
+     "q": 54
+    },
+    "flags": [],
+    "growth_doubt": false,
+    "unit_doubt": null,
+    "why": {
+     "vol": 40.26472,
+     "r26": 34.9286,
+     "accel_raw": 31.139999999999997,
+     "growth_cap": 150.0,
+     "accel_cap": 50.0,
+     "rg3": -2.45,
+     "rev_gq": 54.37,
+     "dte": 1.0231,
+     "gm_t": 61.58,
+     "om_t": 43.17,
+     "om_a": 31.59,
+     "cashps": 15.4723,
+     "rps": 32.0197,
+     "adv": 0.36755,
+     "hi52": 56.73,
+     "shares": 30.13,
+     "exch": "NEW YORK STOCK EXCHANGE, INC."
+    }
+   },
+   {
     "ticker": "NAT",
     "name": "Nordic American Tankers Ltd",
     "ind": "Energy",
@@ -1077,49 +1119,6 @@
      "adv": 6.24956,
      "hi52": 8.88,
      "shares": 211.75,
-     "exch": "NEW YORK STOCK EXCHANGE, INC."
-    }
-   },
-   {
-    "ticker": "TEN",
-    "name": "Tsakos Energy Navigation Ltd",
-    "ind": "Energy",
-    "group": "Energy",
-    "mcap": 1288.1180526363216,
-    "rev_g": 23.23,
-    "accel": 31.139999999999997,
-    "r13": 34.2223,
-    "momo": 0.86,
-    "from_high": -20.92367354133615,
-    "ev_rev": 3.3572,
-    "px": 44.86,
-    "dp": 1.7234,
-    "score": 76.4,
-    "sub": {
-     "g": 72,
-     "m": 92,
-     "q": 54
-    },
-    "flags": [],
-    "growth_doubt": false,
-    "unit_doubt": null,
-    "why": {
-     "vol": 40.26472,
-     "r26": 34.9286,
-     "accel_raw": 31.139999999999997,
-     "growth_cap": 150.0,
-     "accel_cap": 50.0,
-     "rg3": -2.45,
-     "rev_gq": 54.37,
-     "dte": 1.0231,
-     "gm_t": 61.58,
-     "om_t": 43.17,
-     "om_a": 31.59,
-     "cashps": 15.4723,
-     "rps": 32.0197,
-     "adv": 0.36755,
-     "hi52": 56.73,
-     "shares": 30.13,
      "exch": "NEW YORK STOCK EXCHANGE, INC."
     }
    },
@@ -1188,9 +1187,7 @@
      "m": 96,
      "q": 30
     },
-    "flags": [
-     "8-K"
-    ],
+    "flags": [],
     "growth_doubt": false,
     "unit_doubt": null,
     "why": {
@@ -1442,7 +1439,7 @@
     "ev_rev": 5.502,
     "px": 16.7,
     "dp": 3.7267,
-    "score": 75.5,
+    "score": 75.6,
     "sub": {
      "g": 71,
      "m": 100,
@@ -1491,9 +1488,7 @@
      "m": 92,
      "q": 49
     },
-    "flags": [
-     "new"
-    ],
+    "flags": [],
     "growth_doubt": true,
     "unit_doubt": null,
     "why": {
@@ -1519,11 +1514,11 @@
   ],
   "freshness": {
    "last_full_h": 0.0,
-   "quote_median_h": 6.3,
+   "quote_median_h": 4.1,
    "quote_count": 1863,
    "bench_h": 0.0,
-   "universe_h": 160.2,
-   "earnings_h": 6.2,
+   "universe_h": 164.1,
+   "earnings_h": 10.2,
    "bench_gate_h": 72
   },
   "reach": {
@@ -1531,7 +1526,7 @@
     "have": 5,
     "target": 12,
     "possible": 11,
-    "next_due": "2026-11-06",
+    "next_due": "2026-11-07",
     "reachable": false,
     "slack": -1
    },
@@ -1539,25 +1534,16 @@
     "have": 1,
     "target": 3,
     "possible": 3,
-    "next_due": "2026-11-06",
+    "next_due": "2026-11-07",
     "reachable": true,
     "slack": 0
    }
   },
   "changes": {
-   "prev_day": "2026-11-05",
-   "entered": [
-    {
-     "ticker": "FMAO",
-     "name": "Farmers & Merchants Bancorp Inc",
-     "score": 74.1,
-     "ind": "Banking"
-    }
-   ],
-   "left": [
-    "NXDR"
-   ],
-   "held": 24
+   "prev_day": "2026-11-06",
+   "entered": [],
+   "left": [],
+   "held": 25
   },
   "below_floor": [
    {
@@ -1619,34 +1605,34 @@
   ],
   "movers_up": [
    {
+    "ticker": "GOGO",
+    "name": "Gogo Inc",
+    "px": 3.885,
+    "dp": 71.5232
+   },
+   {
     "ticker": "OBX",
     "name": "Obsidian Therapeutics, Inc",
     "px": 14.28,
     "dp": 48.75
    },
    {
+    "ticker": "SERV",
+    "name": "Serve Robotics Inc",
+    "px": 3.22,
+    "dp": 38.7931
+   },
+   {
+    "ticker": "KDK",
+    "name": "Kodiak AI Inc",
+    "px": 1.28,
+    "dp": 34.581
+   },
+   {
     "ticker": "INDI",
     "name": "indie Semiconductor Inc",
     "px": 1.8,
     "dp": 32.8413
-   },
-   {
-    "ticker": "DNUT",
-    "name": "Krispy Kreme Inc",
-    "px": 4.6,
-    "dp": 30.6818
-   },
-   {
-    "ticker": "PTLO",
-    "name": "Portillos Inc",
-    "px": 7.02,
-    "dp": 28.8073
-   },
-   {
-    "ticker": "FLGT",
-    "name": "Fulgent Genetics Inc",
-    "px": 23.4,
-    "dp": 25.4019
    }
   ],
   "movers_down": [
@@ -1657,16 +1643,16 @@
     "dp": -46.5672
    },
    {
-    "ticker": "DDD",
-    "name": "3D Systems Corp",
-    "px": 1.67,
-    "dp": -36.7424
+    "ticker": "PRAA",
+    "name": "PRA Group Inc",
+    "px": 12.92,
+    "dp": -36.7287
    },
    {
-    "ticker": "PCT",
-    "name": "Purecycle Technologies Inc",
-    "px": 1.88,
-    "dp": -32.6165
+    "ticker": "KRT",
+    "name": "Karat Packaging Inc",
+    "px": 33.54,
+    "dp": -34.7978
    },
    {
     "ticker": "ACDC",
@@ -1675,10 +1661,10 @@
     "dp": -31.738
    },
    {
-    "ticker": "CCOI",
-    "name": "Cogent Communications Holdings Inc",
-    "px": 4.69,
-    "dp": -30.9278
+    "ticker": "NRDS",
+    "name": "NerdWallet Inc",
+    "px": 7.89,
+    "dp": -30.9711
    }
   ],
   "earnings": [
@@ -1798,8 +1784,8 @@
     "peer_readings": 22
    },
    "4w": {
-    "excess": 1.39,
-    "days": 8,
+    "excess": 0.85,
+    "days": 9,
     "indep": 1,
     "dropped": 0,
     "carried": 0,
@@ -1812,13 +1798,14 @@
      1.98,
      0.58,
      0.02,
-     -2.48
+     -2.48,
+     -3.46
     ],
     "indep_values": [
      3.61
     ],
-    "vs_peers": -0.52,
-    "peer_readings": 8
+    "vs_peers": -1.13,
+    "peer_readings": 9
    }
   },
   "regime": {
@@ -1828,6 +1815,20 @@
    "t": "2026-11-06T14:40:32+00:00"
   },
   "filings_material": [
+   {
+    "ticker": "REI",
+    "name": "Ring Energy Inc",
+    "date": "2026-11-06",
+    "link": "https://www.sec.gov/Archives/edgar/data/1384195/000138419526000088/0001384195-26-000088-index.htm",
+    "form": "8-K"
+   },
+   {
+    "ticker": "HY",
+    "name": "Hyster-Yale Inc",
+    "date": "2026-11-06",
+    "link": "https://www.sec.gov/Archives/edgar/data/1173514/000117351426000251/0001173514-26-000251-index.htm",
+    "form": "8-K"
+   },
    {
     "ticker": "IMCR",
     "name": "Immunocore Holdings PLC",
@@ -1883,23 +1884,37 @@
     "date": "2026-11-06",
     "link": "https://www.sec.gov/Archives/edgar/data/715787/000071578726000027/0000715787-26-000027-index.htm",
     "form": "8-K"
-   },
-   {
-    "ticker": "GTN",
-    "name": "Gray Media Inc",
-    "date": "2026-11-06",
-    "link": "https://www.sec.gov/Archives/edgar/data/43196/000143774926035398/0001437749-26-035398-index.htm",
-    "form": "8-K"
-   },
-   {
-    "ticker": "BLMN",
-    "name": "Bloomin' Brands Inc",
-    "date": "2026-11-06",
-    "link": "https://www.sec.gov/Archives/edgar/data/1546417/000154641726000043/0001546417-26-000043-index.htm",
-    "form": "8-K"
    }
   ],
   "filings_activist": [
+   {
+    "ticker": "WIW",
+    "name": "Western Asset Inflation-Linked Opportunities & Income Fund",
+    "date": "2026-11-07",
+    "link": "https://www.sec.gov/Archives/edgar/data/1267902/000089542126000301/0000895421-26-000301-index.htm",
+    "form": "SCHEDULE 13G/A"
+   },
+   {
+    "ticker": "MCB",
+    "name": "Metropolitan Bank Holding Corp",
+    "date": "2026-11-07",
+    "link": "https://www.sec.gov/Archives/edgar/data/1476034/000110465926124019/0001104659-26-124019-index.htm",
+    "form": "SCHEDULE 13D/A"
+   },
+   {
+    "ticker": "ARI",
+    "name": "Apollo Commercial Real Estate Finance Inc",
+    "date": "2026-11-06",
+    "link": "https://www.sec.gov/Archives/edgar/data/1467760/000119312526452127/0001193125-26-452127-index.htm",
+    "form": "SCHEDULE 13G"
+   },
+   {
+    "ticker": "DIN",
+    "name": "Dine Brands Global Inc",
+    "date": "2026-11-06",
+    "link": "https://www.sec.gov/Archives/edgar/data/49754/000089542126000295/0000895421-26-000295-index.htm",
+    "form": "SCHEDULE 13G/A"
+   },
    {
     "ticker": "MAX",
     "name": "Mediaalpha Inc",
@@ -1941,34 +1956,6 @@
     "date": "2026-11-06",
     "link": "https://www.sec.gov/Archives/edgar/data/1456772/000031206926000262/0000312069-26-000262-index.htm",
     "form": "SCHEDULE 13G/A"
-   },
-   {
-    "ticker": "FWRD",
-    "name": "Forward Air Corp (Delaware)",
-    "date": "2026-11-06",
-    "link": "https://www.sec.gov/Archives/edgar/data/912728/000031206926000258/0000312069-26-000258-index.htm",
-    "form": "SCHEDULE 13G/A"
-   },
-   {
-    "ticker": "CNNE",
-    "name": "Cannae Holdings Inc",
-    "date": "2026-11-06",
-    "link": "https://www.sec.gov/Archives/edgar/data/1704720/000031206926000255/0000312069-26-000255-index.htm",
-    "form": "SCHEDULE 13G"
-   },
-   {
-    "ticker": "BH",
-    "name": "Biglari Holdings Inc",
-    "date": "2026-11-06",
-    "link": "https://www.sec.gov/Archives/edgar/data/1726173/000031206926000254/0000312069-26-000254-index.htm",
-    "form": "SCHEDULE 13G"
-   },
-   {
-    "ticker": "TRS",
-    "name": "TriMas Corp",
-    "date": "2026-11-06",
-    "link": "https://www.sec.gov/Archives/edgar/data/842633/000007085826000567/0000070858-26-000567-index.htm",
-    "form": "SCHEDULE 13G/A"
    }
   ],
   "filings_offering": [
@@ -1978,6 +1965,20 @@
     "date": "2026-11-06",
     "link": "https://www.sec.gov/Archives/edgar/data/1959224/000121390026116579/0001213900-26-116579-index.htm",
     "form": "424B5"
+   },
+   {
+    "ticker": "OBIO",
+    "name": "Orchestra Biomed Holdings Inc",
+    "date": "2026-11-06",
+    "link": "https://www.sec.gov/Archives/edgar/data/1814114/000110465926123956/0001104659-26-123956-index.htm",
+    "form": "424B5"
+   },
+   {
+    "ticker": "KDK",
+    "name": "Kodiak AI Inc",
+    "date": "2026-11-06",
+    "link": "https://www.sec.gov/Archives/edgar/data/1853138/000162828026071727/0001628280-26-071727-index.htm",
+    "form": "424B3"
    },
    {
     "ticker": "OPTT",
@@ -2027,24 +2028,34 @@
     "date": "2026-11-02",
     "link": "https://www.sec.gov/Archives/edgar/data/17313/000001731326000169/0000017313-26-000169-index.htm",
     "form": "424B3"
-   },
-   {
-    "ticker": "XRPN",
-    "name": "Armada Acquisition Corp II",
-    "date": "2026-10-30",
-    "link": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068609/0001628280-26-068609-index.htm",
-    "form": "S-1"
-   },
-   {
-    "ticker": "FMBH",
-    "name": "First Mid Bancshares Inc",
-    "date": "2026-10-30",
-    "link": "https://www.sec.gov/Archives/edgar/data/700565/000117184326006996/0001171843-26-006996-index.htm",
-    "form": "424B3"
    }
   ],
   "budget_mode": "full",
   "news": [
+   {
+    "title": "BlackLine Investigation Notice: SueWallSt Notifies Investors of Pending Investigation Into BlackLine (BL)",
+    "link": "https://www.prnewswire.com/news-releases/blackline-investigation-notice-suewallst-notifies-investors-of-pending-investigation-into-blackline-bl-302932338.html",
+    "source": "PR Newswire",
+    "published": "2026-11-06T23:18:00+00:00",
+    "summary": "An investigation concerns BlackLine's exposure to SAP, after weaker SolEx channel expansion contributed to a reduced fiscal 2026 revenue outlook. A key SAP qualification for the Company's AI products is still pending. NEW YORK…",
+    "ticker": "BL"
+   },
+   {
+    "title": "Interface Investigation Notice: SueWallSt Notifies Investors of Pending Investigation Into Interface (TILE)",
+    "link": "https://www.prnewswire.com/news-releases/interface-investigation-notice-suewallst-notifies-investors-of-pending-investigation-into-interface-tile-302932340.html",
+    "source": "PR Newswire",
+    "published": "2026-11-06T23:18:00+00:00",
+    "summary": "Interface's new 2026 sales ceiling of $1.455 billion matches its prior floor, and TILE shares fell sharply after the change. An investigation is examining whether the Company's earlier sales outlook met its obligations under…",
+    "ticker": "TILE"
+   },
+   {
+    "title": "Fortune Brands to Participate in Baird’s 2026 Global Industrial Conference",
+    "link": "http://www.businesswire.com/news/home/20261106336996/en/Fortune-Brands-to-Participate-in-Baird%E2%80%99s-2026-Global-Industrial-Conference/?feedref=JjAwJuNHiystnCoBq_hl-YorNIXXeJUidDamMzBr2lVrRA1xRkqfEfrAVCWz-Z_wrCOi9QzgjCezTS3Nw_X6kJUrpSBm-Hav1w-UkdSlG3ne1zTTrM-woVxs6_pUhglHIbE9ZC1pD3bt6lQgRU5j6g==",
+    "source": "Business Wire",
+    "published": "2026-11-06T21:05:00+00:00",
+    "summary": "DEERFIELD, Ill.--(BUSINESS WIRE)--Fortune Brands Innovations, Inc. (NYSE: FBIN) (“Fortune Brands” or the “Company”), an industry-leading home, security and digital products company, today announced that Jesse Singh, Chief…",
+    "ticker": "GIC"
+   },
    {
     "title": "Deadline Alert: O-I Glass, Inc. Stockholders Face December 28, 2026 Lead Plaintiff Deadline in Securities Fraud Class Action, The Law Offices of Howard G. Smith Highlights",
     "link": "http://www.businesswire.com/news/home/20261106310758/en/Deadline-Alert-O-I-Glass-Inc.-Stockholders-Face-December-28-2026-Lead-Plaintiff-Deadline-in-Securities-Fraud-Class-Action-The-Law-Offices-of-Howard-G.-Smith-Highlights/?feedref=JjAwJuNHiystnCoBq_hl-YorNIXXeJUidDamMzBr2lVrRA1xRkqfEfrAVCWz-Z_wrCOi9QzgjCezTS3Nw_X6kJUrpSBm-Hav1w-UkdSlG3ne1zTTrM-woVxs6_pUhglHIbE9ZC1pD3bt6lQgRU5j6g==",
@@ -2084,30 +2095,6 @@
     "published": "2026-11-06T13:00:00+00:00",
     "summary": "NEWTON, Mass.--(BUSINESS WIRE)--Global Partners LP (NYSE: GLP) (“Global Partners” or the “Partnership”) today reported financial results for the third quarter ended September 30, 2026. CEO Commentary “Our third quarter results…",
     "ticker": "GLP"
-   },
-   {
-    "title": "Teledyne to Participate in the Baird Global Industrial Conference",
-    "link": "http://www.businesswire.com/news/home/20261106216750/en/Teledyne-to-Participate-in-the-Baird-Global-Industrial-Conference/?feedref=JjAwJuNHiystnCoBq_hl-YorNIXXeJUidDamMzBr2lVrRA1xRkqfEfrAVCWz-Z_wrCOi9QzgjCezTS3Nw_X6kJUrpSBm-Hav1w-UkdSlG3ne1zTTrM-woVxs6_pUhglHIbE9ZC1pD3bt6lQgRU5j6g==",
-    "source": "Business Wire",
-    "published": "2026-11-06T13:00:00+00:00",
-    "summary": "THOUSAND OAKS, Calif.--(BUSINESS WIRE)--Teledyne Technologies Incorporated (NYSE:TDY) today announced that George Bobb, President and Chief Executive Officer, Jason VanWees, Vice Chairman, and Mary Grace DeForest Berg, Vice…",
-    "ticker": "GIC"
-   },
-   {
-    "title": "ClearBridge Energy Midstream Opportunity Fund Inc. Announces Unaudited Balance Sheet Information as of October 31, 2026",
-    "link": "http://www.businesswire.com/news/home/20261106529638/en/ClearBridge-Energy-Midstream-Opportunity-Fund-Inc.-Announces-Unaudited-Balance-Sheet-Information-as-of-October-31-2026/?feedref=JjAwJuNHiystnCoBq_hl-YorNIXXeJUidDamMzBr2lVrRA1xRkqfEfrAVCWz-Z_wrCOi9QzgjCezTS3Nw_X6kJUrpSBm-Hav1w-UkdSlG3ne1zTTrM-woVxs6_pUhglHIbE9ZC1pD3bt6lQgRU5j6g==",
-    "source": "Business Wire",
-    "published": "2026-11-06T13:00:00+00:00",
-    "summary": "NEW YORK--(BUSINESS WIRE)--Category: Financials",
-    "ticker": "EMO"
-   },
-   {
-    "title": "ITT Announces Participation at Baird’s 2026 Global Industrial Conference on Nov. 10",
-    "link": "http://www.businesswire.com/news/home/20261105272500/en/ITT-Announces-Participation-at-Baird%E2%80%99s-2026-Global-Industrial-Conference-on-Nov.-10/?feedref=JjAwJuNHiystnCoBq_hl-YorNIXXeJUidDamMzBr2lVrRA1xRkqfEfrAVCWz-Z_wrCOi9QzgjCezTS3Nw_X6kJUrpSBm-Hav1w-UkdSlG3ne1zTTrM-woVxs6_pUhglHIbE9ZC1pD3bt6lQgRU5j6g==",
-    "source": "Business Wire",
-    "published": "2026-11-05T22:30:00+00:00",
-    "summary": "STAMFORD, Conn.--(BUSINESS WIRE)--ITT Inc. (NYSE: ITT) today announced its participation at the Baird 2026 Global Industrial Conference on Nov. 10 in Chicago.",
-    "ticker": "GIC"
    }
   ]
  },
@@ -6152,20 +6139,20 @@
     "label": "Baseline",
     "note": "the control — equal weight, no stop, always fully invested",
     "ret_common": -2.98,
-    "excess_common": 0.96,
+    "excess_common": 0.91,
     "common_from": "2026-10-01",
-    "common_days": 37,
+    "common_days": 38,
     "value": 98026.32,
     "ret": -1.97,
-    "bench_ret": -4.1,
-    "excess": 2.22,
-    "friction_yr": 9.6,
+    "bench_ret": -4.05,
+    "excess": 2.16,
+    "friction_yr": 9.4,
     "max_drawdown": -7.75,
     "positions": 25,
     "cash": 3.15,
     "costs_paid": 977.25,
     "stops_hit": 0,
-    "days": 37,
+    "days": 38,
     "started": "2026-10-01",
     "curve": [
      101.04,
@@ -6204,6 +6191,7 @@
      100.075,
      100.919,
      96.499,
+     98.026,
      98.026
     ],
     "curve_dates": [
@@ -6243,7 +6231,8 @@
      "2026-11-03",
      "2026-11-04",
      "2026-11-05",
-     "2026-11-06"
+     "2026-11-06",
+     "2026-11-07"
     ]
    },
    {
@@ -6251,20 +6240,20 @@
     "label": "Conviction",
     "note": "weighted by rank, 1.5x down to 0.6x equal weight",
     "ret_common": -2.5,
-    "excess_common": 1.47,
+    "excess_common": 1.41,
     "common_from": "2026-10-01",
-    "common_days": 37,
+    "common_days": 38,
     "value": 98707.87,
     "ret": -1.29,
-    "bench_ret": -4.1,
-    "excess": 2.93,
-    "friction_yr": 9.5,
+    "bench_ret": -4.05,
+    "excess": 2.87,
+    "friction_yr": 9.3,
     "max_drawdown": -7.27,
     "positions": 25,
     "cash": 256.13,
     "costs_paid": 963.97,
     "stops_hit": 0,
-    "days": 37,
+    "days": 38,
     "started": "2026-10-01",
     "curve": [
      101.238,
@@ -6303,6 +6292,7 @@
      100.804,
      101.645,
      97.295,
+     98.708,
      98.708
     ],
     "curve_dates": [
@@ -6342,7 +6332,8 @@
      "2026-11-03",
      "2026-11-04",
      "2026-11-05",
-     "2026-11-06"
+     "2026-11-06",
+     "2026-11-07"
     ]
    },
    {
@@ -6350,20 +6341,20 @@
     "label": "Risk-managed",
     "note": "equal weight, trailing stop at 3x the name's own weekly volatility",
     "ret_common": -4.88,
-    "excess_common": -1.01,
+    "excess_common": -1.07,
     "common_from": "2026-10-01",
-    "common_days": 37,
+    "common_days": 38,
     "value": 96107.05,
     "ret": -3.89,
-    "bench_ret": -4.1,
-    "excess": 0.22,
-    "friction_yr": 15.1,
+    "bench_ret": -4.05,
+    "excess": 0.16,
+    "friction_yr": 14.7,
     "max_drawdown": -8.73,
     "positions": 14,
     "cash": 33871.0,
     "costs_paid": 1526.66,
     "stops_hit": 14,
-    "days": 37,
+    "days": 38,
     "started": "2026-10-01",
     "curve": [
      101.04,
@@ -6402,6 +6393,7 @@
      98.629,
      97.945,
      94.972,
+     96.107,
      96.107
     ],
     "curve_dates": [
@@ -6441,7 +6433,8 @@
      "2026-11-03",
      "2026-11-04",
      "2026-11-05",
-     "2026-11-06"
+     "2026-11-06",
+     "2026-11-07"
     ]
    },
    {
@@ -6449,20 +6442,20 @@
     "label": "Regime-aware",
     "note": "equal weight, exposure cut when the small-cap tape falls",
     "ret_common": -4.1,
-    "excess_common": -0.2,
+    "excess_common": -0.25,
     "common_from": "2026-10-01",
-    "common_days": 37,
+    "common_days": 38,
     "value": 96551.58,
     "ret": -3.45,
-    "bench_ret": -4.1,
-    "excess": 0.68,
-    "friction_yr": 9.4,
+    "bench_ret": -4.05,
+    "excess": 0.62,
+    "friction_yr": 9.1,
     "max_drawdown": -7.87,
     "positions": 25,
     "cash": 12107.58,
     "costs_paid": 951.22,
     "stops_hit": 0,
-    "days": 37,
+    "days": 38,
     "started": "2026-10-01",
     "curve": [
      100.676,
@@ -6501,6 +6494,7 @@
      98.49,
      99.082,
      95.287,
+     96.552,
      96.552
     ],
     "curve_dates": [
@@ -6540,7 +6534,8 @@
      "2026-11-03",
      "2026-11-04",
      "2026-11-05",
-     "2026-11-06"
+     "2026-11-06",
+     "2026-11-07"
     ]
    },
    {
@@ -6548,20 +6543,20 @@
     "label": "Combined",
     "note": "conviction + stop + regime together",
     "ret_common": -5.46,
-    "excess_common": -1.62,
+    "excess_common": -1.67,
     "common_from": "2026-10-01",
-    "common_days": 37,
+    "common_days": 38,
     "value": 95299.88,
     "ret": -4.7,
-    "bench_ret": -4.1,
-    "excess": -0.62,
-    "friction_yr": 13.7,
+    "bench_ret": -4.05,
+    "excess": -0.68,
+    "friction_yr": 13.3,
     "max_drawdown": -8.17,
     "positions": 14,
     "cash": 43828.13,
     "costs_paid": 1386.36,
     "stops_hit": 14,
-    "days": 37,
+    "days": 38,
     "started": "2026-10-01",
     "curve": [
      100.805,
@@ -6600,6 +6595,7 @@
      97.497,
      96.862,
      94.413,
+     95.3,
      95.3
     ],
     "curve_dates": [
@@ -6639,7 +6635,8 @@
      "2026-11-03",
      "2026-11-04",
      "2026-11-05",
-     "2026-11-06"
+     "2026-11-06",
+     "2026-11-07"
     ]
    },
    {
@@ -6647,20 +6644,20 @@
     "label": "Slow",
     "note": "the control again, but trading every 4 weeks instead of weekly — isolates what the trading itself costs",
     "ret_common": -3.8,
-    "excess_common": 0.12,
+    "excess_common": 0.06,
     "common_from": "2026-10-01",
-    "common_days": 37,
+    "common_days": 38,
     "value": 97205.42,
     "ret": -2.79,
-    "bench_ret": -4.1,
-    "excess": 1.36,
-    "friction_yr": 6.8,
+    "bench_ret": -4.05,
+    "excess": 1.3,
+    "friction_yr": 6.6,
     "max_drawdown": -8.39,
     "positions": 25,
     "cash": 2.96,
     "costs_paid": 687.76,
     "stops_hit": 0,
-    "days": 37,
+    "days": 38,
     "started": "2026-10-01",
     "curve": [
      101.04,
@@ -6699,6 +6696,7 @@
      99.074,
      99.94,
      95.828,
+     97.205,
      97.205
     ],
     "curve_dates": [
@@ -6738,7 +6736,8 @@
      "2026-11-03",
      "2026-11-04",
      "2026-11-05",
-     "2026-11-06"
+     "2026-11-06",
+     "2026-11-07"
     ]
    }
   ],
@@ -6779,7 +6778,8 @@
    98.175,
    99.545,
    94.045,
-   95.898
+   95.898,
+   95.954
   ],
   "bench_dates": [
    "2026-10-01",
@@ -6818,11 +6818,12 @@
    "2026-11-03",
    "2026-11-04",
    "2026-11-05",
-   "2026-11-06"
+   "2026-11-06",
+   "2026-11-07"
   ],
   "span": [
    "2026-10-01",
-   "2026-11-06"
+   "2026-11-07"
   ],
   "retired": [
    {
@@ -7289,10 +7290,6 @@
  },
  "econ_calendar": [
   {
-   "date": "2026-11-06",
-   "label": "Jobs report"
-  },
-  {
    "date": "2026-11-10",
    "label": "CPI (inflation)"
   },
@@ -7303,12 +7300,16 @@
   {
    "date": "2026-11-13",
    "label": "PPI (producer prices)"
+  },
+  {
+   "date": "2026-11-17",
+   "label": "Retail sales"
   }
  ],
  "stats": {
   "feeds_total": 20,
   "feeds_failed": 1,
-  "items": 1029,
+  "items": 786,
   "smallcap_calls": 552,
   "feed_errors": [],
   "market_errors": [
