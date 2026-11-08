@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-07T22:42:01.968556+00:00",
+ "generated_at": "2026-11-08T02:17:17.114996+00:00",
  "market": [
   {
    "label": "S&P 500",
@@ -293,13 +293,12 @@
    "label": "Bitcoin",
    "symbol": "bitcoin",
    "kind": "crypto",
-   "value": 75646.65401353322,
-   "prev": 75775.28148740849,
-   "value_txt": "$75,647",
-   "delta": -0.16974859261544675,
+   "value": 75648.22252749323,
+   "prev": 75776.37720009114,
+   "value_txt": "$75,648",
+   "delta": -0.1691221952449835,
    "delta_txt": "-0.17%",
    "spark": [
-    81523.6580235906,
     81408.34521320867,
     82019.58291286718,
     81875.26391574314,
@@ -321,20 +320,20 @@
     80442.71214714671,
     76005.50915811297,
     75775.28148740849,
-    75646.65401353322
+    75776.37720009114,
+    75648.22252749323
    ]
   },
   {
    "label": "Ethereum",
    "symbol": "ethereum",
    "kind": "crypto",
-   "value": 2230.6863454109625,
-   "prev": 2236.2815321686544,
+   "value": 2230.5842493858177,
+   "prev": 2237.0549468296335,
    "value_txt": "$2,231",
-   "delta": -0.2502004634571158,
-   "delta_txt": "-0.25%",
+   "delta": -0.2892507156780475,
+   "delta_txt": "-0.29%",
    "spark": [
-    2420.559805997806,
     2400.3079201066294,
     2407.8423723702235,
     2405.9183757810897,
@@ -356,11 +355,12 @@
     2423.081896592348,
     2235.7745744284666,
     2236.2815321686544,
-    2230.6863454109625
+    2237.0549468296335,
+    2230.5842493858177
    ]
   }
  ],
- "tape_line": "S&P 500 -4.36%, Nasdaq +1.09%, Dow -0.46%; the 10-year Treasury at 4.84% (-6 bp); WTI crude $99.64 (-0.42%); bitcoin $75,647 (-0.17%).",
+ "tape_line": "S&P 500 -4.36%, Nasdaq +1.09%, Dow -0.46%; the 10-year Treasury at 4.84% (-6 bp); WTI crude $99.64 (-0.42%); bitcoin $75,648 (-0.17%).",
  "top": [
   {
    "title": "The Shadowy Crypto Services Helping the Binance Hackers Launder Stolen Billions",
@@ -414,7 +414,7 @@
  ],
  "smallcap": {
   "note": null,
-  "asof": "2026-11-07T22:41:57+00:00",
+  "asof": "2026-11-08T02:17:10+00:00",
   "coverage": {
    "universe": 9877,
    "profiled": 10254,
@@ -444,9 +444,7 @@
      "m": 99,
      "q": 63
     },
-    "flags": [
-     "8-K"
-    ],
+    "flags": [],
     "growth_doubt": false,
     "unit_doubt": null,
     "why": {
@@ -578,7 +576,7 @@
      "q": 58
     },
     "flags": [
-     "E-3d"
+     "E-2d"
     ],
     "growth_doubt": true,
     "unit_doubt": null,
@@ -623,7 +621,7 @@
      "q": 62
     },
     "flags": [
-     "E-2d"
+     "E-1d"
     ],
     "growth_doubt": false,
     "unit_doubt": null,
@@ -710,9 +708,7 @@
      "m": 83,
      "q": 70
     },
-    "flags": [
-     "8-K"
-    ],
+    "flags": [],
     "growth_doubt": true,
     "unit_doubt": null,
     "why": {
@@ -1514,11 +1510,11 @@
   ],
   "freshness": {
    "last_full_h": 0.0,
-   "quote_median_h": 4.1,
+   "quote_median_h": 3.7,
    "quote_count": 1863,
    "bench_h": 0.0,
-   "universe_h": 15.8,
-   "earnings_h": 0.0,
+   "universe_h": 19.4,
+   "earnings_h": 3.6,
    "bench_gate_h": 72
   },
   "reach": {
@@ -1526,7 +1522,7 @@
     "have": 5,
     "target": 12,
     "possible": 11,
-    "next_due": "2026-11-07",
+    "next_due": "2026-11-08",
     "reachable": false,
     "slack": -1
    },
@@ -1534,13 +1530,13 @@
     "have": 1,
     "target": 3,
     "possible": 3,
-    "next_due": "2026-11-07",
+    "next_due": "2026-11-08",
     "reachable": true,
     "slack": 0
    }
   },
   "changes": {
-   "prev_day": "2026-11-06",
+   "prev_day": "2026-11-07",
    "entered": [],
    "left": [],
    "held": 25
@@ -1743,8 +1739,8 @@
   ],
   "evaluation": {
    "1w": {
-    "excess": 0.01,
-    "days": 22,
+    "excess": -0.02,
+    "days": 23,
     "indep": 5,
     "dropped": 0,
     "carried": 0,
@@ -1771,7 +1767,8 @@
      -0.46,
      -0.5,
      -1.34,
-     -1.31
+     -1.31,
+     -0.61
     ],
     "indep_values": [
      -0.42,
@@ -1780,12 +1777,12 @@
      -0.95,
      -1.34
     ],
-    "vs_peers": -0.36,
-    "peer_readings": 22
+    "vs_peers": -0.4,
+    "peer_readings": 23
    },
    "4w": {
-    "excess": 0.85,
-    "days": 9,
+    "excess": 0.34,
+    "days": 10,
     "indep": 1,
     "dropped": 0,
     "carried": 0,
@@ -1799,13 +1796,14 @@
      0.58,
      0.02,
      -2.48,
-     -3.46
+     -3.46,
+     -4.27
     ],
     "indep_values": [
      3.61
     ],
-    "vs_peers": -1.13,
-    "peer_readings": 9
+    "vs_peers": -1.46,
+    "peer_readings": 10
    }
   },
   "regime": {
@@ -2031,16 +2029,7 @@
    }
   ],
   "budget_mode": "full",
-  "news": [
-   {
-    "title": "Not Nvidia. Not Palantir. The Midterms Just Made This Magnificent Artificial Intelligence (AI) Stock the Safer Bet.",
-    "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxQbHQ5ZVBHQ2RxRHZaLU5hWXlBT1lwTllRY0ZaamFmazUxTzIxZGE5eVl5X1VBWFJTeHRUbEhkc3hnT3ZhNVozZDJ6U1FtUkFsM0lsUFBSdGl1Tzc3aXJQeDgxQWdsVHlQRG12X29NUlFTbTlRRTFEOXY4LXRBRUo4VVZkWkZqdGhVS1pvelVjMTEwUEZKdTBUSw?oc=5",
-    "source": "The Motley Fool",
-    "published": "2026-11-06T11:00:00+00:00",
-    "summary": "Not Nvidia. Not Palantir. The Midterms Just Made This Magnificent Artificial Intelligence (AI) Stock the Safer Bet. The Motley Fool After a wild week in the stock market, warning signs abound The Boston Globe What the AI stock…",
-    "ticker": "AI"
-   }
-  ]
+  "news": []
  },
  "portfolio": {
   "detail": {
@@ -6085,18 +6074,18 @@
     "ret_common": -3.18,
     "excess_common": 0.7,
     "common_from": "2026-10-01",
-    "common_days": 38,
+    "common_days": 39,
     "value": 97826.94,
     "ret": -2.17,
     "bench_ret": -4.05,
     "excess": 1.95,
-    "friction_yr": 9.4,
+    "friction_yr": 9.1,
     "max_drawdown": -7.75,
     "positions": 25,
     "cash": 3.15,
     "costs_paid": 977.25,
     "stops_hit": 0,
-    "days": 38,
+    "days": 39,
     "started": "2026-10-01",
     "curve": [
      101.04,
@@ -6136,6 +6125,7 @@
      100.919,
      96.499,
      98.026,
+     97.827,
      97.827
     ],
     "curve_dates": [
@@ -6176,7 +6166,8 @@
      "2026-11-04",
      "2026-11-05",
      "2026-11-06",
-     "2026-11-07"
+     "2026-11-07",
+     "2026-11-08"
     ]
    },
    {
@@ -6186,18 +6177,18 @@
     "ret_common": -2.67,
     "excess_common": 1.23,
     "common_from": "2026-10-01",
-    "common_days": 38,
+    "common_days": 39,
     "value": 98539.66,
     "ret": -1.46,
     "bench_ret": -4.05,
     "excess": 2.69,
-    "friction_yr": 9.3,
+    "friction_yr": 9.0,
     "max_drawdown": -7.27,
     "positions": 25,
     "cash": 256.13,
     "costs_paid": 963.97,
     "stops_hit": 0,
-    "days": 38,
+    "days": 39,
     "started": "2026-10-01",
     "curve": [
      101.238,
@@ -6237,6 +6228,7 @@
      101.645,
      97.295,
      98.708,
+     98.54,
      98.54
     ],
     "curve_dates": [
@@ -6277,7 +6269,8 @@
      "2026-11-04",
      "2026-11-05",
      "2026-11-06",
-     "2026-11-07"
+     "2026-11-07",
+     "2026-11-08"
     ]
    },
    {
@@ -6287,18 +6280,18 @@
     "ret_common": -5.0,
     "excess_common": -1.2,
     "common_from": "2026-10-01",
-    "common_days": 38,
+    "common_days": 39,
     "value": 95984.8,
     "ret": -4.02,
     "bench_ret": -4.05,
     "excess": 0.03,
-    "friction_yr": 14.7,
+    "friction_yr": 14.3,
     "max_drawdown": -8.73,
     "positions": 14,
     "cash": 33871.0,
     "costs_paid": 1526.66,
     "stops_hit": 14,
-    "days": 38,
+    "days": 39,
     "started": "2026-10-01",
     "curve": [
      101.04,
@@ -6338,6 +6331,7 @@
      97.945,
      94.972,
      96.107,
+     95.985,
      95.985
     ],
     "curve_dates": [
@@ -6378,7 +6372,8 @@
      "2026-11-04",
      "2026-11-05",
      "2026-11-06",
-     "2026-11-07"
+     "2026-11-07",
+     "2026-11-08"
     ]
    },
    {
@@ -6388,18 +6383,18 @@
     "ret_common": -4.27,
     "excess_common": -0.43,
     "common_from": "2026-10-01",
-    "common_days": 38,
+    "common_days": 39,
     "value": 96378.78,
     "ret": -3.62,
     "bench_ret": -4.05,
     "excess": 0.44,
-    "friction_yr": 9.1,
+    "friction_yr": 8.9,
     "max_drawdown": -7.87,
     "positions": 25,
     "cash": 12107.58,
     "costs_paid": 951.22,
     "stops_hit": 0,
-    "days": 38,
+    "days": 39,
     "started": "2026-10-01",
     "curve": [
      100.676,
@@ -6439,6 +6434,7 @@
      99.082,
      95.287,
      96.552,
+     96.379,
      96.379
     ],
     "curve_dates": [
@@ -6479,7 +6475,8 @@
      "2026-11-04",
      "2026-11-05",
      "2026-11-06",
-     "2026-11-07"
+     "2026-11-07",
+     "2026-11-08"
     ]
    },
    {
@@ -6489,18 +6486,18 @@
     "ret_common": -5.51,
     "excess_common": -1.72,
     "common_from": "2026-10-01",
-    "common_days": 38,
+    "common_days": 39,
     "value": 95254.19,
     "ret": -4.75,
     "bench_ret": -4.05,
     "excess": -0.73,
-    "friction_yr": 13.3,
+    "friction_yr": 13.0,
     "max_drawdown": -8.17,
     "positions": 14,
     "cash": 43828.13,
     "costs_paid": 1386.36,
     "stops_hit": 14,
-    "days": 38,
+    "days": 39,
     "started": "2026-10-01",
     "curve": [
      100.805,
@@ -6540,6 +6537,7 @@
      96.862,
      94.413,
      95.3,
+     95.254,
      95.254
     ],
     "curve_dates": [
@@ -6580,7 +6578,8 @@
      "2026-11-04",
      "2026-11-05",
      "2026-11-06",
-     "2026-11-07"
+     "2026-11-07",
+     "2026-11-08"
     ]
    },
    {
@@ -6590,18 +6589,18 @@
     "ret_common": -3.95,
     "excess_common": -0.1,
     "common_from": "2026-10-01",
-    "common_days": 38,
+    "common_days": 39,
     "value": 97050.02,
     "ret": -2.95,
     "bench_ret": -4.05,
     "excess": 1.14,
-    "friction_yr": 6.6,
+    "friction_yr": 6.4,
     "max_drawdown": -8.39,
     "positions": 25,
     "cash": 2.96,
     "costs_paid": 687.76,
     "stops_hit": 0,
-    "days": 38,
+    "days": 39,
     "started": "2026-10-01",
     "curve": [
      101.04,
@@ -6641,6 +6640,7 @@
      99.94,
      95.828,
      97.205,
+     97.05,
      97.05
     ],
     "curve_dates": [
@@ -6681,7 +6681,8 @@
      "2026-11-04",
      "2026-11-05",
      "2026-11-06",
-     "2026-11-07"
+     "2026-11-07",
+     "2026-11-08"
     ]
    }
   ],
@@ -6723,6 +6724,7 @@
    99.545,
    94.045,
    95.898,
+   95.954,
    95.954
   ],
   "bench_dates": [
@@ -6763,11 +6765,12 @@
    "2026-11-04",
    "2026-11-05",
    "2026-11-06",
-   "2026-11-07"
+   "2026-11-07",
+   "2026-11-08"
   ],
   "span": [
    "2026-10-01",
-   "2026-11-07"
+   "2026-11-08"
   ],
   "retired": [
    {
@@ -7248,13 +7251,17 @@
   {
    "date": "2026-11-17",
    "label": "Retail sales"
+  },
+  {
+   "date": "2026-11-18",
+   "label": "Housing starts"
   }
  ],
  "stats": {
   "feeds_total": 20,
   "feeds_failed": 1,
-  "items": 357,
-  "smallcap_calls": 554,
+  "items": 321,
+  "smallcap_calls": 552,
   "feed_errors": [],
   "market_errors": [
    [
