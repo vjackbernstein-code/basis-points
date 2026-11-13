@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-12T22:47:56.811936+00:00",
+ "generated_at": "2026-11-13T03:26:00.495414+00:00",
  "market": [
   {
    "label": "S&P 500",
@@ -77,13 +77,12 @@
    "label": "Dow",
    "symbol": "DJIA",
    "kind": "index",
-   "value": 52486.49,
-   "prev": 52231.89,
-   "value_txt": "52,486.49",
-   "delta": 0.48744167595696525,
-   "delta_txt": "+0.49%",
+   "value": 52297.09,
+   "prev": 52486.49,
+   "value_txt": "52,297.09",
+   "delta": -0.3608547647213625,
+   "delta_txt": "-0.36%",
    "spark": [
-    51850.55,
     51670.1,
     51621.48,
     52177.69,
@@ -105,9 +104,10 @@
     51285.73,
     52389.75,
     52231.89,
-    52486.49
+    52486.49,
+    52297.09
    ],
-   "asof": "Nov 11"
+   "asof": "Nov 12"
   },
   {
    "label": "VIX",
@@ -221,18 +221,12 @@
    "label": "WTI crude",
    "symbol": "DCOILWTICO",
    "kind": "dollar",
-   "value": 99.64,
-   "prev": 100.06,
-   "value_txt": "$99.64",
-   "delta": -0.41974815110933605,
-   "delta_txt": "-0.42%",
+   "value": 89.62,
+   "prev": 89.62,
+   "value_txt": "$89.62",
+   "delta": 0.0,
+   "delta_txt": "+0.00%",
    "spark": [
-    97.89,
-    96.13,
-    96.24,
-    95.02,
-    98.26,
-    98.73,
     94.99,
     95.39,
     96.34,
@@ -249,9 +243,15 @@
     105.51,
     107.56,
     100.06,
-    99.64
+    99.64,
+    91.73,
+    94.05,
+    94.37,
+    90.4,
+    89.62,
+    89.62
    ],
-   "asof": "Nov 3"
+   "asof": "Nov 11"
   },
   {
    "label": "EUR/USD",
@@ -286,19 +286,19 @@
     1.1214,
     1.1127,
     1.1081
-   ]
+   ],
+   "asof": "Nov 12"
   },
   {
    "label": "Bitcoin",
    "symbol": "bitcoin",
    "kind": "crypto",
-   "value": 71378.11704038612,
-   "prev": 73974.39237853957,
-   "value_txt": "$71,378",
-   "delta": -3.5096947128242344,
-   "delta_txt": "-3.51%",
+   "value": 69786.88726041996,
+   "prev": 71371.98179897292,
+   "value_txt": "$69,787",
+   "delta": -2.220891866247398,
+   "delta_txt": "-2.22%",
    "spark": [
-    84082.26646319703,
     81328.20561459455,
     81102.31316582682,
     80810.57086775338,
@@ -320,20 +320,20 @@
     75266.76731147344,
     73721.18379734851,
     73974.39237853957,
-    71378.11704038612
+    71371.98179897292,
+    69786.88726041996
    ]
   },
   {
    "label": "Ethereum",
    "symbol": "ethereum",
    "kind": "crypto",
-   "value": 2009.7586258894714,
-   "prev": 2055.371808970753,
-   "value_txt": "$2,010",
-   "delta": -2.2192180938845776,
-   "delta_txt": "-2.22%",
+   "value": 1980.9751752162672,
+   "prev": 2017.3504775679344,
+   "value_txt": "$1,981",
+   "delta": -1.8031225984847368,
+   "delta_txt": "-1.80%",
    "spark": [
-    2472.6790339173845,
     2386.4827807254364,
     2384.7498314209515,
     2356.5686323389386,
@@ -355,12 +355,20 @@
     2132.138072356442,
     2050.338388196825,
     2055.371808970753,
-    2009.7586258894714
+    2017.3504775679344,
+    1980.9751752162672
    ]
   }
  ],
- "tape_line": "S&P 500 +1.31%, Nasdaq +1.60%, Dow +0.49%; the 10-year Treasury at 4.98% (+10 bp); WTI crude $99.64 (-0.42%); bitcoin $71,378 (-3.51%).",
+ "tape_line": "S&P 500 +1.31%, Nasdaq +1.60%, Dow -0.36%; the 10-year Treasury at 4.98% (+10 bp); WTI crude $89.62 (+0.00%); bitcoin $69,787 (-2.22%).",
  "top": [
+  {
+   "title": "Bonds, inflation and the Fed. Plus, Nvidia in turmoil",
+   "link": "https://www.ft.com/content/4abc107b-a0ba-45eb-9506-69657290bab2?syn-25a6b1a6=1",
+   "source": "Financial Times",
+   "published": "2026-11-12T21:00:00+00:00",
+   "summary": "Are markets kidding themselves about inflation?"
+  },
   {
    "title": "Bond yields just saw their biggest surge since 2022 as expectations grow for more Fed rate hikes",
    "link": "https://www.marketwatch.com/story/bond-yields-just-saw-their-biggest-surge-since-2022-as-expectations-grow-for-more-fed-rate-hikes-d0a4f195?mod=mw_rss_topstories",
@@ -369,11 +377,11 @@
    "summary": "Fed Chair Warsh’s quiet style of communicating interest-rate policy has led to more volatile markets."
   },
   {
-   "title": "Gold Falls to More Than 1-Year Low As U.S. Dollar, Yields Rise",
-   "link": "https://www.wsj.com/finance/commodities-futures/gold-dims-amid-rising-fed-rate-hike-expectations-22fab6f0?mod=rss_markets_main",
-   "source": "WSJ Markets",
-   "published": "2026-11-12T19:36:00+00:00",
-   "summary": "Gold futures fell for a third consecutive session as the dollar gained and yields rose, with the market concerned about higher interest rates and a rebound in oil prices that could fuel more inflation."
+   "title": "AI boom will lift Nvidia even after Huang’s exit, investors say",
+   "link": "https://www.ft.com/content/ecb2b4ed-1b61-4c8a-a2e7-a6f9c85a59ff?syn-25a6b1a6=1",
+   "source": "Financial Times",
+   "published": "2026-11-12T23:26:26+00:00",
+   "summary": "Shares largely recovered by close of market Thursday as shareholders bought the dip and looked to group’s future without CEO"
   },
   {
    "title": "In a policy switch, the Fed says its October 2027 meeting will not see a vote on interest rates",
@@ -383,6 +391,13 @@
    "summary": "There will be seven voting meetings next year, with the October session set up as extra time for policy deliberation without a formal vote or post-meeting statement."
   },
   {
+   "title": "Asian Stocks Set for Cautious Open on Nvidia, Oil: Markets Wrap",
+   "link": "https://news.google.com/rss/articles/CBMilAFBVV95cUxPTmVnUHB5bWw0Y052NTU5ZkNsOGdwUXVCWnIwczVnQWJKWmJiaUZta09PNGhNYVZWSENvOFVReWJIVldFcDJNcmlOQ3RyMWhHQThNcmtnU0FIZldHWHJ4NldqbkVrYUlseVNBN0xycmRrUjdFVWRQQll6MzhBUHNOS2NidGtDc01LeWlNd01WNGJxcm5E?oc=5",
+   "source": "Bloomberg.com",
+   "published": "2026-11-13T01:59:00+00:00",
+   "summary": "Asian Stocks Set for Cautious Open on Nvidia, Oil: Markets Wrap Bloomberg.com Stock Market News, Nov. 12, 2026: Chip Giant’s Stock Falls 4% After Jensen Huang Exit WSJ Wall Street shakes with swings for Nvidia and oil prices but…"
+  },
+  {
    "title": "Jensen Huang Built Nvidia. Its Chips Made the AI Boom Possible.",
    "link": "https://www.wsj.com/tech/ai/jensen-huang-nvidia-ceo-departs-bef1b4bb?mod=pls_whats_news_us_business_f",
    "source": "WSJ Business",
@@ -390,36 +405,22 @@
    "summary": "Nvidia’s first and only CEO turned semiconductors designed for videogames into the engine of the next technology revolution."
   },
   {
-   "title": "U.S. Stocks Down as Huang Ouster Sends Shockwaves Through Tech",
-   "link": "https://www.wsj.com/finance/stocks/u-s-stocks-fall-as-huang-ouster-sends-shockwaves-through-tech-5b0aa02a?mod=rss_markets_main",
+   "title": "Nikkei Rises 1.1%, Led by Chip Stocks",
+   "link": "https://www.wsj.com/finance/stocks/nikkei-rises-1-1-led-by-chip-stocks-eb2ed881?mod=rss_markets_main",
    "source": "WSJ Markets",
-   "published": "2026-11-12T22:12:00+00:00",
-   "summary": "U.S. stocks slipped after the sudden ouster of one of the key architects of the artificial-intelligence boom sent shockwaves through the technology sector."
-  },
-  {
-   "title": "Jensen Huang's Nvidia exit casts shadow over Wall Street’s $500 billion AI financing bet",
-   "link": "https://www.cnbc.com/2026/11/12/nvidia-ceo-exit-ai-financing.html",
-   "source": "CNBC",
-   "published": "2026-11-12T19:33:50+00:00",
-   "summary": "Nvidia's leadership crisis threatens to spill over into the AI financing boom."
-  },
-  {
-   "title": "Federal Reserve Board announces pricing, effective January 1, 2027, for payment services the Federal Reserve Banks provide to banks and credit unions, and changes to streamline and adjust their check services",
-   "link": "https://www.federalreserve.gov/newsevents/pressreleases/other20261112a.htm",
-   "source": "Federal Reserve",
-   "published": "2026-11-12T18:30:00+00:00",
-   "summary": "Federal Reserve Board announces pricing, effective January 1, 2027, for payment services the Federal Reserve Banks provide to banks and credit unions, and changes to streamline and adjust their check services"
+   "published": "2026-11-13T00:19:00+00:00",
+   "summary": "Japanese stocks were higher, led by chip-related stocks, despite continued uncertainty over the U.S. and Japanese monetary policies."
   }
  ],
  "smallcap": {
   "note": null,
-  "asof": "2026-11-12T22:47:50+00:00",
+  "asof": "2026-11-13T03:25:55+00:00",
   "coverage": {
    "universe": 9877,
    "profiled": 10254,
    "in_band": 1697,
    "measured": 1697,
-   "scored": 907,
+   "scored": 904,
    "below_floor": 62
   },
   "screen": [
@@ -781,7 +782,7 @@
     "ev_rev": 9.88,
     "px": 26.35,
     "dp": -5.2158,
-    "score": 79.1,
+    "score": 79.0,
     "sub": {
      "g": 77,
      "m": 92,
@@ -867,7 +868,7 @@
     "ev_rev": 16.0873,
     "px": 28.62,
     "dp": -9.5163,
-    "score": 77.5,
+    "score": 77.4,
     "sub": {
      "g": 82,
      "m": 82,
@@ -910,9 +911,9 @@
     "ev_rev": 13.991,
     "px": 61.45,
     "dp": -10.1608,
-    "score": 77.0,
+    "score": 76.8,
     "sub": {
-     "g": 87,
+     "g": 86,
      "m": 84,
      "q": 43
     },
@@ -957,7 +958,7 @@
     "sub": {
      "g": 92,
      "m": 74,
-     "q": 53
+     "q": 52
     },
     "flags": [],
     "growth_doubt": false,
@@ -1026,51 +1027,6 @@
     }
    },
    {
-    "ticker": "TEN",
-    "name": "Tsakos Energy Navigation Ltd",
-    "ind": "Energy",
-    "group": "Energy",
-    "mcap": 1288.1180526363216,
-    "rev_g": 23.23,
-    "accel": 31.139999999999997,
-    "r13": 34.2223,
-    "momo": 0.86,
-    "from_high": -17.0809095716552,
-    "ev_rev": 3.3572,
-    "px": 47.04,
-    "dp": 2.1942,
-    "score": 76.5,
-    "sub": {
-     "g": 72,
-     "m": 92,
-     "q": 54
-    },
-    "flags": [
-     "E-6d"
-    ],
-    "growth_doubt": false,
-    "unit_doubt": null,
-    "why": {
-     "vol": 40.26472,
-     "r26": 34.9286,
-     "accel_raw": 31.139999999999997,
-     "growth_cap": 150.0,
-     "accel_cap": 50.0,
-     "rg3": -2.45,
-     "rev_gq": 54.37,
-     "dte": 1.0231,
-     "gm_t": 61.58,
-     "om_t": 43.17,
-     "om_a": 31.59,
-     "cashps": 15.4723,
-     "rps": 32.0197,
-     "adv": 0.36755,
-     "hi52": 56.73,
-     "shares": 30.13,
-     "exch": "NEW YORK STOCK EXCHANGE, INC."
-    }
-   },
-   {
     "ticker": "NAT",
     "name": "Nordic American Tankers Ltd",
     "ind": "Energy",
@@ -1114,6 +1070,94 @@
     }
    },
    {
+    "ticker": "TEN",
+    "name": "Tsakos Energy Navigation Ltd",
+    "ind": "Energy",
+    "group": "Energy",
+    "mcap": 1288.1180526363216,
+    "rev_g": 23.23,
+    "accel": 31.139999999999997,
+    "r13": 34.2223,
+    "momo": 0.86,
+    "from_high": -17.0809095716552,
+    "ev_rev": 3.3572,
+    "px": 47.04,
+    "dp": 2.1942,
+    "score": 76.4,
+    "sub": {
+     "g": 72,
+     "m": 92,
+     "q": 54
+    },
+    "flags": [
+     "E-5d"
+    ],
+    "growth_doubt": false,
+    "unit_doubt": null,
+    "why": {
+     "vol": 40.26472,
+     "r26": 34.9286,
+     "accel_raw": 31.139999999999997,
+     "growth_cap": 150.0,
+     "accel_cap": 50.0,
+     "rg3": -2.45,
+     "rev_gq": 54.37,
+     "dte": 1.0231,
+     "gm_t": 61.58,
+     "om_t": 43.17,
+     "om_a": 31.59,
+     "cashps": 15.4723,
+     "rps": 32.0197,
+     "adv": 0.36755,
+     "hi52": 56.73,
+     "shares": 30.13,
+     "exch": "NEW YORK STOCK EXCHANGE, INC."
+    }
+   },
+   {
+    "ticker": "LIND",
+    "name": "Lindblad Expeditions Holdings Inc",
+    "ind": "Hotels, Restaurants & Leisure",
+    "group": "Consumer",
+    "mcap": 1807.166216103896,
+    "rev_g": 18.27,
+    "accel": 0.370000000000001,
+    "r13": 25.4783,
+    "momo": 1.14,
+    "from_high": -8.913797704830518,
+    "ev_rev": 3.366,
+    "px": 34.13,
+    "dp": -2.2623,
+    "score": 76.3,
+    "sub": {
+     "g": 79,
+     "m": 96,
+     "q": 30
+    },
+    "flags": [],
+    "growth_doubt": false,
+    "unit_doubt": null,
+    "why": {
+     "vol": 49.860916,
+     "r26": 104.1507,
+     "accel_raw": 0.370000000000001,
+     "growth_cap": 150.0,
+     "accel_cap": 50.0,
+     "rg3": 22.3,
+     "rev_gq": 18.64,
+     "dte": 102.4293,
+     "gm_t": 46.65,
+     "om_t": 4.16,
+     "om_a": 2.85,
+     "cashps": 4.8673,
+     "rps": 12.6863,
+     "adv": 0.7961,
+     "hi52": 37.47,
+     "shares": 65.6,
+     "exch": "NASDAQ NMS - GLOBAL MARKET"
+    }
+   },
+   {
     "ticker": "FBIZ",
     "name": "First Business Financial Services Inc",
     "ind": "Banking",
@@ -1127,7 +1171,7 @@
     "ev_rev": null,
     "px": 75.07,
     "dp": 0.2002,
-    "score": 76.3,
+    "score": 76.2,
     "sub": {
      "g": 67,
      "m": 93,
@@ -1153,49 +1197,6 @@
      "adv": 0.05743,
      "hi52": 74.335,
      "shares": 8.36,
-     "exch": "NASDAQ NMS - GLOBAL MARKET"
-    }
-   },
-   {
-    "ticker": "LIND",
-    "name": "Lindblad Expeditions Holdings Inc",
-    "ind": "Hotels, Restaurants & Leisure",
-    "group": "Consumer",
-    "mcap": 1807.166216103896,
-    "rev_g": 18.27,
-    "accel": 0.370000000000001,
-    "r13": 25.4783,
-    "momo": 1.14,
-    "from_high": -8.913797704830518,
-    "ev_rev": 3.366,
-    "px": 34.13,
-    "dp": -2.2623,
-    "score": 76.3,
-    "sub": {
-     "g": 79,
-     "m": 96,
-     "q": 31
-    },
-    "flags": [],
-    "growth_doubt": false,
-    "unit_doubt": null,
-    "why": {
-     "vol": 49.860916,
-     "r26": 104.1507,
-     "accel_raw": 0.370000000000001,
-     "growth_cap": 150.0,
-     "accel_cap": 50.0,
-     "rg3": 22.3,
-     "rev_gq": 18.64,
-     "dte": 102.4293,
-     "gm_t": 46.65,
-     "om_t": 4.16,
-     "om_a": 2.85,
-     "cashps": 4.8673,
-     "rps": 12.6863,
-     "adv": 0.7961,
-     "hi52": 37.47,
-     "shares": 65.6,
      "exch": "NASDAQ NMS - GLOBAL MARKET"
     }
    },
@@ -1243,51 +1244,6 @@
     }
    },
    {
-    "ticker": "TXO",
-    "name": "TXO Partners LP",
-    "ind": "Energy",
-    "group": "Energy",
-    "mcap": 856.0925270791367,
-    "rev_g": 22.18,
-    "accel": 45.68,
-    "r13": 4.9094,
-    "momo": 0.4,
-    "from_high": -10.07182699899224,
-    "ev_rev": 2.2977,
-    "px": 14.01,
-    "dp": 0.5022,
-    "score": 76.1,
-    "sub": {
-     "g": 84,
-     "m": 75,
-     "q": 62
-    },
-    "flags": [
-     "act+"
-    ],
-    "growth_doubt": false,
-    "unit_doubt": null,
-    "why": {
-     "vol": 26.163498,
-     "r26": 18.5154,
-     "accel_raw": 45.68,
-     "growth_cap": 150.0,
-     "accel_cap": 50.0,
-     "rg3": 17.63,
-     "rev_gq": 67.86,
-     "dte": 0.4168,
-     "gm_t": 53.24,
-     "om_t": -10.63,
-     "om_a": -7.63,
-     "cashps": 1.9384,
-     "rps": 7.162,
-     "adv": 0.08744,
-     "hi52": 15.5791,
-     "shares": 55.24,
-     "exch": "NEW YORK STOCK EXCHANGE, INC."
-    }
-   },
-   {
     "ticker": "CLMB",
     "name": "Climb Global Solutions Inc",
     "ind": "Electrical Equipment",
@@ -1331,6 +1287,51 @@
     }
    },
    {
+    "ticker": "TXO",
+    "name": "TXO Partners LP",
+    "ind": "Energy",
+    "group": "Energy",
+    "mcap": 856.0925270791367,
+    "rev_g": 22.18,
+    "accel": 45.68,
+    "r13": 4.9094,
+    "momo": 0.4,
+    "from_high": -10.07182699899224,
+    "ev_rev": 2.2977,
+    "px": 14.01,
+    "dp": 0.5022,
+    "score": 76.0,
+    "sub": {
+     "g": 84,
+     "m": 75,
+     "q": 62
+    },
+    "flags": [
+     "act+"
+    ],
+    "growth_doubt": false,
+    "unit_doubt": null,
+    "why": {
+     "vol": 26.163498,
+     "r26": 18.5154,
+     "accel_raw": 45.68,
+     "growth_cap": 150.0,
+     "accel_cap": 50.0,
+     "rg3": 17.63,
+     "rev_gq": 67.86,
+     "dte": 0.4168,
+     "gm_t": 53.24,
+     "om_t": -10.63,
+     "om_a": -7.63,
+     "cashps": 1.9384,
+     "rps": 7.162,
+     "adv": 0.08744,
+     "hi52": 15.5791,
+     "shares": 55.24,
+     "exch": "NEW YORK STOCK EXCHANGE, INC."
+    }
+   },
+   {
     "ticker": "NXDR",
     "name": "Nextdoor Holdings Inc",
     "ind": "Media",
@@ -1348,7 +1349,7 @@
     "sub": {
      "g": 73,
      "m": 86,
-     "q": 62
+     "q": 61
     },
     "flags": [],
     "growth_doubt": false,
@@ -1505,11 +1506,11 @@
   ],
   "freshness": {
    "last_full_h": 0.0,
-   "quote_median_h": 6.1,
+   "quote_median_h": 4.8,
    "quote_count": 1863,
    "bench_h": 0.0,
-   "universe_h": 135.9,
-   "earnings_h": 6.0,
+   "universe_h": 140.5,
+   "earnings_h": 10.6,
    "bench_gate_h": 72
   },
   "reach": {
@@ -1517,7 +1518,7 @@
     "have": 6,
     "target": 12,
     "possible": 11,
-    "next_due": "2026-11-12",
+    "next_due": "2026-11-13",
     "reachable": false,
     "slack": -1
    },
@@ -1525,13 +1526,13 @@
     "have": 1,
     "target": 3,
     "possible": 3,
-    "next_due": "2026-11-12",
+    "next_due": "2026-11-13",
     "reachable": true,
     "slack": 0
    }
   },
   "changes": {
-   "prev_day": "2026-11-11",
+   "prev_day": "2026-11-12",
    "entered": [],
    "left": [],
    "held": 25
@@ -1596,18 +1597,6 @@
   ],
   "movers_up": [
    {
-    "ticker": "GEVO",
-    "name": "Gevo Inc",
-    "px": 1.82,
-    "dp": 30.9353
-   },
-   {
-    "ticker": "CAPR",
-    "name": "Capricor Therapeutics Inc",
-    "px": 11.22,
-    "dp": 26.4938
-   },
-   {
     "ticker": "ALDF",
     "name": "Aldel Financial II Inc",
     "px": 10.91,
@@ -1624,9 +1613,27 @@
     "name": "AEVEX Corp",
     "px": 14.21,
     "dp": 17.1476
+   },
+   {
+    "ticker": "NUAI",
+    "name": "New Era Energy & Digital Inc",
+    "px": 2.72,
+    "dp": 16.7382
+   },
+   {
+    "ticker": "MFI",
+    "name": "mF International Limited",
+    "px": 7.2,
+    "dp": 16.129
    }
   ],
   "movers_down": [
+   {
+    "ticker": "CDNL",
+    "name": "Cardinal Infrastructure Group Inc",
+    "px": 5.64,
+    "dp": -62.3749
+   },
    {
     "ticker": "PSFE",
     "name": "Paysafe Ltd",
@@ -1640,22 +1647,16 @@
     "dp": -28.6561
    },
    {
-    "ticker": "EMAT",
-    "name": "Evolution Metals & Technologies Corp",
-    "px": 0.9901,
-    "dp": -19.1755
+    "ticker": "FTH",
+    "name": "Faeth Therapeutics, Inc",
+    "px": 10.65,
+    "dp": -20.2247
    },
    {
-    "ticker": "VELO",
-    "name": "Velo3D Inc",
-    "px": 4.9,
-    "dp": -18.8742
-   },
-   {
-    "ticker": "GPRO",
-    "name": "GoPro Inc",
-    "px": 0.6882,
-    "dp": -18.3436
+    "ticker": "BRUN",
+    "name": "Boost Run Inc",
+    "px": 5.92,
+    "dp": -19.7832
    }
   ],
   "earnings": [
@@ -1734,8 +1735,8 @@
   ],
   "evaluation": {
    "1w": {
-    "excess": -0.09,
-    "days": 27,
+    "excess": -0.12,
+    "days": 28,
     "indep": 6,
     "dropped": 0,
     "carried": 0,
@@ -1767,7 +1768,8 @@
      0.5,
      -0.51,
      -0.75,
-     -1.12
+     -1.12,
+     -0.99
     ],
     "indep_values": [
      -0.42,
@@ -1777,12 +1779,12 @@
      -1.34,
      -0.75
     ],
-    "vs_peers": -0.2,
-    "peer_readings": 27
+    "vs_peers": -0.17,
+    "peer_readings": 28
    },
    "4w": {
-    "excess": -0.2,
-    "days": 12,
+    "excess": -0.29,
+    "days": 13,
     "indep": 1,
     "dropped": 0,
     "carried": 0,
@@ -1799,13 +1801,14 @@
      -3.46,
      -4.27,
      -2.36,
-     -3.44
+     -3.44,
+     -1.3
     ],
     "indep_values": [
      3.61
     ],
-    "vs_peers": -1.17,
-    "peer_readings": 12
+    "vs_peers": -1.42,
+    "peer_readings": 13
    }
   },
   "regime": {
@@ -1888,6 +1891,27 @@
   ],
   "filings_activist": [
    {
+    "ticker": "DDI",
+    "name": "DoubleDown Interactive Co Ltd",
+    "date": "2026-11-13",
+    "link": "https://www.sec.gov/Archives/edgar/data/1799567/000119312526459013/0001193125-26-459013-index.htm",
+    "form": "SCHEDULE 13D/A"
+   },
+   {
+    "ticker": "REI",
+    "name": "Ring Energy Inc",
+    "date": "2026-11-13",
+    "link": "https://www.sec.gov/Archives/edgar/data/1384195/000138995626000020/0001389956-26-000020-index.htm",
+    "form": "SCHEDULE 13G/A"
+   },
+   {
+    "ticker": "FNKO",
+    "name": "Funko Inc",
+    "date": "2026-11-13",
+    "link": "https://www.sec.gov/Archives/edgar/data/1704711/000092189526003046/0000921895-26-003046-index.htm",
+    "form": "SCHEDULE 13D/A"
+   },
+   {
     "ticker": "CNNE",
     "name": "Cannae Holdings Inc",
     "date": "2026-11-12",
@@ -1934,27 +1958,6 @@
     "name": "Kelly Services Inc",
     "date": "2026-11-12",
     "link": "https://www.sec.gov/Archives/edgar/data/55135/000121465926014001/0001214659-26-014001-index.htm",
-    "form": "SCHEDULE 13G/A"
-   },
-   {
-    "ticker": "EFOR",
-    "name": "Everforth Inc",
-    "date": "2026-11-12",
-    "link": "https://www.sec.gov/Archives/edgar/data/890564/000116755726000235/0001167557-26-000235-index.htm",
-    "form": "SCHEDULE 13G/A"
-   },
-   {
-    "ticker": "CNXC",
-    "name": "Concentrix Corp",
-    "date": "2026-11-12",
-    "link": "https://www.sec.gov/Archives/edgar/data/1803599/000116755726000231/0001167557-26-000231-index.htm",
-    "form": "SCHEDULE 13G/A"
-   },
-   {
-    "ticker": "BRBR",
-    "name": "Bellring Brands Inc",
-    "date": "2026-11-12",
-    "link": "https://www.sec.gov/Archives/edgar/data/1772016/000116755726000230/0001167557-26-000230-index.htm",
     "form": "SCHEDULE 13G/A"
    }
   ],
@@ -2065,6 +2068,22 @@
     "ticker": "PMTV"
    },
    {
+    "title": "Lost Money on Cardinal Infrastructure Group Inc. Stock? Glancy Prongay Wolke & Rotter LLP Investigates Possible Securities Fraud After 62.37% Share Price Drop",
+    "link": "http://www.businesswire.com/news/home/20261112302672/en/Lost-Money-on-Cardinal-Infrastructure-Group-Inc.-Stock-Glancy-Prongay-Wolke-Rotter-LLP-Investigates-Possible-Securities-Fraud-After-62.37-Share-Price-Drop/?feedref=JjAwJuNHiystnCoBq_hl-YorNIXXeJUidDamMzBr2lVrRA1xRkqfEfrAVCWz-Z_wrCOi9QzgjCezTS3Nw_X6kJUrpSBm-Hav1w-UkdSlG3ne1zTTrM-woVxs6_pUhglHIbE9ZC1pD3bt6lQgRU5j6g==",
+    "source": "Business Wire",
+    "published": "2026-11-13T02:19:00+00:00",
+    "summary": "LOS ANGELES--(BUSINESS WIRE)--Investors who lost money on Cardinal Infrastructure Group Inc. (\"Cardinal Infrastructure\" or the \"Company\") stock may have claims to recover their losses. Glancy Prongay Wolke & Rotter LLP (\"Glancy\")…",
+    "ticker": "CDNL"
+   },
+   {
+    "title": "Lost Money on Enovix Corporation Stock? Glancy Prongay Wolke & Rotter LLP Investigates Possible Securities Fraud After 28.66% Share Price Drop",
+    "link": "http://www.businesswire.com/news/home/20261112926177/en/Lost-Money-on-Enovix-Corporation-Stock-Glancy-Prongay-Wolke-Rotter-LLP-Investigates-Possible-Securities-Fraud-After-28.66-Share-Price-Drop/?feedref=JjAwJuNHiystnCoBq_hl-YorNIXXeJUidDamMzBr2lVrRA1xRkqfEfrAVCWz-Z_wrCOi9QzgjCezTS3Nw_X6kJUrpSBm-Hav1w-UkdSlG3ne1zTTrM-woVxs6_pUhglHIbE9ZC1pD3bt6lQgRU5j6g==",
+    "source": "Business Wire",
+    "published": "2026-11-13T02:18:00+00:00",
+    "summary": "LOS ANGELES--(BUSINESS WIRE)--Investors who lost money on Enovix Corporation (\"Enovix\" or the \"Company\") stock may have claims to recover their losses. Glancy Prongay Wolke & Rotter LLP (\"Glancy\") today announced a securities…",
+    "ticker": "ENVX"
+   },
+   {
     "title": "MVB Financial Corp. to Attend the TD Cowen 2026 Financials & Fintech Conference",
     "link": "http://www.businesswire.com/news/home/20261112357350/en/MVB-Financial-Corp.-to-Attend-the-TD-Cowen-2026-Financials-Fintech-Conference/?feedref=JjAwJuNHiystnCoBq_hl-YorNIXXeJUidDamMzBr2lVrRA1xRkqfEfrAVCWz-Z_wrCOi9QzgjCezTS3Nw_X6kJUrpSBm-Hav1w-UkdSlG3ne1zTTrM-woVxs6_pUhglHIbE9ZC1pD3bt6lQgRU5j6g==",
     "source": "Business Wire",
@@ -2079,22 +2098,6 @@
     "published": "2026-11-12T21:28:00+00:00",
     "summary": "FORT WORTH, Texas--(BUSINESS WIRE)--Presidio Production Company Announces Third Quarter 2026 Results",
     "ticker": "FTW"
-   },
-   {
-    "title": "The RMR Group Inc. Announces Fiscal Fourth Quarter 2026 Results",
-    "link": "http://www.businesswire.com/news/home/20261112735454/en/The-RMR-Group-Inc.-Announces-Fiscal-Fourth-Quarter-2026-Results/?feedref=JjAwJuNHiystnCoBq_hl-YorNIXXeJUidDamMzBr2lVrRA1xRkqfEfrAVCWz-Z_wrCOi9QzgjCezTS3Nw_X6kJUrpSBm-Hav1w-UkdSlG3ne1zTTrM-woVxs6_pUhglHIbE9ZC1pD3bt6lQgRU5j6g==",
-    "source": "Business Wire",
-    "published": "2026-11-12T21:15:00+00:00",
-    "summary": "NEWTON, Mass.--(BUSINESS WIRE)--The RMR Group Inc. (Nasdaq: RMR) today announced its financial results for the fiscal quarter ended September 30, 2026, which can be found at the Quarterly Results section of RMR’s website at…",
-    "ticker": "RMR"
-   },
-   {
-    "title": "Enhanced Group Inc. Reports Third Quarter 2026 Results",
-    "link": "http://www.businesswire.com/news/home/20261112283172/en/Enhanced-Group-Inc.-Reports-Third-Quarter-2026-Results/?feedref=JjAwJuNHiystnCoBq_hl-YorNIXXeJUidDamMzBr2lVrRA1xRkqfEfrAVCWz-Z_wrCOi9QzgjCezTS3Nw_X6kJUrpSBm-Hav1w-UkdSlG3ne1zTTrM-woVxs6_pUhglHIbE9ZC1pD3bt6lQgRU5j6g==",
-    "source": "Business Wire",
-    "published": "2026-11-12T21:05:00+00:00",
-    "summary": "NEW YORK--(BUSINESS WIRE)--Enhanced Group Inc. (NYSE: ENHA) (“Enhanced” or the “Company”), a sports, live entertainment and performance products company, today announced financial results for its third quarter ended September 30…",
-    "ticker": "ENHA"
    }
   ]
  },
@@ -6169,18 +6172,18 @@
     "ret_common": -1.88,
     "excess_common": -0.29,
     "common_from": "2026-10-01",
-    "common_days": 43,
+    "common_days": 44,
     "value": 99143.43,
     "ret": -0.86,
     "bench_ret": -1.79,
     "excess": 0.95,
-    "friction_yr": 8.6,
+    "friction_yr": 8.4,
     "max_drawdown": -7.75,
     "positions": 25,
     "cash": 2178.45,
     "costs_paid": 1017.79,
     "stops_hit": 0,
-    "days": 43,
+    "days": 44,
     "started": "2026-10-01",
     "curve": [
      101.04,
@@ -6225,6 +6228,7 @@
      97.827,
      100.046,
      101.221,
+     99.143,
      99.143
     ],
     "curve_dates": [
@@ -6270,7 +6274,8 @@
      "2026-11-09",
      "2026-11-10",
      "2026-11-11",
-     "2026-11-12"
+     "2026-11-12",
+     "2026-11-13"
     ]
    },
    {
@@ -6280,18 +6285,18 @@
     "ret_common": -1.64,
     "excess_common": -0.06,
     "common_from": "2026-10-01",
-    "common_days": 43,
+    "common_days": 44,
     "value": 99575.04,
     "ret": -0.42,
     "bench_ret": -1.79,
     "excess": 1.39,
-    "friction_yr": 8.6,
+    "friction_yr": 8.4,
     "max_drawdown": -7.27,
     "positions": 25,
     "cash": 2535.67,
     "costs_paid": 1009.62,
     "stops_hit": 0,
-    "days": 43,
+    "days": 44,
     "started": "2026-10-01",
     "curve": [
      101.238,
@@ -6336,6 +6341,7 @@
      98.54,
      100.375,
      101.693,
+     99.575,
      99.575
     ],
     "curve_dates": [
@@ -6381,7 +6387,8 @@
      "2026-11-09",
      "2026-11-10",
      "2026-11-11",
-     "2026-11-12"
+     "2026-11-12",
+     "2026-11-13"
     ]
    },
    {
@@ -6391,18 +6398,18 @@
     "ret_common": -4.87,
     "excess_common": -3.34,
     "common_from": "2026-10-01",
-    "common_days": 43,
+    "common_days": 44,
     "value": 96116.3,
     "ret": -3.88,
     "bench_ret": -1.79,
     "excess": -2.14,
-    "friction_yr": 14.4,
+    "friction_yr": 14.1,
     "max_drawdown": -8.73,
     "positions": 15,
     "cash": 3445.8,
     "costs_paid": 1694.15,
     "stops_hit": 15,
-    "days": 43,
+    "days": 44,
     "started": "2026-10-01",
     "curve": [
      101.04,
@@ -6447,6 +6454,7 @@
      95.985,
      97.966,
      98.645,
+     96.116,
      96.116
     ],
     "curve_dates": [
@@ -6492,7 +6500,8 @@
      "2026-11-09",
      "2026-11-10",
      "2026-11-11",
-     "2026-11-12"
+     "2026-11-12",
+     "2026-11-13"
     ]
    },
    {
@@ -6502,18 +6511,18 @@
     "ret_common": -3.27,
     "excess_common": -1.7,
     "common_from": "2026-10-01",
-    "common_days": 43,
+    "common_days": 44,
     "value": 97387.92,
     "ret": -2.61,
     "bench_ret": -1.79,
     "excess": -0.84,
-    "friction_yr": 8.4,
+    "friction_yr": 8.2,
     "max_drawdown": -7.87,
     "positions": 25,
     "cash": 11789.91,
     "costs_paid": 986.05,
     "stops_hit": 0,
-    "days": 43,
+    "days": 44,
     "started": "2026-10-01",
     "curve": [
      100.676,
@@ -6558,6 +6567,7 @@
      96.379,
      98.243,
      99.237,
+     97.388,
      97.388
     ],
     "curve_dates": [
@@ -6603,7 +6613,8 @@
      "2026-11-09",
      "2026-11-10",
      "2026-11-11",
-     "2026-11-12"
+     "2026-11-12",
+     "2026-11-13"
     ]
    },
    {
@@ -6613,18 +6624,18 @@
     "ret_common": -5.94,
     "excess_common": -4.42,
     "common_from": "2026-10-01",
-    "common_days": 43,
+    "common_days": 44,
     "value": 94815.5,
     "ret": -5.18,
     "bench_ret": -1.79,
     "excess": -3.46,
-    "friction_yr": 13.3,
+    "friction_yr": 13.0,
     "max_drawdown": -8.17,
     "positions": 15,
     "cash": 11420.31,
     "costs_paid": 1572.34,
     "stops_hit": 15,
-    "days": 43,
+    "days": 44,
     "started": "2026-10-01",
     "curve": [
      100.805,
@@ -6669,6 +6680,7 @@
      95.254,
      96.636,
      97.412,
+     94.816,
      94.816
     ],
     "curve_dates": [
@@ -6714,7 +6726,8 @@
      "2026-11-09",
      "2026-11-10",
      "2026-11-11",
-     "2026-11-12"
+     "2026-11-12",
+     "2026-11-13"
     ]
    },
    {
@@ -6724,18 +6737,18 @@
     "ret_common": -2.36,
     "excess_common": -0.78,
     "common_from": "2026-10-01",
-    "common_days": 43,
+    "common_days": 44,
     "value": 98655.76,
     "ret": -1.34,
     "bench_ret": -1.79,
     "excess": 0.45,
-    "friction_yr": 5.8,
+    "friction_yr": 5.7,
     "max_drawdown": -8.39,
     "positions": 25,
     "cash": 2.96,
     "costs_paid": 687.76,
     "stops_hit": 0,
-    "days": 43,
+    "days": 44,
     "started": "2026-10-01",
     "curve": [
      101.04,
@@ -6780,6 +6793,7 @@
      97.05,
      99.325,
      100.627,
+     98.656,
      98.656
     ],
     "curve_dates": [
@@ -6825,7 +6839,8 @@
      "2026-11-09",
      "2026-11-10",
      "2026-11-11",
-     "2026-11-12"
+     "2026-11-12",
+     "2026-11-13"
     ]
    }
   ],
@@ -6872,6 +6887,7 @@
    95.954,
    98.839,
    100.564,
+   98.214,
    98.214
   ],
   "bench_dates": [
@@ -6917,11 +6933,12 @@
    "2026-11-09",
    "2026-11-10",
    "2026-11-11",
-   "2026-11-12"
+   "2026-11-12",
+   "2026-11-13"
   ],
   "span": [
    "2026-10-01",
-   "2026-11-12"
+   "2026-11-13"
   ],
   "retired": [
    {
@@ -7392,10 +7409,6 @@
  },
  "econ_calendar": [
   {
-   "date": "2026-11-12",
-   "label": "Existing home sales"
-  },
-  {
    "date": "2026-11-13",
    "label": "PPI (producer prices)"
   },
@@ -7411,7 +7424,7 @@
  "stats": {
   "feeds_total": 20,
   "feeds_failed": 1,
-  "items": 1165,
+  "items": 1153,
   "smallcap_calls": 552,
   "feed_errors": [],
   "market_errors": [
