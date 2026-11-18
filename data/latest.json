@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-17T21:24:50.704585+00:00",
+ "generated_at": "2026-11-18T03:14:38.513378+00:00",
  "market": [
   {
    "label": "S&P 500",
@@ -77,13 +77,12 @@
    "label": "Dow",
    "symbol": "DJIA",
    "kind": "index",
-   "value": 51608.17,
-   "prev": 52347.55,
-   "value_txt": "51,608.17",
-   "delta": -1.4124443264298034,
-   "delta_txt": "-1.41%",
+   "value": 50759.42,
+   "prev": 51608.17,
+   "value_txt": "50,759.42",
+   "delta": -1.6446039454605734,
+   "delta_txt": "-1.64%",
    "spark": [
-    52177.69,
     52002.41,
     51966.03,
     52495.88,
@@ -105,9 +104,10 @@
     52486.49,
     52297.09,
     52347.55,
-    51608.17
+    51608.17,
+    50759.42
    ],
-   "asof": "Nov 16"
+   "asof": "Nov 17"
   },
   {
    "label": "VIX",
@@ -149,13 +149,12 @@
    "label": "10-yr Treasury",
    "symbol": "DGS10",
    "kind": "yield",
-   "value": 51.5,
-   "prev": 51.0,
-   "value_txt": "5.15%",
-   "delta": 0.9803921568627451,
-   "delta_txt": "+5 bp",
+   "value": 51.2,
+   "prev": 51.5,
+   "value_txt": "5.12%",
+   "delta": -0.5825242718446546,
+   "delta_txt": "-3 bp",
    "spark": [
-    52.1,
     51.900000000000006,
     51.0,
     50.9,
@@ -177,9 +176,10 @@
     48.8,
     49.800000000000004,
     51.0,
-    51.5
+    51.5,
+    51.2
    ],
-   "asof": "Nov 13"
+   "asof": "Nov 16"
   },
   {
    "label": "Dollar (broad)",
@@ -286,19 +286,19 @@
     1.1052,
     1.1014,
     1.0989
-   ]
+   ],
+   "asof": "Nov 17"
   },
   {
    "label": "Bitcoin",
    "symbol": "bitcoin",
    "kind": "crypto",
-   "value": 64046.94164986284,
-   "prev": 64840.87214441952,
-   "value_txt": "$64,047",
-   "delta": -1.2244290804546272,
-   "delta_txt": "-1.22%",
+   "value": 64342.1452598365,
+   "prev": 64889.41287553966,
+   "value_txt": "$64,342",
+   "delta": -0.843385063065434,
+   "delta_txt": "-0.84%",
    "spark": [
-    80029.43383898729,
     80800.83208028424,
     81274.37414359077,
     77838.81456587692,
@@ -320,20 +320,20 @@
     64120.23641294355,
     65305.28100747828,
     64840.87214441952,
-    64046.94164986284
+    64889.41287553966,
+    64342.1452598365
    ]
   },
   {
    "label": "Ethereum",
    "symbol": "ethereum",
    "kind": "crypto",
-   "value": 1798.4208810289701,
-   "prev": 1819.44804997542,
-   "value_txt": "$1,798",
-   "delta": -1.1556894381641667,
-   "delta_txt": "-1.16%",
+   "value": 1804.3123571981855,
+   "prev": 1822.9557525606165,
+   "value_txt": "$1,804",
+   "delta": -1.0227014745828857,
+   "delta_txt": "-1.02%",
    "spark": [
-    2320.672448636286,
     2347.3230902884375,
     2357.4725682647236,
     2249.4767252054453,
@@ -355,12 +355,34 @@
     1768.4520096949004,
     1834.5261946795408,
     1819.44804997542,
-    1798.4208810289701
+    1822.9557525606165,
+    1804.3123571981855
    ]
   }
  ],
- "tape_line": "S&P 500 -1.92%, Nasdaq -2.49%, Dow -1.41%; the 10-year Treasury at 5.15% (+5 bp); WTI crude $89.62 (+0.00%); bitcoin $64,047 (-1.22%).",
+ "tape_line": "S&P 500 -1.92%, Nasdaq -2.49%, Dow -1.64%; the 10-year Treasury at 5.12% (-3 bp); WTI crude $89.62 (+0.00%); bitcoin $64,342 (-0.84%).",
  "top": [
+  {
+   "title": "Nikkei Rises 1.0%, Led by Chip, AI Stocks",
+   "link": "https://www.wsj.com/finance/stocks/nikkei-rises-1-0-led-by-chip-ai-stocks-b486ab61?mod=rss_markets_main",
+   "source": "WSJ Markets",
+   "published": "2026-11-18T00:34:00+00:00",
+   "summary": "Japanese stocks were higher after Nvidia’s robust quarterly results eased fears about the artificial-intelligence trade that was rocked by the scandal surrounding the chip maker’s CEO."
+  },
+  {
+   "title": "Stock Market News, Nov. 17, 2026: Dow ends down 850 points, S&P 500 and Nasdaq also plunge as tech names come under further pressure ahead of Nvidia’s earnings",
+   "link": "https://news.google.com/rss/articles/CBMizgFBVV95cUxPczZTVVRjSUFvOVNPdzdRTUxTeEpTamVkdFA5MUFQRUlZZG5LRUdJTXEwVEx5THRyc1hWNkI2VGZmVEZUNHZzM3ZtN0xkTHBDbmtmZFBTSmJJLXAyUzN6ampsS01CZGgtNS1BaHFLbGNxMXBWTEllTmJ3OFlBWEdzaHE0NHd5MEJXc3l1ZENVekk4cnZYeWdqWEQwSWlKNXp3WE9kQ29fazBNUmdFa0QxNUlZT1pJQWx4cHE0SmdFVS0xTVFBVWd1RnpzdFFjUQ?oc=5",
+   "source": "MarketWatch",
+   "published": "2026-11-17T23:00:00+00:00",
+   "summary": "Stock Market News, Nov. 17, 2026: Dow ends down 850 points, S&P 500 and Nasdaq also plunge as tech names come under further pressure ahead of Nvidia’s earnings MarketWatch Dow drops more than 800 points, S&P 500 posts lowest…"
+  },
+  {
+   "title": "Asian Equities Mixed as Investors Parse Nvidia’s Results, Guidance",
+   "link": "https://www.wsj.com/finance/asian-equities-mixed-as-investors-parse-nvidias-results-guidance-7041c3ea?mod=rss_markets_main",
+   "source": "WSJ Markets",
+   "published": "2026-11-18T01:51:00+00:00",
+   "summary": "Investors have been closely monitoring how Nvidia could perform without Jensen Huang, the only CEO the company had ever had until his resignation last week."
+  },
   {
    "title": "Stocks Down Just Ahead of Nvidia’s Earnings Report",
    "link": "https://www.nytimes.com/2026/11/17/business/economy/stock-market-nvidia-earnings.html",
@@ -376,44 +398,23 @@
    "summary": "Stocks are under pressure ahead of a big day for Nvidia, with the chip maker’s interim CEO set to address Wall Street after last week’s dramatic ouster of co-founder Jensen Huang."
   },
   {
+   "title": "Interim Nvidia CEO Says It’s No Longer Sending AI Chips to China",
+   "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxQVk5ZV2dpR3EyVEtJcVdSZTBCVGl6UE1qZ1gzNWdiaHJ3WGR1S3NUd2VRcWVzUWhjanFicXVzNi1zRWZNel9EdlVOaC1uMUFCckRXMkRGWkRZeHdZUnE4VTdtUkZ2N0dITkRYa040X29HanoxODdGVXV3NzEyOGhnR1VOb2VwcFNIcHFJQlFrNXM3T1hqQlN5WnB0MHJTU0R2cTZOUnBNbV9Ubm81clFKM0x5cHRxdw?oc=5",
+   "source": "Bloomberg.com",
+   "published": "2026-11-18T00:09:05+00:00",
+   "summary": "Interim Nvidia CEO Says It’s No Longer Sending AI Chips to China Bloomberg.com Nvidia Stock Might Have a Bigger Problem Than Replacing Jensen Huang. What Happens If It Loses 15% of Its Revenue? Yahoo Finance Nvidia Corporation…"
+  },
+  {
    "title": "Oil Futures Rise as Middle East Shipping Risks Persist",
-   "link": "https://www.wsj.com/finance/commodities-futures/oil-prices-continue-to-fall-as-global-supply-surplus-weighs-7b54e93b?mod=pls_whats_news_us_business_f",
-   "source": "WSJ Business",
+   "link": "https://www.wsj.com/finance/commodities-futures/oil-prices-continue-to-fall-as-global-supply-surplus-weighs-7b54e93b?mod=rss_markets_main",
+   "source": "WSJ Markets",
    "published": "2026-11-17T20:44:00+00:00",
    "summary": "Oil futures posted moderate gains as strikes in the Middle East remain a threat to shipping in the region, but with advances contained by expectations of a global supply surplus."
-  },
-  {
-   "title": "U.S. Treasury, Eurozone Bond Yields Edge Lower",
-   "link": "https://www.wsj.com/economy/central-banking/u-s-treasury-eurozone-bond-yields-edge-lower-as-fresh-drivers-are-sought-746b3b6d?mod=rss_markets_main",
-   "source": "WSJ Markets",
-   "published": "2026-11-17T17:56:00+00:00",
-   "summary": "U.S. Treasury and eurozone government bond yields fell slightly on Tuesday amid continued caution over artificial intelligence as investors processed fresh economic indicators."
-  },
-  {
-   "title": "Gold Futures Inch Higher As U.S. Yields, Dollar Slip",
-   "link": "https://www.wsj.com/finance/commodities-futures/gold-struggles-to-recover-as-dollar-rates-weigh-13856211?mod=rss_markets_main",
-   "source": "WSJ Markets",
-   "published": "2026-11-17T19:07:00+00:00",
-   "summary": "Gold futures settled modestly higher as U.S. yields and the dollar ceded some ground."
-  },
-  {
-   "title": "Nvidia closes lower ahead of earnings as company reels from Huang resignation",
-   "link": "https://www.cnbc.com/2026/11/17/nvidia-stock-earnings-jensen-huang-resignation.html",
-   "source": "CNBC",
-   "published": "2026-11-17T21:05:24+00:00",
-   "summary": "Investors have been weighing the fallout from former CEO Jensen Huang's resignation."
-  },
-  {
-   "title": "US tech stocks slide ahead of Nvidia results",
-   "link": "https://www.ft.com/content/4a3b9892-67c6-4177-8503-80c0a5eb3b60?syn-25a6b1a6=1",
-   "source": "Financial Times",
-   "published": "2026-11-17T21:04:02+00:00",
-   "summary": "Nasdaq 100 down 0.7% after volatile run of trading"
   }
  ],
  "smallcap": {
   "note": null,
-  "asof": "2026-11-17T21:24:43+00:00",
+  "asof": "2026-11-18T03:14:32+00:00",
   "coverage": {
    "universe": 9871,
    "profiled": 10299,
@@ -439,7 +440,7 @@
     "dp": -0.9353,
     "score": 85.0,
     "sub": {
-     "g": 89,
+     "g": 88,
      "m": 94,
      "q": 60
     },
@@ -1134,7 +1135,7 @@
      "q": 53
     },
     "flags": [
-     "E-1d"
+     "E-0d"
     ],
     "growth_doubt": false,
     "unit_doubt": null,
@@ -1389,7 +1390,7 @@
     "ev_rev": 1.1297,
     "px": 13.13,
     "dp": -1.055,
-    "score": 75.7,
+    "score": 75.6,
     "sub": {
      "g": 61,
      "m": 95,
@@ -1507,33 +1508,33 @@
   ],
   "freshness": {
    "last_full_h": 0.0,
-   "quote_median_h": 9.0,
+   "quote_median_h": 5.9,
    "quote_count": 1863,
    "bench_h": 0.0,
-   "universe_h": 86.5,
-   "earnings_h": 0.0,
+   "universe_h": 92.3,
+   "earnings_h": 5.8,
    "bench_gate_h": 72
   },
   "reach": {
    "1w": {
-    "have": 6,
+    "have": 7,
     "target": 12,
-    "possible": 10,
-    "next_due": "2026-11-17",
+    "possible": 11,
+    "next_due": "2026-11-19",
     "reachable": false,
-    "slack": -2
+    "slack": -1
    },
    "4w": {
     "have": 1,
     "target": 3,
     "possible": 2,
-    "next_due": "2026-11-17",
+    "next_due": "2026-11-18",
     "reachable": false,
     "slack": -1
    }
   },
   "changes": {
-   "prev_day": "2026-11-16",
+   "prev_day": "2026-11-17",
    "entered": [],
    "left": [],
    "held": 25
@@ -1598,22 +1599,22 @@
   ],
   "movers_up": [
    {
+    "ticker": "LUCK",
+    "name": "Lucky Strike Entertainment Corp",
+    "px": 4.17,
+    "dp": 25.6024
+   },
+   {
     "ticker": "MNTK",
     "name": "Montauk Renewables Inc",
     "px": 1.17,
     "dp": 22.6158
    },
    {
-    "ticker": "OFRM",
-    "name": "Once Upon A Farm PBC",
-    "px": 11.7,
-    "dp": 21.2435
-   },
-   {
-    "ticker": "OPTU",
-    "name": "Optimum Communications Inc",
-    "px": 0.6273,
-    "dp": 19.5996
+    "ticker": "ELA",
+    "name": "Envela Corp",
+    "px": 11.75,
+    "dp": 19.4106
    },
    {
     "ticker": "AIAI",
@@ -1636,12 +1637,6 @@
     "dp": -29.386
    },
    {
-    "ticker": "EMAT",
-    "name": "Evolution Metals & Technologies Corp",
-    "px": 0.6934,
-    "dp": -25.784
-   },
-   {
     "ticker": "ABX",
     "name": "Abacus Global Management Inc",
     "px": 6.65,
@@ -1654,10 +1649,16 @@
     "dp": -22.8856
    },
    {
-    "ticker": "YARW",
-    "name": "Vyne Therapeutics Inc",
-    "px": 13.93,
-    "dp": -22.7399
+    "ticker": "UPB",
+    "name": "Upstream Bio Inc",
+    "px": 2.15,
+    "dp": -22.6619
+   },
+   {
+    "ticker": "TROX",
+    "name": "Tronox Holdings PLC",
+    "px": 1.92,
+    "dp": -20.6612
    }
   ],
   "earnings": [
@@ -1736,9 +1737,9 @@
   ],
   "evaluation": {
    "1w": {
-    "excess": -0.07,
-    "days": 30,
-    "indep": 6,
+    "excess": -0.04,
+    "days": 31,
+    "indep": 7,
     "dropped": 0,
     "carried": 0,
     "gone": 1,
@@ -1772,7 +1773,8 @@
      -1.12,
      -0.99,
      0.24,
-     1.16
+     1.16,
+     0.81
     ],
     "indep_values": [
      -0.42,
@@ -1780,10 +1782,11 @@
      -0.98,
      -0.95,
      -1.34,
-     -0.75
+     -0.75,
+     0.81
     ],
-    "vs_peers": -0.12,
-    "peer_readings": 30
+    "vs_peers": -0.09,
+    "peer_readings": 31
    },
    "4w": {
     "excess": -0.77,
@@ -1898,6 +1901,27 @@
   ],
   "filings_activist": [
    {
+    "ticker": "LEO",
+    "name": "BNY Mellon Strategic Municipals Inc",
+    "date": "2026-11-18",
+    "link": "https://www.sec.gov/Archives/edgar/data/818972/000106299326006168/0001062993-26-006168-index.htm",
+    "form": "SCHEDULE 13D/A"
+   },
+   {
+    "ticker": "AESI",
+    "name": "Atlas Energy Solutions Inc",
+    "date": "2026-11-18",
+    "link": "https://www.sec.gov/Archives/edgar/data/1984060/000110465926129242/0001104659-26-129242-index.htm",
+    "form": "SCHEDULE 13D/A"
+   },
+   {
+    "ticker": "TCPC",
+    "name": "BlackRock TCP Capital Corp",
+    "date": "2026-11-18",
+    "link": "https://www.sec.gov/Archives/edgar/data/1370755/000106299326006164/0001062993-26-006164-index.htm",
+    "form": "SCHEDULE 13D/A"
+   },
+   {
     "ticker": "FRNM",
     "name": "Perceptive Capital Solutions Corp",
     "date": "2026-11-17",
@@ -1945,27 +1969,6 @@
     "date": "2026-11-17",
     "link": "https://www.sec.gov/Archives/edgar/data/1756908/000106299326006131/0001062993-26-006131-index.htm",
     "form": "SCHEDULE 13G/A"
-   },
-   {
-    "ticker": "OVID",
-    "name": "Ovid Therapeutics Inc",
-    "date": "2026-11-17",
-    "link": "https://www.sec.gov/Archives/edgar/data/1636651/000110465926128698/0001104659-26-128698-index.htm",
-    "form": "SCHEDULE 13G/A"
-   },
-   {
-    "ticker": "BW",
-    "name": "Babcock & Wilcox Enterprises Inc",
-    "date": "2026-11-17",
-    "link": "https://www.sec.gov/Archives/edgar/data/1630805/000121390026121071/0001213900-26-121071-index.htm",
-    "form": "SCHEDULE 13D/A"
-   },
-   {
-    "ticker": "BRCB",
-    "name": "Black Rock Coffee Bar Inc",
-    "date": "2026-11-17",
-    "link": "https://www.sec.gov/Archives/edgar/data/2068577/000149315226052824/0001493152-26-052824-index.htm",
-    "form": "SCHEDULE 13D/A"
    }
   ],
   "filings_offering": [
@@ -1989,6 +1992,13 @@
     "date": "2026-11-17",
     "link": "https://www.sec.gov/Archives/edgar/data/2081119/000121390026120958/0001213900-26-120958-index.htm",
     "form": "424B3"
+   },
+   {
+    "ticker": "ARDT",
+    "name": "Ardent Health Inc",
+    "date": "2026-11-17",
+    "link": "https://www.sec.gov/Archives/edgar/data/1756655/000110465926129160/0001104659-26-129160-index.htm",
+    "form": "424B5"
    },
    {
     "ticker": "CCXI",
@@ -2031,13 +2041,6 @@
     "date": "2026-11-13",
     "link": "https://www.sec.gov/Archives/edgar/data/1921603/000119312526460813/0001193125-26-460813-index.htm",
     "form": "424B3"
-   },
-   {
-    "ticker": "RZLT",
-    "name": "Rezolute Inc",
-    "date": "2026-11-13",
-    "link": "https://www.sec.gov/Archives/edgar/data/1509261/000110465926126478/0001104659-26-126478-index.htm",
-    "form": "424B5"
    }
   ],
   "budget_mode": "full",
@@ -2049,6 +2052,38 @@
     "published": "2026-11-17T13:00:00+00:00",
     "summary": "SAN FRANCISCO--(BUSINESS WIRE)--Powerlaw Corp. (Nasdaq: PWRL) (“Powerlaw”), today announced its net asset value (“NAV”) and NAV per share for the month ended October 31, 2026. As of October 31, 2026. Powerlaw Corp.’s unaudited…",
     "ticker": "PWRL"
+   },
+   {
+    "title": "OI Investors: O-I Glass, Inc. Shares Declined By $1.36 On July 29, 2026 ‒ Contact Kirby McInerney LLP to Discuss Your Rights",
+    "link": "http://www.businesswire.com/news/home/20261117110547/en/OI-Investors-O-I-Glass-Inc.-Shares-Declined-By-1.36-On-July-29-2026-%E2%80%92-Contact-Kirby-McInerney-LLP-to-Discuss-Your-Rights/?feedref=JjAwJuNHiystnCoBq_hl-YorNIXXeJUidDamMzBr2lVrRA1xRkqfEfrAVCWz-Z_wrCOi9QzgjCezTS3Nw_X6kJUrpSBm-Hav1w-UkdSlG3ne1zTTrM-woVxs6_pUhglHIbE9ZC1pD3bt6lQgRU5j6g==",
+    "source": "Business Wire",
+    "published": "2026-11-17T23:00:00+00:00",
+    "summary": "NEW YORK--(BUSINESS WIRE)---- $OI #ClassActionLawsuit--If you have suffered a loss on your O-I Glass, Inc. (“O-I Glass” or the “Company”) (NYSE: OI) investment, contact Lauren Molinaro of Kirby McInerney LLP by email at…",
+    "ticker": "OI"
+   },
+   {
+    "title": "ENVX Investors Have Opportunity to Join Enovix Corporation Fraud Investigation with SBS Law",
+    "link": "http://www.businesswire.com/news/home/20261117878923/en/ENVX-Investors-Have-Opportunity-to-Join-Enovix-Corporation-Fraud-Investigation-with-SBS-Law/?feedref=JjAwJuNHiystnCoBq_hl-YorNIXXeJUidDamMzBr2lVrRA1xRkqfEfrAVCWz-Z_wrCOi9QzgjCezTS3Nw_X6kJUrpSBm-Hav1w-UkdSlG3ne1zTTrM-woVxs6_pUhglHIbE9ZC1pD3bt6lQgRU5j6g==",
+    "source": "Business Wire",
+    "published": "2026-11-17T22:36:00+00:00",
+    "summary": "LOS ANGELES--(BUSINESS WIRE)---- $ENVX--ENVX Investors Have Opportunity to Join Enovix Corporation Fraud Investigation with SBS Law",
+    "ticker": "ENVX"
+   },
+   {
+    "title": "PRIVACY ALERT: AWKO Law LLP Investigates Amplifon (USA), Inc. for Data Breach of Patient Records",
+    "link": "http://www.businesswire.com/news/home/20261117644798/en/PRIVACY-ALERT-AWKO-Law-LLP-Investigates-Amplifon-USA-Inc.-for-Data-Breach-of-Patient-Records/?feedref=JjAwJuNHiystnCoBq_hl-YorNIXXeJUidDamMzBr2lVrRA1xRkqfEfrAVCWz-Z_wrCOi9QzgjCezTS3Nw_X6kJUrpSBm-Hav1w-UkdSlG3ne1zTTrM-woVxs6_pUhglHIbE9ZC1pD3bt6lQgRU5j6g==",
+    "source": "Business Wire",
+    "published": "2026-11-17T21:37:00+00:00",
+    "summary": "SAN FRANCISCO--(BUSINESS WIRE)--AWKO Law LLP is investigating a data breach that led to unauthorized access to the sensitive information of patients of Amplifon (USA), Inc., a Minnesota-based hearing care retail provider…",
+    "ticker": "USA"
+   },
+   {
+    "title": "Lucky Strike Entertainment Corporation Announces Receipt of Going-Private Proposal",
+    "link": "http://www.businesswire.com/news/home/20261117933104/en/Lucky-Strike-Entertainment-Corporation-Announces-Receipt-of-Going-Private-Proposal/?feedref=JjAwJuNHiystnCoBq_hl-YorNIXXeJUidDamMzBr2lVrRA1xRkqfEfrAVCWz-Z_wrCOi9QzgjCezTS3Nw_X6kJUrpSBm-Hav1w-UkdSlG3ne1zTTrM-woVxs6_pUhglHIbE9ZC1pD3bt6lQgRU5j6g==",
+    "source": "Business Wire",
+    "published": "2026-11-17T21:30:00+00:00",
+    "summary": "RICHMOND, Va.--(BUSINESS WIRE)--Lucky Strike Entertainment Corporation (NYSE: LUCK) (the \"Company\"), today announced that its Board of Directors (the \"Board\") has received a preliminary, non-binding proposal, dated November 16…",
+    "ticker": "LUCK"
    },
    {
     "title": "Cerus Corporation to Participate in Upcoming Investor Conferences",
@@ -2073,38 +2108,6 @@
     "published": "2026-11-17T16:27:00+00:00",
     "summary": "LONDON--(BUSINESS WIRE)-- Xtrackers (IE) plc Investment Company with Variable Capital Registered Office: 78 Sir John Rogerson's Quay, Dublin 2, Ireland Registration number: 393802 (the “Company”) NOTICE TO SHAREHOLDERS OF THE…",
     "ticker": "IE"
-   },
-   {
-    "title": "Xtrackers (IE) plc UK Regulatory Announcement: Important notice to shareholders: Xtrackers (IE) plc platform sub-funds to be delisted from Borsa Italiana",
-    "link": "http://www.businesswire.com/news/home/20261117313303/en/Xtrackers-IE-plc-UK-Regulatory-Announcement-Important-notice-to-shareholders-Xtrackers-IE-plc-platform-sub-funds-to-be-delisted-from-Borsa-Italiana/?feedref=JjAwJuNHiystnCoBq_hl-YorNIXXeJUidDamMzBr2lVrRA1xRkqfEfrAVCWz-Z_wrCOi9QzgjCezTS3Nw_X6kJUrpSBm-Hav1w-UkdSlG3ne1zTTrM-woVxs6_pUhglHIbE9ZC1pD3bt6lQgRU5j6g==",
-    "source": "Business Wire",
-    "published": "2026-11-17T14:18:00+00:00",
-    "summary": "LONDON--(BUSINESS WIRE)-- Xtrackers (IE) plc Investment Company with Variable Capital Registered Office: 78 Sir John Rogerson's Quay, Dublin 2, Ireland Registration number: 393802 (the “Company”) Important notice to Shareholders…",
-    "ticker": "IE"
-   },
-   {
-    "title": "KNOT Offshore Partners LP Announces 2026 Annual Meeting and Nomination of Pernille Østensjø and Hans Petter Aas to Serve as Independent Directors",
-    "link": "http://www.businesswire.com/news/home/20261117966750/en/KNOT-Offshore-Partners-LP-Announces-2026-Annual-Meeting-and-Nomination-of-Pernille-%C3%98stensj%C3%B8-and-Hans-Petter-Aas-to-Serve-as-Independent-Directors/?feedref=JjAwJuNHiystnCoBq_hl-YorNIXXeJUidDamMzBr2lVrRA1xRkqfEfrAVCWz-Z_wrCOi9QzgjCezTS3Nw_X6kJUrpSBm-Hav1w-UkdSlG3ne1zTTrM-woVxs6_pUhglHIbE9ZC1pD3bt6lQgRU5j6g==",
-    "source": "Business Wire",
-    "published": "2026-11-17T14:00:00+00:00",
-    "summary": "ABERDEEN, Scotland--(BUSINESS WIRE)--KNOT Offshore Partners LP (NYSE:KNOP) (“KNOP” or the “Partnership”) advises that its 2026 Annual Meeting will be held on December 22, 2026. The record date for voting at the Annual Meeting is…",
-    "ticker": "KNOP"
-   },
-   {
-    "title": "Oaktree Specialty Lending Corporation Announces Fourth Fiscal Quarter and Full Year 2026 Financial Results",
-    "link": "http://www.businesswire.com/news/home/20261117217695/en/Oaktree-Specialty-Lending-Corporation-Announces-Fourth-Fiscal-Quarter-and-Full-Year-2026-Financial-Results/?feedref=JjAwJuNHiystnCoBq_hl-YorNIXXeJUidDamMzBr2lVrRA1xRkqfEfrAVCWz-Z_wrCOi9QzgjCezTS3Nw_X6kJUrpSBm-Hav1w-UkdSlG3ne1zTTrM-woVxs6_pUhglHIbE9ZC1pD3bt6lQgRU5j6g==",
-    "source": "Business Wire",
-    "published": "2026-11-17T11:00:00+00:00",
-    "summary": "LOS ANGELES--(BUSINESS WIRE)--Oaktree Specialty Lending Corporation (NASDAQ: OCSL) (“Oaktree Specialty Lending” or the “Company”), a specialty finance company, today announced its financial results for the fourth fiscal quarter…",
-    "ticker": "OCSL"
-   },
-   {
-    "title": "MUX Investors Have Opportunity to Join McEwen Inc. Fraud Investigation with SBS Law",
-    "link": "http://www.businesswire.com/news/home/20261116331522/en/MUX-Investors-Have-Opportunity-to-Join-McEwen-Inc.-Fraud-Investigation-with-SBS-Law/?feedref=JjAwJuNHiystnCoBq_hl-YorNIXXeJUidDamMzBr2lVrRA1xRkqfEfrAVCWz-Z_wrCOi9QzgjCezTS3Nw_X6kJUrpSBm-Hav1w-UkdSlG3ne1zTTrM-woVxs6_pUhglHIbE9ZC1pD3bt6lQgRU5j6g==",
-    "source": "Business Wire",
-    "published": "2026-11-17T05:41:00+00:00",
-    "summary": "LOS ANGELES--(BUSINESS WIRE)---- $MUX--MUX Investors Have Opportunity to Join McEwen Inc. Fraud Investigation with SBS Law",
-    "ticker": "MUX"
    }
   ]
  },
@@ -6179,18 +6182,18 @@
     "ret_common": -4.79,
     "excess_common": 0.59,
     "common_from": "2026-10-01",
-    "common_days": 48,
+    "common_days": 49,
     "value": 96195.25,
     "ret": -3.8,
     "bench_ret": -5.54,
     "excess": 1.84,
-    "friction_yr": 7.7,
+    "friction_yr": 7.6,
     "max_drawdown": -7.75,
     "positions": 25,
     "cash": 2178.45,
     "costs_paid": 1017.79,
     "stops_hit": 0,
-    "days": 48,
+    "days": 49,
     "started": "2026-10-01",
     "curve": [
      101.04,
@@ -6240,6 +6243,7 @@
      99.243,
      99.243,
      97.727,
+     96.195,
      96.195
     ],
     "curve_dates": [
@@ -6290,7 +6294,8 @@
      "2026-11-14",
      "2026-11-15",
      "2026-11-16",
-     "2026-11-17"
+     "2026-11-17",
+     "2026-11-18"
     ]
    },
    {
@@ -6300,18 +6305,18 @@
     "ret_common": -4.61,
     "excess_common": 0.78,
     "common_from": "2026-10-01",
-    "common_days": 48,
+    "common_days": 49,
     "value": 96568.82,
     "ret": -3.43,
     "bench_ret": -5.54,
     "excess": 2.23,
-    "friction_yr": 7.7,
+    "friction_yr": 7.5,
     "max_drawdown": -7.27,
     "positions": 25,
     "cash": 2535.67,
     "costs_paid": 1009.62,
     "stops_hit": 0,
-    "days": 48,
+    "days": 49,
     "started": "2026-10-01",
     "curve": [
      101.238,
@@ -6361,6 +6366,7 @@
      99.656,
      99.656,
      98.003,
+     96.569,
      96.569
     ],
     "curve_dates": [
@@ -6411,7 +6417,8 @@
      "2026-11-14",
      "2026-11-15",
      "2026-11-16",
-     "2026-11-17"
+     "2026-11-17",
+     "2026-11-18"
     ]
    },
    {
@@ -6421,18 +6428,18 @@
     "ret_common": -7.27,
     "excess_common": -2.02,
     "common_from": "2026-10-01",
-    "common_days": 48,
+    "common_days": 49,
     "value": 93697.88,
     "ret": -6.3,
     "bench_ret": -5.54,
     "excess": -0.8,
-    "friction_yr": 12.9,
+    "friction_yr": 12.6,
     "max_drawdown": -9.71,
     "positions": 15,
     "cash": 3445.8,
     "costs_paid": 1694.15,
     "stops_hit": 15,
-    "days": 48,
+    "days": 49,
     "started": "2026-10-01",
     "curve": [
      101.04,
@@ -6482,6 +6489,7 @@
      96.362,
      96.362,
      95.139,
+     93.698,
      93.698
     ],
     "curve_dates": [
@@ -6532,7 +6540,8 @@
      "2026-11-14",
      "2026-11-15",
      "2026-11-16",
-     "2026-11-17"
+     "2026-11-17",
+     "2026-11-18"
     ]
    },
    {
@@ -6542,18 +6551,18 @@
     "ret_common": -5.9,
     "excess_common": -0.58,
     "common_from": "2026-10-01",
-    "common_days": 48,
+    "common_days": 49,
     "value": 94738.73,
     "ret": -5.26,
     "bench_ret": -5.54,
     "excess": 0.3,
-    "friction_yr": 7.5,
+    "friction_yr": 7.3,
     "max_drawdown": -7.87,
     "positions": 25,
     "cash": 11789.91,
     "costs_paid": 986.05,
     "stops_hit": 0,
-    "days": 48,
+    "days": 49,
     "started": "2026-10-01",
     "curve": [
      100.676,
@@ -6603,6 +6612,7 @@
      97.44,
      97.44,
      96.052,
+     94.739,
      94.739
     ],
     "curve_dates": [
@@ -6653,7 +6663,8 @@
      "2026-11-14",
      "2026-11-15",
      "2026-11-16",
-     "2026-11-17"
+     "2026-11-17",
+     "2026-11-18"
     ]
    },
    {
@@ -6663,18 +6674,18 @@
     "ret_common": -7.96,
     "excess_common": -2.76,
     "common_from": "2026-10-01",
-    "common_days": 48,
+    "common_days": 49,
     "value": 92777.96,
     "ret": -7.22,
     "bench_ret": -5.54,
     "excess": -1.78,
-    "friction_yr": 12.0,
+    "friction_yr": 11.7,
     "max_drawdown": -9.64,
     "positions": 15,
     "cash": 11420.31,
     "costs_paid": 1572.34,
     "stops_hit": 15,
-    "days": 48,
+    "days": 49,
     "started": "2026-10-01",
     "curve": [
      100.805,
@@ -6724,6 +6735,7 @@
      95.113,
      95.113,
      93.913,
+     92.778,
      92.778
     ],
     "curve_dates": [
@@ -6774,7 +6786,8 @@
      "2026-11-14",
      "2026-11-15",
      "2026-11-16",
-     "2026-11-17"
+     "2026-11-17",
+     "2026-11-18"
     ]
    },
    {
@@ -6784,18 +6797,18 @@
     "ret_common": -5.06,
     "excess_common": 0.31,
     "common_from": "2026-10-01",
-    "common_days": 48,
+    "common_days": 49,
     "value": 95931.4,
     "ret": -4.07,
     "bench_ret": -5.54,
     "excess": 1.56,
-    "friction_yr": 5.2,
+    "friction_yr": 5.1,
     "max_drawdown": -8.39,
     "positions": 25,
     "cash": 2.96,
     "costs_paid": 687.76,
     "stops_hit": 0,
-    "days": 48,
+    "days": 49,
     "started": "2026-10-01",
     "curve": [
      101.04,
@@ -6845,6 +6858,7 @@
      98.632,
      98.632,
      97.37,
+     95.931,
      95.931
     ],
     "curve_dates": [
@@ -6895,7 +6909,8 @@
      "2026-11-14",
      "2026-11-15",
      "2026-11-16",
-     "2026-11-17"
+     "2026-11-17",
+     "2026-11-18"
     ]
    }
   ],
@@ -6947,6 +6962,7 @@
    97.77,
    97.77,
    95.725,
+   94.458,
    94.458
   ],
   "bench_dates": [
@@ -6997,11 +7013,12 @@
    "2026-11-14",
    "2026-11-15",
    "2026-11-16",
-   "2026-11-17"
+   "2026-11-17",
+   "2026-11-18"
   ],
   "span": [
    "2026-10-01",
-   "2026-11-17"
+   "2026-11-18"
   ],
   "retired": [
    {
@@ -7472,10 +7489,6 @@
  },
  "econ_calendar": [
   {
-   "date": "2026-11-17",
-   "label": "Retail sales"
-  },
-  {
    "date": "2026-11-18",
    "label": "Housing starts"
   },
@@ -7499,8 +7512,8 @@
  "stats": {
   "feeds_total": 20,
   "feeds_failed": 1,
-  "items": 1171,
-  "smallcap_calls": 554,
+  "items": 1198,
+  "smallcap_calls": 552,
   "feed_errors": [],
   "market_errors": [
    [
